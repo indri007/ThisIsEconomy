@@ -1,6 +1,10 @@
 # INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/)
+
 Repositori ini berisi keseluruhan kode (*source code*), dataset, dan hasil analisis komputasional untuk tesis yang mengkaji **"Phygital Gap"** pada kebijakan Makan Bergizi Gratis (MBG) di Indonesia melalui platform sosial media X (Maret–Mei 2026).
+
+🚀 **Akses Dashboard Interaktif Tesis MBG secara publik di sini: [https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/)**
 
 Penelitian ini menggunakan pendekatan **Computational Social Science** yang menggabungkan *Natural Language Processing* (NLP) menggunakan model transformer **IndoBERT** dengan **Social Network Analysis** (SNA) menggunakan algoritma Louvain.
 
