@@ -6,7 +6,7 @@ Repositori ini berisi keseluruhan kode (*source code*), dataset, dan hasil anali
 
 🚀 **Akses Dashboard Interaktif Tesis MBG secara publik di sini: [https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/)**
 
-Penelitian ini menggunakan pendekatan **Computational Social Science** yang menggabungkan *Natural Language Processing* (NLP) menggunakan model transformer **IndoBERT** dengan **Social Network Analysis** (SNA) menggunakan algoritma Louvain.
+Penelitian ini menggunakan pendekatan **Computational Social Science** yang menggabungkan *Natural Language Processing* (NLP) menggunakan model transformer **IndoBERT** dengan **Communication Network Analysis** (CNA / Analisis Jaringan Komunikasi) menggunakan algoritma Louvain.
 
 ---
 
@@ -71,8 +71,8 @@ Studi ini mengadopsi konsep *Phygital Gap* (Marketing 6.0) untuk menjelaskan keg
 ### 2. Natural Language Processing (IndoBERT)
 Pendekatan *binary sentiment analysis* (Positif/Negatif) tidak mampu membedakan tingkat kekecewaan publik secara akurat. Oleh karena itu, penelitian ini menggunakan **IndoBERT** yang merupakan model bahasa berbasis *bidirectional transformer* pra-latih (Pre-trained) dari *corpus* bahasa Indonesia raksasa. Model ini mampu menangkap konteks kalimat bolak-balik sehingga sangat jitu dalam mendeteksi sarkasme dan makian khas *slang* netizen Indonesia (misalnya membedakan antara makian marah *Anger* dan cibiran *Disgust*). **Akurasi final: 83%.**
 
-### 3. Social Network Analysis (SNA)
-Untuk menguji bagaimana afeksi (emosi) publik ini didistribusikan, SNA diaplikasikan untuk merekonstruksi interaksi netizen menjadi "jaringan sosial". 
+### 3. Communication Network Analysis (CNA)
+Untuk menguji bagaimana afeksi (emosi) publik ini didistribusikan, CNA diaplikasikan untuk merekonstruksi interaksi netizen menjadi "jaringan komunikasi". 
 *   **Modularity (0.9837):** Angka yang ekstrem ini membuktikan bahwa tidak terjadi polarisasi dua kubu besar (pro vs anti pemerintah), melainkan *Hyper-Fragmentation*—netizen terpecah ke dalam 333 gelembung kecil yang saling mengeluh sendiri tanpa berdiskusi silang.
 *   **Algorithmic Trust:** Analisis Eigenvector menemukan bahwa bukan akun institusi atau menteri yang paling berpengaruh di jaringan, melainkan agen AI (**@grok**). Publik menjadikan AI sebagai pilar verifikator akhir saat kredibilitas manusia runtuh.
 

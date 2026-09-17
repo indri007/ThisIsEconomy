@@ -103,7 +103,7 @@ def load_network_data():
 # Sidebar Navigation
 st.sidebar.title("Navigasi Dashboard")
 st.sidebar.markdown("Silakan pilih menu analisis:")
-page = st.sidebar.radio("Menu", ["🏠 Beranda", "😊 Analisis Emosi (NLP)", "🕸️ Analisis Jaringan (SNA)", "🖼️ Visual Storytelling"])
+page = st.sidebar.radio("Menu", ["🏠 Beranda", "😊 Analisis Emosi (NLP)", "🕸️ Analisis Jaringan (CNA)", "🖼️ Visual Storytelling"])
 
 st.sidebar.markdown("---")
 st.sidebar.info(
@@ -133,7 +133,7 @@ if page == "🏠 Beranda":
     
     st.markdown("---")
     st.subheader("🧹 Karakteristik & Pembersihan Data (Preprocessing)")
-    st.markdown("Sebelum dilakukan analisis NLP dan Jaringan (SNA), data mentah yang ditarik dari **Twitter API** disaring dengan ketat untuk menjaga validitas ilmiah tesis.")
+    st.markdown("Sebelum dilakukan analisis NLP dan Jaringan (CNA), data mentah yang ditarik dari **Twitter API** disaring dengan ketat untuk menjaga validitas ilmiah tesis.")
     
     mcol1, mcol2, mcol3 = st.columns(3)
     with mcol1:
@@ -209,8 +209,8 @@ elif page == "😊 Analisis Emosi (NLP)":
     for idx, row in filtered_df.iterrows():
         st.info(row['text'])
         
-elif page == "🕸️ Analisis Jaringan (SNA)":
-    st.title("Pemetaan Jaringan SNA (Louvain)")
+elif page == "🕸️ Analisis Jaringan (CNA)":
+    st.title("Peta Jaringan Komunikasi (Communication Network)")
     st.markdown("Visualisasi graf interaktif dari wacana MBG di platform X.")
     
     edges, nodes_data = load_network_data()
