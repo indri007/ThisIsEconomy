@@ -180,6 +180,28 @@ if page == "🏠 Beranda":
     """)
     
     st.markdown("---")
+    
+    st.subheader("📰 Liputan Media & Klarifikasi Dua Angka Kunci")
+    st.warning("""
+    **Riset ini telah diliput oleh media nasional dan regional:**
+    - 📺 **Portal JTV** — *"Lebih dari 37 persen percakapan MBG di X bernada sindiran"*, Sep. 2026
+    - 📰 **Netral News** — *"Riset UPN Jatim: 37 persen percakapan MBG di X bernada sindiran"*, Sep. 2026
+    - 📄 **Jurnal IPSSJ** — *I. A. K. Sari et al., Analisis Jaringan Sosial MBG di Media Sosial X*, vol. 3 no. 9, 2026
+    """)
+    
+    st.info("""
+    ### 🔢 Mengapa Ada Dua Angka Berbeda? (37% vs 56%)
+
+    Kedua angka ini **tidak bertentangan**, melainkan mengukur dua hal yang berbeda secara metodologis:
+
+    | | Angka | Apa yang diukur | Dataset |
+    |---|---|---|---|
+    | 📰 **Media (JTV & Netral News)** | **37%** | Proporsi tweet yang mengandung **gaya bahasa sindiran/sarkasme** secara linguistik (ironi, pujian palsu, kontradiksi semantik) | N = 3.395 (anotasi) |
+    | 🔬 **Tesis & Jurnal** | **56.24%** | Proporsi tweet yang diklasifikasikan ke kelas emosi **Jijik (Disgust)** oleh IndoBERT — mencakup ekspresi jijik yang lebih luas, tidak hanya sarkasme | N = 5.263 (inferensi penuh) |
+
+    **Kesimpulan:** Sarkasme adalah *bentuk ekspresi* (gaya bahasa), sedangkan Disgust adalah *emosi* (perasaan). Sarkasme merupakan **subset dari Disgust** — setiap tweet sarkastik kemungkinan besar ber-emosi Jijik, tapi tidak semua tweet ber-emosi Jijik otomatis bersifat sarkastik.
+    """)
+    
     st.markdown("Silakan gunakan menu navigasi di sebelah kiri untuk mengeksplorasi data secara interaktif atau melihat Galeri **Visual Storytelling** lengkap!")
     
 elif page == "😊 Analisis Emosi (NLP)":

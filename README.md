@@ -41,8 +41,8 @@ Sistem ini dirancang secara modular dan berjalan melalui 3 tahapan (*pipeline*) 
 tesis_mbg/
 ├── data/                  # Tempat penyimpanan dataset utama
 │   ├── raw/               # Data mentah hasil crawling awal
-│   ├── emotion/           # Dataset yang sudah dilabeli untuk IndoBERT
-│   ├── sarcasm/           # Dataset khusus identifikasi sindiran (future use)
+│   ├── emotion/           # Dataset yang sudah dilabeli untuk IndoBERT (N=3.395)
+│   ├── sarcasm/           # Dataset identifikasi sindiran (rekonstruksi leksikon)
 │   ├── sna/               # Data edge/node (source, target) untuk NetworkX
 │   └── absa/              # Placeholder untuk Aspect-Based Sentiment
 │
@@ -75,6 +75,29 @@ Pendekatan *binary sentiment analysis* (Positif/Negatif) tidak mampu membedakan 
 Untuk menguji bagaimana afeksi (emosi) publik ini didistribusikan, CNA diaplikasikan untuk merekonstruksi interaksi netizen menjadi "jaringan komunikasi". 
 *   **Modularity (0.9837):** Angka yang ekstrem ini membuktikan bahwa tidak terjadi polarisasi dua kubu besar (pro vs anti pemerintah), melainkan *Hyper-Fragmentation*—netizen terpecah ke dalam 333 gelembung kecil yang saling mengeluh sendiri tanpa berdiskusi silang.
 *   **Algorithmic Trust:** Analisis Eigenvector menemukan bahwa bukan akun institusi atau menteri yang paling berpengaruh di jaringan, melainkan agen AI (**@grok**). Publik menjadikan AI sebagai pilar verifikator akhir saat kredibilitas manusia runtuh.
+
+---
+
+## 📰 Liputan Media & Klarifikasi Angka
+
+Temuan dari riset ini telah diliput secara langsung oleh:
+- 📺 **[Portal JTV](https://portaltv.com/)** — *"Lebih dari 37 persen percakapan Makan Bergizi Gratis di X bernada sindiran"*, Sep. 2026.
+- 📰 **[Netral News](https://netralnews.com/)** — *"Riset UPN Jatim: 37 persen percakapan MBG di X bernada sindiran"*, Sep. 2026.
+- 📄 **Jurnal Nasional IPSSJ** — I. A. K. Sari et al., *"Analisis jaringan sosial dalam isu percakapan Makan Bergizi Gratis di media sosial X"*, vol. 3, no. 9, pp. 248–257, Sep. 2026.
+
+### 🔢 Klarifikasi Dua Angka Kunci
+
+> **Mengapa ada angka 37% (media) dan 56% (tesis)?**
+
+Kedua angka ini **tidak bertentangan**, melainkan mengukur hal yang berbeda:
+
+| Angka | Sumber | Definisi | Dataset |
+|-------|--------|----------|---------|
+| **37%** | Media JTV & Netral News | Proporsi tweet yang mengandung **gaya bahasa sindiran/sarkasme** secara linguistik (lexical-based: ironi, pujian palsu, kontradiksi semantik) | N=3.395 (dataset anotasi) |
+| **56.24%** | Tesis & Jurnal | Proporsi tweet yang diklasifikasikan ke kelas emosi **Jijik (Disgust)** oleh model IndoBERT — emosi ini mencakup ekspresi jijik yang lebih luas, tidak hanya sarkasme | N=5.263 (dataset inferensi penuh) |
+
+**Catatan metodologis untuk manuskrip:**
+> *"Lexical-based analysis identified 37% of tweets containing sarcastic linguistic markers, computed from the annotated corpus (N=3,395). This is distinct from the 56.24% Disgust classification by IndoBERT on the full inference dataset (N=5,263), which captures broader expressions of disgust beyond sarcasm alone."*
 
 ---
 
