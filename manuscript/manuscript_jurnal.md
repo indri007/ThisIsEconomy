@@ -130,14 +130,18 @@ The IndoBERT model achieved a robust accuracy of 83%. The model performed except
 ![F1 Scores](../results/f1_scores.png)
 
 ### 4.4 Nine-Emotion Distribution
-The predicted emotion distribution revealed *Disgust* as the overwhelmingly dominant emotion (2,960 instances), followed by *Love* (1,073) and *Neutral* (649). *Shame* (505) and *Anger* (55) were also present. The confusion matrix indicated a distinct pattern where instances of *Anger* were frequently misclassified as *Disgust*, reflecting shared linguistic expletives in the dataset.
+The predicted emotion distribution revealed *Disgust* as the overwhelmingly dominant emotion (2,960 instances), followed by *Love* (1,073) and *Neutral* (649). *Shame* (505) and *Anger* (55) were also present.
+![Emotion Distribution](../results/emotion_distribution.png)
+The confusion matrix indicated a distinct pattern where instances of *Anger* were frequently misclassified as *Disgust*, reflecting shared linguistic expletives in the dataset.
 ![Confusion Matrix](../results/confusion_matrix.png)
 
 ### 4.5 Social Network Structure
 The generated graph comprised 971 nodes (users) and 662 edges (interactions). The network density was extremely low (0.0007), and reciprocity was near-zero (0.0121), indicating that communication was highly unidirectional.
 
 ### 4.6 Centrality Analysis
-Degree and Eigenvector centrality revealed the most influential actors. The artificial intelligence account **@grok** emerged with the highest degree centrality (0.0432) and eigenvector centrality (0.7049). The President's account (**@prabowo**) ranked fourth in degree centrality but held the second-highest betweenness centrality within the giant component.
+The analysis of network centrality completely refuted the hypothesis that political elites control the discourse during a policy crisis. The highest degree and eigenvector centralities belonged to **@grok**, an artificial intelligence agent, overshadowing human politicians like @prabowo (the President-elect).
+![Top Central Actors](../results/top_actors.png)
+The President's account (**@prabowo**) ranked fourth in degree centrality but held the second-highest betweenness centrality within the giant component.
 
 ### 4.7 Community/Cluster Analysis
 The Louvain algorithm detected 333 distinct communities. The network exhibited an extraordinarily high Modularity score of **0.9837**. The structure was hyper-fragmented; the largest connected component contained only 88 nodes (9% of the network), while nearly 70% of the communities consisted of two actors or fewer.
