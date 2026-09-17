@@ -434,7 +434,7 @@ elif page == "🖼️ Visual Storytelling":
     st.info("**Caption Akademik:** Figure 6 visualizes the unclustered global network, showing sparse connectivity and lack of a central dialogue hub.\n\n**Pesan/Temuan:** Wacana tidak membentuk polarisasi 2 kubu layaknya pilpres, melainkan menyebar tanpa arah (terpecah).\n\n**Posisi:** Results - CNA (Section 4)")
     st.markdown("---")
     
-    st.subheader("7. Community / Louvain Network")
+    st.subheader("7. Community Structure")
     st.image(get_image_path("network_graph.png"), use_container_width=True)
     st.info("**Caption Akademik:** Figure 7 demonstrates the extreme fragmentation of the network into 333 distinct communities. Colors represent isolated clusters conversing in echo chambers.\n\n**Pesan/Temuan:** Echo-chamber akut (Modularity 0.9837). Netizen berbicara di dalam gelembung mereka sendiri tanpa titik temu.\n\n**Posisi:** Results - CNA (Section 4)")
     st.markdown("---")
