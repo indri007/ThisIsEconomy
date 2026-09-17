@@ -327,35 +327,35 @@ elif page == "🖼️ Visual Storytelling":
     st.success("**Membuktikan data diproses dengan ketat, didominasi emosi Disgust dengan balutan sarkasme tingkat tinggi.**")
     
     st.subheader("1. Dataset & Data Collection Overview")
-    st.image(get_image_path("1_pipeline.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 1 illustrates the end-to-end data processing pipeline, from data extraction (N=3,395) and NLP fine-tuning for 9 emotions, to topological mapping via Louvain modularity.\n\n**Pesan/Temuan:** Ketegasan dan ketelitian arsitektur riset yang terukur secara komputasional.\n\n**Posisi:** Methods (Section 3)")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image(get_image_path("1_pipeline.png"), use_container_width=True, caption="Figure 1A. Pipeline Overview")
+    with col2:
+        st.image(get_image_path("2_dataset_characteristics.png"), use_container_width=True, caption="Figure 1B. Data Cleaning Process")
+    st.info("**Caption Akademik:** Figure 1 illustrates the end-to-end data processing pipeline and cleaning process from raw Twitter API scrapes (N=5,310) to the final annotated corpus (N=3,395).\n\n**Pesan/Temuan:** Ketegasan dan ketelitian arsitektur riset yang terukur secara komputasional.\n\n**Posisi:** Methods (Section 3)")
     st.markdown("---")
     
-    st.subheader("2. Karakteristik & Pembersihan Dataset")
-    st.image(get_image_path("2_dataset_characteristics.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 2 details the data cleaning process from raw Twitter API scrapes down to the final annotated corpus.\n\n**Pesan/Temuan:** Transparansi penyusutan data akibat spam/bot filtering.\n\n**Posisi:** Methods (Section 3)")
-    st.markdown("---")
-    
-    st.subheader("3. Distribusi 9 Emosi")
+    st.subheader("2. Distribusi 9 Emosi")
     st.image(get_image_path("emotion_distribution.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 3 displays the frequency of predicted emotions, revealing Disgust as the overwhelmingly dominant sentiment surrounding the MBG policy execution.\n\n**Pesan/Temuan:** Wacana MBG bukan soal kebencian biner (Anger), melainkan kejijikan mendalam (Disgust) terhadap eksekusi fisik.\n\n**Posisi:** Results - NLP Analysis (Section 4)")
+    st.info("**Caption Akademik:** Figure 2 displays the frequency of predicted emotions, revealing Disgust as the overwhelmingly dominant sentiment surrounding the MBG policy execution.\n\n**Pesan/Temuan:** Wacana MBG bukan soal kebencian biner (Anger), melainkan kejijikan mendalam (Disgust) terhadap eksekusi fisik.\n\n**Posisi:** Results - NLP Analysis (Section 4)")
     st.markdown("---")
     
-    st.subheader("4. Distribusi Sarkasme")
+    st.subheader("3. Distribusi Sarkasme")
     st.image(get_image_path("3_sarcasm.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 4 highlights the prevalence of sarcasm and slang in public reactions, functioning as a primary coping mechanism toward logistical failures.\n\n**Pesan/Temuan:** Publik merespons krisis dengan sindiran ketimbang adu argumen logis.\n\n**Posisi:** Results - NLP Analysis (Section 4)")
+    st.info("**Caption Akademik:** Figure 3 highlights the prevalence of sarcasm and slang in public reactions, functioning as a primary coping mechanism toward logistical failures.\n\n**Pesan/Temuan:** Publik merespons krisis dengan sindiran ketimbang adu argumen logis.\n\n**Posisi:** Results - NLP Analysis (Section 4)")
     st.markdown("---")
     
     st.markdown("### 🤖 Bagian II: Bagaimana Model Membacanya?")
     st.success("**Membuktikan arsitektur IndoBERT sangat valid dan akurat, meski agak kesulitan membedakan sarkasme Anger vs Disgust.**")
     
-    st.subheader("5. Performance IndoBERT & Confusion Matrix")
-    col1, col2 = st.columns(2)
-    with col1:
-        st.image(get_image_path("f1_scores.png"), use_container_width=True)
-    with col2:
-        st.image(get_image_path("confusion_matrix.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 5 presents the model's evaluation (83% Macro-F1) and details classification accuracy per class. Primary misclassification occurs between Anger and Disgust, indicating semantic overlap in internet expletives.\n\n**Pesan/Temuan:** Instrumen pengukur AI sangat valid. Model wajar merasa 'bingung' antara marah dan jijik karena kosakata slang yang tumpang tindih.\n\n**Posisi:** Results - Model Evaluation (Section 4)")
+    st.subheader("4. Performance IndoBERT")
+    st.image(get_image_path("f1_scores.png"), use_container_width=True)
+    st.info("**Caption Akademik:** Figure 4 presents the model's evaluation, achieving a robust 83% Macro-F1 score, confirming its efficacy in classifying informal Indonesian slang.\n\n**Pesan/Temuan:** Instrumen pengukur kita (AI) sangat valid dan dapat dipercaya secara ilmiah.\n\n**Posisi:** Results - Model Evaluation (Section 4)")
+    st.markdown("---")
+    
+    st.subheader("5. Confusion Matrix Emotion Classification")
+    st.image(get_image_path("confusion_matrix.png"), use_container_width=True)
+    st.info("**Caption Akademik:** Figure 5 details the classification accuracy per class. The primary misclassification occurs between Anger and Disgust, indicating semantic overlap in internet expletives.\n\n**Pesan/Temuan:** Menunjukkan objektivitas riset dengan menampilkan di mana model AI kita merasa 'bingung' (antara marah dan jijik karena kosakata slang yang sama).\n\n**Posisi:** Results - Model Evaluation (Section 4)")
     st.markdown("---")
     
     st.markdown("### 🕸️ Bagian III: Siapa Terhubung dengan Siapa, dan Siapa Aktornya?")
