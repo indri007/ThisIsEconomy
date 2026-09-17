@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # Cache data loading
-@st.cache_data
+@st.cache_data(ttl=3600)
 def load_emotion_data():
     # Adjust path assuming run from root 'tesis_mbg'
     path = "data/results/indobert_9_emosi_fixed.csv"
@@ -23,7 +23,7 @@ def load_emotion_data():
     # Fallback if run inside 'dashboard' folder
     return pd.read_csv("../data/results/indobert_9_emosi_fixed.csv")
 
-@st.cache_data
+@st.cache_data(ttl=3600)
 def load_network_data():
     edge_path = "data/sna/network_edges.csv"
     node_path = "data/results/sna_degree.csv"
