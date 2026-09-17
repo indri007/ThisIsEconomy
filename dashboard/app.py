@@ -668,15 +668,81 @@ elif page == "📚 Audit Referensi Scopus":
     Self-cite: [12] Sari et al. IPSSJ (untuk validasi silang temuan)
     """)
 
+    # ===== VISUALISASI GRAFIS REFERENSI =====
+    st.markdown("---")
+    st.subheader("📊 Visualisasi Distribusi Referensi")
+
+    vcol1, vcol2 = st.columns(2)
+
+    with vcol1:
+        # Donut chart: Distribusi Tier
+        tier_labels = ["Tier 1 — Scopus/WoS Wajib", "Tier 2 — Jurnal/Self-cite", "Tier 3 — Media (Intro only)", "🆕 Rekomendasi Baru"]
+        tier_values = [8, 4, 2, 6]
+        tier_colors = ["#4CAF50", "#2196F3", "#FF9800", "#9C27B0"]
+
+        fig_donut = px.pie(
+            names=tier_labels,
+            values=tier_values,
+            color_discrete_sequence=tier_colors,
+            hole=0.5,
+            title="Distribusi 20 Referensi per Tier Kelayakan",
+        )
+        fig_donut.update_traces(textinfo="percent+label", textfont_size=11)
+        fig_donut.update_layout(
+            showlegend=True,
+            height=380,
+            legend=dict(orientation="h", yanchor="bottom", y=-0.3),
+        )
+        st.plotly_chart(fig_donut, use_container_width=True)
+
+    with vcol2:
+        # Bar chart horizontal: Posisi di Manuskrip
+        posisi_data = {
+            "Posisi": ["Theory/Framework", "Introduction", "Methods/NLP", "Methods/CNA", "Literature Review", "Results & Discussion"],
+            "Jumlah Referensi": [6, 4, 5, 3, 2, 2],
+            "Warna": ["#673AB7", "#2196F3", "#00BCD4", "#009688", "#FF9800", "#F44336"],
+        }
+        fig_bar = px.bar(
+            posisi_data,
+            x="Jumlah Referensi",
+            y="Posisi",
+            orientation="h",
+            color="Posisi",
+            color_discrete_sequence=posisi_data["Warna"],
+            title="Distribusi Referensi per Posisi Manuskrip",
+        )
+        fig_bar.update_layout(showlegend=False, height=380, yaxis=dict(categoryorder="total ascending"))
+        st.plotly_chart(fig_bar, use_container_width=True)
+
+    # Bar chart: Indeksasi
+    idx_data = {
+        "Indeksasi": ["Scopus Q1", "Scopus Q2", "ACL/AACL (NLP)", "Sinta/Nasional", "Media Massa"],
+        "Jumlah": [12, 2, 2, 3, 2],
+        "Status": ["✅ Kuat", "✅ Kuat", "✅ Kuat", "⚠️ Pendukung", "⚠️ Opsional"],
+    }
+    fig_idx = px.bar(
+        idx_data,
+        x="Indeksasi",
+        y="Jumlah",
+        color="Status",
+        color_discrete_map={"✅ Kuat": "#4CAF50", "⚠️ Pendukung": "#FF9800", "⚠️ Opsional": "#9E9E9E"},
+        title="Profil Indeksasi Seluruh Referensi (Semakin Hijau = Semakin Kuat)",
+        text="Jumlah",
+    )
+    fig_idx.update_traces(textposition="outside")
+    fig_idx.update_layout(height=350, xaxis_title="", yaxis_title="Jumlah Referensi")
+    st.plotly_chart(fig_idx, use_container_width=True)
+
+    # Metrics summary
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        st.metric("Total Referensi", "14", "dalam manuskrip")
+        st.metric("Total Referensi", "20", "14 lama + 6 baru")
     with col2:
         st.metric("Tier 1 — Wajib", "8", "Scopus/WoS indexed")
     with col3:
-        st.metric("Tier 2 — Layak", "4", "Jurnal + Self-cite")
+        st.metric("🆕 Rekomendasi Baru", "6", "Tambahkan segera!")
     with col4:
-        st.metric("Tier 3 — Opsional", "2", "Media massa (Intro only)")
+        st.metric("Tier 3 — Opsional", "2", "Media (Intro only)")
 
     st.markdown("---")
     st.info("""
