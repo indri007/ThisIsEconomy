@@ -40,23 +40,23 @@ ax2.axis('off')
 # Panel 3: Emotion & Sarcasm Integration (NLP)
 ax3 = plt.subplot(133)
 clusters = ['C1 (@grok)', 'C2 (@prabowo)', 'C3 (Media)', 'C4 (Public)']
-disgust = [70, 20, 30, 85]
-sarcasm = [15, 5, 10, 10]
-love = [5, 60, 40, 0]
-neutral = [10, 15, 20, 5]
+jijik = [70, 20, 30, 85]
+sarkasme = [15, 5, 10, 10]
+bahagia_percaya = [5, 60, 40, 0]
+netral = [10, 15, 20, 5]
 
 barWidth = 0.6
 r = np.arange(len(clusters))
 
-ax3.bar(r, disgust, color='#ff4d4d', edgecolor='white', width=barWidth, label='Disgust (NLP)')
-ax3.bar(r, sarcasm, bottom=disgust, color='#ff9999', edgecolor='white', width=barWidth, label='Sarcasm Overlap')
-ax3.bar(r, love, bottom=[i+j for i,j in zip(disgust, sarcasm)], color='#4da6ff', edgecolor='white', width=barWidth, label='Love/Trust')
-ax3.bar(r, neutral, bottom=[i+j+k for i,j,k in zip(disgust, sarcasm, love)], color='#cccccc', edgecolor='white', width=barWidth, label='Neutral')
+ax3.bar(r, jijik, color='#ff4d4d', edgecolor='white', width=barWidth, label='Jijik (NLP)')
+ax3.bar(r, sarkasme, bottom=jijik, color='#ff9999', edgecolor='white', width=barWidth, label='Sarkasme')
+ax3.bar(r, bahagia_percaya, bottom=[i+j for i,j in zip(jijik, sarkasme)], color='#4da6ff', edgecolor='white', width=barWidth, label='Bahagia/Percaya')
+ax3.bar(r, netral, bottom=[i+j+k for i,j,k in zip(jijik, sarkasme, bahagia_percaya)], color='#cccccc', edgecolor='white', width=barWidth, label='Netral')
 
 ax3.set_xticks(r)
 ax3.set_xticklabels(clusters, rotation=15, color='white')
 ax3.set_ylabel("Percentage of Discourse (%)", color='white')
-ax3.set_title("3. NLP & SNA Integration\n(Emotion/Sarcasm per Community)", fontsize=14, fontweight='bold', color='white')
+ax3.set_title("3. Integrasi NLP & CNA\n(Emosi/Sarkasme per Komunitas)", fontsize=14, fontweight='bold', color='white')
 ax3.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=2)
 ax3.tick_params(colors='white')
 for spine in ax3.spines.values():
@@ -71,9 +71,9 @@ narrative_text = (
     "NARRATIVE STORYTELLING & RESEARCH QUESTION ANSWER:\n\n"
     "• Panel 1 (Kiri - Global Network): Memperlihatkan bahwa jutaan percakapan tentang MBG di platform X sebenarnya tidak memiliki pusat dialog yang tunggal. Semuanya tersebar bagaikan debu kosmik.\n"
     "• Panel 2 (Tengah - Community Structure): Mengonfirmasi bahwa dari debu tersebut, algoritma Louvain menemukan adanya 333 faksi/klaster (echo chambers) yang mengurung diri mereka masing-masing.\n"
-    "• Panel 3 (Kanan - NLP Emotion Integration): Ini adalah puncak penemuannya. Grafik menunjukkan bahwa mayoritas klaster (terutama publik/AI Grok) sama-sama memendam emosi Jijik (Disgust) dan Sarkasme tingkat tinggi. Hanya klaster elit (C2) yang didominasi Love/Trust.\n\n"
+    "• Panel 3 (Kanan - Integrasi NLP): Ini adalah puncak penemuannya. Grafik menunjukkan bahwa mayoritas klaster (terutama publik/AI Grok) sama-sama memendam emosi Jijik dan Sarkasme tingkat tinggi. Hanya klaster elit (C2) yang didominasi Bahagia/Percaya.\n\n"
     "KESIMPULAN EKSISTENSI PHYGITAL GAP:\n"
-    "Kebijakan di dunia digital (X) mungkin terlihat didukung oleh elit, namun ketika ditarik ke realitas jaringan publik, eksekusi fisik (logistik/makanan basi) memicu sentimen Disgust yang merata di seluruh komunitas!"
+    "Kebijakan di dunia digital (X) mungkin terlihat didukung oleh elit, namun ketika ditarik ke realitas jaringan publik, eksekusi fisik (logistik/makanan basi) memicu sentimen Jijik yang merata di seluruh komunitas!"
 )
 
 plt.figtext(0.5, 0.05, narrative_text, wrap=True, horizontalalignment='center', fontsize=12, color='white',
