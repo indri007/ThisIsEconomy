@@ -501,9 +501,9 @@ elif page == "📚 Audit Referensi Scopus":
     st.success("Referensi-referensi ini adalah fondasi akademik yang akan membuat reviewer **langsung percaya** pada kualitas riset Anda.")
 
     tier1_data = {
-        "No.": ["[1]", "[3]", "[4]", "[6]", "[7]", "[8]", "[9]", "[10]"],
+        "No.": ["[1]", "[3]", "[4]", "[6]", "[7]", "[8]", "[9]", "[10]", "[NEW-A]", "[NEW-B]", "[NEW-C]"],
         "Referensi (Ringkas)": [
-            "Camp, E. — Sarcasm, pretense & semantics/pragmatics. Noûs, 2012.",
+            "Camp, E. — Sarcasm, pretense & semantics/pragmatics. No\u00fbs, 2012.",
             "Arinik, N. & Giritli — Is the medium the message? Twitter/blog/media relations. Public Relat. Rev., 2012.",
             "Chiorri et al. — Emotion & sentiment analysis w/ BERT. CEUR Workshop, 2019.",
             "Devalapalli & Mandala — Profiling irony & stereotype speakers on Twitter via NLP. Lect. Notes Netw. Syst., 2026.",
@@ -511,10 +511,16 @@ elif page == "📚 Audit Referensi Scopus":
             "Newman, J.E. — Modularity & community structure in networks. Proc. Natl. Acad. Sci., 2006.",
             "Wilie et al. — IndoNLU: Benchmark for Indonesian NLP. AACL-IJCNLP, 2020.",
             "Blondel et al. — Fast unfolding of communities in large networks. J. Stat. Mech., 2008.",
+            "🆕 Gelders & Ihlen — Minding the gap: Service marketing model in govt policy comms. Gov. Inf. Q., 27(1), 2010.",
+            "🆕 Johnson & Barlow — Defining the phygital marketing advantage. J. Theor. Appl. Electron. Commer. Res., 16(6), 2021.",
+            "🆕 Tsai, Chen & Lu — Marketing public policy in digital age: Govt strategies for new media. Socio-Econ. Plan. Sci., 105, 2026.",
         ],
-        "Indeksasi": ["Scopus Q1", "Scopus Q1", "Scopus/CEUR", "Scopus", "Wiley (Q1)", "PNAS (Q1)", "AACL (Top NLP)", "Scopus Q1"],
-        "Posisi di Manuskrip": ["Introduction/Theory", "Introduction", "Methods/NLP", "Methods/NLP", "Theory", "Methods/CNA", "Methods/NLP", "Methods/CNA"],
-        "Status": ["✅ WAJIB", "✅ WAJIB", "✅ WAJIB", "✅ WAJIB", "✅ WAJIB", "✅ WAJIB", "✅ WAJIB", "✅ WAJIB"],
+        "Indeksasi": ["Scopus Q1", "Scopus Q1", "Scopus/CEUR", "Scopus", "Wiley (Q1)", "PNAS (Q1)", "AACL (Top NLP)", "Scopus Q1",
+                     "Scopus Q1 (Gov. Inf. Q.)", "Scopus Q1 (JTAER)", "Scopus Q1 (Socio-Econ. Plan.)"],
+        "Posisi di Manuskrip": ["Introduction/Theory", "Introduction", "Methods/NLP", "Methods/NLP", "Theory", "Methods/CNA", "Methods/NLP", "Methods/CNA",
+                                "§2.5 / Theory (brand\u2194state gap)", "Theory (Definisi Phygital)", "Theory (Justifikasi Marketing 6.0)"],
+        "Status": ["\u2705 WAJIB", "\u2705 WAJIB", "\u2705 WAJIB", "\u2705 WAJIB", "\u2705 WAJIB", "\u2705 WAJIB", "\u2705 WAJIB", "\u2705 WAJIB",
+                   "\u2b50 TAMBAHKAN SEGERA", "\u2b50 TAMBAHKAN SEGERA", "\u2b50 TAMBAHKAN SEGERA"],
     }
     st.dataframe(pd.DataFrame(tier1_data), use_container_width=True, hide_index=True)
 
@@ -558,6 +564,58 @@ elif page == "📚 Audit Referensi Scopus":
         "Status": ["⚠️ OPSIONAL (Introduction only)", "⚠️ OPSIONAL (Introduction only)"],
     }
     st.dataframe(pd.DataFrame(tier3_data), use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+    st.subheader("🆕 Referensi Baru — Rekomendasi Strategis (Jawaban untuk Reviewer 2)")
+    st.error("""
+    **SEGERA TAMBAHKAN ketiga referensi ini ke manuskrip!** 
+    Ketiganya adalah Scopus Q1 dan secara langsung menjawab pertanyaan reviewer tentang justifikasi *Phygital Gap* dan *Marketing 6.0* sebagai kerangka teori komunikasi kebijakan publik.
+    """)
+
+    new_refs = [
+        {
+            "label": "🆕 [NEW-A] Gelders & Ihlen (2010)",
+            "judul": "Minding the gap: Applying a service marketing model into government policy communications.",
+            "jurnal": "Government Information Quarterly, 27(1), 34\u201340.",
+            "doi": "https://doi.org/10.1016/j.giq.2009.05.005",
+            "indeksasi": "Scopus Q1",
+            "relevansi": "Landasan teori Marketing 6.0/phygital gap — studi klasik pertama yang menerapkan model pemasaran layanan ke komunikasi kebijakan pemerintah. Bisa jadi pembanding langsung argumen brand\u2194state di \u00a72.5.",
+            "posisi": "\u00a72.5 Theory / Introduction",
+            "apa": "Gelders, D., & Ihlen, \u00d8. (2010). Minding the gap: Applying a service marketing model into government policy communications. Government Information Quarterly, 27(1), 34\u201340. https://doi.org/10.1016/j.giq.2009.05.005",
+        },
+        {
+            "label": "🆕 [NEW-B] Johnson & Barlow (2021)",
+            "judul": "Defining the phygital marketing advantage.",
+            "jurnal": "Journal of Theoretical and Applied Electronic Commerce Research, 16(6), 2365\u20132385.",
+            "doi": "https://doi.org/10.3390/jtaer16060130",
+            "indeksasi": "Scopus Q1 (JTAER — MDPI)",
+            "relevansi": "Definisi konseptual istilah 'phygital' itu sendiri dari jurnal Scopus — memperkuat legitimasi istilah 'Phygital Gap' yang menjadi novelty tesis Anda.",
+            "posisi": "\u00a72.1 / Theory (Definisi Phygital)",
+            "apa": "Johnson, M., & Barlow, R. (2021). Defining the phygital marketing advantage. Journal of Theoretical and Applied Electronic Commerce Research, 16(6), 2365\u20132385. https://doi.org/10.3390/jtaer16060130",
+        },
+        {
+            "label": "🆕 [NEW-C] Tsai, Chen & Lu (2026)",
+            "judul": "Marketing public policy in the digital age: Government strategies for effective new media engagement under marketing 4.0.",
+            "jurnal": "Socio-Economic Planning Sciences, 105, 102468.",
+            "doi": "https://doi.org/10.1016/j.seps.2026.102468",
+            "indeksasi": "Scopus Q1 (Elsevier)",
+            "relevansi": "Jembatan teoretis Marketing X.0 ke komunikasi kebijakan publik digital — menjawab langsung Reviewer 2 yang mempertanyakan kenapa Marketing 6.0 (bukan teori trust politik) relevan dipakai.",
+            "posisi": "\u00a72.3 / Theory (Justifikasi Marketing 6.0)",
+            "apa": "Tsai, P.-H., Chen, C.-J., & Lu, Y.-S. (2026). Marketing public policy in the digital age: Government strategies for effective new media engagement under marketing 4.0. Socio-Economic Planning Sciences, 105, 102468. https://doi.org/10.1016/j.seps.2026.102468",
+        },
+    ]
+
+    for ref in new_refs:
+        with st.expander(ref["label"] + " — " + ref["judul"][:70] + "..."):
+            st.markdown(f"**Judul:** {ref['judul']}")
+            st.markdown(f"**Jurnal:** {ref['jurnal']}")
+            st.markdown(f"**DOI:** [{ref['doi']}]({ref['doi']})")
+            st.markdown(f"**Indeksasi:** `{ref['indeksasi']}`")
+            st.markdown(f"**Relevansi untuk manuskrip Anda:**")
+            st.info(ref["relevansi"])
+            st.markdown(f"**Posisi di manuskrip:** `{ref['posisi']}`")
+            st.markdown("**Format APA 7th (copy-paste):")
+            st.code(ref["apa"], language="")
 
     st.markdown("---")
     st.subheader("🎯 Strategi Sitasi Optimal untuk Scopus Q1")
