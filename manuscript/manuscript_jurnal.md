@@ -127,11 +127,11 @@ Noise removal and stemming successfully reduced the vocabulary size and standard
 
 ### 4.3 IndoBERT Performance
 The IndoBERT model achieved a robust accuracy of 83%. The model performed exceptionally well on dominant classes, achieving high F1-scores for *Disgust*, *Love*, and *Neutral*. 
-![F1 Scores](/Users/jevin/.gemini/antigravity-ide/brain/2e99ce0b-957c-493e-b5b4-d776646dfc7a/f1_scores.png)
+![F1 Scores](../results/f1_scores.png)
 
 ### 4.4 Nine-Emotion Distribution
 The predicted emotion distribution revealed *Disgust* as the overwhelmingly dominant emotion (2,960 instances), followed by *Love* (1,073) and *Neutral* (649). *Shame* (505) and *Anger* (55) were also present. The confusion matrix indicated a distinct pattern where instances of *Anger* were frequently misclassified as *Disgust*, reflecting shared linguistic expletives in the dataset.
-![Confusion Matrix](/Users/jevin/.gemini/antigravity-ide/brain/2e99ce0b-957c-493e-b5b4-d776646dfc7a/confusion_matrix.png)
+![Confusion Matrix](../results/confusion_matrix.png)
 
 ### 4.5 Social Network Structure
 The generated graph comprised 971 nodes (users) and 662 edges (interactions). The network density was extremely low (0.0007), and reciprocity was near-zero (0.0121), indicating that communication was highly unidirectional.
@@ -141,7 +141,7 @@ Degree and Eigenvector centrality revealed the most influential actors. The arti
 
 ### 4.7 Community/Cluster Analysis
 The Louvain algorithm detected 333 distinct communities. The network exhibited an extraordinarily high Modularity score of **0.9837**. The structure was hyper-fragmented; the largest connected component contained only 88 nodes (9% of the network), while nearly 70% of the communities consisted of two actors or fewer.
-![Network Graph](/Users/jevin/.gemini/antigravity-ide/brain/2e99ce0b-957c-493e-b5b4-d776646dfc7a/network_graph.png)
+![Network Graph](../results/network_graph.png)
 
 ### 4.8 Emotional Patterns in the Network
 The extreme fragmentation of the network mirrored the overwhelming presence of *Disgust* and *Shame*. Users did not form large, cohesive ideological echo chambers to debate the policy; instead, they broadcasted isolated grievances and sarcastic remarks into their own micro-clusters without engaging in sustained dialogue with opposing views.
