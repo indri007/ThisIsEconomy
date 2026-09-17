@@ -299,6 +299,22 @@ elif page == "🖼️ Visual Storytelling":
     st.title("Galeri Visual Storytelling (Academic Blueprint)")
     st.markdown("Berikut adalah pameran 10 visualisasi berstandar publikasi jurnal internasional (Scopus Q1/Q2). Blueprint ini menjadi panduan absolut sebelum gambar dimasukkan ke dalam manuscript utama.")
     
+    st.info("""
+    ### 📖 Filosofi Storytelling
+    **Gambar 1-3: Data Apa yang Dianalisis?** 
+    *(Membuktikan data diproses dengan ketat, didominasi emosi Disgust dengan balutan sarkasme tingkat tinggi).*
+    
+    **Gambar 4-5: Bagaimana Model Membacanya?** 
+    *(Membuktikan arsitektur IndoBERT sangat valid dan akurat, meski agak kesulitan membedakan sarkasme Anger vs Disgust).*
+    
+    **Gambar 6-8: Siapa Terhubung dengan Siapa, dan Siapa Aktornya?** 
+    *(Membuktikan jaringan sangat terpecah/fragmented, dan AI/grok menduduki tahta sentral mengalahkan elit politik).*
+    
+    **Gambar 9-10: Bagaimana Emosi Membentuk Diskursus?** 
+    *(Membuktikan bahwa kemarahan/jijik publik memiliki sentimen absolut terhadap bobroknya logistik dan anggaran fisik di lapangan — mendefinisikan Phygital Gap).*
+    """)
+    
+    
     # Define paths
     def get_image_path(filename):
         current_dir = os.path.dirname(os.path.abspath(__file__))
