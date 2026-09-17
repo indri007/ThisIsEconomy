@@ -9,7 +9,7 @@ os.makedirs("results", exist_ok=True)
 
 # Set style
 plt.style.use('dark_background')
-fig = plt.figure(figsize=(18, 6))
+fig = plt.figure(figsize=(18, 9)) # Increased height for the text box
 
 # Panel 1: Global Network (SNA)
 ax1 = plt.subplot(131)
@@ -62,8 +62,23 @@ ax3.tick_params(colors='white')
 for spine in ax3.spines.values():
     spine.set_color('white')
 
-plt.suptitle("INTEGRATED PHYGITAL GAP ANALYSIS: SNA x NLP", fontsize=18, fontweight='bold', color='white', y=1.05)
-plt.tight_layout()
+plt.suptitle("INTEGRATED PHYGITAL GAP ANALYSIS: SNA x NLP", fontsize=20, fontweight='bold', color='white', y=0.98)
+
+# Adjust layout to make room for narrative
+plt.subplots_adjust(bottom=0.35, top=0.85)
+
+narrative_text = (
+    "NARRATIVE STORYTELLING & RESEARCH QUESTION ANSWER:\n\n"
+    "• Panel 1 (Kiri - Global Network): Memperlihatkan bahwa jutaan percakapan tentang MBG di platform X sebenarnya tidak memiliki pusat dialog yang tunggal. Semuanya tersebar bagaikan debu kosmik.\n"
+    "• Panel 2 (Tengah - Community Structure): Mengonfirmasi bahwa dari debu tersebut, algoritma Louvain menemukan adanya 333 faksi/klaster (echo chambers) yang mengurung diri mereka masing-masing.\n"
+    "• Panel 3 (Kanan - NLP Emotion Integration): Ini adalah puncak penemuannya. Grafik menunjukkan bahwa mayoritas klaster (terutama publik/AI Grok) sama-sama memendam emosi Jijik (Disgust) dan Sarkasme tingkat tinggi. Hanya klaster elit (C2) yang didominasi Love/Trust.\n\n"
+    "KESIMPULAN EKSISTENSI PHYGITAL GAP:\n"
+    "Kebijakan di dunia digital (X) mungkin terlihat didukung oleh elit, namun ketika ditarik ke realitas jaringan publik, eksekusi fisik (logistik/makanan basi) memicu sentimen Disgust yang merata di seluruh komunitas!"
+)
+
+plt.figtext(0.5, 0.05, narrative_text, wrap=True, horizontalalignment='center', fontsize=12, color='white',
+            bbox={"facecolor":"#1a1a1a", "alpha":0.9, "pad":10, "edgecolor":"#ff4d4d", "boxstyle":"round,pad=1"})
+
 plt.savefig("results/integrated_sna_nlp.png", dpi=300, bbox_inches='tight', facecolor='black')
 plt.close()
-print("Integrated plot generated!")
+print("Integrated plot updated with narrative text!")
