@@ -296,59 +296,70 @@ elif page == "🕸️ Analisis Jaringan (CNA)":
         st.warning("Data metrics tidak ditemukan.")
 
 elif page == "🖼️ Visual Storytelling":
-    st.title("Galeri Visual Storytelling")
-    st.markdown("Berikut adalah 10 visual utama (dari hulu ke hilir) yang merangkum keseluruhan temuan tesis.")
+    st.title("Galeri Visual Storytelling (Academic Blueprint)")
+    st.markdown("Berikut adalah pameran 10 visualisasi berstandar publikasi jurnal internasional (Scopus Q1/Q2). Blueprint ini menjadi panduan absolut sebelum gambar dimasukkan ke dalam manuscript utama.")
     
-    # Define paths (handling local vs cloud execution differences)
+    # Define paths
     def get_image_path(filename):
         current_dir = os.path.dirname(os.path.abspath(__file__))
         project_root = os.path.dirname(current_dir)
         path = os.path.join(project_root, "results", filename)
         return path
 
-    st.subheader("1. Research Pipeline")
-    st.image(get_image_path("1_pipeline.png"), use_container_width=True, caption="Figure 1. The Computational Social Science Pipeline for MBG Analysis.")
+    st.subheader("1. Dataset & Data Collection Overview")
+    st.image(get_image_path("1_pipeline.png"), use_container_width=True)
+    st.info("**Caption Akademik:** Figure 1 illustrates the end-to-end data processing pipeline, from data extraction (N=3,395) and NLP fine-tuning for 9 emotions, to topological mapping via Louvain modularity.\n\n**Pesan/Temuan:** Ketegasan dan ketelitian arsitektur riset yang terukur secara komputasional.\n\n**Posisi:** Methods (Section 3)")
     st.markdown("---")
     
-    st.subheader("2. Dataset Characteristics")
-    st.image(get_image_path("2_dataset_characteristics.png"), use_container_width=True, caption="Figure 2. Dataset Preprocessing Funnel.")
+    st.subheader("2. Karakteristik & Pembersihan Dataset")
+    st.image(get_image_path("2_dataset_characteristics.png"), use_container_width=True)
+    st.info("**Caption Akademik:** Figure 2 details the data cleaning process from raw Twitter API scrapes down to the final annotated corpus.\n\n**Pesan/Temuan:** Transparansi penyusutan data akibat spam/bot filtering.\n\n**Posisi:** Methods (Section 3)")
     st.markdown("---")
     
-    st.subheader("3. Nine-Emotion Distribution")
-    st.image(get_image_path("emotion_distribution.png"), use_container_width=True, caption="Figure 3. Distribution of Nine Emotion Classes Predicted by IndoBERT.")
+    st.subheader("3. Distribusi 9 Emosi")
+    st.image(get_image_path("emotion_distribution.png"), use_container_width=True)
+    st.info("**Caption Akademik:** Figure 3 displays the frequency of predicted emotions, revealing Disgust as the overwhelmingly dominant sentiment surrounding the MBG policy execution.\n\n**Pesan/Temuan:** Wacana MBG bukan soal kebencian biner (Anger), melainkan kejijikan mendalam (Disgust) terhadap eksekusi fisik.\n\n**Posisi:** Results - NLP Analysis (Section 4)")
     st.markdown("---")
     
-    st.subheader("4. Sarcasm Distribution")
-    st.image(get_image_path("3_sarcasm.png"), use_container_width=True, caption="Figure 4. Proportion of Sarcastic and Slang Expressions in Public Discourse.")
+    st.subheader("4. Distribusi Sarkasme")
+    st.image(get_image_path("3_sarcasm.png"), use_container_width=True)
+    st.info("**Caption Akademik:** Figure 4 highlights the prevalence of sarcasm and slang in public reactions, functioning as a primary coping mechanism toward logistical failures.\n\n**Pesan/Temuan:** Publik merespons krisis dengan sindiran ketimbang adu argumen logis.\n\n**Posisi:** Results - NLP Analysis (Section 4)")
     st.markdown("---")
     
-    st.subheader("5. IndoBERT Performance")
+    st.subheader("5. Performance IndoBERT & Confusion Matrix")
     col1, col2 = st.columns(2)
     with col1:
-        st.image(get_image_path("f1_scores.png"), use_container_width=True, caption="Figure 5A. Performance Metrics (Macro-F1 83%).")
+        st.image(get_image_path("f1_scores.png"), use_container_width=True)
     with col2:
-        st.image(get_image_path("confusion_matrix.png"), use_container_width=True, caption="Figure 5B. Confusion Matrix.")
+        st.image(get_image_path("confusion_matrix.png"), use_container_width=True)
+    st.info("**Caption Akademik:** Figure 5 presents the model's evaluation (83% Macro-F1) and details classification accuracy per class. Primary misclassification occurs between Anger and Disgust, indicating semantic overlap in internet expletives.\n\n**Pesan/Temuan:** Instrumen pengukur AI sangat valid. Model wajar merasa 'bingung' antara marah dan jijik karena kosakata slang yang tumpang tindih.\n\n**Posisi:** Results - Model Evaluation (Section 4)")
     st.markdown("---")
     
-    st.subheader("6. Global Network Structure")
-    st.image(get_image_path("6_global_network.png"), use_container_width=True, caption="Figure 6. Global Topological Structure of MBG Discourse on Platform X.")
+    st.subheader("6. Overall Social Network")
+    st.image(get_image_path("6_global_network.png"), use_container_width=True)
+    st.info("**Caption Akademik:** Figure 6 visualizes the unclustered global network, showing sparse connectivity and lack of a central dialogue hub.\n\n**Pesan/Temuan:** Wacana tidak membentuk polarisasi 2 kubu layaknya pilpres, melainkan menyebar tanpa arah (terpecah).\n\n**Posisi:** Results - CNA (Section 4)")
     st.markdown("---")
     
-    st.subheader("7. Community Structure (Louvain)")
-    st.image(get_image_path("network_graph.png"), use_container_width=True, caption="Figure 7. Hyper-Fragmented Community Structure (Modularity = 0.9837).")
+    st.subheader("7. Community / Louvain Network")
+    st.image(get_image_path("network_graph.png"), use_container_width=True)
+    st.info("**Caption Akademik:** Figure 7 demonstrates the extreme fragmentation of the network into 333 distinct communities. Colors represent isolated clusters conversing in echo chambers.\n\n**Pesan/Temuan:** Echo-chamber akut (Modularity 0.9837). Netizen berbicara di dalam gelembung mereka sendiri tanpa titik temu.\n\n**Posisi:** Results - CNA (Section 4)")
     st.markdown("---")
     
     st.subheader("8. Top Central Actors")
-    st.image(get_image_path("top_actors.png"), use_container_width=True, caption="Figure 8. Top 10 Influential Actors by Network Centrality.")
+    st.image(get_image_path("top_actors.png"), use_container_width=True)
+    st.info("**Caption Akademik:** Figure 8 ranks the discourse leaders. The AI agent @grok dominates the network's influence, significantly overtaking human political figures like the President-elect.\n\n**Pesan/Temuan:** Supremasi Algorithmic Trust. Otoritas kebenaran bergeser dari elit politik manusia kepada mesin AI.\n\n**Posisi:** Results - CNA (Section 4)")
     st.markdown("---")
     
     st.subheader("9. Emotion × Network (Phygital Overlay)")
-    st.image(get_image_path("9_emotion_network.png"), use_container_width=True, caption="Figure 9. Distribution of Emotions Across Dominant Network Communities.")
+    st.image(get_image_path("9_emotion_network.png"), use_container_width=True)
+    st.info("**Caption Akademik:** Figure 9 correlates emotions with structural communities. Disgust permeates almost all fragmented clusters, acting as a unifying sentiment against logistical failures.\n\n**Pesan/Temuan:** Emosi jijik (Disgust) bukan sekadar opini acak, melainkan sentimen sistemik yang mendominasi setiap klaster komunitas.\n\n**Posisi:** Discussion (Section 5)")
     st.markdown("---")
     
-    st.subheader("10. ABSA Thematic Structure")
-    st.image(get_image_path("10_absa_thematic.png"), use_container_width=True, caption="Figure 10. Aspect-Based Sentiments Regarding MBG Implementation.")
+    st.subheader("10. ABSA / Thematic Network")
+    st.image(get_image_path("10_absa_thematic.png"), use_container_width=True)
+    st.info("**Caption Akademik:** Figure 10 highlights that public dissatisfaction is heavily directed toward logistical and budget aspects rather than the policy's conceptual merit, solidifying the Phygital Gap.\n\n**Pesan/Temuan:** Inilah puncak Phygital Gap—konsep kebijakannya disukai, tapi eksekusi fisiknya dibenci habis-habisan oleh publik.\n\n**Posisi:** Discussion / Conclusion (Section 5)")
     st.markdown("---")
     
     st.subheader("🌟 Visual Masterpiece: Integrated Phygital Gap Analysis")
-    st.image(get_image_path("integrated_sna_nlp.png"), use_container_width=True, caption="Master Visual: Integrasi SNA x NLP membuktikan fenomena Phygital Gap.")
+    st.image(get_image_path("integrated_sna_nlp.png"), use_container_width=True)
+    st.success("**Master Visual ini merangkai 3 panel yang saling berbicara untuk menjawab rumusan masalah secara absolut.**")
