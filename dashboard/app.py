@@ -142,6 +142,16 @@ elif page == "😊 Analisis Emosi (NLP)":
     emotion_counts = df_emotion['predicted_emotion'].value_counts().reset_index()
     emotion_counts.columns = ['Emosi', 'Jumlah']
     
+    # Enforce all 9 categories even if count is 0
+    all_emotions = ['Marah', 'Jijik', 'Takut', 'Sedih', 'Bahagia/Senang', 'Netral', 'Percaya', 'Kaget', 'Tertarik']
+    missing_emotions = set(all_emotions) - set(emotion_counts['Emosi'])
+    if missing_emotions:
+        missing_df = pd.DataFrame({'Emosi': list(missing_emotions), 'Jumlah': 0})
+        emotion_counts = pd.concat([emotion_counts, missing_df], ignore_index=True)
+        
+    # Sort for consistent display
+    emotion_counts = emotion_counts.sort_values(by='Jumlah', ascending=False)
+    
     col1, col2 = st.columns([2, 1])
     
     with col1:

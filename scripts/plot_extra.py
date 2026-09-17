@@ -11,6 +11,13 @@ df_emotion = pd.read_csv("data/results/indobert_9_emosi_fixed.csv")
 emotion_counts = df_emotion['predicted_emotion'].value_counts().reset_index()
 emotion_counts.columns = ['Emotion', 'Count']
 
+all_emotions = ['Marah', 'Jijik', 'Takut', 'Sedih', 'Bahagia/Senang', 'Netral', 'Percaya', 'Kaget', 'Tertarik']
+missing = set(all_emotions) - set(emotion_counts['Emotion'])
+if missing:
+    missing_df = pd.DataFrame({'Emotion': list(missing), 'Count': 0})
+    emotion_counts = pd.concat([emotion_counts, missing_df], ignore_index=True)
+emotion_counts = emotion_counts.sort_values(by='Count', ascending=False)
+
 plt.figure(figsize=(10, 6))
 sns.barplot(x='Emotion', y='Count', data=emotion_counts, hue='Emotion', palette="viridis", legend=False)
 plt.title("Distribusi 9 Kelas Emosi (IndoBERT)", fontsize=14, fontweight='bold')
