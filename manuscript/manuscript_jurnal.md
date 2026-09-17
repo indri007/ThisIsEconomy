@@ -91,13 +91,13 @@ Aggressive data cleaning removed bots and spam accounts (following heuristics by
 The text was normalized, lowercased, and stemmed using the Sastrawi library to standardize Indonesian morphological variations.
 
 ### 3.8 Tokenization
-The `indolem/indobert-base-uncased` tokenizer was used to convert the preprocessed text into contextual embeddings, with a maximum sequence length set to 128 tokens, applying truncation and padding.
+The `indobenchmark/indobert-base-p2` tokenizer (Wilie et al., 2020) was used to convert the preprocessed text into contextual embeddings, with a maximum sequence length set to 128 tokens, applying truncation and padding.
 
 ### 3.9 Emotion Annotation/Labeling
 A subset of the data was rigorously labeled into 9 granular emotion categories (Anger, Disgust, Fear, Joy, Love, Neutral, Sadness, Shame, Surprise) to serve as the ground truth for training.
 
 ### 3.10 IndoBERT Model
-The `indolem/indobert-base-uncased` transformer model was utilized for sequence classification, modified to output 9 specific emotion logits.
+The `indobenchmark/indobert-base-p2` transformer model (Wilie et al., 2020), which was pre-trained on a massive Indonesian corpus (IndoNLU), was utilized for sequence classification, modified to output 9 specific emotion logits.
 
 ### 3.11 Fine-tuning/Retraining
 The model was fine-tuned using PyTorch and HuggingFace Transformers over 3 epochs, with a learning rate optimized for text classification, a batch size of 16, and a weight decay of 0.01 to prevent overfitting.

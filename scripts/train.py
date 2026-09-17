@@ -23,7 +23,7 @@ train_texts, val_texts, train_labels, val_labels = train_test_split(
 )
 
 print("4. Tokenizer IndoBERT...")
-model_name = "indolem/indobert-base-uncased"
+model_name = "indobenchmark/indobert-base-p2"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 train_encodings = tokenizer(train_texts, truncation=True, padding=True, max_length=128)

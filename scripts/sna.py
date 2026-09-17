@@ -51,7 +51,7 @@ df['stemmed_text'] = df['text_clean'].fillna(df['text']).progress_apply(preproce
 
 # --- 3. KLASIFIKASI EMOSI (INDOBERT) ---
 print("\n[Tahap 2] Memuat Model IndoBERT & Memprediksi Emosi...")
-tokenizer = AutoTokenizer.from_pretrained("indolem/indobert-base-uncased")
+tokenizer = AutoTokenizer.from_pretrained("indobenchmark/indobert-base-p2")
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
 model.to(device)
 model.eval()

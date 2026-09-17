@@ -34,7 +34,7 @@ _, val_texts, _, val_labels = train_test_split(
 )
 
 model_path = "/Users/jevin/Documents/tesis_mbg/results/indobert_finetuned_9_labels/checkpoint-792"
-tokenizer = AutoTokenizer.from_pretrained("indolem/indobert-base-uncased")
+tokenizer = AutoTokenizer.from_pretrained("indobenchmark/indobert-base-p2")
 model = AutoModelForSequenceClassification.from_pretrained(model_path)
 
 val_encodings = tokenizer(val_texts, truncation=True, padding=True, max_length=128)

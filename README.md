@@ -21,7 +21,7 @@ Sistem ini dirancang secara modular dan berjalan melalui 3 tahapan (*pipeline*) 
 2.  **Emotion Classification (NLP - IndoBERT)**
     *   **Input:** Teks yang telah dibersihkan.
     *   **Proses:** 
-        *   Tokenisasi menggunakan `indolem/indobert-base-uncased`.
+        *   Tokenisasi menggunakan `indobenchmark/indobert-base-p2`.
         *   *Fine-tuning* model Transformer berbasis PyTorch untuk klasifikasi 9 kelas (3 *epochs*, *batch size* 16).
         *   Evaluasi metrik (Accuracy, Macro F1, Precision, Recall) dengan penanganan *zero division* untuk kelas minoritas.
     *   **Output:** `indobert_finetuned` model checkpoints, `classification_report.csv`, `confusion_matrix.png`.
