@@ -185,6 +185,22 @@ if page == "🏠 Beranda":
 elif page == "😊 Analisis Emosi (NLP)":
     st.title("Distribusi Emosi Netizen (IndoBERT)")
     
+    st.info("""
+    ### 📖 Filosofi Storytelling
+    **Gambar 1-3: Data Apa yang Dianalisis?** 
+    *(Membuktikan data diproses dengan ketat, didominasi emosi Disgust dengan balutan sarkasme tingkat tinggi).*
+    
+    **Gambar 4-5: Bagaimana Model Membacanya?** 
+    *(Membuktikan arsitektur IndoBERT sangat valid dan akurat, meski agak kesulitan membedakan sarkasme Anger vs Disgust).*
+    
+    **Gambar 6-8: Siapa Terhubung dengan Siapa, dan Siapa Aktornya?** 
+    *(Membuktikan jaringan sangat terpecah/fragmented, dan AI/grok menduduki tahta sentral mengalahkan elit politik).*
+    
+    **Gambar 9-10: Bagaimana Emosi Membentuk Diskursus?** 
+    *(Membuktikan bahwa kemarahan/jijik publik memiliki sentimen absolut terhadap bobroknya logistik dan anggaran fisik di lapangan — mendefinisikan Phygital Gap).*
+    """)
+    st.markdown("---")
+    
     df_emotion = load_emotion_data()
     
     # Emotion counts
@@ -236,6 +252,22 @@ elif page == "😊 Analisis Emosi (NLP)":
     st.markdown(f"**Menampilkan 5 sampel acak dari kelas '{selected_emotion}':**")
     for idx, row in filtered_df.iterrows():
         st.info(row['text'])
+        
+    st.markdown("---")
+    st.subheader("Evaluasi Model AI (Bagaimana Model Membacanya?)")
+    st.markdown("Visualisasi di bawah membuktikan bahwa arsitektur IndoBERT sangat valid dan akurat, meskipun terdapat tantangan semantik dalam membedakan umpatan sarkasme antara emosi *Anger* dan *Disgust*.")
+    
+    # Define image path dynamically
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(current_dir)
+    f1_path = os.path.join(project_root, "results", "f1_scores.png")
+    cm_path = os.path.join(project_root, "results", "confusion_matrix.png")
+    
+    ecol1, ecol2 = st.columns(2)
+    with ecol1:
+        st.image(f1_path, use_container_width=True, caption="Figure: IndoBERT Performance (Macro-F1)")
+    with ecol2:
+        st.image(cm_path, use_container_width=True, caption="Figure: Confusion Matrix")
         
 elif page == "🕸️ Analisis Jaringan (CNA)":
     st.title("Peta Jaringan Komunikasi (Communication Network)")
