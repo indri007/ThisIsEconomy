@@ -152,7 +152,18 @@ if page == "🏠 Beranda":
     )
     st.markdown("---")
     
-    st.markdown("Silakan gunakan menu navigasi di sebelah kiri untuk mengeksplorasi data secara interaktif!")
+    st.subheader("🌟 Master Visual: Bukti Eksistensi Phygital Gap")
+    st.markdown("Grafik terintegrasi di bawah ini merangkum keseluruhan narasi dari tesis ini. Mulai dari struktur jaringan yang tersebar (kiri), pembentukan sub-komunitas terisolasi (tengah), hingga distribusi emosi dan sarkasme di dalamnya (kanan).")
+    
+    # Define image path dynamically
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(current_dir)
+    master_visual_path = os.path.join(project_root, "results", "integrated_sna_nlp.png")
+    
+    st.image(master_visual_path, use_container_width=True)
+    
+    st.markdown("---")
+    st.markdown("Silakan gunakan menu navigasi di sebelah kiri untuk mengeksplorasi data secara interaktif atau melihat Galeri **Visual Storytelling** lengkap!")
     
 elif page == "😊 Analisis Emosi (NLP)":
     st.title("Distribusi Emosi Netizen (IndoBERT)")
