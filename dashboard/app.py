@@ -103,7 +103,7 @@ def load_network_data():
 # Sidebar Navigation
 st.sidebar.title("Navigasi Dashboard")
 st.sidebar.markdown("Silakan pilih menu analisis:")
-page = st.sidebar.radio("Menu", ["🏠 Beranda", "😊 Analisis Emosi (NLP)", "🕸️ Analisis Jaringan (CNA)", "🖼️ Visual Storytelling"])
+page = st.sidebar.radio("Menu", ["🏠 Beranda", "😊 Analisis Emosi (NLP)", "🕸️ Analisis Jaringan (CNA)", "🖼️ Visual Storytelling", "📚 Audit Referensi Scopus"])
 
 st.sidebar.markdown("---")
 st.sidebar.info(
@@ -482,3 +482,119 @@ elif page == "🖼️ Visual Storytelling":
     st.subheader("🌟 Visual Masterpiece: Integrated Phygital Gap Analysis")
     st.image(get_image_path("integrated_sna_nlp.png"), use_container_width=True)
     st.success("**Master Visual ini merangkai 3 panel yang saling berbicara untuk menjawab rumusan masalah secara absolut.**")
+
+elif page == "📚 Audit Referensi Scopus":
+    st.title("📚 Audit Kelayakan Referensi untuk Scopus / Sinta 1")
+    st.markdown("Analisis mendalam terhadap **14 referensi** dalam manuskrip — menentukan mana yang **wajib**, **layak**, dan **harus dihindari** untuk lolos seleksi *reviewer* jurnal internasional Scopus Q1/Q2.")
+
+    st.info("""
+    ### 📖 Filosofi Sitasi Scopus Q1
+    Reviewer Scopus menilai referensi berdasarkan:
+    1. **Relevansi** — apakah sumber mendukung klaim spesifik dalam naskah?
+    2. **Otoritas** — apakah sumber sudah terindeks Scopus/WoS/Sinta?
+    3. **Kebaruan** — apakah referensi cukup baru (idealnya ≤ 5 tahun)?
+    4. **Konsistensi** — apakah ada *self-citation* yang tidak proporsional?
+    """)
+
+    st.markdown("---")
+    st.subheader("🏆 Tier 1 — WAJIB MASUK (Scopus/WoS Indexed)")
+    st.success("Referensi-referensi ini adalah fondasi akademik yang akan membuat reviewer **langsung percaya** pada kualitas riset Anda.")
+
+    tier1_data = {
+        "No.": ["[1]", "[3]", "[4]", "[6]", "[7]", "[8]", "[9]", "[10]"],
+        "Referensi (Ringkas)": [
+            "Camp, E. — Sarcasm, pretense & semantics/pragmatics. Noûs, 2012.",
+            "Arinik, N. & Giritli — Is the medium the message? Twitter/blog/media relations. Public Relat. Rev., 2012.",
+            "Chiorri et al. — Emotion & sentiment analysis w/ BERT. CEUR Workshop, 2019.",
+            "Devalapalli & Mandala — Profiling irony & stereotype speakers on Twitter via NLP. Lect. Notes Netw. Syst., 2026.",
+            "Kartajaya & Setiawan — Marketing 6.0: The Future Is Immersive. Wiley, 2023.",
+            "Newman, J.E. — Modularity & community structure in networks. Proc. Natl. Acad. Sci., 2006.",
+            "Wilie et al. — IndoNLU: Benchmark for Indonesian NLP. AACL-IJCNLP, 2020.",
+            "Blondel et al. — Fast unfolding of communities in large networks. J. Stat. Mech., 2008.",
+        ],
+        "Indeksasi": ["Scopus Q1", "Scopus Q1", "Scopus/CEUR", "Scopus", "Wiley (Q1)", "PNAS (Q1)", "AACL (Top NLP)", "Scopus Q1"],
+        "Posisi di Manuskrip": ["Introduction/Theory", "Introduction", "Methods/NLP", "Methods/NLP", "Theory", "Methods/CNA", "Methods/NLP", "Methods/CNA"],
+        "Status": ["✅ WAJIB", "✅ WAJIB", "✅ WAJIB", "✅ WAJIB", "✅ WAJIB", "✅ WAJIB", "✅ WAJIB", "✅ WAJIB"],
+    }
+    st.dataframe(pd.DataFrame(tier1_data), use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+    st.subheader("🥈 Tier 2 — LAYAK & DIREKOMENDASIKAN (Self-Citation & Jurnal Nasional)")
+    st.warning("Referensi ini valid secara akademik. Gunakan sebagai bukti **author's credibility** dan **research track record** Anda.")
+
+    tier2_data = {
+        "No.": ["[2]", "[5]", "[11]", "[12]"],
+        "Referensi (Ringkas)": [
+            "Schultz, Utz & Göritz — Twitter, blogs, traditional media & crisis. Public Relat. Rev., 2011.",
+            "Salafiyah, L. — Analisis jaringan komunikasi isu keracunan MBG. Undergraduate thesis, UPN Veteran Jatim.",
+            "Sari, I.A.K. — JobMatchAI: Platform generatif AI end-to-end pencocokan kerja. IPSSJ vol. 3, no. 9, 2026.",
+            "Sari, I.A.K., Suratnoaji & Widiyarta — Analisis jaringan sosial isu MBG di media sosial X. IPSSJ vol. 3, no. 9, 2026.",
+        ],
+        "Indeksasi": ["Scopus Q2", "Sinta (Institutional)", "Sinta (IPSSJ)", "Sinta (IPSSJ)"],
+        "Posisi di Manuskrip": ["Introduction", "Literature Review", "Related Work", "Related Work / Self-cite"],
+        "Catatan": [
+            "Relevan untuk framing krisis komunikasi",
+            "Gunakan hanya jika menjadi referensi langsung temuan Anda",
+            "Self-citation sah — bukti track record AI research",
+            "⭐ PALING PENTING — self-citation inti tesis ini",
+        ],
+        "Status": ["✅ LAYAK", "⚠️ KONDISIONAL", "✅ LAYAK", "⭐ WAJIB (Self-cite)"],
+    }
+    st.dataframe(pd.DataFrame(tier2_data), use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+    st.subheader("⚠️ Tier 3 — KHUSUS INTRODUCTION SAJA (Media Massa)")
+    st.error("Referensi media massa TIDAK boleh dikutip di Results/Methods/Discussion. Hanya boleh di Introduction untuk menunjukkan dampak sosial riset.")
+
+    tier3_data = {
+        "No.": ["[13]", "[14]"],
+        "Referensi (Ringkas)": [
+            "Portal JTV — '37% percakapan MBG di X bernada sindiran'. Sep. 2026. [Online]",
+            "Netral News — 'Riset UPN Jatim: 37% percakapan MBG bernada sindiran'. Sep. 2026. [Online]",
+        ],
+        "Tipe": ["Media Televisi Regional", "Media Daring Nasional"],
+        "Boleh Dikutip Di": ["Introduction (dampak sosial)", "Introduction (dampak sosial)"],
+        "TIDAK Boleh Di": ["Results, Methods, Discussion, Abstract", "Results, Methods, Discussion, Abstract"],
+        "Status": ["⚠️ OPSIONAL (Introduction only)", "⚠️ OPSIONAL (Introduction only)"],
+    }
+    st.dataframe(pd.DataFrame(tier3_data), use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+    st.subheader("🎯 Strategi Sitasi Optimal untuk Scopus Q1")
+    st.success("""
+    **Formula Sitasi yang Direkomendasikan:**
+
+    📌 **Abstract & Introduction:**
+    Kutip [7] Kartajaya (Marketing 6.0) + [8] Newman (Modularity) + [9] IndoNLU + [12] Sari et al. (self-cite) + [13/14] media (sebagai bukti public impact)
+
+    📌 **Methods (NLP):**
+    Wajib: [4] Chiorri/BERT + [6] Devalapalli/NLP + [9] IndoNLU + [10] Blondel/Louvain
+
+    📌 **Methods (CNA):**
+    Wajib: [8] Newman/Modularity + [10] Blondel/Fast Unfolding
+
+    📌 **Theory/Framework:**
+    Wajib: [7] Marketing 6.0 (Phygital) + [1] Camp/Sarcasm
+
+    📌 **Results & Discussion:**
+    Self-cite: [12] Sari et al. IPSSJ (untuk validasi silang temuan)
+    """)
+
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.metric("Total Referensi", "14", "dalam manuskrip")
+    with col2:
+        st.metric("Tier 1 — Wajib", "8", "Scopus/WoS indexed")
+    with col3:
+        st.metric("Tier 2 — Layak", "4", "Jurnal + Self-cite")
+    with col4:
+        st.metric("Tier 3 — Opsional", "2", "Media massa (Intro only)")
+
+    st.markdown("---")
+    st.info("""
+    ### 💡 Catatan Khusus: Klarifikasi Angka 37% vs 56%
+
+    Jika reviewer bertanya mengapa media menyebut **37%** sementara tesis menyebut **56.24%**:
+
+    > *"The 37% figure reported by media outlets (Portal JTV; Netral News, 2026) refers to the proportion of tweets containing sarcastic linguistic markers identified via lexical-based analysis on the annotated corpus (N=3,395). This is methodologically distinct from the 56.24% Disgust classification produced by IndoBERT on the full inference dataset (N=5,263), which captures broader expressions of disgust beyond sarcasm alone. Both figures are complementary and measure different dimensions of the same phenomenon."*
+    """)
