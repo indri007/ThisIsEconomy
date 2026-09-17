@@ -38,7 +38,7 @@ def load_network_data():
 # Sidebar Navigation
 st.sidebar.title("Navigasi Dashboard")
 st.sidebar.markdown("Silakan pilih menu analisis:")
-page = st.sidebar.radio("Menu", ["🏠 Beranda", "😊 Analisis Emosi (NLP)", "🕸️ Analisis Jaringan (SNA)"])
+page = st.sidebar.radio("Menu", ["🏠 Beranda", "😊 Analisis Emosi (NLP)", "🕸️ Analisis Jaringan (SNA)", "🖼️ Visual Storytelling"])
 
 st.sidebar.markdown("---")
 st.sidebar.info(
@@ -170,3 +170,60 @@ elif page == "🕸️ Analisis Jaringan (SNA)":
             st.dataframe(nodes_data.head(10))
     else:
         st.warning("Data metrics tidak ditemukan.")
+
+elif page == "🖼️ Visual Storytelling":
+    st.title("Galeri Visual Storytelling")
+    st.markdown("Berikut adalah 10 visual utama (dari hulu ke hilir) yang merangkum keseluruhan temuan tesis.")
+    
+    # Define paths (handling local vs cloud execution differences)
+    def get_image_path(filename):
+        if os.path.exists(f"results/{filename}"):
+            return f"results/{filename}"
+        return f"../results/{filename}"
+
+    st.subheader("1. Research Pipeline")
+    st.image(get_image_path("1_pipeline.png"), use_column_width=True, caption="Figure 1. The Computational Social Science Pipeline for MBG Analysis.")
+    st.markdown("---")
+    
+    st.subheader("2. Dataset Characteristics")
+    st.image(get_image_path("2_dataset_characteristics.png"), use_column_width=True, caption="Figure 2. Dataset Preprocessing Funnel.")
+    st.markdown("---")
+    
+    st.subheader("3. Nine-Emotion Distribution")
+    st.image(get_image_path("emotion_distribution.png"), use_column_width=True, caption="Figure 3. Distribution of Nine Emotion Classes Predicted by IndoBERT.")
+    st.markdown("---")
+    
+    st.subheader("4. Sarcasm Distribution")
+    st.image(get_image_path("3_sarcasm.png"), use_column_width=True, caption="Figure 4. Proportion of Sarcastic and Slang Expressions in Public Discourse.")
+    st.markdown("---")
+    
+    st.subheader("5. IndoBERT Performance")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image(get_image_path("f1_scores.png"), use_column_width=True, caption="Figure 5A. Performance Metrics (Macro-F1 83%).")
+    with col2:
+        st.image(get_image_path("confusion_matrix.png"), use_column_width=True, caption="Figure 5B. Confusion Matrix.")
+    st.markdown("---")
+    
+    st.subheader("6. Global Network Structure")
+    st.image(get_image_path("6_global_network.png"), use_column_width=True, caption="Figure 6. Global Topological Structure of MBG Discourse on Platform X.")
+    st.markdown("---")
+    
+    st.subheader("7. Community Structure (Louvain)")
+    st.image(get_image_path("network_graph.png"), use_column_width=True, caption="Figure 7. Hyper-Fragmented Community Structure (Modularity = 0.9837).")
+    st.markdown("---")
+    
+    st.subheader("8. Top Central Actors")
+    st.image(get_image_path("top_actors.png"), use_column_width=True, caption="Figure 8. Top 10 Influential Actors by Network Centrality.")
+    st.markdown("---")
+    
+    st.subheader("9. Emotion × Network (Phygital Overlay)")
+    st.image(get_image_path("9_emotion_network.png"), use_column_width=True, caption="Figure 9. Distribution of Emotions Across Dominant Network Communities.")
+    st.markdown("---")
+    
+    st.subheader("10. ABSA Thematic Structure")
+    st.image(get_image_path("10_absa_thematic.png"), use_column_width=True, caption="Figure 10. Aspect-Based Sentiments Regarding MBG Implementation.")
+    st.markdown("---")
+    
+    st.subheader("🌟 Visual Masterpiece: Integrated Phygital Gap Analysis")
+    st.image(get_image_path("integrated_sna_nlp.png"), use_column_width=True, caption="Master Visual: Integrasi SNA x NLP membuktikan fenomena Phygital Gap.")
