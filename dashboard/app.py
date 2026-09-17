@@ -74,7 +74,7 @@ elif page == "😊 Analisis Emosi (NLP)":
     df_emotion = load_emotion_data()
     
     # Emotion counts
-    emotion_counts = df_emotion['label'].value_counts().reset_index()
+    emotion_counts = df_emotion['predicted_emotion'].value_counts().reset_index()
     emotion_counts.columns = ['Emosi', 'Jumlah']
     
     col1, col2 = st.columns([2, 1])
@@ -107,7 +107,7 @@ elif page == "😊 Analisis Emosi (NLP)":
     
     selected_emotion = st.selectbox("Pilih Emosi untuk melihat sampel data:", emotion_counts['Emosi'].tolist())
     
-    filtered_df = df_emotion[df_emotion['label'] == selected_emotion].sample(n=min(5, len(df_emotion[df_emotion['label'] == selected_emotion])))
+    filtered_df = df_emotion[df_emotion['predicted_emotion'] == selected_emotion].sample(n=min(5, len(df_emotion[df_emotion['predicted_emotion'] == selected_emotion])))
     
     st.markdown(f"**Menampilkan 5 sampel acak dari kelas '{selected_emotion}':**")
     for idx, row in filtered_df.iterrows():
