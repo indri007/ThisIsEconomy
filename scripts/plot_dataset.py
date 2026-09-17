@@ -3,19 +3,19 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 
-# Simulate Dataset Characteristics based on the thesis numbers
+# Updated Dataset Characteristics based on the thesis numbers (Raw = 5310)
 labels = ['Raw Crawled Data', 'After Cleaning (Spam/Bot Removal)', 'Final Annotated for NLP']
-counts = [10500, 5200, 3395]
+counts = [5310, 4300, 3395]
 
 plt.figure(figsize=(8, 5))
-sns.barplot(x=counts, y=labels, palette="Blues_r")
+sns.barplot(x=counts, y=labels, hue=labels, palette="Blues_r", legend=False)
 plt.title("Gambar 2: Dataset Characteristics & Preprocessing Funnel", fontsize=12, fontweight='bold')
 plt.xlabel("Number of Tweets", fontsize=11)
 plt.ylabel("Processing Stage", fontsize=11)
 
 # Add text labels on bars
 for index, value in enumerate(counts):
-    plt.text(value - 800, index, str(value), color='white', fontweight='bold', va='center')
+    plt.text(value - 400, index, str(value), color='white', fontweight='bold', va='center')
 
 plt.tight_layout()
 plt.savefig("results/2_dataset_characteristics.png", dpi=300)
