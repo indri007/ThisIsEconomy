@@ -306,6 +306,10 @@ elif page == "🖼️ Visual Storytelling":
         path = os.path.join(project_root, "results", filename)
         return path
 
+    st.markdown("---")
+    st.markdown("### 🔍 Bagian I: Data Apa yang Dianalisis?")
+    st.success("**Membuktikan data diproses dengan ketat, didominasi emosi Disgust dengan balutan sarkasme tingkat tinggi.**")
+    
     st.subheader("1. Dataset & Data Collection Overview")
     st.image(get_image_path("1_pipeline.png"), use_container_width=True)
     st.info("**Caption Akademik:** Figure 1 illustrates the end-to-end data processing pipeline, from data extraction (N=3,395) and NLP fine-tuning for 9 emotions, to topological mapping via Louvain modularity.\n\n**Pesan/Temuan:** Ketegasan dan ketelitian arsitektur riset yang terukur secara komputasional.\n\n**Posisi:** Methods (Section 3)")
@@ -326,6 +330,9 @@ elif page == "🖼️ Visual Storytelling":
     st.info("**Caption Akademik:** Figure 4 highlights the prevalence of sarcasm and slang in public reactions, functioning as a primary coping mechanism toward logistical failures.\n\n**Pesan/Temuan:** Publik merespons krisis dengan sindiran ketimbang adu argumen logis.\n\n**Posisi:** Results - NLP Analysis (Section 4)")
     st.markdown("---")
     
+    st.markdown("### 🤖 Bagian II: Bagaimana Model Membacanya?")
+    st.success("**Membuktikan arsitektur IndoBERT sangat valid dan akurat, meski agak kesulitan membedakan sarkasme Anger vs Disgust.**")
+    
     st.subheader("5. Performance IndoBERT & Confusion Matrix")
     col1, col2 = st.columns(2)
     with col1:
@@ -334,6 +341,9 @@ elif page == "🖼️ Visual Storytelling":
         st.image(get_image_path("confusion_matrix.png"), use_container_width=True)
     st.info("**Caption Akademik:** Figure 5 presents the model's evaluation (83% Macro-F1) and details classification accuracy per class. Primary misclassification occurs between Anger and Disgust, indicating semantic overlap in internet expletives.\n\n**Pesan/Temuan:** Instrumen pengukur AI sangat valid. Model wajar merasa 'bingung' antara marah dan jijik karena kosakata slang yang tumpang tindih.\n\n**Posisi:** Results - Model Evaluation (Section 4)")
     st.markdown("---")
+    
+    st.markdown("### 🕸️ Bagian III: Siapa Terhubung dengan Siapa, dan Siapa Aktornya?")
+    st.success("**Membuktikan jaringan sangat terpecah/fragmented, dan AI/grok menduduki tahta sentral mengalahkan elit politik.**")
     
     st.subheader("6. Overall Social Network")
     st.image(get_image_path("6_global_network.png"), use_container_width=True)
@@ -349,6 +359,9 @@ elif page == "🖼️ Visual Storytelling":
     st.image(get_image_path("top_actors.png"), use_container_width=True)
     st.info("**Caption Akademik:** Figure 8 ranks the discourse leaders. The AI agent @grok dominates the network's influence, significantly overtaking human political figures like the President-elect.\n\n**Pesan/Temuan:** Supremasi Algorithmic Trust. Otoritas kebenaran bergeser dari elit politik manusia kepada mesin AI.\n\n**Posisi:** Results - CNA (Section 4)")
     st.markdown("---")
+    
+    st.markdown("### 💥 Bagian IV: Bagaimana Emosi Membentuk Diskursus?")
+    st.success("**Membuktikan bahwa kemarahan/jijik publik memiliki sentimen absolut terhadap bobroknya logistik dan anggaran fisik di lapangan — mendefinisikan Phygital Gap.**")
     
     st.subheader("9. Emotion × Network (Phygital Overlay)")
     st.image(get_image_path("9_emotion_network.png"), use_container_width=True)
