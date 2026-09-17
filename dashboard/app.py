@@ -129,9 +129,30 @@ if page == "🏠 Beranda":
     - **Hyper-Fragmentation:** Publik terpecah menjadi 333 klaster (Modularity 0.9837) bukan 2 kubu polarisasi biner.
     - **Dominasi Emosi Jijik (Disgust):** Netizen bereaksi menggunakan slang/sarkasme atas kegagalan fisik (makanan beracun, logistik).
     - **Algorithmic Trust:** Akun AI (@grok) mengambil alih otoritas kebenaran (Eigenvector tertinggi) mengalahkan politisi/institusi.
-    
-    Silakan gunakan menu navigasi di sebelah kiri untuk mengeksplorasi data secara interaktif!
     """)
+    
+    st.markdown("---")
+    st.subheader("🧹 Karakteristik & Pembersihan Data (Preprocessing)")
+    st.markdown("Sebelum dilakukan analisis NLP dan Jaringan (SNA), data mentah yang ditarik dari **Twitter API** disaring dengan ketat untuk menjaga validitas ilmiah tesis.")
+    
+    mcol1, mcol2, mcol3 = st.columns(3)
+    with mcol1:
+        st.metric(label="Data Mentah (Twitter API)", value="5.310", delta="Cuitan Awal")
+    with mcol2:
+        st.metric(label="Data Terbuang (Noise)", value="1.915", delta="-36%", delta_color="inverse")
+    with mcol3:
+        st.metric(label="Data Bersih (Final NLP)", value="3.395", delta="Lolos Validasi")
+        
+    st.info(
+        "**Faktor-Faktor Penyortiran (Data Cleaning):**\n"
+        "1. **Bot Removal:** Penghapusan akun otomatis tak wajar (aktivitas tinggi tak natural).\n"
+        "2. **Spam Filtering:** Membuang tautan promosi, iklan, atau *spam*.\n"
+        "3. **De-duplication:** Menghilangkan teks cuitan yang identik 100% (duplikat murni).\n"
+        "4. **Text Cleansing:** Memotong URL, *Mentions* (@), dan *Hashtag* (#) agar AI fokus membaca struktur bahasa (*semantics*)."
+    )
+    st.markdown("---")
+    
+    st.markdown("Silakan gunakan menu navigasi di sebelah kiri untuk mengeksplorasi data secara interaktif!")
     
 elif page == "😊 Analisis Emosi (NLP)":
     st.title("Distribusi Emosi Netizen (IndoBERT)")
