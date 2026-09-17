@@ -271,6 +271,23 @@ elif page == "😊 Analisis Emosi (NLP)":
         
 elif page == "🕸️ Analisis Jaringan (CNA)":
     st.title("Peta Jaringan Komunikasi (Communication Network)")
+    
+    st.info("""
+    ### 📖 Filosofi Storytelling
+    **Gambar 1-3: Data Apa yang Dianalisis?** 
+    *(Membuktikan data diproses dengan ketat, didominasi emosi Disgust dengan balutan sarkasme tingkat tinggi).*
+    
+    **Gambar 4-5: Bagaimana Model Membacanya?** 
+    *(Membuktikan arsitektur IndoBERT sangat valid dan akurat, meski agak kesulitan membedakan sarkasme Anger vs Disgust).*
+    
+    **Gambar 6-8: Siapa Terhubung dengan Siapa, dan Siapa Aktornya?** 
+    *(Membuktikan jaringan sangat terpecah/fragmented, dan AI/grok menduduki tahta sentral mengalahkan elit politik).*
+    
+    **Gambar 9-10: Bagaimana Emosi Membentuk Diskursus?** 
+    *(Membuktikan bahwa kemarahan/jijik publik memiliki sentimen absolut terhadap bobroknya logistik dan anggaran fisik di lapangan — mendefinisikan Phygital Gap).*
+    """)
+    st.markdown("---")
+    
     st.markdown("Visualisasi graf interaktif dari wacana MBG di platform X.")
     
     edges, nodes_data = load_network_data()
@@ -316,6 +333,25 @@ elif page == "🕸️ Analisis Jaringan (CNA)":
         components.html(source_code, height=650, scrolling=True)
     except Exception as e:
         st.error(f"Gagal memuat visualisasi PyVis: {e}")
+        
+    st.markdown("---")
+    st.subheader("Visualisasi Jaringan Statis (Topologi & Aktor Utama)")
+    st.markdown("Grafik di bawah mengonfirmasi bahwa ekosistem wacana ini sangat terfragmentasi (*echo-chambers*) tanpa pusat dialog, di mana agen AI justru mengambil alih otoritas informasi.")
+    
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(current_dir)
+    global_path = os.path.join(project_root, "results", "6_global_network.png")
+    louvain_path = os.path.join(project_root, "results", "network_graph.png")
+    actors_path = os.path.join(project_root, "results", "top_actors.png")
+    
+    # 6_global_network
+    st.image(global_path, use_container_width=True, caption="Figure: Global Topological Structure")
+    
+    colA, colB = st.columns(2)
+    with colA:
+        st.image(louvain_path, use_container_width=True, caption="Figure: Fragmented Community (Louvain)")
+    with colB:
+        st.image(actors_path, use_container_width=True, caption="Figure: Top 10 Influential Actors (AI Supremacy)")
         
     st.markdown("---")
     st.subheader("Top Aktor (Centrality)")
