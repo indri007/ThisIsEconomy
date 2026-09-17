@@ -7,3 +7,4 @@ results/indobert_finetuned*/
 *.bin
 *.pt
 *.pth
+.venv/
