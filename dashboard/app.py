@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import networkx as nx
 try:
     from pyvis.network import Network
@@ -352,85 +353,296 @@ if page == "🏠 Beranda":
     **Implikasi Metodologis:** Penggunaan dua pendekatan secara bersamaan *(triangulasi metode)* memperkuat validitas temuan — sindiran merupakan **sub-dimensi linguistik** dari emosi Jijik, sehingga kedua instrumen saling **mengonfirmasi** dan **melengkapi** satu sama lain.
     """)
     st.markdown("---")
-    st.header("❓ Rumusan Masalah Penelitian")
+    st.header("❓ 1.2 Rumusan Masalah & 1.4 Tujuan Penelitian (Harmonisasi 6 Pilar Simetris)")
     st.markdown("""
-    > *Penelitian ini menggunakan diksi akademik berbasis **Marketing 6.0** dan **Computational Social Science**
-    > — di mana Phygital Gap bukan metafora, melainkan **konstruk yang diukur secara komputasional**
-    > melalui SNA + IndoBERT + Lexical Analysis.*
+    > *Sesuai kaidah penulisan tesis magister dan standar manuskrip jurnal internasional, **Rumusan Masalah (Research Questions)** 
+    > dan **Tujuan Penelitian (Research Objectives)** diselaraskan secara simetris **1-to-1 (6 Rumusan ↔ 6 Tujuan)**. 
+    > Pendekatan ini memastikan bahwa setiap pertanyaan riset memiliki target operasional terukur, metodologi komputasional yang presisi, 
+    > dan bukti empiris berbasis data riil warganet Platform X.*
     """)
 
-    rm_col1, rm_col2 = st.columns([1, 2])
+    # Metric Row
+    rm_col1, rm_col2, rm_col3, rm_col4 = st.columns(4)
     with rm_col1:
-        st.metric("Jumlah RM", "5", "Terstruktur & Terverifikasi")
-        st.metric("Grand Question", "1", "Untuk Abstract")
-        st.metric("Konstruk Inti", "Phygital Gap", "Marketing 6.0")
-
+        st.metric("❓ Rumusan Masalah", "6 Pertanyaan", "Bab 1.2 (Lengkap & Teruji)")
     with rm_col2:
-        rm_tabs = st.tabs(["RM 1 — Jaringan", "RM 2 — Aktor", "RM 3 — Emosi", "RM 4 — Sarkasme", "RM 5 — ABSA"])
-
-        with rm_tabs[0]:
-            st.info("""
-            **🕸️ Struktur Jaringan Diskursus**
-
-            *"Bagaimana struktur jaringan komunikasi wacana publik MBG di Platform X terbentuk,
-            dan sejauh mana struktur tersebut mencerminkan **fragmentasi diskursus** yang menjadi
-            ciri khas komunikasi kebijakan publik dalam era Phygital?"*
-
-            `network topology` · `discourse fragmentation` · `phygital communication`
-            → Dijawab: SNA — 971 nodes, M=0.9837 (hyper-fragmented)
-            """)
-
-        with rm_tabs[1]:
-            st.info("""
-            **🎯 Kekuasaan & Legitimasi Informasi**
-
-            *"Aktor mana yang menduduki **posisi struktural dominan** dalam jaringan komunikasi
-            wacana MBG di Platform X, dan bagaimana distribusi kekuasaan informasi tersebut
-            berimplikasi terhadap **legitimasi komunikasi kebijakan pemerintah**?"*
-
-            `structural centrality` · `information power` · `policy legitimacy`
-            → Dijawab: @grok (oracle), @4Y4NKZ (broker), @prabowo (target pasif)
-            """)
-
-        with rm_tabs[2]:
-            st.info("""
-            **😊 Pola Emosi & Respons Afektif Publik**
-
-            *"Pola emosi apa yang mendominasi wacana publik MBG di Platform X
-            berdasarkan klasifikasi sembilan kategori emosi menggunakan IndoBERT,
-            dan bagaimana distribusi emosi tersebut mengindikasikan **respons afektif publik**
-            terhadap celah implementasi kebijakan (*phygital gap*)?"*
-
-            `affective response` · `emotion classification` · `implementation gap`
-            → Dijawab: Disgust 56.2%, Trust 20.4%, Neutral 12.3% (IndoBERT N=5,263)
-            """)
-
-        with rm_tabs[3]:
-            st.info("""
-            **😏 Sarkasme sebagai Strategi Resistensi Linguistik**
-
-            *"Seberapa prevalensi penggunaan **sarkasme sebagai strategi komunikasi resistensi**
-            dalam wacana publik MBG, dan bagaimana pola linguistik tersebut berfungsi
-            sebagai penanda sosial dari ketidakpercayaan publik terhadap kebijakan?"*
-
-            `sarcasm as resistance` · `linguistic markers` · `public distrust` · `social signaling`
-            → Dijawab: 9,28% sindiran valid (N=3.395) & 56,60% proksi afektif (N=5.263)
-            """)
-
-        with rm_tabs[4]:
-            st.info("""
-            **📋 Aspek Diskursus & Dimensi Phygital Gap**
-
-            *"Aspek dan tema apa yang secara dominan menjadi objek sentimen publik
-            dalam wacana MBG, dan bagaimana pemetaan aspek-sentimen tersebut mengungkapkan
-            **dimensi phygital gap** antara narasi kebijakan dan persepsi implementasi publik?"*
-
-            `aspect-based sentiment` · `discourse theme` · `narrative gap`
-            → Dijawab: ABSA — logistik & anggaran sebagai fokus kritik utama
-            """)
+        st.metric("🎯 Tujuan Penelitian", "6 Target", "Bab 1.4 (Harmonis 1-to-1)")
+    with rm_col3:
+        st.metric("🔬 Lapisan Metode", "3 Domain", "NLP, SNA & Phygital")
+    with rm_col4:
+        st.metric("🏆 Status Pembuktian", "100% Terjawab", "Bab IV Data Empiris")
 
     st.markdown("---")
-    st.subheader("🎯 Grand Research Question")
+    st.subheader("🌐 Visualisasi Aliran Keselarasan: 6 RM ➔ 3 Lapisan Metode ➔ 6 TP ➔ 6 Bukti Empiris")
+    st.markdown("Diagram interaktif Sankey di bawah menggambarkan alur keterhubungan linier antara **Rumusan Masalah**, **Lapisan Metodologi Komputasional**, **Tujuan Penelitian**, hingga **Bukti Empiris** yang dihasilkan.")
+
+    # Interactive Sankey Diagram (Plotly)
+    sankey_labels = [
+        # 0..5: 6 Rumusan Masalah
+        "❓ RM 1: Anatomi Leksikon & Gaya Bahasa",
+        "❓ RM 2: Inkongruensi Semiotik Teks-Emoji",
+        "❓ RM 3: Respons 9 Emosi IndoBERT",
+        "❓ RM 4: Topologi SNA & Polarisasi Komunitas",
+        "❓ RM 5: Sentralitas Aktor Dominan & Otoritas",
+        "❓ RM 6: Evaluasi Phygital Gap & Kebijakan",
+        # 6..8: 3 Lapisan Metodologis
+        "🔬 Lapisan I: NLP & Semiotika Digital",
+        "🔬 Lapisan II: Social Network Analysis (SNA)",
+        "🔬 Lapisan III: Marketing 6.0 Phygital Gap",
+        # 9..14: 6 Tujuan Penelitian
+        "🎯 TP 1: Analisis Leksikon Kontradiktif",
+        "🎯 TP 2: Identifikasi Pretense Sarkasme",
+        "🎯 TP 3: Klasifikasi 9 Emosi Plutchik",
+        "🎯 TP 4: Pemetaan 332 Komunitas Louvain",
+        "🎯 TP 5: Evaluasi Asimetri Pengaruh Aktor",
+        "🎯 TP 6: Rekomendasi Mitigasi Komunikasi",
+        # 15..20: 6 Bukti Empiris Terverifikasi
+        "📊 Bukti 1: 315 Sindiran Valid (9,28%)",
+        "📊 Bukti 2: Inkongruensi Pujian vs Skeptis",
+        "📊 Bukti 3: Jijik 56,24% (Macro F1 0.8122)",
+        "📊 Bukti 4: Modularitas Q=0.9837 (Hyper-cluster)",
+        "📊 Bukti 5: @grok Out=42 vs @prabowo Out=0",
+        "📊 Bukti 6: 5 Rekomendasi Aksi BGN"
+    ]
+
+    sankey_colors = [
+        # RM 1..6
+        "#3b82f6", "#06b6d4", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981",
+        # Lapisan 1..3
+        "#6366f1", "#d946ef", "#14b8a6",
+        # TP 1..6
+        "#3b82f6", "#06b6d4", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981",
+        # Bukti 1..6
+        "#22c55e", "#22c55e", "#22c55e", "#22c55e", "#22c55e", "#22c55e"
+    ]
+
+    # Connections: RM -> Layer -> TP -> Bukti
+    # RM 1 (0) -> Lapisan I (6) -> TP 1 (9) -> Bukti 1 (15)
+    # RM 2 (1) -> Lapisan I (6) -> TP 2 (10) -> Bukti 2 (16)
+    # RM 3 (2) -> Lapisan I (6) -> TP 3 (11) -> Bukti 3 (17)
+    # RM 4 (3) -> Lapisan II (7) -> TP 4 (12) -> Bukti 4 (18)
+    # RM 5 (4) -> Lapisan II (7) -> TP 5 (13) -> Bukti 5 (19)
+    # RM 6 (5) -> Lapisan III (8) -> TP 6 (14) -> Bukti 6 (20)
+    sources = [0, 1, 2, 3, 4, 5, 6, 6, 6, 7, 7, 8, 9, 10, 11, 12, 13, 14]
+    targets = [6, 6, 6, 7, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    values  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  1,  1,  1,  1]
+
+    fig_sankey = go.Figure(data=[go.Sankey(
+        arrangement="snap",
+        node=dict(
+            pad=15,
+            thickness=20,
+            line=dict(color="black", width=0.5),
+            label=sankey_labels,
+            color=sankey_colors
+        ),
+        link=dict(
+            source=sources,
+            target=targets,
+            value=values,
+            color="rgba(147, 197, 253, 0.35)"
+        )
+    )])
+    fig_sankey.update_layout(
+        title_text="Alur Harmonisasi 6 Rumusan Masalah ↔ 3 Lapisan Metode ↔ 6 Tujuan Penelitian ↔ 6 Bukti Empiris",
+        font_size=11,
+        height=520,
+        margin=dict(l=10, r=10, t=40, b=20)
+    )
+    st.plotly_chart(fig_sankey, use_container_width=True)
+
+    # 6 Tab Interaktif Berpasangan
+    st.markdown("---")
+    st.subheader("📑 Rincian 6 Pasang Rumusan Masalah (Bab 1.2) ↔ Tujuan Penelitian (Bab 1.4)")
+
+    pair_tabs = st.tabs([
+        "1️⃣ Diksi & Gaya Bahasa",
+        "2️⃣ Inkongruensi Semiotik",
+        "3️⃣ 9 Emosi IndoBERT",
+        "4️⃣ Topologi SNA & Polarisasi",
+        "5️⃣ Sentralitas Aktor Dominan",
+        "6️⃣ Evaluasi Phygital Gap"
+    ])
+
+    with pair_tabs[0]:
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown("#### ❓ Rumusan Masalah 1 (RM 1)")
+            st.info("""
+            *"Bagaimana anatomi bahasa bernada sindiran, variasi diksi leksikal kontradiktif, dan pola pemakaian emoji yang digunakan publik dalam diskursus Program MBG di platform X?"*
+            
+            - **Fokus Inti:** Pola kebahasaan warganet, leksikon oposisi biner, dan penggunaan simbol visual ekspresif.
+            - **Ranah Ilmu:** Sosiolinguistik & Kajian Bahasa Digital.
+            """)
+        with c2:
+            st.markdown("#### 🎯 Tujuan Penelitian 1 (TP 1)")
+            st.success("""
+            *"Menganalisis karakteristik linguistik warganet melalui pemetaan leksikon kontradiktif, gaya bahasa ironi, dan asosiasi emoji pada percakapan Program MBG di platform X."*
+            
+            - **Target Operasional:** Mengidentifikasi pola leksikal kritik terselubung tanpa terdeteksi filter konvensional.
+            - **Bukti Empiris:** 315 cuitan (9,28% N=3.395) sindiran tervalidasi & 181 leksikon kontradiksi tajam.
+            """)
+
+    with pair_tabs[1]:
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown("#### ❓ Rumusan Masalah 2 (RM 2)")
+            st.info("""
+            *"Bagaimana wujud inkongruensi makna antara teks tertulis bernada pujian semu dengan penanda visual emoji (pretense of sarcasm) muncul dalam diskursus Program MBG?"*
+            
+            - **Fokus Inti:** Kontradiksi semantik teks positif vs emoji mengejek/skeptis (*semiotic clash*).
+            - **Ranah Ilmu:** Teori Inkongruensi Pragmatik (Camp 2012; Joshi et al. 2017).
+            """)
+        with c2:
+            st.markdown("#### 🎯 Tujuan Penelitian 2 (TP 2)")
+            st.success("""
+            *"Mengidentifikasi dan mengukur bentuk-bentuk inkongruensi semiotik antara teks pujian dan emoji bernada negatif/mengejek untuk membongkar kritik terselubung warganet."*
+            
+            - **Target Operasional:** Memetakan diskrepansi teks-emoji sebagai indikator kepura-puraan (*pretense*).
+            - **Bukti Empiris:** Ditemukan polaritas berlawanan antara teks pujian ("menu mewah", "bergizi") dengan emoji 🤡, 🤮, 🗿.
+            """)
+
+    with pair_tabs[2]:
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown("#### ❓ Rumusan Masalah 3 (RM 3)")
+            st.info("""
+            *"Pola emosi apa yang mendominasi reaksi afektif publik terhadap dinamika Program MBG berdasarkan klasifikasi sembilan kategori emosi model IndoBERT?"*
+            
+            - **Fokus Inti:** Distribusi sentimen afektif granular (9 emosi Plutchik) melampaui biner positif/negatif.
+            - **Ranah Ilmu:** Deep Learning Transformer & Natural Language Processing (Wilie et al. 2020).
+            """)
+        with c2:
+            st.markdown("#### 🎯 Tujuan Penelitian 3 (TP 3)")
+            st.success("""
+            *"Mengklasifikasikan respons afektif warganet ke dalam 9 kategori emosi Plutchik menggunakan fine-tuned IndoBERT untuk mengukur intensitas penolakan maupun dukungan publik."*
+            
+            - **Target Operasional:** Menghasilkan inferensi klasifikasi multi-kelas dengan evaluasi Macro F1-score.
+            - **Bukti Empiris:** Emosi **Jijik (Disgust)** mendominasi **56,24%** (2.960 tweet), Trust 20,41%, Macro F1 = **0.8122**.
+            """)
+
+    with pair_tabs[3]:
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown("#### ❓ Rumusan Masalah 4 (RM 4)")
+            st.info("""
+            *"Bagaimana struktur jaringan komunikasi warganet terbentuk di platform X, serta sejauh mana tingkat fragmentasi dan polarisasi komunitas yang tercipta?"*
+            
+            - **Fokus Inti:** Topologi graf percakapan warganet, isolasi kelompok, dan fenomena ruang gema (*echo chamber*).
+            - **Ranah Ilmu:** Teori Graf & Social Network Analysis (Newman 2006; Blondel et al. 2008).
+            """)
+        with c2:
+            st.markdown("#### 🎯 Tujuan Penelitian 4 (TP 4)")
+            st.success("""
+            *"Memetakan topologi jaringan komunikasi, mengukur koefisien modularitas polarisasi (Q), serta mendeteksi komunitas terfragmentasi menggunakan Algoritma Louvain."*
+            
+            - **Target Operasional:** Menghitung metrik global graf (nodes, edges, modularity, reciprocity, diameter).
+            - **Bukti Empiris:** 971 node, 1.077 edges, Modularitas **Q = 0.9837** (332 komunitas terfragmentasi ekstrem, Reciprocity 1,21%).
+            """)
+
+    with pair_tabs[4]:
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown("#### ❓ Rumusan Masalah 5 (RM 5)")
+            st.info("""
+            *"Aktor-aktor kunci mana yang menduduki sentralitas struktural dominan (degree, betweenness, PageRank) dalam mengarahkan diskursus publik, dan bagaimana perannya terhadap legitimasi kebijakan?"*
+            
+            - **Fokus Inti:** Asimetri pengaruh komunikasi antara otoritas pemerintah, warganet akar rumput, dan agen AI.
+            - **Ranah Ilmu:** Analisis Kekuasaan Jaringan & Structural Centrality (Bastos & Mercea 2019; Freeman 1979).
+            """)
+        with c2:
+            st.markdown("#### 🎯 Tujuan Penelitian 5 (TP 5)")
+            st.success("""
+            *"Mengidentifikasi figur sentral, penyebar informasi utama, dan broker antarkomunitas guna memetakan pergeseran otoritas informasi dalam komunikasi kebijakan publik."*
+            
+            - **Target Operasional:** Menghitung In-degree, Out-degree, Betweenness Centrality, dan PageRank setiap simpul.
+            - **Bukti Empiris:** `@grok` (oracle AI) Out-degree = 42 (aktor paling aktif), `@4Y4NKZ` (broker warganet), `@prabowo` In-degree = 15 Out-degree = 0 (target pasif tanpa dialog).
+            """)
+
+    with pair_tabs[5]:
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown("#### ❓ Rumusan Masalah 6 (RM 6)")
+            st.info("""
+            *"Sejauh mana resistensi digital dan anomali afektif publik merefleksikan kegagalan immersive experience (Phygital Gap) antara janji digital dan realitas fisik MBG, serta bagaimana strategi mitigasi krisisnya?"*
+            
+            - **Fokus Inti:** Kesenjangan fisik-digital (*Phygital Gap*) kebijakan berskala masif dan perumusan mitigasi krisis komunikasi.
+            - **Ranah Ilmu:** Teori Marketing 6.0 (Kotler et al. 2023) & Komunikasi Krisis Kebijakan (Gelders & Ihlen 2010; Coombs 2022).
+            """)
+        with c2:
+            st.markdown("#### 🎯 Tujuan Penelitian 6 (TP 6)")
+            st.success("""
+            *"Mengevaluasi besaran celah Phygital Gap dalam implementasi kebijakan publik serta merumuskan rekomendasi mitigasi komunikasi risiko jangka panjang berbasis computational social science bagi Badan Gizi Nasional."*
+            
+            - **Target Operasional:** Sintesis holistik temuan komputasional ke dalam 5 rekomendasi taktis-strategis BGN.
+            - **Bukti Empiris:** Terbuktinya Phygital Gap melalui triangulasi 56,24% Jijik, 9,28% sindiran, dan modularitas Q=0.9837; menghasilkan Matriks Mitigasi 5 Dimensi.
+            """)
+
+    # Tabel Matriks Keselarasan 1-to-1 Lengkap
+    st.markdown("---")
+    st.subheader("📋 Matriks Komparasi Keselarasan 6 Rumusan Masalah ↔ 6 Tujuan Penelitian")
+    
+    matriks_data = [
+        {
+            "No": "1",
+            "Pilar Dimensi": "🗣️ Anatomi Bahasa & Diksi",
+            "Rumusan Masalah (RM Bab 1.2)": "Bagaimana anatomi bahasa bernada sindiran, diksi kontradiktif, dan pemakaian emoji warganet?",
+            "Tujuan Penelitian (TP Bab 1.4)": "Menganalisis pola leksikon kontradiktif, gaya ironi, dan emoji kritik pada percakapan MBG.",
+            "Metode Komputasional": "Lexical Matching & Sarcasm Corpus",
+            "Bukti Empiris Tesis": "315 cuitan (9,28%) sindiran valid, 181 leksikon kontradiksi",
+            "Status": "✅ Terjawab"
+        },
+        {
+            "No": "2",
+            "Pilar Dimensi": "🎭 Inkongruensi Semiotik",
+            "Rumusan Masalah (RM Bab 1.2)": "Bagaimana wujud inkongruensi makna antara teks pujian semu dengan emoji mengejek (pretense)?",
+            "Tujuan Penelitian (TP Bab 1.4)": "Mengidentifikasi inkongruensi teks-emoji untuk membongkar kritik terselubung warganet.",
+            "Metode Komputasional": "Semiotic Incongruity Scoring",
+            "Bukti Empiris Tesis": "Disparitas teks positif ('bergizi') vs emoji sinis (🤡, 🤮)",
+            "Status": "✅ Terjawab"
+        },
+        {
+            "No": "3",
+            "Pilar Dimensi": "🤖 Respons Afektif NLP",
+            "Rumusan Masalah (RM Bab 1.2)": "Pola emosi apa yang mendominasi reaksi afektif publik dalam skema 9 emosi IndoBERT?",
+            "Tujuan Penelitian (TP Bab 1.4)": "Mengklasifikasikan respons afektif ke 9 emosi Plutchik menggunakan IndoBERT.",
+            "Metode Komputasional": "Fine-tuned IndoBERT Multi-class",
+            "Bukti Empiris Tesis": "Disgust 56,24% (2.960 tweet), Trust 20,41%, Macro F1 0.8122",
+            "Status": "✅ Terjawab"
+        },
+        {
+            "No": "4",
+            "Pilar Dimensi": "🕸️ Topologi Jaringan SNA",
+            "Rumusan Masalah (RM Bab 1.2)": "Bagaimana struktur graf jaringan komunikasi terbentuk, polarisasi, dan fragmentasi komunitasnya?",
+            "Tujuan Penelitian (TP Bab 1.4)": "Memetakan topologi graf, mengukur modularitas Q, dan mendeteksi komunitas via Louvain.",
+            "Metode Komputasional": "Graph Theory & Louvain Modularity",
+            "Bukti Empiris Tesis": "971 nodes, 1.077 edges, Modularitas Q=0.9837 (332 komunitas)",
+            "Status": "✅ Terjawab"
+        },
+        {
+            "No": "5",
+            "Pilar Dimensi": "👑 Sentralitas Aktor Dominan",
+            "Rumusan Masalah (RM Bab 1.2)": "Aktor kunci mana yang menduduki sentralitas tinggi dalam mengarahkan diskursus publik?",
+            "Tujuan Penelitian (TP Bab 1.4)": "Mengidentifikasi figur sentral, penyebar informasi, dan broker antarkomunitas.",
+            "Metode Komputasional": "Centrality (Degree, Betweenness, PageRank)",
+            "Bukti Empiris Tesis": "@grok Out=42 (AI Oracle), @4Y4NKZ Broker, @prabowo In=15 Out=0",
+            "Status": "✅ Terjawab"
+        },
+        {
+            "No": "6",
+            "Pilar Dimensi": "🏛️ Sintesis Phygital & Kebijakan",
+            "Rumusan Masalah (RM Bab 1.2)": "Sejauh mana resistensi digital mencerminkan Phygital Gap, dan bagaimana strategi mitigasi krisisnya?",
+            "Tujuan Penelitian (TP Bab 1.4)": "Mengevaluasi besaran Phygital Gap dan merumuskan mitigasi krisis komunikasi bagi BGN.",
+            "Metode Komputasional": "Triangulasi Komputasional & Crisis Matrix",
+            "Bukti Empiris Tesis": "Konvergensi 56,24% Jijik + Q=0.9837 + 5 Rekomendasi Taktis BGN",
+            "Status": "✅ Terjawab"
+        }
+    ]
+
+    st.dataframe(pd.DataFrame(matriks_data), use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+    st.subheader("🎯 Grand Research Question (Sintesis Utama)")
     st.success("""
     *"Bagaimana analisis komputasional berbasis **graf jaringan sosial** dan **IndoBERT**
     dapat mengungkap pola emosi, sarkasme, dan struktur komunikasi publik dalam wacana
@@ -439,9 +651,9 @@ if page == "🏠 Beranda":
     """)
 
     grq_data = {
-        "Dimensi Phygital Gap": ["🎯 Power Vacuum", "🤖 Algorithmic Trust", "🏘️ Echo Chamber", "🤢 Affective Rejection", "😏 Linguistic Resistance"],
-        "Indikator Struktural": ["@prabowo In=15, Out=0", "@grok Out=42 melampaui semua aktor manusia", "332–341 komunitas, dialog lintas kubu hampir nol", "Disgust mendominasi 56,24% wacana", "315 cuitan (9,28%) sindiran validasi"],
-        "Bukti Data": ["Reciprocity 1,21%", "Out-degree #1 (non-human actor)", "Modularity 0.9837", "IndoBERT N=5.263", "Lexical N=3.395"],
+        "Dimensi Phygital Gap": ["🎯 Power Vacuum", "🤖 Algorithmic Trust", "🏘️ Echo Chamber", "🤢 Affective Rejection", "😏 Linguistic Resistance", "📉 Fiscal-Operational Mismatch"],
+        "Indikator Struktural": ["@prabowo In=15, Out=0", "@grok Out=42 melampaui semua aktor manusia", "332 komunitas terfragmentasi, dialog lintas kubu nihil", "Disgust mendominasi 56,24% wacana", "315 cuitan (9,28%) sindiran tervalidasi", "Disparitas alokasi fiskal vs kualitas menu di lapangan"],
+        "Bukti Data": ["Reciprocity 1,21%", "Out-degree #1 (non-human actor)", "Modularity Q=0.9837", "IndoBERT N=5.263", "Lexical N=3.395", "Kompilasi Kasus Operasional SPPG"],
     }
     st.dataframe(pd.DataFrame(grq_data), use_container_width=True, hide_index=True)
 
@@ -2581,7 +2793,8 @@ elif page == "🖼️ Visual Storytelling":
         "🔍 Tahap 1: Praproses Data",
         "🤖 Tahap 2: NLP & IndoBERT",
         "🕸️ Tahap 3: CNA & Aktor",
-        "💥 Tahap 4: Sintesis Phygital Masterpiece"
+        "💥 Tahap 4: Sintesis Phygital Masterpiece",
+        "🏛️ Bab IV & Bab V: Peta Temuan Empiris & Rekomendasi (§4.1 - §5.4)"
     ])
 
     # ── TAB 1: GALERI LENGKAP ──
@@ -2699,6 +2912,138 @@ elif page == "🖼️ Visual Storytelling":
         with col_t5_b:
             st.image(get_image_path("10_absa_thematic.png"), use_container_width=True, caption="Gambar 10: Analisis Sentimen 3 Aspek (Logistik, Anggaran, Gizi)")
         st.image(get_image_path("integrated_sna_nlp.png"), use_container_width=True, caption="Masterpiece Visual: Triangulasi Terintegrasi SNA x NLP (Data Riil)")
+
+    # ── TAB 6: BAB IV & BAB V ──
+    with v_tabs[5]:
+        st.subheader("🏛️ Peta Temuan Empiris Bab IV (Hasil & Pembahasan) & Bab V (Penutup)")
+        st.markdown("""
+        > *Bagian ini menyajikan rekonstruksi visual komprehensif dari naskah tesis **Bab IV (Halaman 94 – 109)** 
+        > dan **Bab V (Halaman 110 – 113)** — membuktikan bahwa setiap sub-bab ditopang secara mutlak 
+        > oleh bukti data empiris komputasional (NLP IndoBERT, SNA Louvain, dan Sintesis Marketing 6.0).*
+        """)
+
+        # KPI Metrics Row
+        kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+        with kpi1:
+            st.metric("📊 Korpus Data Bab IV", "5.263 Cuitan", "N=3.395 Leksikal Valid")
+        with kpi2:
+            st.metric("🤢 Emosi Dominan (§4.5)", "56,24% Jijik", "Macro F1 = 0.8122")
+        with kpi3:
+            st.metric("🕸️ Polarisasi Jaringan (§4.3)", "Q = 0.9837", "332 Komunitas Louvain")
+        with kpi4:
+            st.metric("🏛️ Rekomendasi BGN (§5.3)", "5 Aksi Nyata", "Mitigasi Phygital Gap")
+
+        st.markdown("---")
+
+        # Two Main Pillars: Bab IV and Bab V
+        col_b4, col_b5 = st.columns(2)
+
+        with col_b4:
+            st.markdown("### 🔬 BAB IV: HASIL DAN PEMBAHASAN (Hal. 94 – 109)")
+            
+            with st.expander("📌 4.1 Deskripsi Umum & Karakteristik Data (Hal. 94)", expanded=True):
+                st.markdown("""
+                - **Populasi & Sampel:** 5.263 cuitan berbahasa Indonesia di platform X (periode krisis Maret–Mei 2026).
+                - **Pembersihan Data:** Menghapus bot otomatis, akun promosi, dan duplikasi teks.
+                - **Korpus Leksikal:** 3.395 cuitan dianalisis secara mendalam untuk ekstraksi majas dan penanda emoji.
+                - **Distribusi Emosi:** Disgust (56,24%), Trust (20,41%), Neutral (12,31%), sisanya Joy, Surprise, Anticipation, Fear, Sadness, Anger.
+                """)
+
+            with st.expander("📌 4.2 Analisis Sistem: Topologi Jaringan & Polarisasi (Hal. 95)"):
+                st.markdown("""
+                - **Parameter Graf:** 971 node (aktor warganet unik) dan 1.077 relasi interaksi (edges).
+                - **Kepadatan (Density):** 0.0011 — jaringan sangat renggang tanpa sentrum tunggal.
+                - **Resiprositas (Reciprocity):** **1,21%** — 98,79% percakapan bersifat satu arah (monolog kebijakan).
+                - **Diameter Graf & Komponen:** Terpecah ke dalam 341 komponen terisolasi.
+                """)
+
+            with st.expander("📌 4.3 Analisis Clustering: Dinamika Komunitas & Echo Chambers (Hal. 97)"):
+                st.markdown("""
+                - **Modularitas Louvain:** **Q = 0.9837** (mendekati batas teoritis maksimum 1.0).
+                - **Jumlah Komunitas:** 332 komunitas terpisah yang membentuk ruang gema (*echo chamber*).
+                - **Isolasi Diskursus:** Warganet berbicara di dalam gelembung opini kelompoknya sendiri tanpa jembatan dialog antarkubu.
+                """)
+
+            with st.expander("📌 4.4 Analisis Level Aktor: Struktur Kekuasaan & Brokerage (Hal. 98)"):
+                st.markdown("""
+                - **🤖 @grok (AI Oracle):** Out-degree = 42 (paling dominan), rujukan verifikasi kebenaran publik.
+                - **🔗 @4Y4NKZ (Network Broker):** Betweenness = 0.000016 (jembatan langka antarklaster).
+                - **👑 @prabowo (Target Pasif):** In-degree = 15 (paling sering dimention), Out-degree = 0 (absen dialog).
+                - **Fenomena Power Vacuum:** Kekosongan narasi resmi pemerintah diisi oleh agen kecerdasan buatan.
+                """)
+
+            with st.expander("📌 4.5 Evaluasi Model Emosi & Deteksi Sindiran (Hal. 101)"):
+                st.markdown("""
+                - **4.5.1 Evaluasi IndoBERT:** Akurasi validasi 57,45%, Macro F1 = 0.8122, Recall kelas Disgust mencapai **96,92%** (F1 = 0.7178).
+                - **4.5.2 Evaluasi Deteksi Sindiran:** 315 cuitan (9,28%) memuat majas sindiran tervalidasi leksikal, sementara proksi afektif menangkap 56,60%.
+                - **4.5.3 Interpretasi Triangulasi:** Sindiran merupakan sub-dimensi leksikal dari emosi Jijik (*Disgust*) — kedua metode konvergen dan saling mengonfirmasi.
+                """)
+
+            with st.expander("📌 4.6 Sintesis: Perspektif Marketing 6.0 & Phygital Gap (Hal. 105)"):
+                st.markdown("""
+                - **4.6.1 Evaluasi ABSA Tiga Aspek:** Kritik publik terkonsentrasi pada kegagalan fisik: Logistik (basi/terlambat) dan Anggaran (pemangkasan nilai porsi).
+                - **4.6.2 Sintesis Struktural-Afektif:** Terbuktinya *Phygital Gap* — publik menerima visi digital kebijakan, namun menolak keras realitas eksekusi fisik di lapangan.
+                """)
+
+        with col_b5:
+            st.markdown("### 🏛️ BAB V: PENUTUP & REKOMENDASI (Hal. 110 – 113)")
+            
+            with st.expander("📌 5.1 Kesimpulan Penelitian (Hal. 110)", expanded=True):
+                st.markdown("""
+                1. **Anatomi Bahasa (RM 1):** Kritik MBG diekspresikan lewat sindiran halus dan oposisi biner (315 cuitan valid).
+                2. **Inkongruensi Semiotik (RM 2):** Disparitas tajam antara teks pujian semu dengan emoji sinis (🤡, 🤮).
+                3. **Respons Afektif (RM 3):** Wacana didominasi emosi Jijik (56,24%), mencerminkan penolakan higienitas menu fisik.
+                4. **Topologi Jaringan (RM 4):** Polarisasi ekstrem (Q=0.9837) dan fragmentasi menjadi 332 komunitas terisolasi.
+                5. **Sentralitas Aktor (RM 5):** Dominasi AI (@grok Out=42) dan ketiadaan respons timbal balik otoritas (@prabowo Out=0).
+                6. **Phygital Gap (RM 6):** Kesenjangan absolut antara janji digital pemerintah dan eksekusi fisik SPPG di lapangan.
+                """)
+
+            with st.expander("📌 5.2 Implikasi Penelitian (Hal. 112)"):
+                st.markdown("""
+                - **5.2.1 Implikasi Akademis:**
+                  - Memperkaya kajian *Computational Social Science* di Indonesia dengan integrasi deep learning IndoBERT dan teori graf SNA.
+                  - Memperluas aplikasi teori *Marketing 6.0* dari sektor korporasi ke ranah evaluasi kebijakan publik makro.
+                - **5.2.2 Implikasi Praktis:**
+                  - Memberikan kerangka kerja pemantauan sentimen real-time berbasis multi-dimensi bagi kementerian/lembaga.
+                  - Menghindarkan pembuat kebijakan dari ilusi sentimen linear biner yang menyesatkan.
+                """)
+
+            with st.expander("📌 5.3 Rekomendasi Kebijakan BGN & Riset Lanjutan (Hal. 112)"):
+                st.markdown("""
+                - **5.3.1 Rekomendasi untuk Badan Gizi Nasional (BGN):**
+                  1. *Buka Dialog Dua Arah:* Naikkan resiprositas dari 1,21% dengan menugaskan humas merespons kritik secara aktif.
+                  2. *Rangkul Komunitas Broker:* Gandeng simpul non-formal (@4Y4NKZ) untuk menjangkau klaster warganet yang terisolasi.
+                  3. *Single Source of Truth Menu:* Terbitkan katalog foto dan komposisi gizi menu harian di platform digital resmi.
+                  4. *Transparansi Alokasi Biaya:* Edukasi publik mengenai rincian biaya porsi makan guna memutus rumor pemangkasan anggaran.
+                  5. *Optimalisasi Narasi Berbasis Bukti:* Imbangi hegemoni AI Oracle (@grok) dengan data terbuka yang dapat diverifikasi mesin pencari.
+                - **5.3.2 Rekomendasi untuk Riset Selanjutnya (Hal. 113):**
+                  - Menambahkan analisis multimodal (analisis gambar/foto menu fisik dan meme).
+                  - Memperluas jangkauan ke platform visual seperti TikTok dan Instagram.
+                """)
+
+            with st.expander("📌 5.4 Keterbatasan Penelitian (Hal. 113)"):
+                st.markdown("""
+                - **Platform Tunggal:** Analisis hanya bertumpu pada percakapan publik di platform X (Twitter).
+                - **Unimodalitas Teks:** Belum mencakup analisis visi komputer atas foto piring makan yang diunggah warganet.
+                - **Rentang Waktu:** Terfokus pada momentum kritis Maret–Mei 2026 (pemangkasan anggaran dan insiden awal).
+                """)
+
+        # Comprehensive Summary Table
+        st.markdown("---")
+        st.subheader("📋 Matriks Pemetaan Komprehensif: Struktur Tesis Bab I – Bab V ↔ Bukti Data Riil")
+        
+        thesis_master_map = [
+            {"Bab Tesis": "Bab I: Pendahuluan", "Sub-Bab": "1.2 & 1.4 Rumusan & Tujuan", "Fokus Kajian": "Harmonisasi 6 Pertanyaan ↔ 6 Target Riset", "Metode / Instrumen": "Sankey Flow & Matriks Keselarasan", "Data Empiris": "Harmonisasi simetris 1-to-1", "Halaman": "15 & 19"},
+            {"Bab Tesis": "Bab II: Landasan Teori", "Sub-Bab": "2.1 s.d 2.6 Landasan Konseptual", "Fokus Kajian": "8 Pilar Teori & 37 Sub-Bab Terstruktur", "Metode / Instrumen": "Sunburst & Treemap Hierarkis", "Data Empiris": "37 Sub-bab, 5 Proposisi Kerja", "Halaman": "26 – 84"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.1 Karakteristik Data Korpus", "Fokus Kajian": "Penyaringan cuitan warganet platform X", "Metode / Instrumen": "Data Funnel & Preprocessing Pipeline", "Data Empiris": "N=5.263 korpus, 3.395 leksikal", "Halaman": "94"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.2 Topologi Jaringan Global", "Fokus Kajian": "Analisis kerapatan & resiprositas graf", "Metode / Instrumen": "Directed Graph SNA", "Data Empiris": "971 node, Reciprocity 1,21%", "Halaman": "95"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.3 Dinamika Komunitas Louvain", "Fokus Kajian": "Polarisasi ekstrem & echo chamber warganet", "Metode / Instrumen": "Algoritma Louvain Community", "Data Empiris": "Modularity Q=0.9837, 332 komunitas", "Halaman": "97"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.4 Struktur Kekuasaan Aktor", "Fokus Kajian": "Peran Oracle AI, Broker, dan Target Pasif", "Metode / Instrumen": "Centrality (Degree, Betweenness)", "Data Empiris": "@grok Out=42, @prabowo In=15 Out=0", "Halaman": "98"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.5 Evaluasi Model & Sindiran", "Fokus Kajian": "Performa IndoBERT & majas sindiran", "Metode / Instrumen": "Fine-tuned Transformer IndoBERT", "Data Empiris": "Macro F1 0.8122, Disgust 56,24%", "Halaman": "101 – 104"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.6 Sintesis Marketing 6.0", "Fokus Kajian": "Pembuktian Phygital Gap kebijakan publik", "Metode / Instrumen": "ABSA & Triangulasi SNA-NLP", "Data Empiris": "Logistik & anggaran sebagai akar krisis", "Halaman": "105 – 109"},
+            {"Bab Tesis": "Bab V: Penutup", "Sub-Bab": "5.1 s.d 5.4 Simpulan & Solusi", "Fokus Kajian": "Rekomendasi BGN & Implikasi Kebijakan", "Metode / Instrumen": "Matriks Intervensi Kebijakan", "Data Empiris": "5 Aksi Strategis Mitigasi Krisis", "Halaman": "110 – 113"}
+        ]
+        st.dataframe(pd.DataFrame(thesis_master_map), use_container_width=True, hide_index=True)
 
 elif page == "📚 Audit Referensi Scopus":
     st.title("📚 Audit Kelayakan Referensi untuk Scopus / Sinta 1")
