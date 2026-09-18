@@ -2714,6 +2714,131 @@ elif page == "📚 Audit Referensi Scopus":
     """)
 
     st.markdown("---")
+    st.subheader("📑 Taksonomi & Klasifikasi Daftar Pustaka (11 Rujukan Inti Tesis)")
+    st.markdown("""
+    Berikut adalah pemetaan saintifik **11 rujukan utama** dalam daftar pustaka tesis Anda — mengelompokkannya secara presisi ke dalam **pilar teori Bab II**, **ranah disiplin ilmu**, dan **fungsi strategis di manuskrip**:
+    """)
+
+    dp_data = [
+        {
+            "Penulis & Tahun": "Bennett & Segerberg (2012)",
+            "Judul & Publikasi": "The logic of connective action. Information, Communication & Society, 15(5), 739–768.",
+            "Golongan Pilar Bab II": "🏛️ Pilar 2.3: Ruang Publik & Afordansi X (Hal. 37–41)",
+            "Ranah Disiplin Ilmu": "Sosiologi Komunikasi Digital & Networked Publics",
+            "Fungsi di Tesis": "Menjelaskan aksi berjejaring terdesentralisasi warganet tanpa komando formal.",
+            "Indeksasi": "Scopus Q1 (Taylor & Francis)"
+        },
+        {
+            "Penulis & Tahun": "Blondel, Guillaume, Lambiotte & Lefebvre (2008)",
+            "Judul & Publikasi": "Fast unfolding of communities in large networks. J. Stat. Mech., 2008(10), P10008.",
+            "Golongan Pilar Bab II": "🕸️ Pilar 2.6: SNA & Teori Graf Jaringan (§2.6.3 Hal. 56)",
+            "Ranah Disiplin Ilmu": "Network Science & Algoritma Komputasional",
+            "Fungsi di Tesis": "Algoritma Louvain untuk deteksi 332 komunitas & modularitas Q=0.9837.",
+            "Indeksasi": "Scopus Q1 (IOP Publishing)"
+        },
+        {
+            "Penulis & Tahun": "Boyd & Crawford (2012)",
+            "Judul & Publikasi": "Critical questions for big data. Information, Communication & Society, 15(5), 662–679.",
+            "Golongan Pilar Bab II": "⚖️ Pilar 2.11: Etika Riset Big Data & Validitas (§2.11.1 Hal. 83)",
+            "Ranah Disiplin Ilmu": "Etika Komputasi Sosial & Metodologi Big Data",
+            "Fungsi di Tesis": "Justifikasi etika scraping X, privasi data warganet, dan mitigasi bias data.",
+            "Indeksasi": "Scopus Q1 (Taylor & Francis)"
+        },
+        {
+            "Penulis & Tahun": "Camp (2012)",
+            "Judul & Publikasi": "Sarcasm, pretense, and the semantics/pragmatics distinction. Noûs, 46(4), 587–634.",
+            "Golongan Pilar Bab II": "🎭 Pilar 2.4: Inkongruensi & Sindiran Digital (§2.4.1–2.4.3 Hal. 42–43)",
+            "Ranah Disiplin Ilmu": "Pragmatik Bahasa & Filosofi Linguistik",
+            "Fungsi di Tesis": "Pretense theory of sarcasm — pura-pura memuji padahal mengkritik keras menu MBG.",
+            "Indeksasi": "Scopus Q1 (Wiley)"
+        },
+        {
+            "Penulis & Tahun": "Chiorrini, Diamantini, Mircoli & Potena (2021)",
+            "Judul & Publikasi": "Emotion and sentiment analysis of tweets using BERT. CEUR Workshop Proc., 2841.",
+            "Golongan Pilar Bab II": "🤖 Pilar 2.5: NLP & Arsitektur IndoBERT (§2.5.3–2.5.5 Hal. 49–51)",
+            "Ranah Disiplin Ilmu": "Natural Language Processing & Deep Learning",
+            "Fungsi di Tesis": "Rujukan transfer learning arsitektur BERT untuk klasifikasi multi-kelas emosi.",
+            "Indeksasi": "Scopus / CEUR (Standar AI/NLP)"
+        },
+        {
+            "Penulis & Tahun": "Covello, von Winterfeldt & Slovic (1986)",
+            "Judul & Publikasi": "Risk communication: A review of the literature. Risk Abstracts, 3(4), 171–182.",
+            "Golongan Pilar Bab II": "🛡️ Pilar 2.1: Komunikasi Risiko Fiskal Makro (§2.1.1 Hal. 27)",
+            "Ranah Disiplin Ilmu": "Komunikasi Risiko Kebijakan Publik (Risk Communication)",
+            "Fungsi di Tesis": "Pondasi teori komunikasi risiko — jurang pemahaman antara pakar vs persepsi rakyat.",
+            "Indeksasi": "Rujukan Teori Klasik (Slovic et al.)"
+        },
+        {
+            "Penulis & Tahun": "Easley & Kleinberg (2010)",
+            "Judul & Publikasi": "Networks, crowds, and markets: Reasoning about a highly connected world. Cambridge Univ. Press.",
+            "Golongan Pilar Bab II": "🕸️ Pilar 2.6: SNA & Teori Graf Jaringan (§2.6.1–2.6.5 Hal. 55–58)",
+            "Ranah Disiplin Ilmu": "Sains Jaringan & Sosiologi Komputasional",
+            "Fungsi di Tesis": "Buku pegangan topologi graf, dinamika crowd, homofili, dan kaskade informasi.",
+            "Indeksasi": "Cambridge University Press"
+        },
+        {
+            "Penulis & Tahun": "Ferrara, Varol, Davis, Menczer & Flammini (2016)",
+            "Judul & Publikasi": "The rise of social bots. Communications of the ACM, 59(7), 96–104.",
+            "Golongan Pilar Bab II": "🤖 Pilar 2.11: Validitas Data & Akun Bot (§2.11.2 Hal. 83)",
+            "Ranah Disiplin Ilmu": "Informatika Sosial & Deteksi Bot Otomatis",
+            "Fungsi di Tesis": "Metode penyaringan bot untuk menjamin keaslian opini publik manusia (N=5.263).",
+            "Indeksasi": "Scopus Q1 / ACM (Flagship CS)"
+        },
+        {
+            "Penulis & Tahun": "Flyvbjerg (2009)",
+            "Judul & Publikasi": "Survival of the unfittest: Why the worst infrastructure gets built. Oxf. Rev. Econ. Policy, 25(3), 344–367.",
+            "Golongan Pilar Bab II": "🛡️ Pilar 2.1: Komunikasi Risiko Fiskal Makro (§2.1.5 Hal. 31)",
+            "Ranah Disiplin Ilmu": "Ekonomi Kebijakan Publik & Behavioral Economics",
+            "Fungsi di Tesis": "Optimism bias & planning fallacy — pemangkasan alokasi pagu anggaran di tengah jalan.",
+            "Indeksasi": "Scopus Q1 (Oxford University Press)"
+        },
+        {
+            "Penulis & Tahun": "Fombrun & van Riel (2004)",
+            "Judul & Publikasi": "Fame and fortune: How successful companies build winning reputations. Prentice Hall.",
+            "Golongan Pilar Bab II": "🏛️ Pilar 2.1: Risiko Reputasi Institusi Negara (§2.1.3–2.1.4 Hal. 29)",
+            "Ranah Disiplin Ilmu": "Komunikasi Korporat & Reputasi Institusional",
+            "Fungsi di Tesis": "Erosi modal reputasi institusional saat janji fisik tidak sesuai ekspektasi digital.",
+            "Indeksasi": "Prentice Hall (Monograf Reputasi)"
+        },
+        {
+            "Penulis & Tahun": "Freeman (1979)",
+            "Judul & Publikasi": "Centrality in social networks: Conceptual clarification. Social Networks, 1(3), 215–239.",
+            "Golongan Pilar Bab II": "🕸️ Pilar 2.6: SNA & Teori Graf Jaringan (§2.6.2 & §2.6.9 Hal. 55, 62)",
+            "Ranah Disiplin Ilmu": "Social Network Analysis & Relational Graph",
+            "Fungsi di Tesis": "Definisi formal metrik In-Degree, Betweenness, dan Closeness Centrality aktor.",
+            "Indeksasi": "Scopus Q1 (Elsevier — 26k+ sitasi)"
+        }
+    ]
+
+    filter_golongan = st.selectbox(
+        "🔍 Filter Berdasarkan Golongan Pilar Bab II:",
+        ["Semua Golongan (11 Rujukan)", 
+         "Pilar 2.1: Risiko Fiskal & Reputasi Institusi",
+         "Pilar 2.3: Ruang Publik & Afordansi X",
+         "Pilar 2.4: Sindiran & Pragmatik",
+         "Pilar 2.5: NLP & IndoBERT",
+         "Pilar 2.6: SNA & Teori Graf Jaringan",
+         "Pilar 2.11: Etika Riset & Akun Bot"]
+    )
+
+    if "Semua" in filter_golongan:
+        df_dp_show = pd.DataFrame(dp_data)
+    elif "2.1" in filter_golongan:
+        df_dp_show = pd.DataFrame([d for d in dp_data if "2.1:" in d["Golongan Pilar Bab II"]])
+    elif "2.3" in filter_golongan:
+        df_dp_show = pd.DataFrame([d for d in dp_data if "2.3:" in d["Golongan Pilar Bab II"]])
+    elif "2.4" in filter_golongan:
+        df_dp_show = pd.DataFrame([d for d in dp_data if "2.4:" in d["Golongan Pilar Bab II"]])
+    elif "2.5" in filter_golongan:
+        df_dp_show = pd.DataFrame([d for d in dp_data if "2.5:" in d["Golongan Pilar Bab II"]])
+    elif "2.6" in filter_golongan:
+        df_dp_show = pd.DataFrame([d for d in dp_data if "2.6:" in d["Golongan Pilar Bab II"]])
+    else:
+        df_dp_show = pd.DataFrame([d for d in dp_data if "2.11:" in d["Golongan Pilar Bab II"]])
+
+    st.dataframe(df_dp_show, use_container_width=True, hide_index=True)
+
+    st.markdown("---")
     st.subheader("🏆 Tier 1 — WAJIB MASUK (Scopus/WoS Indexed)")
     st.success("Referensi-referensi ini adalah fondasi akademik yang akan membuat reviewer **langsung percaya** pada kualitas riset Anda.")
 
