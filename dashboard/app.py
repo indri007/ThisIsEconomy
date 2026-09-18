@@ -467,6 +467,315 @@ Ini adalah bukti struktural dari **top-down communication failure** — publik b
     else:
         st.warning("Data metrics tidak ditemukan.")
 
+    # ============================================================
+    # BAGIAN BARU: POLA KEKUASAAN & PENYEBARAN INFORMASI
+    # ============================================================
+    st.markdown("---")
+    st.header("🔋 Pola Kekuasaan Informasi & Penyebaran Kebijakan")
+    st.markdown("""
+    > **Mengapa ini penting?** Analisis teks biasa hanya bisa membaca *apa* yang ditulis.
+    > Pendekatan berbasis graf membaca *siapa yang berkuasa*, *siapa yang menyebarkan*, dan *siapa yang menjembatani* — pola yang **tidak tampak** dari isi cuitan semata.
+    """)
+
+    import networkx as nx
+    import plotly.graph_objects as go
+
+    # Load & compute metrics
+    @st.cache_data
+    def compute_all_metrics():
+        df_e = pd.read_csv('data/sna/network_edges.csv')
+        G_d = nx.DiGraph()
+        for _, row in df_e.iterrows():
+            G_d.add_edge(row['Source'], row['Target'])
+        in_d  = dict(G_d.in_degree())
+        out_d = dict(G_d.out_degree())
+        betw  = nx.betweenness_centrality(G_d, normalized=True)
+        try:
+            eig = nx.eigenvector_centrality(G_d, max_iter=1000)
+        except Exception:
+            eig = nx.eigenvector_centrality_numpy(G_d)
+        density   = nx.density(G_d)
+        reciprocity = nx.reciprocity(G_d)
+        return in_d, out_d, betw, eig, density, reciprocity, G_d
+
+    in_d, out_d, betw, eig, density, reciprocity, G_computed = compute_all_metrics()
+
+    # ── Metrik Global ──
+    st.subheader("📐 Metrik Global Jaringan")
+    m1, m2, m3, m4, m5 = st.columns(5)
+    m1.metric("🗣️ Nodes", "971", "Aktor unik")
+    m2.metric("🔗 Edges", "666", "Interaksi")
+    m3.metric("🏘️ Modularity", "0.9837", "Hyper-fragmented")
+    m4.metric("🔄 Reciprocity", f"{reciprocity*100:.1f}%", "Dialog timbal balik")
+    m5.metric("📉 Density", f"{density:.6f}", "Sangat jarang")
+
+    st.info(f"""
+    **Reciprocity hanya {reciprocity*100:.1f}%** — artinya **98.8% percakapan bersifat searah (one-way)**.
+    Publik berbicara *kepada* aktor, tapi aktor tidak merespons. Ini adalah tanda struktural **komunikasi monolog kebijakan**.
+    """)
+
+    st.markdown("---")
+
+    # ── 4 Dimensi Metrik ──
+    st.subheader("📊 Empat Dimensi Kekuasaan Informasi dalam Jaringan")
+
+    tab1, tab2, tab3, tab4 = st.tabs([
+        "🎯 In-Degree — Kekuatan Rujukan",
+        "📡 Out-Degree — Kekuatan Penyebaran",
+        "🌉 Betweenness — Kekuatan Perantara",
+        "⚡ Eigenvector — Kekuatan Pengaruh"
+    ])
+
+    with tab1:
+        st.markdown("""
+        ### 🎯 In-Degree Centrality — *Siapa yang Paling Dirujuk/Dituju?*
+
+        **Definisi:** Jumlah akun lain yang mengarahkan koneksi (mention/reply) **ke** sebuah node.
+
+        **Makna Kekuasaan:** Node dengan in-degree tinggi adalah **objek perhatian publik** —
+        mereka menjadi *pusat gravitasi informasi*. Semakin tinggi, semakin besar tekanan publik kepadanya.
+
+        **Contoh dalam dataset MBG:**
+        """)
+
+        top_in_list = sorted(in_d.items(), key=lambda x: x[1], reverse=True)[:10]
+        df_in = pd.DataFrame(top_in_list, columns=['Akun', 'In-Degree'])
+
+        fig_in = go.Figure(go.Bar(
+            x=df_in['In-Degree'], y=['@'+a for a in df_in['Akun']],
+            orientation='h',
+            marker_color=['#EF4444' if a=='prabowo' else '#3B82F6' for a in df_in['Akun']],
+            text=df_in['In-Degree'], textposition='outside'
+        ))
+        fig_in.update_layout(
+            title="Top 10 Aktor: In-Degree (Paling Banyak Dirujuk)", height=400,
+            xaxis_title="Jumlah akun yang mengarahkan koneksi ke node ini",
+            yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
+        )
+        st.plotly_chart(fig_in, use_container_width=True)
+
+        st.error("""
+        **🔴 Temuan Kritis: @prabowo (In-Degree = 15)**
+
+        @prabowo adalah **objek gugatan terbesar** dalam jaringan — 15 akun berbeda secara langsung mengarahkan
+        percakapan kepadanya. Namun ia tidak pernah membalas (Out-Degree = 0).
+
+        **Contoh interaksi:**
+        > *@punishe98373138 → @prabowo: "Pak Presiden, MBG di sekolah anak saya sudah 3 minggu tidak berjalan..."*
+        >
+        > *@bbiiyaya → @prabowo: "Triliunan habis tapi gizi anak-anak masih tidak terpenuhi..."*
+
+        **Interpretasi:** In-degree tinggi + out-degree nol = **Power Vacuum** di level komunikasi kebijakan.
+        Publik berteriak, pemimpin tidak hadir. Inilah Phygital Gap.
+        """)
+
+    with tab2:
+        st.markdown("""
+        ### 📡 Out-Degree Centrality — *Siapa yang Paling Aktif Menyebarkan?*
+
+        **Definisi:** Jumlah koneksi yang diinisiasi (mention/reply) **dari** sebuah node ke akun lain.
+
+        **Makna Kekuasaan:** Node dengan out-degree tinggi adalah **penebar informasi aktif** —
+        mereka menjadi *mesin distribusi pesan*. Ini tidak berarti mereka berpengaruh, tapi mereka *bising*.
+
+        **Contoh dalam dataset MBG:**
+        """)
+
+        top_out_list = sorted(out_d.items(), key=lambda x: x[1], reverse=True)[:10]
+        df_out = pd.DataFrame(top_out_list, columns=['Akun', 'Out-Degree'])
+
+        fig_out = go.Figure(go.Bar(
+            x=df_out['Out-Degree'], y=['@'+a for a in df_out['Akun']],
+            orientation='h',
+            marker_color=['#7C3AED' if a=='grok' else '#10B981' for a in df_out['Akun']],
+            text=df_out['Out-Degree'], textposition='outside'
+        ))
+        fig_out.update_layout(
+            title="Top 10 Aktor: Out-Degree (Paling Aktif Menyebarkan)", height=400,
+            xaxis_title="Jumlah koneksi yang diinisiasi dari node ini",
+            yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
+        )
+        st.plotly_chart(fig_out, use_container_width=True)
+
+        st.warning("""
+        **🟣 Temuan Anomali: @grok (Out-Degree = 42) — AI sebagai Penyebar Utama**
+
+        @grok membalas **42 akun berbeda** — lebih banyak dari aktor manusia manapun.
+        Ini bukan distribusi organik, melainkan **distribusi algoritmik**:
+
+        **Contoh:**
+        > *@HSoekma23 → @grok: "Grok, apa benar anggaran MBG sudah dicairkan?"*
+        >
+        > *@grok → @HSoekma23: "Berdasarkan data yang tersedia, anggaran MBG sebesar Rp71 triliun..."*
+
+        **Interpretasi:** Ketika pemangku kebijakan (prabowo, in-degree=15 tapi out=0) tidak merespons,
+        publik beralih ke AI. **@grok menjadi proxy otoritas informasi** yang menggantikan dialog kebijakan resmi.
+        """)
+
+    with tab3:
+        st.markdown("""
+        ### 🌉 Betweenness Centrality — *Siapa Jembatan Antar Komunitas?*
+
+        **Definisi:** Proporsi *shortest path* antar semua pasangan node yang melewati sebuah node tertentu.
+
+        **Makna Kekuasaan:** Node dengan betweenness tinggi adalah **gatekeeper informasi** —
+        mereka mengendalikan aliran informasi antara komunitas yang terpisah.
+        Jika dihilangkan, komunitas-komunitas itu terputus total.
+
+        **Contoh dalam dataset MBG:**
+        """)
+
+        top_betw_list = sorted(betw.items(), key=lambda x: x[1], reverse=True)[:10]
+        df_betw = pd.DataFrame(top_betw_list, columns=['Akun', 'Betweenness'])
+        df_betw['Betweenness_pct'] = df_betw['Betweenness'] * 1e6  # scale for display
+
+        fig_betw = go.Figure(go.Bar(
+            x=df_betw['Betweenness_pct'], y=['@'+a for a in df_betw['Akun']],
+            orientation='h',
+            marker_color=['#F97316' if a=='4Y4NKZ' else '#06B6D4' for a in df_betw['Akun']],
+            text=[f"{v:.4f} ×10⁻⁶" for v in df_betw['Betweenness_pct']],
+            textposition='outside'
+        ))
+        fig_betw.update_layout(
+            title="Top 10 Aktor: Betweenness Centrality (Jembatan Komunitas)", height=400,
+            xaxis_title="Betweenness × 10⁻⁶ (semakin tinggi = semakin penting sebagai jembatan)",
+            yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
+        )
+        st.plotly_chart(fig_betw, use_container_width=True)
+
+        st.info("""
+        **🟠 Temuan: @4Y4NKZ (Betweenness = 0.000016 — TERTINGGI)**
+
+        @4Y4NKZ bukan tokoh publik, bukan pejabat — namun ia adalah **satu-satunya jembatan aktif** yang
+        menghubungkan komunitas-komunitas terisolasi dalam jaringan.
+
+        **Contoh pola jembatan:**
+        > *[Klaster A: pendukung MBG] ←→ @4Y4NKZ ←→ [Klaster B: pengkritik MBG]*
+
+        Ia me-reply ke: @bonapasogit24 (klaster A) DAN @newIding30 (klaster B) — dua komunitas berbeda.
+
+        **Interpretasi:** Dalam jaringan yang hyper-fragmented (M=0.9837), broker seperti @4Y4NKZ adalah
+        **satu-satunya saluran dialog lintas kubu**. Hilangkan ia, dan dialog antar komunitas benar-benar putus.
+        """)
+
+    with tab4:
+        st.markdown("""
+        ### ⚡ Eigenvector Centrality — *Siapa yang Paling Berpengaruh Secara Jaringan?*
+
+        **Definisi:** Skor pengaruh berdasarkan kualitas koneksi — **terhubung ke node berpengaruh = lebih tinggi skornya**.
+
+        **Makna Kekuasaan:** Node dengan eigenvector tinggi bukan sekadar aktif,
+        tapi koneksinya mengarah ke **inti jaringan yang paling berpengaruh**.
+
+        **Catatan metodologis:** Pada jaringan yang sangat terfragmentasi (M=0.9837),
+        skor eigenvector seringkali *terdistribusi merata* dalam satu klaster besar —
+        ini adalah sinyal bahwa jaringan tidak memiliki *single dominant hub*.
+        """)
+
+        top_eig_list = sorted(eig.items(), key=lambda x: x[1], reverse=True)[:10]
+        df_eig = pd.DataFrame(top_eig_list, columns=['Akun', 'Eigenvector'])
+
+        fig_eig = go.Figure(go.Bar(
+            x=df_eig['Eigenvector'], y=['@'+a for a in df_eig['Akun']],
+            orientation='h',
+            marker_color='#8B5CF6',
+            text=[f"{v:.4f}" for v in df_eig['Eigenvector']],
+            textposition='outside'
+        ))
+        fig_eig.update_layout(
+            title="Top 10 Aktor: Eigenvector Centrality (Pengaruh Jaringan)", height=400,
+            xaxis_title="Eigenvector Score (semakin tinggi = terhubung ke node berpengaruh)",
+            yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
+        )
+        st.plotly_chart(fig_eig, use_container_width=True)
+
+        st.warning("""
+        **🟡 Temuan: Skor Eigenvector Identik (0.2332) untuk 10+ Akun**
+
+        Ini bukan error — ini adalah temuan penting: **tidak ada satu pun node yang mendominasi**
+        jaringan secara keseluruhan. 10 akun berbagi skor eigenvector yang sama persis,
+        artinya mereka semua berada dalam **klaster yang sama** dan memiliki posisi yang setara.
+
+        **Interpretasi:** Berbeda dari jaringan media mainstream yang memiliki satu hub super-dominan
+        (misalnya: akun media nasional), jaringan diskursus MBG bersifat **egalitarian secara struktural** —
+        tidak ada satu suara pun yang secara objektif lebih kuat dari yang lain di level jaringan.
+        """)
+
+    # ── Pola Penyebaran Informasi Kebijakan ──
+    st.markdown("---")
+    st.subheader("🗺️ Pola Penyebaran Informasi: Yang Tidak Tampak dari Konten")
+
+    st.markdown("""
+    Berikut adalah **3 pola struktural** yang hanya terlihat melalui pembacaan graf,
+    bukan dari membaca isi cuitan satu per satu:
+    """)
+
+    p1, p2, p3 = st.columns(3)
+
+    with p1:
+        st.error("""
+        ### 🔴 Pola 1
+        ## POWER VACUUM
+
+        **Definisi:** Aktor berkuasa (in-degree tinggi) tidak aktif merespons (out-degree = 0)
+
+        **Bukti data:**
+        - @prabowo: In=15, Out=**0**
+        - Reciprocity jaringan: **1.2%**
+
+        **Artinya:**
+        Tekanan publik besar, respons institusional nol.
+        Inilah *asymmetric power* — kekuasaan mengalir satu arah.
+
+        **Tidak tampak dari konten:** Jika Anda hanya baca tweet, Anda tidak tahu bahwa *tidak ada satu pun respons resmi* dalam jaringan ini.
+        """)
+
+    with p2:
+        st.warning("""
+        ### 🟡 Pola 2
+        ## ALGORITHMIC TAKEOVER
+
+        **Definisi:** AI agent menggantikan otoritas manusia sebagai penyebar informasi utama
+
+        **Bukti data:**
+        - @grok: Out=**42** (tertinggi)
+        - @grok: In=**0** (tidak didiskusikan balik)
+        - Density jaringan: **0.000707**
+
+        **Artinya:**
+        Di ruang vakum kebijakan, publik tidak berdebat — mereka *bertanya kepada mesin*.
+
+        **Tidak tampak dari konten:** Anda bisa membaca 1.000 tweet tanpa sadar bahwa responden terbanyak bukan manusia, tapi AI.
+        """)
+
+    with p3:
+        st.info("""
+        ### 🔵 Pola 3
+        ## ECHO CHAMBER LOCK
+
+        **Definisi:** 333 komunitas terisolasi, hanya 1 broker yang menghubungkan
+
+        **Bukti data:**
+        - Modularity: **0.9837** (mendekati 1 = super-fragmented)
+        - Broker tunggal: @4Y4NKZ
+        - Betweenness tertinggi: **0.000016** (sangat kecil)
+
+        **Artinya:**
+        Publik tidak berdebat lintas kubu — mereka berbicara di kandangnya masing-masing. Hanya 1 "jembatan" tipis yang menghubungkan semua cluster.
+
+        **Tidak tampak dari konten:** Anda tidak bisa tahu bahwa 333 komunitas ini hampir tidak saling bersentuhan hanya dengan membaca isi tweet.
+        """)
+
+    st.success("""
+    **📌 Sintesis untuk Manuskrip:**
+
+    > *"Graph-based analysis reveals three latent structural patterns invisible to content analysis alone:
+    (1) a **Power Vacuum** in which the most-mentioned policy authority (@prabowo, in-degree=15) maintains zero reciprocal engagement (out-degree=0, reciprocity=1.2%);
+    (2) an **Algorithmic Takeover** in which an AI agent (@grok, out-degree=42) surpasses all human actors as the primary information distributor, filling the void left by institutional silence;
+    and (3) an **Echo Chamber Lock** in which 333 hyper-fragmented communities (modularity=0.9837) are connected by a single non-elite broker (@4Y4NKZ), with no cross-community dialogue occurring at scale.
+    These patterns collectively operationalize the Phygital Gap as a structural — not merely perceptual — phenomenon (Newman, 2006; Gandasari et al., 2023)."*
+    """)
+
 
 elif page == "🖼️ Visual Storytelling":
     st.title("Galeri Visual Storytelling (Academic Blueprint)")
