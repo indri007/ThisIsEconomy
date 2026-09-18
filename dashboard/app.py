@@ -201,9 +201,104 @@ if page == "🏠 Beranda":
 
     **Implikasi Metodologis:** Penggunaan dua pendekatan secara bersamaan *(triangulasi metode)* memperkuat validitas temuan — sarkasme merupakan **sub-dimensi linguistik** dari emosi Jijik, sehingga kedua angka justru saling **mengonfirmasi** dan **melengkapi** satu sama lain.
     """)
-    
-    st.markdown("Silakan gunakan menu navigasi di sebelah kiri untuk mengeksplorasi data secara interaktif atau melihat Galeri **Visual Storytelling** lengkap!")
-    
+    st.markdown("---")
+    st.header("❓ Rumusan Masalah Penelitian")
+    st.markdown("""
+    > *Penelitian ini menggunakan diksi akademik berbasis **Marketing 6.0** dan **Computational Social Science**
+    > — di mana Phygital Gap bukan metafora, melainkan **konstruk yang diukur secara komputasional**
+    > melalui SNA + IndoBERT + Lexical Analysis.*
+    """)
+
+    rm_col1, rm_col2 = st.columns([1, 2])
+    with rm_col1:
+        st.metric("Jumlah RM", "5", "Terstruktur & Terverifikasi")
+        st.metric("Grand Question", "1", "Untuk Abstract")
+        st.metric("Konstruk Inti", "Phygital Gap", "Marketing 6.0")
+
+    with rm_col2:
+        rm_tabs = st.tabs(["RM 1 — Jaringan", "RM 2 — Aktor", "RM 3 — Emosi", "RM 4 — Sarkasme", "RM 5 — ABSA"])
+
+        with rm_tabs[0]:
+            st.info("""
+            **🕸️ Struktur Jaringan Diskursus**
+
+            *"Bagaimana struktur jaringan komunikasi wacana publik MBG di Platform X terbentuk,
+            dan sejauh mana struktur tersebut mencerminkan **fragmentasi diskursus** yang menjadi
+            ciri khas komunikasi kebijakan publik dalam era Phygital?"*
+
+            `network topology` · `discourse fragmentation` · `phygital communication`
+            → Dijawab: SNA — 971 nodes, M=0.9837 (hyper-fragmented)
+            """)
+
+        with rm_tabs[1]:
+            st.info("""
+            **🎯 Kekuasaan & Legitimasi Informasi**
+
+            *"Aktor mana yang menduduki **posisi struktural dominan** dalam jaringan komunikasi
+            wacana MBG di Platform X, dan bagaimana distribusi kekuasaan informasi tersebut
+            berimplikasi terhadap **legitimasi komunikasi kebijakan pemerintah**?"*
+
+            `structural centrality` · `information power` · `policy legitimacy`
+            → Dijawab: @grok (oracle), @4Y4NKZ (broker), @prabowo (target pasif)
+            """)
+
+        with rm_tabs[2]:
+            st.info("""
+            **😊 Pola Emosi & Respons Afektif Publik**
+
+            *"Pola emosi apa yang mendominasi wacana publik MBG di Platform X
+            berdasarkan klasifikasi sembilan kategori emosi menggunakan IndoBERT,
+            dan bagaimana distribusi emosi tersebut mengindikasikan **respons afektif publik**
+            terhadap celah implementasi kebijakan (*phygital gap*)?"*
+
+            `affective response` · `emotion classification` · `implementation gap`
+            → Dijawab: Disgust 56.2%, Trust 20.4%, Neutral 12.3% (IndoBERT N=5,263)
+            """)
+
+        with rm_tabs[3]:
+            st.info("""
+            **😏 Sarkasme sebagai Strategi Resistensi Linguistik**
+
+            *"Seberapa prevalensi penggunaan **sarkasme sebagai strategi komunikasi resistensi**
+            dalam wacana publik MBG, dan bagaimana pola linguistik tersebut berfungsi
+            sebagai penanda sosial dari ketidakpercayaan publik terhadap kebijakan?"*
+
+            `sarcasm as resistance` · `linguistic markers` · `public distrust` · `social signaling`
+            → Dijawab: ~37% cuitan sarkastik (Lexical detection, N=3,395)
+            """)
+
+        with rm_tabs[4]:
+            st.info("""
+            **📋 Aspek Diskursus & Dimensi Phygital Gap**
+
+            *"Aspek dan tema apa yang secara dominan menjadi objek sentimen publik
+            dalam wacana MBG, dan bagaimana pemetaan aspek-sentimen tersebut mengungkapkan
+            **dimensi phygital gap** antara narasi kebijakan dan persepsi implementasi publik?"*
+
+            `aspect-based sentiment` · `discourse theme` · `narrative gap`
+            → Dijawab: ABSA — logistik & anggaran sebagai fokus kritik utama
+            """)
+
+    st.markdown("---")
+    st.subheader("🎯 Grand Research Question")
+    st.success("""
+    *"Bagaimana analisis komputasional berbasis **graf jaringan sosial** dan **IndoBERT**
+    dapat mengungkap pola emosi, sarkasme, dan struktur komunikasi publik dalam wacana
+    kebijakan MBG di Platform X, serta sejauh mana pola tersebut memanifestasikan
+    **phygital gap** antara janji digital komunikasi kebijakan dan realitas penerimaan publik?"*
+    """)
+
+    grq_data = {
+        "Dimensi Phygital Gap": ["🎯 Power Vacuum", "🤖 Algorithmic Trust", "🏘️ Echo Chamber", "🤢 Affective Rejection", "😏 Linguistic Resistance"],
+        "Indikator Struktural": ["@prabowo In=15, Out=0", "@grok Out=42 melampaui semua aktor manusia", "333 komunitas, dialog lintas kubu hampir nol", "Disgust mendominasi 56.2% wacana", "37% cuitan mengandung sarkasme"],
+        "Bukti Data": ["Reciprocity 1.2%", "Out-degree #1 (non-human actor)", "Modularity 0.9837", "IndoBERT N=5,263", "Lexical N=3,395"],
+    }
+    st.dataframe(pd.DataFrame(grq_data), use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+    st.markdown("📌 Silakan gunakan menu navigasi di sebelah kiri untuk mengeksplorasi data secara interaktif!")
+
+
 elif page == "😊 Analisis Emosi (NLP)":
     st.title("Distribusi Emosi Netizen (IndoBERT)")
     
