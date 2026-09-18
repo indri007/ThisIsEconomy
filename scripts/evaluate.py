@@ -18,7 +18,9 @@ import seaborn as sns
 df = pd.read_csv('/Users/jevin/Documents/tesis_mbg/data/results/indobert_9_emosi_fixed.csv')
 df = df.dropna(subset=['processed_text', 'predicted_emotion'])
 
-labels = ['anger', 'disgust', 'fear', 'joy', 'love', 'neutral', 'sadness', 'shame', 'surprise']
+# 9 Kategori Emosi sesuai penelitian (Plutchik's Wheel — versi Indonesia)
+# Dataset aktual memiliki 7 kelas yang muncul; 2 kelas (Bahagia, Kaget) hadir di skema 9 kelas
+labels = ['Marah', 'Jijik', 'Takut', 'Bahagia', 'Tertarik', 'Netral', 'Percaya', 'Sedih', 'Kaget']
 label2id = {label: i for i, label in enumerate(labels)}
 id2label = {i: label for label, i in label2id.items()}
 

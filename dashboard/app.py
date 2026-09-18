@@ -304,72 +304,41 @@ if page == "🏠 Beranda":
 
     # ─── Tabel Penelitian Terdahulu ───
     st.subheader("🗺️ Peta Literatur Penelitian Terdahulu")
+    st.markdown("Berdasarkan **Tabel 1.1 Ikhtisar Kajian Penelitian Terdahulu** dalam manuskrip tesis:")
 
     prior_research = {
-        "Penulis & Tahun": [
+        "No.": [1, 2, 3, 4, 5, 6],
+        "Peneliti (Tahun)": [
+            "Rahayu, Kuntur & Hayatin (2018);\nRiza & Charibaldi (2021)",
+            "Sulafasyah (2026);\nDevulapalli & Mandala (2026)",
+            "Kotler, Kartajaya & Setiawan (2023)",
             "Gandasari et al. (2023)",
             "Shaw, LaCasse & Champagne (2025)",
-            "Arinik & Giritli (2012)",
-            "Chiorri et al. (2019)",
-            "Devalapalli & Mandala (2026)",
-            "Camp, E. (2012)",
-            "Gelders & Ihlen (2010)",
-            "Johnson & Barlow (2021)",
-            "Tsai, Chen & Lu (2026)",
-            "Salafiyah, L. (2026)",
-            "Sari et al. (2026) ⭐",
+            "Sari et al. (2026) ⭐ Self-cite",
         ],
-        "Jurnal / Venue": [
-            "J. Intercultural Comm. (Scopus)",
-            "Soc. Netw. Anal. Mining — SNAM (Scopus Q1)",
-            "Public Relations Review (Scopus Q1)",
-            "CEUR Workshop Proceedings",
-            "Lect. Notes Netw. Syst. (Scopus)",
-            "Noûs — Philosophy (Scopus Q1)",
-            "Government Information Quarterly (Scopus Q1)",
-            "JTAER — MDPI (Scopus Q1)",
-            "Socio-Economic Planning Sciences (Scopus Q1)",
-            "Skripsi UPN Veteran Jatim",
-            "IPSSJ vol. 3 no. 9 (Sinta)",
+        "Judul Penelitian & Metode": [
+            "Deteksi emosi/sarkasme berbahasa Indonesia\n(Fitur leksikal; FastText & LSTM)",
+            "SNA pada Isu MBG;\nProfiling penyebar konten ironis berbasis graf",
+            "Marketing 6.0: The Future Is Immersive\n(Kajian konseptual)",
+            "SNA krisis kebutuhan pokok di Twitter Indonesia\n(SNA + NetworkX)",
+            "Klasifikasi emosi tweet Indonesia via IndoBERT\n(Transfer Learning)",
+            "SNA wacana MBG di Platform X\n(SNA + Louvain)",
         ],
-        "Fokus Utama": [
-            "SNA krisis kebutuhan pokok di Twitter Indonesia",
-            "Klasifikasi emosi tweet Indonesia dengan IndoBERT",
-            "SNA media Twitter vs blog vs media massa",
-            "Analisis sentimen & emosi menggunakan BERT",
-            "Deteksi ironi & sarkasme di Twitter via NLP",
-            "Teori sarkasme: semantik & pragmatik",
-            "Model pemasaran layanan dalam komunikasi kebijakan pemerintah",
-            "Definisi konseptual 'phygital' dalam marketing",
-            "Marketing X.0 untuk kebijakan publik digital",
-            "SNA isu keracunan MBG di Platform X (UPN)",
-            "SNA wacana MBG di Platform X (self-citation)",
+        "Temuan Utama": [
+            "Model leksikal dan sekuensial klasik masih kesulitan membaca sindiran implisit",
+            "Aktor korban memicu pengawasan sosial; graf efektif mengidentifikasi penyebar ironi",
+            "Memperkenalkan gagasan phygital gap pada pengalaman digital-fisik konsumen",
+            "SNA memetakan aktor kunci dan struktur jaringan krisis pangan publik",
+            "IndoBERT unggul dalam klasifikasi emosi multi-kelas pada tweet bahasa Indonesia",
+            "SNA mengungkap fragmentasi jaringan & aktor kunci wacana MBG",
         ],
-        "Metode": [
-            "SNA (NetworkX)",
-            "IndoBERT + Transfer Learning",
-            "SNA + Content Analysis",
-            "BERT + Sentiment",
-            "NLP + Irony Detection",
-            "Discourse Analysis",
-            "Service Gap Model",
-            "Conceptual Review",
-            "Survey + Regression",
-            "SNA saja",
-            "SNA saja",
-        ],
-        "Gap yang Ditinggalkan": [
-            "Tidak ada analisis emosi / sarkasme / NLP",
-            "Tidak ada SNA, tidak ada konteks kebijakan publik",
-            "Tidak ada NLP / emosi / konteks Indonesia",
-            "Tidak ada SNA, bukan tweet Indonesia",
-            "Tidak ada SNA, bukan konteks kebijakan Indonesia",
-            "Tidak ada metodologi komputasional",
-            "Tidak ada analisis digital/sosmed, bukan konteks Indonesia",
-            "Tidak ada aplikasi empiris komputasional",
-            "Tidak ada SNA, tidak ada NLP / emosi",
-            "Tidak ada emosi, sarkasme, atau NLP",
-            "Tidak ada emosi, sarkasme, atau ABSA",
+        "Relevansi & Gap": [
+            "✅ Memperkuat alasan pemilihan IndoBERT dibanding pendekatan pra-transformer\n❌ Belum ada SNA + konteks MBG",
+            "✅ Objek/metode serupa, belum memadukan SNA dengan deteksi emosi granular\n❌ Tidak ada klasifikasi 9 emosi",
+            "✅ Kerangka teoritis utama, belum diujicobakan pada kebijakan pangan pemerintah\n❌ Tidak ada operasionalisasi komputasional",
+            "✅ Metode SNA paling comparable\n❌ Tidak ada NLP / emosi / sarkasme",
+            "✅ Studi pembanding terdekat (IndoBERT + tweet Indonesia)\n❌ Tidak ada SNA / konteks kebijakan publik",
+            "✅ Penelitian dasar tesis ini\n❌ Belum integrasikan NLP, emosi, sarkasme, ABSA",
         ],
     }
     df_prior = pd.DataFrame(prior_research)
@@ -377,6 +346,7 @@ if page == "🏠 Beranda":
 
     st.markdown("---")
     st.subheader("🔍 Research Gap: Yang Belum Pernah Dilakukan")
+
 
     g1, g2, g3 = st.columns(3)
     with g1:
