@@ -269,6 +269,11 @@ st.sidebar.info(
     "A Computational Social Science Approach."
 )
 
+st.sidebar.markdown("---")
+st.sidebar.markdown("### 🌐 Akses Publik & Unduhan")
+st.sidebar.markdown("📦 [Repositori GitHub Publik](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)")
+st.sidebar.markdown("⚡ [Unduh Semua Kode & Data (.ZIP)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)")
+
 
 if "Bab I" in page or page == "🏠 Beranda":
     render_thesis_stepper(1)
@@ -4653,6 +4658,76 @@ elif "Audit" in page or "Scopus" in page:
     - **Klaster A & C** membuktikan fenomena **Phygital Gap** (Gelders & Ihlen 2010; Camp 2012) di mana 56,24% sentimen Jijik dan 9,28% gaya bahasa sarkasme merefleksikan kegagalan delivery fisik menu MBG.
     - **Klaster B** memvalidasi performa **IndoBERT** (Wilie et al. 2020; Shaw et al. 2025) dengan macro F1-score 0.8122 pada 9 kelas emosi granular Plutchik.
     - **Klaster D & E** membuktikan **polarisasi ekstrem jaringan warganet** (modularitas Q=0.9837; Newman 2006; Blondel et al. 2008) dengan kepatuhan etika big data (Boyd & Crawford 2012; Ferrara et al. 2016).
+    """)
+
+    st.markdown("---")
+    st.header("📥 Pusat Unduhan Dataset & Repositori Terbuka (Open Data & Download Center)")
+    st.markdown("""
+    > *Sebagai wujud transparansi sains dan kepatuhan terhadap prinsip **Open Science & Data Verifiability**, 
+    > seluruh korpus data empiris, kode pemodelan, dan naskah penelitian dapat diunduh langsung secara publik.*
+    """)
+
+    # 4 Download buttons in columns
+    dcol1, dcol2, dcol3, dcol4 = st.columns(4)
+    with dcol1:
+        path_dl_emo = "data/results/indobert_9_emosi_fixed.csv"
+        if not os.path.exists(path_dl_emo):
+            path_dl_emo = "../data/results/indobert_9_emosi_fixed.csv"
+        if os.path.exists(path_dl_emo):
+            with open(path_dl_emo, "rb") as f_dl:
+                st.download_button(
+                    label="💾 Unduh Dataset Emosi (N=5.263)",
+                    data=f_dl.read(),
+                    file_name="dataset_indobert_9_emosi_fixed.csv",
+                    mime="text/csv",
+                    use_container_width=True
+                )
+    with dcol2:
+        path_dl_sin = "data/sarcasm/dataset_sindiran_valid.csv"
+        if not os.path.exists(path_dl_sin):
+            path_dl_sin = "../data/sarcasm/dataset_sindiran_valid.csv"
+        if os.path.exists(path_dl_sin):
+            with open(path_dl_sin, "rb") as f_dl:
+                st.download_button(
+                    label="💾 Unduh Data Sindiran (N=3.395)",
+                    data=f_dl.read(),
+                    file_name="dataset_sindiran_valid.csv",
+                    mime="text/csv",
+                    use_container_width=True
+                )
+    with dcol3:
+        path_dl_absa = get_result_path("absa_results.csv")
+        if not os.path.exists(path_dl_absa):
+            path_dl_absa = "results/absa_results.csv"
+        if os.path.exists(path_dl_absa):
+            with open(path_dl_absa, "rb") as f_dl:
+                st.download_button(
+                    label="💾 Unduh Data ABSA 3 Aspek",
+                    data=f_dl.read(),
+                    file_name="absa_results.csv",
+                    mime="text/csv",
+                    use_container_width=True
+                )
+    with dcol4:
+        path_dl_nodes = "data/results/sna_degree.csv"
+        if not os.path.exists(path_dl_nodes):
+            path_dl_nodes = "../data/results/sna_degree.csv"
+        if os.path.exists(path_dl_nodes):
+            with open(path_dl_nodes, "rb") as f_dl:
+                st.download_button(
+                    label="💾 Unduh Data Sentralitas SNA",
+                    data=f_dl.read(),
+                    file_name="sna_degree.csv",
+                    mime="text/csv",
+                    use_container_width=True
+                )
+
+    # Repository links card
+    st.info("""
+    🌐 **Akses Repositori GitHub & Direct Download Link:**
+    - 📦 **Repositori Utama:** [github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)
+    - ⚡ **Direct Download (Full ZIP):** [Unduh Semua Kode & Data (.ZIP)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)
+    - 🚀 **Deploy Publik ke Internet:** Hubungkan repositori GitHub ini ke [share.streamlit.io](https://share.streamlit.io/) dengan file `dashboard/app.py` agar dashboard dapat diakses publik 24/7.
     """)
 
 
