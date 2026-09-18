@@ -2294,6 +2294,55 @@ elif page == "🕸️ Analisis Jaringan (CNA)":
     2. **Komunikasi Searah (Reciprocity 0,0121):** Dialog dua arah hampir nihil (hanya 1,2%). Netizen lebih banyak me-mention figur otoritas sebagai bentuk keluhan/protes satu arah tanpa adanya respon balik (*top-down communication failure*).
     """)
 
+    # ── Visualisasi Spektrum & Gauge Modularitas (Newman, 2006) ──
+    st.subheader("📐 Visualisasi Spektrum & Evaluasi Modularitas Louvain (Q = 0.9837)")
+    col_gauge, col_mbar = st.columns([1, 1.3])
+    with col_gauge:
+        fig_q_gauge = go.Figure(go.Indicator(
+            mode='gauge+number',
+            value=0.9837,
+            domain={'x': [0, 1], 'y': [0, 1]},
+            title={'text': '<b>Skor Modularitas Louvain (Q)</b><br><span style="font-size:0.8em;color:#94a3b8">Ambang Newman Q > 0.3</span>'},
+            gauge={
+                'axis': {'range': [0, 1], 'tickwidth': 1, 'tickcolor': '#cbd5e1'},
+                'bar': {'color': '#ef4444', 'thickness': 0.35},
+                'bgcolor': '#1e293b',
+                'borderwidth': 2,
+                'bordercolor': '#334155',
+                'steps': [
+                    {'range': [0, 0.3], 'color': 'rgba(16, 185, 129, 0.25)'},
+                    {'range': [0.3, 0.7], 'color': 'rgba(245, 158, 11, 0.25)'},
+                    {'range': [0.7, 1.0], 'color': 'rgba(239, 68, 68, 0.25)'}
+                ],
+                'threshold': {
+                    'line': {'color': '#f59e0b', 'width': 3},
+                    'thickness': 0.8,
+                    'value': 0.3
+                }
+            }
+        ))
+        fig_q_gauge.update_layout(height=320, margin=dict(t=50, b=20, l=20, r=20))
+        st.plotly_chart(fig_q_gauge, use_container_width=True)
+
+    with col_mbar:
+        df_mod_comp = pd.DataFrame({
+            'Fase Riset': ['Ambang Newman (2006)', 'Data Pilot (Feb 2025)', 'Korpus Resmi (Mar–Mei 2026)'],
+            'Modularity Q': [0.3000, 0.7130, 0.9837],
+            'Status': ['Batas Polarisasi Minimal', 'Polarisasi Kuat', 'Hyper-Fragmentation Ekstrem']
+        })
+        fig_q_bar = px.bar(
+            df_mod_comp,
+            x='Fase Riset',
+            y='Modularity Q',
+            color='Modularity Q',
+            color_continuous_scale=['#10b981', '#f59e0b', '#ef4444'],
+            text='Modularity Q',
+            title="Komparasi Intensifikasi Modularitas Jaringan"
+        )
+        fig_q_bar.update_traces(texttemplate='%{text:.4f}', textposition='outside')
+        fig_q_bar.update_layout(height=320, margin=dict(t=50, b=20, l=10, r=10), yaxis_range=[0, 1.15], coloraxis_showscale=False)
+        st.plotly_chart(fig_q_bar, use_container_width=True)
+
     # ── Load Network Data Real ──
     edges, nodes_data = load_network_data()
     G_undir = nx.from_pandas_edgelist(edges, 'Source', 'Target')
@@ -2391,6 +2440,55 @@ elif page == "🕸️ Analisis Jaringan (CNA)":
             fig_comm_donut.update_traces(textposition='inside', textinfo='percent+label')
             fig_comm_donut.update_layout(showlegend=False, margin=dict(t=30, b=10, l=10, r=10), height=280)
             st.plotly_chart(fig_comm_donut, use_container_width=True)
+
+        # ── Visualisasi Distribusi Emosi per Komunitas Louvain ──
+        st.subheader("📊 Distribusi Emosi Dominan per Komunitas Louvain")
+        st.caption("Membuktikan polarisasi afektif: Klaster #15 didominasi emosi Jijik (Disgust), sedangkan Klaster #61 didominasi Netral:")
+        
+        top5_cids = top_comms.index.tolist()
+        df_sub_comm = df_comm_nodes[df_comm_nodes['Community'].isin(top5_cids)].copy()
+        df_sub_comm['Klaster'] = df_sub_comm['Community'].apply(lambda x: f'Klaster #{x}')
+        emo_id_labels = {
+            'disgust': '🤢 Jijik (Disgust)',
+            'neutral': '😐 Netral',
+            'love': '🤝 Percaya (Trust)',
+            'anger': '😡 Marah',
+            'shame': '🔮 Tertarik'
+        }
+        df_sub_comm['Emosi'] = df_sub_comm['Dominant_Emotion'].map(emo_id_labels).fillna(df_sub_comm['Dominant_Emotion'])
+        ct = pd.crosstab(df_sub_comm['Klaster'], df_sub_comm['Emosi']).reset_index()
+        ct_melt = ct.melt(id_vars='Klaster', var_name='Emosi', value_name='Jumlah Aktor')
+        
+        fig_comm_emo = px.bar(
+            ct_melt,
+            x='Klaster',
+            y='Jumlah Aktor',
+            color='Emosi',
+            barmode='stack',
+            title="Komposisi Emosi di 5 Komunitas Terbesar",
+            color_discrete_map={
+                '🤢 Jijik (Disgust)': '#ef4444',
+                '😐 Netral': '#3b82f6',
+                '🤝 Percaya (Trust)': '#10b981',
+                '😡 Marah': '#dc2626',
+                '🔮 Tertarik': '#8b5cf6'
+            }
+        )
+        fig_comm_emo.update_layout(height=340, margin=dict(t=40, b=20, l=10, r=10))
+        st.plotly_chart(fig_comm_emo, use_container_width=True)
+
+        # ── Interactive Community Member Explorer ──
+        with st.expander("🔎 Eksplorasi Anggota & Aktor per Komunitas Louvain", expanded=False):
+            sel_cid = st.selectbox(
+                "Pilih Komunitas Louvain untuk Melihat Anggota Akun:",
+                options=top5_cids,
+                format_func=lambda x: f"Klaster #{x} ({top_comms.get(x, 0)} aktor) — {fokus_map.get(x, 'Diskursus')}"
+            )
+            df_sel_members = df_comm_nodes[df_comm_nodes['Community'] == sel_cid][['Id', 'Degree', 'Betweenness', 'Dominant_Emotion']].copy()
+            df_sel_members.columns = ['Akun Pengguna', 'Degree Centrality', 'Betweenness Centrality', 'Emosi Dominan']
+            df_sel_members['Akun Pengguna'] = df_sel_members['Akun Pengguna'].apply(lambda x: f"@{x}")
+            df_sel_members['Emosi Dominan'] = df_sel_members['Emosi Dominan'].map(emo_id_labels).fillna(df_sel_members['Emosi Dominan'])
+            st.dataframe(df_sel_members.sort_values(by='Degree Centrality', ascending=False), use_container_width=True, hide_index=True)
 
     st.markdown("---")
 
@@ -2679,101 +2777,220 @@ elif page == "🕸️ Analisis Jaringan (CNA)":
         """)
 
     st.markdown("---")
-    st.subheader("🌐 Eksplorasi Graf Interaktif (PyVis)")
-    st.markdown("Visualisasi graf interaktif dari wacana MBG di platform X (node diwarnai berdasarkan komunitas Louvain riil):")
-    
+    st.markdown("---")
+    st.subheader("🌐 Visualisasi Terpadu Jaringan Komunikasi SNA (Komunitas & Relasi)")
+    st.markdown("Eksplorasi graf jaringan komunikasi wacana MBG di platform X (node diwarnai berdasarkan Komunitas Louvain riil):")
+
     edges, nodes_data = load_network_data()
-    
-    st.info("💡 **Tips Interaktif:** Anda dapat melakukan *scroll* untuk Zoom In/Out, men-drag node, atau mengklik node untuk melihat relasi terhubung.")
-    
-    if not PYVIS_AVAILABLE:
-        st.warning("⚠️ Modul `pyvis` belum terpasang di environment Python Anda. Pasang dengan `pip install pyvis` untuk mengaktifkan graf interaktif ini.")
-    else:
-        try:
-            # Generate PyVis graph
-            net = Network(height="600px", width="100%", bgcolor="#1e293b", font_color="white")
-            net.force_atlas_2based()
-            
-            if nodes_data is not None and 'Degree' in nodes_data.columns:
-                top_nodes = nodes_data.sort_values(by='Degree', ascending=False).head(150)['Id'].tolist()
-            else:
-                G_temp = nx.from_pandas_edgelist(edges, 'Source', 'Target')
-                degree_dict = dict(G_temp.degree())
-                top_nodes = sorted(degree_dict, key=degree_dict.get, reverse=True)[:150]
-                
-            filtered_edges = edges[edges['Source'].isin(top_nodes) | edges['Target'].isin(top_nodes)]
-            G = nx.from_pandas_edgelist(filtered_edges, 'Source', 'Target')
-            
-            # Node community & emotion mapping
-            nodes_info_path = "results/mbg_network_nodes_final.csv" if os.path.exists("results/mbg_network_nodes_final.csv") else "../results/mbg_network_nodes_final.csv"
-            node_comm_map = {}
-            node_emo_map = {}
-            if os.path.exists(nodes_info_path):
-                df_ninfo = pd.read_csv(nodes_info_path)
-                node_comm_map = dict(zip(df_ninfo['Id'], df_ninfo['Community']))
-                node_emo_map = dict(zip(df_ninfo['Id'], df_ninfo['Dominant_Emotion']))
-                
-            comm_palette = {
-                15: "#ef4444",   # Red / Disgust
-                61: "#3b82f6",   # Blue / Neutral
-                16: "#f59e0b",   # Amber / Sarcasm
-                259: "#10b981",  # Green / Trust
-                8: "#8b5cf6",    # Purple / Budget
-            }
-            
-            # Add nodes and edges to pyvis with rich aesthetic attributes
-            for node in G.nodes():
-                deg = dict(G.degree()).get(node, 1)
-                cid = node_comm_map.get(node, -1)
-                emo = node_emo_map.get(node, "netral")
-                col = comm_palette.get(cid, "#94a3b8")
-                
-                # Highlighting Key Actors
-                if node == "grok":
-                    col = "#06b6d4"  # Cyan for AI Oracle
-                    size = 34
-                    label = "🤖 @grok"
-                elif node == "prabowo":
-                    col = "#eab308"  # Gold for President
-                    size = 30
-                    label = "👑 @prabowo"
-                elif node == "4Y4NKZ":
-                    col = "#ec4899"  # Pink for Broker
-                    size = 28
-                    label = "🔗 @4Y4NKZ"
-                else:
-                    size = max(8, min(24, deg * 3))
-                    label = f"@{node}" if deg >= 4 else ""
-                emo_id_map = {
-                    'disgust': '🤢 Jijik (Disgust)',
-                    'neutral': '😐 Netral',
-                    'love': '🤝 Percaya (Trust)',
-                    'shame': '🔮 Tertarik',
-                    'anger': '😡 Marah',
-                    'sadness': '😢 Sedih',
-                    'fear': '😨 Takut',
-                    'joy': '😊 Bahagia',
-                    'surprise': '😲 Kaget'
-                }
-                emo_ind = emo_id_map.get(str(emo).lower(), str(emo))
-                tooltip = f"<div style='font-family: sans-serif; font-size: 12px; padding: 4px;'><b>@{node}</b><br>🧩 Klaster: #{cid}<br>🎭 Emosi Dominan: {emo_ind}<br>📊 Total Derajat: {deg}</div>"
-                net.add_node(node, label=label, title=tooltip, size=size, color=col)
-                
-            for source, target in G.edges():
-                net.add_edge(source, target, color="rgba(255,255,255,0.15)")
-                
-            # Save graph to HTML
-            path = 'html_files'
-            if not os.path.exists(path):
-                os.makedirs(path)
-            net.save_graph(f'{path}/network.html')
-            
-            HtmlFile = open(f'{path}/network.html', 'r', encoding='utf-8')
-            source_code = HtmlFile.read()
-            components.html(source_code, height=650, scrolling=True)
-        except Exception as e:
-            st.error(f"Gagal memuat visualisasi PyVis: {e}")
+    nodes_info_path = "results/mbg_network_nodes_final.csv" if os.path.exists("results/mbg_network_nodes_final.csv") else "../results/mbg_network_nodes_final.csv"
+    df_ninfo_map = pd.read_csv(nodes_info_path) if os.path.exists(nodes_info_path) else None
+    n_comm_map = dict(zip(df_ninfo_map['Id'], df_ninfo_map['Community'])) if df_ninfo_map is not None else {}
+    n_emo_map = dict(zip(df_ninfo_map['Id'], df_ninfo_map['Dominant_Emotion'])) if df_ninfo_map is not None else {}
+
+    graph_tab1, graph_tab2 = st.tabs(["📊 Graf Jaringan Interaktif (Plotly Native)", "🕸️ Graf Dinamis Physics 3D (PyVis)"])
+
+    with graph_tab1:
+        st.caption("Visualisasi graf jaringan berarah langsung di Streamlit (100% native tanpa ketergantungan iframe):")
         
+        col_flt1, col_flt2 = st.columns([1.2, 2])
+        with col_flt1:
+            n_scale = st.radio("Skala Graf Ditampilkan:", [50, 100, 150], index=1, format_func=lambda x: f"Top {x} Aktor Utama", horizontal=True)
+        with col_flt2:
+            st.info("🎨 **Legenda Komunitas Louvain:** 🔴 Klaster #15 (Disgust) | 🔵 Klaster #61 (Netral) | 🟡 Klaster #16 (Sindiran) | 🟢 Klaster #259 (Trust) | 🟣 Klaster #8 (Anggaran)")
+
+        # Load graph and subgraph
+        G_full = nx.from_pandas_edgelist(edges, source='Source', target='Target', create_using=nx.DiGraph())
+        deg_all = dict(G_full.degree())
+        sel_top_nodes = sorted(deg_all, key=deg_all.get, reverse=True)[:n_scale]
+        subG_plot = G_full.subgraph(sel_top_nodes)
+
+        # Layout computation
+        pos_2d = nx.spring_layout(subG_plot, seed=42, k=0.22, iterations=50)
+
+        # Edges trace
+        edge_x, edge_y = [], []
+        for u, v in subG_plot.edges():
+            x0, y0 = pos_2d[u]
+            x1, y1 = pos_2d[v]
+            edge_x.extend([x0, x1, None])
+            edge_y.extend([y0, y1, None])
+
+        edge_trace = go.Scatter(
+            x=edge_x, y=edge_y,
+            line=dict(width=0.85, color='rgba(148, 163, 184, 0.35)'),
+            hoverinfo='none',
+            mode='lines'
+        )
+
+        # Nodes trace
+        node_x, node_y = [], []
+        node_sizes, node_colors, node_hover, node_labels = [], [], [], []
+
+        comm_colors = {
+            15: '#ef4444',
+            61: '#3b82f6',
+            16: '#f59e0b',
+            259: '#10b981',
+            8: '#8b5cf6'
+        }
+
+        for n in subG_plot.nodes():
+            x, y = pos_2d[n]
+            node_x.append(x)
+            node_y.append(y)
+            d_val = deg_all.get(n, 1)
+            cid = n_comm_map.get(n, -1)
+            c_hex = comm_colors.get(cid, '#94a3b8')
+
+            # Special actor highlights
+            if n == 'grok':
+                c_hex = '#06b6d4'
+                sz = 32
+                lbl = '🤖 @grok'
+            elif n == 'prabowo':
+                c_hex = '#eab308'
+                sz = 28
+                lbl = '👑 @prabowo'
+            elif n == '4Y4NKZ':
+                c_hex = '#ec4899'
+                sz = 26
+                lbl = '🔗 @4Y4NKZ'
+            elif n in ['tanyarlfes', 'tanyakanrl', 'LambeSahamjja', 'itbfess_x']:
+                c_hex = '#8b5cf6'
+                sz = 22
+                lbl = f'📡 @{n}'
+            else:
+                sz = max(8, min(22, d_val * 2.5))
+                lbl = f'@{n}' if d_val >= 4 else ''
+
+            node_sizes.append(sz)
+            node_colors.append(c_hex)
+            node_labels.append(lbl)
+            
+            in_d = G_full.in_degree(n)
+            out_d = G_full.out_degree(n)
+            emo = n_emo_map.get(n, 'netral')
+            node_hover.append(
+                f"<b>@{n}</b><br>"
+                f"Komunitas: Klaster #{cid}<br>"
+                f"Total Degree: {d_val}<br>"
+                f"In-Degree: {in_d} | Out-Degree: {out_d}<br>"
+                f"Emosi Dominan: {emo}"
+            )
+
+        node_trace = go.Scatter(
+            x=node_x, y=node_y,
+            mode='markers+text',
+            hoverinfo='text',
+            text=node_labels,
+            textposition='top center',
+            textfont=dict(size=10, color='#f8fafc'),
+            hovertext=node_hover,
+            marker=dict(
+                color=node_colors,
+                size=node_sizes,
+                line=dict(width=1.5, color='#ffffff')
+            )
+        )
+
+        fig_net_plotly = go.Figure(
+            data=[edge_trace, node_trace],
+            layout=go.Layout(
+                title=f"Peta Relasi Jaringan Komunikasi MBG ({n_scale} Aktor Teratas)",
+                showlegend=False,
+                hovermode='closest',
+                margin=dict(b=20, l=10, r=10, t=40),
+                xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                plot_bgcolor='#0f172a',
+                paper_bgcolor='#0f172a',
+                height=560
+            )
+        )
+        st.plotly_chart(fig_net_plotly, use_container_width=True)
+
+    with graph_tab2:
+        st.info("💡 **Tips Interaktif:** Anda dapat melakukan *scroll* untuk Zoom In/Out, men-drag node, atau mengklik node untuk melihat relasi terhubung secara dinamis.")
+        
+        if not PYVIS_AVAILABLE:
+            st.warning("⚠️ Modul `pyvis` belum terpasang di environment Python Anda. Pasang dengan `pip install pyvis` untuk mengaktifkan graf interaktif ini.")
+        else:
+            try:
+                # Generate PyVis graph
+                net = Network(height="600px", width="100%", bgcolor="#1e293b", font_color="white")
+                net.force_atlas_2based()
+                
+                if nodes_data is not None and 'Degree' in nodes_data.columns:
+                    top_nodes = nodes_data.sort_values(by='Degree', ascending=False).head(150)['Id'].tolist()
+                else:
+                    G_temp = nx.from_pandas_edgelist(edges, 'Source', 'Target')
+                    degree_dict = dict(G_temp.degree())
+                    top_nodes = sorted(degree_dict, key=degree_dict.get, reverse=True)[:150]
+                    
+                filtered_edges = edges[edges['Source'].isin(top_nodes) | edges['Target'].isin(top_nodes)]
+                G = nx.from_pandas_edgelist(filtered_edges, 'Source', 'Target')
+                
+                comm_palette = {
+                    15: "#ef4444",   # Red / Disgust
+                    61: "#3b82f6",   # Blue / Neutral
+                    16: "#f59e0b",   # Amber / Sarcasm
+                    259: "#10b981",  # Green / Trust
+                    8: "#8b5cf6",    # Purple / Budget
+                }
+                
+                # Add nodes and edges to pyvis with rich aesthetic attributes
+                for node in G.nodes():
+                    deg = dict(G.degree()).get(node, 1)
+                    cid = n_comm_map.get(node, -1)
+                    emo = n_emo_map.get(node, "netral")
+                    col = comm_palette.get(cid, "#94a3b8")
+                    
+                    # Highlighting Key Actors
+                    if node == "grok":
+                        col = "#06b6d4"  # Cyan for AI Oracle
+                        size = 34
+                        label = "🤖 @grok"
+                    elif node == "prabowo":
+                        col = "#eab308"  # Gold for President
+                        size = 30
+                        label = "👑 @prabowo"
+                    elif node == "4Y4NKZ":
+                        col = "#ec4899"  # Pink for Broker
+                        size = 28
+                        label = "🔗 @4Y4NKZ"
+                    else:
+                        size = max(8, min(24, deg * 3))
+                        label = f"@{node}" if deg >= 4 else ""
+                    emo_id_map = {
+                        'disgust': '🤢 Jijik (Disgust)',
+                        'neutral': '😐 Netral',
+                        'love': '🤝 Percaya (Trust)',
+                        'shame': '🔮 Tertarik',
+                        'anger': '😡 Marah',
+                        'sadness': '😢 Sedih',
+                        'fear': '😨 Takut',
+                        'joy': '😊 Bahagia',
+                        'surprise': '😲 Kaget'
+                    }
+                    emo_ind = emo_id_map.get(str(emo).lower(), str(emo))
+                    tooltip = f"<div style='font-family: sans-serif; font-size: 12px; padding: 4px;'><b>@{node}</b><br>🧩 Klaster: #{cid}<br>🎭 Emosi Dominan: {emo_ind}<br>📊 Total Derajat: {deg}</div>"
+                    net.add_node(node, label=label, title=tooltip, size=size, color=col)
+                    
+                for source, target in G.edges():
+                    net.add_edge(source, target, color="rgba(255,255,255,0.15)")
+                    
+                # Save graph to HTML
+                path = 'html_files'
+                if not os.path.exists(path):
+                    os.makedirs(path)
+                net.save_graph(f'{path}/network.html')
+                
+                HtmlFile = open(f'{path}/network.html', 'r', encoding='utf-8')
+                source_code = HtmlFile.read()
+                components.html(source_code, height=650, scrolling=True)
+            except Exception as e:
+                st.error(f"Gagal memuat visualisasi PyVis: {e}")
+
     st.markdown("---")
     st.subheader("Visualisasi Jaringan Statis (Topologi & Aktor Utama)")
     st.markdown("Grafik di bawah mengonfirmasi bahwa ekosistem wacana ini sangat terfragmentasi (*echo-chambers*) tanpa pusat dialog, di mana agen AI justru mengambil alih otoritas informasi.")
