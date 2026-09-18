@@ -1,0 +1,11 @@
+Emotion,precision,recall,f1-score,support
+Jijik,0.57,0.9692,0.7178,584
+Percaya,0.6842,0.1866,0.2932,209
+Netral,0.0,0.0,0.0,143
+Tertarik,0.0,0.0,0.0,101
+Marah,0.0,0.0,0.0,12
+Sedih,0.0,0.0,0.0,3
+Takut,0.0,0.0,0.0,1
+accuracy,0.5745,0.5745,0.5745,1053
+macro avg,0.1792,0.1651,0.1444,1053
+weighted avg,0.452,0.5745,0.4563,1053
