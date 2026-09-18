@@ -2179,34 +2179,441 @@ elif page == "😊 Analisis Emosi (NLP)":
     """)
 
     st.markdown("---")
-    # ── §4.6 SINTESIS MARKETING 6.0 & PHYGITAL GAP ──
-    st.header("🌐 §4.6 Sintesis: Perspektif Marketing 6.0 dan Phygital Gap")
+    # ── §4.6 SINTESIS MARKETING 6.0, ABSA 3 ASPEK, & TRIANGULASI KOMPUTASIONAL ──
+    st.markdown("---")
+    st.header("🌐 §4.6 Aspect-Based Sentiment Analysis (ABSA), Triangulasi Komputasional & Phygital Gap")
     st.markdown("""
-    > *Sintesis akhir menautkan temuan komputasional **NLP (Emosi & Sindiran)** dan **SNA (Topologi & Aktor)** 
-    > ke dalam kerangka **Marketing 6.0 (Kotler, Kartajaya, & Setiawan, 2023)** untuk menjawab eksistensi Phygital Gap.*
+    > *Bagian ini menyajikan rekonstruksi visual komprehensif dari **Bab IV (§4.6 Halaman 105 – 109)** naskah tesis.
+    > Di sini dilakukan triangulasi metode 3 dimensi: **NLP IndoBERT (Afeksi & Sindiran)** $\\times$ **SNA Louvain (Topologi & Aktor)** $\\times$ **ABSA (3 Pilar Fisik Kebijakan)**
+    > untuk membuktikan eksistensi dan membedah secara tuntas **"Artinya"** (makna teoretis, komunikasi krisis, dan implikasi kebijakan) dari fenomena **Phygital Gap**.*
     """)
 
-    ph_col1, ph_col2, ph_col3 = st.columns(3)
-    with ph_col1:
+    # 1. Load Data ABSA
+    path_absa_file = get_result_path("absa_results.csv")
+    if not os.path.exists(path_absa_file):
+        path_absa_file = "results/absa_results.csv"
+    if not os.path.exists(path_absa_file):
+        path_absa_file = "../results/absa_results.csv"
+        
+    if os.path.exists(path_absa_file):
+        df_absa_data = pd.read_csv(path_absa_file)
+    else:
+        df_absa_data = pd.DataFrame([
+            {"Aspect": "Logistik & Distribusi", "Total_Tweets": 403, "Disgust_Count": 318, "Disgust_Pct": 78.91, "Trust_Count": 21, "Trust_Pct": 5.21, "Neutral_Interest_Count": 64, "Neutral_Interest_Pct": 15.88},
+            {"Aspect": "Anggaran & Vendor", "Total_Tweets": 535, "Disgust_Count": 412, "Disgust_Pct": 77.01, "Trust_Count": 23, "Trust_Pct": 4.30, "Neutral_Interest_Count": 100, "Neutral_Interest_Pct": 18.69},
+            {"Aspect": "Kualitas Gizi", "Total_Tweets": 1344, "Disgust_Count": 956, "Disgust_Pct": 71.13, "Trust_Count": 119, "Trust_Pct": 8.85, "Neutral_Interest_Count": 269, "Neutral_Interest_Pct": 20.01}
+        ])
+
+    # 2. Metric KPI Cards (3 Aspek Fisik)
+    st.subheader("🎯 1. Tiga Pilar Fisik Operasional Kebijakan (Data Riil ABSA)")
+    st.caption("Distribusi sentimen publik terhadap 3 pilar operasional fisik Makan Bergizi Gratis (Total N = 2.282 cuitan terklasifikasi aspek):")
+
+    absa_kpi1, absa_kpi2, absa_kpi3 = st.columns(3)
+    with absa_kpi1:
         st.error("""
-        ### 🚚 Aspek Logistik
-        - **Temuan**: Dominasi emosi **Jijik (56.2%)**
-        - **Pemicu**: Laporan nasi basi, kemasan rusak, dan distribusi terlambat di daerah 3T.
-        - **Phygital Gap**: Janji digital kesiapan suplai vs realitas fisik rantai pasok rapuh.
+        ### 🚚 Logistik & Distribusi
+        **Total Diskursus:** 403 Cuitan (17,66%)  
+        - 🤢 **Jijik (Disgust): 78,91%** (318 cuitan) ★
+        - 🤝 **Percaya (Trust): 5,21%** (21 cuitan)
+        - 😐 **Netral/Minat: 15,88%** (64 cuitan)
+
+        **Isu Utama Lapangan:**
+        Makanan basi, aroma busuk, katering terlambat, porsi hancur dalam perjalanan, insiden keracunan di sekolah uji coba.
         """)
-    with ph_col2:
+    with absa_kpi2:
         st.warning("""
-        ### 💰 Aspek Anggaran
-        - **Temuan**: Prevalensi **Sindiran (9,28% validasi / 56,6% proksi afektif)**
-        - **Pemicu**: Pemangkasan porsi menu dari pagu Rp15.000 menjadi Rp7.500–10.000.
-        - **Phygital Gap**: Narasi belanja triliunan rupiah vs realitas fisik porsi minimalis di piring siswa.
+        ### 💰 Anggaran & Vendor
+        **Total Diskursus:** 535 Cuitan (23,44%)  
+        - 🤢 **Jijik (Disgust): 77,01%** (412 cuitan) ★
+        - 🤝 **Percaya (Trust): 4,30%** (23 cuitan)
+        - 😐 **Netral/Minat: 18,69%** (100 cuitan)
+
+        **Isu Utama Lapangan:**
+        Wacana pemangkasan pagu Rp15.000 ➔ Rp7.500–10.000, tender katering tertutup, dugaan rente pihak ketiga, efisiensi APBN.
         """)
-    with ph_col3:
+    with absa_kpi3:
         st.info("""
-        ### 🥗 Aspek Kualitas Gizi
-        - **Temuan**: Sentimen negatif & resistensi
-        - **Pemicu**: Insiden keracunan massal & ketiadaan sertifikasi uji higienis di beberapa titik uji coba.
-        - **Phygital Gap**: Janji 'generasi emas bebas stunting' vs trauma keracunan makanan di lapangan.
+        ### 🥗 Kualitas Gizi Makanan
+        **Total Diskursus:** 1.344 Cuitan (58,90%)  
+        - 🤢 **Jijik (Disgust): 71,13%** (956 cuitan) ★
+        - 🤝 **Percaya (Trust): 8,85%** (119 cuitan)
+        - 😐 **Netral/Minat: 20,01%** (269 cuitan)
+
+        **Isu Utama Lapangan:**
+        Menu dominan karbohidrat minim protein/susu, ketiadaan sertifikat uji klinis gizi, kekhawatiran menu tidak higienis.
+        """)
+
+    # 3. Interactive Visualizations for ABSA
+    st.markdown("---")
+    st.subheader("📊 2. Visualisasi Interaktif ABSA (Aspect-Based Sentiment Analysis)")
+    
+    absa_tab1, absa_tab2, absa_tab3, absa_tab4 = st.tabs([
+        "📊 Komparasi Sentimen 3 Aspek (Grouped & Stacked Bar)",
+        "🕸️ Radar Chart Profil Emosi 3 Pilar",
+        "🔍 Eksplorasi Leksikon & Sampel Cuitan Riil",
+        "🖼️ Visualisasi Tematik Tesis (Gambar 10)"
+    ])
+
+    with absa_tab1:
+        st.markdown("#### 📈 Perbandingan Proporsi Sentimen antar Aspek Kebijakan")
+        chart_mode = st.radio("Pilih Tampilan Grafik:", ["Grouped Bar (Persentase %)", "Stacked Bar 100% (Komposisi)", "Absolute Volume (Jumlah Cuitan)"], horizontal=True)
+
+        fig_absa_bar = go.Figure()
+        
+        if chart_mode == "Grouped Bar (Persentase %)":
+            fig_absa_bar.add_trace(go.Bar(
+                x=df_absa_data['Aspect'],
+                y=df_absa_data['Disgust_Pct'],
+                name='🤢 Jijik / Disgust (Negatif Ekstrem)',
+                marker_color='#ef4444',
+                text=df_absa_data['Disgust_Pct'].apply(lambda v: f"{v:.1f}%"),
+                textposition='auto',
+                hovertemplate="<b>%{x}</b><br>Disgust: %{y:.2f}%<extra></extra>"
+            ))
+            fig_absa_bar.add_trace(go.Bar(
+                x=df_absa_data['Aspect'],
+                y=df_absa_data['Trust_Pct'],
+                name='🤝 Percaya / Trust (Apresiasi)',
+                marker_color='#10b981',
+                text=df_absa_data['Trust_Pct'].apply(lambda v: f"{v:.1f}%"),
+                textposition='auto',
+                hovertemplate="<b>%{x}</b><br>Trust: %{y:.2f}%<extra></extra>"
+            ))
+            fig_absa_bar.add_trace(go.Bar(
+                x=df_absa_data['Aspect'],
+                y=df_absa_data['Neutral_Interest_Pct'],
+                name='😐 Netral & Minat Ekspektasi',
+                marker_color='#64748b',
+                text=df_absa_data['Neutral_Interest_Pct'].apply(lambda v: f"{v:.1f}%"),
+                textposition='auto',
+                hovertemplate="<b>%{x}</b><br>Netral: %{y:.2f}%<extra></extra>"
+            ))
+            fig_absa_bar.update_layout(
+                barmode='group',
+                yaxis_title="Persentase Cuitan (%)",
+                yaxis=dict(range=[0, 95])
+            )
+        elif chart_mode == "Stacked Bar 100% (Komposisi)":
+            fig_absa_bar.add_trace(go.Bar(
+                x=df_absa_data['Aspect'],
+                y=df_absa_data['Disgust_Pct'],
+                name='🤢 Jijik / Disgust',
+                marker_color='#ef4444',
+                text=df_absa_data['Disgust_Pct'].apply(lambda v: f"{v:.1f}%"),
+                textposition='inside',
+                hovertemplate="<b>%{x}</b><br>Disgust: %{y:.2f}%<extra></extra>"
+            ))
+            fig_absa_bar.add_trace(go.Bar(
+                x=df_absa_data['Aspect'],
+                y=df_absa_data['Trust_Pct'],
+                name='🤝 Percaya / Trust',
+                marker_color='#10b981',
+                text=df_absa_data['Trust_Pct'].apply(lambda v: f"{v:.1f}%"),
+                textposition='inside',
+                hovertemplate="<b>%{x}</b><br>Trust: %{y:.2f}%<extra></extra>"
+            ))
+            fig_absa_bar.add_trace(go.Bar(
+                x=df_absa_data['Aspect'],
+                y=df_absa_data['Neutral_Interest_Pct'],
+                name='😐 Netral / Minat',
+                marker_color='#64748b',
+                text=df_absa_data['Neutral_Interest_Pct'].apply(lambda v: f"{v:.1f}%"),
+                textposition='inside',
+                hovertemplate="<b>%{x}</b><br>Netral: %{y:.2f}%<extra></extra>"
+            ))
+            fig_absa_bar.update_layout(
+                barmode='stack',
+                yaxis_title="Komposisi Sentimen Total (100%)",
+                yaxis=dict(range=[0, 105])
+            )
+        else: # Absolute Volume
+            fig_absa_bar.add_trace(go.Bar(
+                x=df_absa_data['Aspect'],
+                y=df_absa_data['Disgust_Count'],
+                name='🤢 Jijik (Cuitan)',
+                marker_color='#ef4444',
+                text=df_absa_data['Disgust_Count'].apply(lambda v: f"{v:,}"),
+                textposition='auto',
+                hovertemplate="<b>%{x}</b><br>Disgust: %{y:,} cuitan<extra></extra>"
+            ))
+            fig_absa_bar.add_trace(go.Bar(
+                x=df_absa_data['Aspect'],
+                y=df_absa_data['Trust_Count'],
+                name='🤝 Percaya (Cuitan)',
+                marker_color='#10b981',
+                text=df_absa_data['Trust_Count'].apply(lambda v: f"{v:,}"),
+                textposition='auto',
+                hovertemplate="<b>%{x}</b><br>Trust: %{y:,} cuitan<extra></extra>"
+            ))
+            fig_absa_bar.add_trace(go.Bar(
+                x=df_absa_data['Aspect'],
+                y=df_absa_data['Neutral_Interest_Count'],
+                name='😐 Netral (Cuitan)',
+                marker_color='#64748b',
+                text=df_absa_data['Neutral_Interest_Count'].apply(lambda v: f"{v:,}"),
+                textposition='auto',
+                hovertemplate="<b>%{x}</b><br>Netral: %{y:,} cuitan<extra></extra>"
+            ))
+            fig_absa_bar.update_layout(
+                barmode='group',
+                yaxis_title="Jumlah Cuitan Riil (n)"
+            )
+
+        fig_absa_bar.update_layout(
+            title="Distribusi Sentimen per Aspek Kebijakan (Naskah Tesis Bab 4.6)",
+            template="plotly_dark",
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5),
+            height=450,
+            margin=dict(l=20, r=20, t=60, b=30)
+        )
+        st.plotly_chart(fig_absa_bar, use_container_width=True)
+        st.info("💡 **Temuan Utama:** Emosi **Jijik (Disgust)** konsisten melampaui **70%** di seluruh aspek fisik, dengan puncaknya pada **Logistik & Distribusi (78,91%)** dan **Anggaran & Vendor (77,01%)**. Hal ini mengonfirmasi bahwa penolakan publik berakar pada kegagalan operasional fisik di lapangan.")
+
+    with absa_tab2:
+        st.markdown("#### 🕸️ Profil Polar / Radar Chart Sentimen 3 Aspek Fisik")
+        st.caption("Memvisualisasikan asimetri tajam sentimen di mana polygon emosi condong ekstrem ke arah Disgust:")
+
+        categories = ['🤢 Jijik (Disgust)', '🤝 Percaya (Trust)', '😐 Netral & Minat']
+        
+        fig_radar = go.Figure()
+        
+        # Trace Logistik
+        r_log = [df_absa_data.loc[df_absa_data['Aspect'] == 'Logistik & Distribusi', 'Disgust_Pct'].values[0],
+                 df_absa_data.loc[df_absa_data['Aspect'] == 'Logistik & Distribusi', 'Trust_Pct'].values[0],
+                 df_absa_data.loc[df_absa_data['Aspect'] == 'Logistik & Distribusi', 'Neutral_Interest_Pct'].values[0]]
+        fig_radar.add_trace(go.Scatterpolar(
+            r=r_log + [r_log[0]],
+            theta=categories + [categories[0]],
+            fill='toself',
+            name='🚚 Logistik & Distribusi (Disgust 78.9%)',
+            line_color='#ef4444'
+        ))
+
+        # Trace Anggaran
+        r_ang = [df_absa_data.loc[df_absa_data['Aspect'] == 'Anggaran & Vendor', 'Disgust_Pct'].values[0],
+                 df_absa_data.loc[df_absa_data['Aspect'] == 'Anggaran & Vendor', 'Trust_Pct'].values[0],
+                 df_absa_data.loc[df_absa_data['Aspect'] == 'Anggaran & Vendor', 'Neutral_Interest_Pct'].values[0]]
+        fig_radar.add_trace(go.Scatterpolar(
+            r=r_ang + [r_ang[0]],
+            theta=categories + [categories[0]],
+            fill='toself',
+            name='💰 Anggaran & Vendor (Disgust 77.0%)',
+            line_color='#f59e0b'
+        ))
+
+        # Trace Gizi
+        r_giz = [df_absa_data.loc[df_absa_data['Aspect'] == 'Kualitas Gizi', 'Disgust_Pct'].values[0],
+                 df_absa_data.loc[df_absa_data['Aspect'] == 'Kualitas Gizi', 'Trust_Pct'].values[0],
+                 df_absa_data.loc[df_absa_data['Aspect'] == 'Kualitas Gizi', 'Neutral_Interest_Pct'].values[0]]
+        fig_radar.add_trace(go.Scatterpolar(
+            r=r_giz + [r_giz[0]],
+            theta=categories + [categories[0]],
+            fill='toself',
+            name='🥗 Kualitas Gizi (Disgust 71.1%)',
+            line_color='#3b82f6'
+        ))
+
+        fig_radar.update_layout(
+            polar=dict(
+                radialaxis=dict(visible=True, range=[0, 90], tickfont=dict(size=10, color='white')),
+                bgcolor='#1e293b'
+            ),
+            template="plotly_dark",
+            showlegend=True,
+            legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5),
+            height=480,
+            margin=dict(l=40, r=40, t=30, b=80)
+        )
+        st.plotly_chart(fig_radar, use_container_width=True)
+
+    with absa_tab3:
+        st.markdown("#### 🔬 Eksplorasi Leksikon & Sampel Cuitan Riil per Aspek")
+        
+        col_lex1, col_lex2 = st.columns([1, 2])
+        with col_lex1:
+            selected_aspect = st.selectbox(
+                "Pilih Aspek Kebijakan:",
+                ["Logistik & Distribusi", "Anggaran & Vendor", "Kualitas Gizi"]
+            )
+            
+            lexicons = {
+                "Logistik & Distribusi": "basi|racun|katering|telat|busuk|bau|dapur|distribusi|porsi",
+                "Anggaran & Vendor": "anggaran|pajak|korupsi|dana|triliun|harga|rp|biaya|apbn|vendor",
+                "Kualitas Gizi": "gizi|susu|sehat|stunting|nutrisi|telur|menu|protein|vitamin"
+            }
+            curr_lex = lexicons[selected_aspect]
+            
+            st.code(f"Regex Pattern:\n{curr_lex}", language="text")
+            st.caption(f"Daftar kata kunci leksikal yang memfilter aspek **{selected_aspect}** dari korpus inferensi naskah tesis.")
+            
+            filter_emotion = st.selectbox(
+                "Filter Emosi Cuitan:",
+                ["Semua Emosi", "Jijik", "Percaya", "Netral", "Tertarik", "Marah"]
+            )
+
+        with col_lex2:
+            try:
+                df_all_tweets = load_emotion_data()
+                mask_aspect = df_all_tweets['text'].str.contains(curr_lex, case=False, na=False)
+                df_aspect_tweets = df_all_tweets[mask_aspect].copy()
+                
+                if filter_emotion != "Semua Emosi":
+                    df_aspect_tweets = df_aspect_tweets[df_aspect_tweets['predicted_emotion'] == filter_emotion]
+                
+                st.markdown(f"**Menampilkan Cuitan Riil Terfilter (Ditemukan: {len(df_aspect_tweets):,} cuitan):**")
+                
+                sample_display = df_aspect_tweets[['text', 'predicted_emotion', 'confidence_score']].head(8)
+                sample_display.columns = ['Teks Cuitan Netizen', 'Emosi Terdeteksi', 'Skor Keyakinan']
+                st.dataframe(sample_display, use_container_width=True, hide_index=True)
+            except Exception as e:
+                st.warning(f"Memuat sampel cuitan: {e}")
+
+    with absa_tab4:
+        st.markdown("#### 🖼️ Gambar 10 Naskah Tesis: Analisis Sentimen 3 Aspek Kunci Program MBG")
+        img_absa_path = get_result_path("10_absa_thematic.png")
+        if os.path.exists(img_absa_path):
+            st.image(img_absa_path, use_container_width=True, caption="Gambar 10: Analisis Sentimen 3 Aspek Kunci Program MBG (Data Riil)")
+            st.info("""
+            **Keterangan Akademik Naskah Tesis (Halaman 106):**  
+            Grafik di atas membuktikan bahwa penolakan masyarakat di ranah digital tidak tertuju pada urgensi pemenuhan gizi anak sekolah, 
+            melainkan dipicu oleh kekecewaan terhadap kegagalan teknis rantai pasok logistik (78,91% sentimen negatif) 
+            dan kekhawatiran distorsi alokasi anggaran belanja vendor katering (77,01% sentimen negatif).
+            """)
+        else:
+            st.warning("File 10_absa_thematic.png belum ditemukan di direktori results.")
+
+    # 4. TRIANGULASI KOMPUTASIONAL 3 LAPIS
+    st.markdown("---")
+    st.subheader("🧩 3. Triangulasi Metodologis Komputasional 3 Dimensi (Bab 2.8, 3.6, & 4.6)")
+    st.markdown("""
+    Triangulasi komputasional menggabungkan tiga instrumen analitik independen untuk memvalidasi satu kesimpulan empiris:
+    apakah **Phygital Gap** benar-benar terjadi dalam persepsi publik terhadap program MBG?
+    """)
+
+    tri_c1, tri_c2, tri_c3 = st.columns(3)
+    with tri_c1:
+        st.success("""
+        #### 🧠 Lapis 1: NLP IndoBERT
+        **Dimensi Afektif & Bahasa**  
+        *Apa yang dirasakan publik?*
+        - **Jijik (Disgust): 56,24%** (2.960 tweet)
+        - **Sindiran Valid:** 9,28% (315 tweet)
+        - **Proksi Inkongruensi:** 56,60% (2.979 tweet)
+
+        **Temuan Kunci:**
+        Mayoritas warganet tidak menolak dengan agresi frontal (*Marah hanya 1,8%*), melainkan dengan **sinisme, humor gelap, dan kejijikan afektif** atas inkongruensi janji vs realitas.
+        """)
+    with tri_c2:
+        st.info("""
+        #### 🕸️ Lapis 2: SNA Louvain
+        **Dimensi Topologi & Struktur Sosial**  
+        *Bagaimana diskursus menyebar?*
+        - **Modularity $Q = 0,9837$** (332 komunitas)
+        - **Resiprositas:** 1,21% (Komunikasi 1 arah)
+        - **Power Vacuum:** @prabowo in-deg=15 out-deg=0 vs @grok out-deg=42.
+
+        **Temuan Kunci:**
+        Komunikasi kebijakan mengalami **kegagalan dialog deliberatif**. Publik terisolasi dalam ruang gema (*echo chambers*) tanpa respons dari pembuat kebijakan.
+        """)
+    with tri_c3:
+        st.warning("""
+        #### 🎯 Lapis 3: ABSA 3 Aspek
+        **Dimensi Diagnostik Fisik Operasional**  
+        *Di mana letak kegagalan fisik kebijakan?*
+        - **Logistik:** 78,91% Disgust
+        - **Anggaran:** 77,01% Disgust
+        - **Gizi:** 71,13% Disgust
+
+        **Temuan Kunci:**
+        Kegagalan bukan pada visi gizi, melainkan pada **eksekusi operasional fisik**: makanan basi, porsi minimalis, dan tata kelola katering yang diragukan.
+        """)
+
+    # Tabel Matriks Triangulasi Komputasional
+    st.markdown("#### 📋 Matriks Konvergensi Triangulasi Komputasional (Naskah Tesis)")
+    triangulation_matrix = [
+        {
+            "Lapisan Analisis": "Lapis 1: Afektif (NLP IndoBERT)",
+            "Instrumen / Algoritma": "IndoBERT Base-p2 Fine-Tuned (9 Emosi Plutchik) + Ekstraksi Leksikon Sarkasme",
+            "Data Empiris Riil": "56,24% Jijik (Disgust), 9,28% Sindiran Eksplisit (n=315), 56,60% Proksi Afektif Inkongruen",
+            "Kontribusi Pembuktian Phygital Gap": "Membuktikan adanya resistensi emosional mendalam warganet yang disamarkan dalam bentuk ironi dan sarkasme."
+        },
+        {
+            "Lapisan Analisis": "Lapis 2: Topologi (SNA Louvain)",
+            "Instrumen / Algoritma": "Graf Berarah, Algoritma Komunitas Louvain, Degree, Betweenness, & Eigenvector Centrality",
+            "Data Empiris Riil": "Modularity Q = 0,9837 (332 komunitas), Resiprositas 1,21%, @prabowo pasif (In=15, Out=0), @grok aktif (Out=42)",
+            "Kontribusi Pembuktian Phygital Gap": "Membuktikan ketiadaan klarifikasi dari akun resmi; kepasifan pemerintah menciptakan kekosongan otoritas (power vacuum)."
+        },
+        {
+            "Lapisan Analisis": "Lapis 3: Diagnostik (ABSA 3 Aspek)",
+            "Instrumen / Algoritma": "Aspect-Based Sentiment Analysis berbasis Leksikon Tematik Kebijakan (Logistik, Anggaran, Gizi)",
+            "Data Empiris Riil": "Logistik 78,91% Disgust (n=403), Anggaran 77,01% Disgust (n=535), Gizi 71,13% Disgust (n=1.344)",
+            "Kontribusi Pembuktian Phygital Gap": "Menemukan akar luka kebijakan: kegagalan terletak pada titik sentuh fisik (makanan basi dan pemotongan anggaran katering)."
+        }
+    ]
+    st.dataframe(pd.DataFrame(triangulation_matrix), use_container_width=True, hide_index=True)
+
+    # Masterpiece Visual Triangulasi
+    img_tri_path = get_result_path("integrated_sna_nlp.png")
+    if os.path.exists(img_tri_path):
+        st.image(img_tri_path, use_container_width=True, caption="Masterpiece Visual: Triangulasi Terintegrasi SNA x NLP (Data Riil Naskah Tesis)")
+
+    # 5. "ARTINYA" — SINTESIS MAKNA TEORETIS, KRISIS, & KEBIJAKAN
+    st.markdown("---")
+    st.header("💡 4. \"Artinya\" — Sintesis Makna Teoretis, Komunikasi Krisis, & Rekomendasi Kebijakan")
+    st.markdown("""
+    > *Pertanyaan terbesar dalam sidang dan naskah tesis: **"Lalu apa artinya semua angka empiris ini?"**  
+    > Bagian ini menyajikan sintesis komprehensif atas signifikansi teoretis, sosiologis, dan praktis dari temuan riset.*
+    """)
+
+    with st.expander("🌐 1. Arti bagi Teori Pemasaran Modern: Pembuktian Fenomena Phygital Gap (Kotler et al., 2023)", expanded=True):
+        st.markdown("""
+        **Landasan Teoretis: Marketing 6.0 (Kotler, Kartajaya, & Setiawan, 2023)**
+        - **Definisi Phygital:** Integrasi mulus antara ruang digital (*online marketing*) dan ruang fisik (*offline delivery/touchpoint*).
+        - **Apa yang Terjadi pada Program MBG?**
+          1. **Digital Promise (Ekspektasi di X/Medsos):** Pemerintah dan pendukung menyuarakan program MBG sebagai lompatan peradaban untuk mencetak *Generasi Emas 2045*, menuntaskan stunting, dan memicu pertumbuhan ekonomi rakyat.
+          2. **Physical Delivery (Realitas di Sekolah):** Uji coba lapangan menghasilkan insiden katering basi, aroma tidak sedap, keterlambatan jam makan siang siswa, dan pemangkasan porsi menu.
+          3. **Terjadinya Gap:** Tercipta jurang disonansi kognitif yang tajam (*expectation-reality mismatch*). Ketika realitas fisik gagal memenuhi ekspektasi digital, kepercayaan masyarakat runtuh seketika, termanifestasi dalam **78,91% sentimen Jijik (Disgust) pada aspek Logistik**.
+        """)
+
+    with st.expander("🚨 2. Arti bagi Komunikasi Krisis Publik: Situational Crisis Communication Theory (Coombs, 2007)", expanded=True):
+        st.markdown("""
+        **Landasan Teoretis: Coombs' SCCT (2007)**
+        - **Kategori Krisis Publik:** Masyarakat mempersepsikan insiden makanan basi dan pemotongan anggaran menu bukan sebagai kecelakaan tak terduga (*Accidental Cluster*), melainkan sebagai **Preventable Crisis** (krisis yang dapat dicegah jika pemerintah melakukan pengawasan ketat).
+        - **Kegagalan Respons Komunikasi:**
+          - Resiprositas jaringan komunikasi hanya **1,21%**, dan akun utama pembuat kebijakan (@prabowo) memiliki **Out-Degree = 0** (sama sekali tidak pernah membalas kritik warga).
+          - Ketiadaan klarifikasi cepat (*diminishing strategy* atau *rebuilding strategy*) menciptakan **Power Vacuum (Kekosongan Otoritas Informasi)**.
+          - Akibatnya, warganet merespons dengan mekanisme pertahanan: **sindiran sarkastik (9,28%)** dan mencari verifikasi pihak ketiga yang netral (**bot AI @grok dengan 42 balasan informasi**).
+        """)
+
+    with st.expander("🏛️ 3. Arti bagi Sosiologi Komunikasi & Demokrasi Digital: Kematian Ruang Publik Deliberatif (Habermas, 1989)", expanded=False):
+        st.markdown("""
+        **Landasan Teoretis: Ruang Publik Deliberatif (Jürgen Habermas)**
+        - Nilai **Modularity $Q = 0,9837$** dan terbentuknya **332 komunitas Louvain terisolasi** membuktikan bahwa platform media sosial X tidak menjadi ruang dialog rasional-deliberatif.
+        - Sebaliknya, diskursus terpolarisasi ke dalam **bilik gema (*echo chambers*)**:
+          - Komunitas elit/pendukung hanya membagikan euforia seremonial (*empathy/love*).
+          - Ratusan kantong komunitas warganet biasa mengisolasi diri dalam sirkulasi kemarahan dan kejijikan (*disgust/cynicism*).
+        - Tidak ada jembatan komunikasi (*bridging social capital*) yang mempertemukan suara akar rumput dengan pembuat kebijakan.
+        """)
+
+    with st.expander("💼 4. Implikasi Manajerial & Rekomendasi Solusi Strategis untuk Badan Gizi Nasional (BGN)", expanded=True):
+        st.markdown("""
+        Berdasarkan temuan ABSA dan Triangulasi Komputasional, berikut 4 rekomendasi taktis-strategis untuk pembuat kebijakan:
+        
+        1. **🚚 Solusi Logistik & Rantai Pasok (Menjawab 78,91% Disgust):**
+           - Terapkan sertifikasi rantai dingin (*cold-chain*) untuk seluruh armada distribusi makanan berjarak tempuh >30 menit.
+           - Tetapkan batas radius operasional Satuan Pelayanan Pemenuhan Gizi (SPPBG) maksimal 5 km dari sekolah target untuk meminimalisir risiko makanan basi.
+        
+        2. **💰 Solusi Transparansi Anggaran (Menjawab 77,01% Disgust):**
+           - Publikasikan *Unit Cost Breakdown* (rincian biaya bahan makanan vs biaya operasional kemasan/pengantaran) secara terbuka di dashboard web BGN.
+           - Terapkan mekanisme lelang vendor berbasis e-katalog terbuka untuk menepis narasi sinis tentang kongkalikong vendor katering.
+        
+        3. **🥗 Solusi Kualitas Gizi & Higienitas (Menjawab 71,13% Disgust pada 1.344 Cuitan):**
+           - Wajibkan penempatan minimal 1 orang Ahli Gizi (Nutrisionis) tersertifikasi PERSAGI di setiap dapur sentral SPPBG.
+           - Lakukan uji organoleptik dan uji sampel mikroba cepat (*rapid test*) sebelum makanan didistribusikan ke sekolah.
+        
+        4. **📢 Solusi Komunikasi Krisis Phygital (Menjawab Modularity 0.9837 & Power Vacuum):**
+           - Tinggalkan pola komunikasi monolog satu arah (*broadcast*).
+           - Bentuk Tim Respons Cepat Krisis (*Digital Rapid Response Unit*) di bawah BGN yang aktif memantau mention keluhan wali murid di media sosial dan memberikan solusi ganti rugi makanan dalam tempo < 1 jam.
         """)
         
 elif page == "🕸️ Analisis Jaringan (CNA)":
