@@ -267,6 +267,90 @@ if page == "🏠 Beranda":
         st.metric("🤢 Emosi Dominan", "56,24% Jijik", "2.960 Cuitan Disgust")
 
     st.markdown("---")
+
+    # ── PETA LENGKAP VISUALISASI TESIS: BAB I S.D. BAB V ──
+    st.subheader("🗺️ Peta Lengkap Visualisasi Naskah Tesis (Bab I s.d. Bab V)")
+    st.markdown("""
+    > *Seluruh bab di dalam Naskah Tesis Magister telah **100% divisualisasikan secara komprehensif, interaktif, dan terhubung langsung dengan data primer** di dalam dashboard ini. 
+    > Berikut adalah panduan pemetaan visualisasi untuk setiap bab:*
+    """)
+
+    b_tabs = st.tabs([
+        "📘 Bab I: Pendahuluan",
+        "📗 Bab II: Landasan Teori",
+        "📙 Bab III: Metode Penelitian",
+        "📕 Bab IV: Hasil & Pembahasan",
+        "📓 Bab V: Penutup & Rekomendasi"
+    ])
+
+    with b_tabs[0]:
+        st.markdown("""
+        #### 📘 Bab I: Pendahuluan & Formulasi Masalah (Halaman 1 – 25)
+        - **Status Visualisasi:** ✅ **100% Aktif & Terverifikasi**
+        - **Komponen Visual di Dashboard:**
+          1. **Diagram Alir Sankey Interaktif (Plotly):** Menghubungkan secara matematis *6 Rumusan Masalah (Bab 1.2)* ➔ *3 Lapisan Metode Komputasional* ➔ *6 Tujuan Penelitian (Bab 1.4)* ➔ *6 Bukti Empiris Terverifikasi*.
+          2. **Tabulasi Harmonisasi Simetris 6x6:** 6 Tab berpasangan (RM-1 ↔ TP-1 hingga RM-6 ↔ TP-6) lengkap dengan target operasional.
+          3. **Kartu Sintesis Grand Research Question:** Pemetaan 6 dimensi struktural *Phygital Gap*.
+          4. **4 Kartu Metrik Utama (Ground-Truth):** 971 node, 666 edge, Q = 0.9837, 56.24% Disgust.
+        - **Akses Cepat:** Berada langsung di menu halaman ini (**`🏠 Beranda`**).
+        """)
+
+    with b_tabs[1]:
+        st.markdown("""
+        #### 📗 Bab II: Landasan Teori & Kerangka Pemikiran (Halaman 26 – 84)
+        - **Status Visualisasi:** ✅ **100% Aktif & Terverifikasi**
+        - **Komponen Visual di Dashboard:**
+          1. **Peta Radial Sunburst Interaktif (Plotly):** Visualisasi hierarki *8 Pilar Teori Utama & 37 Sub-Bab Terstruktur* dengan fitur drill-down dan rujukan nomor halaman tesis.
+          2. **Peta Hierarkis Treemap:** Memetakan proporsi bobot kajian teori secara visual.
+          3. **Matriks Validasi 5 Proposisi Penelitian (P1 s.d P5):** Kartu status pengujian hipotesis kerja terhadap bukti data riil Bab IV.
+        - **Akses Cepat:** Buka panel menu navigasi di sebelah kiri: **`🏛️ Landasan Teori & Pemikiran (Bab II)`**.
+        """)
+
+    with b_tabs[2]:
+        st.markdown("""
+        #### 📙 Bab III: Metode Penelitian & Pipeline Komputasional (Halaman 85 – 93)
+        - **Status Visualisasi:** ✅ **100% Aktif & Terverifikasi**
+        - **Komponen Visual di Dashboard:**
+          1. **Tabel 3.1 Definisi Operasional Variabel:** Tabel matriks 6 variabel, definisi konseptual, rujukan teoretis, definisi operasional, dan indikator/alat ukur.
+          2. **4 Kartu Alur Research Pipeline:** Tahap 1 (Akuisisi Data & Etika), Tahap 2 (Pra-Pemrosesan Teks & Normalisasi Slang), Tahap 3 (Pemodelan NLP IndoBERT, SNA Louvain, ABSA), dan Tahap 4 (Sintesis Phygital Gap).
+          3. **Diagram Alir Master Pipeline CSS:** Visual arsitektur komputasi multi-layer end-to-end.
+        - **Akses Cepat:** Berada di menu **`🏛️ Landasan Teori & Pemikiran (Bab II)`** bagian bawah dan **`🖼️ Visual Storytelling (Tab 1)`**.
+        """)
+
+    with b_tabs[3]:
+        st.markdown("""
+        #### 📕 Bab IV: Hasil Komputasional & Pembahasan (Halaman 94 – 109)
+        - **Status Visualisasi:** ✅ **100% Aktif & Terverifikasi**
+        - **Komponen Visual di Dashboard:**
+          1. **§4.1 Karakteristik Korpus Data:** Visualisasi distribusi 9 emosi IndoBERT ($N=5.263$), proporsi sindiran valid ($N=3.395$), dan Word Cloud leksikal.
+          2. **§4.2 Topologi Jaringan & Polarisasi:** Metrik global graf (971 nodes, 666 edges, kepadatan 0.0011, resiprositas 1,21%).
+          3. **§4.3 Dinamika Komunitas & Echo Chambers:** Modularity Louvain $Q = 0.9837$, grafik porsi 332 komunitas terisolasi.
+          4. **§4.4 Struktur Sentralitas Aktor:** Horizontal bar chart In-Degree vs Out-Degree (@grok vs @prabowo vs @4Y4NKZ).
+          5. **§4.4c 10 Top Media & Kanal Penghubung (Selain CNN):** Stacked bar chart, donut chart tipologi media, dan tabel matriks 10 media perantara wacana.
+          6. **§4.5 Evaluasi Model IndoBERT & Sindiran:** Heatmap Matriks Konfusi (n=1.053, Akurasi 57.45%, Macro F1 0.8122, Disgust Recall 96.92%), dan simulator prediksi real-time.
+          7. **§4.6 Sintesis Marketing 6.0 & ABSA:** Grouped bar chart persentase Disgust pada Logistik (78.91%), Anggaran (77.01%), dan Gizi (71.13%).
+          8. **Graf Interaktif PyVis:** Visualisasi graf jaringan interaktif dinamis berfitur drag-and-drop dan zoom.
+        - **Akses Cepat:** Buka menu **`😊 Analisis Emosi (NLP)`** dan **`🕸️ Analisis Jaringan (CNA)`**.
+        """)
+
+    with b_tabs[4]:
+        st.markdown("""
+        #### 📓 Bab V: Penutup & Rekomendasi Kebijakan (Halaman 110 – 113)
+        - **Status Visualisasi:** ✅ **100% Aktif & Terverifikasi**
+        - **Komponen Visual di Dashboard:**
+          1. **§5.1 Kesimpulan Terpadu:** Tabulasi simpulan komputasional yang menjawab tuntas 6 Rumusan Masalah dan 6 Tujuan Penelitian.
+          2. **§5.2 Implikasi Penelitian:** Analisis implikasi akademis (kebaruan metodologi CSS di Indonesia) dan implikasi praktis (deteksi krisis kebijakan).
+          3. **§5.3 Matriks 5 Rekomendasi Kebijakan BGN:** Kartu aksi mitigasi krisis komunikasi risiko:
+             - *Aksi 1:* Membuka dialog terbuka dua arah (menaikkan reciprocity dari 1,21%).
+             - *Aksi 2:* Merangkul simpul broker akar rumput (@4Y4NKZ).
+             - *Aksi 3:* Single Source of Truth foto/menu fisik harian per SPPG.
+             - *Aksi 4:* Transparansi alokasi anggaran bahan baku vs logistik/vendor.
+             - *Aksi 5:* Edukasi algoritmik terstruktur mengimbangi AI Oracle (@grok).
+          4. **§5.4 Keterbatasan Penelitian:** Evaluasi batas cakupan platform dan rentang waktu observasi.
+        - **Akses Cepat:** Buka menu **`🖼️ Visual Storytelling` ➔ Tab ke-6 `🏛️ Bab IV & Bab V: Peta Temuan Empiris & Rekomendasi (§4.1 - §5.4)`**.
+        """)
+
+    st.markdown("---")
     
     st.markdown("""
     ### 🎯 Objektif Riset
