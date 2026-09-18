@@ -6,8 +6,14 @@ def run_perbaikan():
     print("=== SCRIPT PERBAIKAN_LABELING.py ===")
     print("Tujuan: Memperbaiki cacat hardcoding label 'Neutral' pada Testing Set (Bab 4.5.3 Tesis)")
     
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    try:
+        from scripts.data_utils import get_data_path
+    except ImportError:
+        from data_utils import get_data_path
+        
     # 1. Load data mentah yang valid (hasil prediksi/anotasi yang benar)
-    raw_data_path = "/Users/jevin/Documents/tesis_mbg/data/results/indobert_9_emosi.csv"
+    raw_data_path = get_data_path("indobert_9_emosi.csv")
     if not os.path.exists(raw_data_path):
         print(f"Error: File {raw_data_path} tidak ditemukan.")
         return
@@ -41,7 +47,7 @@ def run_perbaikan():
     print(df_clean['predicted_emotion'].value_counts())
     
     # 4. Menyimpan data bersih untuk Retraining
-    output_dir = "/Users/jevin/Documents/tesis_mbg/data/results"
+    output_dir = os.path.join(base_dir, "data", "results")
     os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, "indobert_9_emosi_fixed.csv")
     

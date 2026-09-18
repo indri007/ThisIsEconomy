@@ -4,8 +4,17 @@ import pandas as pd
 import numpy as np
 import networkx as nx
 import os
+import sys
 
-os.makedirs("results", exist_ok=True)
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if base_dir not in sys.path:
+    sys.path.insert(0, base_dir)
+try:
+    from scripts.data_utils import get_data_path, get_result_path
+except ImportError:
+    from data_utils import get_data_path, get_result_path
+
+os.makedirs(get_result_path(""), exist_ok=True)
 
 # Set style
 plt.style.use('dark_background')
@@ -13,7 +22,7 @@ fig = plt.figure(figsize=(18, 9)) # Increased height for the text box
 
 # Panel 1: Global Network (SNA)
 ax1 = plt.subplot(131)
-edges = pd.read_csv("data/sna/network_edges.csv")
+edges = pd.read_csv(get_data_path("network_edges.csv"))
 G = nx.from_pandas_edgelist(edges, 'Source', 'Target')
 # Use a fast layout
 pos = nx.spring_layout(G, k=0.15, iterations=20, seed=42)
@@ -24,7 +33,7 @@ ax1.axis('off')
 
 # Panel 2: Community Structure (Louvain Modularity)
 ax2 = plt.subplot(132)
-nodes_df = pd.read_csv("results/mbg_network_nodes_final.csv")
+nodes_df = pd.read_csv(get_result_path("mbg_network_nodes_final.csv"))
 node_comm_map = dict(zip(nodes_df['Id'], nodes_df['Community']))
 
 # Generate colors based on actual community IDs
@@ -81,6 +90,7 @@ narrative_text = (
 plt.figtext(0.5, 0.05, narrative_text, wrap=True, horizontalalignment='center', fontsize=12, color='white',
             bbox={"facecolor":"#1a1a1a", "alpha":0.9, "pad":10, "edgecolor":"#ff4d4d", "boxstyle":"round,pad=1"})
 
-plt.savefig("results/integrated_sna_nlp.png", dpi=300, bbox_inches='tight', facecolor='black')
+out_plot = get_result_path("integrated_sna_nlp.png")
+plt.savefig(out_plot, dpi=300, bbox_inches='tight', facecolor='black')
 plt.close()
-print("Integrated plot updated with narrative text!")
+print(f"Integrated plot updated with narrative text at {out_plot}!")

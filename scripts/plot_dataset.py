@@ -1,8 +1,18 @@
+import os
+import sys
+
+# Ensure working directory is project root
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+if os.getcwd() != PROJECT_ROOT:
+    os.chdir(PROJECT_ROOT)
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import numpy as np
-import os
 
 # Create results folder if it doesn't exist
 os.makedirs("results", exist_ok=True)

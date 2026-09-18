@@ -43,6 +43,32 @@ def get_result_path(filename):
             return c
     return os.path.join(PROJECT_ROOT, "results", filename)
 
+def get_data_path(filename):
+    candidates = [
+        os.path.join(PROJECT_ROOT, "data", filename),
+        os.path.join(PROJECT_ROOT, "data", "sna", filename),
+        os.path.join(PROJECT_ROOT, "data", "emotion", filename),
+        os.path.join(PROJECT_ROOT, "data", "sarcasm", filename),
+        os.path.join(PROJECT_ROOT, "data", "results", filename),
+        os.path.join(PROJECT_ROOT, "results", filename),
+        os.path.join("data", filename),
+        os.path.join("data", "sna", filename),
+        os.path.join("data", "emotion", filename),
+        os.path.join("data", "sarcasm", filename),
+        os.path.join("data", "results", filename),
+        os.path.join("results", filename),
+        os.path.join("..", "data", filename),
+        os.path.join("..", "data", "sna", filename),
+        os.path.join("..", "data", "emotion", filename),
+        os.path.join("..", "data", "sarcasm", filename),
+        os.path.join("..", "data", "results", filename),
+        os.path.join("..", "results", filename),
+    ]
+    for c in candidates:
+        if os.path.exists(c):
+            return c
+    return os.path.join(PROJECT_ROOT, "data", filename)
+
 # Configuration
 st.set_page_config(
     page_title="Tesis MBG: Phygital Gap Analysis",
@@ -206,21 +232,12 @@ apply_material3_theme()
 # Cache data loading
 @st.cache_data(ttl=3600)
 def load_emotion_data():
-    # Adjust path assuming run from root 'tesis_mbg'
-    path = "data/results/indobert_9_emosi_fixed.csv"
-    if os.path.exists(path):
-        return pd.read_csv(path)
-    # Fallback if run inside 'dashboard' folder
-    return pd.read_csv("../data/results/indobert_9_emosi_fixed.csv")
+    return pd.read_csv(get_data_path("indobert_9_emosi_fixed.csv"))
 
 @st.cache_data(ttl=3600)
 def load_network_data():
-    edge_path = "data/sna/network_edges.csv"
-    node_path = "data/results/sna_degree.csv"
-    if not os.path.exists(edge_path):
-        edge_path = "../data/sna/network_edges.csv"
-        node_path = "../data/results/sna_degree.csv"
-        
+    edge_path = get_data_path("network_edges.csv")
+    node_path = get_data_path("sna_degree.csv")
     edges = pd.read_csv(edge_path)
     nodes = pd.read_csv(node_path) if os.path.exists(node_path) else None
     return edges, nodes
@@ -2004,7 +2021,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
         st.markdown("Eksplorasi graf jaringan komunikasi wacana MBG di platform X (node diwarnai berdasarkan Komunitas Louvain riil):")
 
         edges, nodes_data = load_network_data()
-        nodes_info_path = "results/mbg_network_nodes_final.csv" if os.path.exists("results/mbg_network_nodes_final.csv") else "../results/mbg_network_nodes_final.csv"
+        nodes_info_path = get_result_path("mbg_network_nodes_final.csv")
         df_ninfo_map = pd.read_csv(nodes_info_path) if os.path.exists(nodes_info_path) else None
         n_comm_map = dict(zip(df_ninfo_map['Id'], df_ninfo_map['Community'])) if df_ninfo_map is not None else {}
         n_emo_map = dict(zip(df_ninfo_map['Id'], df_ninfo_map['Dominant_Emotion'])) if df_ninfo_map is not None else {}
@@ -2240,7 +2257,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
         > Segregasi wacana terjadi secara absolut akibat tiadanya jembatan informasi antar-kelompok warganet.*
         """)
 
-        nodes_file_path = "results/mbg_network_nodes_final.csv" if os.path.exists("results/mbg_network_nodes_final.csv") else "../results/mbg_network_nodes_final.csv"
+        nodes_file_path = get_result_path("mbg_network_nodes_final.csv")
         if os.path.exists(nodes_file_path):
             df_comm_nodes = pd.read_csv(nodes_file_path)
             top_comms = df_comm_nodes['Community'].value_counts().head(5)
@@ -2863,7 +2880,7 @@ Ini adalah bukti struktural dari **top-down communication failure** — publik b
         # Load & compute metrics
         @st.cache_data
         def compute_all_metrics():
-            df_e = pd.read_csv('data/sna/network_edges.csv')
+            df_e = pd.read_csv(get_data_path("network_edges.csv"))
             G_d = nx.DiGraph()
             for _, row in df_e.iterrows():
                 G_d.add_edge(row['Source'], row['Target'])

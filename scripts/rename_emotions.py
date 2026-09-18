@@ -1,6 +1,21 @@
+import os
+import sys
 import pandas as pd
 
-file_path = "data/results/indobert_9_emosi_fixed.csv"
+# Ensure working directory is project root
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+if os.getcwd() != PROJECT_ROOT:
+    os.chdir(PROJECT_ROOT)
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
+try:
+    from scripts.data_utils import get_data_path
+except ImportError:
+    from data_utils import get_data_path
+
+file_path = get_data_path("indobert_9_emosi_fixed.csv")
 df = pd.read_csv(file_path)
 
 mapping = {

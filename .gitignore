@@ -8,3 +8,5 @@ results/indobert_finetuned*/
 *.pt
 *.pth
 .venv/
+html_files/
+lib/

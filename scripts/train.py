@@ -3,8 +3,20 @@ import torch
 from sklearn.model_selection import train_test_split
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, TrainingArguments
 
+import os
+import sys
+
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if base_dir not in sys.path:
+    sys.path.insert(0, base_dir)
+try:
+    from scripts.data_utils import get_data_path, get_result_path
+except ImportError:
+    from data_utils import get_data_path, get_result_path
+
 print("1. Load Dataset berlabel...")
-df = pd.read_csv('/Users/jevin/Documents/tesis_mbg/data/results/indobert_9_emosi.csv')
+data_path = get_data_path("indobert_9_emosi.csv")
+df = pd.read_csv(data_path)
 df = df.dropna(subset=['processed_text', 'predicted_emotion'])
 
 print("2. Encode Labels...")
@@ -56,7 +68,7 @@ model = AutoModelForSequenceClassification.from_pretrained(
 
 print("7. Training Arguments...")
 training_args = TrainingArguments(
-    output_dir='/Users/jevin/Documents/tesis_mbg/results/indobert_finetuned',
+    output_dir=os.path.join(base_dir, 'results', 'indobert_finetuned'),
     num_train_epochs=3,
     per_device_train_batch_size=16,
     per_device_eval_batch_size=16,

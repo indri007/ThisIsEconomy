@@ -10,10 +10,21 @@ from tqdm import tqdm
 
 # --- 1. SETUP ---
 print("=== Memulai Pipeline Inferensi & SNA (End-to-End) ===")
-FILE_PATH = "/Users/jevin/Documents/tesis_mbg/data/mbg_tweets_indobert_ready.xlsx"
-MODEL_PATH = "/Users/jevin/Documents/tesis_mbg/results/indobert_finetuned_9_labels/checkpoint-792"
-OUT_NODES = "/Users/jevin/Documents/tesis_mbg/results/mbg_network_nodes_final.csv"
-OUT_EDGES = "/Users/jevin/Documents/tesis_mbg/results/mbg_network_edges_final.csv"
+import os
+import sys
+
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if base_dir not in sys.path:
+    sys.path.insert(0, base_dir)
+try:
+    from scripts.data_utils import get_data_path, get_result_path
+except ImportError:
+    from data_utils import get_data_path, get_result_path
+
+FILE_PATH = get_data_path("mbg_tweets_indobert_ready.xlsx")
+MODEL_PATH = get_result_path("indobert_finetuned_9_labels/checkpoint-792")
+OUT_NODES = get_result_path("mbg_network_nodes_final.csv")
+OUT_EDGES = get_result_path("mbg_network_edges_final.csv")
 
 # Label Emosi 9 Kelas (Harus urut sesuai hasil fine-tuning)
 emotion_labels = ['anger', 'disgust', 'fear', 'joy', 'love', 'neutral', 'sadness', 'shame', 'surprise']

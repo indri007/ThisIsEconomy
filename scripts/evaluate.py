@@ -14,8 +14,20 @@ from sklearn.metrics import (
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import os
+import sys
+
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if base_dir not in sys.path:
+    sys.path.insert(0, base_dir)
+try:
+    from scripts.data_utils import get_data_path, get_result_path
+except ImportError:
+    from data_utils import get_data_path, get_result_path
+
 # Load Data
-df = pd.read_csv('/Users/jevin/Documents/tesis_mbg/data/results/indobert_9_emosi_fixed.csv')
+data_path = get_data_path("indobert_9_emosi_fixed.csv")
+df = pd.read_csv(data_path)
 df = df.dropna(subset=['processed_text', 'predicted_emotion'])
 
 # 9 Kategori Emosi sesuai urutan id2label model checkpoint-792:
