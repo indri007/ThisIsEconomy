@@ -16,62 +16,150 @@ st.set_page_config(
 def apply_material3_theme():
     st.markdown('''
     <style>
-    /* Google Fonts: Roboto (Material 3 standard) */
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+    /* Google Fonts: Outfit & Roboto */
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
     
     html, body, [class*="css"]  {
         font-family: 'Roboto', sans-serif !important;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Outfit', sans-serif !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.02em !important;
+    }
+    
+    /* Hero Banner Card */
+    .hero-banner {
+        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+        color: white;
+        padding: 32px 36px;
+        border-radius: 20px;
+        box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.45);
+        margin-bottom: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .hero-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.16);
+        backdrop-filter: blur(8px);
+        padding: 6px 16px;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #e0e7ff;
+        margin-bottom: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .hero-title {
+        font-size: 2.1rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 12px;
+        background: linear-gradient(120deg, #ffffff 0%, #cbd5e1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+        font-size: 1.05rem;
+        color: #cbd5e1;
+        max-width: 900px;
+        line-height: 1.6;
+        margin-bottom: 18px;
+    }
+    
+    /* KPI Card Style */
+    div[data-testid="stMetric"] {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 16px !important;
+        padding: 16px 20px !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+    div[data-testid="stMetric"]:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.08) !important;
+    }
+    div[data-testid="stMetricLabel"] {
+        font-size: 0.88rem !important;
+        font-weight: 600 !important;
+        color: #64748b !important;
+    }
+    div[data-testid="stMetricValue"] {
+        font-family: 'Outfit', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 1.8rem !important;
+        color: #0f172a !important;
     }
     
     /* Material 3 Card Elevation & Radius for Images */
     img {
         border-radius: 16px !important;
-        box-shadow: 0 4px 8px 3px rgba(0,0,0,0.15) !important;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.12) !important;
         transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 18px !important;
+        border: 1px solid #e2e8f0 !important;
     }
     img:hover {
-        transform: scale(1.02) !important;
+        transform: scale(1.015) !important;
+        box-shadow: 0 12px 24px rgba(0,0,0,0.16) !important;
     }
     
-    /* Material 3 Buttons (Filled tonal / Primary) */
+    /* Material 3 Buttons */
     .stButton>button {
         border-radius: 100px !important;
         border: none !important;
-        background-color: #6750A4 !important;
+        background: linear-gradient(135deg, #4338ca 0%, #6366f1 100%) !important;
         color: #FFFFFF !important;
-        padding: 10px 24px !important;
-        font-weight: 500 !important;
-        box-shadow: 0 1px 3px 1px rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.3) !important;
-        transition: all 0.2s cubic-bezier(0.2, 0, 0, 1) !important;
+        padding: 10px 26px !important;
+        font-weight: 600 !important;
+        box-shadow: 0 4px 10px rgba(67, 56, 202, 0.3) !important;
+        transition: all 0.2s ease !important;
     }
     .stButton>button:hover {
-        background-color: #4F378B !important;
-        box-shadow: 0 2px 6px 2px rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.3) !important;
+        background: linear-gradient(135deg, #3730a3 0%, #4f46e5 100%) !important;
+        box-shadow: 0 6px 14px rgba(67, 56, 202, 0.4) !important;
+        transform: translateY(-1px) !important;
     }
     
-    /* Info boxes (Alerts) styled as M3 Surface Containers */
+    /* Info boxes styled as modern containers */
     div[data-testid="stMarkdownContainer"] > div.stAlert {
         border-radius: 16px !important;
-        border: none !important;
-        background-color: #F4EFF4 !important;
-        color: #1C1B1F !important;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
-    }
-    
-    /* Header Typography M3 styling */
-    h1, h2, h3 {
-        color: #1C1B1F !important;
-        letter-spacing: -0.02em !important;
+        border: 1px solid rgba(0,0,0,0.06) !important;
+        background-color: #f8fafc !important;
+        color: #1e293b !important;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.04) !important;
     }
     
     /* Main Background & Sidebar */
     .stApp {
-        background-color: #FFFBFE !important;
+        background-color: #f8fafc !important;
     }
     [data-testid="stSidebar"] {
-        background-color: #F4EFF4 !important;
-        border-right: none !important;
+        background-color: #ffffff !important;
+        border-right: 1px solid #e2e8f0 !important;
+    }
+    
+    /* Tabs Styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background-color: #e2e8f0;
+        padding: 6px;
+        border-radius: 14px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        border-radius: 10px;
+        padding: 8px 18px;
+        font-weight: 600;
+        color: #475569;
+        transition: all 0.2s ease;
+    }
+    .stTabs [aria-selected="true"] {
+        background-color: #ffffff !important;
+        color: #4338ca !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08) !important;
     }
     </style>
     ''', unsafe_allow_html=True)
@@ -113,22 +201,45 @@ st.sidebar.info(
 )
 
 if page == "🏠 Beranda":
-    st.title("📊 Phygital Gap in Public Policy")
-    st.subheader("Makan Bergizi Gratis (MBG) Crisis on Platform X")
+    st.markdown("""
+    <div class="hero-banner">
+        <div class="hero-badge">🎓 Tesis Magister Ilmu Komunikasi — UPN 'Veteran' Jawa Timur</div>
+        <div class="hero-title">Phygital Gap in Public Policy: Krisis Wacana Makan Bergizi Gratis (MBG)</div>
+        <div class="hero-desc">
+            Investigasi empiris struktur jaringan komunikasi dan dinamika afektif publik di Platform X 
+            melalui pendekatan <b>Computational Social Science</b>: Fine-tuned IndoBERT 9 Emosi Plutchik & Social Network Analysis (SNA).
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px;">
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">👤 <b>Peneliti:</b> Indri Anjar Kartika Sari</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">📅 <b>Periode Observasi:</b> Maret – Mei 2026</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">🌐 <b>Platform:</b> X (Twitter)</span>
+            <span style="background: rgba(34, 197, 94, 0.25); color: #86efac; padding: 5px 14px; border-radius: 8px; font-size: 0.85rem; border: 1px solid rgba(34, 197, 94, 0.4);">✨ <b>Status:</b> 100% Data Riil</span>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Executive Overview Cards
+    kpi_col1, kpi_col2, kpi_col3, kpi_col4 = st.columns(4)
+    with kpi_col1:
+        st.metric("👥 Total Aktor", "971 Akun", "Nodes Unik Jaringan")
+    with kpi_col2:
+        st.metric("🔗 Total Relasi", "666 Interaksi", "Directed Mention Edges")
+    with kpi_col3:
+        st.metric("🏘️ Modularity Louvain", "0,9837", "333 Klaster Terisolasi")
+    with kpi_col4:
+        st.metric("🤢 Emosi Dominan", "56,24% Jijik", "2.960 Cuitan Disgust")
+
+    st.markdown("---")
     
     st.markdown("""
-    Selamat datang di Dashboard Interaktif Tesis MBG. Aplikasi ini merupakan suplemen visual dari 
-    riset *Computational Social Science* yang membedah krisis komunikasi publik akibat kegagalan 
-    operasional fisik (*Phygital Gap*).
-    
     ### 🎯 Objektif Riset
     Menginvestigasi struktur jaringan diskursus MBG dan membuktikan eksistensi *Phygital Gap* melalui
     kombinasi **Natural Language Processing (IndoBERT 9 Kelas Emosi)** dan **Social Network Analysis (Algoritma Louvain)**.
     
-    ### 📈 Temuan Kunci
+    ### 📈 Temuan Kunci Utama
     - **Hyper-Fragmentation:** Publik terpecah menjadi 333 klaster (Modularity 0.9837) bukan 2 kubu polarisasi biner.
-    - **Dominasi Emosi Jijik (Disgust):** Netizen bereaksi menggunakan slang/sarkasme atas kegagalan fisik (makanan beracun, logistik).
-    - **Algorithmic Trust:** Akun AI (@grok) mengambil alih otoritas kebenaran (Eigenvector tertinggi) mengalahkan politisi/institusi.
+    - **Dominasi Emosi Jijik (Disgust):** Netizen bereaksi keras atas kegagalan fisik (makanan basi, keracunan massal, vendor abal-abal).
+    - **Algorithmic Trust:** Akun AI (@grok) mengambil alih otoritas verifikasi (Out-degree tertinggi = 42) mengalahkan institusi kebijakan manusia.
     """)
     
     st.markdown("---")
@@ -736,29 +847,93 @@ elif page == "😊 Analisis Emosi (NLP)":
     # Sort for consistent display
     emotion_counts = emotion_counts.sort_values(by='Jumlah', ascending=False)
     
-    col1, col2 = st.columns([2, 1])
+    # ── KPI Ringkasan Valensi Afektif ──
+    v_col1, v_col2, v_col3 = st.columns(3)
+    with v_col1:
+        st.metric("🔴 Afektif Negatif / Penolakan", "57,69%", "3.036 cuitan (Jijik, Marah, Sedih, Takut)")
+    with v_col2:
+        st.metric("🔵 Afektif Pro-Sosial / Minat", "29,98%", "1.578 cuitan (Percaya, Tertarik)")
+    with v_col3:
+        st.metric("⚪ Netral / Informasi Faktual", "12,33%", "649 cuitan (Tanpa Muatan Emosional)")
+
+    st.markdown("---")
+
+    # ── Hierarki Emosi: Treemap Plotly ──
+    st.subheader("🗺️ Peta Hierarki Semantik Emosi (Treemap)")
+    st.caption("Visualisasi proporsional spektrum emosi berdasarkan valensi afektif dalam diskursus MBG:")
     
+    tree_data = {
+        'Valensi Afektif': [
+            'Negatif (Penolakan Fisik)', 'Negatif (Penolakan Fisik)', 'Negatif (Penolakan Fisik)', 'Negatif (Penolakan Fisik)',
+            'Netral (Faktual)',
+            'Pro-Sosial / Minat', 'Pro-Sosial / Minat'
+        ],
+        'Kategori Emosi': [
+            '🤢 Jijik (Disgust)', '😡 Marah (Anger)', '😢 Sedih (Sadness)', '😨 Takut (Fear)',
+            '😐 Netral (Neutral)',
+            '🤝 Percaya (Trust)', '🔮 Tertarik (Anticipation)'
+        ],
+        'Jumlah Cuitan': [2960, 55, 19, 2, 649, 1073, 505],
+        'Porsi (%)': ['56,24%', '1,05%', '0,36%', '0,04%', '12,33%', '20,39%', '9,60%']
+    }
+    df_tree = pd.DataFrame(tree_data)
+    fig_tree = px.treemap(
+        df_tree,
+        path=['Valensi Afektif', 'Kategori Emosi'],
+        values='Jumlah Cuitan',
+        color='Jumlah Cuitan',
+        color_continuous_scale='Reds',
+        hover_data=['Porsi (%)']
+    )
+    fig_tree.update_layout(margin=dict(t=10, l=10, r=10, b=10), height=380)
+    st.plotly_chart(fig_tree, use_container_width=True)
+
+    st.markdown("---")
+
+    col1, col2 = st.columns([1.8, 1.2])
+    
+    # Semantic Color Palette
+    color_map = {
+        'Jijik': '#e74c3c',
+        'Percaya': '#3498db',
+        'Netral': '#95a5a6',
+        'Tertarik': '#f39c12',
+        'Marah': '#c0392b',
+        'Sedih': '#7f8c8d',
+        'Takut': '#8e44ad',
+        'Bahagia/Senang': '#2ecc71',
+        'Kaget': '#d35400'
+    }
+
     with col1:
-        st.subheader("Grafik Distribusi Emosi (9 Kelas)")
+        st.subheader("📊 Frekuensi Emosi (9 Kategori)")
+        tot_cnt = emotion_counts['Jumlah'].sum()
+        emotion_counts['Persen_Str'] = emotion_counts['Jumlah'].apply(lambda x: f"{x:,} ({(x/tot_cnt)*100:.1f}%)" if tot_cnt > 0 else "0")
         fig = px.bar(
             emotion_counts, 
             x='Emosi', 
             y='Jumlah',
             color='Emosi',
-            title="Frekuensi Kemunculan Emosi",
-            text='Jumlah'
+            color_discrete_map=color_map,
+            text='Persen_Str',
+            title="Frekuensi Distribusi 9 Kategori Emosi (Korpus N=5.263)"
         )
-        fig.update_layout(xaxis_title="Kategori Emosi", yaxis_title="Jumlah Cuitan")
+        fig.update_traces(textposition='outside')
+        fig.update_layout(xaxis_title="Kategori Emosi", yaxis_title="Jumlah Cuitan", showlegend=False, yaxis=dict(range=[0, emotion_counts['Jumlah'].max() * 1.18]))
         st.plotly_chart(fig, use_container_width=True)
         
     with col2:
-        st.subheader("Persentase Emosi")
+        st.subheader("🍩 Proporsi Persentase Emosi")
         fig_pie = px.pie(
             emotion_counts, 
             names='Emosi', 
             values='Jumlah', 
-            hole=0.4
+            color='Emosi',
+            color_discrete_map=color_map,
+            hole=0.45
         )
+        fig_pie.update_traces(textinfo='percent+label', textposition='inside')
+        fig_pie.update_layout(showlegend=False, margin=dict(t=30, b=10, l=10, r=10))
         st.plotly_chart(fig_pie, use_container_width=True)
         
     st.markdown("---")
@@ -1083,7 +1258,25 @@ elif page == "🕸️ Analisis Jaringan (CNA)":
                 "Emosi Dominan": dom_id,
                 "Fokus Sentimen Utama": fokus_map.get(cid, "Diskursus tematik warganet")
             })
-        st.dataframe(pd.DataFrame(comm_dyn_rows), use_container_width=True, hide_index=True)
+        col_comm1, col_comm2 = st.columns([1.4, 1])
+        with col_comm1:
+            st.dataframe(pd.DataFrame(comm_dyn_rows), use_container_width=True, hide_index=True)
+        with col_comm2:
+            df_comm_pie = pd.DataFrame({
+                'Klaster': [f"Klaster #{cid}" for cid in top_comms.index] + ['Klaster Lainnya (328 Klaster)'],
+                'Jumlah Aktor': list(top_comms.values) + [len(df_comm_nodes) - top_comms.sum()]
+            })
+            fig_comm_donut = px.pie(
+                df_comm_pie,
+                names='Klaster',
+                values='Jumlah Aktor',
+                hole=0.45,
+                color_discrete_sequence=['#ef4444', '#3b82f6', '#f59e0b', '#10b981', '#8b5cf6', '#94a3b8'],
+                title="Proporsi Ukuran Komunitas Louvain"
+            )
+            fig_comm_donut.update_traces(textposition='inside', textinfo='percent+label')
+            fig_comm_donut.update_layout(showlegend=False, margin=dict(t=30, b=10, l=10, r=10), height=280)
+            st.plotly_chart(fig_comm_donut, use_container_width=True)
 
     st.markdown("---")
 
@@ -1138,40 +1331,99 @@ elif page == "🕸️ Analisis Jaringan (CNA)":
         })
     st.dataframe(pd.DataFrame(dyn_top15), use_container_width=True, hide_index=True)
 
+    # ── Interactive Plotly Chart: In-Degree vs Out-Degree ──
+    top_10_names = [n for n, _ in top_15_nodes[:10]]
+    df_act_chart = pd.DataFrame({
+        'Akun': [f"@{n}" for n in top_10_names][::-1],
+        'In-Degree (Sasaran Mention)': [G_dir.in_degree(n) for n in top_10_names][::-1],
+        'Out-Degree (Penyebar Mention)': [G_dir.out_degree(n) for n in top_10_names][::-1]
+    })
+    fig_act_bars = px.bar(
+        df_act_chart,
+        y='Akun',
+        x=['In-Degree (Sasaran Mention)', 'Out-Degree (Penyebar Mention)'],
+        barmode='group',
+        orientation='h',
+        color_discrete_map={'In-Degree (Sasaran Mention)': '#3b82f6', 'Out-Degree (Penyebar Mention)': '#ef4444'},
+        title="Visualisasi Asimetri Komunikasi: Sasaran Pasif (In-Degree) vs Penyebar Aktif (Out-Degree)"
+    )
+    fig_act_bars.update_layout(
+        xaxis_title="Frekuensi Mention",
+        yaxis_title="Akun Pengguna",
+        legend_title="Arah Komunikasi",
+        height=380,
+        margin=dict(t=40, b=20, l=10, r=10)
+    )
+    st.plotly_chart(fig_act_bars, use_container_width=True)
+
     st.markdown("---")
     st.subheader("🌐 Eksplorasi Graf Interaktif (PyVis)")
-    st.markdown("Visualisasi graf interaktif dari wacana MBG di platform X.")
+    st.markdown("Visualisasi graf interaktif dari wacana MBG di platform X (node diwarnai berdasarkan komunitas Louvain riil):")
     
     edges, nodes_data = load_network_data()
     
-    st.info("💡 **Tips:** Anda bisa melakukan *scroll* untuk Zoom In/Out, dan men-drag *node*.")
+    st.info("💡 **Tips Interaktif:** Anda dapat melakukan *scroll* untuk Zoom In/Out, men-drag node, atau mengklik node untuk melihat relasi terhubung.")
     
     # Generate PyVis graph
-    net = Network(height="600px", width="100%", bgcolor="#222222", font_color="white")
+    net = Network(height="600px", width="100%", bgcolor="#1e293b", font_color="white")
     net.force_atlas_2based()
     
-    # To prevent browser from freezing, we will sample the top nodes by degree
-    # Assuming nodes_data has a 'Degree' column
     if nodes_data is not None and 'Degree' in nodes_data.columns:
         top_nodes = nodes_data.sort_values(by='Degree', ascending=False).head(150)['Id'].tolist()
     else:
-        # Fallback to taking top edges
         G_temp = nx.from_pandas_edgelist(edges, 'Source', 'Target')
         degree_dict = dict(G_temp.degree())
         top_nodes = sorted(degree_dict, key=degree_dict.get, reverse=True)[:150]
         
     filtered_edges = edges[edges['Source'].isin(top_nodes) | edges['Target'].isin(top_nodes)]
-    
     G = nx.from_pandas_edgelist(filtered_edges, 'Source', 'Target')
     
-    # Add nodes and edges to pyvis
+    # Node community & emotion mapping
+    nodes_info_path = "results/mbg_network_nodes_final.csv" if os.path.exists("results/mbg_network_nodes_final.csv") else "../results/mbg_network_nodes_final.csv"
+    node_comm_map = {}
+    node_emo_map = {}
+    if os.path.exists(nodes_info_path):
+        df_ninfo = pd.read_csv(nodes_info_path)
+        node_comm_map = dict(zip(df_ninfo['Id'], df_ninfo['Community']))
+        node_emo_map = dict(zip(df_ninfo['Id'], df_ninfo['Dominant_Emotion']))
+        
+    comm_palette = {
+        15: "#ef4444",   # Red / Disgust
+        61: "#3b82f6",   # Blue / Neutral
+        16: "#f59e0b",   # Amber / Sarcasm
+        259: "#10b981",  # Green / Trust
+        8: "#8b5cf6",    # Purple / Budget
+    }
+    
+    # Add nodes and edges to pyvis with rich aesthetic attributes
     for node in G.nodes():
-        # Set node size based on degree
-        size = dict(G.degree()).get(node, 1) * 2
-        net.add_node(node, label=str(node), title=f"User: {node}", size=size)
+        deg = dict(G.degree()).get(node, 1)
+        cid = node_comm_map.get(node, -1)
+        emo = node_emo_map.get(node, "netral")
+        col = comm_palette.get(cid, "#94a3b8")
+        
+        # Highlighting Key Actors
+        if node == "grok":
+            col = "#06b6d4"  # Cyan for AI Oracle
+            size = 34
+            label = "🤖 @grok"
+        elif node == "prabowo":
+            col = "#eab308"  # Gold for President
+            size = 30
+            label = "👑 @prabowo"
+        elif node == "4Y4NKZ":
+            col = "#ec4899"  # Pink for Broker
+            size = 28
+            label = "🔗 @4Y4NKZ"
+        else:
+            size = max(8, min(24, deg * 3))
+            label = f"@{node}" if deg >= 4 else ""
+            
+        tooltip = f"<div style='font-family: sans-serif; font-size: 12px; padding: 4px;'><b>@{node}</b><br>🧩 Klaster: #{cid}<br>🎭 Emosi Dominan: {emo}<br>📊 Total Derajat: {deg}</div>"
+        net.add_node(node, label=label, title=tooltip, size=size, color=col)
         
     for source, target in G.edges():
-        net.add_edge(source, target)
+        net.add_edge(source, target, color="rgba(255,255,255,0.15)")
         
     # Save graph to HTML
     try:
@@ -1634,76 +1886,129 @@ elif page == "🖼️ Visual Storytelling":
         path = os.path.join(project_root, "results", filename)
         return path
 
-    st.markdown("---")
-    st.markdown("### 🔍 Bagian I: Data Apa yang Dianalisis?")
-    st.success("**Membuktikan data diproses dengan ketat, didominasi emosi Disgust dengan balutan sarkasme tingkat tinggi.**")
-    
-    st.subheader("1. Dataset & Data Collection Overview")
-    col1, col2 = st.columns(2)
-    with col1:
-        st.image(get_image_path("1_pipeline.png"), use_container_width=True, caption="Figure 1A. Pipeline Overview")
-    with col2:
-        st.image(get_image_path("2_dataset_characteristics.png"), use_container_width=True, caption="Figure 1B. Data Cleaning Process")
-    st.info("**Caption Akademik:** Figure 1 illustrates the end-to-end data processing pipeline and cleaning process from raw Twitter API scrapes (N=5,310) to the final annotated corpus (N=3,395).\n\n**Pesan/Temuan:** Ketegasan dan ketelitian arsitektur riset yang terukur secara komputasional.\n\n**Posisi:** Methods (Section 3)")
-    st.markdown("---")
-    
-    st.subheader("2. Distribusi 9 Emosi")
-    st.image(get_image_path("emotion_distribution.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 2 displays the frequency of predicted emotions, revealing Disgust as the overwhelmingly dominant sentiment surrounding the MBG policy execution.\n\n**Pesan/Temuan:** Wacana MBG bukan soal kebencian biner (Anger), melainkan kejijikan mendalam (Disgust) terhadap eksekusi fisik.\n\n**Posisi:** Results - NLP Analysis (Section 4)")
-    st.markdown("---")
-    
-    st.subheader("3. Distribusi Sarkasme")
-    st.image(get_image_path("3_sarcasm.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 3 highlights the prevalence of sarcasm and slang in public reactions, functioning as a primary coping mechanism toward logistical failures.\n\n**Pesan/Temuan:** Publik merespons krisis dengan sindiran ketimbang adu argumen logis.\n\n**Posisi:** Results - NLP Analysis (Section 4)")
-    st.markdown("---")
-    
-    st.markdown("### 🤖 Bagian II: Bagaimana Model Membacanya?")
-    st.success("**Membuktikan arsitektur IndoBERT sangat valid dan akurat, meski agak kesulitan membedakan sarkasme Anger vs Disgust.**")
-    
-    st.subheader("4. Performance IndoBERT")
-    st.image(get_image_path("f1_scores.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 4 presents the model's evaluation, achieving a robust 83% Macro-F1 score, confirming its efficacy in classifying informal Indonesian slang.\n\n**Pesan/Temuan:** Instrumen pengukur kita (AI) sangat valid dan dapat dipercaya secara ilmiah.\n\n**Posisi:** Results - Model Evaluation (Section 4)")
-    st.markdown("---")
-    
-    st.subheader("5. Confusion Matrix Emotion Classification")
-    st.image(get_image_path("confusion_matrix.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 5 details the classification accuracy per class. The primary misclassification occurs between Anger and Disgust, indicating semantic overlap in internet expletives.\n\n**Pesan/Temuan:** Menunjukkan objektivitas riset dengan menampilkan di mana model AI kita merasa 'bingung' (antara marah dan jijik karena kosakata slang yang sama).\n\n**Posisi:** Results - Model Evaluation (Section 4)")
-    st.markdown("---")
-    
-    st.markdown("### 🕸️ Bagian III: Siapa Terhubung dengan Siapa, dan Siapa Aktornya?")
-    st.success("**Membuktikan jaringan sangat terpecah/fragmented, dan AI/grok menduduki tahta sentral mengalahkan elit politik.**")
-    
-    st.subheader("6. Overall Social Network")
-    st.image(get_image_path("6_global_network.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 6 visualizes the unclustered global network, showing sparse connectivity and lack of a central dialogue hub.\n\n**Pesan/Temuan:** Wacana tidak membentuk polarisasi 2 kubu layaknya pilpres, melainkan menyebar tanpa arah (terpecah).\n\n**Posisi:** Results - CNA (Section 4)")
-    st.markdown("---")
-    
-    st.subheader("7. Community Structure")
-    st.image(get_image_path("network_graph.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 7 demonstrates the extreme fragmentation of the network into 333 distinct communities. Colors represent isolated clusters conversing in echo chambers.\n\n**Pesan/Temuan:** Echo-chamber akut (Modularity 0.9837). Netizen berbicara di dalam gelembung mereka sendiri tanpa titik temu.\n\n**Posisi:** Results - CNA (Section 4)")
-    st.markdown("---")
-    
-    st.subheader("8. Top Central Actors")
-    st.image(get_image_path("top_actors.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 8 ranks the discourse leaders. The AI agent @grok dominates the network's influence, significantly overtaking human political figures like the President-elect.\n\n**Pesan/Temuan:** Supremasi Algorithmic Trust. Otoritas kebenaran bergeser dari elit politik manusia kepada mesin AI.\n\n**Posisi:** Results - CNA (Section 4)")
-    st.markdown("---")
-    
-    st.markdown("### 💥 Bagian IV: Bagaimana Emosi Membentuk Diskursus?")
-    st.success("**Membuktikan bahwa kemarahan/jijik publik memiliki sentimen absolut terhadap bobroknya logistik dan anggaran fisik di lapangan — mendefinisikan Phygital Gap.**")
-    
-    st.subheader("9. Emotion × Network (Phygital Overlay)")
-    st.image(get_image_path("9_emotion_network.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 9 correlates emotions with structural communities. Disgust permeates almost all fragmented clusters, acting as a unifying sentiment against logistical failures.\n\n**Pesan/Temuan:** Emosi jijik (Disgust) bukan sekadar opini acak, melainkan sentimen sistemik yang mendominasi setiap klaster komunitas.\n\n**Posisi:** Discussion (Section 5)")
-    st.markdown("---")
-    
-    st.subheader("10. ABSA / Thematic Network")
-    st.image(get_image_path("10_absa_thematic.png"), use_container_width=True)
-    st.info("**Caption Akademik:** Figure 10 highlights that public dissatisfaction is heavily directed toward logistical and budget aspects rather than the policy's conceptual merit, solidifying the Phygital Gap.\n\n**Pesan/Temuan:** Inilah puncak Phygital Gap—konsep kebijakannya disukai, tapi eksekusi fisiknya dibenci habis-habisan oleh publik.\n\n**Posisi:** Discussion / Conclusion (Section 5)")
-    st.markdown("---")
-    
-    st.subheader("🌟 Visual Masterpiece: Integrated Phygital Gap Analysis")
-    st.image(get_image_path("integrated_sna_nlp.png"), use_container_width=True)
-    st.success("**Master Visual ini merangkai 3 panel yang saling berbicara untuk menjawab rumusan masalah secara absolut.**")
+    v_tabs = st.tabs([
+        "🌟 Galeri Lengkap (10 Gambar)",
+        "🔍 Tahap 1: Praproses Data",
+        "🤖 Tahap 2: NLP & IndoBERT",
+        "🕸️ Tahap 3: CNA & Aktor",
+        "💥 Tahap 4: Sintesis Phygital Masterpiece"
+    ])
+
+    # ── TAB 1: GALERI LENGKAP ──
+    with v_tabs[0]:
+        st.markdown("### 🔍 Bagian I: Data Apa yang Dianalisis?")
+        st.success("**Membuktikan data diproses dengan ketat, didominasi emosi Disgust dengan balutan sarkasme tingkat tinggi.**")
+        
+        st.subheader("1. Dataset & Data Collection Overview")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.image(get_image_path("1_pipeline.png"), use_container_width=True, caption="Gambar 1A. Pipeline Komputasional Riset")
+        with col2:
+            st.image(get_image_path("2_dataset_characteristics.png"), use_container_width=True, caption="Gambar 1B. Tahapan Penyaringan Data")
+        st.info("**Caption Akademik:** Figure 1 illustrates the end-to-end data processing pipeline and cleaning process from raw Twitter API scrapes (N=5,310) to the final annotated corpus (N=3,395).\n\n**Pesan/Temuan:** Ketegasan dan ketelitian arsitektur riset yang terukur secara komputasional.\n\n**Posisi Manuskrip:** Bab III Metodologi (§3.5)")
+        st.markdown("---")
+        
+        st.subheader("2. Distribusi 9 Kategori Emosi")
+        st.image(get_image_path("emotion_distribution.png"), use_container_width=True)
+        st.info("**Caption Akademik:** Figure 2 displays the frequency of predicted emotions, revealing Disgust (56.24%) as the overwhelmingly dominant sentiment surrounding the MBG policy execution.\n\n**Pesan/Temuan:** Wacana MBG bukan soal kebencian biner (Anger), melainkan respons penolakan mendalam (Disgust) terhadap eksekusi menu fisik.\n\n**Posisi Manuskrip:** Bab IV Hasil NLP (§4.5)")
+        st.markdown("---")
+        
+        st.subheader("3. Karakteristik Sarkasme")
+        st.image(get_image_path("3_sarcasm.png"), use_container_width=True)
+        st.info("**Caption Akademik:** Figure 3 highlights the prevalence of sarcasm and irony in public reactions, functioning as a primary coping mechanism toward logistical failures.\n\n**Pesan/Temuan:** Publik merespons krisis dengan sindiran halus ketimbang adu argumen logis.\n\n**Posisi Manuskrip:** Bab IV Hasil NLP (§4.5)")
+        st.markdown("---")
+        
+        st.markdown("### 🤖 Bagian II: Bagaimana Model Membacanya?")
+        st.success("**Membuktikan arsitektur IndoBERT valid dan sensitif mendeteksi emosi penolakan (Disgust Recall 96.92%).**")
+        
+        st.subheader("4. Kinerja IndoBERT (F1-Scores)")
+        st.image(get_image_path("f1_scores.png"), use_container_width=True)
+        st.info("**Caption Akademik:** Figure 4 presents the model's evaluation on real validation data (n=1,053, N=5,263), achieving 57.45% overall accuracy and a robust 0.7178 F1-score for the dominant Disgust class (recall 96.92%), alongside 68.42% precision for Trust.\n\n**Pesan/Temuan:** Model AI memiliki daya tangkap sangat tinggi terhadap sinyal keluhan fisik makanan.\n\n**Posisi Manuskrip:** Bab IV Evaluasi Model (§4.5)")
+        st.markdown("---")
+        
+        st.subheader("5. Confusion Matrix Klasifikasi Emosi (Data Riil)")
+        st.image(get_image_path("confusion_matrix.png"), use_container_width=True)
+        st.info("**Caption Akademik:** Figure 5 details the classification confusion matrix on actual data, revealing high sensitivity on Disgust and high precision on Trust.\n\n**Pesan/Temuan:** Integritas dan transparansi komputasional dalam mengevaluasi kekuatan serta keterbatasan representasi korpus imbalanced.\n\n**Posisi Manuskrip:** Bab IV Evaluasi Model (§4.5)")
+        st.markdown("---")
+        
+        st.markdown("### 🕸️ Bagian III: Siapa Terhubung dengan Siapa, dan Siapa Aktornya?")
+        st.success("**Membuktikan jaringan sangat terpecah/fragmented, dan AI (@grok) menduduki posisi sentral pengarah wacana.**")
+        
+        st.subheader("6. Struktur Jaringan Global (SNA Topology)")
+        st.image(get_image_path("6_global_network.png"), use_container_width=True)
+        st.info("**Caption Akademik:** Figure 6 visualizes the unclustered global network (971 nodes, 666 edges), showing sparse connectivity and lack of a central dialogue hub.\n\n**Pesan/Temuan:** Wacana tidak membentuk polarisasi 2 kubu ideologis, melainkan menyebar terisolasi ke ratusan komponen (341 komponen).\n\n**Posisi Manuskrip:** Bab IV Hasil CNA (§4.2)")
+        st.markdown("---")
+        
+        st.subheader("7. Struktur Komunitas Louvain (Modularity 0.9837)")
+        st.image(get_image_path("network_graph.png"), use_container_width=True)
+        st.info("**Caption Akademik:** Figure 7 demonstrates the extreme fragmentation of the network into 333 distinct communities. Colors represent isolated clusters conversing in echo chambers.\n\n**Pesan/Temuan:** Echo-chamber akut (Modularity 0.9837). Netizen berbicara di dalam gelembung kelompok mereka sendiri.\n\n**Posisi Manuskrip:** Bab IV Hasil CNA (§4.3)")
+        st.markdown("---")
+        
+        st.subheader("8. 15 Aktor Sentral Tertinggi (Supremasi AI)")
+        st.image(get_image_path("top_actors.png"), use_container_width=True)
+        st.info("**Caption Akademik:** Figure 8 ranks the discourse leaders. The AI agent @grok dominates the network's out-degree influence (42), significantly overtaking human political figures like the President-elect (@prabowo, in-degree=15, out-degree=0).\n\n**Pesan/Temuan:** Supremasi Algorithmic Trust. Otoritas kebenaran bergeser kepada agen kecerdasan buatan akibat absennya respons institusi manusia.\n\n**Posisi Manuskrip:** Bab IV Hasil CNA (§4.4)")
+        st.markdown("---")
+        
+        st.markdown("### 💥 Bagian IV: Bagaimana Emosi Membentuk Diskursus?")
+        st.success("**Membuktikan bahwa sentimen jijik publik berakar pada kegagalan fisik (logistik & mutu gizi) — mendefinisikan Phygital Gap.**")
+        
+        st.subheader("9. Emotion × Network (Phygital Overlay)")
+        st.image(get_image_path("9_emotion_network.png"), use_container_width=True)
+        st.info("**Caption Akademik:** Figure 9 correlates emotions with structural communities. Disgust permeates almost all fragmented clusters, acting as a unifying sentiment against logistical failures.\n\n**Pesan/Temuan:** Emosi jijik (Disgust) bukan sekadar opini acak, melainkan sentimen sistemik yang merata di seluruh klaster komunitas.\n\n**Posisi Manuskrip:** Bab V Pembahasan (§5.2)")
+        st.markdown("---")
+        
+        st.subheader("10. ABSA / Thematic Network (3 Aspek Kebijakan)")
+        st.image(get_image_path("10_absa_thematic.png"), use_container_width=True)
+        st.info("**Caption Akademik:** Figure 10 highlights that public dissatisfaction is heavily directed toward logistical and budget aspects rather than the policy's conceptual merit, solidifying the Phygital Gap.\n\n**Pesan/Temuan:** Inilah puncak Phygital Gap—konsep kebijakannya disukai, tapi eksekusi fisiknya menuai kritik keras di lapangan.\n\n**Posisi Manuskrip:** Bab V Pembahasan (§5.3)")
+        st.markdown("---")
+        
+        st.subheader("🌟 Visual Masterpiece: Integrated Phygital Gap Analysis")
+        st.image(get_image_path("integrated_sna_nlp.png"), use_container_width=True)
+        st.success("**Master Visual ini merangkai 3 panel (Global Topology → Louvain Community → Integrasi Klaster × Emosi Riil) yang menjawab rumusan masalah secara holistik.**")
+
+    # ── TAB 2: TAHAP 1 ──
+    with v_tabs[1]:
+        st.subheader("🔍 Tahap 1: Pipeline Riset & Karakteristik Data")
+        st.markdown("Tahapan praproses data dari kueri scraping hingga korpus bersih teranotasi:")
+        col_t1, col_t2 = st.columns(2)
+        with col_t1:
+            st.image(get_image_path("1_pipeline.png"), use_container_width=True, caption="Gambar 1A: End-to-End Computational Pipeline")
+        with col_t2:
+            st.image(get_image_path("2_dataset_characteristics.png"), use_container_width=True, caption="Gambar 1B: Data Preprocessing & Cleaning Funnel")
+        st.image(get_image_path("emotion_distribution.png"), use_container_width=True, caption="Gambar 2: Distribusi 9 Emosi Plutchik (Korpus N=5.263)")
+
+    # ── TAB 3: TAHAP 2 ──
+    with v_tabs[2]:
+        st.subheader("🤖 Tahap 2: NLP & Kinerja Model IndoBERT")
+        st.markdown("Evaluasi klasifikasi emosi multi-kelas dan deteksi sindiran linguistik:")
+        col_t3_a, col_t3_b = st.columns(2)
+        with col_t3_a:
+            st.image(get_image_path("3_sarcasm.png"), use_container_width=True, caption="Gambar 3: Distribusi Sarkasme & Penanda Linguistik")
+        with col_t3_b:
+            st.image(get_image_path("f1_scores.png"), use_container_width=True, caption="Gambar 4: F1-Scores IndoBERT per Kategori Emosi")
+        st.image(get_image_path("confusion_matrix.png"), use_container_width=True, caption="Gambar 5: Confusion Matrix Evaluasi Validasi Riil (n=1.053)")
+
+    # ── TAB 4: TAHAP 3 ──
+    with v_tabs[3]:
+        st.subheader("🕸️ Tahap 3: Communication Network Analysis (CNA)")
+        st.markdown("Topologi makro, fragmentasi komunitas, dan hierarki sentralitas aktor:")
+        st.image(get_image_path("6_global_network.png"), use_container_width=True, caption="Gambar 6: Struktur Graf Jaringan Global (971 Nodes, 666 Edges)")
+        col_t4_a, col_t4_b = st.columns(2)
+        with col_t4_a:
+            st.image(get_image_path("network_graph.png"), use_container_width=True, caption="Gambar 7: Partisi Komunitas Louvain (Modularity 0.9837)")
+        with col_t4_b:
+            st.image(get_image_path("top_actors.png"), use_container_width=True, caption="Gambar 8: Sentralitas Aktor Utama (@grok vs @prabowo)")
+
+    # ── TAB 5: TAHAP 4 ──
+    with v_tabs[4]:
+        st.subheader("💥 Tahap 4: Sintesis Marketing 6.0 & Phygital Gap")
+        st.markdown("Integrasi temuan afektif dan struktural untuk membuktikan Phygital Gap:")
+        col_t5_a, col_t5_b = st.columns(2)
+        with col_t5_a:
+            st.image(get_image_path("9_emotion_network.png"), use_container_width=True, caption="Gambar 9: Overlay Emosi Dominan pada Komunitas Jaringan")
+        with col_t5_b:
+            st.image(get_image_path("10_absa_thematic.png"), use_container_width=True, caption="Gambar 10: Analisis Sentimen 3 Aspek (Logistik, Anggaran, Gizi)")
+        st.image(get_image_path("integrated_sna_nlp.png"), use_container_width=True, caption="Masterpiece Visual: Triangulasi Terintegrasi SNA x NLP (Data Riil)")
 
 elif page == "📚 Audit Referensi Scopus":
     st.title("📚 Audit Kelayakan Referensi untuk Scopus / Sinta 1")
