@@ -2,7 +2,11 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import networkx as nx
-from pyvis.network import Network
+try:
+    from pyvis.network import Network
+    PYVIS_AVAILABLE = True
+except ImportError:
+    PYVIS_AVAILABLE = False
 import streamlit.components.v1 as components
 import os
 import re
@@ -1515,90 +1519,93 @@ elif page == "🕸️ Analisis Jaringan (CNA)":
     
     st.info("💡 **Tips Interaktif:** Anda dapat melakukan *scroll* untuk Zoom In/Out, men-drag node, atau mengklik node untuk melihat relasi terhubung.")
     
-    # Generate PyVis graph
-    net = Network(height="600px", width="100%", bgcolor="#1e293b", font_color="white")
-    net.force_atlas_2based()
-    
-    if nodes_data is not None and 'Degree' in nodes_data.columns:
-        top_nodes = nodes_data.sort_values(by='Degree', ascending=False).head(150)['Id'].tolist()
+    if not PYVIS_AVAILABLE:
+        st.warning("⚠️ Modul `pyvis` belum terpasang di environment Python Anda. Pasang dengan `pip install pyvis` untuk mengaktifkan graf interaktif ini.")
     else:
-        G_temp = nx.from_pandas_edgelist(edges, 'Source', 'Target')
-        degree_dict = dict(G_temp.degree())
-        top_nodes = sorted(degree_dict, key=degree_dict.get, reverse=True)[:150]
-        
-    filtered_edges = edges[edges['Source'].isin(top_nodes) | edges['Target'].isin(top_nodes)]
-    G = nx.from_pandas_edgelist(filtered_edges, 'Source', 'Target')
-    
-    # Node community & emotion mapping
-    nodes_info_path = "results/mbg_network_nodes_final.csv" if os.path.exists("results/mbg_network_nodes_final.csv") else "../results/mbg_network_nodes_final.csv"
-    node_comm_map = {}
-    node_emo_map = {}
-    if os.path.exists(nodes_info_path):
-        df_ninfo = pd.read_csv(nodes_info_path)
-        node_comm_map = dict(zip(df_ninfo['Id'], df_ninfo['Community']))
-        node_emo_map = dict(zip(df_ninfo['Id'], df_ninfo['Dominant_Emotion']))
-        
-    comm_palette = {
-        15: "#ef4444",   # Red / Disgust
-        61: "#3b82f6",   # Blue / Neutral
-        16: "#f59e0b",   # Amber / Sarcasm
-        259: "#10b981",  # Green / Trust
-        8: "#8b5cf6",    # Purple / Budget
-    }
-    
-    # Add nodes and edges to pyvis with rich aesthetic attributes
-    for node in G.nodes():
-        deg = dict(G.degree()).get(node, 1)
-        cid = node_comm_map.get(node, -1)
-        emo = node_emo_map.get(node, "netral")
-        col = comm_palette.get(cid, "#94a3b8")
-        
-        # Highlighting Key Actors
-        if node == "grok":
-            col = "#06b6d4"  # Cyan for AI Oracle
-            size = 34
-            label = "🤖 @grok"
-        elif node == "prabowo":
-            col = "#eab308"  # Gold for President
-            size = 30
-            label = "👑 @prabowo"
-        elif node == "4Y4NKZ":
-            col = "#ec4899"  # Pink for Broker
-            size = 28
-            label = "🔗 @4Y4NKZ"
-        else:
-            size = max(8, min(24, deg * 3))
-            label = f"@{node}" if deg >= 4 else ""
-        emo_id_map = {
-            'disgust': '🤢 Jijik (Disgust)',
-            'neutral': '😐 Netral',
-            'love': '🤝 Percaya (Trust)',
-            'shame': '🔮 Tertarik',
-            'anger': '😡 Marah',
-            'sadness': '😢 Sedih',
-            'fear': '😨 Takut',
-            'joy': '😊 Bahagia',
-            'surprise': '😲 Kaget'
-        }
-        emo_ind = emo_id_map.get(str(emo).lower(), str(emo))
-        tooltip = f"<div style='font-family: sans-serif; font-size: 12px; padding: 4px;'><b>@{node}</b><br>🧩 Klaster: #{cid}<br>🎭 Emosi Dominan: {emo_ind}<br>📊 Total Derajat: {deg}</div>"
-        net.add_node(node, label=label, title=tooltip, size=size, color=col)
-        
-    for source, target in G.edges():
-        net.add_edge(source, target, color="rgba(255,255,255,0.15)")
-        
-    # Save graph to HTML
-    try:
-        path = 'html_files'
-        if not os.path.exists(path):
-            os.makedirs(path)
-        net.save_graph(f'{path}/network.html')
-        
-        HtmlFile = open(f'{path}/network.html', 'r', encoding='utf-8')
-        source_code = HtmlFile.read()
-        components.html(source_code, height=650, scrolling=True)
-    except Exception as e:
-        st.error(f"Gagal memuat visualisasi PyVis: {e}")
+        try:
+            # Generate PyVis graph
+            net = Network(height="600px", width="100%", bgcolor="#1e293b", font_color="white")
+            net.force_atlas_2based()
+            
+            if nodes_data is not None and 'Degree' in nodes_data.columns:
+                top_nodes = nodes_data.sort_values(by='Degree', ascending=False).head(150)['Id'].tolist()
+            else:
+                G_temp = nx.from_pandas_edgelist(edges, 'Source', 'Target')
+                degree_dict = dict(G_temp.degree())
+                top_nodes = sorted(degree_dict, key=degree_dict.get, reverse=True)[:150]
+                
+            filtered_edges = edges[edges['Source'].isin(top_nodes) | edges['Target'].isin(top_nodes)]
+            G = nx.from_pandas_edgelist(filtered_edges, 'Source', 'Target')
+            
+            # Node community & emotion mapping
+            nodes_info_path = "results/mbg_network_nodes_final.csv" if os.path.exists("results/mbg_network_nodes_final.csv") else "../results/mbg_network_nodes_final.csv"
+            node_comm_map = {}
+            node_emo_map = {}
+            if os.path.exists(nodes_info_path):
+                df_ninfo = pd.read_csv(nodes_info_path)
+                node_comm_map = dict(zip(df_ninfo['Id'], df_ninfo['Community']))
+                node_emo_map = dict(zip(df_ninfo['Id'], df_ninfo['Dominant_Emotion']))
+                
+            comm_palette = {
+                15: "#ef4444",   # Red / Disgust
+                61: "#3b82f6",   # Blue / Neutral
+                16: "#f59e0b",   # Amber / Sarcasm
+                259: "#10b981",  # Green / Trust
+                8: "#8b5cf6",    # Purple / Budget
+            }
+            
+            # Add nodes and edges to pyvis with rich aesthetic attributes
+            for node in G.nodes():
+                deg = dict(G.degree()).get(node, 1)
+                cid = node_comm_map.get(node, -1)
+                emo = node_emo_map.get(node, "netral")
+                col = comm_palette.get(cid, "#94a3b8")
+                
+                # Highlighting Key Actors
+                if node == "grok":
+                    col = "#06b6d4"  # Cyan for AI Oracle
+                    size = 34
+                    label = "🤖 @grok"
+                elif node == "prabowo":
+                    col = "#eab308"  # Gold for President
+                    size = 30
+                    label = "👑 @prabowo"
+                elif node == "4Y4NKZ":
+                    col = "#ec4899"  # Pink for Broker
+                    size = 28
+                    label = "🔗 @4Y4NKZ"
+                else:
+                    size = max(8, min(24, deg * 3))
+                    label = f"@{node}" if deg >= 4 else ""
+                emo_id_map = {
+                    'disgust': '🤢 Jijik (Disgust)',
+                    'neutral': '😐 Netral',
+                    'love': '🤝 Percaya (Trust)',
+                    'shame': '🔮 Tertarik',
+                    'anger': '😡 Marah',
+                    'sadness': '😢 Sedih',
+                    'fear': '😨 Takut',
+                    'joy': '😊 Bahagia',
+                    'surprise': '😲 Kaget'
+                }
+                emo_ind = emo_id_map.get(str(emo).lower(), str(emo))
+                tooltip = f"<div style='font-family: sans-serif; font-size: 12px; padding: 4px;'><b>@{node}</b><br>🧩 Klaster: #{cid}<br>🎭 Emosi Dominan: {emo_ind}<br>📊 Total Derajat: {deg}</div>"
+                net.add_node(node, label=label, title=tooltip, size=size, color=col)
+                
+            for source, target in G.edges():
+                net.add_edge(source, target, color="rgba(255,255,255,0.15)")
+                
+            # Save graph to HTML
+            path = 'html_files'
+            if not os.path.exists(path):
+                os.makedirs(path)
+            net.save_graph(f'{path}/network.html')
+            
+            HtmlFile = open(f'{path}/network.html', 'r', encoding='utf-8')
+            source_code = HtmlFile.read()
+            components.html(source_code, height=650, scrolling=True)
+        except Exception as e:
+            st.error(f"Gagal memuat visualisasi PyVis: {e}")
         
     st.markdown("---")
     st.subheader("Visualisasi Jaringan Statis (Topologi & Aktor Utama)")

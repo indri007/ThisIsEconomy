@@ -27,7 +27,7 @@
 
 ---
 
-## 📊 RESEARCH SNAPSHOT
+## 📊 RESEARCH SNAPSHOT (GROUND-TRUTH METRICS)
 
 <div align="center">
 
@@ -40,13 +40,13 @@
 </td>
 <td align="center" width="16%">
 <h2>🔗</h2>
-<h1><b>692</b></h1>
-<sub>Network Edges</sub>
+<h1><b>666</b></h1>
+<sub>Directed Edges (692 Raw)</sub>
 </td>
 <td align="center" width="16%">
 <h2>📝</h2>
 <h1><b>3,395</b></h1>
-<sub>Annotated Corpus</sub>
+<sub>Validated Sarcasm Corpus</sub>
 </td>
 <td align="center" width="16%">
 <h2>🤖</h2>
@@ -55,20 +55,89 @@
 </td>
 <td align="center" width="16%">
 <h2>🏘️</h2>
-<h1><b>333</b></h1>
-<sub>Communities</sub>
+<h1><b>332–341</b></h1>
+<sub>Louvain Communities</sub>
 </td>
 <td align="center" width="16%">
 <h2>📐</h2>
 <h1><b>0.9837</b></h1>
-<sub>Modularity</sub>
+<sub>Modularity (Hyper-Frag.)</sub>
 </td>
 </tr>
 </table>
 
-> **Methodological Note:** The 37% sarcasm figure (lexical-based, N=3,395) and 56.2% Disgust classification (IndoBERT, N=5,263) represent a **deliberate multi-layer measurement triangulation** — capturing both the *linguistic structure* and the *emotional valence* of public irony. They are convergent, not contradictory.
+> **📌 Catatan Metodologis Triangulasi:** Riset ini menerapkan *multi-layer measurement* yang saling melengkapi:
+> 1. **Tingkat Linguistik (N=3.395):** 315 cuitan (**9,28%**) terverifikasi sindiran/sarkasme (*dataset_sindiran_valid.csv*), dengan 181 cuitan (3,44%) leksikon kontradiktif eksplisit.
+> 2. **Tingkat Afektif Holistik (N=5.263):** Model IndoBERT mengklasifikasikan **56,24% (2.960 cuitan)** sebagai emosi **Jijik (*Disgust*)**, menangkap spektrum penolakan publik yang lebih luas terhadap eksekusi fisik program.
+> 3. **Estimasi Wacana Media Awal:** ~37% percakapan bersindiran (kutipan referensi eksternal media massa).
 
 </div>
+
+---
+
+## 💻 PANDUAN MENJALANKAN DI LOCALHOST (LOCAL HOST RUN GUIDE)
+
+Bagi penguji, dosen pembimbing, maupun peneliti yang ingin mereproduksi hasil dan menjalankan **Dashboard Interaktif Streamlit** secara lokal (*localhost*), silakan ikuti panduan praktis berikut:
+
+### 1. Prasyarat Sistem (*Prerequisites*)
+- **Python 3.10** atau lebih baru.
+- **Git** terpasang di sistem operasi Anda (macOS, Linux, atau Windows).
+- Ram minimal 4 GB disarankan.
+
+### 2. Kloning Repositori & Menyiapkan Lingkungan
+Buka terminal Anda dan jalankan perintah:
+```bash
+# 1. Kloning repositori resmi dari GitHub
+git clone https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA.git
+cd INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA
+
+# 2. Buat & aktifkan virtual environment (Sangat Disarankan)
+python3 -m venv .venv
+
+# Di macOS / Linux:
+source .venv/bin/activate
+
+# Di Windows (PowerShell / Command Prompt):
+# .venv\Scripts\activate
+
+# 3. Pasang semua dependensi riset
+pip install -r requirements.txt
+```
+
+### 3. Menjalankan Dashboard Streamlit di Localhost
+Jalankan dashboard melalui terminal dengan perintah:
+```bash
+streamlit run dashboard/app.py
+```
+Aplikasi web interaktif akan otomatis terbuka di peramban web Anda pada alamat:
+- 🌐 **Localhost URL:** [`http://localhost:8501`](http://localhost:8501)
+- 📡 **Network URL:** `http://<ip-lokal-anda>:8501` *(dapat diakses dari gawai/laptop lain dalam satu jaringan WiFi)*
+
+---
+
+### 🌟 Eksplorasi Fitur Unggulan di Localhost
+
+| Halaman / Fitur | Deskripsi Interaktif |
+| :--- | :--- |
+| 🏠 **Beranda & Sintesis Masterpiece** | Hero card eksekutif, Grand Research Question, peta teori Marketing 6.0, dan sintesis *Phygital Gap*. |
+| 📊 **Eksplorasi Data Mentah** | Filter data dinamis cuitan riil ($N=5.263$), korpus validasi sindiran ($N=3.395$), dan metrik sentralitas. |
+| 😊 **Analisis Emosi (NLP) & Leksikal** | Treemap interaktif 9 emosi Plutchik, **Word Cloud modern** (120 kata dengan tema gelap), dan **Top 10 Kata Paling Sering Muncul** (Kata Umum vs Kata Tematik MBG). |
+| 🕸️ **Analisis Jaringan (CNA/SNA)** | **Graf Interaktif PyVis**: Node diwarnai klaster Louvain riil, zoom & drag-and-drop, identifikasi aktor utama (`@grok` AI Oracle, `@prabowo` Power Vacuum, `@4Y4NKZ` Broker), dan grafik batang in-degree vs out-degree. |
+| 🖼️ **Visual Storytelling** | 5 Tab galeri visual resolusi tinggi (Praproses Data, NLP & IndoBERT, CNA & Jaringan, Sintesis Masterpiece). |
+
+---
+
+### 🧪 Menjalankan Skrip Evaluasi Model & Plotting
+Untuk memverifikasi metrik komputasional secara langsung dari terminal:
+```bash
+# 1. Evaluasi model IndoBERT pada data validasi riil (n=1.053)
+python scripts/evaluate.py
+# Menghasilkan: results/confusion_matrix.png & results/f1_scores.png
+
+# 2. Re-generasi Master Visual Integrasi 3-Panel SNA x NLP
+python scripts/plot_integrated.py
+# Menghasilkan: results/integrated_sna_nlp.png
+```
 
 ---
 
@@ -137,23 +206,24 @@
 
 ---
 
-## 🎨 9-EMOTION TAXONOMY — SEMANTIC COLOR MAP
+## 🎨 9-EMOTION TAXONOMY — SEMANTIC COLOR MAP & EMPIRICAL DISTRIBUTION
 
 <div align="center">
 
 <table>
 <tr>
-<th>Emotion</th><th>Indonesian</th><th>Color</th><th>HEX</th><th>Distribution</th>
+<th>Emotion (EN)</th><th>Emosi (ID)</th><th>Color</th><th>HEX</th><th>Frekuensi</th><th>Proporsi</th><th>Karakteristik Diskursus</th>
 </tr>
-<tr><td>😡 <b>Anger</b></td><td>Marah</td><td>🔴</td><td><code>#EF4444</code></td><td>1.0%</td></tr>
-<tr><td>😊 <b>Joy</b></td><td>Bahagia/Senang</td><td>🟡</td><td><code>#EAB308</code></td><td>—</td></tr>
-<tr><td>😢 <b>Sadness</b></td><td>Sedih</td><td>🔵</td><td><code>#2563EB</code></td><td>0.4%</td></tr>
-<tr><td>🔮 <b>Anticipation</b></td><td>Antisipasi/Tertarik</td><td>🟠</td><td><code>#F97316</code></td><td>9.6%</td></tr>
-<tr><td>😨 <b>Fear</b></td><td>Takut</td><td>🟣</td><td><code>#7C3AED</code></td><td>0.0%</td></tr>
-<tr><td>😐 <b>Neutral</b></td><td>Netral</td><td>⚪</td><td><code>#475569</code></td><td>12.3%</td></tr>
-<tr><td>🤝 <b>Trust</b></td><td>Percaya</td><td>🟢</td><td><code>#10B981</code></td><td>20.4%</td></tr>
-<tr><td>🤢 <b>Disgust</b></td><td>Jijik</td><td>🟩</td><td><code>#065F46</code></td><td><b>56.2% ← DOMINANT</b></td></tr>
-<tr><td>😲 <b>Surprise</b></td><td>Kaget</td><td>🔵</td><td><code>#06B6D4</code></td><td>—</td></tr>
+<tr><td>🤢 <b>Disgust</b></td><td><b>Jijik</b></td><td>🟩</td><td><code>#065F46</code></td><td><b>2.960</b></td><td><b>56,24%</b></td><td><b>DOMINAN MUTLAK</b> (Penolakan mutu fisik makanan & porsi)</td></tr>
+<tr><td>🤝 <b>Trust</b></td><td><b>Percaya</b></td><td>🟢</td><td><code>#10B981</code></td><td><b>1.073</b></td><td><b>20,39%</b></td><td>Dukungan narasi gizi & apresiasi program</td></tr>
+<tr><td>😐 <b>Neutral</b></td><td><b>Netral</b></td><td>⚪</td><td><code>#475569</code></td><td><b>649</b></td><td><b>12,33%</b></td><td>Pernyataan berita & kutipan media informatif</td></tr>
+<tr><td>🔮 <b>Anticipation</b></td><td><b>Tertarik</b></td><td>🟠</td><td><code>#F97316</code></td><td><b>505</b></td><td><b>9,60%</b></td><td>Ekspektasi & rasa ingin tahu masyarakat</td></tr>
+<tr><td>😡 <b>Anger</b></td><td><b>Marah</b></td><td>🔴</td><td><code>#EF4444</code></td><td><b>55</b></td><td><b>1,05%</b></td><td>Kemarahan atas transparansi vendor & korupsi</td></tr>
+<tr><td>😢 <b>Sadness</b></td><td><b>Sedih</b></td><td>🔵</td><td><code>#2563EB</code></td><td><b>19</b></td><td><b>0,36%</b></td><td>Empati pada siswa & keprihatinan mutu menu</td></tr>
+<tr><td>😨 <b>Fear</b></td><td><b>Takut</b></td><td>🟣</td><td><code>#7C3AED</code></td><td><b>2</b></td><td><b>0,04%</b></td><td>Kekhawatiran atas dampak keracunan massal</td></tr>
+<tr><td>😊 <b>Joy</b></td><td><b>Bahagia</b></td><td>🟡</td><td><code>#EAB308</code></td><td><b>0</b></td><td><b>0,00%</b></td><td>—</td></tr>
+<tr><td>😲 <b>Surprise</b></td><td><b>Kaget</b></td><td>🔵</td><td><code>#06B6D4</code></td><td><b>0</b></td><td><b>0,00%</b></td><td>—</td></tr>
+<tr><td colspan="4" align="right"><b>TOTAL</b></td><td><b>5.263</b></td><td><b>100,00%</b></td><td><i>Korpus Inferensi IndoBERT Terverifikasi</i></td></tr>
 </table>
 
 </div>
@@ -170,72 +240,72 @@
 
 ### `Figure 01` — Dataset & Pipeline Overview
 📍 *Methods §3*
-End-to-end pipeline: raw collection (N=5,310) → cleaning → annotated corpus (N=3,395) → full inference corpus (N=5,263)
-> **"Strict data quality gates ensure analytical validity."**
+End-to-end pipeline: raw collection (N=5,310) → cleaning → validated sarcasm corpus (N=3,395) → full inference corpus (N=5,263).
+> **"Penyaringan data berlapis menjamin integritas dan validitas analitis."**
 
 ---
 
 ### `Figure 02` — Nine Emotion Distribution
 📍 *Results §4*
-Bar chart of 9 emotion classes across 5,263 tweets. **Disgust dominates at 56.2%**, revealing systematic public dissatisfaction.
-> **"Jijik bukan anomali — ini adalah sentimen sistemik."**
+Diagram batang 9 kelas emosi pada 5.263 cuitan riil. **Jijik mendominasi secara mutlak sebesar 56,24%**, diikuti Percaya (20,39%) dan Netral (12,33%).
+> **"Jijik bukan sekadar anomali — ini adalah respons afektif sistemik."**
 
 ---
 
 ### `Figure 03` — Sarcasm Distribution
 📍 *Results §4*
-~37% of the annotated corpus (N=3,395) contains sarcastic linguistic markers — irony as a primary rhetorical coping mechanism.
-> **"Publik merespons krisis dengan sindiran, bukan argumen logis."**
+Pada korpus validasi (N=3.395), **9,28% (315 cuitan)** terverifikasi memuat sindiran. Pada rekonstruksi leksikon kontradiktif (N=5.263), tercatat 181 cuitan sindiran eksplisit (3,44%) dan 2.979 cuitan (56,60%) proksi penolakan.
+> **"Publik merespons kegagalan implementasi fisik dengan bahasa sindiran."**
 
 ---
 
 ### `Figure 04` — IndoBERT Performance
 📍 *Results §4*
-Model evaluation: Accuracy · Precision · Recall · Macro-F1 · Weighted-F1. Fine-tuned on 9-class Indonesian emotion taxonomy.
-> **"Model validates: AI reads Indonesian irony with high fidelity."**
+Evaluasi model pada validation set riil ($n=1.053$, checkpoint-792): Akurasi **57,45%**, Weighted F1 **0,4563**, Macro F1 **0,1444**. Kelas dominan Jijik mencapai Recall **96,92%** (F1 0,7178) dan kelas Percaya mencapai Presisi **68,42%**.
+> **"Model IndoBERT terbukti sensitif mendeteksi sinyal keluhan fisik makanan."**
 
 ---
 
 ### `Figure 05` — Confusion Matrix
 📍 *Results §4*
-9×9 heatmap: actual vs. predicted emotion classes. Key finding: minor Anger ↔ Disgust overlap in sarcastic contexts.
-> **"Sarcastic anger and disgust share structural linguistic features."**
+Matriks konfusi 9×9 mengonfirmasi 566 dari 584 cuitan berlabel aktual Jijik berhasil diprediksi tepat oleh model (96,92% recall), membuktikan tingginya daya tangkap sentimen penolakan.
+> **"Transparansi komputasional dalam mengevaluasi kekuatan model deep learning."**
 
 </td>
 <td width="50%" valign="top">
 
 ### `Figure 06` — Global Social Network
 📍 *Results §4*
-971 nodes · 692 edges · No dominant central hub. Network structure reveals **hyper-fragmentation**, not polarization.
-> **"Discourse is fragmented into isolated complaint bubbles."**
+971 nodes · 666 directed edges (692 raw interactions). Tanpa hub dialog pusat; membuktikan kondisi **hyper-fragmentation**, bukan polarisasi dua kubu.
+> **"Wacana publik terfragmentasi dalam ratusan kantong percakapan terisolasi."**
 
 ---
 
 ### `Figure 07` — Community Structure
 📍 *Results §4*
-333 Louvain communities · **Modularity = 0.9837** (extremely high). Public retreats into isolated echo chambers.
-> **"Hyper-fragmentation: 333 islands, not 2 camps."**
+332–341 komunitas Louvain · **Modularity = 0,9837** (sangat tinggi). Giant component hanya mencakup 9,1% (89 node) dari total aktor, dengan resiprositas hanya 1,21%.
+> **"Hyper-fragmentation: ratusan pulau percakapan terpisah tanpa arena konsensus."**
 
 ---
 
 ### `Figure 08` — Top Central Actors
 📍 *Results §4*
-**@grok (AI agent) ranks #1** in Eigenvector Centrality — overtaking political elites and government accounts.
-> **"Algorithmic Trust replaces institutional authority."**
+**@grok (AI agent) memegang Out-degree tertinggi (#1 = 42)** sebagai rujukan verifikasi klaim publik (*Algorithmic Oracle*), sementara **@prabowo memiliki In-degree tertinggi (15) dengan Out-degree 0** (*Power Vacuum*).
+> **"Algorithmic Trust mengambil alih fungsi di tengah kevakuman otoritas manusia."**
 
 ---
 
 ### `Figure 09` — Emotion × Network Pattern
 📍 *Discussion §5*
-Cross-analysis: Disgust permeates nearly **all 333 communities** — a systemic emotional pattern, not random individual expression.
-> **"Disgust is the connective tissue of the fragmented discourse."**
+Analisis silang: Emosi Jijik meresap ke hampir seluruh klaster komunitas independen — menjadi sentimen perekat di balik fragmentasi wacana.
+> **"Emosi jijik menjadi benang merah struktural di seluruh jaringan wacana."**
 
 ---
 
 ### `Figure 10` — ABSA / Thematic Analysis
 📍 *Discussion §5*
-Aspect-Based Sentiment: frustration is directed at **logistics & budget execution**, not the policy concept itself.
-> **"Policy liked. Execution hated. This is the Phygital Gap."**
+Sentimen berbasis aspek: Kekecewaan publik terkonsentrasi pada **eksekusi logistik (makanan basi) & pemotongan anggaran**, bukan pada konsep gizi itu sendiri.
+> **"Program didukung, tetapi eksekusi fisik menu ditolak — Inilah Phygital Gap."**
 
 </td>
 </tr>
@@ -431,6 +501,7 @@ Identifies key discourse aspects: logistics, budget, nutrition, policy trust
 ```
 tesis_mbg/
 ├── 📄 README.md
+├── 📄 requirements.txt                    # Dependensi Python untuk localhost
 │
 ├── 📁 data/
 │   ├── raw/                           # Raw Platform X tweets (N=5,310)
