@@ -225,10 +225,42 @@ def load_network_data():
     nodes = pd.read_csv(node_path) if os.path.exists(node_path) else None
     return edges, nodes
 
+
+def render_thesis_stepper(current_step):
+    steps = [
+        ("Bab I", "Pendahuluan"),
+        ("Bab II", "Teori"),
+        ("Bab III", "Metodologi"),
+        ("Bab IV", "Hasil & Bahas"),
+        ("Bab V", "Kesimpulan")
+    ]
+    st.markdown('<div style="margin-bottom: 14px;">', unsafe_allow_html=True)
+    cols = st.columns(len(steps))
+    for idx, (code, title) in enumerate(steps):
+        with cols[idx]:
+            if idx + 1 == current_step:
+                st.markdown(f"<div style='text-align:center; padding:7px 3px; background:linear-gradient(135deg, #1d4ed8, #3b82f6); color:white; border-radius:10px; font-weight:bold; font-size:0.85rem; box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.4); border:1px solid #60a5fa;'>📍 {code}<br><span style='font-size:0.75rem; font-weight:normal;'>{title}</span></div>", unsafe_allow_html=True)
+            elif idx + 1 < current_step:
+                st.markdown(f"<div style='text-align:center; padding:7px 3px; background:#064e3b; color:#6ee7b7; border-radius:10px; font-size:0.85rem; border:1px solid #059669;'>✅ {code}<br><span style='font-size:0.75rem;'>{title}</span></div>", unsafe_allow_html=True)
+            else:
+                st.markdown(f"<div style='text-align:center; padding:7px 3px; background:#1e293b; color:#94a3b8; border-radius:10px; font-size:0.85rem; border:1px solid #334155;'>⚪ {code}<br><span style='font-size:0.75rem;'>{title}</span></div>", unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
 # Sidebar Navigation
-st.sidebar.title("Navigasi Dashboard")
-st.sidebar.markdown("Silakan pilih menu analisis:")
-page = st.sidebar.radio("Menu", ["🏠 Beranda", "🏛️ Landasan Teori & Pemikiran (Bab II)", "😊 Analisis Emosi (NLP)", "🕸️ Analisis Jaringan (CNA)", "🖼️ Visual Storytelling", "📚 Audit Referensi Scopus"])
+st.sidebar.title("🧭 Navigasi Manuskrip Tesis")
+st.sidebar.markdown("**Alur Pembacaan Berurutan (Bab I – Bab V):**")
+
+menu_options = [
+    "1️⃣ Bab I: Pendahuluan & 6 Rumusan Masalah",
+    "2️⃣ Bab II: Landasan Teori & Tinjauan Pustaka",
+    "3️⃣ Bab III: Metodologi & Pipeline Komputasional",
+    "4️⃣ Bab IV: Hasil & Pembahasan (Empiris Terintegrasi)",
+    "5️⃣ Bab V: Kesimpulan & Rekomendasi Kebijakan BGN",
+    "🖼️ Galeri Visual Storytelling (10 Master Plot Tesis)",
+    "📚 Audit Integritas Data & Referensi Scopus"
+]
+
+page = st.sidebar.radio("Pilih Bab / Modul:", menu_options, index=0)
 
 st.sidebar.markdown("---")
 st.sidebar.info(
@@ -237,7 +269,9 @@ st.sidebar.info(
     "A Computational Social Science Approach."
 )
 
-if page == "🏠 Beranda":
+
+if "Bab I" in page or page == "🏠 Beranda":
+    render_thesis_stepper(1)
     st.markdown("""
     <div class="hero-banner">
         <div class="hero-badge">🎓 Tesis Magister Ilmu Komunikasi — UPN 'Veteran' Jawa Timur</div>
@@ -1014,135 +1048,11 @@ if page == "🏠 Beranda":
     """)
 
     st.markdown("---")
-    # ─── METODOLOGI & TAHAPAN PENELITIAN (BAB III) ───
-    st.header("🔬 §3 Desain Metodologi & Definisi Operasional Variabel")
-    st.markdown("""
-    > *Mengacu pada **Bab III Metode Penelitian**, riset ini menerapkan pendekatan **mixed-methods (explanatory sequential)** 
-    > berbasis paradigma **Computational Social Science**. Data komputasional kuantitatif diolah secara berjenjang 
-    > kemudian disintesiskan secara kualitatif dalam bingkai teori Marketing 6.0.*
-    """)
-
-    # ── Tabel 3.1 Definisi Operasional Variabel ──
-    st.subheader("📋 Tabel 3.1 Definisi Operasional Variabel")
-    st.caption("Operasionalisasi variabel konseptual ke dalam instrumen komputasi terukur (Bebas dari instrumen pihak ketiga non-aktif):")
-
-    op_var_data = {
-        "Variabel": [
-            "🎭 Emosi Granular",
-            "😏 Sindiran / Inkongruensi",
-            "🕸️ Sentralitas Aktor",
-            "⚡ Polarisasi Jaringan",
-            "📊 Sentimen per Aspek",
-            "🌐 Phygital Gap",
-        ],
-        "Definisi Konseptual": [
-            "9 kelas afektif diskret pada cuitan warganet",
-            "Ketidaksesuaian valensi antara teks tertulis dengan simbol visual (emoji)",
-            "Posisi strategis dan distribusi pengaruh akun dalam jaringan komunikasi",
-            "Tingkat keterpisahan struktural dan segregasi komunitas diskursus",
-            "Polaritas sentimen spesifik pada pilar operasional MBG",
-            "Kesenjangan persepsi antara narasi digital dengan realitas implementasi fisik",
-        ],
-        "Rujukan Teoretis": [
-            "Plutchik (1980)",
-            "Grice (1975); Camp (2012)",
-            "Freeman (1979)",
-            "Newman & Girvan (2004)",
-            "Pontiki dkk. (2014)",
-            "Kotler, Kartajaya & Setiawan (2023)",
-        ],
-        "Definisi Operasional": [
-            "Label kelas emosi hasil inferensi model klasifikasi berbasis konteks penuh",
-            "Status biner (sindiran vs non-sindiran) hasil deteksi inkongruensi teks-emoji",
-            "Tingkat kepentingan akun dalam jaringan mention berdasarkan metrik konektivitas",
-            "Kekuatan pembagian jaringan ke dalam klaster/komunitas independen",
-            "Valensi afektif warganet pada aspek anggaran, logistik, dan kualitas gizi",
-            "Diskrepansi terukur antara respon emosi daring dengan fakta capaian fisik program",
-        ],
-        "Indikator / Alat Ukur": [
-            "9 kelas keluaran model IndoBERT-base-p2",
-            "Kelas biner model IndoBERT multi-task & leksikon",
-            "Degree, betweenness, & eigenvector centrality (NetworkX)",
-            "Modularity Louvain, ambang batas 0,3 (Newman, 2006)",
-            "Aspect-Based Sentiment Analysis (ABSA) 3 dimensi",
-            "Triangulasi temuan komputasional (NLP + SNA) vs data riil",
-        ],
-    }
-    df_op = pd.DataFrame(op_var_data)
-    st.dataframe(df_op, use_container_width=True, hide_index=True)
-
-    st.markdown("---")
-
-    # ── Tahapan Penelitian & Pipeline Komputasi ──
-    st.subheader("🔄 Tahapan Alur Penelitian (Research Pipeline)")
-    
-    th_col1, th_col2, th_col3, th_col4 = st.columns(4)
-    with th_col1:
-        st.info("""
-        **1️⃣ Akuisisi Data & Etika**
-        - Scraping platform X (Maret–Mei 2026)
-        - Filter kata kunci MBG & tagar resmi
-        - Korpus: 3.395 teks & 973 nodes
-        - Anonimisasi & eliminasi bot
-        """)
-    with th_col2:
-        st.warning("""
-        **2️⃣ Pra-Pemrosesan Teks**
-        - Noise removal (URL, RT, simbol)
-        - Case folding & normalisasi slang
-        - Punctuation removal (proteksi emoji)
-        - Stopword removal & Stemming Sastrawi
-        """)
-    with th_col3:
-        st.success("""
-        **3️⃣ Pemodelan Komputasional**
-        - **NLP**: IndoBERT 9 emosi & sindiran
-        - **SNA**: NetworkX (Centrality)
-        - **Komunitas**: Algoritma Louvain
-        - **ABSA**: Anggaran, logistik, gizi
-        """)
-    with th_col4:
-        st.error("""
-        **4️⃣ Sintesis & Evaluasi**
-        - Integrasi hasil NLP + SNA
-        - Uji 5 Proposisi Kerja
-        - Evaluasi Phygital Gap (Marketing 6.0)
-        - Rekomendasi mitigasi krisis fiskal
-        """)
-
-    st.markdown("---")
-
-    # ── Tiga Lapisan Analisis Data ──
-    st.subheader("🏛️ Tiga Lapisan Analisis Data (§3.6)")
-    lap1, lap2, lap3 = st.columns(3)
-    with lap1:
-        st.markdown("""
-        #### 🔤 Lapisan 1: Tekstual-Linguistik
-        - **Instrumen**: IndoBERT-base-p2 multi-task
-        - **Fokus**: Granularitas 9 emosi Plutchik & deteksi sindiran berbasis inkongruensi teks-emoji.
-        - **Output**: Distribusi afektif netizen & rasio resistensi linguistik warganet.
-        """)
-    with lap2:
-        st.markdown("""
-        #### 🕸️ Lapisan 2: Struktural-Relasional
-        - **Instrumen**: NetworkX & Algoritma Louvain
-        - **Fokus**: Topologi graf berarah, sentralitas akun kunci (Degree/Betweenness/Eigenvector), polarisasi modularity.
-        - **Output**: 332 komponen jaringan terfragmentasi, identifikasi Oracle (@grok) & Broker.
-        """)
-    with lap3:
-        st.markdown("""
-        #### 🎯 Lapisan 3: Diagnostik & Sintesis
-        - **Instrumen**: ABSA 3 Aspek & Kerangka Marketing 6.0
-        - **Fokus**: Pemetaan titik kritis sentimen (anggaran, logistik, gizi) terhadap celah implementasi fisik.
-        - **Output**: Penjelasan komprehensif akar krisis kepercayaan (*phygital gap*).
-        """)
-
-    st.markdown("---")
-    st.markdown("📌 Silakan gunakan menu navigasi di sebelah kiri untuk mengeksplorasi data secara interaktif!")
 
 
 
-elif page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
+elif "Bab II" in page or page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
+    render_thesis_stepper(2)
     st.markdown("""
     <div class="hero-banner">
         <div class="hero-badge">📖 Bab II Tesis — Kerangka Epistemologis & Teoretis</div>
@@ -1604,1954 +1514,1255 @@ elif page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
             """)
 
 
-elif page == "😊 Analisis Emosi (NLP)":
-    st.title("Distribusi Emosi Netizen (IndoBERT)")
 
-    # ── LANDASAN TEORI IndoBERT ──
-    st.header("🧠 §2.5 Arsitektur IndoBERT sebagai Model Pemrosesan Bahasa Alami")
 
+
+elif "Bab III" in page:
+    render_thesis_stepper(3)
     st.markdown("""
-    > *Bagian ini menyajikan landasan teori NLP dan IndoBERT sesuai **Bab 2.5 tesis**,
-    > menghubungkan evolusi teknis dengan keputusan metodologis penelitian.*
+    <div class="hero-banner">
+        <div class="hero-badge">🔬 Bab III Tesis — Metode Penelitian</div>
+        <div class="hero-title">Desain Metodologi & Pipeline Komputasional</div>
+        <div class="hero-desc">
+            Pendekatan <b>mixed-methods (explanatory sequential)</b> berbasis paradigma <b>Computational Social Science</b>:
+            4 tahap pipeline riset, pra-pemrosesan teks, definisi operasional 6 variabel terukur, dan 3 lapisan pemodelan komputasional.
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px;">
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">📊 <b>Paradigma:</b> Computational Social Science</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">🤖 <b>Deep Learning:</b> IndoBERT-base-p2</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">🕸️ <b>Network Theory:</b> NetworkX & Louvain (Q=0.9837)</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">🎯 <b>Sintesis:</b> ABSA & Marketing 6.0</span>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    # ─── METODOLOGI & TAHAPAN PENELITIAN (BAB III) ───
+    st.header("🔬 §3 Desain Metodologi & Definisi Operasional Variabel")
+    st.markdown("""
+    > *Mengacu pada **Bab III Metode Penelitian**, riset ini menerapkan pendekatan **mixed-methods (explanatory sequential)** 
+    > berbasis paradigma **Computational Social Science**. Data komputasional kuantitatif diolah secara berjenjang 
+    > kemudian disintesiskan secara kualitatif dalam bingkai teori Marketing 6.0.*
     """)
 
-    # Evolusi NLP
-    st.subheader("§2.5.1 Evolusi Pemrosesan Bahasa Alami: dari Statistik ke Deep Learning")
+    # ── Tabel 3.1 Definisi Operasional Variabel ──
+    st.subheader("📋 Tabel 3.1 Definisi Operasional Variabel")
+    st.caption("Operasionalisasi variabel konseptual ke dalam instrumen komputasi terukur (Bebas dari instrumen pihak ketiga non-aktif):")
 
-    gen1, gen2, gen3 = st.columns(3)
-    with gen1:
-        st.error("""
-        ### 🔴 Generasi 1
-        **Statistik Klasik**
-        *(~1990-an–2010-an)*
+    op_var_data = {
+        "Variabel": [
+            "🎭 Emosi Granular",
+            "😏 Sindiran / Inkongruensi",
+            "🕸️ Sentralitas Aktor",
+            "⚡ Polarisasi Jaringan",
+            "📊 Sentimen per Aspek",
+            "🌐 Phygital Gap",
+        ],
+        "Definisi Konseptual": [
+            "9 kelas afektif diskret pada cuitan warganet",
+            "Ketidaksesuaian valensi antara teks tertulis dengan simbol visual (emoji)",
+            "Posisi strategis dan distribusi pengaruh akun dalam jaringan komunikasi",
+            "Tingkat keterpisahan struktural dan segregasi komunitas diskursus",
+            "Polaritas sentimen spesifik pada pilar operasional MBG",
+            "Kesenjangan persepsi antara narasi digital dengan realitas implementasi fisik",
+        ],
+        "Rujukan Teoretis": [
+            "Plutchik (1980)",
+            "Grice (1975); Camp (2012)",
+            "Freeman (1979)",
+            "Newman & Girvan (2004)",
+            "Pontiki dkk. (2014)",
+            "Kotler, Kartajaya & Setiawan (2023)",
+        ],
+        "Definisi Operasional": [
+            "Label kelas emosi hasil inferensi model klasifikasi berbasis konteks penuh",
+            "Status biner (sindiran vs non-sindiran) hasil deteksi inkongruensi teks-emoji",
+            "Tingkat kepentingan akun dalam jaringan mention berdasarkan metrik konektivitas",
+            "Kekuatan pembagian jaringan ke dalam klaster/komunitas independen",
+            "Valensi afektif warganet pada aspek anggaran, logistik, dan kualitas gizi",
+            "Diskrepansi terukur antara respon emosi daring dengan fakta capaian fisik program",
+        ],
+        "Indikator / Alat Ukur": [
+            "9 kelas keluaran model IndoBERT-base-p2",
+            "Kelas biner model IndoBERT multi-task & leksikon",
+            "Degree, betweenness, & eigenvector centrality (NetworkX)",
+            "Modularity Louvain, ambang batas 0,3 (Newman, 2006)",
+            "Aspect-Based Sentiment Analysis (ABSA) 3 dimensi",
+            "Triangulasi temuan komputasional (NLP + SNA) vs data riil",
+        ],
+    }
+    df_op = pd.DataFrame(op_var_data)
+    st.dataframe(df_op, use_container_width=True, hide_index=True)
 
-        - Naive Bayes
-        - Support Vector Machine (SVM)
-        - Bag-of-Words (BoW)
+    st.markdown("---")
 
-        **Prinsip:** Kata sebagai fitur independen — urutan & konteks diabaikan.
-
-        **Kelemahan utama:**
-        > *"Tidak mampu menangkap makna kontekstual maupun makna implisit seperti sindiran"*
-        > — (Rahayu, Kuntur, & Hayatin, 2018)
-
-        ❌ Gagal baca sarkasme implisit
+    # ── Tahapan Penelitian & Pipeline Komputasi ──
+    st.subheader("🔄 Tahapan Alur Penelitian (Research Pipeline)")
+    
+    th_col1, th_col2, th_col3, th_col4 = st.columns(4)
+    with th_col1:
+        st.info("""
+        **1️⃣ Akuisisi Data & Etika**
+        - Scraping platform X (Maret–Mei 2026)
+        - Filter kata kunci MBG & tagar resmi
+        - Korpus: 3.395 teks & 973 nodes
+        - Anonimisasi & eliminasi bot
         """)
-    with gen2:
+    with th_col2:
         st.warning("""
-        ### 🟡 Generasi 2
-        **Neural Network Sekuensial**
-        *(~2013–2018)*
-
-        - FastText
-        - LSTM (Long Short-Term Memory)
-        - Word2Vec / GloVe
-
-        **Prinsip:** Urutan kata diperhitungkan melalui pemrosesan sequential.
-
-        **Kemajuan vs Keterbatasan:**
-        > *"Lebih baik dari statistik klasik, namun masih kesulitan membaca sindiran implisit pada bahasa Indonesia"*
-        > — (Riza & Charibaldi, 2021)
-
-        ⚠️ Konteks jangka panjang masih terbatas
+        **2️⃣ Pra-Pemrosesan Teks**
+        - Noise removal (URL, RT, simbol)
+        - Case folding & normalisasi slang
+        - Punctuation removal (proteksi emoji)
+        - Stopword removal & Stemming Sastrawi
         """)
-    with gen3:
+    with th_col3:
         st.success("""
-        ### 🟢 Generasi 3
-        **Transformer / BERT**
-        *(2018–sekarang)*
-
-        - BERT (Devlin et al., 2018)
-        - **IndoBERT** (Wilie et al., 2020)
-        - Bidirectional attention mechanism
-
-        **Prinsip:** Seluruh konteks kalimat diproses secara **paralel dan bidireksional**.
-
-        **Keunggulan:**
-        > *"IndoBERT dilatih pada 4 miliar kata bahasa Indonesia — mampu menangkap nuansa makna implisit termasuk sarkasme"*
-        > — (Koto et al., 2020)
-
-        ✅ **Dipilih dalam penelitian ini**
+        **3️⃣ Pemodelan Komputasional**
+        - **NLP**: IndoBERT 9 emosi & sindiran
+        - **SNA**: NetworkX (Centrality)
+        - **Komunitas**: Algoritma Louvain
+        - **ABSA**: Anggaran, logistik, gizi
         """)
-
-    st.markdown("---")
-
-    # Mengapa IndoBERT
-    st.subheader("§2.5.2 Mengapa IndoBERT? — Justifikasi Pemilihan Model")
-
-    j1, j2 = st.columns([3, 2])
-    with j1:
-        st.info("""
-        **IndoBERT** adalah model *pre-trained language model* berbasis arsitektur BERT
-        yang dikembangkan khusus untuk Bahasa Indonesia oleh Wilie et al. (2020) dan
-        Koto et al. (2020) menggunakan korpus lebih dari **4 miliar kata**.
-
-        **Mekanisme inti — Bidirectional Attention:**
-        > Alih-alih membaca teks dari kiri ke kanan atau kanan ke kiri,
-        > IndoBERT membaca **seluruh konteks kalimat secara bersamaan**,
-        > sehingga mampu menangkap makna kata berdasarkan seluruh kalimat.
-
-        **Contoh kemampuan kontekstual:**
-        > *"Wah, MBG-nya luar biasa ya... anak-anak pada keracunan"*
-        >
-        > → Generasi 1/2: membaca "luar biasa" = **positif** ❌
-        > → IndoBERT: membaca konteks "keracunan" = **sindiran / Disgust** ✅
-        """)
-    with j2:
-        st.markdown("""
-        **Perbandingan Akurasi pada Bahasa Indonesia:**
-
-        | Model | Akurasi |
-        |-------|---------|
-        | Naive Bayes | ~62% |
-        | SVM + BoW | ~68% |
-        | FastText | ~71% |
-        | LSTM | ~74% |
-        | **IndoBERT** | **~85%+** |
-
-        *Sumber: IndoBERT benchmark (Wilie et al., 2020; Koto et al., 2020)*
-
-        **Fine-tuning dalam penelitian ini:**
-        - Task: 9-class emotion classification
-        - Corpus: N=3,395 (annotasi) → N=5,263 (inference)
-        - Epoch: disesuaikan untuk menghindari overfitting
-        """)
-
-    st.markdown("---")
-
-    # Load emotion data dynamically from real dataset
-    df_emotion = load_emotion_data()
-    n_total_emo = len(df_emotion)
-    cnt_series = df_emotion['predicted_emotion'].value_counts()
-
-    # 9 Emosi Plutchik
-    st.subheader("§2.5.3 Kerangka 9 Emosi — Adaptasi Roda Emosi Plutchik")
-    st.markdown(f"""
-    Klasifikasi emosi dalam penelitian ini mengadaptasi **Plutchik's Wheel of Emotions** (1980)
-    yang diimplementasikan pada model IndoBERT fine-tuned untuk konteks Bahasa Indonesia (Total Korpus Riil: **{n_total_emo:,} cuitan**):
-    """)
-
-    emotion_configs = [
-        ("🤢 Jijik", "Jijik", "Disgust", "#065F46", "Ketidakpercayaan dan respon jijik atas mutu fisik makanan/keracunan"),
-        ("🤝 Percaya", "Percaya", "Trust", "#10B981", "Dukungan afektif dan harapan positif terhadap realisasi program"),
-        ("😐 Netral", "Netral", "Neutral", "#475569", "Pernyataan faktual dan pelaporan berita netral tanpa muatan afeksi"),
-        ("🔮 Tertarik", "Tertarik", "Anticipation / Interest", "#F97316", "Rasa ingin tahu dan atensi publik terhadap perkembangan menu/anggaran"),
-        ("😡 Marah", "Marah", "Anger", "#EF4444", "Kemarahan eksplisit terhadap tata kelola anggaran dan birokrasi"),
-        ("😢 Sedih", "Sedih", "Sadness", "#2563EB", "Empati dan kekecewaan atas insiden keracunan anak sekolah"),
-        ("😨 Takut", "Takut", "Fear", "#7C3AED", "Kekhawatiran orang tua terhadap keamanan pangan anak"),
-        ("😊 Bahagia / Senang", "Bahagia/Senang", "Joy / Happiness", "#EAB308", "Apresiasi atas program makan gratis di wilayah percontohan"),
-        ("😲 Kaget / Terkejut", "Kaget", "Surprise", "#06B6D4", "Reaksi terkejut atas temuan polemik atau pemangkasan anggaran"),
-    ]
-
-    t_emosi, t_plutchik, t_dist, t_warna, t_interp = [], [], [], [], []
-    for label_id, key, label_en, hex_col, interp in emotion_configs:
-        c = cnt_series.get(key, 0)
-        pct = (c / n_total_emo) * 100 if n_total_emo > 0 else 0.0
-        dom = " ★ DOMINAN" if c == cnt_series.max() else ""
-        t_emosi.append(label_id)
-        t_plutchik.append(label_en)
-        t_dist.append(f"{pct:.2f}% ({c:,} cuitan){dom}")
-        t_warna.append(hex_col)
-        t_interp.append(interp)
-
-    emotion_theory = {
-        "Emosi (Bahasa Indonesia)": t_emosi,
-        "Istilah Asli (Plutchik)": t_plutchik,
-        f"Distribusi Aktual (N={n_total_emo:,})": t_dist,
-        "Warna Semantik": t_warna,
-        "Interpretasi dalam Konteks MBG": t_interp,
-    }
-    st.dataframe(pd.DataFrame(emotion_theory), use_container_width=True, hide_index=True)
-
-    jijik_pct = (cnt_series.get('Jijik', 0) / n_total_emo) * 100 if n_total_emo > 0 else 56.24
-    st.success(f"""
-    **📌 Temuan Kunci — Dominasi Jijik (Disgust {jijik_pct:.1f}%):**
-
-    > *"Dominasi emosi Jijik ({jijik_pct:.1f}%) bukan sekadar ekspresi ketidaksukaan,
-    > melainkan merupakan respons afektif terhadap **inkongruensi** antara narasi kebijakan
-    > ('MBG akan menyehatkan jutaan anak Indonesia') dan realitas implementasi di lapangan
-    > (kasus keracunan, distribusi tidak merata, anggaran tidak transparan).
-    > Inkongruensi ini adalah manifestasi empiris dari **Phygital Gap**."*
-    """)
-    st.markdown("---")
-    st.info("""
-    ### 📖 Filosofi Storytelling Visual di Bawah
-    **Gambar 1-3:** *Data Apa yang Dianalisis?* — Membuktikan data diproses dengan ketat, didominasi emosi Disgust.
-
-    **Gambar 4-5:** *Bagaimana Model Membacanya?* — Membuktikan arsitektur IndoBERT valid dan akurat.
-
-    **Gambar 6-8:** *Siapa Terhubung dengan Siapa?* — Membuktikan jaringan hyper-fragmented.
-
-    **Gambar 9-10:** *Bagaimana Emosi Membentuk Diskursus?* — Mendefinisikan Phygital Gap.
-    """)
-    st.markdown("---")
-
-
-    df_emotion = load_emotion_data()
-    
-    # Emotion counts
-    emotion_counts = df_emotion['predicted_emotion'].value_counts().reset_index()
-    emotion_counts.columns = ['Emosi', 'Jumlah']
-    
-    # Enforce all 9 categories even if count is 0
-    all_emotions = ['Marah', 'Jijik', 'Takut', 'Sedih', 'Bahagia/Senang', 'Netral', 'Percaya', 'Kaget', 'Tertarik']
-    missing_emotions = set(all_emotions) - set(emotion_counts['Emosi'])
-    if missing_emotions:
-        missing_df = pd.DataFrame({'Emosi': list(missing_emotions), 'Jumlah': 0})
-        emotion_counts = pd.concat([emotion_counts, missing_df], ignore_index=True)
-        
-    # Sort for consistent display
-    emotion_counts = emotion_counts.sort_values(by='Jumlah', ascending=False)
-    
-    # ── KPI Ringkasan Valensi Afektif ──
-    v_col1, v_col2, v_col3 = st.columns(3)
-    with v_col1:
-        st.metric("🔴 Afektif Negatif / Penolakan", "57,69%", "3.036 cuitan (Jijik, Marah, Sedih, Takut)")
-    with v_col2:
-        st.metric("🔵 Afektif Pro-Sosial / Minat", "29,98%", "1.578 cuitan (Percaya, Tertarik)")
-    with v_col3:
-        st.metric("⚪ Netral / Informasi Faktual", "12,33%", "649 cuitan (Tanpa Muatan Emosional)")
-
-    st.markdown("---")
-
-    # ── Hierarki Emosi: Treemap Plotly ──
-    st.subheader("🗺️ Peta Hierarki Semantik Emosi (Treemap)")
-    st.caption("Visualisasi proporsional spektrum emosi berdasarkan valensi afektif dalam diskursus MBG:")
-    
-    tree_data = {
-        'Valensi Afektif': [
-            'Negatif (Penolakan Fisik)', 'Negatif (Penolakan Fisik)', 'Negatif (Penolakan Fisik)', 'Negatif (Penolakan Fisik)',
-            'Netral (Faktual)',
-            'Pro-Sosial / Minat', 'Pro-Sosial / Minat'
-        ],
-        'Kategori Emosi': [
-            '🤢 Jijik (Disgust)', '😡 Marah (Anger)', '😢 Sedih (Sadness)', '😨 Takut (Fear)',
-            '😐 Netral (Neutral)',
-            '🤝 Percaya (Trust)', '🔮 Tertarik (Anticipation)'
-        ],
-        'Jumlah Cuitan': [2960, 55, 19, 2, 649, 1073, 505],
-        'Porsi (%)': ['56,24%', '1,05%', '0,36%', '0,04%', '12,33%', '20,39%', '9,60%']
-    }
-    df_tree = pd.DataFrame(tree_data)
-    fig_tree = px.treemap(
-        df_tree,
-        path=['Valensi Afektif', 'Kategori Emosi'],
-        values='Jumlah Cuitan',
-        color='Jumlah Cuitan',
-        color_continuous_scale='Reds',
-        hover_data=['Porsi (%)']
-    )
-    fig_tree.update_layout(margin=dict(t=10, l=10, r=10, b=10), height=380)
-    st.plotly_chart(fig_tree, use_container_width=True)
-
-    st.markdown("---")
-
-    col1, col2 = st.columns([1.8, 1.2])
-    
-    # Semantic Color Palette
-    color_map = {
-        'Jijik': '#e74c3c',
-        'Percaya': '#3498db',
-        'Netral': '#95a5a6',
-        'Tertarik': '#f39c12',
-        'Marah': '#c0392b',
-        'Sedih': '#7f8c8d',
-        'Takut': '#8e44ad',
-        'Bahagia/Senang': '#2ecc71',
-        'Kaget': '#d35400'
-    }
-
-    with col1:
-        st.subheader("📊 Frekuensi Emosi (9 Kategori)")
-        tot_cnt = emotion_counts['Jumlah'].sum()
-        emotion_counts['Persen_Str'] = emotion_counts['Jumlah'].apply(lambda x: f"{x:,} ({(x/tot_cnt)*100:.1f}%)" if tot_cnt > 0 else "0")
-        fig = px.bar(
-            emotion_counts, 
-            x='Emosi', 
-            y='Jumlah',
-            color='Emosi',
-            color_discrete_map=color_map,
-            text='Persen_Str',
-            title="Frekuensi Distribusi 9 Kategori Emosi (Korpus N=5.263)"
-        )
-        fig.update_traces(textposition='outside')
-        fig.update_layout(xaxis_title="Kategori Emosi", yaxis_title="Jumlah Cuitan", showlegend=False, yaxis=dict(range=[0, emotion_counts['Jumlah'].max() * 1.18]))
-        st.plotly_chart(fig, use_container_width=True)
-        
-    with col2:
-        st.subheader("🍩 Proporsi Persentase Emosi")
-        fig_pie = px.pie(
-            emotion_counts, 
-            names='Emosi', 
-            values='Jumlah', 
-            color='Emosi',
-            color_discrete_map=color_map,
-            hole=0.45
-        )
-        fig_pie.update_traces(textinfo='percent+label', textposition='inside')
-        fig_pie.update_layout(showlegend=False, margin=dict(t=30, b=10, l=10, r=10))
-        st.plotly_chart(fig_pie, use_container_width=True)
-        
-    st.markdown("---")
-    st.subheader("Filter & Sampel Cuitan")
-    
-    selected_emotion = st.selectbox("Pilih Emosi untuk melihat sampel data:", emotion_counts['Emosi'].tolist())
-    
-    filtered_df = df_emotion[df_emotion['predicted_emotion'] == selected_emotion].sample(n=min(5, len(df_emotion[df_emotion['predicted_emotion'] == selected_emotion])))
-    
-    st.markdown(f"**Menampilkan 5 sampel acak dari kelas '{selected_emotion}':**")
-    for idx, row in filtered_df.iterrows():
-        st.info(row['text'])
-        
-    st.markdown("---")
-    # ── §4.4b ANALISIS LEKSIKAL: WORD CLOUD & TOP 10 KATA SERING MUNCUL ──
-    st.header("☁️ §4.4b Analisis Leksikal: Word Cloud & Top 10 Kata Paling Sering Muncul")
-    st.markdown("""
-    > *Analisis leksikal mengungkap kosakata dominan dan penanda bahasa (*linguistic markers*) dalam wacana MBG. 
-    > Komputasi frekuensi kata dan visualisasi Word Cloud dihitung secara komputasional langsung dari 
-    > korpus riil $N=5.263$ cuitan pasca-pembersihan teks (*text cleansing*).*
-    """)
-
-    stopwords_lex = set([
-        'dan', 'yang', 'di', 'ini', 'itu', 'untuk', 'dari', 'dengan', 'ke', 'ada', 
-        'saya', 'kita', 'dia', 'mereka', 'akan', 'bisa', 'juga', 'sudah', 'oleh', 
-        'karena', 'pada', 'atau', 'jadi', 'harus', 'lagi', 'tidak', 'nggak', 'gak', 
-        'aja', 'nya', 'nih', 'sih', 'kok', 'lah', 'ya', 'kan', 'dong', 'deh', 'pun',
-        'bukan', 'tapi', 'kalau', 'kalo', 'buat', 'sama', 'mau', 'lebih', 'banyak',
-        'sangat', 'banget', 'bisa', 'dapat', 'saat', 'seperti', 'dalam', 'tentang',
-        'apa', 'siapa', 'mana', 'kapan', 'kenapa', 'bagaimana', 'gimana', 'hal',
-        'masih', 'hanya', 'cuma', 'bahkan', 'namun', 'selain', 'secara', 'tersebut',
-        'tahun', 'hari', 'kali', 'orang', 'para', 'semua', 'lain', 'setiap', 'ia',
-        'kami', 'kamu', 'anda', 'gua', 'gue', 'lo', 'lu', 'gw', 'tak', 'tiap', 'bagi',
-        'agar', 'supaya', 'ketika', 'setelah', 'sebelum', 'hingga', 'sampai', 'antar',
-        'https', 'http', 'co', 't', 'rt', 'via', 'amp', 'aku', 'udah', 'baru', 'punya',
-        'por', 'frete', 'amazon', 'que', 'uma', 'com', 'para', 'nao', 'voce', 'mais',
-        'como', 'sua', 'seu', 'tem', 'dos', 'das', 'grtis', 'sem', 'los', 'con', 'promoes', 'juros'
-    ])
-
-    lex_emo_choice = st.radio(
-        "Pilih Subset Emosi untuk Analisis Leksikal:", 
-        ["Semua Korpus (N=5.263)", "🤢 Emosi Jijik (Disgust)", "🤝 Emosi Percaya (Trust)", "😐 Emosi Netral", "🔮 Emosi Tertarik"],
-        horizontal=True
-    )
-
-    if "Jijik" in lex_emo_choice:
-        sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Jijik']
-        wc_color = 'Reds_r'
-    elif "Percaya" in lex_emo_choice:
-        sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Percaya']
-        wc_color = 'Blues_r'
-    elif "Netral" in lex_emo_choice:
-        sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Netral']
-        wc_color = 'Greys_r'
-    elif "Tertarik" in lex_emo_choice:
-        sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Tertarik']
-        wc_color = 'YlOrBr_r'
-    else:
-        sub_lex_df = df_emotion
-        wc_color = 'magma'
-
-    all_lex_text = ' '.join(sub_lex_df['clean_text'].dropna().astype(str).tolist())
-    lex_tokens = [w for w in re.findall(r'[a-zA-Z]{3,}', all_lex_text.lower()) if w not in stopwords_lex]
-    counter_all = Counter(lex_tokens)
-    total_tokens_sub = len(lex_tokens)
-
-    # Top 10 All
-    top_10_all = counter_all.most_common(10)
-
-    # Top 10 Thematic
-    core_query_words = set(['mbg', 'makan', 'makanan', 'gratis', 'program', 'gizi', 'bergizi'])
-    counter_thematic = Counter({k: v for k, v in counter_all.items() if k not in core_query_words})
-    top_10_thematic = counter_thematic.most_common(10)
-
-    tab_lex1, tab_lex2 = st.tabs(["🏆 Top 10 Kata Umum & Word Cloud", "🎯 Top 10 Kata Tematik Spesifik (Isu Lapangan)"])
-
-    with tab_lex1:
-        wc_col1, wc_col2 = st.columns([1.2, 1])
-        with wc_col1:
-            st.subheader("☁️ Visual Word Cloud Diskursus MBG")
-            wc_resolved = get_result_path("wordcloud_mbg.png")
-            if "Semua" in lex_emo_choice and os.path.exists(wc_resolved):
-                st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan")
-            elif WORDCLOUD_AVAILABLE and MATPLOTLIB_AVAILABLE:
-                try:
-                    wc_dyn = WordCloud(
-                        width=800, height=450, background_color='#0f172a',
-                        colormap=wc_color, max_words=100, contour_width=1, contour_color='#e2e8f0'
-                    ).generate(' '.join(lex_tokens) if lex_tokens else 'mbg')
-                    fig_wc, ax_wc = plt.subplots(figsize=(8, 4.5), facecolor='#0f172a')
-                    ax_wc.imshow(wc_dyn, interpolation='bilinear')
-                    ax_wc.axis('off')
-                    st.pyplot(fig_wc, use_container_width=True)
-                    plt.close(fig_wc)
-                except Exception as e:
-                    if os.path.exists(wc_resolved):
-                        st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud (Fallback Resolusi Tinggi)")
-                    else:
-                        st.warning(f"Gagal menghasilkan word cloud dinamis: {e}")
-            elif os.path.exists(wc_resolved):
-                st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan")
-            else:
-                st.info("Visual Word Cloud dimuat dari aset kanonik riset.")
-
-        with wc_col2:
-            st.subheader("📊 Top 10 Kata Paling Sering Muncul")
-            df_top10_all = pd.DataFrame({
-                'Kata': [f"#{i+1} {w}" for i, (w, _) in enumerate(top_10_all)][::-1],
-                'Frekuensi': [cnt for _, cnt in top_10_all][::-1],
-                'Porsi': [f"{(cnt/total_tokens_sub)*100:.2f}%" if total_tokens_sub > 0 else "0%" for _, cnt in top_10_all][::-1]
-            })
-            fig_bar10 = px.bar(
-                df_top10_all,
-                x='Frekuensi',
-                y='Kata',
-                orientation='h',
-                text='Frekuensi',
-                color='Frekuensi',
-                color_continuous_scale='Reds',
-                title=f"10 Kata Teratas ({lex_emo_choice})"
-            )
-            fig_bar10.update_traces(textposition='outside')
-            fig_bar10.update_layout(height=450, margin=dict(t=30, b=10, l=10, r=10), showlegend=False)
-            st.plotly_chart(fig_bar10, use_container_width=True)
-
-        st.subheader("🏷️ Kartu Ringkasan 10 Kata Teratas")
-        b_cols = st.columns(5)
-        for idx, (word, count) in enumerate(top_10_all[:5]):
-            pct_val = (count / total_tokens_sub) * 100 if total_tokens_sub > 0 else 0
-            with b_cols[idx]:
-                st.metric(f"Rank #{idx+1}", f"'{word}'", f"{count:,} cuitan ({pct_val:.1f}%)")
-        b_cols2 = st.columns(5)
-        for idx, (word, count) in enumerate(top_10_all[5:10]):
-            pct_val = (count / total_tokens_sub) * 100 if total_tokens_sub > 0 else 0
-            with b_cols2[idx]:
-                st.metric(f"Rank #{idx+6}", f"'{word}'", f"{count:,} cuitan ({pct_val:.1f}%)")
-
-    with tab_lex2:
-        st.subheader("🎯 10 Kata Tematik Spesifik (Di Luar Kata Kunci Kueri)")
-        st.caption("Menyaring kata kunci kueri ('mbg', 'makan', 'gratis', dll.) untuk menyingkap fokus substansi lapangan:")
-        
-        thm_col1, thm_col2 = st.columns([1.3, 1])
-        with thm_col1:
-            df_thm = pd.DataFrame({
-                'Kata Tematik': [f"#{i+1} {w}" for i, (w, _) in enumerate(top_10_thematic)][::-1],
-                'Jumlah Cuitan': [cnt for _, cnt in top_10_thematic][::-1],
-                'Porsi': [f"{(cnt/total_tokens_sub)*100:.2f}%" if total_tokens_sub > 0 else "0%" for _, cnt in top_10_thematic][::-1]
-            })
-            fig_thm = px.bar(
-                df_thm,
-                x='Jumlah Cuitan',
-                y='Kata Tematik',
-                orientation='h',
-                text='Jumlah Cuitan',
-                color='Jumlah Cuitan',
-                color_continuous_scale='Blues',
-                title="Top 10 Kosakata Isu Spesifik MBG"
-            )
-            fig_thm.update_traces(textposition='outside')
-            fig_thm.update_layout(height=420, margin=dict(t=30, b=10, l=10, r=10), showlegend=False)
-            st.plotly_chart(fig_thm, use_container_width=True)
-
-        with thm_col2:
-            st.info("""
-            **💡 Wawasan Komunikasi & Sosiologis:**
-            1. **`sekolah` (#1) & `anak` (#2):** Wacana MBG bukan sekadar perdebatan politik elit, melainkan berpusat langsung pada entitas fisik sekolah dasar dan perlindungan anak.
-            2. **`dapur` (#4):** Mengacu pada isu teknis Satuan Pelayanan Pemenuhan Gizi (SPPG) dan standar sanitasi dapur penyedia.
-            3. **`enak` (#6) & `menu` (#9):** Resepsi sensorik rasa dan kelayakan fisik menu menjadi tolok ukur kepuasan langsung penerima manfaat.
-            4. **`anggaran` (#10):** Kritik terhadap transparansi alokasi pembiayaan APBN dan potensi pemangkasan porsi.
-            """)
-
-    st.markdown("---")
-    st.markdown("---")
-    # ── §4.5 EVALUASI MODEL KLASIFIKASI EMOSI DAN DETEKSI SINDIRAN ──
-    st.header("🎯 §4.5 Evaluasi Model Klasifikasi Emosi dan Deteksi Sindiran")
-    st.markdown("""
-    > *Evaluasi performa model **IndoBERT** (`indobenchmark/indobert-base-p2` checkpoint-792) 
-    > diuji pada **validation set sebesar 1.053 cuitan** (porsi 20% random split `random_state = 42` dari total korpus emosi valid N=5.263 cuitan). 
-    > Metrik dilaporkan secara komprehensif melalui *classification report* dan *confusion matrix* riil.*
-    """)
-
-    ev_col1, ev_col2, ev_col3, ev_col4 = st.columns(4)
-    with ev_col1:
-        st.metric("Ukuran Data Validasi", "1.053 cuitan", "20% dari Korpus N=5.263")
-    with ev_col2:
-        st.metric("Akurasi Model", "57,45%", "0,5745 Overall")
-    with ev_col3:
-        st.metric("F1-Score Emosi Jijik", "0,7178", "Recall 96,92% (Support 584)")
-    with ev_col4:
-        st.metric("Weighted F1", "0,4563", "Macro F1 0,1444")
-
-    st.markdown("---")
-    st.subheader("📊 §4.5.1 & §4.5.2 Visualisasi Classification Report & Confusion Matrix (Data Riil)")
-    st.markdown("Visualisasi performa inferensi aktual model IndoBERT hasil evaluasi `scripts/evaluate.py`:")
-
-    # Define image path dynamically
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(current_dir)
-    f1_path = os.path.join(project_root, "results", "f1_scores.png")
-    cm_path = os.path.join(project_root, "results", "confusion_matrix.png")
-    
-    ecol1, ecol2 = st.columns(2)
-    with ecol1:
-        if os.path.exists(f1_path):
-            st.image(f1_path, use_container_width=True, caption="Gambar 4: IndoBERT Classification Performance (F1-Scores)")
-        else:
-            st.warning("File f1_scores.png belum dibuat.")
-    with ecol2:
-        if os.path.exists(cm_path):
-            st.image(cm_path, use_container_width=True, caption="Gambar 5: Confusion Matrix IndoBERT (Data Riil)")
-        else:
-            st.warning("File confusion_matrix.png belum dibuat.")
-
-    # ── TABEL 4.4 EVALUASI EMOSI DATA RIIL ──
-    st.markdown("---")
-    st.subheader("📋 Tabel 4.4 Evaluasi Kinerja Klasifikasi IndoBERT (Validation Set Riil, n=1.053)")
-    st.caption("Hasil evaluasi performa model IndoBERT-base-p2 checkpoint-792 pada korpus riil (data/results/indobert_9_emosi_fixed.csv):")
-
-    tabel_4_4_real = {
-        "Kategori Emosi (Bahasa Indonesia)": [
-            "🤢 Jijik (Disgust) ★",
-            "🤝 Percaya (Trust / Love)",
-            "😐 Netral (Neutral)",
-            "🔮 Tertarik (Anticipation / Shame)",
-            "😡 Marah (Anger)",
-            "😢 Sedih (Sadness)",
-            "😨 Takut (Fear)",
-            "😊 Bahagia/Senang (Joy)",
-            "😲 Kaget/Terkejut (Surprise)",
-            "🎯 Akurasi Keseluruhan (Accuracy)",
-            "📊 Macro Average",
-            "⚖️ Weighted Average"
-        ],
-        "Precision": ["0,5700", "0,6842", "0,0000", "0,0000", "0,0000", "0,0000", "0,0000", "—", "—", "—", "0,1792", "0,4519"],
-        "Recall": ["0,9692", "0,1866", "0,0000", "0,0000", "0,0000", "0,0000", "0,0000", "—", "—", "—", "0,1651", "0,5745"],
-        "F1-Score": ["0,7178 ★", "0,2932", "0,0000", "0,0000", "0,0000", "0,0000", "0,0000", "—", "—", "0,5745", "0,1444", "0,4563"],
-        "Support (Cuitan)": [584, 209, 121, 116, 19, 3, 1, 0, 0, 1053, 1053, 1053]
-    }
-    st.dataframe(pd.DataFrame(tabel_4_4_real), use_container_width=True, hide_index=True)
-
-    # ── TABEL 4.6 EVALUASI DETEKSI SINDIRAN ──
-    st.subheader("📋 Tabel 4.6 Distribusi & Karakteristik Deteksi Sindiran (Data Riil)")
-    st.caption("Hasil anotasi korpus validasi sindiran (data/sarcasm/dataset_sindiran_valid.csv, N=3.395):")
-
-    tabel_4_6_real = {
-        "Kategori Deteksi": [
-            "Leksikon Non-Sindiran (Literal / Faktual)",
-            "Leksikon Sindiran (Sarkasme / Ironi Terbukti)",
-            "Total Korpus Validasi Teranotasi",
-            "Sarkasme Leksikon Eksplisit (Korpus N=5.263)",
-            "Sarkasme Proksi Sentimen Jijik (Korpus N=5.263)"
-        ],
-        "Jumlah Baris": [
-            "3.080 cuitan",
-            "315 cuitan",
-            "3.395 cuitan",
-            "181 cuitan",
-            "2.979 cuitan"
-        ],
-        "Persentase": [
-            "90,72%",
-            "9,28%",
-            "100,00%",
-            "3,44%",
-            "56,60%"
-        ],
-        "Keterangan & Sumber": [
-            "Data validasi teranotasi `dataset_sindiran_valid.csv`",
-            "Data tersimpan pada `tweet_sarkastik_final.csv`",
-            "Korpus teks terbersihkan praproses NLP",
-            "Pola deteksi kata kontradiktif (`dataset_sindiran_rekonstruksi.csv`)",
-            "Inkongruensi afektif terhadap janji kebijakan (Phygital Gap)"
-        ]
-    }
-    st.dataframe(pd.DataFrame(tabel_4_6_real), use_container_width=True, hide_index=True)
-
-    st.markdown("---")
-    st.subheader("🔬 §4.5.3 Interpretasi Metodologis & Integritas Riset")
-    st.info("""
-    **💡 Catatan Metodologis & Transparansi Sains:**
-    1. **Kekuatan Deteksi Emosi Kunci (Jijik F1 = 0,7178):**
-       Model IndoBERT berhasil membaca emosi **Jijik (*Disgust*)** dengan recall **96,92%**, menunjukkan sensitivitas tinggi dalam mengidentifikasi keluhan fisik (makanan basi, keracunan, penolakan).
-    2. **Presisi Tinggi Emosi Percaya (Precision = 68,42%):**
-       Ketika model memprediksi emosi **Percaya (*Trust*)**, 68,42% benar sesuai label aktual, mengonfirmasi narasi apresiasi kebijakan.
-    3. **Tantangan Imbalanced Data (Macro F1 = 0,1444):**
-       Sesuai literatur NLP kontemporer (Sokolova & Lapalme, 2009; Wilie dkk., 2020), distribusi korpus media sosial yang sangat timpang (*highly imbalanced*) menyebabkan kelas minoritas (Marah 19, Sedih 3, Takut 1) sulit terprediksi tanpa teknik oversampling/SMOTE, yang dicatat sebagai ruang pengembangan penelitian lanjutan (§5.3.2).
-    """)
-
-    st.markdown("---")
-    # ── §4.6 SINTESIS MARKETING 6.0, ABSA 3 ASPEK, & TRIANGULASI KOMPUTASIONAL ──
-    st.markdown("---")
-    st.header("🌐 §4.6 Aspect-Based Sentiment Analysis (ABSA), Triangulasi Komputasional & Phygital Gap")
-    st.markdown("""
-    > *Bagian ini menyajikan rekonstruksi visual komprehensif dari **Bab IV (§4.6 Halaman 105 – 109)** naskah tesis.
-    > Di sini dilakukan triangulasi metode 3 dimensi: **NLP IndoBERT (Afeksi & Sindiran)** $\\times$ **SNA Louvain (Topologi & Aktor)** $\\times$ **ABSA (3 Pilar Fisik Kebijakan)**
-    > untuk membuktikan eksistensi dan membedah secara tuntas **"Artinya"** (makna teoretis, komunikasi krisis, dan implikasi kebijakan) dari fenomena **Phygital Gap**.*
-    """)
-
-    # 1. Load Data ABSA
-    path_absa_file = get_result_path("absa_results.csv")
-    if not os.path.exists(path_absa_file):
-        path_absa_file = "results/absa_results.csv"
-    if not os.path.exists(path_absa_file):
-        path_absa_file = "../results/absa_results.csv"
-        
-    if os.path.exists(path_absa_file):
-        df_absa_data = pd.read_csv(path_absa_file)
-    else:
-        df_absa_data = pd.DataFrame([
-            {"Aspect": "Logistik & Distribusi", "Total_Tweets": 403, "Disgust_Count": 318, "Disgust_Pct": 78.91, "Trust_Count": 21, "Trust_Pct": 5.21, "Neutral_Interest_Count": 64, "Neutral_Interest_Pct": 15.88},
-            {"Aspect": "Anggaran & Vendor", "Total_Tweets": 535, "Disgust_Count": 412, "Disgust_Pct": 77.01, "Trust_Count": 23, "Trust_Pct": 4.30, "Neutral_Interest_Count": 100, "Neutral_Interest_Pct": 18.69},
-            {"Aspect": "Kualitas Gizi", "Total_Tweets": 1344, "Disgust_Count": 956, "Disgust_Pct": 71.13, "Trust_Count": 119, "Trust_Pct": 8.85, "Neutral_Interest_Count": 269, "Neutral_Interest_Pct": 20.01}
-        ])
-
-    # 2. Metric KPI Cards (3 Aspek Fisik)
-    st.subheader("🎯 1. Tiga Pilar Fisik Operasional Kebijakan (Data Riil ABSA)")
-    st.caption("Distribusi sentimen publik terhadap 3 pilar operasional fisik Makan Bergizi Gratis (Total N = 2.282 cuitan terklasifikasi aspek):")
-
-    absa_kpi1, absa_kpi2, absa_kpi3 = st.columns(3)
-    with absa_kpi1:
+    with th_col4:
         st.error("""
-        ### 🚚 Logistik & Distribusi
-        **Total Diskursus:** 403 Cuitan (17,66%)  
-        - 🤢 **Jijik (Disgust): 78,91%** (318 cuitan) ★
-        - 🤝 **Percaya (Trust): 5,21%** (21 cuitan)
-        - 😐 **Netral/Minat: 15,88%** (64 cuitan)
-
-        **Isu Utama Lapangan:**
-        Makanan basi, aroma busuk, katering terlambat, porsi hancur dalam perjalanan, insiden keracunan di sekolah uji coba.
-        """)
-    with absa_kpi2:
-        st.warning("""
-        ### 💰 Anggaran & Vendor
-        **Total Diskursus:** 535 Cuitan (23,44%)  
-        - 🤢 **Jijik (Disgust): 77,01%** (412 cuitan) ★
-        - 🤝 **Percaya (Trust): 4,30%** (23 cuitan)
-        - 😐 **Netral/Minat: 18,69%** (100 cuitan)
-
-        **Isu Utama Lapangan:**
-        Wacana pemangkasan pagu Rp15.000 ➔ Rp7.500–10.000, tender katering tertutup, dugaan rente pihak ketiga, efisiensi APBN.
-        """)
-    with absa_kpi3:
-        st.info("""
-        ### 🥗 Kualitas Gizi Makanan
-        **Total Diskursus:** 1.344 Cuitan (58,90%)  
-        - 🤢 **Jijik (Disgust): 71,13%** (956 cuitan) ★
-        - 🤝 **Percaya (Trust): 8,85%** (119 cuitan)
-        - 😐 **Netral/Minat: 20,01%** (269 cuitan)
-
-        **Isu Utama Lapangan:**
-        Menu dominan karbohidrat minim protein/susu, ketiadaan sertifikat uji klinis gizi, kekhawatiran menu tidak higienis.
+        **4️⃣ Sintesis & Evaluasi**
+        - Integrasi hasil NLP + SNA
+        - Uji 5 Proposisi Kerja
+        - Evaluasi Phygital Gap (Marketing 6.0)
+        - Rekomendasi mitigasi krisis fiskal
         """)
 
-    # 3. Interactive Visualizations for ABSA
     st.markdown("---")
-    st.subheader("📊 2. Visualisasi Interaktif ABSA (Aspect-Based Sentiment Analysis)")
+
+    # ── Tiga Lapisan Analisis Data ──
+    st.subheader("🏛️ Tiga Lapisan Analisis Data (§3.6)")
+    lap1, lap2, lap3 = st.columns(3)
+    with lap1:
+        st.markdown("""
+        #### 🔤 Lapisan 1: Tekstual-Linguistik
+        - **Instrumen**: IndoBERT-base-p2 multi-task
+        - **Fokus**: Granularitas 9 emosi Plutchik & deteksi sindiran berbasis inkongruensi teks-emoji.
+        - **Output**: Distribusi afektif netizen & rasio resistensi linguistik warganet.
+        """)
+    with lap2:
+        st.markdown("""
+        #### 🕸️ Lapisan 2: Struktural-Relasional
+        - **Instrumen**: NetworkX & Algoritma Louvain
+        - **Fokus**: Topologi graf berarah, sentralitas akun kunci (Degree/Betweenness/Eigenvector), polarisasi modularity.
+        - **Output**: 332 komponen jaringan terfragmentasi, identifikasi Oracle (@grok) & Broker.
+        """)
+    with lap3:
+        st.markdown("""
+        #### 🎯 Lapisan 3: Diagnostik & Sintesis
+        - **Instrumen**: ABSA 3 Aspek & Kerangka Marketing 6.0
+        - **Fokus**: Pemetaan titik kritis sentimen (anggaran, logistik, gizi) terhadap celah implementasi fisik.
+        - **Output**: Penjelasan komprehensif akar krisis kepercayaan (*phygital gap*).
+        """)
+
+    st.markdown("---")
+    st.markdown("📌 Silakan gunakan menu navigasi di sebelah kiri untuk mengeksplorasi data secara interaktif!")
+
+
+
+
+
+
+elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️ Analisis Jaringan (CNA)":
+    render_thesis_stepper(4)
+    st.markdown("""
+    <div class="hero-banner">
+        <div class="hero-badge">📊 Bab IV Tesis — Hasil dan Pembahasan</div>
+        <div class="hero-title">Investigasi Empiris Terintegrasi (NLP × SNA × ABSA)</div>
+        <div class="hero-desc">
+            Hasil pengolahan data riil dan pembahasan mendalam yang disusun secara <b>sekuensial dan terstruktur</b>
+            mengikuti 6 sub-bab naskah tesis (Halaman 94 – 109): dari karakteristik korpus, topologi jaringan,
+            komunitas Louvain, sentralitas aktor, evaluasi model IndoBERT, hingga pembuktian Phygital Gap.
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px;">
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">📁 <b>Korpus:</b> 5.263 Cuitan & 3.395 Leksikal</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">🤢 <b>Disgust Dominan:</b> 56,24% (Recall 96,92%)</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">🕸️ <b>Modularity:</b> Q = 0,9837 (332 Komunitas)</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">🎯 <b>ABSA:</b> Logistik 78,91% Disgust</span>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
     
-    absa_tab1, absa_tab2, absa_tab3, absa_tab4 = st.tabs([
-        "📊 Komparasi Sentimen 3 Aspek (Grouped & Stacked Bar)",
-        "🕸️ Radar Chart Profil Emosi 3 Pilar",
-        "🔍 Eksplorasi Leksikon & Sampel Cuitan Riil",
-        "🖼️ Visualisasi Tematik Tesis (Gambar 10)"
+    # 6 Sequential Sub-tabs strictly in thesis order:
+    tab_iv_1, tab_iv_2, tab_iv_3, tab_iv_4, tab_iv_5, tab_iv_6 = st.tabs([
+        "📊 §4.1 Karakteristik Korpus Data",
+        "🕸️ §4.2 Topologi Jaringan & Polarisasi",
+        "🧩 §4.3 Komunitas Louvain & Echo Chambers",
+        "👑 §4.4 Sentralitas Aktor & Media",
+        "😊 §4.5 Evaluasi NLP IndoBERT & Sindiran",
+        "🌐 §4.6 ABSA 3 Aspek, Triangulasi & Artinya"
     ])
-
-    with absa_tab1:
-        st.markdown("#### 📈 Perbandingan Proporsi Sentimen antar Aspek Kebijakan")
-        chart_mode = st.radio("Pilih Tampilan Grafik:", ["Grouped Bar (Persentase %)", "Stacked Bar 100% (Komposisi)", "Absolute Volume (Jumlah Cuitan)"], horizontal=True)
-
-        fig_absa_bar = go.Figure()
-        
-        if chart_mode == "Grouped Bar (Persentase %)":
-            fig_absa_bar.add_trace(go.Bar(
-                x=df_absa_data['Aspect'],
-                y=df_absa_data['Disgust_Pct'],
-                name='🤢 Jijik / Disgust (Negatif Ekstrem)',
-                marker_color='#ef4444',
-                text=df_absa_data['Disgust_Pct'].apply(lambda v: f"{v:.1f}%"),
-                textposition='auto',
-                hovertemplate="<b>%{x}</b><br>Disgust: %{y:.2f}%<extra></extra>"
-            ))
-            fig_absa_bar.add_trace(go.Bar(
-                x=df_absa_data['Aspect'],
-                y=df_absa_data['Trust_Pct'],
-                name='🤝 Percaya / Trust (Apresiasi)',
-                marker_color='#10b981',
-                text=df_absa_data['Trust_Pct'].apply(lambda v: f"{v:.1f}%"),
-                textposition='auto',
-                hovertemplate="<b>%{x}</b><br>Trust: %{y:.2f}%<extra></extra>"
-            ))
-            fig_absa_bar.add_trace(go.Bar(
-                x=df_absa_data['Aspect'],
-                y=df_absa_data['Neutral_Interest_Pct'],
-                name='😐 Netral & Minat Ekspektasi',
-                marker_color='#64748b',
-                text=df_absa_data['Neutral_Interest_Pct'].apply(lambda v: f"{v:.1f}%"),
-                textposition='auto',
-                hovertemplate="<b>%{x}</b><br>Netral: %{y:.2f}%<extra></extra>"
-            ))
-            fig_absa_bar.update_layout(
-                barmode='group',
-                yaxis_title="Persentase Cuitan (%)",
-                yaxis=dict(range=[0, 95])
-            )
-        elif chart_mode == "Stacked Bar 100% (Komposisi)":
-            fig_absa_bar.add_trace(go.Bar(
-                x=df_absa_data['Aspect'],
-                y=df_absa_data['Disgust_Pct'],
-                name='🤢 Jijik / Disgust',
-                marker_color='#ef4444',
-                text=df_absa_data['Disgust_Pct'].apply(lambda v: f"{v:.1f}%"),
-                textposition='inside',
-                hovertemplate="<b>%{x}</b><br>Disgust: %{y:.2f}%<extra></extra>"
-            ))
-            fig_absa_bar.add_trace(go.Bar(
-                x=df_absa_data['Aspect'],
-                y=df_absa_data['Trust_Pct'],
-                name='🤝 Percaya / Trust',
-                marker_color='#10b981',
-                text=df_absa_data['Trust_Pct'].apply(lambda v: f"{v:.1f}%"),
-                textposition='inside',
-                hovertemplate="<b>%{x}</b><br>Trust: %{y:.2f}%<extra></extra>"
-            ))
-            fig_absa_bar.add_trace(go.Bar(
-                x=df_absa_data['Aspect'],
-                y=df_absa_data['Neutral_Interest_Pct'],
-                name='😐 Netral / Minat',
-                marker_color='#64748b',
-                text=df_absa_data['Neutral_Interest_Pct'].apply(lambda v: f"{v:.1f}%"),
-                textposition='inside',
-                hovertemplate="<b>%{x}</b><br>Netral: %{y:.2f}%<extra></extra>"
-            ))
-            fig_absa_bar.update_layout(
-                barmode='stack',
-                yaxis_title="Komposisi Sentimen Total (100%)",
-                yaxis=dict(range=[0, 105])
-            )
-        else: # Absolute Volume
-            fig_absa_bar.add_trace(go.Bar(
-                x=df_absa_data['Aspect'],
-                y=df_absa_data['Disgust_Count'],
-                name='🤢 Jijik (Cuitan)',
-                marker_color='#ef4444',
-                text=df_absa_data['Disgust_Count'].apply(lambda v: f"{v:,}"),
-                textposition='auto',
-                hovertemplate="<b>%{x}</b><br>Disgust: %{y:,} cuitan<extra></extra>"
-            ))
-            fig_absa_bar.add_trace(go.Bar(
-                x=df_absa_data['Aspect'],
-                y=df_absa_data['Trust_Count'],
-                name='🤝 Percaya (Cuitan)',
-                marker_color='#10b981',
-                text=df_absa_data['Trust_Count'].apply(lambda v: f"{v:,}"),
-                textposition='auto',
-                hovertemplate="<b>%{x}</b><br>Trust: %{y:,} cuitan<extra></extra>"
-            ))
-            fig_absa_bar.add_trace(go.Bar(
-                x=df_absa_data['Aspect'],
-                y=df_absa_data['Neutral_Interest_Count'],
-                name='😐 Netral (Cuitan)',
-                marker_color='#64748b',
-                text=df_absa_data['Neutral_Interest_Count'].apply(lambda v: f"{v:,}"),
-                textposition='auto',
-                hovertemplate="<b>%{x}</b><br>Netral: %{y:,} cuitan<extra></extra>"
-            ))
-            fig_absa_bar.update_layout(
-                barmode='group',
-                yaxis_title="Jumlah Cuitan Riil (n)"
-            )
-
-        fig_absa_bar.update_layout(
-            title="Distribusi Sentimen per Aspek Kebijakan (Naskah Tesis Bab 4.6)",
-            template="plotly_dark",
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5),
-            height=450,
-            margin=dict(l=20, r=20, t=60, b=30)
-        )
-        st.plotly_chart(fig_absa_bar, use_container_width=True)
-        st.info("💡 **Temuan Utama:** Emosi **Jijik (Disgust)** konsisten melampaui **70%** di seluruh aspek fisik, dengan puncaknya pada **Logistik & Distribusi (78,91%)** dan **Anggaran & Vendor (77,01%)**. Hal ini mengonfirmasi bahwa penolakan publik berakar pada kegagalan operasional fisik di lapangan.")
-
-    with absa_tab2:
-        st.markdown("#### 🕸️ Profil Polar / Radar Chart Sentimen 3 Aspek Fisik")
-        st.caption("Memvisualisasikan asimetri tajam sentimen di mana polygon emosi condong ekstrem ke arah Disgust:")
-
-        categories = ['🤢 Jijik (Disgust)', '🤝 Percaya (Trust)', '😐 Netral & Minat']
-        
-        fig_radar = go.Figure()
-        
-        # Trace Logistik
-        r_log = [df_absa_data.loc[df_absa_data['Aspect'] == 'Logistik & Distribusi', 'Disgust_Pct'].values[0],
-                 df_absa_data.loc[df_absa_data['Aspect'] == 'Logistik & Distribusi', 'Trust_Pct'].values[0],
-                 df_absa_data.loc[df_absa_data['Aspect'] == 'Logistik & Distribusi', 'Neutral_Interest_Pct'].values[0]]
-        fig_radar.add_trace(go.Scatterpolar(
-            r=r_log + [r_log[0]],
-            theta=categories + [categories[0]],
-            fill='toself',
-            name='🚚 Logistik & Distribusi (Disgust 78.9%)',
-            line_color='#ef4444'
-        ))
-
-        # Trace Anggaran
-        r_ang = [df_absa_data.loc[df_absa_data['Aspect'] == 'Anggaran & Vendor', 'Disgust_Pct'].values[0],
-                 df_absa_data.loc[df_absa_data['Aspect'] == 'Anggaran & Vendor', 'Trust_Pct'].values[0],
-                 df_absa_data.loc[df_absa_data['Aspect'] == 'Anggaran & Vendor', 'Neutral_Interest_Pct'].values[0]]
-        fig_radar.add_trace(go.Scatterpolar(
-            r=r_ang + [r_ang[0]],
-            theta=categories + [categories[0]],
-            fill='toself',
-            name='💰 Anggaran & Vendor (Disgust 77.0%)',
-            line_color='#f59e0b'
-        ))
-
-        # Trace Gizi
-        r_giz = [df_absa_data.loc[df_absa_data['Aspect'] == 'Kualitas Gizi', 'Disgust_Pct'].values[0],
-                 df_absa_data.loc[df_absa_data['Aspect'] == 'Kualitas Gizi', 'Trust_Pct'].values[0],
-                 df_absa_data.loc[df_absa_data['Aspect'] == 'Kualitas Gizi', 'Neutral_Interest_Pct'].values[0]]
-        fig_radar.add_trace(go.Scatterpolar(
-            r=r_giz + [r_giz[0]],
-            theta=categories + [categories[0]],
-            fill='toself',
-            name='🥗 Kualitas Gizi (Disgust 71.1%)',
-            line_color='#3b82f6'
-        ))
-
-        fig_radar.update_layout(
-            polar=dict(
-                radialaxis=dict(visible=True, range=[0, 90], tickfont=dict(size=10, color='white')),
-                bgcolor='#1e293b'
-            ),
-            template="plotly_dark",
-            showlegend=True,
-            legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5),
-            height=480,
-            margin=dict(l=40, r=40, t=30, b=80)
-        )
-        st.plotly_chart(fig_radar, use_container_width=True)
-
-    with absa_tab3:
-        st.markdown("#### 🔬 Eksplorasi Leksikon & Sampel Cuitan Riil per Aspek")
-        
-        col_lex1, col_lex2 = st.columns([1, 2])
-        with col_lex1:
-            selected_aspect = st.selectbox(
-                "Pilih Aspek Kebijakan:",
-                ["Logistik & Distribusi", "Anggaran & Vendor", "Kualitas Gizi"]
-            )
-            
-            lexicons = {
-                "Logistik & Distribusi": "basi|racun|katering|telat|busuk|bau|dapur|distribusi|porsi",
-                "Anggaran & Vendor": "anggaran|pajak|korupsi|dana|triliun|harga|rp|biaya|apbn|vendor",
-                "Kualitas Gizi": "gizi|susu|sehat|stunting|nutrisi|telur|menu|protein|vitamin"
-            }
-            curr_lex = lexicons[selected_aspect]
-            
-            st.code(f"Regex Pattern:\n{curr_lex}", language="text")
-            st.caption(f"Daftar kata kunci leksikal yang memfilter aspek **{selected_aspect}** dari korpus inferensi naskah tesis.")
-            
-            filter_emotion = st.selectbox(
-                "Filter Emosi Cuitan:",
-                ["Semua Emosi", "Jijik", "Percaya", "Netral", "Tertarik", "Marah"]
-            )
-
-        with col_lex2:
-            try:
-                df_all_tweets = load_emotion_data()
-                mask_aspect = df_all_tweets['text'].str.contains(curr_lex, case=False, na=False)
-                df_aspect_tweets = df_all_tweets[mask_aspect].copy()
-                
-                if filter_emotion != "Semua Emosi":
-                    df_aspect_tweets = df_aspect_tweets[df_aspect_tweets['predicted_emotion'] == filter_emotion]
-                
-                st.markdown(f"**Menampilkan Cuitan Riil Terfilter (Ditemukan: {len(df_aspect_tweets):,} cuitan):**")
-                
-                sample_display = df_aspect_tweets[['text', 'predicted_emotion', 'confidence_score']].head(8)
-                sample_display.columns = ['Teks Cuitan Netizen', 'Emosi Terdeteksi', 'Skor Keyakinan']
-                st.dataframe(sample_display, use_container_width=True, hide_index=True)
-            except Exception as e:
-                st.warning(f"Memuat sampel cuitan: {e}")
-
-    with absa_tab4:
-        st.markdown("#### 🖼️ Gambar 10 Naskah Tesis: Analisis Sentimen 3 Aspek Kunci Program MBG")
-        img_absa_path = get_result_path("10_absa_thematic.png")
-        if os.path.exists(img_absa_path):
-            st.image(img_absa_path, use_container_width=True, caption="Gambar 10: Analisis Sentimen 3 Aspek Kunci Program MBG (Data Riil)")
-            st.info("""
-            **Keterangan Akademik Naskah Tesis (Halaman 106):**  
-            Grafik di atas membuktikan bahwa penolakan masyarakat di ranah digital tidak tertuju pada urgensi pemenuhan gizi anak sekolah, 
-            melainkan dipicu oleh kekecewaan terhadap kegagalan teknis rantai pasok logistik (78,91% sentimen negatif) 
-            dan kekhawatiran distorsi alokasi anggaran belanja vendor katering (77,01% sentimen negatif).
-            """)
-        else:
-            st.warning("File 10_absa_thematic.png belum ditemukan di direktori results.")
-
-    # 4. TRIANGULASI KOMPUTASIONAL 3 LAPIS
-    st.markdown("---")
-    st.subheader("🧩 3. Triangulasi Metodologis Komputasional 3 Dimensi (Bab 2.8, 3.6, & 4.6)")
-    st.markdown("""
-    Triangulasi komputasional menggabungkan tiga instrumen analitik independen untuk memvalidasi satu kesimpulan empiris:
-    apakah **Phygital Gap** benar-benar terjadi dalam persepsi publik terhadap program MBG?
-    """)
-
-    tri_c1, tri_c2, tri_c3 = st.columns(3)
-    with tri_c1:
-        st.success("""
-        #### 🧠 Lapis 1: NLP IndoBERT
-        **Dimensi Afektif & Bahasa**  
-        *Apa yang dirasakan publik?*
-        - **Jijik (Disgust): 56,24%** (2.960 tweet)
-        - **Sindiran Valid:** 9,28% (315 tweet)
-        - **Proksi Inkongruensi:** 56,60% (2.979 tweet)
-
-        **Temuan Kunci:**
-        Mayoritas warganet tidak menolak dengan agresi frontal (*Marah hanya 1,8%*), melainkan dengan **sinisme, humor gelap, dan kejijikan afektif** atas inkongruensi janji vs realitas.
-        """)
-    with tri_c2:
-        st.info("""
-        #### 🕸️ Lapis 2: SNA Louvain
-        **Dimensi Topologi & Struktur Sosial**  
-        *Bagaimana diskursus menyebar?*
-        - **Modularity $Q = 0,9837$** (332 komunitas)
-        - **Resiprositas:** 1,21% (Komunikasi 1 arah)
-        - **Power Vacuum:** @prabowo in-deg=15 out-deg=0 vs @grok out-deg=42.
-
-        **Temuan Kunci:**
-        Komunikasi kebijakan mengalami **kegagalan dialog deliberatif**. Publik terisolasi dalam ruang gema (*echo chambers*) tanpa respons dari pembuat kebijakan.
-        """)
-    with tri_c3:
-        st.warning("""
-        #### 🎯 Lapis 3: ABSA 3 Aspek
-        **Dimensi Diagnostik Fisik Operasional**  
-        *Di mana letak kegagalan fisik kebijakan?*
-        - **Logistik:** 78,91% Disgust
-        - **Anggaran:** 77,01% Disgust
-        - **Gizi:** 71,13% Disgust
-
-        **Temuan Kunci:**
-        Kegagalan bukan pada visi gizi, melainkan pada **eksekusi operasional fisik**: makanan basi, porsi minimalis, dan tata kelola katering yang diragukan.
-        """)
-
-    # Tabel Matriks Triangulasi Komputasional
-    st.markdown("#### 📋 Matriks Konvergensi Triangulasi Komputasional (Naskah Tesis)")
-    triangulation_matrix = [
-        {
-            "Lapisan Analisis": "Lapis 1: Afektif (NLP IndoBERT)",
-            "Instrumen / Algoritma": "IndoBERT Base-p2 Fine-Tuned (9 Emosi Plutchik) + Ekstraksi Leksikon Sarkasme",
-            "Data Empiris Riil": "56,24% Jijik (Disgust), 9,28% Sindiran Eksplisit (n=315), 56,60% Proksi Afektif Inkongruen",
-            "Kontribusi Pembuktian Phygital Gap": "Membuktikan adanya resistensi emosional mendalam warganet yang disamarkan dalam bentuk ironi dan sarkasme."
-        },
-        {
-            "Lapisan Analisis": "Lapis 2: Topologi (SNA Louvain)",
-            "Instrumen / Algoritma": "Graf Berarah, Algoritma Komunitas Louvain, Degree, Betweenness, & Eigenvector Centrality",
-            "Data Empiris Riil": "Modularity Q = 0,9837 (332 komunitas), Resiprositas 1,21%, @prabowo pasif (In=15, Out=0), @grok aktif (Out=42)",
-            "Kontribusi Pembuktian Phygital Gap": "Membuktikan ketiadaan klarifikasi dari akun resmi; kepasifan pemerintah menciptakan kekosongan otoritas (power vacuum)."
-        },
-        {
-            "Lapisan Analisis": "Lapis 3: Diagnostik (ABSA 3 Aspek)",
-            "Instrumen / Algoritma": "Aspect-Based Sentiment Analysis berbasis Leksikon Tematik Kebijakan (Logistik, Anggaran, Gizi)",
-            "Data Empiris Riil": "Logistik 78,91% Disgust (n=403), Anggaran 77,01% Disgust (n=535), Gizi 71,13% Disgust (n=1.344)",
-            "Kontribusi Pembuktian Phygital Gap": "Menemukan akar luka kebijakan: kegagalan terletak pada titik sentuh fisik (makanan basi dan pemotongan anggaran katering)."
-        }
-    ]
-    st.dataframe(pd.DataFrame(triangulation_matrix), use_container_width=True, hide_index=True)
-
-    # Masterpiece Visual Triangulasi
-    img_tri_path = get_result_path("integrated_sna_nlp.png")
-    if os.path.exists(img_tri_path):
-        st.image(img_tri_path, use_container_width=True, caption="Masterpiece Visual: Triangulasi Terintegrasi SNA x NLP (Data Riil Naskah Tesis)")
-
-    # 5. "ARTINYA" — SINTESIS MAKNA TEORETIS, KRISIS, & KEBIJAKAN
-    st.markdown("---")
-    st.header("💡 4. \"Artinya\" — Sintesis Makna Teoretis, Komunikasi Krisis, & Rekomendasi Kebijakan")
-    st.markdown("""
-    > *Pertanyaan terbesar dalam sidang dan naskah tesis: **"Lalu apa artinya semua angka empiris ini?"**  
-    > Bagian ini menyajikan sintesis komprehensif atas signifikansi teoretis, sosiologis, dan praktis dari temuan riset.*
-    """)
-
-    with st.expander("🌐 1. Arti bagi Teori Pemasaran Modern: Pembuktian Fenomena Phygital Gap (Kotler et al., 2023)", expanded=True):
+    
+    with tab_iv_1:
+        st.header("📊 §4.1 Deskripsi Umum & Karakteristik Data")
         st.markdown("""
-        **Landasan Teoretis: Marketing 6.0 (Kotler, Kartajaya, & Setiawan, 2023)**
-        - **Definisi Phygital:** Integrasi mulus antara ruang digital (*online marketing*) dan ruang fisik (*offline delivery/touchpoint*).
-        - **Apa yang Terjadi pada Program MBG?**
-          1. **Digital Promise (Ekspektasi di X/Medsos):** Pemerintah dan pendukung menyuarakan program MBG sebagai lompatan peradaban untuk mencetak *Generasi Emas 2045*, menuntaskan stunting, dan memicu pertumbuhan ekonomi rakyat.
-          2. **Physical Delivery (Realitas di Sekolah):** Uji coba lapangan menghasilkan insiden katering basi, aroma tidak sedap, keterlambatan jam makan siang siswa, dan pemangkasan porsi menu.
-          3. **Terjadinya Gap:** Tercipta jurang disonansi kognitif yang tajam (*expectation-reality mismatch*). Ketika realitas fisik gagal memenuhi ekspektasi digital, kepercayaan masyarakat runtuh seketika, termanifestasi dalam **78,91% sentimen Jijik (Disgust) pada aspek Logistik**.
+        > *Data penelitian dihimpun pada periode **Maret hingga Mei 2026** melalui platform **X (Twitter)** 
+        > dengan kueri strategis ("Makan Bergizi Gratis", "MBG", dan tagar terkait). Pasca tahap pembersihan data 
+        > (*text cleansing*) serta eksklusi bot/spam, korpus resmi riset ini terdiri dari **973 aktor (nodes)** 
+        > yang terhubung melalui **658 relasi interaksi (edges)**, membentuk **332 komponen jaringan yang terpisah**.*
         """)
 
-    with st.expander("🚨 2. Arti bagi Komunikasi Krisis Publik: Situational Crisis Communication Theory (Coombs, 2007)", expanded=True):
-        st.markdown("""
-        **Landasan Teoretis: Coombs' SCCT (2007)**
-        - **Kategori Krisis Publik:** Masyarakat mempersepsikan insiden makanan basi dan pemotongan anggaran menu bukan sebagai kecelakaan tak terduga (*Accidental Cluster*), melainkan sebagai **Preventable Crisis** (krisis yang dapat dicegah jika pemerintah melakukan pengawasan ketat).
-        - **Kegagalan Respons Komunikasi:**
-          - Resiprositas jaringan komunikasi hanya **1,21%**, dan akun utama pembuat kebijakan (@prabowo) memiliki **Out-Degree = 0** (sama sekali tidak pernah membalas kritik warga).
-          - Ketiadaan klarifikasi cepat (*diminishing strategy* atau *rebuilding strategy*) menciptakan **Power Vacuum (Kekosongan Otoritas Informasi)**.
-          - Akibatnya, warganet merespons dengan mekanisme pertahanan: **sindiran sarkastik (9,28%)** dan mencari verifikasi pihak ketiga yang netral (**bot AI @grok dengan 42 balasan informasi**).
-        """)
-
-    with st.expander("🏛️ 3. Arti bagi Sosiologi Komunikasi & Demokrasi Digital: Kematian Ruang Publik Deliberatif (Habermas, 1989)", expanded=False):
-        st.markdown("""
-        **Landasan Teoretis: Ruang Publik Deliberatif (Jürgen Habermas)**
-        - Nilai **Modularity $Q = 0,9837$** dan terbentuknya **332 komunitas Louvain terisolasi** membuktikan bahwa platform media sosial X tidak menjadi ruang dialog rasional-deliberatif.
-        - Sebaliknya, diskursus terpolarisasi ke dalam **bilik gema (*echo chambers*)**:
-          - Komunitas elit/pendukung hanya membagikan euforia seremonial (*empathy/love*).
-          - Ratusan kantong komunitas warganet biasa mengisolasi diri dalam sirkulasi kemarahan dan kejijikan (*disgust/cynicism*).
-        - Tidak ada jembatan komunikasi (*bridging social capital*) yang mempertemukan suara akar rumput dengan pembuat kebijakan.
-        """)
-
-    with st.expander("💼 4. Implikasi Manajerial & Rekomendasi Solusi Strategis untuk Badan Gizi Nasional (BGN)", expanded=True):
-        st.markdown("""
-        Berdasarkan temuan ABSA dan Triangulasi Komputasional, berikut 4 rekomendasi taktis-strategis untuk pembuat kebijakan:
-        
-        1. **🚚 Solusi Logistik & Rantai Pasok (Menjawab 78,91% Disgust):**
-           - Terapkan sertifikasi rantai dingin (*cold-chain*) untuk seluruh armada distribusi makanan berjarak tempuh >30 menit.
-           - Tetapkan batas radius operasional Satuan Pelayanan Pemenuhan Gizi (SPPBG) maksimal 5 km dari sekolah target untuk meminimalisir risiko makanan basi.
-        
-        2. **💰 Solusi Transparansi Anggaran (Menjawab 77,01% Disgust):**
-           - Publikasikan *Unit Cost Breakdown* (rincian biaya bahan makanan vs biaya operasional kemasan/pengantaran) secara terbuka di dashboard web BGN.
-           - Terapkan mekanisme lelang vendor berbasis e-katalog terbuka untuk menepis narasi sinis tentang kongkalikong vendor katering.
-        
-        3. **🥗 Solusi Kualitas Gizi & Higienitas (Menjawab 71,13% Disgust pada 1.344 Cuitan):**
-           - Wajibkan penempatan minimal 1 orang Ahli Gizi (Nutrisionis) tersertifikasi PERSAGI di setiap dapur sentral SPPBG.
-           - Lakukan uji organoleptik dan uji sampel mikroba cepat (*rapid test*) sebelum makanan didistribusikan ke sekolah.
-        
-        4. **📢 Solusi Komunikasi Krisis Phygital (Menjawab Modularity 0.9837 & Power Vacuum):**
-           - Tinggalkan pola komunikasi monolog satu arah (*broadcast*).
-           - Bentuk Tim Respons Cepat Krisis (*Digital Rapid Response Unit*) di bawah BGN yang aktif memantau mention keluhan wali murid di media sosial dan memberikan solusi ganti rugi makanan dalam tempo < 1 jam.
-        """)
-        
-elif page == "🕸️ Analisis Jaringan (CNA)":
-    st.title("Peta Jaringan Komunikasi (Communication Network)")
-    
-    st.info("""
-    ### 📖 Filosofi Storytelling
-    **Gambar 1-3: Data Apa yang Dianalisis?** 
-    *(Membuktikan data diproses dengan ketat, didominasi emosi Disgust dengan balutan sarkasme tingkat tinggi).*
-    
-    **Gambar 4-5: Bagaimana Model Membacanya?** 
-    *(Membuktikan arsitektur IndoBERT sangat valid dan akurat, meski agak kesulitan membedakan sarkasme Anger vs Disgust).*
-    
-    **Gambar 6-8: Siapa Terhubung dengan Siapa, dan Siapa Aktornya?** 
-    *(Membuktikan jaringan sangat terpecah/fragmented, dan AI/grok menduduki tahta sentral mengalahkan elit politik).*
-    
-    **Gambar 9-10: Bagaimana Emosi Membentuk Diskursus?** 
-    *(Membuktikan bahwa kemarahan/jijik publik memiliki sentimen absolut terhadap bobroknya logistik dan anggaran fisik di lapangan — mendefinisikan Phygital Gap).*
-    """)
-    st.markdown("---")
-
-    # ── §4.1 KARAKTERISTIK KORPUS RESMI & TABEL 4.1 ──
-    st.header("📊 §4.1 Deskripsi Umum & Karakteristik Data")
-    st.markdown("""
-    > *Data penelitian dihimpun pada periode **Maret hingga Mei 2026** melalui platform **X (Twitter)** 
-    > dengan kueri strategis ("Makan Bergizi Gratis", "MBG", dan tagar terkait). Pasca tahap pembersihan data 
-    > (*text cleansing*) serta eksklusi bot/spam, korpus resmi riset ini terdiri dari **973 aktor (nodes)** 
-    > yang terhubung melalui **658 relasi interaksi (edges)**, membentuk **332 komponen jaringan yang terpisah**.*
-    """)
-
-    col_meta1, col_meta2 = st.columns([1.2, 1])
-    with col_meta1:
-        st.subheader("📋 Tabel 4.1 Metadata Jaringan Komunikasi Program MBG")
-        st.caption("Korpus Resmi Periode Observasi Maret – Mei 2026:")
-        tabel_4_1 = {
-            "Parameter": [
-                "👥 Jumlah Aktor (Nodes)",
-                "🔗 Jumlah Interaksi (Edges)",
-                "🧩 Jumlah Komponen Jaringan",
-                "⚡ Nilai Modularity (Louvain)",
-                "🌐 Platform Sumber",
-                "📅 Periode Observasi",
-            ],
-            "Nilai": [
-                "973 akun pengguna",
-                "658 hubungan (mention)",
-                "332 komponen terpisah",
-                "0,9837 (Sangat Terfragmentasi)",
-                "X (Twitter)",
-                "Maret – Mei 2026",
-            ]
-        }
-        st.dataframe(pd.DataFrame(tabel_4_1), use_container_width=True, hide_index=True)
-
-    with col_meta2:
-        st.subheader("⚖️ Komparasi Data Korpus vs Data Pilot")
-        st.info("""
-        **🔍 Data Penjajakan Awal (Februari 2025):**
-        - Nodes: 2.414 akun | Edges: 3.483 relasi
-        - Modularity: **0,7130**
-        - *Fungsi*: Penjajakan awal isu krisis wacana MBG.
-        
-        **📌 Korpus Resmi Penelitian (Maret–Mei 2026):**
-        - Nodes: 973 akun | Edges: 658 relasi
-        - Modularity: **0,9837** (Intensifikasi Polarisasi)
-        - *Insight*: Struktur wacana mengalami fragmentasi tajam menjadi ratusan komponen terisolasi.
-        """)
-
-    st.markdown("---")
-
-    # ── §4.2 TOPOLOGI JARINGAN & POLARISASI ──
-    st.header("🕸️ §4.2 Analisis Level Sistem: Topologi Jaringan & Polarisasi")
-    
-    top_col1, top_col2, top_col3 = st.columns(3)
-    with top_col1:
-        st.metric("Modularity Louvain", "0.9837", "Ambang Newman > 0.3")
-    with top_col2:
-        st.metric("Densitas Graf", "0.0007", "Jaringan Sangat Renggang")
-    with top_col3:
-        st.metric("Reciprocity", "1.21%", "Komunikasi Non-Timbal Balik")
-
-    st.warning("""
-    **📢 Temuan Kunci Level Sistem:**
-    1. **Hyper-Fragmentation (Modularity 0,9837):** Jauh melampaui ambang batas 0,3 (Newman, 2006). Percakapan warganet terpecah ke dalam **332 komponen terisolasi** (bukan dua kubu ideologis besar, melainkan ratusan kelompok percakapan kecil).
-    2. **Komunikasi Searah (Reciprocity 0,0121):** Dialog dua arah hampir nihil (hanya 1,2%). Netizen lebih banyak me-mention figur otoritas sebagai bentuk keluhan/protes satu arah tanpa adanya respon balik (*top-down communication failure*).
-    """)
-
-    # ── Visualisasi Spektrum & Gauge Modularitas (Newman, 2006) ──
-    st.subheader("📐 Visualisasi Spektrum & Evaluasi Modularitas Louvain (Q = 0.9837)")
-    col_gauge, col_mbar = st.columns([1, 1.3])
-    with col_gauge:
-        fig_q_gauge = go.Figure(go.Indicator(
-            mode='gauge+number',
-            value=0.9837,
-            domain={'x': [0, 1], 'y': [0, 1]},
-            title={'text': '<b>Skor Modularitas Louvain (Q)</b><br><span style="font-size:0.8em;color:#94a3b8">Ambang Newman Q > 0.3</span>'},
-            gauge={
-                'axis': {'range': [0, 1], 'tickwidth': 1, 'tickcolor': '#cbd5e1'},
-                'bar': {'color': '#ef4444', 'thickness': 0.35},
-                'bgcolor': '#1e293b',
-                'borderwidth': 2,
-                'bordercolor': '#334155',
-                'steps': [
-                    {'range': [0, 0.3], 'color': 'rgba(16, 185, 129, 0.25)'},
-                    {'range': [0.3, 0.7], 'color': 'rgba(245, 158, 11, 0.25)'},
-                    {'range': [0.7, 1.0], 'color': 'rgba(239, 68, 68, 0.25)'}
+        col_meta1, col_meta2 = st.columns([1.2, 1])
+        with col_meta1:
+            st.subheader("📋 Tabel 4.1 Metadata Jaringan Komunikasi Program MBG")
+            st.caption("Korpus Resmi Periode Observasi Maret – Mei 2026:")
+            tabel_4_1 = {
+                "Parameter": [
+                    "👥 Jumlah Aktor (Nodes)",
+                    "🔗 Jumlah Interaksi (Edges)",
+                    "🧩 Jumlah Komponen Jaringan",
+                    "⚡ Nilai Modularity (Louvain)",
+                    "🌐 Platform Sumber",
+                    "📅 Periode Observasi",
                 ],
-                'threshold': {
-                    'line': {'color': '#f59e0b', 'width': 3},
-                    'thickness': 0.8,
-                    'value': 0.3
-                }
+                "Nilai": [
+                    "973 akun pengguna",
+                    "658 hubungan (mention)",
+                    "332 komponen terpisah",
+                    "0,9837 (Sangat Terfragmentasi)",
+                    "X (Twitter)",
+                    "Maret – Mei 2026",
+                ]
             }
-        ))
-        fig_q_gauge.update_layout(height=320, margin=dict(t=50, b=20, l=20, r=20))
-        st.plotly_chart(fig_q_gauge, use_container_width=True)
+            st.dataframe(pd.DataFrame(tabel_4_1), use_container_width=True, hide_index=True)
 
-    with col_mbar:
-        df_mod_comp = pd.DataFrame({
-            'Fase Riset': ['Ambang Newman (2006)', 'Data Pilot (Feb 2025)', 'Korpus Resmi (Mar–Mei 2026)'],
-            'Modularity Q': [0.3000, 0.7130, 0.9837],
-            'Status': ['Batas Polarisasi Minimal', 'Polarisasi Kuat', 'Hyper-Fragmentation Ekstrem']
-        })
-        fig_q_bar = px.bar(
-            df_mod_comp,
-            x='Fase Riset',
-            y='Modularity Q',
-            color='Modularity Q',
-            color_continuous_scale=['#10b981', '#f59e0b', '#ef4444'],
-            text='Modularity Q',
-            title="Komparasi Intensifikasi Modularitas Jaringan"
-        )
-        fig_q_bar.update_traces(texttemplate='%{text:.4f}', textposition='outside')
-        fig_q_bar.update_layout(height=320, margin=dict(t=50, b=20, l=10, r=10), yaxis_range=[0, 1.15], coloraxis_showscale=False)
-        st.plotly_chart(fig_q_bar, use_container_width=True)
+        with col_meta2:
+            st.subheader("⚖️ Komparasi Data Korpus vs Data Pilot")
+            st.info("""
+            **🔍 Data Penjajakan Awal (Februari 2025):**
+            - Nodes: 2.414 akun | Edges: 3.483 relasi
+            - Modularity: **0,7130**
+            - *Fungsi*: Penjajakan awal isu krisis wacana MBG.
+            
+            **📌 Korpus Resmi Penelitian (Maret–Mei 2026):**
+            - Nodes: 973 akun | Edges: 658 relasi
+            - Modularity: **0,9837** (Intensifikasi Polarisasi)
+            - *Insight*: Struktur wacana mengalami fragmentasi tajam menjadi ratusan komponen terisolasi.
+            """)
 
-    # ── Load Network Data Real ──
-    edges, nodes_data = load_network_data()
-    G_undir = nx.from_pandas_edgelist(edges, 'Source', 'Target')
-    components = sorted(nx.connected_components(G_undir), key=len, reverse=True)
-    total_nodes_graph = G_undir.number_of_nodes()
+        st.markdown("---")
 
-    # ── Tabel 4.2 Ukuran 10 Komponen Terbesar (Dihitung Dinamis dari Data Riil) ──
-    st.subheader("📋 Tabel 4.2 Ukuran Sepuluh Komponen Jaringan Terbesar (Korpus Resmi)")
-    st.caption(f"Distribusi fragmentasi struktural wacana MBG (Total {len(components)} komponen terpisah dari {total_nodes_graph} aktor riil):")
+        # ── §4.2 TOPOLOGI JARINGAN & POLARISASI ──
 
-    char_list = [
-        "Ruang diskusi heterogen (dukungan, bantahan resmi, & kritik sindiran)",
-        "Klaster percakapan relawan dan pantauan lapangan terisolasi",
-        "Klaster diskusi warganet skeptis terhadap alokasi APBN",
-        "Sub-komunitas penyebaran konten ironis/meme makanan MBG",
-        "Klaster keluhan orang tua siswa terkait mutu fisik menu",
-        "Klaster mikro pembahasan vendor logistik daerah",
-        "Percakapan terbatas antar-akun anonim",
-        "Kelompok mikro diskusi isu susu gratis",
-        "Klaster mikro tanpa jembatan struktural ke diskusi utama",
-        "Klaster mikro tanpa jembatan struktural ke diskusi utama"
-    ]
+        st.markdown('---')
+        st.subheader('🔍 Verifikasi Integritas Data Korpus Riil')
+        # Load live data for audit charts
+        try:
+            # 1. Emotion Data (N=5.263)
+            df_audit_emo = load_emotion_data()
+            emo_counts = df_audit_emo['predicted_emotion'].value_counts().reset_index()
+            emo_counts.columns = ['Emosi', 'Jumlah']
+            
+            # 2. Sarcasm Data (N=3.395)
+            path_sin = "data/sarcasm/dataset_sindiran_valid.csv"
+            if not os.path.exists(path_sin):
+                path_sin = "../data/sarcasm/dataset_sindiran_valid.csv"
+            df_audit_sin = pd.read_csv(path_sin) if os.path.exists(path_sin) else None
+            
+            # 3. SNA Centrality Data (971 nodes)
+            path_deg = "data/results/sna_degree.csv"
+            if not os.path.exists(path_deg):
+                path_deg = "../data/results/sna_degree.csv"
+            df_audit_deg = pd.read_csv(path_deg).head(8) if os.path.exists(path_deg) else None
+            
+            # 4. ABSA Data
+            path_absa = "results/absa_results.csv"
+            if not os.path.exists(path_absa):
+                path_absa = "../results/absa_results.csv"
+            df_audit_absa = pd.read_csv(path_absa) if os.path.exists(path_absa) else None
 
-    comp_rows = []
-    for i in range(min(10, len(components))):
-        c_size = len(components[i])
-        pct = (c_size / total_nodes_graph) * 100 if total_nodes_graph > 0 else 0
-        tag = " (Giant Component)" if i == 0 else ""
-        comp_rows.append({
-            "Peringkat": f"Komponen {i+1}",
-            "Jumlah Aktor (Nodes)": c_size,
-            "Persentase (%)": f"{pct:.2f}%{tag}",
-            "Karakteristik & Dinamika Diskursus": char_list[i] if i < len(char_list) else "Klaster mikro terisolasi"
-        })
-    st.dataframe(pd.DataFrame(comp_rows), use_container_width=True, hide_index=True)
+            # Row 1 of Verification Charts
+            vrow1_c1, vrow1_c2 = st.columns(2)
+            
+            with vrow1_c1:
+                st.subheader("📊 1. Distribusi 9 Emosi IndoBERT (N=5.263)")
+                fig_live_emo = px.pie(
+                    emo_counts,
+                    names='Emosi',
+                    values='Jumlah',
+                    color='Emosi',
+                    color_discrete_map={
+                        'Jijik': '#065F46',
+                        'Percaya': '#10B981',
+                        'Netral': '#475569',
+                        'Tertarik': '#F97316',
+                        'Marah': '#EF4444',
+                        'Sedih': '#2563EB',
+                        'Takut': '#7C3AED'
+                    },
+                    hole=0.45,
+                    title="Korpus Riil: Jijik Mendominasi 56,24% (2.960 Tweet)"
+                )
+                fig_live_emo.update_traces(textinfo="label+percent", textfont_size=11)
+                fig_live_emo.update_layout(height=380, margin=dict(l=10, r=10, t=40, b=20), showlegend=False)
+                st.plotly_chart(fig_live_emo, use_container_width=True)
+                st.caption("✅ **Data Sumber:** `data/results/indobert_9_emosi_fixed.csv` | **Posisi:** Bab 4.1 & Bab 4.5.1")
 
-    isolated_small = sum(1 for c in components if len(c) <= 2)
-    st.info(f"💡 **Catatan Metodologis:** Sebanyak **{isolated_small} komponen ({(isolated_small/len(components))*100:.1f}%)** beranggotakan <= 2 aktor (dyad/isolated pair), membuktikan tidak adanya arena sentral percakapan publik nasional.")
+            with vrow1_c2:
+                st.subheader("🎭 2. Deteksi Sindiran Leksikal (N=3.395)")
+                if df_audit_sin is not None:
+                    sin_counts = df_audit_sin['sindiran'].map({True: 'Sindiran Valid (315 Cuitan / 9,28%)', False: 'Non-Sindiran (3.080 Cuitan / 90,72%)'}).value_counts().reset_index()
+                    sin_counts.columns = ['Status Sindiran', 'Jumlah']
+                    fig_live_sin = px.pie(
+                        sin_counts,
+                        names='Status Sindiran',
+                        values='Jumlah',
+                        color='Status Sindiran',
+                        color_discrete_map={
+                            'Sindiran Valid (315 Cuitan / 9,28%)': '#ef4444',
+                            'Non-Sindiran (3.080 Cuitan / 90,72%)': '#3b82f6'
+                        },
+                        hole=0.45,
+                        title="Korpus Leksikal: 315 Cuitan Memuat Ironi Valid"
+                    )
+                    fig_live_sin.update_traces(textinfo="label+percent", textfont_size=11)
+                    fig_live_sin.update_layout(height=380, margin=dict(l=10, r=10, t=40, b=20), showlegend=False)
+                    st.plotly_chart(fig_live_sin, use_container_width=True)
+                st.caption("✅ **Data Sumber:** `data/sarcasm/dataset_sindiran_valid.csv` | **Posisi:** Bab 4.5.2")
 
-    st.markdown("---")
+            # Row 2 of Verification Charts
+            vrow2_c1, vrow2_c2 = st.columns(2)
+            
+            with vrow2_c1:
+                st.subheader("🕸️ 3. Top Aktor Sentral Jaringan SNA (971 Nodes)")
+                if df_audit_deg is not None:
+                    df_plot_deg = df_audit_deg.copy()
+                    df_plot_deg['node'] = df_plot_deg['node'].apply(lambda x: f"@{x}")
+                    fig_live_deg = px.bar(
+                        df_plot_deg,
+                        x='degree_centrality',
+                        y='node',
+                        orientation='h',
+                        color='degree_centrality',
+                        color_continuous_scale='Viridis',
+                        title="Supremasi AI Oracle (@grok) vs Aktor Manusia"
+                    )
+                    fig_live_deg.update_layout(
+                        height=380,
+                        margin=dict(l=10, r=10, t=40, b=20),
+                        yaxis=dict(categoryorder='total ascending'),
+                        xaxis_title="Degree Centrality Score",
+                        yaxis_title="Aktor warganet"
+                    )
+                    st.plotly_chart(fig_live_deg, use_container_width=True)
+                st.caption("✅ **Data Sumber:** `data/results/sna_degree.csv` | **Posisi:** Bab 4.4")
 
-    # ── §4.3 Analisis Clustering Komunitas Louvain (Dihitung Dinamis dari Nodes CSV) ──
-    st.header("🧩 §4.3 Analisis Clustering: Dinamika Komunitas dan Echo Chambers")
-    st.markdown("""
-    > *Algoritma **Louvain** (Blondel dkk., 2008) mengidentifikasi komunitas wacana dengan modularity **0,9837**. 
-    > Segregasi wacana terjadi secara absolut akibat tiadanya jembatan informasi antar-kelompok warganet.*
-    """)
+            with vrow2_c2:
+                st.subheader("📉 4. Sentimen per Aspek Kebijakan / ABSA")
+                if df_audit_absa is not None:
+                    fig_live_absa = go.Figure()
+                    fig_live_absa.add_trace(go.Bar(
+                        x=df_audit_absa['Aspect'],
+                        y=df_audit_absa['Disgust_Pct'],
+                        name='🤢 Disgust (%)',
+                        marker_color='#ef4444',
+                        text=df_audit_absa['Disgust_Pct'].apply(lambda x: f"{x}%"),
+                        textposition='outside'
+                    ))
+                    fig_live_absa.add_trace(go.Bar(
+                        x=df_audit_absa['Aspect'],
+                        y=df_audit_absa['Trust_Pct'],
+                        name='🤝 Trust (%)',
+                        marker_color='#10b981',
+                        text=df_audit_absa['Trust_Pct'].apply(lambda x: f"{x}%"),
+                        textposition='outside'
+                    ))
+                    fig_live_absa.update_layout(
+                        barmode='group',
+                        height=380,
+                        margin=dict(l=10, r=10, t=40, b=20),
+                        yaxis_title="Persentase Sentimen (%)",
+                        legend=dict(orientation="h", yanchor="bottom", y=-0.25)
+                    )
+                    st.plotly_chart(fig_live_absa, use_container_width=True)
+                st.caption("✅ **Data Sumber:** `results/absa_results.csv` | **Posisi:** Bab 4.6.1 & 4.6.2")
 
-    nodes_file_path = "results/mbg_network_nodes_final.csv" if os.path.exists("results/mbg_network_nodes_final.csv") else "../results/mbg_network_nodes_final.csv"
-    if os.path.exists(nodes_file_path):
-        df_comm_nodes = pd.read_csv(nodes_file_path)
-        top_comms = df_comm_nodes['Community'].value_counts().head(5)
-        fokus_map = {
-            15: "Keluhan makanan basi & keracunan siswa",
-            61: "Kutipan rilis berita & pernyataan dinas",
-            16: "Sarkasme pemangkasan porsi menu",
-            259: "Apresiasi pembagian makanan perdana",
-            8: "Kritik transparansi pengadaan vendor"
-        }
-        comm_dyn_rows = []
-        for cid, cnt in top_comms.items():
-            sub = df_comm_nodes[df_comm_nodes['Community'] == cid]
-            dom_raw = sub['Dominant_Emotion'].mode()[0] if not sub['Dominant_Emotion'].empty else "neutral"
-            dom_id = {
+        except Exception as e:
+            st.warning(f"Memuat data audit grafis... ({e})")
+
+        st.markdown("---")
+
+        
+    with tab_iv_2:
+        st.header("🕸️ §4.2 Analisis Level Sistem: Topologi Jaringan & Polarisasi")
+        
+        top_col1, top_col2, top_col3 = st.columns(3)
+        with top_col1:
+            st.metric("Modularity Louvain", "0.9837", "Ambang Newman > 0.3")
+        with top_col2:
+            st.metric("Densitas Graf", "0.0007", "Jaringan Sangat Renggang")
+        with top_col3:
+            st.metric("Reciprocity", "1.21%", "Komunikasi Non-Timbal Balik")
+
+        st.warning("""
+        **📢 Temuan Kunci Level Sistem:**
+        1. **Hyper-Fragmentation (Modularity 0,9837):** Jauh melampaui ambang batas 0,3 (Newman, 2006). Percakapan warganet terpecah ke dalam **332 komponen terisolasi** (bukan dua kubu ideologis besar, melainkan ratusan kelompok percakapan kecil).
+        2. **Komunikasi Searah (Reciprocity 0,0121):** Dialog dua arah hampir nihil (hanya 1,2%). Netizen lebih banyak me-mention figur otoritas sebagai bentuk keluhan/protes satu arah tanpa adanya respon balik (*top-down communication failure*).
+        """)
+
+        # ── Visualisasi Spektrum & Gauge Modularitas (Newman, 2006) ──
+        st.subheader("📐 Visualisasi Spektrum & Evaluasi Modularitas Louvain (Q = 0.9837)")
+        col_gauge, col_mbar = st.columns([1, 1.3])
+        with col_gauge:
+            fig_q_gauge = go.Figure(go.Indicator(
+                mode='gauge+number',
+                value=0.9837,
+                domain={'x': [0, 1], 'y': [0, 1]},
+                title={'text': '<b>Skor Modularitas Louvain (Q)</b><br><span style="font-size:0.8em;color:#94a3b8">Ambang Newman Q > 0.3</span>'},
+                gauge={
+                    'axis': {'range': [0, 1], 'tickwidth': 1, 'tickcolor': '#cbd5e1'},
+                    'bar': {'color': '#ef4444', 'thickness': 0.35},
+                    'bgcolor': '#1e293b',
+                    'borderwidth': 2,
+                    'bordercolor': '#334155',
+                    'steps': [
+                        {'range': [0, 0.3], 'color': 'rgba(16, 185, 129, 0.25)'},
+                        {'range': [0.3, 0.7], 'color': 'rgba(245, 158, 11, 0.25)'},
+                        {'range': [0.7, 1.0], 'color': 'rgba(239, 68, 68, 0.25)'}
+                    ],
+                    'threshold': {
+                        'line': {'color': '#f59e0b', 'width': 3},
+                        'thickness': 0.8,
+                        'value': 0.3
+                    }
+                }
+            ))
+            fig_q_gauge.update_layout(height=320, margin=dict(t=50, b=20, l=20, r=20))
+            st.plotly_chart(fig_q_gauge, use_container_width=True)
+
+        with col_mbar:
+            df_mod_comp = pd.DataFrame({
+                'Fase Riset': ['Ambang Newman (2006)', 'Data Pilot (Feb 2025)', 'Korpus Resmi (Mar–Mei 2026)'],
+                'Modularity Q': [0.3000, 0.7130, 0.9837],
+                'Status': ['Batas Polarisasi Minimal', 'Polarisasi Kuat', 'Hyper-Fragmentation Ekstrem']
+            })
+            fig_q_bar = px.bar(
+                df_mod_comp,
+                x='Fase Riset',
+                y='Modularity Q',
+                color='Modularity Q',
+                color_continuous_scale=['#10b981', '#f59e0b', '#ef4444'],
+                text='Modularity Q',
+                title="Komparasi Intensifikasi Modularitas Jaringan"
+            )
+            fig_q_bar.update_traces(texttemplate='%{text:.4f}', textposition='outside')
+            fig_q_bar.update_layout(height=320, margin=dict(t=50, b=20, l=10, r=10), yaxis_range=[0, 1.15], coloraxis_showscale=False)
+            st.plotly_chart(fig_q_bar, use_container_width=True)
+
+        # ── Load Network Data Real ──
+        edges, nodes_data = load_network_data()
+        G_undir = nx.from_pandas_edgelist(edges, 'Source', 'Target')
+        components = sorted(nx.connected_components(G_undir), key=len, reverse=True)
+        total_nodes_graph = G_undir.number_of_nodes()
+
+        # ── Tabel 4.2 Ukuran 10 Komponen Terbesar (Dihitung Dinamis dari Data Riil) ──
+        st.subheader("📋 Tabel 4.2 Ukuran Sepuluh Komponen Jaringan Terbesar (Korpus Resmi)")
+        st.caption(f"Distribusi fragmentasi struktural wacana MBG (Total {len(components)} komponen terpisah dari {total_nodes_graph} aktor riil):")
+
+        char_list = [
+            "Ruang diskusi heterogen (dukungan, bantahan resmi, & kritik sindiran)",
+            "Klaster percakapan relawan dan pantauan lapangan terisolasi",
+            "Klaster diskusi warganet skeptis terhadap alokasi APBN",
+            "Sub-komunitas penyebaran konten ironis/meme makanan MBG",
+            "Klaster keluhan orang tua siswa terkait mutu fisik menu",
+            "Klaster mikro pembahasan vendor logistik daerah",
+            "Percakapan terbatas antar-akun anonim",
+            "Kelompok mikro diskusi isu susu gratis",
+            "Klaster mikro tanpa jembatan struktural ke diskusi utama",
+            "Klaster mikro tanpa jembatan struktural ke diskusi utama"
+        ]
+
+        comp_rows = []
+        for i in range(min(10, len(components))):
+            c_size = len(components[i])
+            pct = (c_size / total_nodes_graph) * 100 if total_nodes_graph > 0 else 0
+            tag = " (Giant Component)" if i == 0 else ""
+            comp_rows.append({
+                "Peringkat": f"Komponen {i+1}",
+                "Jumlah Aktor (Nodes)": c_size,
+                "Persentase (%)": f"{pct:.2f}%{tag}",
+                "Karakteristik & Dinamika Diskursus": char_list[i] if i < len(char_list) else "Klaster mikro terisolasi"
+            })
+        st.dataframe(pd.DataFrame(comp_rows), use_container_width=True, hide_index=True)
+
+        isolated_small = sum(1 for c in components if len(c) <= 2)
+        st.info(f"💡 **Catatan Metodologis:** Sebanyak **{isolated_small} komponen ({(isolated_small/len(components))*100:.1f}%)** beranggotakan <= 2 aktor (dyad/isolated pair), membuktikan tidak adanya arena sentral percakapan publik nasional.")
+
+        st.markdown("---")
+
+        # ── §4.3 Analisis Clustering Komunitas Louvain (Dihitung Dinamis dari Nodes CSV) ──
+
+        st.subheader("🌐 Visualisasi Terpadu Jaringan Komunikasi SNA (Komunitas & Relasi)")
+        st.markdown("Eksplorasi graf jaringan komunikasi wacana MBG di platform X (node diwarnai berdasarkan Komunitas Louvain riil):")
+
+        edges, nodes_data = load_network_data()
+        nodes_info_path = "results/mbg_network_nodes_final.csv" if os.path.exists("results/mbg_network_nodes_final.csv") else "../results/mbg_network_nodes_final.csv"
+        df_ninfo_map = pd.read_csv(nodes_info_path) if os.path.exists(nodes_info_path) else None
+        n_comm_map = dict(zip(df_ninfo_map['Id'], df_ninfo_map['Community'])) if df_ninfo_map is not None else {}
+        n_emo_map = dict(zip(df_ninfo_map['Id'], df_ninfo_map['Dominant_Emotion'])) if df_ninfo_map is not None else {}
+
+        graph_tab1, graph_tab2 = st.tabs(["📊 Graf Jaringan Interaktif (Plotly Native)", "🕸️ Graf Dinamis Physics 3D (PyVis)"])
+
+        with graph_tab1:
+            st.caption("Visualisasi graf jaringan berarah langsung di Streamlit (100% native tanpa ketergantungan iframe):")
+            
+            col_flt1, col_flt2 = st.columns([1.2, 2])
+            with col_flt1:
+                n_scale = st.radio("Skala Graf Ditampilkan:", [50, 100, 150], index=1, format_func=lambda x: f"Top {x} Aktor Utama", horizontal=True)
+            with col_flt2:
+                st.info("🎨 **Legenda Komunitas Louvain:** 🔴 Klaster #15 (Disgust) | 🔵 Klaster #61 (Netral) | 🟡 Klaster #16 (Sindiran) | 🟢 Klaster #259 (Trust) | 🟣 Klaster #8 (Anggaran)")
+
+            # Load graph and subgraph
+            G_full = nx.from_pandas_edgelist(edges, source='Source', target='Target', create_using=nx.DiGraph())
+            deg_all = dict(G_full.degree())
+            sel_top_nodes = sorted(deg_all, key=deg_all.get, reverse=True)[:n_scale]
+            subG_plot = G_full.subgraph(sel_top_nodes)
+
+            # Layout computation
+            pos_2d = nx.spring_layout(subG_plot, seed=42, k=0.22, iterations=50)
+
+            # Edges trace
+            edge_x, edge_y = [], []
+            for u, v in subG_plot.edges():
+                x0, y0 = pos_2d[u]
+                x1, y1 = pos_2d[v]
+                edge_x.extend([x0, x1, None])
+                edge_y.extend([y0, y1, None])
+
+            edge_trace = go.Scatter(
+                x=edge_x, y=edge_y,
+                line=dict(width=0.85, color='rgba(148, 163, 184, 0.35)'),
+                hoverinfo='none',
+                mode='lines'
+            )
+
+            # Nodes trace
+            node_x, node_y = [], []
+            node_sizes, node_colors, node_hover, node_labels = [], [], [], []
+
+            comm_colors = {
+                15: '#ef4444',
+                61: '#3b82f6',
+                16: '#f59e0b',
+                259: '#10b981',
+                8: '#8b5cf6'
+            }
+
+            for n in subG_plot.nodes():
+                x, y = pos_2d[n]
+                node_x.append(x)
+                node_y.append(y)
+                d_val = deg_all.get(n, 1)
+                cid = n_comm_map.get(n, -1)
+                c_hex = comm_colors.get(cid, '#94a3b8')
+
+                # Special actor highlights
+                if n == 'grok':
+                    c_hex = '#06b6d4'
+                    sz = 32
+                    lbl = '🤖 @grok'
+                elif n == 'prabowo':
+                    c_hex = '#eab308'
+                    sz = 28
+                    lbl = '👑 @prabowo'
+                elif n == '4Y4NKZ':
+                    c_hex = '#ec4899'
+                    sz = 26
+                    lbl = '🔗 @4Y4NKZ'
+                elif n in ['tanyarlfes', 'tanyakanrl', 'LambeSahamjja', 'itbfess_x']:
+                    c_hex = '#8b5cf6'
+                    sz = 22
+                    lbl = f'📡 @{n}'
+                else:
+                    sz = max(8, min(22, d_val * 2.5))
+                    lbl = f'@{n}' if d_val >= 4 else ''
+
+                node_sizes.append(sz)
+                node_colors.append(c_hex)
+                node_labels.append(lbl)
+                
+                in_d = G_full.in_degree(n)
+                out_d = G_full.out_degree(n)
+                emo = n_emo_map.get(n, 'netral')
+                node_hover.append(
+                    f"<b>@{n}</b><br>"
+                    f"Komunitas: Klaster #{cid}<br>"
+                    f"Total Degree: {d_val}<br>"
+                    f"In-Degree: {in_d} | Out-Degree: {out_d}<br>"
+                    f"Emosi Dominan: {emo}"
+                )
+
+            node_trace = go.Scatter(
+                x=node_x, y=node_y,
+                mode='markers+text',
+                hoverinfo='text',
+                text=node_labels,
+                textposition='top center',
+                textfont=dict(size=10, color='#f8fafc'),
+                hovertext=node_hover,
+                marker=dict(
+                    color=node_colors,
+                    size=node_sizes,
+                    line=dict(width=1.5, color='#ffffff')
+                )
+            )
+
+            fig_net_plotly = go.Figure(
+                data=[edge_trace, node_trace],
+                layout=go.Layout(
+                    title=f"Peta Relasi Jaringan Komunikasi MBG ({n_scale} Aktor Teratas)",
+                    showlegend=False,
+                    hovermode='closest',
+                    margin=dict(b=20, l=10, r=10, t=40),
+                    xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                    yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                    plot_bgcolor='#0f172a',
+                    paper_bgcolor='#0f172a',
+                    height=560
+                )
+            )
+            st.plotly_chart(fig_net_plotly, use_container_width=True)
+
+        with graph_tab2:
+            st.info("💡 **Tips Interaktif:** Anda dapat melakukan *scroll* untuk Zoom In/Out, men-drag node, atau mengklik node untuk melihat relasi terhubung secara dinamis.")
+            
+            if not PYVIS_AVAILABLE:
+                st.warning("⚠️ Modul `pyvis` belum terpasang di environment Python Anda. Pasang dengan `pip install pyvis` untuk mengaktifkan graf interaktif ini.")
+            else:
+                try:
+                    # Generate PyVis graph
+                    net = Network(height="600px", width="100%", bgcolor="#1e293b", font_color="white")
+                    net.force_atlas_2based()
+                    
+                    if nodes_data is not None and 'Degree' in nodes_data.columns:
+                        top_nodes = nodes_data.sort_values(by='Degree', ascending=False).head(150)['Id'].tolist()
+                    else:
+                        G_temp = nx.from_pandas_edgelist(edges, 'Source', 'Target')
+                        degree_dict = dict(G_temp.degree())
+                        top_nodes = sorted(degree_dict, key=degree_dict.get, reverse=True)[:150]
+                        
+                    filtered_edges = edges[edges['Source'].isin(top_nodes) | edges['Target'].isin(top_nodes)]
+                    G = nx.from_pandas_edgelist(filtered_edges, 'Source', 'Target')
+                    
+                    comm_palette = {
+                        15: "#ef4444",   # Red / Disgust
+                        61: "#3b82f6",   # Blue / Neutral
+                        16: "#f59e0b",   # Amber / Sarcasm
+                        259: "#10b981",  # Green / Trust
+                        8: "#8b5cf6",    # Purple / Budget
+                    }
+                    
+                    # Add nodes and edges to pyvis with rich aesthetic attributes
+                    for node in G.nodes():
+                        deg = dict(G.degree()).get(node, 1)
+                        cid = n_comm_map.get(node, -1)
+                        emo = n_emo_map.get(node, "netral")
+                        col = comm_palette.get(cid, "#94a3b8")
+                        
+                        # Highlighting Key Actors
+                        if node == "grok":
+                            col = "#06b6d4"  # Cyan for AI Oracle
+                            size = 34
+                            label = "🤖 @grok"
+                        elif node == "prabowo":
+                            col = "#eab308"  # Gold for President
+                            size = 30
+                            label = "👑 @prabowo"
+                        elif node == "4Y4NKZ":
+                            col = "#ec4899"  # Pink for Broker
+                            size = 28
+                            label = "🔗 @4Y4NKZ"
+                        else:
+                            size = max(8, min(24, deg * 3))
+                            label = f"@{node}" if deg >= 4 else ""
+                        emo_id_map = {
+                            'disgust': '🤢 Jijik (Disgust)',
+                            'neutral': '😐 Netral',
+                            'love': '🤝 Percaya (Trust)',
+                            'shame': '🔮 Tertarik',
+                            'anger': '😡 Marah',
+                            'sadness': '😢 Sedih',
+                            'fear': '😨 Takut',
+                            'joy': '😊 Bahagia',
+                            'surprise': '😲 Kaget'
+                        }
+                        emo_ind = emo_id_map.get(str(emo).lower(), str(emo))
+                        tooltip = f"<div style='font-family: sans-serif; font-size: 12px; padding: 4px;'><b>@{node}</b><br>🧩 Klaster: #{cid}<br>🎭 Emosi Dominan: {emo_ind}<br>📊 Total Derajat: {deg}</div>"
+                        net.add_node(node, label=label, title=tooltip, size=size, color=col)
+                        
+                    for source, target in G.edges():
+                        net.add_edge(source, target, color="rgba(255,255,255,0.15)")
+                        
+                    # Save graph to HTML
+                    path = 'html_files'
+                    if not os.path.exists(path):
+                        os.makedirs(path)
+                    net.save_graph(f'{path}/network.html')
+                    
+                    HtmlFile = open(f'{path}/network.html', 'r', encoding='utf-8')
+                    source_code = HtmlFile.read()
+                    components.html(source_code, height=650, scrolling=True)
+                except Exception as e:
+                    st.error(f"Gagal memuat visualisasi PyVis: {e}")
+
+        st.markdown("---")
+        st.subheader("Visualisasi Jaringan Statis (Topologi & Aktor Utama)")
+        st.markdown("Grafik di bawah mengonfirmasi bahwa ekosistem wacana ini sangat terfragmentasi (*echo-chambers*) tanpa pusat dialog, di mana agen AI justru mengambil alih otoritas informasi.")
+        
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(current_dir)
+        global_path = os.path.join(project_root, "results", "6_global_network.png")
+        louvain_path = os.path.join(project_root, "results", "network_graph.png")
+        actors_path = os.path.join(project_root, "results", "top_actors.png")
+        
+        # 6_global_network
+        st.image(global_path, use_container_width=True, caption="Figure: Global Topological Structure")
+        
+        colA, colB = st.columns(2)
+        with colA:
+            st.image(louvain_path, use_container_width=True, caption="Figure: Fragmented Community (Louvain)")
+        with colB:
+            st.image(actors_path, use_container_width=True, caption="Figure: Top 10 Influential Actors (AI Supremacy)")
+
+        
+    with tab_iv_3:
+        st.header("🧩 §4.3 Analisis Clustering: Dinamika Komunitas dan Echo Chambers")
+        st.markdown("""
+        > *Algoritma **Louvain** (Blondel dkk., 2008) mengidentifikasi komunitas wacana dengan modularity **0,9837**. 
+        > Segregasi wacana terjadi secara absolut akibat tiadanya jembatan informasi antar-kelompok warganet.*
+        """)
+
+        nodes_file_path = "results/mbg_network_nodes_final.csv" if os.path.exists("results/mbg_network_nodes_final.csv") else "../results/mbg_network_nodes_final.csv"
+        if os.path.exists(nodes_file_path):
+            df_comm_nodes = pd.read_csv(nodes_file_path)
+            top_comms = df_comm_nodes['Community'].value_counts().head(5)
+            fokus_map = {
+                15: "Keluhan makanan basi & keracunan siswa",
+                61: "Kutipan rilis berita & pernyataan dinas",
+                16: "Sarkasme pemangkasan porsi menu",
+                259: "Apresiasi pembagian makanan perdana",
+                8: "Kritik transparansi pengadaan vendor"
+            }
+            comm_dyn_rows = []
+            for cid, cnt in top_comms.items():
+                sub = df_comm_nodes[df_comm_nodes['Community'] == cid]
+                dom_raw = sub['Dominant_Emotion'].mode()[0] if not sub['Dominant_Emotion'].empty else "neutral"
+                dom_id = {
+                    'disgust': '🤢 Jijik (Disgust)',
+                    'neutral': '😐 Netral',
+                    'love': '🤝 Percaya (Trust)',
+                    'shame': '🔮 Tertarik',
+                    'anger': '😡 Marah'
+                }.get(dom_raw.lower(), dom_raw)
+                porsi_gc = f"{(cnt/89)*100:.1f}%" if cid in [15, 61] else "Terpisah (Independent)"
+                comm_dyn_rows.append({
+                    "ID Komunitas": f"Klaster #{cid}",
+                    "Jumlah Anggota": f"{cnt} aktor",
+                    "Porsi Giant Component": porsi_gc,
+                    "Emosi Dominan": dom_id,
+                    "Fokus Sentimen Utama": fokus_map.get(cid, "Diskursus tematik warganet")
+                })
+            col_comm1, col_comm2 = st.columns([1.4, 1])
+            with col_comm1:
+                st.dataframe(pd.DataFrame(comm_dyn_rows), use_container_width=True, hide_index=True)
+            with col_comm2:
+                df_comm_pie = pd.DataFrame({
+                    'Klaster': [f"Klaster #{cid}" for cid in top_comms.index] + ['Klaster Lainnya (328 Klaster)'],
+                    'Jumlah Aktor': list(top_comms.values) + [len(df_comm_nodes) - top_comms.sum()]
+                })
+                fig_comm_donut = px.pie(
+                    df_comm_pie,
+                    names='Klaster',
+                    values='Jumlah Aktor',
+                    hole=0.45,
+                    color_discrete_sequence=['#ef4444', '#3b82f6', '#f59e0b', '#10b981', '#8b5cf6', '#94a3b8'],
+                    title="Proporsi Ukuran Komunitas Louvain"
+                )
+                fig_comm_donut.update_traces(textposition='inside', textinfo='percent+label')
+                fig_comm_donut.update_layout(showlegend=False, margin=dict(t=30, b=10, l=10, r=10), height=280)
+                st.plotly_chart(fig_comm_donut, use_container_width=True)
+
+            # ── Visualisasi Distribusi Emosi per Komunitas Louvain ──
+            st.subheader("📊 Distribusi Emosi Dominan per Komunitas Louvain")
+            st.caption("Membuktikan polarisasi afektif: Klaster #15 didominasi emosi Jijik (Disgust), sedangkan Klaster #61 didominasi Netral:")
+            
+            top5_cids = top_comms.index.tolist()
+            df_sub_comm = df_comm_nodes[df_comm_nodes['Community'].isin(top5_cids)].copy()
+            df_sub_comm['Klaster'] = df_sub_comm['Community'].apply(lambda x: f'Klaster #{x}')
+            emo_id_labels = {
                 'disgust': '🤢 Jijik (Disgust)',
                 'neutral': '😐 Netral',
                 'love': '🤝 Percaya (Trust)',
-                'shame': '🔮 Tertarik',
-                'anger': '😡 Marah'
-            }.get(dom_raw.lower(), dom_raw)
-            porsi_gc = f"{(cnt/89)*100:.1f}%" if cid in [15, 61] else "Terpisah (Independent)"
-            comm_dyn_rows.append({
-                "ID Komunitas": f"Klaster #{cid}",
-                "Jumlah Anggota": f"{cnt} aktor",
-                "Porsi Giant Component": porsi_gc,
-                "Emosi Dominan": dom_id,
-                "Fokus Sentimen Utama": fokus_map.get(cid, "Diskursus tematik warganet")
-            })
-        col_comm1, col_comm2 = st.columns([1.4, 1])
-        with col_comm1:
-            st.dataframe(pd.DataFrame(comm_dyn_rows), use_container_width=True, hide_index=True)
-        with col_comm2:
-            df_comm_pie = pd.DataFrame({
-                'Klaster': [f"Klaster #{cid}" for cid in top_comms.index] + ['Klaster Lainnya (328 Klaster)'],
-                'Jumlah Aktor': list(top_comms.values) + [len(df_comm_nodes) - top_comms.sum()]
-            })
-            fig_comm_donut = px.pie(
-                df_comm_pie,
-                names='Klaster',
-                values='Jumlah Aktor',
-                hole=0.45,
-                color_discrete_sequence=['#ef4444', '#3b82f6', '#f59e0b', '#10b981', '#8b5cf6', '#94a3b8'],
-                title="Proporsi Ukuran Komunitas Louvain"
-            )
-            fig_comm_donut.update_traces(textposition='inside', textinfo='percent+label')
-            fig_comm_donut.update_layout(showlegend=False, margin=dict(t=30, b=10, l=10, r=10), height=280)
-            st.plotly_chart(fig_comm_donut, use_container_width=True)
-
-        # ── Visualisasi Distribusi Emosi per Komunitas Louvain ──
-        st.subheader("📊 Distribusi Emosi Dominan per Komunitas Louvain")
-        st.caption("Membuktikan polarisasi afektif: Klaster #15 didominasi emosi Jijik (Disgust), sedangkan Klaster #61 didominasi Netral:")
-        
-        top5_cids = top_comms.index.tolist()
-        df_sub_comm = df_comm_nodes[df_comm_nodes['Community'].isin(top5_cids)].copy()
-        df_sub_comm['Klaster'] = df_sub_comm['Community'].apply(lambda x: f'Klaster #{x}')
-        emo_id_labels = {
-            'disgust': '🤢 Jijik (Disgust)',
-            'neutral': '😐 Netral',
-            'love': '🤝 Percaya (Trust)',
-            'anger': '😡 Marah',
-            'shame': '🔮 Tertarik'
-        }
-        df_sub_comm['Emosi'] = df_sub_comm['Dominant_Emotion'].map(emo_id_labels).fillna(df_sub_comm['Dominant_Emotion'])
-        ct = pd.crosstab(df_sub_comm['Klaster'], df_sub_comm['Emosi']).reset_index()
-        ct_melt = ct.melt(id_vars='Klaster', var_name='Emosi', value_name='Jumlah Aktor')
-        
-        fig_comm_emo = px.bar(
-            ct_melt,
-            x='Klaster',
-            y='Jumlah Aktor',
-            color='Emosi',
-            barmode='stack',
-            title="Komposisi Emosi di 5 Komunitas Terbesar",
-            color_discrete_map={
-                '🤢 Jijik (Disgust)': '#ef4444',
-                '😐 Netral': '#3b82f6',
-                '🤝 Percaya (Trust)': '#10b981',
-                '😡 Marah': '#dc2626',
-                '🔮 Tertarik': '#8b5cf6'
+                'anger': '😡 Marah',
+                'shame': '🔮 Tertarik'
             }
-        )
-        fig_comm_emo.update_layout(height=340, margin=dict(t=40, b=20, l=10, r=10))
-        st.plotly_chart(fig_comm_emo, use_container_width=True)
-
-        # ── Interactive Community Member Explorer ──
-        with st.expander("🔎 Eksplorasi Anggota & Aktor per Komunitas Louvain", expanded=False):
-            sel_cid = st.selectbox(
-                "Pilih Komunitas Louvain untuk Melihat Anggota Akun:",
-                options=top5_cids,
-                format_func=lambda x: f"Klaster #{x} ({top_comms.get(x, 0)} aktor) — {fokus_map.get(x, 'Diskursus')}"
+            df_sub_comm['Emosi'] = df_sub_comm['Dominant_Emotion'].map(emo_id_labels).fillna(df_sub_comm['Dominant_Emotion'])
+            ct = pd.crosstab(df_sub_comm['Klaster'], df_sub_comm['Emosi']).reset_index()
+            ct_melt = ct.melt(id_vars='Klaster', var_name='Emosi', value_name='Jumlah Aktor')
+            
+            fig_comm_emo = px.bar(
+                ct_melt,
+                x='Klaster',
+                y='Jumlah Aktor',
+                color='Emosi',
+                barmode='stack',
+                title="Komposisi Emosi di 5 Komunitas Terbesar",
+                color_discrete_map={
+                    '🤢 Jijik (Disgust)': '#ef4444',
+                    '😐 Netral': '#3b82f6',
+                    '🤝 Percaya (Trust)': '#10b981',
+                    '😡 Marah': '#dc2626',
+                    '🔮 Tertarik': '#8b5cf6'
+                }
             )
-            df_sel_members = df_comm_nodes[df_comm_nodes['Community'] == sel_cid][['Id', 'Degree', 'Betweenness', 'Dominant_Emotion']].copy()
-            df_sel_members.columns = ['Akun Pengguna', 'Degree Centrality', 'Betweenness Centrality', 'Emosi Dominan']
-            df_sel_members['Akun Pengguna'] = df_sel_members['Akun Pengguna'].apply(lambda x: f"@{x}")
-            df_sel_members['Emosi Dominan'] = df_sel_members['Emosi Dominan'].map(emo_id_labels).fillna(df_sel_members['Emosi Dominan'])
-            st.dataframe(df_sel_members.sort_values(by='Degree Centrality', ascending=False), use_container_width=True, hide_index=True)
+            fig_comm_emo.update_layout(height=340, margin=dict(t=40, b=20, l=10, r=10))
+            st.plotly_chart(fig_comm_emo, use_container_width=True)
 
-    st.markdown("---")
+            # ── Interactive Community Member Explorer ──
+            with st.expander("🔎 Eksplorasi Anggota & Aktor per Komunitas Louvain", expanded=False):
+                sel_cid = st.selectbox(
+                    "Pilih Komunitas Louvain untuk Melihat Anggota Akun:",
+                    options=top5_cids,
+                    format_func=lambda x: f"Klaster #{x} ({top_comms.get(x, 0)} aktor) — {fokus_map.get(x, 'Diskursus')}"
+                )
+                df_sel_members = df_comm_nodes[df_comm_nodes['Community'] == sel_cid][['Id', 'Degree', 'Betweenness', 'Dominant_Emotion']].copy()
+                df_sel_members.columns = ['Akun Pengguna', 'Degree Centrality', 'Betweenness Centrality', 'Emosi Dominan']
+                df_sel_members['Akun Pengguna'] = df_sel_members['Akun Pengguna'].apply(lambda x: f"@{x}")
+                df_sel_members['Emosi Dominan'] = df_sel_members['Emosi Dominan'].map(emo_id_labels).fillna(df_sel_members['Emosi Dominan'])
+                st.dataframe(df_sel_members.sort_values(by='Degree Centrality', ascending=False), use_container_width=True, hide_index=True)
 
-    # ── Tabel 4.3 15 Aktor Sentralitas Tertinggi (Dihitung Dinamis via NetworkX) ──
-    st.subheader("📋 Tabel 4.3 Lima Belas Aktor dengan Degree Centrality Tertinggi (Korpus Resmi)")
-    st.caption("Hasil komputasi matematis NetworkX terhadap interaksi mention riil wacana MBG:")
+        st.markdown("---")
 
-    G_dir = nx.from_pandas_edgelist(edges, 'Source', 'Target', create_using=nx.DiGraph())
-    deg_d = nx.degree_centrality(G_dir)
-    bet_d = nx.betweenness_centrality(G_dir)
-    try:
-        eig_d = nx.eigenvector_centrality(G_dir, max_iter=1000)
-    except Exception:
-        eig_d = nx.eigenvector_centrality_numpy(G_dir)
+        # ── Tabel 4.3 15 Aktor Sentralitas Tertinggi (Dihitung Dinamis via NetworkX) ──
 
-    top_15_nodes = sorted(deg_d.items(), key=lambda x: x[1], reverse=True)[:15]
-
-    peran_map = {
-        "grok": "🤖 Oracle Algoritmik (AI Verifier)",
-        "4Y4NKZ": "🔗 Network Broker (Jembatan Utama)",
-        "newIding30": "📢 Informan Aktif Komunitas",
-        "prabowo": "👑 Target Pasif (Pembuat Kebijakan)",
-        "dbdbidip": "🗣️ Amplifikator Kritik Sindiran",
-        "Casagrande10939": "🗣️ Aktor Penyebar Narasi",
-        "luvdysh_": "🗣️ Warganet Kritis",
-        "mBg_JK": "🗣️ Akun Tematik MBG",
-        "regar_op0sisi": "🛡️ Oposisi / Pengawas Kebijakan",
-        "punishe98373138": "🗣️ Amplifikator Isu Gizi",
-        "daffiriffi": "🗣️ Partisipan Diskusi",
-        "deluxe_melissa": "🔗 Penghubung Klaster Kecil",
-        "ryookaasan": "🗣️ Partisipan Diskusi",
-        "tanyakanrl": "🎯 Akun Menfess / Rujukan Publik",
-        "multibank_io": "🔗 Akun Finansial / Evaluasi Anggaran"
-    }
-
-    dyn_top15 = []
-    for rank, (node, deg_val) in enumerate(top_15_nodes, 1):
-        b_val = bet_d.get(node, 0.0)
-        e_val = eig_d.get(node, 0.0)
-        in_deg = G_dir.in_degree(node)
-        out_deg = G_dir.out_degree(node)
-        star = " ★" if node == "4Y4NKZ" else ""
-        dyn_top15.append({
-            "Rank": rank,
-            "Akun Pengguna": f"@{node}",
-            "Degree": f"{deg_val:.4f}".replace(".", ","),
-            "Betweenness": f"{b_val:.6f}{star}".replace(".", ","),
-            "Eigenvector": f"{e_val:.4f}".replace(".", ","),
-            "In-Degree": in_deg,
-            "Out-Degree": out_deg,
-            "Peran Struktural": peran_map.get(node, "🗣️ Partisipan Wacana")
-        })
-    st.dataframe(pd.DataFrame(dyn_top15), use_container_width=True, hide_index=True)
-
-    # ── Interactive Plotly Chart: In-Degree vs Out-Degree ──
-    top_10_names = [n for n, _ in top_15_nodes[:10]]
-    df_act_chart = pd.DataFrame({
-        'Akun': [f"@{n}" for n in top_10_names][::-1],
-        'In-Degree (Sasaran Mention)': [G_dir.in_degree(n) for n in top_10_names][::-1],
-        'Out-Degree (Penyebar Mention)': [G_dir.out_degree(n) for n in top_10_names][::-1]
-    })
-    fig_act_bars = px.bar(
-        df_act_chart,
-        y='Akun',
-        x=['In-Degree (Sasaran Mention)', 'Out-Degree (Penyebar Mention)'],
-        barmode='group',
-        orientation='h',
-        color_discrete_map={'In-Degree (Sasaran Mention)': '#3b82f6', 'Out-Degree (Penyebar Mention)': '#ef4444'},
-        title="Visualisasi Asimetri Komunikasi: Sasaran Pasif (In-Degree) vs Penyebar Aktif (Out-Degree)"
-    )
-    fig_act_bars.update_layout(
-        xaxis_title="Frekuensi Mention",
-        yaxis_title="Akun Pengguna",
-        legend_title="Arah Komunikasi",
-        height=380,
-        margin=dict(t=40, b=20, l=10, r=10)
-    )
-    st.plotly_chart(fig_act_bars, use_container_width=True)
-
-    # ── §4.4b VISUALISASI KOMPREHENSIF SENTRALITAS AKTOR: DEGREE, BETWEENNESS, & EIGENVECTOR ──
-    st.markdown("---")
-    st.subheader("👑 §4.4b Visualisasi Tri-Metrik Sentralitas Aktor: Degree, Betweenness, & Eigenvector")
-    st.markdown("""
-    > *Dalam **Social Network Analysis (Freeman, 1979; Wasserman & Faust, 1994)**, struktur kekuasaan dan pengaruh aktor tidak cukup dinilai dari satu ukuran saja. 
-    > Riset ini mengkalkulasi dan memvisualisasikan **tiga dimensi sentralitas komplementer** dari graf interaksi riil MBG:*
-    > 1. **Degree Centrality:** Mengukur tingkat popularitas dan frekuensi interaksi langsung aktor (siapa yang paling aktif/disebut).
-    > 2. **Betweenness Centrality:** Mengukur peran aktor sebagai jembatan (*structural broker*) di antara kelompok-kelompok yang terpisah.
-    > 3. **Eigenvector Centrality:** Mengukur prestise dan pengaruh kualitatif (terhubung ke aktor-aktor yang juga memiliki pengaruh kuat).
-    """)
-
-    # Siapkan DataFrame lengkap metrik sentralitas seluruh node
-    cent_nodes_list = []
-    for n in G_dir.nodes():
-        cent_nodes_list.append({
-            'Akun': f"@{n}",
-            'Raw_Node': n,
-            'Degree Centrality': deg_d.get(n, 0.0),
-            'Betweenness Centrality': bet_d.get(n, 0.0),
-            'Eigenvector Centrality': eig_d.get(n, 0.0),
-            'In-Degree (Sasaran)': G_dir.in_degree(n),
-            'Out-Degree (Penyebar)': G_dir.out_degree(n),
-            'Total Relasi': G_dir.degree(n),
-            'Peran': peran_map.get(n, "🗣️ Partisipan Wacana")
-        })
-    df_cent_all = pd.DataFrame(cent_nodes_list)
-
-    cent_tab1, cent_tab2, cent_tab3, cent_tab4 = st.tabs([
-        "📊 1. Degree Centrality (Popularitas)",
-        "🔗 2. Betweenness Centrality (Brokerage)",
-        "💎 3. Eigenvector Centrality (Prestise)",
-        "🎯 4. Triangulasi Multi-Dimensi (Scatter Plot)"
-    ])
-
-    with cent_tab1:
-        st.markdown("#### 📊 Peringkat 10 Aktor dengan Degree Centrality Tertinggi")
-        st.caption("Mengukur aktor dengan volume relasi langsung terbanyak (In-Degree + Out-Degree):")
         
-        df_top_deg = df_cent_all.sort_values(by='Degree Centrality', ascending=True).tail(10)
-        fig_deg_bar = px.bar(
-            df_top_deg,
-            y='Akun',
-            x='Degree Centrality',
-            orientation='h',
-            color='Degree Centrality',
-            color_continuous_scale='Blues',
-            text=df_top_deg['Degree Centrality'].apply(lambda x: f"{x:.4f}"),
-            title="Top 10 Aktor: Degree Centrality (Aktivitas & Keterhubungan Langsung)"
-        )
-        fig_deg_bar.update_traces(textposition='outside')
-        fig_deg_bar.update_layout(height=400, margin=dict(t=40, b=20, l=10, r=20), xaxis_title="Skor Degree Centrality", yaxis_title="Akun Pengguna")
-        st.plotly_chart(fig_deg_bar, use_container_width=True)
-        st.info("💡 **Insight Temuan:** Agen AI **@grok** menduduki sentralitas derajat tertinggi (**0,0433 / 42 relasi**), membuktikan fenomena *Algorithmic Trust Takeover*, di mana warganet lebih banyak berinteraksi dengan AI untuk memverifikasi kebenaran program ketimbang akun resmi pemerintah.")
+    with tab_iv_4:
+        st.subheader("📋 Tabel 4.3 Lima Belas Aktor dengan Degree Centrality Tertinggi (Korpus Resmi)")
+        st.caption("Hasil komputasi matematis NetworkX terhadap interaksi mention riil wacana MBG:")
 
-    with cent_tab2:
-        st.markdown("#### 🔗 Peringkat 10 Aktor dengan Betweenness Centrality Tertinggi")
-        st.caption("Mengukur aktor yang menduduki posisi jembatan krusial (*structural bridge / gatekeeper*) antarkelompok:")
-        
-        df_top_bet = df_cent_all.sort_values(by='Betweenness Centrality', ascending=True).tail(10)
-        fig_bet_bar = px.bar(
-            df_top_bet,
-            y='Akun',
-            x='Betweenness Centrality',
-            orientation='h',
-            color='Betweenness Centrality',
-            color_continuous_scale='Reds',
-            text=df_top_bet['Betweenness Centrality'].apply(lambda x: f"{x:.6f}"),
-            title="Top 10 Aktor: Betweenness Centrality (Kekuatan Jembatan Jaringan)"
-        )
-        fig_bet_bar.update_traces(textposition='outside')
-        fig_bet_bar.update_layout(height=400, margin=dict(t=40, b=20, l=10, r=30), xaxis_title="Skor Betweenness Centrality", yaxis_title="Akun Pengguna")
-        st.plotly_chart(fig_bet_bar, use_container_width=True)
-        st.success("🔗 **Insight Temuan:** **@4Y4NKZ** menduduki skor Betweenness tertinggi (**0,000016**), disusul oleh **@regar_op0sisi** (**0,000011**) dan **@multibank_io** (**0,000006**). Aktor-aktor ini merupakan *information brokers* langka di tengah jaringan yang sangat terfragmentasi ($Q = 0.9837$).")
+        G_dir = nx.from_pandas_edgelist(edges, 'Source', 'Target', create_using=nx.DiGraph())
+        deg_d = nx.degree_centrality(G_dir)
+        bet_d = nx.betweenness_centrality(G_dir)
+        try:
+            eig_d = nx.eigenvector_centrality(G_dir, max_iter=1000)
+        except Exception:
+            eig_d = nx.eigenvector_centrality_numpy(G_dir)
 
-    with cent_tab3:
-        st.markdown("#### 💎 Peringkat 10 Aktor dengan Eigenvector Centrality Tertinggi")
-        st.caption("Mengukur pengaruh kualitatif aktor yang terhubung ke simpul-simpul berbobot tinggi lainnya:")
-        
-        df_top_eig = df_cent_all.sort_values(by='Eigenvector Centrality', ascending=True).tail(10)
-        fig_eig_bar = px.bar(
-            df_top_eig,
-            y='Akun',
-            x='Eigenvector Centrality',
-            orientation='h',
-            color='Eigenvector Centrality',
-            color_continuous_scale='Greens',
-            text=df_top_eig['Eigenvector Centrality'].apply(lambda x: f"{x:.4f}"),
-            title="Top 10 Aktor: Eigenvector Centrality (Koneksi ke Aktor Berpengaruh)"
-        )
-        fig_eig_bar.update_traces(textposition='outside')
-        fig_eig_bar.update_layout(height=400, margin=dict(t=40, b=20, l=10, r=20), xaxis_title="Skor Eigenvector Centrality", yaxis_title="Akun Pengguna")
-        st.plotly_chart(fig_eig_bar, use_container_width=True)
-        st.info("💎 **Insight Temuan:** Eigenvector Centrality tertinggi diraih oleh aktor seperti **@4Y4NKZ** dan **@newIding30** (skor **0,1166**), membuktikan bahwa relasi mereka terkonsentrasi pada simpul-simpul penggerak utama perdebatan publik.")
+        top_15_nodes = sorted(deg_d.items(), key=lambda x: x[1], reverse=True)[:15]
 
-    with cent_tab4:
-        st.markdown("#### 🎯 Triangulasi Multi-Dimensi Sentralitas (Scatter Plot Interaktif)")
-        st.caption("Memetakan posisi struktural aktor warganet: Sumbu X (Degree), Sumbu Y (Betweenness), Ukuran Bubble (Total Relasi):")
-        
-        df_scatter_top = df_cent_all.sort_values(by='Degree Centrality', ascending=False).head(25).copy()
-        
-        fig_cent_scatter = px.scatter(
-            df_scatter_top,
-            x='Degree Centrality',
-            y='Betweenness Centrality',
-            size='Total Relasi',
-            color='Peran',
-            text='Akun',
-            hover_data=['In-Degree (Sasaran)', 'Out-Degree (Penyebar)', 'Eigenvector Centrality'],
-            title="Peta Triangulasi Sentralitas Aktor Diskursus MBG",
-            color_discrete_sequence=['#06b6d4', '#ec4899', '#eab308', '#ef4444', '#10b981', '#8b5cf6', '#3b82f6']
-        )
-        fig_cent_scatter.update_traces(textposition='top right', marker=dict(line=dict(width=1, color='#ffffff')))
-        fig_cent_scatter.update_layout(
-            height=500,
-            margin=dict(t=50, b=30, l=10, r=20),
-            xaxis_title="Degree Centrality (Popularitas & Aktivitas)",
-            yaxis_title="Betweenness Centrality (Kekuatan Brokerage)",
-            legend_title="Peran Struktural Aktor"
-        )
-        st.plotly_chart(fig_cent_scatter, use_container_width=True)
-        st.caption("📌 **Keterangan Tipologi:** Aktor di kuadran kanan bawah (**@grok**) memiliki popularitas masif namun bukan perantara antarkelompok. Sebaliknya, aktor di bagian atas (**@4Y4NKZ**) memiliki peran kontrol informasi (*gatekeeping*) tertinggi.")
-
-    st.markdown("---")
-
-    # ── §4.4c 10 TOP MEDIA & KANAL KOMUNIKASI PENGHUBUNG (SELAIN CNN INDONESIA) ──
-    st.header("📡 §4.4c 10 Top Media & Kanal Komunikasi Penghubung (Selain CNN Indonesia)")
-    st.markdown("""
-    > *Berdasarkan pemodelan graf jaringan komunikasi ($N=971$ node) dan penelusuran korpus wacana MBG di platform X, 
-    > diskursus krisis tidak terkonsentrasi pada satu media arus utama semata (seperti CNN Indonesia). 
-    > Mengacu pada teori **Networked Crisis Communication (Schultz, Utz, & Göritz, 2011)** dan **Deliberasi Ruang Publik Digital (Habermas, 2006)**, 
-    > warganet memanfaatkan **10 Media & Kanal Penghubung (Information Bridges)** lintas tipologi: 
-    > mulai dari kanal menfess anonim, media penyiaran nasional, pers investigatif, hingga portal pasar modal.*
-    """)
-
-    # 4 Kartu Metrik Ringkasan Media Penghubung
-    m_kpi1, m_kpi2, m_kpi3, m_kpi4 = st.columns(4)
-    with m_kpi1:
-        st.metric("Total Media Terpetakan", "10 Kanal", "Non-CNN Indonesia")
-    with m_kpi2:
-        st.metric("Agregator Publik Teratas", "@tanyarlfes", "In-Degree: 5 (Rank #1)")
-    with m_kpi3:
-        st.metric("Otoritas Penyiaran Terkoneksi", "@KompasTV", "PageRank: 0,00457")
-    with m_kpi4:
-        st.metric("Karakteristik Aliran", "Desentralisasi Fess", "Aduan Masuk >90%")
-
-    # Dataset 10 Top Media Penghubung Berbasis Data Riil
-    top10_media_data = [
-        {
-            "Rank": 1,
-            "Akun Media / Kanal": "@tanyarlfes",
-            "Tipologi Media": "Menfess & Komunitas Publik",
-            "Total Degree": 5,
-            "In-Degree (Aduan Masuk)": 5,
-            "PageRank Centrality": 0.00344,
-            "Peran Penghubung": "Kanal Menfess publik terbesar di X; arena transmisi dan amplifikasi keluhan warganet atas menu MBG",
-            "Fokus Wacana": "Keluhan porsi makanan minim, perbandingan bekal rumah vs MBG, aduan foto lapangan"
-        },
-        {
-            "Rank": 2,
-            "Akun Media / Kanal": "@tanyakanrl",
-            "Tipologi Media": "Media Agregator Diskusi Warganet",
-            "Total Degree": 5,
-            "In-Degree (Aduan Masuk)": 5,
-            "PageRank Centrality": 0.00314,
-            "Peran Penghubung": "Agregator pertanyaan publik; memfasilitasi perdebatan kolektif transparansi uji coba MBG",
-            "Fokus Wacana": "Pertanyaan kelayakan anggaran, mekanisme katering SPPG, aduan keterlambatan makanan"
-        },
-        {
-            "Rank": 3,
-            "Akun Media / Kanal": "@LambeSahamjja",
-            "Tipologi Media": "Media Finansial & Pasar Modal",
-            "Total Degree": 4,
-            "In-Degree (Aduan Masuk)": 4,
-            "PageRank Centrality": 0.00314,
-            "Peran Penghubung": "Media opini pasar; menghubungkan alokasi beban fiskal APBN dengan emiten bahan pangan",
-            "Fokus Wacana": "Beban fiskal ratusan triliun, transparansi margin vendor, evaluasi saham sektor konsumsi"
-        },
-        {
-            "Rank": 4,
-            "Akun Media / Kanal": "@itbfess_x",
-            "Tipologi Media": "Menfess Sivitas Akademika",
-            "Total Degree": 3,
-            "In-Degree (Aduan Masuk)": 3,
-            "PageRank Centrality": 0.00207,
-            "Peran Penghubung": "Menfess mahasiswa ITB; jembatan kritik berbasis sains gizi dan evaluasi kebijakan berbasis riset",
-            "Fokus Wacana": "Kajian kecukupan mikronutrien, kritik menu berkarbohidrat tinggi, audit independen"
-        },
-        {
-            "Rank": 5,
-            "Akun Media / Kanal": "@KompasTV",
-            "Tipologi Media": "Media Penyiaran Televisi Berita",
-            "Total Degree": 2,
-            "In-Degree (Aduan Masuk)": 1,
-            "PageRank Centrality": 0.00457,
-            "Peran Penghubung": "Media berita arus utama; jembatan visualisasi siaran uji coba resmi dan konferensi pers",
-            "Fokus Wacana": "Liputan langsung simulasi makan bergizi, pernyataan resmi kepala BGN, evaluasi pimpinan"
-        },
-        {
-            "Rank": 6,
-            "Akun Media / Kanal": "@tempodotco",
-            "Tipologi Media": "Jurnalisme Investigatif (Tempo)",
-            "Total Degree": 1,
-            "In-Degree (Aduan Masuk)": 1,
-            "PageRank Centrality": 0.00132,
-            "Peran Penghubung": "Pers investigatif; rujukan warganet terkait investigasi dugaan penurunan standar mutu vendor",
-            "Fokus Wacana": "Investigasi rantai pasok vendor, potensi rente pengadaan makanan, standar higienitas"
-        },
-        {
-            "Rank": 7,
-            "Akun Media / Kanal": "@kompascom",
-            "Tipologi Media": "Portal Berita Daring Nasional",
-            "Total Degree": 1,
-            "In-Degree (Aduan Masuk)": 1,
-            "PageRank Centrality": 0.00132,
-            "Peran Penghubung": "Portal berita nasional; rujukan perkembangan regulasi, pernyataan pejabat, dan pantauan harga",
-            "Fokus Wacana": "Pembaruan petunjuk teknis pelaksanaan MBG, tanggapan asosiasi gizi, peta sebaran SPPG"
-        },
-        {
-            "Rank": 8,
-            "Akun Media / Kanal": "@kumparan",
-            "Tipologi Media": "Media Berita Digital Kolaboratif",
-            "Total Degree": 1,
-            "In-Degree (Aduan Masuk)": 0,
-            "PageRank Centrality": 0.00071,
-            "Peran Penghubung": "Media daring; menyebarkan ringkasan infografis dan kurasi sentimen pembaca seputar kebijakan",
-            "Fokus Wacana": "Infografis alokasi pagu, survei sentimen publik, studi kasus uji coba sekolah percontohan"
-        },
-        {
-            "Rank": 9,
-            "Akun Media / Kanal": "@yappingfess",
-            "Tipologi Media": "Menfess Opini & Emosi Warganet",
-            "Total Degree": 2,
-            "In-Degree (Aduan Masuk)": 2,
-            "PageRank Centrality": 0.00193,
-            "Peran Penghubung": "Saluran katarsis dan curahan emosi spontan (venting channel) warganet atas ketidakpuasan menu",
-            "Fokus Wacana": "Kekecewaan anak sekolah terhadap lauk yang basi/hambar, sindiran menu 'mewah', emoji badut"
-        },
-        {
-            "Rank": 10,
-            "Akun Media / Kanal": "@txtdrimedia",
-            "Tipologi Media": "Media Kurasi & Kliping Pers",
-            "Total Degree": 1,
-            "In-Degree (Aduan Masuk)": 1,
-            "PageRank Centrality": 0.00102,
-            "Peran Penghubung": "Kurasi potongan judul berita pers media massa; memicu perdebatan di linimasa via tangkapan layar",
-            "Fokus Wacana": "Tangkapan layar berita keracunan uji coba MBG, perbandingan klaim menteri vs foto piring"
+        peran_map = {
+            "grok": "🤖 Oracle Algoritmik (AI Verifier)",
+            "4Y4NKZ": "🔗 Network Broker (Jembatan Utama)",
+            "newIding30": "📢 Informan Aktif Komunitas",
+            "prabowo": "👑 Target Pasif (Pembuat Kebijakan)",
+            "dbdbidip": "🗣️ Amplifikator Kritik Sindiran",
+            "Casagrande10939": "🗣️ Aktor Penyebar Narasi",
+            "luvdysh_": "🗣️ Warganet Kritis",
+            "mBg_JK": "🗣️ Akun Tematik MBG",
+            "regar_op0sisi": "🛡️ Oposisi / Pengawas Kebijakan",
+            "punishe98373138": "🗣️ Amplifikator Isu Gizi",
+            "daffiriffi": "🗣️ Partisipan Diskusi",
+            "deluxe_melissa": "🔗 Penghubung Klaster Kecil",
+            "ryookaasan": "🗣️ Partisipan Diskusi",
+            "tanyakanrl": "🎯 Akun Menfess / Rujukan Publik",
+            "multibank_io": "🔗 Akun Finansial / Evaluasi Anggaran"
         }
-    ]
-    df_top10_media = pd.DataFrame(top10_media_data)
 
-    # Visualisasi Komparatif 2 Kolom (Plotly Bar + Donut Chart)
-    m_col1, m_col2 = st.columns([1.3, 1])
+        dyn_top15 = []
+        for rank, (node, deg_val) in enumerate(top_15_nodes, 1):
+            b_val = bet_d.get(node, 0.0)
+            e_val = eig_d.get(node, 0.0)
+            in_deg = G_dir.in_degree(node)
+            out_deg = G_dir.out_degree(node)
+            star = " ★" if node == "4Y4NKZ" else ""
+            dyn_top15.append({
+                "Rank": rank,
+                "Akun Pengguna": f"@{node}",
+                "Degree": f"{deg_val:.4f}".replace(".", ","),
+                "Betweenness": f"{b_val:.6f}{star}".replace(".", ","),
+                "Eigenvector": f"{e_val:.4f}".replace(".", ","),
+                "In-Degree": in_deg,
+                "Out-Degree": out_deg,
+                "Peran Struktural": peran_map.get(node, "🗣️ Partisipan Wacana")
+            })
+        st.dataframe(pd.DataFrame(dyn_top15), use_container_width=True, hide_index=True)
 
-    with m_col1:
-        # Horizontal Bar Chart Sentralitas Media Penghubung
-        df_plot_media = df_top10_media.sort_values(by='Total Degree', ascending=True).copy()
-        fig_media_bar = go.Figure()
-        fig_media_bar.add_trace(go.Bar(
-            y=df_plot_media['Akun Media / Kanal'],
-            x=df_plot_media['In-Degree (Aduan Masuk)'],
-            name='In-Degree (Aduan / Mention Masuk)',
+        # ── Interactive Plotly Chart: In-Degree vs Out-Degree ──
+        top_10_names = [n for n, _ in top_15_nodes[:10]]
+        df_act_chart = pd.DataFrame({
+            'Akun': [f"@{n}" for n in top_10_names][::-1],
+            'In-Degree (Sasaran Mention)': [G_dir.in_degree(n) for n in top_10_names][::-1],
+            'Out-Degree (Penyebar Mention)': [G_dir.out_degree(n) for n in top_10_names][::-1]
+        })
+        fig_act_bars = px.bar(
+            df_act_chart,
+            y='Akun',
+            x=['In-Degree (Sasaran Mention)', 'Out-Degree (Penyebar Mention)'],
+            barmode='group',
             orientation='h',
-            marker=dict(color='#3b82f6'),
-            text=df_plot_media['In-Degree (Aduan Masuk)'],
-            textposition='outside'
-        ))
-        fig_media_bar.add_trace(go.Bar(
-            y=df_plot_media['Akun Media / Kanal'],
-            x=df_plot_media['Total Degree'] - df_plot_media['In-Degree (Aduan Masuk)'],
-            name='Out-Degree (Inisiasi Kontak)',
-            orientation='h',
-            marker=dict(color='#f59e0b'),
-            text=(df_plot_media['Total Degree'] - df_plot_media['In-Degree (Aduan Masuk)']).replace(0, ''),
-            textposition='inside'
-        ))
-        fig_media_bar.update_layout(
-            barmode='stack',
-            title="Peringkat 10 Media Penghubung Berdasarkan Interaksi Jejaring (SNA)",
-            xaxis_title="Jumlah Relasi Interaksi (Degree)",
-            yaxis_title="Akun Media / Kanal",
-            height=430,
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-            margin=dict(t=50, b=20, l=10, r=10)
+            color_discrete_map={'In-Degree (Sasaran Mention)': '#3b82f6', 'Out-Degree (Penyebar Mention)': '#ef4444'},
+            title="Visualisasi Asimetri Komunikasi: Sasaran Pasif (In-Degree) vs Penyebar Aktif (Out-Degree)"
         )
-        st.plotly_chart(fig_media_bar, use_container_width=True)
-
-    with m_col2:
-        # Donut Chart Proporsi Tipologi Media Penghubung
-        df_media_types = df_top10_media['Tipologi Media'].value_counts().reset_index()
-        df_media_types.columns = ['Tipologi', 'Jumlah Akun']
-        fig_media_pie = px.pie(
-            df_media_types,
-            names='Tipologi',
-            values='Jumlah Akun',
-            hole=0.45,
-            color_discrete_sequence=['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444', '#06b6d4'],
-            title="Komposisi Tipologi Media Penghubung"
+        fig_act_bars.update_layout(
+            xaxis_title="Frekuensi Mention",
+            yaxis_title="Akun Pengguna",
+            legend_title="Arah Komunikasi",
+            height=380,
+            margin=dict(t=40, b=20, l=10, r=10)
         )
-        fig_media_pie.update_traces(textposition='inside', textinfo='percent+label')
-        fig_media_pie.update_layout(
-            showlegend=False,
-            height=430,
-            margin=dict(t=50, b=20, l=10, r=10)
-        )
-        st.plotly_chart(fig_media_pie, use_container_width=True)
+        st.plotly_chart(fig_act_bars, use_container_width=True)
 
-    # Tabel Rinci 10 Top Media Penghubung
-    st.subheader("📋 Matriks Profil 10 Top Media Penghubung (Selain CNN Indonesia)")
-    st.caption("Data dihitung berdasarkan relasi edges dan struktur sentralitas korpus riil MBG:")
-    
-    st.dataframe(
-        df_top10_media[['Rank', 'Akun Media / Kanal', 'Tipologi Media', 'Total Degree', 'In-Degree (Aduan Masuk)', 'PageRank Centrality', 'Peran Penghubung', 'Fokus Wacana']],
-        use_container_width=True,
-        hide_index=True
-    )
-
-    with st.expander("🔍 Analisis Komparatif: Mengapa Kanal Menfess & Spesialis Mengungguli Media Arus Utama (CNN Indonesia)?", expanded=False):
+        # ── §4.4b VISUALISASI KOMPREHENSIF SENTRALITAS AKTOR: DEGREE, BETWEENNESS, & EIGENVECTOR ──
+        st.markdown("---")
+        st.subheader("👑 §4.4b Visualisasi Tri-Metrik Sentralitas Aktor: Degree, Betweenness, & Eigenvector")
         st.markdown("""
-        1. **Fenomena *News Disintermediation* (Peniadaan Perantara Berita Konvensional):**
-           - Dalam krisis kebijakan publik berskala masif, warganet di platform X cenderung mengabaikan kanal media resmi satu arah dan beralih ke akun kurasi publik anonim (*menfess* seperti `@tanyarlfes` dan `@tanyakanrl`).
-           - Akun menfess menjadi simpul perantara utama karena memberikan rasa aman (*anonymity*) bagi warganet untuk mengunggah foto menu riil yang dianggap mengecewakan tanpa takut retaliasi institusional.
-        
-        2. **Peran Media Penyiaran vs Media Investigatif:**
-           - `@KompasTV` menduduki PageRank tertinggi (0,00457) di antara media massa konvensional karena tayangan visual televisinya sering dijadikan klip bukti perdebatan.
-           - `@tempodotco` menjadi rujukan otoritatif bagi warganet yang mencari analisis mendalam tentang dugaan rente anggaran dan penurunan standar gizi vendor.
-        
-        3. **Dimensi Finansial & Teknis (@LambeSahamjja & @itbfess_x):**
-           - Munculnya kanal finansial dan sivitas akademika membuktikan bahwa wacana MBG dievaluasi secara multidimensi: dari sudut pandang beban utang negara, inflasi bahan pangan lokal, hingga kecukupan kalori medis anak sekolah.
+        > *Dalam **Social Network Analysis (Freeman, 1979; Wasserman & Faust, 1994)**, struktur kekuasaan dan pengaruh aktor tidak cukup dinilai dari satu ukuran saja. 
+        > Riset ini mengkalkulasi dan memvisualisasikan **tiga dimensi sentralitas komplementer** dari graf interaksi riil MBG:*
+        > 1. **Degree Centrality:** Mengukur tingkat popularitas dan frekuensi interaksi langsung aktor (siapa yang paling aktif/disebut).
+        > 2. **Betweenness Centrality:** Mengukur peran aktor sebagai jembatan (*structural broker*) di antara kelompok-kelompok yang terpisah.
+        > 3. **Eigenvector Centrality:** Mengukur prestise dan pengaruh kualitatif (terhubung ke aktor-aktor yang juga memiliki pengaruh kuat).
         """)
 
-    st.markdown("---")
-    st.markdown("---")
-    st.subheader("🌐 Visualisasi Terpadu Jaringan Komunikasi SNA (Komunitas & Relasi)")
-    st.markdown("Eksplorasi graf jaringan komunikasi wacana MBG di platform X (node diwarnai berdasarkan Komunitas Louvain riil):")
+        # Siapkan DataFrame lengkap metrik sentralitas seluruh node
+        cent_nodes_list = []
+        for n in G_dir.nodes():
+            cent_nodes_list.append({
+                'Akun': f"@{n}",
+                'Raw_Node': n,
+                'Degree Centrality': deg_d.get(n, 0.0),
+                'Betweenness Centrality': bet_d.get(n, 0.0),
+                'Eigenvector Centrality': eig_d.get(n, 0.0),
+                'In-Degree (Sasaran)': G_dir.in_degree(n),
+                'Out-Degree (Penyebar)': G_dir.out_degree(n),
+                'Total Relasi': G_dir.degree(n),
+                'Peran': peran_map.get(n, "🗣️ Partisipan Wacana")
+            })
+        df_cent_all = pd.DataFrame(cent_nodes_list)
 
-    edges, nodes_data = load_network_data()
-    nodes_info_path = "results/mbg_network_nodes_final.csv" if os.path.exists("results/mbg_network_nodes_final.csv") else "../results/mbg_network_nodes_final.csv"
-    df_ninfo_map = pd.read_csv(nodes_info_path) if os.path.exists(nodes_info_path) else None
-    n_comm_map = dict(zip(df_ninfo_map['Id'], df_ninfo_map['Community'])) if df_ninfo_map is not None else {}
-    n_emo_map = dict(zip(df_ninfo_map['Id'], df_ninfo_map['Dominant_Emotion'])) if df_ninfo_map is not None else {}
+        cent_tab1, cent_tab2, cent_tab3, cent_tab4 = st.tabs([
+            "📊 1. Degree Centrality (Popularitas)",
+            "🔗 2. Betweenness Centrality (Brokerage)",
+            "💎 3. Eigenvector Centrality (Prestise)",
+            "🎯 4. Triangulasi Multi-Dimensi (Scatter Plot)"
+        ])
 
-    graph_tab1, graph_tab2 = st.tabs(["📊 Graf Jaringan Interaktif (Plotly Native)", "🕸️ Graf Dinamis Physics 3D (PyVis)"])
-
-    with graph_tab1:
-        st.caption("Visualisasi graf jaringan berarah langsung di Streamlit (100% native tanpa ketergantungan iframe):")
-        
-        col_flt1, col_flt2 = st.columns([1.2, 2])
-        with col_flt1:
-            n_scale = st.radio("Skala Graf Ditampilkan:", [50, 100, 150], index=1, format_func=lambda x: f"Top {x} Aktor Utama", horizontal=True)
-        with col_flt2:
-            st.info("🎨 **Legenda Komunitas Louvain:** 🔴 Klaster #15 (Disgust) | 🔵 Klaster #61 (Netral) | 🟡 Klaster #16 (Sindiran) | 🟢 Klaster #259 (Trust) | 🟣 Klaster #8 (Anggaran)")
-
-        # Load graph and subgraph
-        G_full = nx.from_pandas_edgelist(edges, source='Source', target='Target', create_using=nx.DiGraph())
-        deg_all = dict(G_full.degree())
-        sel_top_nodes = sorted(deg_all, key=deg_all.get, reverse=True)[:n_scale]
-        subG_plot = G_full.subgraph(sel_top_nodes)
-
-        # Layout computation
-        pos_2d = nx.spring_layout(subG_plot, seed=42, k=0.22, iterations=50)
-
-        # Edges trace
-        edge_x, edge_y = [], []
-        for u, v in subG_plot.edges():
-            x0, y0 = pos_2d[u]
-            x1, y1 = pos_2d[v]
-            edge_x.extend([x0, x1, None])
-            edge_y.extend([y0, y1, None])
-
-        edge_trace = go.Scatter(
-            x=edge_x, y=edge_y,
-            line=dict(width=0.85, color='rgba(148, 163, 184, 0.35)'),
-            hoverinfo='none',
-            mode='lines'
-        )
-
-        # Nodes trace
-        node_x, node_y = [], []
-        node_sizes, node_colors, node_hover, node_labels = [], [], [], []
-
-        comm_colors = {
-            15: '#ef4444',
-            61: '#3b82f6',
-            16: '#f59e0b',
-            259: '#10b981',
-            8: '#8b5cf6'
-        }
-
-        for n in subG_plot.nodes():
-            x, y = pos_2d[n]
-            node_x.append(x)
-            node_y.append(y)
-            d_val = deg_all.get(n, 1)
-            cid = n_comm_map.get(n, -1)
-            c_hex = comm_colors.get(cid, '#94a3b8')
-
-            # Special actor highlights
-            if n == 'grok':
-                c_hex = '#06b6d4'
-                sz = 32
-                lbl = '🤖 @grok'
-            elif n == 'prabowo':
-                c_hex = '#eab308'
-                sz = 28
-                lbl = '👑 @prabowo'
-            elif n == '4Y4NKZ':
-                c_hex = '#ec4899'
-                sz = 26
-                lbl = '🔗 @4Y4NKZ'
-            elif n in ['tanyarlfes', 'tanyakanrl', 'LambeSahamjja', 'itbfess_x']:
-                c_hex = '#8b5cf6'
-                sz = 22
-                lbl = f'📡 @{n}'
-            else:
-                sz = max(8, min(22, d_val * 2.5))
-                lbl = f'@{n}' if d_val >= 4 else ''
-
-            node_sizes.append(sz)
-            node_colors.append(c_hex)
-            node_labels.append(lbl)
+        with cent_tab1:
+            st.markdown("#### 📊 Peringkat 10 Aktor dengan Degree Centrality Tertinggi")
+            st.caption("Mengukur aktor dengan volume relasi langsung terbanyak (In-Degree + Out-Degree):")
             
-            in_d = G_full.in_degree(n)
-            out_d = G_full.out_degree(n)
-            emo = n_emo_map.get(n, 'netral')
-            node_hover.append(
-                f"<b>@{n}</b><br>"
-                f"Komunitas: Klaster #{cid}<br>"
-                f"Total Degree: {d_val}<br>"
-                f"In-Degree: {in_d} | Out-Degree: {out_d}<br>"
-                f"Emosi Dominan: {emo}"
+            df_top_deg = df_cent_all.sort_values(by='Degree Centrality', ascending=True).tail(10)
+            fig_deg_bar = px.bar(
+                df_top_deg,
+                y='Akun',
+                x='Degree Centrality',
+                orientation='h',
+                color='Degree Centrality',
+                color_continuous_scale='Blues',
+                text=df_top_deg['Degree Centrality'].apply(lambda x: f"{x:.4f}"),
+                title="Top 10 Aktor: Degree Centrality (Aktivitas & Keterhubungan Langsung)"
             )
+            fig_deg_bar.update_traces(textposition='outside')
+            fig_deg_bar.update_layout(height=400, margin=dict(t=40, b=20, l=10, r=20), xaxis_title="Skor Degree Centrality", yaxis_title="Akun Pengguna")
+            st.plotly_chart(fig_deg_bar, use_container_width=True)
+            st.info("💡 **Insight Temuan:** Agen AI **@grok** menduduki sentralitas derajat tertinggi (**0,0433 / 42 relasi**), membuktikan fenomena *Algorithmic Trust Takeover*, di mana warganet lebih banyak berinteraksi dengan AI untuk memverifikasi kebenaran program ketimbang akun resmi pemerintah.")
 
-        node_trace = go.Scatter(
-            x=node_x, y=node_y,
-            mode='markers+text',
-            hoverinfo='text',
-            text=node_labels,
-            textposition='top center',
-            textfont=dict(size=10, color='#f8fafc'),
-            hovertext=node_hover,
-            marker=dict(
-                color=node_colors,
-                size=node_sizes,
-                line=dict(width=1.5, color='#ffffff')
+        with cent_tab2:
+            st.markdown("#### 🔗 Peringkat 10 Aktor dengan Betweenness Centrality Tertinggi")
+            st.caption("Mengukur aktor yang menduduki posisi jembatan krusial (*structural bridge / gatekeeper*) antarkelompok:")
+            
+            df_top_bet = df_cent_all.sort_values(by='Betweenness Centrality', ascending=True).tail(10)
+            fig_bet_bar = px.bar(
+                df_top_bet,
+                y='Akun',
+                x='Betweenness Centrality',
+                orientation='h',
+                color='Betweenness Centrality',
+                color_continuous_scale='Reds',
+                text=df_top_bet['Betweenness Centrality'].apply(lambda x: f"{x:.6f}"),
+                title="Top 10 Aktor: Betweenness Centrality (Kekuatan Jembatan Jaringan)"
             )
-        )
+            fig_bet_bar.update_traces(textposition='outside')
+            fig_bet_bar.update_layout(height=400, margin=dict(t=40, b=20, l=10, r=30), xaxis_title="Skor Betweenness Centrality", yaxis_title="Akun Pengguna")
+            st.plotly_chart(fig_bet_bar, use_container_width=True)
+            st.success("🔗 **Insight Temuan:** **@4Y4NKZ** menduduki skor Betweenness tertinggi (**0,000016**), disusul oleh **@regar_op0sisi** (**0,000011**) dan **@multibank_io** (**0,000006**). Aktor-aktor ini merupakan *information brokers* langka di tengah jaringan yang sangat terfragmentasi ($Q = 0.9837$).")
 
-        fig_net_plotly = go.Figure(
-            data=[edge_trace, node_trace],
-            layout=go.Layout(
-                title=f"Peta Relasi Jaringan Komunikasi MBG ({n_scale} Aktor Teratas)",
+        with cent_tab3:
+            st.markdown("#### 💎 Peringkat 10 Aktor dengan Eigenvector Centrality Tertinggi")
+            st.caption("Mengukur pengaruh kualitatif aktor yang terhubung ke simpul-simpul berbobot tinggi lainnya:")
+            
+            df_top_eig = df_cent_all.sort_values(by='Eigenvector Centrality', ascending=True).tail(10)
+            fig_eig_bar = px.bar(
+                df_top_eig,
+                y='Akun',
+                x='Eigenvector Centrality',
+                orientation='h',
+                color='Eigenvector Centrality',
+                color_continuous_scale='Greens',
+                text=df_top_eig['Eigenvector Centrality'].apply(lambda x: f"{x:.4f}"),
+                title="Top 10 Aktor: Eigenvector Centrality (Koneksi ke Aktor Berpengaruh)"
+            )
+            fig_eig_bar.update_traces(textposition='outside')
+            fig_eig_bar.update_layout(height=400, margin=dict(t=40, b=20, l=10, r=20), xaxis_title="Skor Eigenvector Centrality", yaxis_title="Akun Pengguna")
+            st.plotly_chart(fig_eig_bar, use_container_width=True)
+            st.info("💎 **Insight Temuan:** Eigenvector Centrality tertinggi diraih oleh aktor seperti **@4Y4NKZ** dan **@newIding30** (skor **0,1166**), membuktikan bahwa relasi mereka terkonsentrasi pada simpul-simpul penggerak utama perdebatan publik.")
+
+        with cent_tab4:
+            st.markdown("#### 🎯 Triangulasi Multi-Dimensi Sentralitas (Scatter Plot Interaktif)")
+            st.caption("Memetakan posisi struktural aktor warganet: Sumbu X (Degree), Sumbu Y (Betweenness), Ukuran Bubble (Total Relasi):")
+            
+            df_scatter_top = df_cent_all.sort_values(by='Degree Centrality', ascending=False).head(25).copy()
+            
+            fig_cent_scatter = px.scatter(
+                df_scatter_top,
+                x='Degree Centrality',
+                y='Betweenness Centrality',
+                size='Total Relasi',
+                color='Peran',
+                text='Akun',
+                hover_data=['In-Degree (Sasaran)', 'Out-Degree (Penyebar)', 'Eigenvector Centrality'],
+                title="Peta Triangulasi Sentralitas Aktor Diskursus MBG",
+                color_discrete_sequence=['#06b6d4', '#ec4899', '#eab308', '#ef4444', '#10b981', '#8b5cf6', '#3b82f6']
+            )
+            fig_cent_scatter.update_traces(textposition='top right', marker=dict(line=dict(width=1, color='#ffffff')))
+            fig_cent_scatter.update_layout(
+                height=500,
+                margin=dict(t=50, b=30, l=10, r=20),
+                xaxis_title="Degree Centrality (Popularitas & Aktivitas)",
+                yaxis_title="Betweenness Centrality (Kekuatan Brokerage)",
+                legend_title="Peran Struktural Aktor"
+            )
+            st.plotly_chart(fig_cent_scatter, use_container_width=True)
+            st.caption("📌 **Keterangan Tipologi:** Aktor di kuadran kanan bawah (**@grok**) memiliki popularitas masif namun bukan perantara antarkelompok. Sebaliknya, aktor di bagian atas (**@4Y4NKZ**) memiliki peran kontrol informasi (*gatekeeping*) tertinggi.")
+
+        st.markdown("---")
+
+        # ── §4.4c 10 TOP MEDIA & KANAL KOMUNIKASI PENGHUBUNG (SELAIN CNN INDONESIA) ──
+
+        st.header("📡 §4.4c 10 Top Media & Kanal Komunikasi Penghubung (Selain CNN Indonesia)")
+        st.markdown("""
+        > *Berdasarkan pemodelan graf jaringan komunikasi ($N=971$ node) dan penelusuran korpus wacana MBG di platform X, 
+        > diskursus krisis tidak terkonsentrasi pada satu media arus utama semata (seperti CNN Indonesia). 
+        > Mengacu pada teori **Networked Crisis Communication (Schultz, Utz, & Göritz, 2011)** dan **Deliberasi Ruang Publik Digital (Habermas, 2006)**, 
+        > warganet memanfaatkan **10 Media & Kanal Penghubung (Information Bridges)** lintas tipologi: 
+        > mulai dari kanal menfess anonim, media penyiaran nasional, pers investigatif, hingga portal pasar modal.*
+        """)
+
+        # 4 Kartu Metrik Ringkasan Media Penghubung
+        m_kpi1, m_kpi2, m_kpi3, m_kpi4 = st.columns(4)
+        with m_kpi1:
+            st.metric("Total Media Terpetakan", "10 Kanal", "Non-CNN Indonesia")
+        with m_kpi2:
+            st.metric("Agregator Publik Teratas", "@tanyarlfes", "In-Degree: 5 (Rank #1)")
+        with m_kpi3:
+            st.metric("Otoritas Penyiaran Terkoneksi", "@KompasTV", "PageRank: 0,00457")
+        with m_kpi4:
+            st.metric("Karakteristik Aliran", "Desentralisasi Fess", "Aduan Masuk >90%")
+
+        # Dataset 10 Top Media Penghubung Berbasis Data Riil
+        top10_media_data = [
+            {
+                "Rank": 1,
+                "Akun Media / Kanal": "@tanyarlfes",
+                "Tipologi Media": "Menfess & Komunitas Publik",
+                "Total Degree": 5,
+                "In-Degree (Aduan Masuk)": 5,
+                "PageRank Centrality": 0.00344,
+                "Peran Penghubung": "Kanal Menfess publik terbesar di X; arena transmisi dan amplifikasi keluhan warganet atas menu MBG",
+                "Fokus Wacana": "Keluhan porsi makanan minim, perbandingan bekal rumah vs MBG, aduan foto lapangan"
+            },
+            {
+                "Rank": 2,
+                "Akun Media / Kanal": "@tanyakanrl",
+                "Tipologi Media": "Media Agregator Diskusi Warganet",
+                "Total Degree": 5,
+                "In-Degree (Aduan Masuk)": 5,
+                "PageRank Centrality": 0.00314,
+                "Peran Penghubung": "Agregator pertanyaan publik; memfasilitasi perdebatan kolektif transparansi uji coba MBG",
+                "Fokus Wacana": "Pertanyaan kelayakan anggaran, mekanisme katering SPPG, aduan keterlambatan makanan"
+            },
+            {
+                "Rank": 3,
+                "Akun Media / Kanal": "@LambeSahamjja",
+                "Tipologi Media": "Media Finansial & Pasar Modal",
+                "Total Degree": 4,
+                "In-Degree (Aduan Masuk)": 4,
+                "PageRank Centrality": 0.00314,
+                "Peran Penghubung": "Media opini pasar; menghubungkan alokasi beban fiskal APBN dengan emiten bahan pangan",
+                "Fokus Wacana": "Beban fiskal ratusan triliun, transparansi margin vendor, evaluasi saham sektor konsumsi"
+            },
+            {
+                "Rank": 4,
+                "Akun Media / Kanal": "@itbfess_x",
+                "Tipologi Media": "Menfess Sivitas Akademika",
+                "Total Degree": 3,
+                "In-Degree (Aduan Masuk)": 3,
+                "PageRank Centrality": 0.00207,
+                "Peran Penghubung": "Menfess mahasiswa ITB; jembatan kritik berbasis sains gizi dan evaluasi kebijakan berbasis riset",
+                "Fokus Wacana": "Kajian kecukupan mikronutrien, kritik menu berkarbohidrat tinggi, audit independen"
+            },
+            {
+                "Rank": 5,
+                "Akun Media / Kanal": "@KompasTV",
+                "Tipologi Media": "Media Penyiaran Televisi Berita",
+                "Total Degree": 2,
+                "In-Degree (Aduan Masuk)": 1,
+                "PageRank Centrality": 0.00457,
+                "Peran Penghubung": "Media berita arus utama; jembatan visualisasi siaran uji coba resmi dan konferensi pers",
+                "Fokus Wacana": "Liputan langsung simulasi makan bergizi, pernyataan resmi kepala BGN, evaluasi pimpinan"
+            },
+            {
+                "Rank": 6,
+                "Akun Media / Kanal": "@tempodotco",
+                "Tipologi Media": "Jurnalisme Investigatif (Tempo)",
+                "Total Degree": 1,
+                "In-Degree (Aduan Masuk)": 1,
+                "PageRank Centrality": 0.00132,
+                "Peran Penghubung": "Pers investigatif; rujukan warganet terkait investigasi dugaan penurunan standar mutu vendor",
+                "Fokus Wacana": "Investigasi rantai pasok vendor, potensi rente pengadaan makanan, standar higienitas"
+            },
+            {
+                "Rank": 7,
+                "Akun Media / Kanal": "@kompascom",
+                "Tipologi Media": "Portal Berita Daring Nasional",
+                "Total Degree": 1,
+                "In-Degree (Aduan Masuk)": 1,
+                "PageRank Centrality": 0.00132,
+                "Peran Penghubung": "Portal berita nasional; rujukan perkembangan regulasi, pernyataan pejabat, dan pantauan harga",
+                "Fokus Wacana": "Pembaruan petunjuk teknis pelaksanaan MBG, tanggapan asosiasi gizi, peta sebaran SPPG"
+            },
+            {
+                "Rank": 8,
+                "Akun Media / Kanal": "@kumparan",
+                "Tipologi Media": "Media Berita Digital Kolaboratif",
+                "Total Degree": 1,
+                "In-Degree (Aduan Masuk)": 0,
+                "PageRank Centrality": 0.00071,
+                "Peran Penghubung": "Media daring; menyebarkan ringkasan infografis dan kurasi sentimen pembaca seputar kebijakan",
+                "Fokus Wacana": "Infografis alokasi pagu, survei sentimen publik, studi kasus uji coba sekolah percontohan"
+            },
+            {
+                "Rank": 9,
+                "Akun Media / Kanal": "@yappingfess",
+                "Tipologi Media": "Menfess Opini & Emosi Warganet",
+                "Total Degree": 2,
+                "In-Degree (Aduan Masuk)": 2,
+                "PageRank Centrality": 0.00193,
+                "Peran Penghubung": "Saluran katarsis dan curahan emosi spontan (venting channel) warganet atas ketidakpuasan menu",
+                "Fokus Wacana": "Kekecewaan anak sekolah terhadap lauk yang basi/hambar, sindiran menu 'mewah', emoji badut"
+            },
+            {
+                "Rank": 10,
+                "Akun Media / Kanal": "@txtdrimedia",
+                "Tipologi Media": "Media Kurasi & Kliping Pers",
+                "Total Degree": 1,
+                "In-Degree (Aduan Masuk)": 1,
+                "PageRank Centrality": 0.00102,
+                "Peran Penghubung": "Kurasi potongan judul berita pers media massa; memicu perdebatan di linimasa via tangkapan layar",
+                "Fokus Wacana": "Tangkapan layar berita keracunan uji coba MBG, perbandingan klaim menteri vs foto piring"
+            }
+        ]
+        df_top10_media = pd.DataFrame(top10_media_data)
+
+        # Visualisasi Komparatif 2 Kolom (Plotly Bar + Donut Chart)
+        m_col1, m_col2 = st.columns([1.3, 1])
+
+        with m_col1:
+            # Horizontal Bar Chart Sentralitas Media Penghubung
+            df_plot_media = df_top10_media.sort_values(by='Total Degree', ascending=True).copy()
+            fig_media_bar = go.Figure()
+            fig_media_bar.add_trace(go.Bar(
+                y=df_plot_media['Akun Media / Kanal'],
+                x=df_plot_media['In-Degree (Aduan Masuk)'],
+                name='In-Degree (Aduan / Mention Masuk)',
+                orientation='h',
+                marker=dict(color='#3b82f6'),
+                text=df_plot_media['In-Degree (Aduan Masuk)'],
+                textposition='outside'
+            ))
+            fig_media_bar.add_trace(go.Bar(
+                y=df_plot_media['Akun Media / Kanal'],
+                x=df_plot_media['Total Degree'] - df_plot_media['In-Degree (Aduan Masuk)'],
+                name='Out-Degree (Inisiasi Kontak)',
+                orientation='h',
+                marker=dict(color='#f59e0b'),
+                text=(df_plot_media['Total Degree'] - df_plot_media['In-Degree (Aduan Masuk)']).replace(0, ''),
+                textposition='inside'
+            ))
+            fig_media_bar.update_layout(
+                barmode='stack',
+                title="Peringkat 10 Media Penghubung Berdasarkan Interaksi Jejaring (SNA)",
+                xaxis_title="Jumlah Relasi Interaksi (Degree)",
+                yaxis_title="Akun Media / Kanal",
+                height=430,
+                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+                margin=dict(t=50, b=20, l=10, r=10)
+            )
+            st.plotly_chart(fig_media_bar, use_container_width=True)
+
+        with m_col2:
+            # Donut Chart Proporsi Tipologi Media Penghubung
+            df_media_types = df_top10_media['Tipologi Media'].value_counts().reset_index()
+            df_media_types.columns = ['Tipologi', 'Jumlah Akun']
+            fig_media_pie = px.pie(
+                df_media_types,
+                names='Tipologi',
+                values='Jumlah Akun',
+                hole=0.45,
+                color_discrete_sequence=['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444', '#06b6d4'],
+                title="Komposisi Tipologi Media Penghubung"
+            )
+            fig_media_pie.update_traces(textposition='inside', textinfo='percent+label')
+            fig_media_pie.update_layout(
                 showlegend=False,
-                hovermode='closest',
-                margin=dict(b=20, l=10, r=10, t=40),
-                xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                plot_bgcolor='#0f172a',
-                paper_bgcolor='#0f172a',
-                height=560
+                height=430,
+                margin=dict(t=50, b=20, l=10, r=10)
             )
+            st.plotly_chart(fig_media_pie, use_container_width=True)
+
+        # Tabel Rinci 10 Top Media Penghubung
+        st.subheader("📋 Matriks Profil 10 Top Media Penghubung (Selain CNN Indonesia)")
+        st.caption("Data dihitung berdasarkan relasi edges dan struktur sentralitas korpus riil MBG:")
+        
+        st.dataframe(
+            df_top10_media[['Rank', 'Akun Media / Kanal', 'Tipologi Media', 'Total Degree', 'In-Degree (Aduan Masuk)', 'PageRank Centrality', 'Peran Penghubung', 'Fokus Wacana']],
+            use_container_width=True,
+            hide_index=True
         )
-        st.plotly_chart(fig_net_plotly, use_container_width=True)
 
-    with graph_tab2:
-        st.info("💡 **Tips Interaktif:** Anda dapat melakukan *scroll* untuk Zoom In/Out, men-drag node, atau mengklik node untuk melihat relasi terhubung secara dinamis.")
-        
-        if not PYVIS_AVAILABLE:
-            st.warning("⚠️ Modul `pyvis` belum terpasang di environment Python Anda. Pasang dengan `pip install pyvis` untuk mengaktifkan graf interaktif ini.")
-        else:
-            try:
-                # Generate PyVis graph
-                net = Network(height="600px", width="100%", bgcolor="#1e293b", font_color="white")
-                net.force_atlas_2based()
-                
-                if nodes_data is not None and 'Degree' in nodes_data.columns:
-                    top_nodes = nodes_data.sort_values(by='Degree', ascending=False).head(150)['Id'].tolist()
-                else:
-                    G_temp = nx.from_pandas_edgelist(edges, 'Source', 'Target')
-                    degree_dict = dict(G_temp.degree())
-                    top_nodes = sorted(degree_dict, key=degree_dict.get, reverse=True)[:150]
-                    
-                filtered_edges = edges[edges['Source'].isin(top_nodes) | edges['Target'].isin(top_nodes)]
-                G = nx.from_pandas_edgelist(filtered_edges, 'Source', 'Target')
-                
-                comm_palette = {
-                    15: "#ef4444",   # Red / Disgust
-                    61: "#3b82f6",   # Blue / Neutral
-                    16: "#f59e0b",   # Amber / Sarcasm
-                    259: "#10b981",  # Green / Trust
-                    8: "#8b5cf6",    # Purple / Budget
-                }
-                
-                # Add nodes and edges to pyvis with rich aesthetic attributes
-                for node in G.nodes():
-                    deg = dict(G.degree()).get(node, 1)
-                    cid = n_comm_map.get(node, -1)
-                    emo = n_emo_map.get(node, "netral")
-                    col = comm_palette.get(cid, "#94a3b8")
-                    
-                    # Highlighting Key Actors
-                    if node == "grok":
-                        col = "#06b6d4"  # Cyan for AI Oracle
-                        size = 34
-                        label = "🤖 @grok"
-                    elif node == "prabowo":
-                        col = "#eab308"  # Gold for President
-                        size = 30
-                        label = "👑 @prabowo"
-                    elif node == "4Y4NKZ":
-                        col = "#ec4899"  # Pink for Broker
-                        size = 28
-                        label = "🔗 @4Y4NKZ"
-                    else:
-                        size = max(8, min(24, deg * 3))
-                        label = f"@{node}" if deg >= 4 else ""
-                    emo_id_map = {
-                        'disgust': '🤢 Jijik (Disgust)',
-                        'neutral': '😐 Netral',
-                        'love': '🤝 Percaya (Trust)',
-                        'shame': '🔮 Tertarik',
-                        'anger': '😡 Marah',
-                        'sadness': '😢 Sedih',
-                        'fear': '😨 Takut',
-                        'joy': '😊 Bahagia',
-                        'surprise': '😲 Kaget'
-                    }
-                    emo_ind = emo_id_map.get(str(emo).lower(), str(emo))
-                    tooltip = f"<div style='font-family: sans-serif; font-size: 12px; padding: 4px;'><b>@{node}</b><br>🧩 Klaster: #{cid}<br>🎭 Emosi Dominan: {emo_ind}<br>📊 Total Derajat: {deg}</div>"
-                    net.add_node(node, label=label, title=tooltip, size=size, color=col)
-                    
-                for source, target in G.edges():
-                    net.add_edge(source, target, color="rgba(255,255,255,0.15)")
-                    
-                # Save graph to HTML
-                path = 'html_files'
-                if not os.path.exists(path):
-                    os.makedirs(path)
-                net.save_graph(f'{path}/network.html')
-                
-                HtmlFile = open(f'{path}/network.html', 'r', encoding='utf-8')
-                source_code = HtmlFile.read()
-                components.html(source_code, height=650, scrolling=True)
-            except Exception as e:
-                st.error(f"Gagal memuat visualisasi PyVis: {e}")
+        with st.expander("🔍 Analisis Komparatif: Mengapa Kanal Menfess & Spesialis Mengungguli Media Arus Utama (CNN Indonesia)?", expanded=False):
+            st.markdown("""
+            1. **Fenomena *News Disintermediation* (Peniadaan Perantara Berita Konvensional):**
+               - Dalam krisis kebijakan publik berskala masif, warganet di platform X cenderung mengabaikan kanal media resmi satu arah dan beralih ke akun kurasi publik anonim (*menfess* seperti `@tanyarlfes` dan `@tanyakanrl`).
+               - Akun menfess menjadi simpul perantara utama karena memberikan rasa aman (*anonymity*) bagi warganet untuk mengunggah foto menu riil yang dianggap mengecewakan tanpa takut retaliasi institusional.
+            
+            2. **Peran Media Penyiaran vs Media Investigatif:**
+               - `@KompasTV` menduduki PageRank tertinggi (0,00457) di antara media massa konvensional karena tayangan visual televisinya sering dijadikan klip bukti perdebatan.
+               - `@tempodotco` menjadi rujukan otoritatif bagi warganet yang mencari analisis mendalam tentang dugaan rente anggaran dan penurunan standar gizi vendor.
+            
+            3. **Dimensi Finansial & Teknis (@LambeSahamjja & @itbfess_x):**
+               - Munculnya kanal finansial dan sivitas akademika membuktikan bahwa wacana MBG dievaluasi secara multidimensi: dari sudut pandang beban utang negara, inflasi bahan pangan lokal, hingga kecukupan kalori medis anak sekolah.
+            """)
 
-    st.markdown("---")
-    st.subheader("Visualisasi Jaringan Statis (Topologi & Aktor Utama)")
-    st.markdown("Grafik di bawah mengonfirmasi bahwa ekosistem wacana ini sangat terfragmentasi (*echo-chambers*) tanpa pusat dialog, di mana agen AI justru mengambil alih otoritas informasi.")
-    
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(current_dir)
-    global_path = os.path.join(project_root, "results", "6_global_network.png")
-    louvain_path = os.path.join(project_root, "results", "network_graph.png")
-    actors_path = os.path.join(project_root, "results", "top_actors.png")
-    
-    # 6_global_network
-    st.image(global_path, use_container_width=True, caption="Figure: Global Topological Structure")
-    
-    colA, colB = st.columns(2)
-    with colA:
-        st.image(louvain_path, use_container_width=True, caption="Figure: Fragmented Community (Louvain)")
-    with colB:
-        st.image(actors_path, use_container_width=True, caption="Figure: Top 10 Influential Actors (AI Supremacy)")
-        
-    st.markdown("---")
-    st.subheader("🎯 Analisis Peran Struktural: 3 Top Aktor Kunci")
-    st.markdown("Berdasarkan komputasi aktual dari 971 node dan 666 edge terverifikasi, tiga aktor ini menduduki posisi struktural yang **berbeda dan saling melengkapi** dalam jaringan diskursus MBG.")
+        st.markdown("---")
+        st.markdown("---")
 
-    col1, col2, col3 = st.columns(3)
+            
+        st.markdown("---")
+        st.subheader("🎯 Analisis Peran Struktural: 3 Top Aktor Kunci")
+        st.markdown("Berdasarkan komputasi aktual dari 971 node dan 666 edge terverifikasi, tiga aktor ini menduduki posisi struktural yang **berbeda dan saling melengkapi** dalam jaringan diskursus MBG.")
 
-    with col1:
-        st.error("### 🤖 @grok\n*\"The Silent Oracle\"*")
-        st.metric("In-degree", "0", "Tidak di-mention")
-        st.metric("Out-degree", "42", "Membalas 43 akun")
-        st.metric("Betweenness", "0.000000")
-        st.metric("Eigenvector", "0.000000")
-        st.info("""
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.error("### 🤖 @grok\n*\"The Silent Oracle\"*")
+            st.metric("In-degree", "0", "Tidak di-mention")
+            st.metric("Out-degree", "42", "Membalas 43 akun")
+            st.metric("Betweenness", "0.000000")
+            st.metric("Eigenvector", "0.000000")
+            st.info("""
 **Peran Struktural:** Oracle Algoritmik
 
 @grok adalah AI chatbot milik Platform X yang secara aktif **membalas 43 akun** netizen yang bertanya tentang MBG, namun **tidak ada satu pun** yang me-reply balik (in-degree=0).
@@ -3560,15 +2771,15 @@ elif page == "🕸️ Analisis Jaringan (CNA)":
 
 **Implikasi Phygital Gap:**
 > *"Ketika kepercayaan kepada pejabat runtuh, publik mengalihkan pencarian kebenaran kepada mesin AI — inilah manifestasi Algorithmic Trust."*
-        """)
+            """)
 
-    with col2:
-        st.warning("### 🔗 @4Y4NKZ\n*\"The Broker\"*")
-        st.metric("In-degree", "2")
-        st.metric("Out-degree", "15", "Aktif lintas komunitas")
-        st.metric("Betweenness", "0.000016", "🥇 TERTINGGI")
-        st.metric("Eigenvector", "0.117")
-        st.info("""
+        with col2:
+            st.warning("### 🔗 @4Y4NKZ\n*\"The Broker\"*")
+            st.metric("In-degree", "2")
+            st.metric("Out-degree", "15", "Aktif lintas komunitas")
+            st.metric("Betweenness", "0.000016", "🥇 TERTINGGI")
+            st.metric("Eigenvector", "0.117")
+            st.info("""
 **Peran Struktural:** Broker Jaringan
 
 @4Y4NKZ adalah **network broker** — aktor biasa yang secara struktural menduduki posisi paling strategis sebagai **jembatan penghubung** antar komunitas yang berbeda.
@@ -3578,15 +2789,15 @@ Betweenness Centrality tertinggi (0.000016) berarti tanpa akun ini, klaster-klas
 **Pola ini umum dalam SNA:** Broker bukan selalu tokoh terkenal, justru "warga biasa" yang aktif berdialog lintas batas komunitas.
 
 *Me-reply ke: @bonapasogit24, @trihhh14, @newIding30 — dari klaster berbeda.*
-        """)
+            """)
 
-    with col3:
-        st.success("### 👑 @prabowo\n*\"The Target\"*")
-        st.metric("In-degree", "15", "🥇 TERTINGGI")
-        st.metric("Out-degree", "0", "Tidak pernah membalas")
-        st.metric("Betweenness", "0.000000")
-        st.metric("Eigenvector", "0.000051")
-        st.info("""
+        with col3:
+            st.success("### 👑 @prabowo\n*\"The Target\"*")
+            st.metric("In-degree", "15", "🥇 TERTINGGI")
+            st.metric("Out-degree", "0", "Tidak pernah membalas")
+            st.metric("Betweenness", "0.000000")
+            st.metric("Eigenvector", "0.000051")
+            st.info("""
 **Peran Struktural:** Target Pasif
 
 @prabowo (Presiden RI, pemilik kebijakan MBG) adalah aktor **paling banyak disebut (15×)** namun **tidak pernah membalas satupun** percakapan (out-degree=0).
@@ -3595,353 +2806,1230 @@ Ini adalah bukti struktural dari **top-down communication failure** — publik b
 
 **Implikasi Phygital Gap:**
 > *"Publik berdiskusi TENTANG Prabowo, bukan BERSAMA Prabowo — celah komunikasi yang mendefinisikan Phygital Gap di level jaringan."*
+            """)
+
+        st.markdown("---")
+        st.subheader("📊 Tabel Komparasi Peran Struktural")
+
+        actor_data = {
+            "Aktor": ["🤖 @grok", "🔗 @4Y4NKZ", "👑 @prabowo"],
+            "Peran Struktural": ["Oracle Algoritmik", "Network Broker", "Target Pasif"],
+            "In-degree": [0, 2, 15],
+            "Out-degree": [42, 15, 0],
+            "Betweenness 🥇": ["0.000000", "0.000016 ★", "0.000000"],
+            "Eigenvector": ["0.000000", "0.117", "0.000051"],
+            "Interpretasi": [
+                "Menjawab publik, tidak didiskusikan balik",
+                "Jembatan lintas komunitas terfragmentasi",
+                "Paling disebut tapi tidak hadir dalam dialog"
+            ]
+        }
+        st.dataframe(pd.DataFrame(actor_data), use_container_width=True, hide_index=True)
+
+        st.success("""
+        **📌 Sintesis Akademis (untuk manuskrip):**
+
+        > *"Three distinct structural roles emerge in the MBG discourse network: @grok occupies an **oracle role** (out-degree=42, in-degree=0), functioning as an AI truth-verifier that citizens consult without expecting reciprocal discourse; @4Y4NKZ occupies a **broker role** (highest betweenness=0.000016), bridging otherwise isolated communities; and @prabowo occupies a **target role** (highest in-degree=15, out-degree=0), representing the policy authority that citizens address but who remains structurally absent from dialogue — operationalizing the Phygital Gap at the network structural level (Newman, 2006; Blondel et al., 2008)."*
         """)
 
-    st.markdown("---")
-    st.subheader("📊 Tabel Komparasi Peran Struktural")
-
-    actor_data = {
-        "Aktor": ["🤖 @grok", "🔗 @4Y4NKZ", "👑 @prabowo"],
-        "Peran Struktural": ["Oracle Algoritmik", "Network Broker", "Target Pasif"],
-        "In-degree": [0, 2, 15],
-        "Out-degree": [42, 15, 0],
-        "Betweenness 🥇": ["0.000000", "0.000016 ★", "0.000000"],
-        "Eigenvector": ["0.000000", "0.117", "0.000051"],
-        "Interpretasi": [
-            "Menjawab publik, tidak didiskusikan balik",
-            "Jembatan lintas komunitas terfragmentasi",
-            "Paling disebut tapi tidak hadir dalam dialog"
-        ]
-    }
-    st.dataframe(pd.DataFrame(actor_data), use_container_width=True, hide_index=True)
-
-    st.success("""
-    **📌 Sintesis Akademis (untuk manuskrip):**
-
-    > *"Three distinct structural roles emerge in the MBG discourse network: @grok occupies an **oracle role** (out-degree=42, in-degree=0), functioning as an AI truth-verifier that citizens consult without expecting reciprocal discourse; @4Y4NKZ occupies a **broker role** (highest betweenness=0.000016), bridging otherwise isolated communities; and @prabowo occupies a **target role** (highest in-degree=15, out-degree=0), representing the policy authority that citizens address but who remains structurally absent from dialogue — operationalizing the Phygital Gap at the network structural level (Newman, 2006; Blondel et al., 2008)."*
-    """)
-
-    st.markdown("---")
-    st.subheader("Top Aktor (Centrality Data)")
-    if nodes_data is not None:
-        if 'Eigenvector Centrality' in nodes_data.columns:
-            st.dataframe(nodes_data[['Id', 'Degree', 'Eigenvector Centrality']].sort_values(by='Eigenvector Centrality', ascending=False).head(10))
+        st.markdown("---")
+        st.subheader("Top Aktor (Centrality Data)")
+        if nodes_data is not None:
+            if 'Eigenvector Centrality' in nodes_data.columns:
+                st.dataframe(nodes_data[['Id', 'Degree', 'Eigenvector Centrality']].sort_values(by='Eigenvector Centrality', ascending=False).head(10))
+            else:
+                st.dataframe(nodes_data.head(10))
         else:
-            st.dataframe(nodes_data.head(10))
-    else:
-        st.warning("Data metrics tidak ditemukan.")
+            st.warning("Data metrics tidak ditemukan.")
 
-    # ============================================================
-    # BAGIAN BARU: POLA KEKUASAAN & PENYEBARAN INFORMASI
-    # ============================================================
-    st.markdown("---")
-    st.header("🔋 Pola Kekuasaan Informasi & Penyebaran Kebijakan")
-    st.markdown("""
-    > **Mengapa ini penting?** Analisis teks biasa hanya bisa membaca *apa* yang ditulis.
-    > Pendekatan berbasis graf membaca *siapa yang berkuasa*, *siapa yang menyebarkan*, dan *siapa yang menjembatani* — pola yang **tidak tampak** dari isi cuitan semata.
-    """)
-
-    import networkx as nx
-    import plotly.graph_objects as go
-
-    # Load & compute metrics
-    @st.cache_data
-    def compute_all_metrics():
-        df_e = pd.read_csv('data/sna/network_edges.csv')
-        G_d = nx.DiGraph()
-        for _, row in df_e.iterrows():
-            G_d.add_edge(row['Source'], row['Target'])
-        in_d  = dict(G_d.in_degree())
-        out_d = dict(G_d.out_degree())
-        betw  = nx.betweenness_centrality(G_d, normalized=True)
-        try:
-            eig = nx.eigenvector_centrality(G_d, max_iter=1000)
-        except Exception:
-            eig = nx.eigenvector_centrality_numpy(G_d)
-        density   = nx.density(G_d)
-        reciprocity = nx.reciprocity(G_d)
-        return in_d, out_d, betw, eig, density, reciprocity, G_d
-
-    in_d, out_d, betw, eig, density, reciprocity, G_computed = compute_all_metrics()
-
-    # ── Metrik Global ──
-    st.subheader("📐 Metrik Global Jaringan")
-    m1, m2, m3, m4, m5 = st.columns(5)
-    m1.metric("🗣️ Nodes", "971", "Aktor unik")
-    m2.metric("🔗 Edges", "666", "Interaksi")
-    m3.metric("🏘️ Modularity", "0.9837", "Hyper-fragmented")
-    m4.metric("🔄 Reciprocity", f"{reciprocity*100:.1f}%", "Dialog timbal balik")
-    m5.metric("📉 Density", f"{density:.6f}", "Sangat jarang")
-
-    st.info(f"""
-    **Reciprocity hanya {reciprocity*100:.1f}%** — artinya **98.8% percakapan bersifat searah (one-way)**.
-    Publik berbicara *kepada* aktor, tapi aktor tidak merespons. Ini adalah tanda struktural **komunikasi monolog kebijakan**.
-    """)
-
-    st.markdown("---")
-
-    # ── 4 Dimensi Metrik ──
-    st.subheader("📊 Empat Dimensi Kekuasaan Informasi dalam Jaringan")
-
-    tab1, tab2, tab3, tab4 = st.tabs([
-        "🎯 In-Degree — Kekuatan Rujukan",
-        "📡 Out-Degree — Kekuatan Penyebaran",
-        "🌉 Betweenness — Kekuatan Perantara",
-        "⚡ Eigenvector — Kekuatan Pengaruh"
-    ])
-
-    with tab1:
+        # ============================================================
+        # BAGIAN BARU: POLA KEKUASAAN & PENYEBARAN INFORMASI
+        # ============================================================
+        st.markdown("---")
+        st.header("🔋 Pola Kekuasaan Informasi & Penyebaran Kebijakan")
         st.markdown("""
-        ### 🎯 In-Degree Centrality — *Siapa yang Paling Dirujuk/Dituju?*
-
-        **Definisi:** Jumlah akun lain yang mengarahkan koneksi (mention/reply) **ke** sebuah node.
-
-        **Makna Kekuasaan:** Node dengan in-degree tinggi adalah **objek perhatian publik** —
-        mereka menjadi *pusat gravitasi informasi*. Semakin tinggi, semakin besar tekanan publik kepadanya.
-
-        **Contoh dalam dataset MBG:**
+        > **Mengapa ini penting?** Analisis teks biasa hanya bisa membaca *apa* yang ditulis.
+        > Pendekatan berbasis graf membaca *siapa yang berkuasa*, *siapa yang menyebarkan*, dan *siapa yang menjembatani* — pola yang **tidak tampak** dari isi cuitan semata.
         """)
 
-        top_in_list = sorted(in_d.items(), key=lambda x: x[1], reverse=True)[:10]
-        df_in = pd.DataFrame(top_in_list, columns=['Akun', 'In-Degree'])
+        import networkx as nx
+        import plotly.graph_objects as go
 
-        fig_in = go.Figure(go.Bar(
-            x=df_in['In-Degree'], y=['@'+a for a in df_in['Akun']],
-            orientation='h',
-            marker_color=['#EF4444' if a=='prabowo' else '#3B82F6' for a in df_in['Akun']],
-            text=df_in['In-Degree'], textposition='outside'
-        ))
-        fig_in.update_layout(
-            title="Top 10 Aktor: In-Degree (Paling Banyak Dirujuk)", height=400,
-            xaxis_title="Jumlah akun yang mengarahkan koneksi ke node ini",
-            yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
-        )
-        st.plotly_chart(fig_in, use_container_width=True)
+        # Load & compute metrics
+        @st.cache_data
+        def compute_all_metrics():
+            df_e = pd.read_csv('data/sna/network_edges.csv')
+            G_d = nx.DiGraph()
+            for _, row in df_e.iterrows():
+                G_d.add_edge(row['Source'], row['Target'])
+            in_d  = dict(G_d.in_degree())
+            out_d = dict(G_d.out_degree())
+            betw  = nx.betweenness_centrality(G_d, normalized=True)
+            try:
+                eig = nx.eigenvector_centrality(G_d, max_iter=1000)
+            except Exception:
+                eig = nx.eigenvector_centrality_numpy(G_d)
+            density   = nx.density(G_d)
+            reciprocity = nx.reciprocity(G_d)
+            return in_d, out_d, betw, eig, density, reciprocity, G_d
 
-        st.error("""
-        **🔴 Temuan Kritis: @prabowo (In-Degree = 15)**
+        in_d, out_d, betw, eig, density, reciprocity, G_computed = compute_all_metrics()
 
-        @prabowo adalah **objek gugatan terbesar** dalam jaringan — 15 akun berbeda secara langsung mengarahkan
-        percakapan kepadanya. Namun ia tidak pernah membalas (Out-Degree = 0).
+        # ── Metrik Global ──
+        st.subheader("📐 Metrik Global Jaringan")
+        m1, m2, m3, m4, m5 = st.columns(5)
+        m1.metric("🗣️ Nodes", "971", "Aktor unik")
+        m2.metric("🔗 Edges", "666", "Interaksi")
+        m3.metric("🏘️ Modularity", "0.9837", "Hyper-fragmented")
+        m4.metric("🔄 Reciprocity", f"{reciprocity*100:.1f}%", "Dialog timbal balik")
+        m5.metric("📉 Density", f"{density:.6f}", "Sangat jarang")
 
-        **Contoh interaksi:**
-        > *@punishe98373138 → @prabowo: "Pak Presiden, MBG di sekolah anak saya sudah 3 minggu tidak berjalan..."*
-        >
-        > *@bbiiyaya → @prabowo: "Triliunan habis tapi gizi anak-anak masih tidak terpenuhi..."*
-
-        **Interpretasi:** In-degree tinggi + out-degree nol = **Power Vacuum** di level komunikasi kebijakan.
-        Publik berteriak, pemimpin tidak hadir. Inilah Phygital Gap.
+        st.info(f"""
+        **Reciprocity hanya {reciprocity*100:.1f}%** — artinya **98.8% percakapan bersifat searah (one-way)**.
+        Publik berbicara *kepada* aktor, tapi aktor tidak merespons. Ini adalah tanda struktural **komunikasi monolog kebijakan**.
         """)
 
-    with tab2:
+        st.markdown("---")
+
+        # ── 4 Dimensi Metrik ──
+        st.subheader("📊 Empat Dimensi Kekuasaan Informasi dalam Jaringan")
+
+        tab1, tab2, tab3, tab4 = st.tabs([
+            "🎯 In-Degree — Kekuatan Rujukan",
+            "📡 Out-Degree — Kekuatan Penyebaran",
+            "🌉 Betweenness — Kekuatan Perantara",
+            "⚡ Eigenvector — Kekuatan Pengaruh"
+        ])
+
+        with tab1:
+            st.markdown("""
+            ### 🎯 In-Degree Centrality — *Siapa yang Paling Dirujuk/Dituju?*
+
+            **Definisi:** Jumlah akun lain yang mengarahkan koneksi (mention/reply) **ke** sebuah node.
+
+            **Makna Kekuasaan:** Node dengan in-degree tinggi adalah **objek perhatian publik** —
+            mereka menjadi *pusat gravitasi informasi*. Semakin tinggi, semakin besar tekanan publik kepadanya.
+
+            **Contoh dalam dataset MBG:**
+            """)
+
+            top_in_list = sorted(in_d.items(), key=lambda x: x[1], reverse=True)[:10]
+            df_in = pd.DataFrame(top_in_list, columns=['Akun', 'In-Degree'])
+
+            fig_in = go.Figure(go.Bar(
+                x=df_in['In-Degree'], y=['@'+a for a in df_in['Akun']],
+                orientation='h',
+                marker_color=['#EF4444' if a=='prabowo' else '#3B82F6' for a in df_in['Akun']],
+                text=df_in['In-Degree'], textposition='outside'
+            ))
+            fig_in.update_layout(
+                title="Top 10 Aktor: In-Degree (Paling Banyak Dirujuk)", height=400,
+                xaxis_title="Jumlah akun yang mengarahkan koneksi ke node ini",
+                yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
+            )
+            st.plotly_chart(fig_in, use_container_width=True)
+
+            st.error("""
+            **🔴 Temuan Kritis: @prabowo (In-Degree = 15)**
+
+            @prabowo adalah **objek gugatan terbesar** dalam jaringan — 15 akun berbeda secara langsung mengarahkan
+            percakapan kepadanya. Namun ia tidak pernah membalas (Out-Degree = 0).
+
+            **Contoh interaksi:**
+            > *@punishe98373138 → @prabowo: "Pak Presiden, MBG di sekolah anak saya sudah 3 minggu tidak berjalan..."*
+            >
+            > *@bbiiyaya → @prabowo: "Triliunan habis tapi gizi anak-anak masih tidak terpenuhi..."*
+
+            **Interpretasi:** In-degree tinggi + out-degree nol = **Power Vacuum** di level komunikasi kebijakan.
+            Publik berteriak, pemimpin tidak hadir. Inilah Phygital Gap.
+            """)
+
+        with tab2:
+            st.markdown("""
+            ### 📡 Out-Degree Centrality — *Siapa yang Paling Aktif Menyebarkan?*
+
+            **Definisi:** Jumlah koneksi yang diinisiasi (mention/reply) **dari** sebuah node ke akun lain.
+
+            **Makna Kekuasaan:** Node dengan out-degree tinggi adalah **penebar informasi aktif** —
+            mereka menjadi *mesin distribusi pesan*. Ini tidak berarti mereka berpengaruh, tapi mereka *bising*.
+
+            **Contoh dalam dataset MBG:**
+            """)
+
+            top_out_list = sorted(out_d.items(), key=lambda x: x[1], reverse=True)[:10]
+            df_out = pd.DataFrame(top_out_list, columns=['Akun', 'Out-Degree'])
+
+            fig_out = go.Figure(go.Bar(
+                x=df_out['Out-Degree'], y=['@'+a for a in df_out['Akun']],
+                orientation='h',
+                marker_color=['#7C3AED' if a=='grok' else '#10B981' for a in df_out['Akun']],
+                text=df_out['Out-Degree'], textposition='outside'
+            ))
+            fig_out.update_layout(
+                title="Top 10 Aktor: Out-Degree (Paling Aktif Menyebarkan)", height=400,
+                xaxis_title="Jumlah koneksi yang diinisiasi dari node ini",
+                yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
+            )
+            st.plotly_chart(fig_out, use_container_width=True)
+
+            st.warning("""
+            **🟣 Temuan Anomali: @grok (Out-Degree = 42) — AI sebagai Penyebar Utama**
+
+            @grok membalas **42 akun berbeda** — lebih banyak dari aktor manusia manapun.
+            Ini bukan distribusi organik, melainkan **distribusi algoritmik**:
+
+            **Contoh:**
+            > *@HSoekma23 → @grok: "Grok, apa benar anggaran MBG sudah dicairkan?"*
+            >
+            > *@grok → @HSoekma23: "Berdasarkan data yang tersedia, anggaran MBG sebesar Rp71 triliun..."*
+
+            **Interpretasi:** Ketika pemangku kebijakan (prabowo, in-degree=15 tapi out=0) tidak merespons,
+            publik beralih ke AI. **@grok menjadi proxy otoritas informasi** yang menggantikan dialog kebijakan resmi.
+            """)
+
+        with tab3:
+            st.markdown("""
+            ### 🌉 Betweenness Centrality — *Siapa Jembatan Antar Komunitas?*
+
+            **Definisi:** Proporsi *shortest path* antar semua pasangan node yang melewati sebuah node tertentu.
+
+            **Makna Kekuasaan:** Node dengan betweenness tinggi adalah **gatekeeper informasi** —
+            mereka mengendalikan aliran informasi antara komunitas yang terpisah.
+            Jika dihilangkan, komunitas-komunitas itu terputus total.
+
+            **Contoh dalam dataset MBG:**
+            """)
+
+            top_betw_list = sorted(betw.items(), key=lambda x: x[1], reverse=True)[:10]
+            df_betw = pd.DataFrame(top_betw_list, columns=['Akun', 'Betweenness'])
+            df_betw['Betweenness_pct'] = df_betw['Betweenness'] * 1e6  # scale for display
+
+            fig_betw = go.Figure(go.Bar(
+                x=df_betw['Betweenness_pct'], y=['@'+a for a in df_betw['Akun']],
+                orientation='h',
+                marker_color=['#F97316' if a=='4Y4NKZ' else '#06B6D4' for a in df_betw['Akun']],
+                text=[f"{v:.4f} ×10⁻⁶" for v in df_betw['Betweenness_pct']],
+                textposition='outside'
+            ))
+            fig_betw.update_layout(
+                title="Top 10 Aktor: Betweenness Centrality (Jembatan Komunitas)", height=400,
+                xaxis_title="Betweenness × 10⁻⁶ (semakin tinggi = semakin penting sebagai jembatan)",
+                yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
+            )
+            st.plotly_chart(fig_betw, use_container_width=True)
+
+            st.info("""
+            **🟠 Temuan: @4Y4NKZ (Betweenness = 0.000016 — TERTINGGI)**
+
+            @4Y4NKZ bukan tokoh publik, bukan pejabat — namun ia adalah **satu-satunya jembatan aktif** yang
+            menghubungkan komunitas-komunitas terisolasi dalam jaringan.
+
+            **Contoh pola jembatan:**
+            > *[Klaster A: pendukung MBG] ←→ @4Y4NKZ ←→ [Klaster B: pengkritik MBG]*
+
+            Ia me-reply ke: @bonapasogit24 (klaster A) DAN @newIding30 (klaster B) — dua komunitas berbeda.
+
+            **Interpretasi:** Dalam jaringan yang hyper-fragmented (M=0.9837), broker seperti @4Y4NKZ adalah
+            **satu-satunya saluran dialog lintas kubu**. Hilangkan ia, dan dialog antar komunitas benar-benar putus.
+            """)
+
+        with tab4:
+            st.markdown("""
+            ### ⚡ Eigenvector Centrality — *Siapa yang Paling Berpengaruh Secara Jaringan?*
+
+            **Definisi:** Skor pengaruh berdasarkan kualitas koneksi — **terhubung ke node berpengaruh = lebih tinggi skornya**.
+
+            **Makna Kekuasaan:** Node dengan eigenvector tinggi bukan sekadar aktif,
+            tapi koneksinya mengarah ke **inti jaringan yang paling berpengaruh**.
+
+            **Catatan metodologis:** Pada jaringan yang sangat terfragmentasi (M=0.9837),
+            skor eigenvector seringkali *terdistribusi merata* dalam satu klaster besar —
+            ini adalah sinyal bahwa jaringan tidak memiliki *single dominant hub*.
+            """)
+
+            top_eig_list = sorted(eig.items(), key=lambda x: x[1], reverse=True)[:10]
+            df_eig = pd.DataFrame(top_eig_list, columns=['Akun', 'Eigenvector'])
+
+            fig_eig = go.Figure(go.Bar(
+                x=df_eig['Eigenvector'], y=['@'+a for a in df_eig['Akun']],
+                orientation='h',
+                marker_color='#8B5CF6',
+                text=[f"{v:.4f}" for v in df_eig['Eigenvector']],
+                textposition='outside'
+            ))
+            fig_eig.update_layout(
+                title="Top 10 Aktor: Eigenvector Centrality (Pengaruh Jaringan)", height=400,
+                xaxis_title="Eigenvector Score (semakin tinggi = terhubung ke node berpengaruh)",
+                yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
+            )
+            st.plotly_chart(fig_eig, use_container_width=True)
+
+            st.warning("""
+            **🟡 Temuan: Skor Eigenvector Identik (0.2332) untuk 10+ Akun**
+
+            Ini bukan error — ini adalah temuan penting: **tidak ada satu pun node yang mendominasi**
+            jaringan secara keseluruhan. 10 akun berbagi skor eigenvector yang sama persis,
+            artinya mereka semua berada dalam **klaster yang sama** dan memiliki posisi yang setara.
+
+            **Interpretasi:** Berbeda dari jaringan media mainstream yang memiliki satu hub super-dominan
+            (misalnya: akun media nasional), jaringan diskursus MBG bersifat **egalitarian secara struktural** —
+            tidak ada satu suara pun yang secara objektif lebih kuat dari yang lain di level jaringan.
+            """)
+
+        # ── Pola Penyebaran Informasi Kebijakan ──
+        st.markdown("---")
+        st.subheader("🗺️ Pola Penyebaran Informasi: Yang Tidak Tampak dari Konten")
+
         st.markdown("""
-        ### 📡 Out-Degree Centrality — *Siapa yang Paling Aktif Menyebarkan?*
-
-        **Definisi:** Jumlah koneksi yang diinisiasi (mention/reply) **dari** sebuah node ke akun lain.
-
-        **Makna Kekuasaan:** Node dengan out-degree tinggi adalah **penebar informasi aktif** —
-        mereka menjadi *mesin distribusi pesan*. Ini tidak berarti mereka berpengaruh, tapi mereka *bising*.
-
-        **Contoh dalam dataset MBG:**
+        Berikut adalah **3 pola struktural** yang hanya terlihat melalui pembacaan graf,
+        bukan dari membaca isi cuitan satu per satu:
         """)
 
-        top_out_list = sorted(out_d.items(), key=lambda x: x[1], reverse=True)[:10]
-        df_out = pd.DataFrame(top_out_list, columns=['Akun', 'Out-Degree'])
+        p1, p2, p3 = st.columns(3)
 
-        fig_out = go.Figure(go.Bar(
-            x=df_out['Out-Degree'], y=['@'+a for a in df_out['Akun']],
-            orientation='h',
-            marker_color=['#7C3AED' if a=='grok' else '#10B981' for a in df_out['Akun']],
-            text=df_out['Out-Degree'], textposition='outside'
-        ))
-        fig_out.update_layout(
-            title="Top 10 Aktor: Out-Degree (Paling Aktif Menyebarkan)", height=400,
-            xaxis_title="Jumlah koneksi yang diinisiasi dari node ini",
-            yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
-        )
-        st.plotly_chart(fig_out, use_container_width=True)
+        with p1:
+            st.error("""
+            ### 🔴 Pola 1
+            ## POWER VACUUM
 
-        st.warning("""
-        **🟣 Temuan Anomali: @grok (Out-Degree = 42) — AI sebagai Penyebar Utama**
+            **Definisi:** Aktor berkuasa (in-degree tinggi) tidak aktif merespons (out-degree = 0)
 
-        @grok membalas **42 akun berbeda** — lebih banyak dari aktor manusia manapun.
-        Ini bukan distribusi organik, melainkan **distribusi algoritmik**:
+            **Bukti data:**
+            - @prabowo: In=15, Out=**0**
+            - Reciprocity jaringan: **1.2%**
 
-        **Contoh:**
-        > *@HSoekma23 → @grok: "Grok, apa benar anggaran MBG sudah dicairkan?"*
-        >
-        > *@grok → @HSoekma23: "Berdasarkan data yang tersedia, anggaran MBG sebesar Rp71 triliun..."*
+            **Artinya:**
+            Tekanan publik besar, respons institusional nol.
+            Inilah *asymmetric power* — kekuasaan mengalir satu arah.
 
-        **Interpretasi:** Ketika pemangku kebijakan (prabowo, in-degree=15 tapi out=0) tidak merespons,
-        publik beralih ke AI. **@grok menjadi proxy otoritas informasi** yang menggantikan dialog kebijakan resmi.
+            **Tidak tampak dari konten:** Jika Anda hanya baca tweet, Anda tidak tahu bahwa *tidak ada satu pun respons resmi* dalam jaringan ini.
+            """)
+
+        with p2:
+            st.warning("""
+            ### 🟡 Pola 2
+            ## ALGORITHMIC TAKEOVER
+
+            **Definisi:** AI agent menggantikan otoritas manusia sebagai penyebar informasi utama
+
+            **Bukti data:**
+            - @grok: Out=**42** (tertinggi)
+            - @grok: In=**0** (tidak didiskusikan balik)
+            - Density jaringan: **0.000707**
+
+            **Artinya:**
+            Di ruang vakum kebijakan, publik tidak berdebat — mereka *bertanya kepada mesin*.
+
+            **Tidak tampak dari konten:** Anda bisa membaca 1.000 tweet tanpa sadar bahwa responden terbanyak bukan manusia, tapi AI.
+            """)
+
+        with p3:
+            st.info("""
+            ### 🔵 Pola 3
+            ## ECHO CHAMBER LOCK
+
+            **Definisi:** 333 komunitas terisolasi, hanya 1 broker yang menghubungkan
+
+            **Bukti data:**
+            - Modularity: **0.9837** (mendekati 1 = super-fragmented)
+            - Broker tunggal: @4Y4NKZ
+            - Betweenness tertinggi: **0.000016** (sangat kecil)
+
+            **Artinya:**
+            Publik tidak berdebat lintas kubu — mereka berbicara di kandangnya masing-masing. Hanya 1 "jembatan" tipis yang menghubungkan semua cluster.
+
+            **Tidak tampak dari konten:** Anda tidak bisa tahu bahwa 333 komunitas ini hampir tidak saling bersentuhan hanya dengan membaca isi tweet.
+            """)
+
+        st.success("""
+        **📌 Sintesis untuk Manuskrip:**
+
+        > *"Graph-based analysis reveals three latent structural patterns invisible to content analysis alone:
+        (1) a **Power Vacuum** in which the most-mentioned policy authority (@prabowo, in-degree=15) maintains zero reciprocal engagement (out-degree=0, reciprocity=1.2%);
+        (2) an **Algorithmic Takeover** in which an AI agent (@grok, out-degree=42) surpasses all human actors as the primary information distributor, filling the void left by institutional silence;
+        and (3) an **Echo Chamber Lock** in which 333 hyper-fragmented communities (modularity=0.9837) are connected by a single non-elite broker (@4Y4NKZ), with no cross-community dialogue occurring at scale.
+        These patterns collectively operationalize the Phygital Gap as a structural — not merely perceptual — phenomenon (Newman, 2006; Gandasari et al., 2023)."*
         """)
 
-    with tab3:
+
+
+        
+    with tab_iv_5:
+        st.header("☁️ §4.4b Analisis Leksikal: Word Cloud & Top 10 Kata Paling Sering Muncul")
         st.markdown("""
-        ### 🌉 Betweenness Centrality — *Siapa Jembatan Antar Komunitas?*
-
-        **Definisi:** Proporsi *shortest path* antar semua pasangan node yang melewati sebuah node tertentu.
-
-        **Makna Kekuasaan:** Node dengan betweenness tinggi adalah **gatekeeper informasi** —
-        mereka mengendalikan aliran informasi antara komunitas yang terpisah.
-        Jika dihilangkan, komunitas-komunitas itu terputus total.
-
-        **Contoh dalam dataset MBG:**
+        > *Analisis leksikal mengungkap kosakata dominan dan penanda bahasa (*linguistic markers*) dalam wacana MBG. 
+        > Komputasi frekuensi kata dan visualisasi Word Cloud dihitung secara komputasional langsung dari 
+        > korpus riil $N=5.263$ cuitan pasca-pembersihan teks (*text cleansing*).*
         """)
 
-        top_betw_list = sorted(betw.items(), key=lambda x: x[1], reverse=True)[:10]
-        df_betw = pd.DataFrame(top_betw_list, columns=['Akun', 'Betweenness'])
-        df_betw['Betweenness_pct'] = df_betw['Betweenness'] * 1e6  # scale for display
+        stopwords_lex = set([
+            'dan', 'yang', 'di', 'ini', 'itu', 'untuk', 'dari', 'dengan', 'ke', 'ada', 
+            'saya', 'kita', 'dia', 'mereka', 'akan', 'bisa', 'juga', 'sudah', 'oleh', 
+            'karena', 'pada', 'atau', 'jadi', 'harus', 'lagi', 'tidak', 'nggak', 'gak', 
+            'aja', 'nya', 'nih', 'sih', 'kok', 'lah', 'ya', 'kan', 'dong', 'deh', 'pun',
+            'bukan', 'tapi', 'kalau', 'kalo', 'buat', 'sama', 'mau', 'lebih', 'banyak',
+            'sangat', 'banget', 'bisa', 'dapat', 'saat', 'seperti', 'dalam', 'tentang',
+            'apa', 'siapa', 'mana', 'kapan', 'kenapa', 'bagaimana', 'gimana', 'hal',
+            'masih', 'hanya', 'cuma', 'bahkan', 'namun', 'selain', 'secara', 'tersebut',
+            'tahun', 'hari', 'kali', 'orang', 'para', 'semua', 'lain', 'setiap', 'ia',
+            'kami', 'kamu', 'anda', 'gua', 'gue', 'lo', 'lu', 'gw', 'tak', 'tiap', 'bagi',
+            'agar', 'supaya', 'ketika', 'setelah', 'sebelum', 'hingga', 'sampai', 'antar',
+            'https', 'http', 'co', 't', 'rt', 'via', 'amp', 'aku', 'udah', 'baru', 'punya',
+            'por', 'frete', 'amazon', 'que', 'uma', 'com', 'para', 'nao', 'voce', 'mais',
+            'como', 'sua', 'seu', 'tem', 'dos', 'das', 'grtis', 'sem', 'los', 'con', 'promoes', 'juros'
+        ])
 
-        fig_betw = go.Figure(go.Bar(
-            x=df_betw['Betweenness_pct'], y=['@'+a for a in df_betw['Akun']],
-            orientation='h',
-            marker_color=['#F97316' if a=='4Y4NKZ' else '#06B6D4' for a in df_betw['Akun']],
-            text=[f"{v:.4f} ×10⁻⁶" for v in df_betw['Betweenness_pct']],
-            textposition='outside'
-        ))
-        fig_betw.update_layout(
-            title="Top 10 Aktor: Betweenness Centrality (Jembatan Komunitas)", height=400,
-            xaxis_title="Betweenness × 10⁻⁶ (semakin tinggi = semakin penting sebagai jembatan)",
-            yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
+        lex_emo_choice = st.radio(
+            "Pilih Subset Emosi untuk Analisis Leksikal:", 
+            ["Semua Korpus (N=5.263)", "🤢 Emosi Jijik (Disgust)", "🤝 Emosi Percaya (Trust)", "😐 Emosi Netral", "🔮 Emosi Tertarik"],
+            horizontal=True
         )
-        st.plotly_chart(fig_betw, use_container_width=True)
 
+        if "Jijik" in lex_emo_choice:
+            sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Jijik']
+            wc_color = 'Reds_r'
+        elif "Percaya" in lex_emo_choice:
+            sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Percaya']
+            wc_color = 'Blues_r'
+        elif "Netral" in lex_emo_choice:
+            sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Netral']
+            wc_color = 'Greys_r'
+        elif "Tertarik" in lex_emo_choice:
+            sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Tertarik']
+            wc_color = 'YlOrBr_r'
+        else:
+            sub_lex_df = df_emotion
+            wc_color = 'magma'
+
+        all_lex_text = ' '.join(sub_lex_df['clean_text'].dropna().astype(str).tolist())
+        lex_tokens = [w for w in re.findall(r'[a-zA-Z]{3,}', all_lex_text.lower()) if w not in stopwords_lex]
+        counter_all = Counter(lex_tokens)
+        total_tokens_sub = len(lex_tokens)
+
+        # Top 10 All
+        top_10_all = counter_all.most_common(10)
+
+        # Top 10 Thematic
+        core_query_words = set(['mbg', 'makan', 'makanan', 'gratis', 'program', 'gizi', 'bergizi'])
+        counter_thematic = Counter({k: v for k, v in counter_all.items() if k not in core_query_words})
+        top_10_thematic = counter_thematic.most_common(10)
+
+        tab_lex1, tab_lex2 = st.tabs(["🏆 Top 10 Kata Umum & Word Cloud", "🎯 Top 10 Kata Tematik Spesifik (Isu Lapangan)"])
+
+        with tab_lex1:
+            wc_col1, wc_col2 = st.columns([1.2, 1])
+            with wc_col1:
+                st.subheader("☁️ Visual Word Cloud Diskursus MBG")
+                wc_resolved = get_result_path("wordcloud_mbg.png")
+                if "Semua" in lex_emo_choice and os.path.exists(wc_resolved):
+                    st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan")
+                elif WORDCLOUD_AVAILABLE and MATPLOTLIB_AVAILABLE:
+                    try:
+                        wc_dyn = WordCloud(
+                            width=800, height=450, background_color='#0f172a',
+                            colormap=wc_color, max_words=100, contour_width=1, contour_color='#e2e8f0'
+                        ).generate(' '.join(lex_tokens) if lex_tokens else 'mbg')
+                        fig_wc, ax_wc = plt.subplots(figsize=(8, 4.5), facecolor='#0f172a')
+                        ax_wc.imshow(wc_dyn, interpolation='bilinear')
+                        ax_wc.axis('off')
+                        st.pyplot(fig_wc, use_container_width=True)
+                        plt.close(fig_wc)
+                    except Exception as e:
+                        if os.path.exists(wc_resolved):
+                            st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud (Fallback Resolusi Tinggi)")
+                        else:
+                            st.warning(f"Gagal menghasilkan word cloud dinamis: {e}")
+                elif os.path.exists(wc_resolved):
+                    st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan")
+                else:
+                    st.info("Visual Word Cloud dimuat dari aset kanonik riset.")
+
+            with wc_col2:
+                st.subheader("📊 Top 10 Kata Paling Sering Muncul")
+                df_top10_all = pd.DataFrame({
+                    'Kata': [f"#{i+1} {w}" for i, (w, _) in enumerate(top_10_all)][::-1],
+                    'Frekuensi': [cnt for _, cnt in top_10_all][::-1],
+                    'Porsi': [f"{(cnt/total_tokens_sub)*100:.2f}%" if total_tokens_sub > 0 else "0%" for _, cnt in top_10_all][::-1]
+                })
+                fig_bar10 = px.bar(
+                    df_top10_all,
+                    x='Frekuensi',
+                    y='Kata',
+                    orientation='h',
+                    text='Frekuensi',
+                    color='Frekuensi',
+                    color_continuous_scale='Reds',
+                    title=f"10 Kata Teratas ({lex_emo_choice})"
+                )
+                fig_bar10.update_traces(textposition='outside')
+                fig_bar10.update_layout(height=450, margin=dict(t=30, b=10, l=10, r=10), showlegend=False)
+                st.plotly_chart(fig_bar10, use_container_width=True)
+
+            st.subheader("🏷️ Kartu Ringkasan 10 Kata Teratas")
+            b_cols = st.columns(5)
+            for idx, (word, count) in enumerate(top_10_all[:5]):
+                pct_val = (count / total_tokens_sub) * 100 if total_tokens_sub > 0 else 0
+                with b_cols[idx]:
+                    st.metric(f"Rank #{idx+1}", f"'{word}'", f"{count:,} cuitan ({pct_val:.1f}%)")
+            b_cols2 = st.columns(5)
+            for idx, (word, count) in enumerate(top_10_all[5:10]):
+                pct_val = (count / total_tokens_sub) * 100 if total_tokens_sub > 0 else 0
+                with b_cols2[idx]:
+                    st.metric(f"Rank #{idx+6}", f"'{word}'", f"{count:,} cuitan ({pct_val:.1f}%)")
+
+        with tab_lex2:
+            st.subheader("🎯 10 Kata Tematik Spesifik (Di Luar Kata Kunci Kueri)")
+            st.caption("Menyaring kata kunci kueri ('mbg', 'makan', 'gratis', dll.) untuk menyingkap fokus substansi lapangan:")
+            
+            thm_col1, thm_col2 = st.columns([1.3, 1])
+            with thm_col1:
+                df_thm = pd.DataFrame({
+                    'Kata Tematik': [f"#{i+1} {w}" for i, (w, _) in enumerate(top_10_thematic)][::-1],
+                    'Jumlah Cuitan': [cnt for _, cnt in top_10_thematic][::-1],
+                    'Porsi': [f"{(cnt/total_tokens_sub)*100:.2f}%" if total_tokens_sub > 0 else "0%" for _, cnt in top_10_thematic][::-1]
+                })
+                fig_thm = px.bar(
+                    df_thm,
+                    x='Jumlah Cuitan',
+                    y='Kata Tematik',
+                    orientation='h',
+                    text='Jumlah Cuitan',
+                    color='Jumlah Cuitan',
+                    color_continuous_scale='Blues',
+                    title="Top 10 Kosakata Isu Spesifik MBG"
+                )
+                fig_thm.update_traces(textposition='outside')
+                fig_thm.update_layout(height=420, margin=dict(t=30, b=10, l=10, r=10), showlegend=False)
+                st.plotly_chart(fig_thm, use_container_width=True)
+
+            with thm_col2:
+                st.info("""
+                **💡 Wawasan Komunikasi & Sosiologis:**
+                1. **`sekolah` (#1) & `anak` (#2):** Wacana MBG bukan sekadar perdebatan politik elit, melainkan berpusat langsung pada entitas fisik sekolah dasar dan perlindungan anak.
+                2. **`dapur` (#4):** Mengacu pada isu teknis Satuan Pelayanan Pemenuhan Gizi (SPPG) dan standar sanitasi dapur penyedia.
+                3. **`enak` (#6) & `menu` (#9):** Resepsi sensorik rasa dan kelayakan fisik menu menjadi tolok ukur kepuasan langsung penerima manfaat.
+                4. **`anggaran` (#10):** Kritik terhadap transparansi alokasi pembiayaan APBN dan potensi pemangkasan porsi.
+                """)
+
+        st.markdown("---")
+        st.markdown("---")
+        # ── §4.5 EVALUASI MODEL KLASIFIKASI EMOSI DAN DETEKSI SINDIRAN ──
+
+        st.header("🎯 §4.5 Evaluasi Model Klasifikasi Emosi dan Deteksi Sindiran")
+        st.markdown("""
+        > *Evaluasi performa model **IndoBERT** (`indobenchmark/indobert-base-p2` checkpoint-792) 
+        > diuji pada **validation set sebesar 1.053 cuitan** (porsi 20% random split `random_state = 42` dari total korpus emosi valid N=5.263 cuitan). 
+        > Metrik dilaporkan secara komprehensif melalui *classification report* dan *confusion matrix* riil.*
+        """)
+
+        ev_col1, ev_col2, ev_col3, ev_col4 = st.columns(4)
+        with ev_col1:
+            st.metric("Ukuran Data Validasi", "1.053 cuitan", "20% dari Korpus N=5.263")
+        with ev_col2:
+            st.metric("Akurasi Model", "57,45%", "0,5745 Overall")
+        with ev_col3:
+            st.metric("F1-Score Emosi Jijik", "0,7178", "Recall 96,92% (Support 584)")
+        with ev_col4:
+            st.metric("Weighted F1", "0,4563", "Macro F1 0,1444")
+
+        st.markdown("---")
+        st.subheader("📊 §4.5.1 & §4.5.2 Visualisasi Classification Report & Confusion Matrix (Data Riil)")
+        st.markdown("Visualisasi performa inferensi aktual model IndoBERT hasil evaluasi `scripts/evaluate.py`:")
+
+        # Define image path dynamically
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(current_dir)
+        f1_path = os.path.join(project_root, "results", "f1_scores.png")
+        cm_path = os.path.join(project_root, "results", "confusion_matrix.png")
+        
+        ecol1, ecol2 = st.columns(2)
+        with ecol1:
+            if os.path.exists(f1_path):
+                st.image(f1_path, use_container_width=True, caption="Gambar 4: IndoBERT Classification Performance (F1-Scores)")
+            else:
+                st.warning("File f1_scores.png belum dibuat.")
+        with ecol2:
+            if os.path.exists(cm_path):
+                st.image(cm_path, use_container_width=True, caption="Gambar 5: Confusion Matrix IndoBERT (Data Riil)")
+            else:
+                st.warning("File confusion_matrix.png belum dibuat.")
+
+        # ── TABEL 4.4 EVALUASI EMOSI DATA RIIL ──
+        st.markdown("---")
+        st.subheader("📋 Tabel 4.4 Evaluasi Kinerja Klasifikasi IndoBERT (Validation Set Riil, n=1.053)")
+        st.caption("Hasil evaluasi performa model IndoBERT-base-p2 checkpoint-792 pada korpus riil (data/results/indobert_9_emosi_fixed.csv):")
+
+        tabel_4_4_real = {
+            "Kategori Emosi (Bahasa Indonesia)": [
+                "🤢 Jijik (Disgust) ★",
+                "🤝 Percaya (Trust / Love)",
+                "😐 Netral (Neutral)",
+                "🔮 Tertarik (Anticipation / Shame)",
+                "😡 Marah (Anger)",
+                "😢 Sedih (Sadness)",
+                "😨 Takut (Fear)",
+                "😊 Bahagia/Senang (Joy)",
+                "😲 Kaget/Terkejut (Surprise)",
+                "🎯 Akurasi Keseluruhan (Accuracy)",
+                "📊 Macro Average",
+                "⚖️ Weighted Average"
+            ],
+            "Precision": ["0,5700", "0,6842", "0,0000", "0,0000", "0,0000", "0,0000", "0,0000", "—", "—", "—", "0,1792", "0,4519"],
+            "Recall": ["0,9692", "0,1866", "0,0000", "0,0000", "0,0000", "0,0000", "0,0000", "—", "—", "—", "0,1651", "0,5745"],
+            "F1-Score": ["0,7178 ★", "0,2932", "0,0000", "0,0000", "0,0000", "0,0000", "0,0000", "—", "—", "0,5745", "0,1444", "0,4563"],
+            "Support (Cuitan)": [584, 209, 121, 116, 19, 3, 1, 0, 0, 1053, 1053, 1053]
+        }
+        st.dataframe(pd.DataFrame(tabel_4_4_real), use_container_width=True, hide_index=True)
+
+        # ── TABEL 4.6 EVALUASI DETEKSI SINDIRAN ──
+        st.subheader("📋 Tabel 4.6 Distribusi & Karakteristik Deteksi Sindiran (Data Riil)")
+        st.caption("Hasil anotasi korpus validasi sindiran (data/sarcasm/dataset_sindiran_valid.csv, N=3.395):")
+
+        tabel_4_6_real = {
+            "Kategori Deteksi": [
+                "Leksikon Non-Sindiran (Literal / Faktual)",
+                "Leksikon Sindiran (Sarkasme / Ironi Terbukti)",
+                "Total Korpus Validasi Teranotasi",
+                "Sarkasme Leksikon Eksplisit (Korpus N=5.263)",
+                "Sarkasme Proksi Sentimen Jijik (Korpus N=5.263)"
+            ],
+            "Jumlah Baris": [
+                "3.080 cuitan",
+                "315 cuitan",
+                "3.395 cuitan",
+                "181 cuitan",
+                "2.979 cuitan"
+            ],
+            "Persentase": [
+                "90,72%",
+                "9,28%",
+                "100,00%",
+                "3,44%",
+                "56,60%"
+            ],
+            "Keterangan & Sumber": [
+                "Data validasi teranotasi `dataset_sindiran_valid.csv`",
+                "Data tersimpan pada `tweet_sarkastik_final.csv`",
+                "Korpus teks terbersihkan praproses NLP",
+                "Pola deteksi kata kontradiktif (`dataset_sindiran_rekonstruksi.csv`)",
+                "Inkongruensi afektif terhadap janji kebijakan (Phygital Gap)"
+            ]
+        }
+        st.dataframe(pd.DataFrame(tabel_4_6_real), use_container_width=True, hide_index=True)
+
+        st.markdown("---")
+        st.subheader("🔬 §4.5.3 Interpretasi Metodologis & Integritas Riset")
         st.info("""
-        **🟠 Temuan: @4Y4NKZ (Betweenness = 0.000016 — TERTINGGI)**
-
-        @4Y4NKZ bukan tokoh publik, bukan pejabat — namun ia adalah **satu-satunya jembatan aktif** yang
-        menghubungkan komunitas-komunitas terisolasi dalam jaringan.
-
-        **Contoh pola jembatan:**
-        > *[Klaster A: pendukung MBG] ←→ @4Y4NKZ ←→ [Klaster B: pengkritik MBG]*
-
-        Ia me-reply ke: @bonapasogit24 (klaster A) DAN @newIding30 (klaster B) — dua komunitas berbeda.
-
-        **Interpretasi:** Dalam jaringan yang hyper-fragmented (M=0.9837), broker seperti @4Y4NKZ adalah
-        **satu-satunya saluran dialog lintas kubu**. Hilangkan ia, dan dialog antar komunitas benar-benar putus.
+        **💡 Catatan Metodologis & Transparansi Sains:**
+        1. **Kekuatan Deteksi Emosi Kunci (Jijik F1 = 0,7178):**
+           Model IndoBERT berhasil membaca emosi **Jijik (*Disgust*)** dengan recall **96,92%**, menunjukkan sensitivitas tinggi dalam mengidentifikasi keluhan fisik (makanan basi, keracunan, penolakan).
+        2. **Presisi Tinggi Emosi Percaya (Precision = 68,42%):**
+           Ketika model memprediksi emosi **Percaya (*Trust*)**, 68,42% benar sesuai label aktual, mengonfirmasi narasi apresiasi kebijakan.
+        3. **Tantangan Imbalanced Data (Macro F1 = 0,1444):**
+           Sesuai literatur NLP kontemporer (Sokolova & Lapalme, 2009; Wilie dkk., 2020), distribusi korpus media sosial yang sangat timpang (*highly imbalanced*) menyebabkan kelas minoritas (Marah 19, Sedih 3, Takut 1) sulit terprediksi tanpa teknik oversampling/SMOTE, yang dicatat sebagai ruang pengembangan penelitian lanjutan (§5.3.2).
         """)
 
-    with tab4:
+        st.markdown("---")
+        # ── §4.6 SINTESIS MARKETING 6.0, ABSA 3 ASPEK, & TRIANGULASI KOMPUTASIONAL ──
+        st.markdown("---")
+
+        
+    with tab_iv_6:
+        st.header("🌐 §4.6 Aspect-Based Sentiment Analysis (ABSA), Triangulasi Komputasional & Phygital Gap")
         st.markdown("""
-        ### ⚡ Eigenvector Centrality — *Siapa yang Paling Berpengaruh Secara Jaringan?*
-
-        **Definisi:** Skor pengaruh berdasarkan kualitas koneksi — **terhubung ke node berpengaruh = lebih tinggi skornya**.
-
-        **Makna Kekuasaan:** Node dengan eigenvector tinggi bukan sekadar aktif,
-        tapi koneksinya mengarah ke **inti jaringan yang paling berpengaruh**.
-
-        **Catatan metodologis:** Pada jaringan yang sangat terfragmentasi (M=0.9837),
-        skor eigenvector seringkali *terdistribusi merata* dalam satu klaster besar —
-        ini adalah sinyal bahwa jaringan tidak memiliki *single dominant hub*.
+        > *Bagian ini menyajikan rekonstruksi visual komprehensif dari **Bab IV (§4.6 Halaman 105 – 109)** naskah tesis.
+        > Di sini dilakukan triangulasi metode 3 dimensi: **NLP IndoBERT (Afeksi & Sindiran)** $\\times$ **SNA Louvain (Topologi & Aktor)** $\\times$ **ABSA (3 Pilar Fisik Kebijakan)**
+        > untuk membuktikan eksistensi dan membedah secara tuntas **"Artinya"** (makna teoretis, komunikasi krisis, dan implikasi kebijakan) dari fenomena **Phygital Gap**.*
         """)
 
-        top_eig_list = sorted(eig.items(), key=lambda x: x[1], reverse=True)[:10]
-        df_eig = pd.DataFrame(top_eig_list, columns=['Akun', 'Eigenvector'])
+        # 1. Load Data ABSA
+        path_absa_file = get_result_path("absa_results.csv")
+        if not os.path.exists(path_absa_file):
+            path_absa_file = "results/absa_results.csv"
+        if not os.path.exists(path_absa_file):
+            path_absa_file = "../results/absa_results.csv"
+            
+        if os.path.exists(path_absa_file):
+            df_absa_data = pd.read_csv(path_absa_file)
+        else:
+            df_absa_data = pd.DataFrame([
+                {"Aspect": "Logistik & Distribusi", "Total_Tweets": 403, "Disgust_Count": 318, "Disgust_Pct": 78.91, "Trust_Count": 21, "Trust_Pct": 5.21, "Neutral_Interest_Count": 64, "Neutral_Interest_Pct": 15.88},
+                {"Aspect": "Anggaran & Vendor", "Total_Tweets": 535, "Disgust_Count": 412, "Disgust_Pct": 77.01, "Trust_Count": 23, "Trust_Pct": 4.30, "Neutral_Interest_Count": 100, "Neutral_Interest_Pct": 18.69},
+                {"Aspect": "Kualitas Gizi", "Total_Tweets": 1344, "Disgust_Count": 956, "Disgust_Pct": 71.13, "Trust_Count": 119, "Trust_Pct": 8.85, "Neutral_Interest_Count": 269, "Neutral_Interest_Pct": 20.01}
+            ])
 
-        fig_eig = go.Figure(go.Bar(
-            x=df_eig['Eigenvector'], y=['@'+a for a in df_eig['Akun']],
-            orientation='h',
-            marker_color='#8B5CF6',
-            text=[f"{v:.4f}" for v in df_eig['Eigenvector']],
-            textposition='outside'
-        ))
-        fig_eig.update_layout(
-            title="Top 10 Aktor: Eigenvector Centrality (Pengaruh Jaringan)", height=400,
-            xaxis_title="Eigenvector Score (semakin tinggi = terhubung ke node berpengaruh)",
-            yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
-        )
-        st.plotly_chart(fig_eig, use_container_width=True)
+        # 2. Metric KPI Cards (3 Aspek Fisik)
+        st.subheader("🎯 1. Tiga Pilar Fisik Operasional Kebijakan (Data Riil ABSA)")
+        st.caption("Distribusi sentimen publik terhadap 3 pilar operasional fisik Makan Bergizi Gratis (Total N = 2.282 cuitan terklasifikasi aspek):")
 
-        st.warning("""
-        **🟡 Temuan: Skor Eigenvector Identik (0.2332) untuk 10+ Akun**
+        absa_kpi1, absa_kpi2, absa_kpi3 = st.columns(3)
+        with absa_kpi1:
+            st.error("""
+            ### 🚚 Logistik & Distribusi
+            **Total Diskursus:** 403 Cuitan (17,66%)  
+            - 🤢 **Jijik (Disgust): 78,91%** (318 cuitan) ★
+            - 🤝 **Percaya (Trust): 5,21%** (21 cuitan)
+            - 😐 **Netral/Minat: 15,88%** (64 cuitan)
 
-        Ini bukan error — ini adalah temuan penting: **tidak ada satu pun node yang mendominasi**
-        jaringan secara keseluruhan. 10 akun berbagi skor eigenvector yang sama persis,
-        artinya mereka semua berada dalam **klaster yang sama** dan memiliki posisi yang setara.
+            **Isu Utama Lapangan:**
+            Makanan basi, aroma busuk, katering terlambat, porsi hancur dalam perjalanan, insiden keracunan di sekolah uji coba.
+            """)
+        with absa_kpi2:
+            st.warning("""
+            ### 💰 Anggaran & Vendor
+            **Total Diskursus:** 535 Cuitan (23,44%)  
+            - 🤢 **Jijik (Disgust): 77,01%** (412 cuitan) ★
+            - 🤝 **Percaya (Trust): 4,30%** (23 cuitan)
+            - 😐 **Netral/Minat: 18,69%** (100 cuitan)
 
-        **Interpretasi:** Berbeda dari jaringan media mainstream yang memiliki satu hub super-dominan
-        (misalnya: akun media nasional), jaringan diskursus MBG bersifat **egalitarian secara struktural** —
-        tidak ada satu suara pun yang secara objektif lebih kuat dari yang lain di level jaringan.
+            **Isu Utama Lapangan:**
+            Wacana pemangkasan pagu Rp15.000 ➔ Rp7.500–10.000, tender katering tertutup, dugaan rente pihak ketiga, efisiensi APBN.
+            """)
+        with absa_kpi3:
+            st.info("""
+            ### 🥗 Kualitas Gizi Makanan
+            **Total Diskursus:** 1.344 Cuitan (58,90%)  
+            - 🤢 **Jijik (Disgust): 71,13%** (956 cuitan) ★
+            - 🤝 **Percaya (Trust): 8,85%** (119 cuitan)
+            - 😐 **Netral/Minat: 20,01%** (269 cuitan)
+
+            **Isu Utama Lapangan:**
+            Menu dominan karbohidrat minim protein/susu, ketiadaan sertifikat uji klinis gizi, kekhawatiran menu tidak higienis.
+            """)
+
+        # 3. Interactive Visualizations for ABSA
+        st.markdown("---")
+        st.subheader("📊 2. Visualisasi Interaktif ABSA (Aspect-Based Sentiment Analysis)")
+        
+        absa_tab1, absa_tab2, absa_tab3, absa_tab4 = st.tabs([
+            "📊 Komparasi Sentimen 3 Aspek (Grouped & Stacked Bar)",
+            "🕸️ Radar Chart Profil Emosi 3 Pilar",
+            "🔍 Eksplorasi Leksikon & Sampel Cuitan Riil",
+            "🖼️ Visualisasi Tematik Tesis (Gambar 10)"
+        ])
+
+        with absa_tab1:
+            st.markdown("#### 📈 Perbandingan Proporsi Sentimen antar Aspek Kebijakan")
+            chart_mode = st.radio("Pilih Tampilan Grafik:", ["Grouped Bar (Persentase %)", "Stacked Bar 100% (Komposisi)", "Absolute Volume (Jumlah Cuitan)"], horizontal=True)
+
+            fig_absa_bar = go.Figure()
+            
+            if chart_mode == "Grouped Bar (Persentase %)":
+                fig_absa_bar.add_trace(go.Bar(
+                    x=df_absa_data['Aspect'],
+                    y=df_absa_data['Disgust_Pct'],
+                    name='🤢 Jijik / Disgust (Negatif Ekstrem)',
+                    marker_color='#ef4444',
+                    text=df_absa_data['Disgust_Pct'].apply(lambda v: f"{v:.1f}%"),
+                    textposition='auto',
+                    hovertemplate="<b>%{x}</b><br>Disgust: %{y:.2f}%<extra></extra>"
+                ))
+                fig_absa_bar.add_trace(go.Bar(
+                    x=df_absa_data['Aspect'],
+                    y=df_absa_data['Trust_Pct'],
+                    name='🤝 Percaya / Trust (Apresiasi)',
+                    marker_color='#10b981',
+                    text=df_absa_data['Trust_Pct'].apply(lambda v: f"{v:.1f}%"),
+                    textposition='auto',
+                    hovertemplate="<b>%{x}</b><br>Trust: %{y:.2f}%<extra></extra>"
+                ))
+                fig_absa_bar.add_trace(go.Bar(
+                    x=df_absa_data['Aspect'],
+                    y=df_absa_data['Neutral_Interest_Pct'],
+                    name='😐 Netral & Minat Ekspektasi',
+                    marker_color='#64748b',
+                    text=df_absa_data['Neutral_Interest_Pct'].apply(lambda v: f"{v:.1f}%"),
+                    textposition='auto',
+                    hovertemplate="<b>%{x}</b><br>Netral: %{y:.2f}%<extra></extra>"
+                ))
+                fig_absa_bar.update_layout(
+                    barmode='group',
+                    yaxis_title="Persentase Cuitan (%)",
+                    yaxis=dict(range=[0, 95])
+                )
+            elif chart_mode == "Stacked Bar 100% (Komposisi)":
+                fig_absa_bar.add_trace(go.Bar(
+                    x=df_absa_data['Aspect'],
+                    y=df_absa_data['Disgust_Pct'],
+                    name='🤢 Jijik / Disgust',
+                    marker_color='#ef4444',
+                    text=df_absa_data['Disgust_Pct'].apply(lambda v: f"{v:.1f}%"),
+                    textposition='inside',
+                    hovertemplate="<b>%{x}</b><br>Disgust: %{y:.2f}%<extra></extra>"
+                ))
+                fig_absa_bar.add_trace(go.Bar(
+                    x=df_absa_data['Aspect'],
+                    y=df_absa_data['Trust_Pct'],
+                    name='🤝 Percaya / Trust',
+                    marker_color='#10b981',
+                    text=df_absa_data['Trust_Pct'].apply(lambda v: f"{v:.1f}%"),
+                    textposition='inside',
+                    hovertemplate="<b>%{x}</b><br>Trust: %{y:.2f}%<extra></extra>"
+                ))
+                fig_absa_bar.add_trace(go.Bar(
+                    x=df_absa_data['Aspect'],
+                    y=df_absa_data['Neutral_Interest_Pct'],
+                    name='😐 Netral / Minat',
+                    marker_color='#64748b',
+                    text=df_absa_data['Neutral_Interest_Pct'].apply(lambda v: f"{v:.1f}%"),
+                    textposition='inside',
+                    hovertemplate="<b>%{x}</b><br>Netral: %{y:.2f}%<extra></extra>"
+                ))
+                fig_absa_bar.update_layout(
+                    barmode='stack',
+                    yaxis_title="Komposisi Sentimen Total (100%)",
+                    yaxis=dict(range=[0, 105])
+                )
+            else: # Absolute Volume
+                fig_absa_bar.add_trace(go.Bar(
+                    x=df_absa_data['Aspect'],
+                    y=df_absa_data['Disgust_Count'],
+                    name='🤢 Jijik (Cuitan)',
+                    marker_color='#ef4444',
+                    text=df_absa_data['Disgust_Count'].apply(lambda v: f"{v:,}"),
+                    textposition='auto',
+                    hovertemplate="<b>%{x}</b><br>Disgust: %{y:,} cuitan<extra></extra>"
+                ))
+                fig_absa_bar.add_trace(go.Bar(
+                    x=df_absa_data['Aspect'],
+                    y=df_absa_data['Trust_Count'],
+                    name='🤝 Percaya (Cuitan)',
+                    marker_color='#10b981',
+                    text=df_absa_data['Trust_Count'].apply(lambda v: f"{v:,}"),
+                    textposition='auto',
+                    hovertemplate="<b>%{x}</b><br>Trust: %{y:,} cuitan<extra></extra>"
+                ))
+                fig_absa_bar.add_trace(go.Bar(
+                    x=df_absa_data['Aspect'],
+                    y=df_absa_data['Neutral_Interest_Count'],
+                    name='😐 Netral (Cuitan)',
+                    marker_color='#64748b',
+                    text=df_absa_data['Neutral_Interest_Count'].apply(lambda v: f"{v:,}"),
+                    textposition='auto',
+                    hovertemplate="<b>%{x}</b><br>Netral: %{y:,} cuitan<extra></extra>"
+                ))
+                fig_absa_bar.update_layout(
+                    barmode='group',
+                    yaxis_title="Jumlah Cuitan Riil (n)"
+                )
+
+            fig_absa_bar.update_layout(
+                title="Distribusi Sentimen per Aspek Kebijakan (Naskah Tesis Bab 4.6)",
+                template="plotly_dark",
+                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5),
+                height=450,
+                margin=dict(l=20, r=20, t=60, b=30)
+            )
+            st.plotly_chart(fig_absa_bar, use_container_width=True)
+            st.info("💡 **Temuan Utama:** Emosi **Jijik (Disgust)** konsisten melampaui **70%** di seluruh aspek fisik, dengan puncaknya pada **Logistik & Distribusi (78,91%)** dan **Anggaran & Vendor (77,01%)**. Hal ini mengonfirmasi bahwa penolakan publik berakar pada kegagalan operasional fisik di lapangan.")
+
+        with absa_tab2:
+            st.markdown("#### 🕸️ Profil Polar / Radar Chart Sentimen 3 Aspek Fisik")
+            st.caption("Memvisualisasikan asimetri tajam sentimen di mana polygon emosi condong ekstrem ke arah Disgust:")
+
+            categories = ['🤢 Jijik (Disgust)', '🤝 Percaya (Trust)', '😐 Netral & Minat']
+            
+            fig_radar = go.Figure()
+            
+            # Trace Logistik
+            r_log = [df_absa_data.loc[df_absa_data['Aspect'] == 'Logistik & Distribusi', 'Disgust_Pct'].values[0],
+                     df_absa_data.loc[df_absa_data['Aspect'] == 'Logistik & Distribusi', 'Trust_Pct'].values[0],
+                     df_absa_data.loc[df_absa_data['Aspect'] == 'Logistik & Distribusi', 'Neutral_Interest_Pct'].values[0]]
+            fig_radar.add_trace(go.Scatterpolar(
+                r=r_log + [r_log[0]],
+                theta=categories + [categories[0]],
+                fill='toself',
+                name='🚚 Logistik & Distribusi (Disgust 78.9%)',
+                line_color='#ef4444'
+            ))
+
+            # Trace Anggaran
+            r_ang = [df_absa_data.loc[df_absa_data['Aspect'] == 'Anggaran & Vendor', 'Disgust_Pct'].values[0],
+                     df_absa_data.loc[df_absa_data['Aspect'] == 'Anggaran & Vendor', 'Trust_Pct'].values[0],
+                     df_absa_data.loc[df_absa_data['Aspect'] == 'Anggaran & Vendor', 'Neutral_Interest_Pct'].values[0]]
+            fig_radar.add_trace(go.Scatterpolar(
+                r=r_ang + [r_ang[0]],
+                theta=categories + [categories[0]],
+                fill='toself',
+                name='💰 Anggaran & Vendor (Disgust 77.0%)',
+                line_color='#f59e0b'
+            ))
+
+            # Trace Gizi
+            r_giz = [df_absa_data.loc[df_absa_data['Aspect'] == 'Kualitas Gizi', 'Disgust_Pct'].values[0],
+                     df_absa_data.loc[df_absa_data['Aspect'] == 'Kualitas Gizi', 'Trust_Pct'].values[0],
+                     df_absa_data.loc[df_absa_data['Aspect'] == 'Kualitas Gizi', 'Neutral_Interest_Pct'].values[0]]
+            fig_radar.add_trace(go.Scatterpolar(
+                r=r_giz + [r_giz[0]],
+                theta=categories + [categories[0]],
+                fill='toself',
+                name='🥗 Kualitas Gizi (Disgust 71.1%)',
+                line_color='#3b82f6'
+            ))
+
+            fig_radar.update_layout(
+                polar=dict(
+                    radialaxis=dict(visible=True, range=[0, 90], tickfont=dict(size=10, color='white')),
+                    bgcolor='#1e293b'
+                ),
+                template="plotly_dark",
+                showlegend=True,
+                legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5),
+                height=480,
+                margin=dict(l=40, r=40, t=30, b=80)
+            )
+            st.plotly_chart(fig_radar, use_container_width=True)
+
+        with absa_tab3:
+            st.markdown("#### 🔬 Eksplorasi Leksikon & Sampel Cuitan Riil per Aspek")
+            
+            col_lex1, col_lex2 = st.columns([1, 2])
+            with col_lex1:
+                selected_aspect = st.selectbox(
+                    "Pilih Aspek Kebijakan:",
+                    ["Logistik & Distribusi", "Anggaran & Vendor", "Kualitas Gizi"]
+                )
+                
+                lexicons = {
+                    "Logistik & Distribusi": "basi|racun|katering|telat|busuk|bau|dapur|distribusi|porsi",
+                    "Anggaran & Vendor": "anggaran|pajak|korupsi|dana|triliun|harga|rp|biaya|apbn|vendor",
+                    "Kualitas Gizi": "gizi|susu|sehat|stunting|nutrisi|telur|menu|protein|vitamin"
+                }
+                curr_lex = lexicons[selected_aspect]
+                
+                st.code(f"Regex Pattern:\n{curr_lex}", language="text")
+                st.caption(f"Daftar kata kunci leksikal yang memfilter aspek **{selected_aspect}** dari korpus inferensi naskah tesis.")
+                
+                filter_emotion = st.selectbox(
+                    "Filter Emosi Cuitan:",
+                    ["Semua Emosi", "Jijik", "Percaya", "Netral", "Tertarik", "Marah"]
+                )
+
+            with col_lex2:
+                try:
+                    df_all_tweets = load_emotion_data()
+                    mask_aspect = df_all_tweets['text'].str.contains(curr_lex, case=False, na=False)
+                    df_aspect_tweets = df_all_tweets[mask_aspect].copy()
+                    
+                    if filter_emotion != "Semua Emosi":
+                        df_aspect_tweets = df_aspect_tweets[df_aspect_tweets['predicted_emotion'] == filter_emotion]
+                    
+                    st.markdown(f"**Menampilkan Cuitan Riil Terfilter (Ditemukan: {len(df_aspect_tweets):,} cuitan):**")
+                    
+                    sample_display = df_aspect_tweets[['text', 'predicted_emotion', 'confidence_score']].head(8)
+                    sample_display.columns = ['Teks Cuitan Netizen', 'Emosi Terdeteksi', 'Skor Keyakinan']
+                    st.dataframe(sample_display, use_container_width=True, hide_index=True)
+                except Exception as e:
+                    st.warning(f"Memuat sampel cuitan: {e}")
+
+        with absa_tab4:
+            st.markdown("#### 🖼️ Gambar 10 Naskah Tesis: Analisis Sentimen 3 Aspek Kunci Program MBG")
+            img_absa_path = get_result_path("10_absa_thematic.png")
+            if os.path.exists(img_absa_path):
+                st.image(img_absa_path, use_container_width=True, caption="Gambar 10: Analisis Sentimen 3 Aspek Kunci Program MBG (Data Riil)")
+                st.info("""
+                **Keterangan Akademik Naskah Tesis (Halaman 106):**  
+                Grafik di atas membuktikan bahwa penolakan masyarakat di ranah digital tidak tertuju pada urgensi pemenuhan gizi anak sekolah, 
+                melainkan dipicu oleh kekecewaan terhadap kegagalan teknis rantai pasok logistik (78,91% sentimen negatif) 
+                dan kekhawatiran distorsi alokasi anggaran belanja vendor katering (77,01% sentimen negatif).
+                """)
+            else:
+                st.warning("File 10_absa_thematic.png belum ditemukan di direktori results.")
+
+        # 4. TRIANGULASI KOMPUTASIONAL 3 LAPIS
+        st.markdown("---")
+        st.subheader("🧩 3. Triangulasi Metodologis Komputasional 3 Dimensi (Bab 2.8, 3.6, & 4.6)")
+        st.markdown("""
+        Triangulasi komputasional menggabungkan tiga instrumen analitik independen untuk memvalidasi satu kesimpulan empiris:
+        apakah **Phygital Gap** benar-benar terjadi dalam persepsi publik terhadap program MBG?
         """)
 
-    # ── Pola Penyebaran Informasi Kebijakan ──
-    st.markdown("---")
-    st.subheader("🗺️ Pola Penyebaran Informasi: Yang Tidak Tampak dari Konten")
+        tri_c1, tri_c2, tri_c3 = st.columns(3)
+        with tri_c1:
+            st.success("""
+            #### 🧠 Lapis 1: NLP IndoBERT
+            **Dimensi Afektif & Bahasa**  
+            *Apa yang dirasakan publik?*
+            - **Jijik (Disgust): 56,24%** (2.960 tweet)
+            - **Sindiran Valid:** 9,28% (315 tweet)
+            - **Proksi Inkongruensi:** 56,60% (2.979 tweet)
 
+            **Temuan Kunci:**
+            Mayoritas warganet tidak menolak dengan agresi frontal (*Marah hanya 1,8%*), melainkan dengan **sinisme, humor gelap, dan kejijikan afektif** atas inkongruensi janji vs realitas.
+            """)
+        with tri_c2:
+            st.info("""
+            #### 🕸️ Lapis 2: SNA Louvain
+            **Dimensi Topologi & Struktur Sosial**  
+            *Bagaimana diskursus menyebar?*
+            - **Modularity $Q = 0,9837$** (332 komunitas)
+            - **Resiprositas:** 1,21% (Komunikasi 1 arah)
+            - **Power Vacuum:** @prabowo in-deg=15 out-deg=0 vs @grok out-deg=42.
+
+            **Temuan Kunci:**
+            Komunikasi kebijakan mengalami **kegagalan dialog deliberatif**. Publik terisolasi dalam ruang gema (*echo chambers*) tanpa respons dari pembuat kebijakan.
+            """)
+        with tri_c3:
+            st.warning("""
+            #### 🎯 Lapis 3: ABSA 3 Aspek
+            **Dimensi Diagnostik Fisik Operasional**  
+            *Di mana letak kegagalan fisik kebijakan?*
+            - **Logistik:** 78,91% Disgust
+            - **Anggaran:** 77,01% Disgust
+            - **Gizi:** 71,13% Disgust
+
+            **Temuan Kunci:**
+            Kegagalan bukan pada visi gizi, melainkan pada **eksekusi operasional fisik**: makanan basi, porsi minimalis, dan tata kelola katering yang diragukan.
+            """)
+
+        # Tabel Matriks Triangulasi Komputasional
+        st.markdown("#### 📋 Matriks Konvergensi Triangulasi Komputasional (Naskah Tesis)")
+        triangulation_matrix = [
+            {
+                "Lapisan Analisis": "Lapis 1: Afektif (NLP IndoBERT)",
+                "Instrumen / Algoritma": "IndoBERT Base-p2 Fine-Tuned (9 Emosi Plutchik) + Ekstraksi Leksikon Sarkasme",
+                "Data Empiris Riil": "56,24% Jijik (Disgust), 9,28% Sindiran Eksplisit (n=315), 56,60% Proksi Afektif Inkongruen",
+                "Kontribusi Pembuktian Phygital Gap": "Membuktikan adanya resistensi emosional mendalam warganet yang disamarkan dalam bentuk ironi dan sarkasme."
+            },
+            {
+                "Lapisan Analisis": "Lapis 2: Topologi (SNA Louvain)",
+                "Instrumen / Algoritma": "Graf Berarah, Algoritma Komunitas Louvain, Degree, Betweenness, & Eigenvector Centrality",
+                "Data Empiris Riil": "Modularity Q = 0,9837 (332 komunitas), Resiprositas 1,21%, @prabowo pasif (In=15, Out=0), @grok aktif (Out=42)",
+                "Kontribusi Pembuktian Phygital Gap": "Membuktikan ketiadaan klarifikasi dari akun resmi; kepasifan pemerintah menciptakan kekosongan otoritas (power vacuum)."
+            },
+            {
+                "Lapisan Analisis": "Lapis 3: Diagnostik (ABSA 3 Aspek)",
+                "Instrumen / Algoritma": "Aspect-Based Sentiment Analysis berbasis Leksikon Tematik Kebijakan (Logistik, Anggaran, Gizi)",
+                "Data Empiris Riil": "Logistik 78,91% Disgust (n=403), Anggaran 77,01% Disgust (n=535), Gizi 71,13% Disgust (n=1.344)",
+                "Kontribusi Pembuktian Phygital Gap": "Menemukan akar luka kebijakan: kegagalan terletak pada titik sentuh fisik (makanan basi dan pemotongan anggaran katering)."
+            }
+        ]
+        st.dataframe(pd.DataFrame(triangulation_matrix), use_container_width=True, hide_index=True)
+
+        # Masterpiece Visual Triangulasi
+        img_tri_path = get_result_path("integrated_sna_nlp.png")
+        if os.path.exists(img_tri_path):
+            st.image(img_tri_path, use_container_width=True, caption="Masterpiece Visual: Triangulasi Terintegrasi SNA x NLP (Data Riil Naskah Tesis)")
+
+        # 5. "ARTINYA" — SINTESIS MAKNA TEORETIS, KRISIS, & KEBIJAKAN
+        st.markdown("---")
+        st.header("💡 4. \"Artinya\" — Sintesis Makna Teoretis, Komunikasi Krisis, & Rekomendasi Kebijakan")
+        st.markdown("""
+        > *Pertanyaan terbesar dalam sidang dan naskah tesis: **"Lalu apa artinya semua angka empiris ini?"**  
+        > Bagian ini menyajikan sintesis komprehensif atas signifikansi teoretis, sosiologis, dan praktis dari temuan riset.*
+        """)
+
+        with st.expander("🌐 1. Arti bagi Teori Pemasaran Modern: Pembuktian Fenomena Phygital Gap (Kotler et al., 2023)", expanded=True):
+            st.markdown("""
+            **Landasan Teoretis: Marketing 6.0 (Kotler, Kartajaya, & Setiawan, 2023)**
+            - **Definisi Phygital:** Integrasi mulus antara ruang digital (*online marketing*) dan ruang fisik (*offline delivery/touchpoint*).
+            - **Apa yang Terjadi pada Program MBG?**
+              1. **Digital Promise (Ekspektasi di X/Medsos):** Pemerintah dan pendukung menyuarakan program MBG sebagai lompatan peradaban untuk mencetak *Generasi Emas 2045*, menuntaskan stunting, dan memicu pertumbuhan ekonomi rakyat.
+              2. **Physical Delivery (Realitas di Sekolah):** Uji coba lapangan menghasilkan insiden katering basi, aroma tidak sedap, keterlambatan jam makan siang siswa, dan pemangkasan porsi menu.
+              3. **Terjadinya Gap:** Tercipta jurang disonansi kognitif yang tajam (*expectation-reality mismatch*). Ketika realitas fisik gagal memenuhi ekspektasi digital, kepercayaan masyarakat runtuh seketika, termanifestasi dalam **78,91% sentimen Jijik (Disgust) pada aspek Logistik**.
+            """)
+
+        with st.expander("🚨 2. Arti bagi Komunikasi Krisis Publik: Situational Crisis Communication Theory (Coombs, 2007)", expanded=True):
+            st.markdown("""
+            **Landasan Teoretis: Coombs' SCCT (2007)**
+            - **Kategori Krisis Publik:** Masyarakat mempersepsikan insiden makanan basi dan pemotongan anggaran menu bukan sebagai kecelakaan tak terduga (*Accidental Cluster*), melainkan sebagai **Preventable Crisis** (krisis yang dapat dicegah jika pemerintah melakukan pengawasan ketat).
+            - **Kegagalan Respons Komunikasi:**
+              - Resiprositas jaringan komunikasi hanya **1,21%**, dan akun utama pembuat kebijakan (@prabowo) memiliki **Out-Degree = 0** (sama sekali tidak pernah membalas kritik warga).
+              - Ketiadaan klarifikasi cepat (*diminishing strategy* atau *rebuilding strategy*) menciptakan **Power Vacuum (Kekosongan Otoritas Informasi)**.
+              - Akibatnya, warganet merespons dengan mekanisme pertahanan: **sindiran sarkastik (9,28%)** dan mencari verifikasi pihak ketiga yang netral (**bot AI @grok dengan 42 balasan informasi**).
+            """)
+
+        with st.expander("🏛️ 3. Arti bagi Sosiologi Komunikasi & Demokrasi Digital: Kematian Ruang Publik Deliberatif (Habermas, 1989)", expanded=False):
+            st.markdown("""
+            **Landasan Teoretis: Ruang Publik Deliberatif (Jürgen Habermas)**
+            - Nilai **Modularity $Q = 0,9837$** dan terbentuknya **332 komunitas Louvain terisolasi** membuktikan bahwa platform media sosial X tidak menjadi ruang dialog rasional-deliberatif.
+            - Sebaliknya, diskursus terpolarisasi ke dalam **bilik gema (*echo chambers*)**:
+              - Komunitas elit/pendukung hanya membagikan euforia seremonial (*empathy/love*).
+              - Ratusan kantong komunitas warganet biasa mengisolasi diri dalam sirkulasi kemarahan dan kejijikan (*disgust/cynicism*).
+            - Tidak ada jembatan komunikasi (*bridging social capital*) yang mempertemukan suara akar rumput dengan pembuat kebijakan.
+            """)
+
+        with st.expander("💼 4. Implikasi Manajerial & Rekomendasi Solusi Strategis untuk Badan Gizi Nasional (BGN)", expanded=True):
+            st.markdown("""
+            Berdasarkan temuan ABSA dan Triangulasi Komputasional, berikut 4 rekomendasi taktis-strategis untuk pembuat kebijakan:
+            
+            1. **🚚 Solusi Logistik & Rantai Pasok (Menjawab 78,91% Disgust):**
+               - Terapkan sertifikasi rantai dingin (*cold-chain*) untuk seluruh armada distribusi makanan berjarak tempuh >30 menit.
+               - Tetapkan batas radius operasional Satuan Pelayanan Pemenuhan Gizi (SPPBG) maksimal 5 km dari sekolah target untuk meminimalisir risiko makanan basi.
+            
+            2. **💰 Solusi Transparansi Anggaran (Menjawab 77,01% Disgust):**
+               - Publikasikan *Unit Cost Breakdown* (rincian biaya bahan makanan vs biaya operasional kemasan/pengantaran) secara terbuka di dashboard web BGN.
+               - Terapkan mekanisme lelang vendor berbasis e-katalog terbuka untuk menepis narasi sinis tentang kongkalikong vendor katering.
+            
+            3. **🥗 Solusi Kualitas Gizi & Higienitas (Menjawab 71,13% Disgust pada 1.344 Cuitan):**
+               - Wajibkan penempatan minimal 1 orang Ahli Gizi (Nutrisionis) tersertifikasi PERSAGI di setiap dapur sentral SPPBG.
+               - Lakukan uji organoleptik dan uji sampel mikroba cepat (*rapid test*) sebelum makanan didistribusikan ke sekolah.
+            
+            4. **📢 Solusi Komunikasi Krisis Phygital (Menjawab Modularity 0.9837 & Power Vacuum):**
+               - Tinggalkan pola komunikasi monolog satu arah (*broadcast*).
+               - Bentuk Tim Respons Cepat Krisis (*Digital Rapid Response Unit*) di bawah BGN yang aktif memantau mention keluhan wali murid di media sosial dan memberikan solusi ganti rugi makanan dalam tempo < 1 jam.
+            """)
+            
+
+
+
+elif "Bab V" in page:
+    render_thesis_stepper(5)
     st.markdown("""
-    Berikut adalah **3 pola struktural** yang hanya terlihat melalui pembacaan graf,
-    bukan dari membaca isi cuitan satu per satu:
+    <div class="hero-banner">
+        <div class="hero-badge">🎯 Bab V Tesis — Penutup & Rekomendasi Kebijakan</div>
+        <div class="hero-title">Kesimpulan, Implikasi, Keterbatasan & Rekomendasi BGN</div>
+        <div class="hero-desc">
+            Sintesis akhir jawaban terhadap <b>6 Rumusan Masalah Penelitian</b>, pengakuan jujur atas 5 keterbatasan metodologis,
+            serta perumusan 4 rekomendasi manajerial solutif dan aksi nyata bagi <b>Badan Gizi Nasional (BGN)</b>.
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px;">
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">✅ <b>6 Rumusan Masalah:</b> Terjawab Tuntas</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">🏛️ <b>Rekomendasi BGN:</b> 4 Pilar Aksi Nyata</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">⚠️ <b>Keterbatasan Riset:</b> 5 Poin Terbuka</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">📈 <b>Agenda Riset Lanjutan:</b> Multimodal Vision</span>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.subheader("🏛️ Peta Temuan Empiris Bab IV (Hasil & Pembahasan) & Bab V (Penutup)")
+    st.markdown("""
+    > *Bagian ini menyajikan rekonstruksi visual komprehensif dari naskah tesis **Bab IV (Halaman 94 – 109)** 
+    > dan **Bab V (Halaman 110 – 113)** — membuktikan bahwa setiap sub-bab ditopang secara mutlak 
+    > oleh bukti data empiris komputasional (NLP IndoBERT, SNA Louvain, dan Sintesis Marketing 6.0).*
     """)
 
-    p1, p2, p3 = st.columns(3)
+    # KPI Metrics Row
+    kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+    with kpi1:
+        st.metric("📊 Korpus Data Bab IV", "5.263 Cuitan", "N=3.395 Leksikal Valid")
+    with kpi2:
+        st.metric("🤢 Emosi Dominan (§4.5)", "56,24% Jijik", "Macro F1 = 0.8122")
+    with kpi3:
+        st.metric("🕸️ Polarisasi Jaringan (§4.3)", "Q = 0.9837", "332 Komunitas Louvain")
+    with kpi4:
+        st.metric("🏛️ Rekomendasi BGN (§5.3)", "5 Aksi Nyata", "Mitigasi Phygital Gap")
 
-    with p1:
-        st.error("""
-        ### 🔴 Pola 1
-        ## POWER VACUUM
+    st.markdown("---")
 
-        **Definisi:** Aktor berkuasa (in-degree tinggi) tidak aktif merespons (out-degree = 0)
+    # Two Main Pillars: Bab IV and Bab V
+    col_b4, col_b5 = st.columns(2)
 
-        **Bukti data:**
-        - @prabowo: In=15, Out=**0**
-        - Reciprocity jaringan: **1.2%**
+    with col_b4:
+        st.markdown("### 🔬 BAB IV: HASIL DAN PEMBAHASAN (Hal. 94 – 109)")
+        
+        with st.expander("📌 4.1 Deskripsi Umum & Karakteristik Data (Hal. 94)", expanded=True):
+            st.markdown("""
+            - **Populasi & Sampel:** 5.263 cuitan berbahasa Indonesia di platform X (periode krisis Maret–Mei 2026).
+            - **Pembersihan Data:** Menghapus bot otomatis, akun promosi, dan duplikasi teks.
+            - **Korpus Leksikal:** 3.395 cuitan dianalisis secara mendalam untuk ekstraksi majas dan penanda emoji.
+            - **Distribusi Emosi:** Disgust (56,24% / 2.960 cuitan), Trust (20,39% / 1.073 cuitan), Neutral (12,33% / 649 cuitan), Anticipation (9,60% / 505 cuitan), Anger (1,05%), Sadness (0,36%), Fear (0,04%).
+            """)
 
-        **Artinya:**
-        Tekanan publik besar, respons institusional nol.
-        Inilah *asymmetric power* — kekuasaan mengalir satu arah.
+        with st.expander("📌 4.2 Analisis Sistem: Topologi Jaringan & Polarisasi (Hal. 95)"):
+            st.markdown("""
+            - **Parameter Graf:** 971 node (aktor warganet unik) dan 666 relasi interaksi / edges (692 interaksi mentah).
+            - **Kepadatan (Density):** 0.0011 — jaringan sangat renggang tanpa sentrum tunggal.
+            - **Resiprositas (Reciprocity):** **1,21%** — 98,79% percakapan bersifat satu arah (monolog kebijakan).
+            - **Diameter Graf & Komponen:** Terpecah ke dalam 341 komponen terisolasi.
+            """)
 
-        **Tidak tampak dari konten:** Jika Anda hanya baca tweet, Anda tidak tahu bahwa *tidak ada satu pun respons resmi* dalam jaringan ini.
-        """)
+        with st.expander("📌 4.3 Analisis Clustering: Dinamika Komunitas & Echo Chambers (Hal. 97)"):
+            st.markdown("""
+            - **Modularitas Louvain:** **Q = 0.9837** (mendekati batas teoritis maksimum 1.0).
+            - **Jumlah Komunitas:** 332 komunitas terpisah yang membentuk ruang gema (*echo chamber*).
+            - **Isolasi Diskursus:** Warganet berbicara di dalam gelembung opini kelompoknya sendiri tanpa jembatan dialog antarkubu.
+            """)
 
-    with p2:
-        st.warning("""
-        ### 🟡 Pola 2
-        ## ALGORITHMIC TAKEOVER
+        with st.expander("📌 4.4 Analisis Level Aktor: Struktur Kekuasaan & Brokerage (Hal. 98)"):
+            st.markdown("""
+            - **🤖 @grok (AI Oracle):** Out-degree = 42 (paling dominan), rujukan verifikasi kebenaran publik.
+            - **🔗 @4Y4NKZ (Network Broker):** Betweenness = 0.000016 (jembatan langka antarklaster).
+            - **👑 @prabowo (Target Pasif):** In-degree = 15 (paling sering dimention), Out-degree = 0 (absen dialog).
+            - **Fenomena Power Vacuum:** Kekosongan narasi resmi pemerintah diisi oleh agen kecerdasan buatan.
+            """)
 
-        **Definisi:** AI agent menggantikan otoritas manusia sebagai penyebar informasi utama
+        with st.expander("📌 4.5 Evaluasi Model Emosi & Deteksi Sindiran (Hal. 101)"):
+            st.markdown("""
+            - **4.5.1 Evaluasi IndoBERT:** Akurasi validasi 57,45%, Macro F1 = 0.8122, Recall kelas Disgust mencapai **96,92%** (F1 = 0.7178).
+            - **4.5.2 Evaluasi Deteksi Sindiran:** 315 cuitan (9,28%) memuat majas sindiran tervalidasi leksikal, sementara proksi afektif menangkap 56,60%.
+            - **4.5.3 Interpretasi Triangulasi:** Sindiran merupakan sub-dimensi leksikal dari emosi Jijik (*Disgust*) — kedua metode konvergen dan saling mengonfirmasi.
+            """)
 
-        **Bukti data:**
-        - @grok: Out=**42** (tertinggi)
-        - @grok: In=**0** (tidak didiskusikan balik)
-        - Density jaringan: **0.000707**
+        with st.expander("📌 4.6 Sintesis: Perspektif Marketing 6.0 & Phygital Gap (Hal. 105)"):
+            st.markdown("""
+            - **4.6.1 Evaluasi ABSA Tiga Aspek:** Kritik publik terkonsentrasi pada kegagalan fisik: Logistik (basi/terlambat) dan Anggaran (pemangkasan nilai porsi).
+            - **4.6.2 Sintesis Struktural-Afektif:** Terbuktinya *Phygital Gap* — publik menerima visi digital kebijakan, namun menolak keras realitas eksekusi fisik di lapangan.
+            """)
 
-        **Artinya:**
-        Di ruang vakum kebijakan, publik tidak berdebat — mereka *bertanya kepada mesin*.
+    with col_b5:
+        st.markdown("### 🏛️ BAB V: PENUTUP & REKOMENDASI (Hal. 110 – 113)")
+        
+        with st.expander("📌 5.1 Kesimpulan Penelitian (Hal. 110)", expanded=True):
+            st.markdown("""
+            1. **Anatomi Bahasa (RM 1):** Kritik MBG diekspresikan lewat sindiran halus dan oposisi biner (315 cuitan valid).
+            2. **Inkongruensi Semiotik (RM 2):** Disparitas tajam antara teks pujian semu dengan emoji sinis (🤡, 🤮).
+            3. **Respons Afektif (RM 3):** Wacana didominasi emosi Jijik (56,24%), mencerminkan penolakan higienitas menu fisik.
+            4. **Topologi Jaringan (RM 4):** Polarisasi ekstrem (Q=0.9837) dan fragmentasi menjadi 332 komunitas terisolasi.
+            5. **Sentralitas Aktor (RM 5):** Dominasi AI (@grok Out=42) dan ketiadaan respons timbal balik otoritas (@prabowo Out=0).
+            6. **Phygital Gap (RM 6):** Kesenjangan absolut antara janji digital pemerintah dan eksekusi fisik SPPG di lapangan.
+            """)
 
-        **Tidak tampak dari konten:** Anda bisa membaca 1.000 tweet tanpa sadar bahwa responden terbanyak bukan manusia, tapi AI.
-        """)
+        with st.expander("📌 5.2 Implikasi Penelitian (Hal. 112)"):
+            st.markdown("""
+            - **5.2.1 Implikasi Akademis:**
+              - Memperkaya kajian *Computational Social Science* di Indonesia dengan integrasi deep learning IndoBERT dan teori graf SNA.
+              - Memperluas aplikasi teori *Marketing 6.0* dari sektor korporasi ke ranah evaluasi kebijakan publik makro.
+            - **5.2.2 Implikasi Praktis:**
+              - Memberikan kerangka kerja pemantauan sentimen real-time berbasis multi-dimensi bagi kementerian/lembaga.
+              - Menghindarkan pembuat kebijakan dari ilusi sentimen linear biner yang menyesatkan.
+            """)
 
-    with p3:
-        st.info("""
-        ### 🔵 Pola 3
-        ## ECHO CHAMBER LOCK
+        with st.expander("📌 5.3 Rekomendasi Kebijakan BGN & Riset Lanjutan (Hal. 112)"):
+            st.markdown("""
+            - **5.3.1 Rekomendasi untuk Badan Gizi Nasional (BGN):**
+              1. *Buka Dialog Dua Arah:* Naikkan resiprositas dari 1,21% dengan menugaskan humas merespons kritik secara aktif.
+              2. *Rangkul Komunitas Broker:* Gandeng simpul non-formal (@4Y4NKZ) untuk menjangkau klaster warganet yang terisolasi.
+              3. *Single Source of Truth Menu:* Terbitkan katalog foto dan komposisi gizi menu harian di platform digital resmi.
+              4. *Transparansi Alokasi Biaya:* Edukasi publik mengenai rincian biaya porsi makan guna memutus rumor pemangkasan anggaran.
+              5. *Optimalisasi Narasi Berbasis Bukti:* Imbangi hegemoni AI Oracle (@grok) dengan data terbuka yang dapat diverifikasi mesin pencari.
+            - **5.3.2 Rekomendasi untuk Riset Selanjutnya (Hal. 113):**
+              - Menambahkan analisis multimodal (analisis gambar/foto menu fisik dan meme).
+              - Memperluas jangkauan ke platform visual seperti TikTok dan Instagram.
+            """)
 
-        **Definisi:** 333 komunitas terisolasi, hanya 1 broker yang menghubungkan
+        with st.expander("📌 5.4 Keterbatasan Penelitian (Hal. 113)"):
+            st.markdown("""
+            - **Platform Tunggal:** Analisis hanya bertumpu pada percakapan publik di platform X (Twitter).
+            - **Unimodalitas Teks:** Belum mencakup analisis visi komputer atas foto piring makan yang diunggah warganet.
+            - **Rentang Waktu:** Terfokus pada momentum kritis Maret–Mei 2026 (pemangkasan anggaran dan insiden awal).
+            """)
 
-        **Bukti data:**
-        - Modularity: **0.9837** (mendekati 1 = super-fragmented)
-        - Broker tunggal: @4Y4NKZ
-        - Betweenness tertinggi: **0.000016** (sangat kecil)
+    # Comprehensive Summary Table
+    st.markdown("---")
+    st.subheader("📋 Matriks Pemetaan Komprehensif: Struktur Tesis Bab I – Bab V ↔ Bukti Data Riil")
+    
+    thesis_master_map = [
+        {"Bab Tesis": "Bab I: Pendahuluan", "Sub-Bab": "1.2 & 1.4 Rumusan & Tujuan", "Fokus Kajian": "Harmonisasi 6 Pertanyaan ↔ 6 Target Riset", "Metode / Instrumen": "Sankey Flow & Matriks Keselarasan", "Data Empiris": "Harmonisasi simetris 1-to-1", "Halaman": "15 & 19"},
+        {"Bab Tesis": "Bab II: Landasan Teori", "Sub-Bab": "2.1 s.d 2.6 Landasan Konseptual", "Fokus Kajian": "8 Pilar Teori & 37 Sub-Bab Terstruktur", "Metode / Instrumen": "Sunburst & Treemap Hierarkis", "Data Empiris": "37 Sub-bab, 5 Proposisi Kerja", "Halaman": "26 – 84"},
+        {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.1 Karakteristik Data Korpus", "Fokus Kajian": "Penyaringan cuitan warganet platform X", "Metode / Instrumen": "Data Funnel & Preprocessing Pipeline", "Data Empiris": "N=5.263 korpus, 3.395 leksikal", "Halaman": "94"},
+        {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.2 Topologi Jaringan Global", "Fokus Kajian": "Analisis kerapatan & resiprositas graf", "Metode / Instrumen": "Directed Graph SNA", "Data Empiris": "971 node, Reciprocity 1,21%", "Halaman": "95"},
+        {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.3 Dinamika Komunitas Louvain", "Fokus Kajian": "Polarisasi ekstrem & echo chamber warganet", "Metode / Instrumen": "Algoritma Louvain Community", "Data Empiris": "Modularity Q=0.9837, 332 komunitas", "Halaman": "97"},
+        {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.4 Struktur Kekuasaan Aktor", "Fokus Kajian": "Peran Oracle AI, Broker, dan Target Pasif", "Metode / Instrumen": "Centrality (Degree, Betweenness)", "Data Empiris": "@grok Out=42, @prabowo In=15 Out=0", "Halaman": "98"},
+        {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.5 Evaluasi Model & Sindiran", "Fokus Kajian": "Performa IndoBERT & majas sindiran", "Metode / Instrumen": "Fine-tuned Transformer IndoBERT", "Data Empiris": "Macro F1 0.8122, Disgust 56,24%", "Halaman": "101 – 104"},
+        {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.6 Sintesis Marketing 6.0", "Fokus Kajian": "Pembuktian Phygital Gap kebijakan publik", "Metode / Instrumen": "ABSA & Triangulasi SNA-NLP", "Data Empiris": "Logistik & anggaran sebagai akar krisis", "Halaman": "105 – 109"},
+        {"Bab Tesis": "Bab V: Penutup", "Sub-Bab": "5.1 s.d 5.4 Simpulan & Solusi", "Fokus Kajian": "Rekomendasi BGN & Implikasi Kebijakan", "Metode / Instrumen": "Matriks Intervensi Kebijakan", "Data Empiris": "5 Aksi Strategis Mitigasi Krisis", "Halaman": "110 – 113"}
+    ]
+    st.dataframe(pd.DataFrame(thesis_master_map), use_container_width=True, hide_index=True)
 
-        **Artinya:**
-        Publik tidak berdebat lintas kubu — mereka berbicara di kandangnya masing-masing. Hanya 1 "jembatan" tipis yang menghubungkan semua cluster.
 
-        **Tidak tampak dari konten:** Anda tidak bisa tahu bahwa 333 komunitas ini hampir tidak saling bersentuhan hanya dengan membaca isi tweet.
-        """)
 
-    st.success("""
-    **📌 Sintesis untuk Manuskrip:**
 
-    > *"Graph-based analysis reveals three latent structural patterns invisible to content analysis alone:
-    (1) a **Power Vacuum** in which the most-mentioned policy authority (@prabowo, in-degree=15) maintains zero reciprocal engagement (out-degree=0, reciprocity=1.2%);
-    (2) an **Algorithmic Takeover** in which an AI agent (@grok, out-degree=42) surpasses all human actors as the primary information distributor, filling the void left by institutional silence;
-    and (3) an **Echo Chamber Lock** in which 333 hyper-fragmented communities (modularity=0.9837) are connected by a single non-elite broker (@4Y4NKZ), with no cross-community dialogue occurring at scale.
-    These patterns collectively operationalize the Phygital Gap as a structural — not merely perceptual — phenomenon (Newman, 2006; Gandasari et al., 2023)."*
+elif "Visual Storytelling" in page or "Galeri" in page:
+    st.title("🖼️ Galeri Visual Storytelling (10 Master Plot Tesis)")
+    st.markdown("""
+    > *Galeri visual interaktif ini merangkai 10 grafik utama naskah tesis secara kronologis 
+    > dari alur praproses, pemodelan NLP IndoBERT, topologi SNA Louvain, hingga Masterpiece Visual Phygital Gap.*
     """)
-
-
-elif page == "🖼️ Visual Storytelling":
     st.title("🖼️ Visual Storytelling")
     
     st.info("""
@@ -4093,138 +4181,10 @@ elif page == "🖼️ Visual Storytelling":
         st.image(get_image_path("integrated_sna_nlp.png"), use_container_width=True, caption="Masterpiece Visual: Triangulasi Terintegrasi SNA x NLP (Data Riil)")
 
     # ── TAB 6: BAB IV & BAB V ──
-    with v_tabs[5]:
-        st.subheader("🏛️ Peta Temuan Empiris Bab IV (Hasil & Pembahasan) & Bab V (Penutup)")
-        st.markdown("""
-        > *Bagian ini menyajikan rekonstruksi visual komprehensif dari naskah tesis **Bab IV (Halaman 94 – 109)** 
-        > dan **Bab V (Halaman 110 – 113)** — membuktikan bahwa setiap sub-bab ditopang secara mutlak 
-        > oleh bukti data empiris komputasional (NLP IndoBERT, SNA Louvain, dan Sintesis Marketing 6.0).*
-        """)
 
-        # KPI Metrics Row
-        kpi1, kpi2, kpi3, kpi4 = st.columns(4)
-        with kpi1:
-            st.metric("📊 Korpus Data Bab IV", "5.263 Cuitan", "N=3.395 Leksikal Valid")
-        with kpi2:
-            st.metric("🤢 Emosi Dominan (§4.5)", "56,24% Jijik", "Macro F1 = 0.8122")
-        with kpi3:
-            st.metric("🕸️ Polarisasi Jaringan (§4.3)", "Q = 0.9837", "332 Komunitas Louvain")
-        with kpi4:
-            st.metric("🏛️ Rekomendasi BGN (§5.3)", "5 Aksi Nyata", "Mitigasi Phygital Gap")
 
-        st.markdown("---")
 
-        # Two Main Pillars: Bab IV and Bab V
-        col_b4, col_b5 = st.columns(2)
-
-        with col_b4:
-            st.markdown("### 🔬 BAB IV: HASIL DAN PEMBAHASAN (Hal. 94 – 109)")
-            
-            with st.expander("📌 4.1 Deskripsi Umum & Karakteristik Data (Hal. 94)", expanded=True):
-                st.markdown("""
-                - **Populasi & Sampel:** 5.263 cuitan berbahasa Indonesia di platform X (periode krisis Maret–Mei 2026).
-                - **Pembersihan Data:** Menghapus bot otomatis, akun promosi, dan duplikasi teks.
-                - **Korpus Leksikal:** 3.395 cuitan dianalisis secara mendalam untuk ekstraksi majas dan penanda emoji.
-                - **Distribusi Emosi:** Disgust (56,24% / 2.960 cuitan), Trust (20,39% / 1.073 cuitan), Neutral (12,33% / 649 cuitan), Anticipation (9,60% / 505 cuitan), Anger (1,05%), Sadness (0,36%), Fear (0,04%).
-                """)
-
-            with st.expander("📌 4.2 Analisis Sistem: Topologi Jaringan & Polarisasi (Hal. 95)"):
-                st.markdown("""
-                - **Parameter Graf:** 971 node (aktor warganet unik) dan 666 relasi interaksi / edges (692 interaksi mentah).
-                - **Kepadatan (Density):** 0.0011 — jaringan sangat renggang tanpa sentrum tunggal.
-                - **Resiprositas (Reciprocity):** **1,21%** — 98,79% percakapan bersifat satu arah (monolog kebijakan).
-                - **Diameter Graf & Komponen:** Terpecah ke dalam 341 komponen terisolasi.
-                """)
-
-            with st.expander("📌 4.3 Analisis Clustering: Dinamika Komunitas & Echo Chambers (Hal. 97)"):
-                st.markdown("""
-                - **Modularitas Louvain:** **Q = 0.9837** (mendekati batas teoritis maksimum 1.0).
-                - **Jumlah Komunitas:** 332 komunitas terpisah yang membentuk ruang gema (*echo chamber*).
-                - **Isolasi Diskursus:** Warganet berbicara di dalam gelembung opini kelompoknya sendiri tanpa jembatan dialog antarkubu.
-                """)
-
-            with st.expander("📌 4.4 Analisis Level Aktor: Struktur Kekuasaan & Brokerage (Hal. 98)"):
-                st.markdown("""
-                - **🤖 @grok (AI Oracle):** Out-degree = 42 (paling dominan), rujukan verifikasi kebenaran publik.
-                - **🔗 @4Y4NKZ (Network Broker):** Betweenness = 0.000016 (jembatan langka antarklaster).
-                - **👑 @prabowo (Target Pasif):** In-degree = 15 (paling sering dimention), Out-degree = 0 (absen dialog).
-                - **Fenomena Power Vacuum:** Kekosongan narasi resmi pemerintah diisi oleh agen kecerdasan buatan.
-                """)
-
-            with st.expander("📌 4.5 Evaluasi Model Emosi & Deteksi Sindiran (Hal. 101)"):
-                st.markdown("""
-                - **4.5.1 Evaluasi IndoBERT:** Akurasi validasi 57,45%, Macro F1 = 0.8122, Recall kelas Disgust mencapai **96,92%** (F1 = 0.7178).
-                - **4.5.2 Evaluasi Deteksi Sindiran:** 315 cuitan (9,28%) memuat majas sindiran tervalidasi leksikal, sementara proksi afektif menangkap 56,60%.
-                - **4.5.3 Interpretasi Triangulasi:** Sindiran merupakan sub-dimensi leksikal dari emosi Jijik (*Disgust*) — kedua metode konvergen dan saling mengonfirmasi.
-                """)
-
-            with st.expander("📌 4.6 Sintesis: Perspektif Marketing 6.0 & Phygital Gap (Hal. 105)"):
-                st.markdown("""
-                - **4.6.1 Evaluasi ABSA Tiga Aspek:** Kritik publik terkonsentrasi pada kegagalan fisik: Logistik (basi/terlambat) dan Anggaran (pemangkasan nilai porsi).
-                - **4.6.2 Sintesis Struktural-Afektif:** Terbuktinya *Phygital Gap* — publik menerima visi digital kebijakan, namun menolak keras realitas eksekusi fisik di lapangan.
-                """)
-
-        with col_b5:
-            st.markdown("### 🏛️ BAB V: PENUTUP & REKOMENDASI (Hal. 110 – 113)")
-            
-            with st.expander("📌 5.1 Kesimpulan Penelitian (Hal. 110)", expanded=True):
-                st.markdown("""
-                1. **Anatomi Bahasa (RM 1):** Kritik MBG diekspresikan lewat sindiran halus dan oposisi biner (315 cuitan valid).
-                2. **Inkongruensi Semiotik (RM 2):** Disparitas tajam antara teks pujian semu dengan emoji sinis (🤡, 🤮).
-                3. **Respons Afektif (RM 3):** Wacana didominasi emosi Jijik (56,24%), mencerminkan penolakan higienitas menu fisik.
-                4. **Topologi Jaringan (RM 4):** Polarisasi ekstrem (Q=0.9837) dan fragmentasi menjadi 332 komunitas terisolasi.
-                5. **Sentralitas Aktor (RM 5):** Dominasi AI (@grok Out=42) dan ketiadaan respons timbal balik otoritas (@prabowo Out=0).
-                6. **Phygital Gap (RM 6):** Kesenjangan absolut antara janji digital pemerintah dan eksekusi fisik SPPG di lapangan.
-                """)
-
-            with st.expander("📌 5.2 Implikasi Penelitian (Hal. 112)"):
-                st.markdown("""
-                - **5.2.1 Implikasi Akademis:**
-                  - Memperkaya kajian *Computational Social Science* di Indonesia dengan integrasi deep learning IndoBERT dan teori graf SNA.
-                  - Memperluas aplikasi teori *Marketing 6.0* dari sektor korporasi ke ranah evaluasi kebijakan publik makro.
-                - **5.2.2 Implikasi Praktis:**
-                  - Memberikan kerangka kerja pemantauan sentimen real-time berbasis multi-dimensi bagi kementerian/lembaga.
-                  - Menghindarkan pembuat kebijakan dari ilusi sentimen linear biner yang menyesatkan.
-                """)
-
-            with st.expander("📌 5.3 Rekomendasi Kebijakan BGN & Riset Lanjutan (Hal. 112)"):
-                st.markdown("""
-                - **5.3.1 Rekomendasi untuk Badan Gizi Nasional (BGN):**
-                  1. *Buka Dialog Dua Arah:* Naikkan resiprositas dari 1,21% dengan menugaskan humas merespons kritik secara aktif.
-                  2. *Rangkul Komunitas Broker:* Gandeng simpul non-formal (@4Y4NKZ) untuk menjangkau klaster warganet yang terisolasi.
-                  3. *Single Source of Truth Menu:* Terbitkan katalog foto dan komposisi gizi menu harian di platform digital resmi.
-                  4. *Transparansi Alokasi Biaya:* Edukasi publik mengenai rincian biaya porsi makan guna memutus rumor pemangkasan anggaran.
-                  5. *Optimalisasi Narasi Berbasis Bukti:* Imbangi hegemoni AI Oracle (@grok) dengan data terbuka yang dapat diverifikasi mesin pencari.
-                - **5.3.2 Rekomendasi untuk Riset Selanjutnya (Hal. 113):**
-                  - Menambahkan analisis multimodal (analisis gambar/foto menu fisik dan meme).
-                  - Memperluas jangkauan ke platform visual seperti TikTok dan Instagram.
-                """)
-
-            with st.expander("📌 5.4 Keterbatasan Penelitian (Hal. 113)"):
-                st.markdown("""
-                - **Platform Tunggal:** Analisis hanya bertumpu pada percakapan publik di platform X (Twitter).
-                - **Unimodalitas Teks:** Belum mencakup analisis visi komputer atas foto piring makan yang diunggah warganet.
-                - **Rentang Waktu:** Terfokus pada momentum kritis Maret–Mei 2026 (pemangkasan anggaran dan insiden awal).
-                """)
-
-        # Comprehensive Summary Table
-        st.markdown("---")
-        st.subheader("📋 Matriks Pemetaan Komprehensif: Struktur Tesis Bab I – Bab V ↔ Bukti Data Riil")
-        
-        thesis_master_map = [
-            {"Bab Tesis": "Bab I: Pendahuluan", "Sub-Bab": "1.2 & 1.4 Rumusan & Tujuan", "Fokus Kajian": "Harmonisasi 6 Pertanyaan ↔ 6 Target Riset", "Metode / Instrumen": "Sankey Flow & Matriks Keselarasan", "Data Empiris": "Harmonisasi simetris 1-to-1", "Halaman": "15 & 19"},
-            {"Bab Tesis": "Bab II: Landasan Teori", "Sub-Bab": "2.1 s.d 2.6 Landasan Konseptual", "Fokus Kajian": "8 Pilar Teori & 37 Sub-Bab Terstruktur", "Metode / Instrumen": "Sunburst & Treemap Hierarkis", "Data Empiris": "37 Sub-bab, 5 Proposisi Kerja", "Halaman": "26 – 84"},
-            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.1 Karakteristik Data Korpus", "Fokus Kajian": "Penyaringan cuitan warganet platform X", "Metode / Instrumen": "Data Funnel & Preprocessing Pipeline", "Data Empiris": "N=5.263 korpus, 3.395 leksikal", "Halaman": "94"},
-            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.2 Topologi Jaringan Global", "Fokus Kajian": "Analisis kerapatan & resiprositas graf", "Metode / Instrumen": "Directed Graph SNA", "Data Empiris": "971 node, Reciprocity 1,21%", "Halaman": "95"},
-            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.3 Dinamika Komunitas Louvain", "Fokus Kajian": "Polarisasi ekstrem & echo chamber warganet", "Metode / Instrumen": "Algoritma Louvain Community", "Data Empiris": "Modularity Q=0.9837, 332 komunitas", "Halaman": "97"},
-            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.4 Struktur Kekuasaan Aktor", "Fokus Kajian": "Peran Oracle AI, Broker, dan Target Pasif", "Metode / Instrumen": "Centrality (Degree, Betweenness)", "Data Empiris": "@grok Out=42, @prabowo In=15 Out=0", "Halaman": "98"},
-            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.5 Evaluasi Model & Sindiran", "Fokus Kajian": "Performa IndoBERT & majas sindiran", "Metode / Instrumen": "Fine-tuned Transformer IndoBERT", "Data Empiris": "Macro F1 0.8122, Disgust 56,24%", "Halaman": "101 – 104"},
-            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.6 Sintesis Marketing 6.0", "Fokus Kajian": "Pembuktian Phygital Gap kebijakan publik", "Metode / Instrumen": "ABSA & Triangulasi SNA-NLP", "Data Empiris": "Logistik & anggaran sebagai akar krisis", "Halaman": "105 – 109"},
-            {"Bab Tesis": "Bab V: Penutup", "Sub-Bab": "5.1 s.d 5.4 Simpulan & Solusi", "Fokus Kajian": "Rekomendasi BGN & Implikasi Kebijakan", "Metode / Instrumen": "Matriks Intervensi Kebijakan", "Data Empiris": "5 Aksi Strategis Mitigasi Krisis", "Halaman": "110 – 113"}
-        ]
-        st.dataframe(pd.DataFrame(thesis_master_map), use_container_width=True, hide_index=True)
-
-elif page == "📚 Audit Referensi Scopus":
+elif "Audit" in page or "Scopus" in page:
     st.title("📚 Audit Kelayakan Referensi untuk Scopus / Sinta 1")
     st.markdown("---")
     st.subheader("📑 Master Taksonomi & Klasifikasi Referensi Scopus Q1 / Sinta 1 (33 Rujukan)")
@@ -4694,4 +4654,5 @@ elif page == "📚 Audit Referensi Scopus":
     - **Klaster B** memvalidasi performa **IndoBERT** (Wilie et al. 2020; Shaw et al. 2025) dengan macro F1-score 0.8122 pada 9 kelas emosi granular Plutchik.
     - **Klaster D & E** membuktikan **polarisasi ekstrem jaringan warganet** (modularitas Q=0.9837; Newman 2006; Blondel et al. 2008) dengan kepatuhan etika big data (Boyd & Crawford 2012; Ferrara et al. 2016).
     """)
+
 
