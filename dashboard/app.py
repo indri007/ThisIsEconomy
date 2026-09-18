@@ -537,7 +537,7 @@ if page == "🏠 Beranda":
             *"Memetakan topologi jaringan komunikasi, mengukur koefisien modularitas polarisasi (Q), serta mendeteksi komunitas terfragmentasi menggunakan Algoritma Louvain."*
             
             - **Target Operasional:** Menghitung metrik global graf (nodes, edges, modularity, reciprocity, diameter).
-            - **Bukti Empiris:** 971 node, 1.077 edges, Modularitas **Q = 0.9837** (332 komunitas terfragmentasi ekstrem, Reciprocity 1,21%).
+            - **Bukti Empiris:** 971 node, 666 edges (692 interaksi mentah), Modularitas **Q = 0.9837** (332 komunitas terfragmentasi ekstrem, Reciprocity 1,21%).
             """)
 
     with pair_tabs[4]:
@@ -616,7 +616,7 @@ if page == "🏠 Beranda":
             "Rumusan Masalah (RM Bab 1.2)": "Bagaimana struktur graf jaringan komunikasi terbentuk, polarisasi, dan fragmentasi komunitasnya?",
             "Tujuan Penelitian (TP Bab 1.4)": "Memetakan topologi graf, mengukur modularitas Q, dan mendeteksi komunitas via Louvain.",
             "Metode Komputasional": "Graph Theory & Louvain Modularity",
-            "Bukti Empiris Tesis": "971 nodes, 1.077 edges, Modularitas Q=0.9837 (332 komunitas)",
+            "Bukti Empiris Tesis": "971 nodes, 666 edges (692 interaksi mentah), Modularitas Q=0.9837 (332 komunitas)",
             "Status": "✅ Terjawab"
         },
         {
@@ -3087,12 +3087,12 @@ elif page == "🖼️ Visual Storytelling":
                 - **Populasi & Sampel:** 5.263 cuitan berbahasa Indonesia di platform X (periode krisis Maret–Mei 2026).
                 - **Pembersihan Data:** Menghapus bot otomatis, akun promosi, dan duplikasi teks.
                 - **Korpus Leksikal:** 3.395 cuitan dianalisis secara mendalam untuk ekstraksi majas dan penanda emoji.
-                - **Distribusi Emosi:** Disgust (56,24%), Trust (20,41%), Neutral (12,31%), sisanya Joy, Surprise, Anticipation, Fear, Sadness, Anger.
+                - **Distribusi Emosi:** Disgust (56,24% / 2.960 cuitan), Trust (20,39% / 1.073 cuitan), Neutral (12,33% / 649 cuitan), Anticipation (9,60% / 505 cuitan), Anger (1,05%), Sadness (0,36%), Fear (0,04%).
                 """)
 
             with st.expander("📌 4.2 Analisis Sistem: Topologi Jaringan & Polarisasi (Hal. 95)"):
                 st.markdown("""
-                - **Parameter Graf:** 971 node (aktor warganet unik) dan 1.077 relasi interaksi (edges).
+                - **Parameter Graf:** 971 node (aktor warganet unik) dan 666 relasi interaksi / edges (692 interaksi mentah).
                 - **Kepadatan (Density):** 0.0011 — jaringan sangat renggang tanpa sentrum tunggal.
                 - **Resiprositas (Reciprocity):** **1,21%** — 98,79% percakapan bersifat satu arah (monolog kebijakan).
                 - **Diameter Graf & Komponen:** Terpecah ke dalam 341 komponen terisolasi.
