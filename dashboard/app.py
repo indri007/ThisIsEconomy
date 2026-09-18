@@ -296,6 +296,172 @@ if page == "🏠 Beranda":
     st.dataframe(pd.DataFrame(grq_data), use_container_width=True, hide_index=True)
 
     st.markdown("---")
+    st.header("📚 Penelitian Terdahulu & Research Gap")
+    st.markdown("""
+    > *Bagian ini menampilkan **peta literatur** yang menjadi fondasi dan pembanding penelitian ini,
+    > sekaligus menjelaskan secara eksplisit **celah penelitian (research gap)** yang diisi oleh tesis ini.*
+    """)
+
+    # ─── Tabel Penelitian Terdahulu ───
+    st.subheader("🗺️ Peta Literatur Penelitian Terdahulu")
+
+    prior_research = {
+        "Penulis & Tahun": [
+            "Gandasari et al. (2023)",
+            "Shaw, LaCasse & Champagne (2025)",
+            "Arinik & Giritli (2012)",
+            "Chiorri et al. (2019)",
+            "Devalapalli & Mandala (2026)",
+            "Camp, E. (2012)",
+            "Gelders & Ihlen (2010)",
+            "Johnson & Barlow (2021)",
+            "Tsai, Chen & Lu (2026)",
+            "Salafiyah, L. (2026)",
+            "Sari et al. (2026) ⭐",
+        ],
+        "Jurnal / Venue": [
+            "J. Intercultural Comm. (Scopus)",
+            "Soc. Netw. Anal. Mining — SNAM (Scopus Q1)",
+            "Public Relations Review (Scopus Q1)",
+            "CEUR Workshop Proceedings",
+            "Lect. Notes Netw. Syst. (Scopus)",
+            "Noûs — Philosophy (Scopus Q1)",
+            "Government Information Quarterly (Scopus Q1)",
+            "JTAER — MDPI (Scopus Q1)",
+            "Socio-Economic Planning Sciences (Scopus Q1)",
+            "Skripsi UPN Veteran Jatim",
+            "IPSSJ vol. 3 no. 9 (Sinta)",
+        ],
+        "Fokus Utama": [
+            "SNA krisis kebutuhan pokok di Twitter Indonesia",
+            "Klasifikasi emosi tweet Indonesia dengan IndoBERT",
+            "SNA media Twitter vs blog vs media massa",
+            "Analisis sentimen & emosi menggunakan BERT",
+            "Deteksi ironi & sarkasme di Twitter via NLP",
+            "Teori sarkasme: semantik & pragmatik",
+            "Model pemasaran layanan dalam komunikasi kebijakan pemerintah",
+            "Definisi konseptual 'phygital' dalam marketing",
+            "Marketing X.0 untuk kebijakan publik digital",
+            "SNA isu keracunan MBG di Platform X (UPN)",
+            "SNA wacana MBG di Platform X (self-citation)",
+        ],
+        "Metode": [
+            "SNA (NetworkX)",
+            "IndoBERT + Transfer Learning",
+            "SNA + Content Analysis",
+            "BERT + Sentiment",
+            "NLP + Irony Detection",
+            "Discourse Analysis",
+            "Service Gap Model",
+            "Conceptual Review",
+            "Survey + Regression",
+            "SNA saja",
+            "SNA saja",
+        ],
+        "Gap yang Ditinggalkan": [
+            "Tidak ada analisis emosi / sarkasme / NLP",
+            "Tidak ada SNA, tidak ada konteks kebijakan publik",
+            "Tidak ada NLP / emosi / konteks Indonesia",
+            "Tidak ada SNA, bukan tweet Indonesia",
+            "Tidak ada SNA, bukan konteks kebijakan Indonesia",
+            "Tidak ada metodologi komputasional",
+            "Tidak ada analisis digital/sosmed, bukan konteks Indonesia",
+            "Tidak ada aplikasi empiris komputasional",
+            "Tidak ada SNA, tidak ada NLP / emosi",
+            "Tidak ada emosi, sarkasme, atau NLP",
+            "Tidak ada emosi, sarkasme, atau ABSA",
+        ],
+    }
+    df_prior = pd.DataFrame(prior_research)
+    st.dataframe(df_prior, use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+    st.subheader("🔍 Research Gap: Yang Belum Pernah Dilakukan")
+
+    g1, g2, g3 = st.columns(3)
+    with g1:
+        st.error("""
+        ### ❌ Gap 1
+        ## Integrasi SNA + NLP + Emosi
+
+        Tidak ada studi terdahulu yang menggabungkan:
+        - **SNA** (struktur jaringan)
+        - **IndoBERT** (klasifikasi emosi)
+        - **Lexical sarcasm detection**
+
+        dalam **satu dataset** dan **satu konteks kebijakan** sekaligus.
+
+        *Gandasari (2023) hanya SNA.
+        Shaw (2025) hanya IndoBERT.
+        Tidak ada yang gabung keduanya di MBG.*
+        """)
+    with g2:
+        st.warning("""
+        ### ❌ Gap 2
+        ## Konteks Kebijakan Pangan Indonesia
+
+        Tidak ada studi yang menganalisis **wacana kebijakan MBG** secara komputasional:
+
+        - MBG adalah **program triliunan rupiah** yang mempengaruhi jutaan siswa
+        - Wacana digitalnya **belum pernah dipetakan secara ilmiah**
+        - Tidak ada studi SNA + NLP khusus **kebijakan pangan publik Indonesia**
+
+        *Salafiyah (2026) baru skripsi,
+        Sari et al. (2026) baru SNA tanpa NLP.*
+        """)
+    with g3:
+        st.info("""
+        ### ❌ Gap 3
+        ## Operasionalisasi Phygital Gap
+
+        Konsep **Phygital Gap** dari Marketing 6.0 belum pernah:
+        - Dioperasionalisasikan secara **komputasional**
+        - Dibuktikan melalui **data jaringan + emosi**
+        - Diterapkan dalam konteks **kebijakan publik Indonesia**
+
+        *Gelders (2010) dan Tsai (2026) sudah di ranah teori,
+        tapi belum ada yang membuktikannya
+        secara empiris-komputasional.*
+        """)
+
+    # ─── Positioning Matrix ───
+    st.markdown("---")
+    st.subheader("📐 Positioning Matrix: Di Mana Penelitian Ini Berdiri?")
+
+    matrix_data = {
+        "Dimensi": [
+            "SNA (Jaringan Sosial)",
+            "IndoBERT / NLP",
+            "Klasifikasi Emosi (9 kelas)",
+            "Deteksi Sarkasme",
+            "ABSA / Thematic Analysis",
+            "Konteks MBG Indonesia",
+            "Phygital Gap Framework",
+            "Multi-method Triangulasi",
+        ],
+        "Gandasari (2023)": ["✅","❌","❌","❌","❌","❌","❌","❌"],
+        "Shaw (2025)":       ["❌","✅","✅","❌","❌","❌","❌","❌"],
+        "Sari et al. (2026) [self]": ["✅","❌","❌","❌","❌","✅","❌","❌"],
+        "⭐ PENELITIAN INI": ["✅","✅","✅","✅","✅","✅","✅","✅"],
+    }
+    df_matrix = pd.DataFrame(matrix_data)
+    st.dataframe(df_matrix, use_container_width=True, hide_index=True)
+
+    st.success("""
+    **📌 Novelty Statement (siap masuk manuskrip):**
+
+    > *"This study addresses three critical research gaps: (1) the absence of integrated SNA–NLP studies
+    > combining network topology with multi-class emotion classification and sarcasm detection;
+    > (2) the lack of computational analysis of public discourse surrounding Indonesia's MBG policy;
+    > and (3) the absence of empirical operationalization of the Phygital Gap construct
+    > (Kartajaya & Setiawan, 2023; Johnson & Barlow, 2021) through graph-based computational methods.
+    > By integrating Social Network Analysis (NetworkX, Louvain), IndoBERT fine-tuning,
+    > lexical sarcasm detection, and Aspect-Based Sentiment Analysis into a unified computational framework,
+    > this study provides the first multi-method characterization of MBG policy discourse
+    > on Platform X as a measurable manifestation of the Phygital Gap."*
+    """)
+
+    st.markdown("---")
     st.markdown("📌 Silakan gunakan menu navigasi di sebelah kiri untuk mengeksplorasi data secara interaktif!")
 
 
