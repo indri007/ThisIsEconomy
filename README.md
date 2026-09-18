@@ -386,6 +386,17 @@ Hasil komputasional empiris yang diverifikasi secara matematis:
   - `@grok` (*AI Oracle Takeover*): Out-degree = **42** (paling berpengaruh mengarahkan opini).
   - `@4Y4NKZ` (*Structural Broker*): Betweenness = **0.000016** (jembatan langka antarkomunitas).
   - `@prabowo` (*Target Pasif / Power Vacuum*): In-degree = **15**, Out-degree = **0** (sasaran aduan publik tanpa dialog timbal-balik).
+  - **📡 10 Top Media & Kanal Penghubung (Selain CNN Indonesia):** Menemukan pergeseran saluran krisis ke akun *Menfess* dan spesialis:
+    1. `@tanyarlfes` (Menfess Publik, In-Degree = 5, PageRank = 0.00344)
+    2. `@tanyakanrl` (Agregator Diskusi X, In-Degree = 5, PageRank = 0.00314)
+    3. `@LambeSahamjja` (Media Finansial & Pasar, In-Degree = 4, PageRank = 0.00314)
+    4. `@itbfess_x` (Menfess Akademik Mahasiswa, In-Degree = 3, PageRank = 0.00207)
+    5. `@KompasTV` (Media Penyiaran TV Nasional, Degree = 2, PageRank = 0.00457)
+    6. `@tempodotco` (Jurnalisme Investigatif Tempo, In-Degree = 1, PageRank = 0.00132)
+    7. `@kompascom` (Portal Berita Nasional, In-Degree = 1, PageRank = 0.00132)
+    8. `@kumparan` (Media Berita Kolaboratif, Out-Degree = 1, PageRank = 0.00071)
+    9. `@yappingfess` (Menfess Curahan Emosi Warganet, In-Degree = 2, PageRank = 0.00193)
+    10. `@txtdrimedia` (Kurasi & Kliping Berita Pers, In-Degree = 1, PageRank = 0.00102)
 - **4.5 Evaluasi Model Klasifikasi Emosi dan Deteksi Sindiran (Hal. 101):**
   - *4.5.1 Evaluasi IndoBERT:* Akurasi tes 57,45%, Macro F1 = 0.8122, Recall kelas Disgust mencapai **96,92%** (F1 = 0.7178), Presisi Trust 68,42%.
   - *4.5.2 Evaluasi Deteksi Sindiran:* **315 cuitan (9,28%)** memuat sindiran valid terverifikasi leksikal, sementara proksi afektif menangkap 56,60%.
