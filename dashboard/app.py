@@ -809,7 +809,75 @@ elif page == "🕸️ Analisis Jaringan (CNA)":
     *(Membuktikan bahwa kemarahan/jijik publik memiliki sentimen absolut terhadap bobroknya logistik dan anggaran fisik di lapangan — mendefinisikan Phygital Gap).*
     """)
     st.markdown("---")
+
+    # ── §4.1 KARAKTERISTIK KORPUS RESMI & TABEL 4.1 ──
+    st.header("📊 §4.1 Deskripsi Umum & Karakteristik Data")
+    st.markdown("""
+    > *Data penelitian dihimpun pada periode **Maret hingga Mei 2026** melalui platform **X (Twitter)** 
+    > dengan kueri strategis ("Makan Bergizi Gratis", "MBG", dan tagar terkait). Pasca tahap pembersihan data 
+    > (*text cleansing*) serta eksklusi bot/spam, korpus resmi riset ini terdiri dari **973 aktor (nodes)** 
+    > yang terhubung melalui **658 relasi interaksi (edges)**, membentuk **332 komponen jaringan yang terpisah**.*
+    """)
+
+    col_meta1, col_meta2 = st.columns([1.2, 1])
+    with col_meta1:
+        st.subheader("📋 Tabel 4.1 Metadata Jaringan Komunikasi Program MBG")
+        st.caption("Korpus Resmi Periode Observasi Maret – Mei 2026:")
+        tabel_4_1 = {
+            "Parameter": [
+                "👥 Jumlah Aktor (Nodes)",
+                "🔗 Jumlah Interaksi (Edges)",
+                "🧩 Jumlah Komponen Jaringan",
+                "⚡ Nilai Modularity (Louvain)",
+                "🌐 Platform Sumber",
+                "📅 Periode Observasi",
+            ],
+            "Nilai": [
+                "973 akun pengguna",
+                "658 hubungan (mention)",
+                "332 komponen terpisah",
+                "0,9837 (Sangat Terfragmentasi)",
+                "X (Twitter)",
+                "Maret – Mei 2026",
+            ]
+        }
+        st.dataframe(pd.DataFrame(tabel_4_1), use_container_width=True, hide_index=True)
+
+    with col_meta2:
+        st.subheader("⚖️ Komparasi Data Korpus vs Data Pilot")
+        st.info("""
+        **🔍 Data Penjajakan Awal (Februari 2025):**
+        - Nodes: 2.414 akun | Edges: 3.483 relasi
+        - Modularity: **0,7130**
+        - *Fungsi*: Penjajakan awal isu krisis wacana MBG.
+        
+        **📌 Korpus Resmi Penelitian (Maret–Mei 2026):**
+        - Nodes: 973 akun | Edges: 658 relasi
+        - Modularity: **0,9837** (Intensifikasi Polarisasi)
+        - *Insight*: Struktur wacana mengalami fragmentasi tajam menjadi ratusan komponen terisolasi.
+        """)
+
+    st.markdown("---")
+
+    # ── §4.2 TOPOLOGI JARINGAN & POLARISASI ──
+    st.header("🕸️ §4.2 Analisis Level Sistem: Topologi Jaringan & Polarisasi")
     
+    top_col1, top_col2, top_col3 = st.columns(3)
+    with top_col1:
+        st.metric("Modularity Louvain", "0.9837", "Ambang Newman > 0.3")
+    with top_col2:
+        st.metric("Densitas Graf", "0.0007", "Jaringan Sangat Renggang")
+    with top_col3:
+        st.metric("Reciprocity", "1.21%", "Komunikasi Non-Timbal Balik")
+
+    st.warning("""
+    **📢 Temuan Kunci Level Sistem:**
+    1. **Hyper-Fragmentation (Modularity 0,9837):** Jauh melampaui ambang batas 0,3 (Newman, 2006). Percakapan warganet terpecah ke dalam **332 komponen terisolasi** (bukan dua kubu ideologis besar, melainkan ratusan kelompok percakapan kecil).
+    2. **Komunikasi Searah (Reciprocity 0,0121):** Dialog dua arah hampir nihil (hanya 1,2%). Netizen lebih banyak me-mention figur otoritas sebagai bentuk keluhan/protes satu arah tanpa adanya respon balik (*top-down communication failure*).
+    """)
+
+    st.markdown("---")
+    st.subheader("🌐 Eksplorasi Graf Interaktif (PyVis)")
     st.markdown("Visualisasi graf interaktif dari wacana MBG di platform X.")
     
     edges, nodes_data = load_network_data()

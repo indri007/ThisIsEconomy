@@ -289,6 +289,15 @@ HASIL DAN PEMBAHASAN
 4.1 Deskripsi Umum dan Karakteristik Data
 Data penelitian dikumpulkan pada periode Maret hingga Mei 2026 melalui platform X (Twitter) dengan kueri strategis yang mencakup istilah “Makan Bergizi Gratis”, “MBG”, dan tagar terkait. Setelah melalui tahap pembersihan data (text cleansing) dan eksklusi akun bot/spam, korpus resmi penelitian ini terdiri atas 973 nodes (aktor/akun) yang terhubung melalui 658 edges (relasi mention), membentuk 332 komponen jaringan yang terpisah (disconnected components).
 Tabel 4.1 Metadata Jaringan Komunikasi Program MBG (Korpus Resmi Maret–Mei 2026)
+| Parameter | Nilai |
+|---|---|
+| Jumlah Aktor (Nodes) | 973 akun pengguna |
+| Jumlah Interaksi (Edges) | 658 hubungan (mention) |
+| Jumlah Komponen Jaringan | 332 komponen |
+| Nilai Modularity (Louvain) | 0,9837 |
+| Platform Sumber | X (Twitter) |
+| Periode Observasi | Maret – Mei 2026 |
+
 Data pilot yang dikumpulkan pada tahap penjajakan awal (Februari 2025, 2.414 nodes dan 3.483 edges dengan modularity 0,7130) tidak digunakan sebagai dasar analisis pada bab ini; angka tersebut hanya menjadi konteks penjajakan awal sebagaimana telah dijelaskan pada Bab I dan tidak dicampur dengan hasil analisis korpus resmi berikut ini.
 4.2 Analisis Level Sistem: Topologi Jaringan dan Polarisasi
 Nilai modularity korpus resmi sebesar 0,9837 jauh melampaui ambang 0,3 (Newman, 2006) yang menjadi rujukan konsisten penelitian ini, mengindikasikan tingkat fragmentasi jaringan yang sangat tinggi. Nilai ini bahkan melampaui nilai modularity pada data penjajakan awal (0,7130), yang berarti derajat polarisasi struktural pada periode Maret–Mei 2026 mengalami intensifikasi dibandingkan kondisi awal program.
