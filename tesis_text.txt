@@ -303,6 +303,19 @@ Data pilot yang dikumpulkan pada tahap penjajakan awal (Februari 2025, 2.414 nod
 Nilai modularity korpus resmi sebesar 0,9837 jauh melampaui ambang 0,3 (Newman, 2006) yang menjadi rujukan konsisten penelitian ini, mengindikasikan tingkat fragmentasi jaringan yang sangat tinggi. Nilai ini bahkan melampaui nilai modularity pada data penjajakan awal (0,7130), yang berarti derajat polarisasi struktural pada periode Maret–Mei 2026 mengalami intensifikasi dibandingkan kondisi awal program.
 Rekomputasi jaringan pada korpus resmi menggunakan NetworkX menghasilkan nilai densitas sebesar 0,0007, rata-rata derajat (average degree) 1,36, dan reciprocity 0,0121. Nilai densitas yang sangat rendah, dikombinasikan dengan reciprocity yang mendekati nol, menunjukkan bahwa interaksi antar-aktor dalam jaringan bersifat jarang dan sebagian besar satu arah (non-timbal balik) — pola yang konsisten dengan karakter platform X, di mana mention lebih banyak berfungsi sebagai bentuk penyampaian pendapat searah kepada figur publik/tokoh dominan daripada percakapan dialogis dua arah.
 Tabel 4.2 Ukuran Sepuluh Komponen Jaringan Terbesar (Korpus Resmi)
+| Peringkat Komponen | Jumlah Aktor (Nodes) | Persentase dari Total Aktor | Karakteristik Struktur |
+|---|---|---|---|
+| Komponen 1 (Giant Component) | 88-89 | 9,1% | Ruang wacana heterogen (dukungan, bantahan resmi, dan kritik) |
+| Komponen 2 | 18 | 1,8% | Klaster interaksi lokal warganet |
+| Komponen 3 | 14 | 1,4% | Klaster skeptis alokasi anggaran |
+| Komponen 4 | 11 | 1,1% | Sub-komunitas penyebaran konten ironis/meme |
+| Komponen 5 | 10 | 1,0% | Klaster keluhan orang tua murid |
+| Komponen 6 | 9 | 0,9% | Klaster mikro bahasan vendor logistik |
+| Komponen 7 | 8 | 0,8% | Percakapan terbatas akun anonim |
+| Komponen 8 | 8 | 0,8% | Kelompok mikro diskusi isu susu gratis |
+| Komponen 9 | 7 | 0,7% | Klaster mikro terisolasi |
+| Komponen 10 | 7 | 0,7% | Klaster mikro terisolasi |
+
 Dari 332 komponen jaringan yang teridentifikasi, komponen terbesar (giant component) hanya beranggotakan 88 aktor (9,0% dari total 973 nodes), sementara 232 komponen (69,9%) beranggotakan dua aktor atau kurang. Struktur ini menegaskan bahwa jaringan komunikasi Program MBG pada periode Maret–Mei 2026 sangat terfragmentasi menjadi percakapan-percakapan kecil yang saling terisolasi, dan hanya sebagian kecil aktor yang benar-benar terhubung dalam satu diskusi berskala lebih besar.
 4.3 Analisis Clustering: Dinamika Komunitas dan Echo Chambers
 Algoritma Louvain (Blondel dkk., 2008) mengidentifikasi 333 komunitas pada korpus resmi, dengan nilai modularity 0,9837 sebagaimana dilaporkan pada Tabel 4.1. Jumlah komunitas yang hampir menyamai jumlah komponen jaringan (332) mengindikasikan bahwa fragmentasi pada level komponen dan fragmentasi pada level komunitas sebagian besar tumpang tindih — hampir setiap komponen kecil yang terisolasi secara struktural juga terdeteksi sebagai komunitas tersendiri, bukan karena kesamaan tema pembahasan, melainkan karena tidak adanya jembatan interaksi ke komponen lain.
@@ -310,6 +323,24 @@ Inspeksi konten pada komponen terbesar (88 aktor) menunjukkan bahwa klaster ini 
 4.4 Analisis Level Aktor: Struktur Kekuasaan dan Brokerage
 Analisis sentralitas (degree, betweenness, dan eigenvector centrality) dilakukan untuk mengidentifikasi aktor-aktor dominan dalam penyebaran narasi terkait Program MBG pada korpus resmi.
 Tabel 4.3 Lima Belas Aktor dengan Degree Centrality Tertinggi (Korpus Resmi)
+| Peringkat | Akun Pengguna | Degree Centrality | Betweenness Centrality | Eigenvector Centrality | In-Degree | Out-Degree |
+|---|---|---|---|---|---|---|
+| 1 | @grok | 0,0433 | 0,000000 | 0,0000 | 0 | 42 |
+| 2 | @4Y4NKZ | 0,0175 | 0,000016 | 0,1166 | 2 | 15 |
+| 3 | @newIding30 | 0,0165 | 0,000000 | 0,1166 | 1 | 15 |
+| 4 | @prabowo | 0,0155 | 0,000000 | 0,0001 | 15 | 0 |
+| 5 | @dbdbidip | 0,0134 | 0,000000 | 0,0000 | 0 | 13 |
+| 6 | @Casagrande10939 | 0,0103 | 0,000000 | 0,0000 | 0 | 10 |
+| 7 | @luvdysh_ | 0,0093 | 0,000000 | 0,0000 | 0 | 9 |
+| 8 | @mBg_JK | 0,0082 | 0,000000 | 0,0000 | 0 | 8 |
+| 9 | @regar_op0sisi | 0,0072 | 0,000011 | 0,0000 | 5 | 2 |
+| 10 | @punishe98373138 | 0,0072 | 0,000000 | 0,0000 | 0 | 7 |
+| 11 | @daffiriffi | 0,0072 | 0,000000 | 0,0000 | 0 | 7 |
+| 12 | @deluxe_melissa | 0,0062 | 0,000000 | 0,0777 | 1 | 5 |
+| 13 | @ryookaasan | 0,0062 | 0,000000 | 0,0000 | 0 | 6 |
+| 14 | @tanyakanrl | 0,0052 | 0,000000 | 0,0000 | 5 | 0 |
+| 15 | @multibank_io | 0,0052 | 0,000006 | 0,0000 | 2 | 3 |
+
 Akun @grok menempati posisi teratas pada degree centrality (0,0432) sekaligus eigenvector centrality tertinggi (0,7049), mengindikasikan perannya sebagai target/rujukan mention yang paling sering dipanggil publik untuk memverifikasi atau mengklarifikasi klaim terkait Program MBG — pola yang khas pada platform X pasca-integrasi asisten AI ke dalam alur interaksi penggunanya. Akun @prabowo, sebagai pemegang otoritas kebijakan tertinggi, menempati posisi keempat dengan degree 0,0154 namun memiliki betweenness centrality tertinggi kedua (0,0052) pada komponen terbesar, menandakan posisinya sebagai episentrum emosi publik yang secara konsisten disebut lintas-utas percakapan dalam komponen tersebut. Sebagian besar aktor lain dengan sentralitas tinggi (4Y4NKZ, newIding30, dbdbidip, Casagrande10939, luvdysh_) berada pada komponen-komponen kecil yang terisolasi (7–18 anggota), menegaskan pola fragmentasi yang telah diuraikan pada subbagian 4.2 dan 4.3.
 4.5 Evaluasi Model Klasifikasi Emosi dan Deteksi Sindiran
 Evaluasi performa model IndoBERT hasil fine-tuning dilakukan pada testing set sebesar 501 baris (15,02% dari total data siap-analisis), yang dipisahkan secara acak (random_state = 42) dari korpus teks siap-analisis (±3.395 cuitan pasca-praproses). Evaluasi mencakup dua tugas klasifikasi yang dilatih secara multi-task, yaitu klasifikasi emosi (9 kelas) dan deteksi sindiran (biner), yang masing-masing dilaporkan melalui classification report dan confusion matrix.
