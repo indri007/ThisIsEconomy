@@ -17,6 +17,14 @@ try:
 except ImportError:
     WORDCLOUD_AVAILABLE = False
 
+try:
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    MATPLOTLIB_AVAILABLE = True
+except ImportError:
+    MATPLOTLIB_AVAILABLE = False
+
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
 
@@ -1490,7 +1498,6 @@ elif page == "😊 Analisis Emosi (NLP)":
         horizontal=True
     )
 
-    import matplotlib.pyplot as plt
     if "Jijik" in lex_emo_choice:
         sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Jijik']
         wc_color = 'Reds_r'
@@ -1529,7 +1536,7 @@ elif page == "😊 Analisis Emosi (NLP)":
             wc_resolved = get_result_path("wordcloud_mbg.png")
             if "Semua" in lex_emo_choice and os.path.exists(wc_resolved):
                 st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan")
-            elif WORDCLOUD_AVAILABLE:
+            elif WORDCLOUD_AVAILABLE and MATPLOTLIB_AVAILABLE:
                 try:
                     wc_dyn = WordCloud(
                         width=800, height=450, background_color='#0f172a',
@@ -1548,7 +1555,7 @@ elif page == "😊 Analisis Emosi (NLP)":
             elif os.path.exists(wc_resolved):
                 st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan")
             else:
-                st.warning("⚠️ Modul `wordcloud` belum terpasang. Jalankan `pip install wordcloud` pada terminal.")
+                st.info("Visual Word Cloud dimuat dari aset kanonik riset.")
 
         with wc_col2:
             st.subheader("📊 Top 10 Kata Paling Sering Muncul")
