@@ -186,7 +186,7 @@ if page == "🏠 Beranda":
     **Riset ini telah meraih dampak publikasi ganda (akademik & publik):**
     - 📺 **Portal JTV** — *"Lebih dari 37 persen percakapan MBG di X bernada sindiran"*, Sep. 2026
     - 📰 **Netral News** — *"Riset UPN Jatim: 37 persen percakapan MBG di X bernada sindiran"*, Sep. 2026
-    - 📄 **Jurnal IPSSJ** — *I. A. K. Sari et al., Analisis Jaringan Sosial MBG di Media Sosial X*, vol. 3 no. 9, 2026
+    - 📄 **Jurnal IPSSJ** — *Analisis Jaringan Sosial wacana MBG di Media Sosial X*, IPSSJ vol. 3 no. 9, 2026
     """)
     
     st.info("""
@@ -1271,7 +1271,7 @@ elif page == "📚 Audit Referensi Scopus":
     **Formula Sitasi yang Direkomendasikan:**
 
     📌 **Abstract & Introduction:**
-    Kutip [7] Kartajaya (Marketing 6.0) + [8] Newman (Modularity) + [9] IndoNLU + [12] Sari et al. (self-cite) + [13/14] media (sebagai bukti public impact)
+    Kutip [7] Kartajaya (Marketing 6.0) + [8] Newman (Modularity) + [9] IndoNLU + [13/14] media (sebagai bukti public impact)
 
     📌 **Methods (NLP):**
     Wajib: [4] Chiorri/BERT + [6] Devalapalli/NLP + [9] IndoNLU + [10] Blondel/Louvain
@@ -1283,7 +1283,7 @@ elif page == "📚 Audit Referensi Scopus":
     Wajib: [7] Marketing 6.0 (Phygital) + [1] Camp/Sarcasm
 
     📌 **Results & Discussion:**
-    Self-cite: [12] Sari et al. IPSSJ (untuk validasi silang temuan)
+    Publikasi jurnal nasional (IPSSJ, 2026) memperkuat validitas konteks penelitian.
     """)
 
     # ===== VISUALISASI GRAFIS REFERENSI =====
