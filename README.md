@@ -120,6 +120,7 @@ Aplikasi web interaktif akan otomatis terbuka di peramban web Anda pada alamat:
 | Halaman / Fitur | Deskripsi Interaktif |
 | :--- | :--- |
 | 🏠 **Beranda & Sintesis Masterpiece** | Hero card eksekutif, Grand Research Question, peta teori Marketing 6.0, dan sintesis *Phygital Gap*. |
+| 🏛️ **Landasan Teori & Pemikiran (Bab II)** | Peta interaktif Sunburst & Treemap 37 sub-bab (Hal. 26–84), 8 pilar konseptual, diagram alur *Phygital Gap*, dan validasi empiris 5 proposisi kerja. |
 | 📊 **Eksplorasi Data Mentah** | Filter data dinamis cuitan riil ($N=5.263$), korpus validasi sindiran ($N=3.395$), dan metrik sentralitas. |
 | 😊 **Analisis Emosi (NLP) & Leksikal** | Treemap interaktif 9 emosi Plutchik, **Word Cloud modern** (120 kata dengan tema gelap), dan **Top 10 Kata Paling Sering Muncul** (Kata Umum vs Kata Tematik MBG). |
 | 🕸️ **Analisis Jaringan (CNA/SNA)** | **Graf Interaktif PyVis**: Node diwarnai klaster Louvain riil, zoom & drag-and-drop, identifikasi aktor utama (`@grok` AI Oracle, `@prabowo` Power Vacuum, `@4Y4NKZ` Broker), dan grafik batang in-degree vs out-degree. |
@@ -227,6 +228,67 @@ python scripts/plot_integrated.py
 </table>
 
 </div>
+
+---
+
+## ☁️ ANALISIS LEKSIKAL: WORD CLOUD & TOP 10 KATA DOMINAN
+
+Selain klasifikasi emosi kalimat penuh dengan IndoBERT, riset ini melakukan **analisis leksikal berbasis frekuensi token** untuk membedakan antara diksi umum kebijakan (*core policy words*) dan isu tematik spesifik di lapangan (*ground-level complaints*).
+
+<div align="center">
+
+<img width="85%" src="results/wordcloud_mbg.png" alt="Word Cloud 120 Kata Paling Signifikan"/>
+
+*Gambar: Visual Word Cloud 120 Kata Kunci Paling Sering Muncul pada Korpus MBG (N=5.263)*
+
+</div>
+
+### 📊 Perbandingan Kata Kunci Umum vs Kata Tematik Lapangan
+
+<table>
+<tr>
+<th width="50%">🏆 Top 10 Kata Kunci Umum (Core Query)</th>
+<th width="50%">🎯 Top 10 Kata Tematik Spesifik (Isu Lapangan)</th>
+</tr>
+<tr>
+<td valign="top">
+
+| Peringkat | Kata Kunci | Frekuensi | Porsi Korpus |
+| :---: | :--- | :---: | :---: |
+| **#1** | `mbg` | 2.147 | 40,8% |
+| **#2** | `makanan` | 1.490 | 28,3% |
+| **#3** | `makan` | 1.409 | 26,8% |
+| **#4** | `gratis` | 1.200 | 22,8% |
+| **#5** | `gizi` | 829 | 15,8% |
+| **#6** | `program` | 694 | 13,2% |
+| **#7** | `sekolah` | 679 | 12,9% |
+| **#8** | `bergizi` | 537 | 10,2% |
+| **#9** | `anak` | 442 | 8,4% |
+| **#10** | `indonesia` | 297 | 5,6% |
+
+> *Mencerminkan payung formal wacana kebijakan pangan nasional.*
+
+</td>
+<td valign="top">
+
+| Peringkat | Kata Tematik | Frekuensi | Konteks Wacana Lapangan |
+| :---: | :--- | :---: | :--- |
+| **#1** | `sekolah` | 679 | Lokasi penerima manfaat & titik distribusi |
+| **#2** | `anak` | 442 | Subjek siswa penerima paket MBG |
+| **#3** | `indonesia` | 297 | Cakupan skala nasional program |
+| **#4** | `dapur` | 247 | Sentra pengolahan Satuan Pelayanan Gizi |
+| **#5** | `terus` | 246 | Kritik atas krisis/isu yang berulang |
+| **#6** | `enak` | 228 | Sindiran sarkastis mutu hidangan |
+| **#7** | `bikin` | 225 | Keluhan dampak (mual/keracunan) |
+| **#8** | `bgt` *(banget)* | 202 | Partikel hiperbola sindiran warganet |
+| **#9** | `menu` | 189 | Polemik variasi & pemangkasan lauk |
+| **#10** | `anggaran` | 184 | Sorotan pagu Rp15.000 vs realitas menu |
+
+> *Mengungkap titik kritis resistensi: dapur vendor, variasi menu, dan pemangkasan anggaran.*
+
+</td>
+</tr>
+</table>
 
 ---
 
