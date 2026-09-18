@@ -307,14 +307,13 @@ if page == "🏠 Beranda":
     st.markdown("Berdasarkan **Tabel 1.1 Ikhtisar Kajian Penelitian Terdahulu** dalam manuskrip tesis:")
 
     prior_research = {
-        "No.": [1, 2, 3, 4, 5, 6],
+        "No.": [1, 2, 3, 4, 5],
         "Peneliti (Tahun)": [
             "Rahayu, Kuntur & Hayatin (2018);\nRiza & Charibaldi (2021)",
             "Sulafasyah (2026);\nDevulapalli & Mandala (2026)",
             "Kotler, Kartajaya & Setiawan (2023)",
             "Gandasari et al. (2023)",
             "Shaw, LaCasse & Champagne (2025)",
-            "Sari et al. (2026) ⭐ Self-cite",
         ],
         "Judul Penelitian & Metode": [
             "Deteksi emosi/sarkasme berbahasa Indonesia\n(Fitur leksikal; FastText & LSTM)",
@@ -322,7 +321,6 @@ if page == "🏠 Beranda":
             "Marketing 6.0: The Future Is Immersive\n(Kajian konseptual)",
             "SNA krisis kebutuhan pokok di Twitter Indonesia\n(SNA + NetworkX)",
             "Klasifikasi emosi tweet Indonesia via IndoBERT\n(Transfer Learning)",
-            "SNA wacana MBG di Platform X\n(SNA + Louvain)",
         ],
         "Temuan Utama": [
             "Model leksikal dan sekuensial klasik masih kesulitan membaca sindiran implisit",
@@ -330,15 +328,13 @@ if page == "🏠 Beranda":
             "Memperkenalkan gagasan phygital gap pada pengalaman digital-fisik konsumen",
             "SNA memetakan aktor kunci dan struktur jaringan krisis pangan publik",
             "IndoBERT unggul dalam klasifikasi emosi multi-kelas pada tweet bahasa Indonesia",
-            "SNA mengungkap fragmentasi jaringan & aktor kunci wacana MBG",
         ],
         "Relevansi & Gap": [
-            "✅ Memperkuat alasan pemilihan IndoBERT dibanding pendekatan pra-transformer\n❌ Belum ada SNA + konteks MBG",
-            "✅ Objek/metode serupa, belum memadukan SNA dengan deteksi emosi granular\n❌ Tidak ada klasifikasi 9 emosi",
-            "✅ Kerangka teoritis utama, belum diujicobakan pada kebijakan pangan pemerintah\n❌ Tidak ada operasionalisasi komputasional",
+            "✅ Perkuat alasan IndoBERT vs pra-transformer\n❌ Belum ada SNA + konteks MBG",
+            "✅ Objek serupa, belum padukan SNA + emosi granular\n❌ Tidak ada klasifikasi 9 emosi",
+            "✅ Kerangka teoritis utama (Phygital Gap)\n❌ Belum dioperasionalisasikan komputasional",
             "✅ Metode SNA paling comparable\n❌ Tidak ada NLP / emosi / sarkasme",
-            "✅ Studi pembanding terdekat (IndoBERT + tweet Indonesia)\n❌ Tidak ada SNA / konteks kebijakan publik",
-            "✅ Penelitian dasar tesis ini\n❌ Belum integrasikan NLP, emosi, sarkasme, ABSA",
+            "✅ Studi terdekat (IndoBERT + tweet Indonesia)\n❌ Tidak ada SNA / konteks kebijakan",
         ],
     }
     df_prior = pd.DataFrame(prior_research)
@@ -376,8 +372,7 @@ if page == "🏠 Beranda":
         - Wacana digitalnya **belum pernah dipetakan secara ilmiah**
         - Tidak ada studi SNA + NLP khusus **kebijakan pangan publik Indonesia**
 
-        *Salafiyah (2026) baru skripsi,
-        Sari et al. (2026) baru SNA tanpa NLP.*
+        *Sulafasyah (2026) baru menganalisis isu MBG keracunan tanpa klasifikasi emosi.*
         """)
     with g3:
         st.info("""
@@ -410,9 +405,9 @@ if page == "🏠 Beranda":
             "Multi-method Triangulasi",
         ],
         "Gandasari (2023)": ["✅","❌","❌","❌","❌","❌","❌","❌"],
-        "Shaw (2025)":       ["❌","✅","✅","❌","❌","❌","❌","❌"],
-        "Sari et al. (2026) [self]": ["✅","❌","❌","❌","❌","✅","❌","❌"],
-        "⭐ PENELITIAN INI": ["✅","✅","✅","✅","✅","✅","✅","✅"],
+        "Shaw (2025)":      ["❌","✅","✅","❌","❌","❌","❌","❌"],
+        "Sulafasyah (2026)":["✅","❌","❌","❌","❌","✅","❌","❌"],
+        "⭐ PENELITIAN INI":["✅","✅","✅","✅","✅","✅","✅","✅"],
     }
     df_matrix = pd.DataFrame(matrix_data)
     st.dataframe(df_matrix, use_container_width=True, hide_index=True)
