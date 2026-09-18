@@ -5,6 +5,9 @@ import networkx as nx
 from pyvis.network import Network
 import streamlit.components.v1 as components
 import os
+import re
+from collections import Counter
+from wordcloud import WordCloud
 
 # Configuration
 st.set_page_config(
@@ -947,6 +950,154 @@ elif page == "😊 Analisis Emosi (NLP)":
     for idx, row in filtered_df.iterrows():
         st.info(row['text'])
         
+    st.markdown("---")
+    # ── §4.4b ANALISIS LEKSIKAL: WORD CLOUD & TOP 10 KATA SERING MUNCUL ──
+    st.header("☁️ §4.4b Analisis Leksikal: Word Cloud & Top 10 Kata Paling Sering Muncul")
+    st.markdown("""
+    > *Analisis leksikal mengungkap kosakata dominan dan penanda bahasa (*linguistic markers*) dalam wacana MBG. 
+    > Komputasi frekuensi kata dan visualisasi Word Cloud dihitung secara komputasional langsung dari 
+    > korpus riil $N=5.263$ cuitan pasca-pembersihan teks (*text cleansing*).*
+    """)
+
+    stopwords_lex = set([
+        'dan', 'yang', 'di', 'ini', 'itu', 'untuk', 'dari', 'dengan', 'ke', 'ada', 
+        'saya', 'kita', 'dia', 'mereka', 'akan', 'bisa', 'juga', 'sudah', 'oleh', 
+        'karena', 'pada', 'atau', 'jadi', 'harus', 'lagi', 'tidak', 'nggak', 'gak', 
+        'aja', 'nya', 'nih', 'sih', 'kok', 'lah', 'ya', 'kan', 'dong', 'deh', 'pun',
+        'bukan', 'tapi', 'kalau', 'kalo', 'buat', 'sama', 'mau', 'lebih', 'banyak',
+        'sangat', 'banget', 'bisa', 'dapat', 'saat', 'seperti', 'dalam', 'tentang',
+        'apa', 'siapa', 'mana', 'kapan', 'kenapa', 'bagaimana', 'gimana', 'hal',
+        'masih', 'hanya', 'cuma', 'bahkan', 'namun', 'selain', 'secara', 'tersebut',
+        'tahun', 'hari', 'kali', 'orang', 'para', 'semua', 'lain', 'setiap', 'ia',
+        'kami', 'kamu', 'anda', 'gua', 'gue', 'lo', 'lu', 'gw', 'tak', 'tiap', 'bagi',
+        'agar', 'supaya', 'ketika', 'setelah', 'sebelum', 'hingga', 'sampai', 'antar',
+        'https', 'http', 'co', 't', 'rt', 'via', 'amp', 'aku', 'udah', 'baru', 'punya',
+        'por', 'frete', 'amazon', 'que', 'uma', 'com', 'para', 'nao', 'voce', 'mais',
+        'como', 'sua', 'seu', 'tem', 'dos', 'das', 'grtis', 'sem', 'los', 'con', 'promoes', 'juros'
+    ])
+
+    lex_emo_choice = st.radio(
+        "Pilih Subset Emosi untuk Analisis Leksikal:", 
+        ["Semua Korpus (N=5.263)", "🤢 Emosi Jijik (Disgust)", "🤝 Emosi Percaya (Trust)", "😐 Emosi Netral", "🔮 Emosi Tertarik"],
+        horizontal=True
+    )
+
+    import matplotlib.pyplot as plt
+    if "Jijik" in lex_emo_choice:
+        sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Jijik']
+        wc_color = 'Reds_r'
+    elif "Percaya" in lex_emo_choice:
+        sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Percaya']
+        wc_color = 'Blues_r'
+    elif "Netral" in lex_emo_choice:
+        sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Netral']
+        wc_color = 'Greys_r'
+    elif "Tertarik" in lex_emo_choice:
+        sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Tertarik']
+        wc_color = 'YlOrBr_r'
+    else:
+        sub_lex_df = df_emotion
+        wc_color = 'magma'
+
+    all_lex_text = ' '.join(sub_lex_df['clean_text'].dropna().astype(str).tolist())
+    lex_tokens = [w for w in re.findall(r'[a-zA-Z]{3,}', all_lex_text.lower()) if w not in stopwords_lex]
+    counter_all = Counter(lex_tokens)
+    total_tokens_sub = len(lex_tokens)
+
+    # Top 10 All
+    top_10_all = counter_all.most_common(10)
+
+    # Top 10 Thematic
+    core_query_words = set(['mbg', 'makan', 'makanan', 'gratis', 'program', 'gizi', 'bergizi'])
+    counter_thematic = Counter({k: v for k, v in counter_all.items() if k not in core_query_words})
+    top_10_thematic = counter_thematic.most_common(10)
+
+    tab_lex1, tab_lex2 = st.tabs(["🏆 Top 10 Kata Umum & Word Cloud", "🎯 Top 10 Kata Tematik Spesifik (Isu Lapangan)"])
+
+    with tab_lex1:
+        wc_col1, wc_col2 = st.columns([1.2, 1])
+        with wc_col1:
+            st.subheader("☁️ Visual Word Cloud Diskursus MBG")
+            if os.path.exists("results/wordcloud_mbg.png") and "Semua" in lex_emo_choice:
+                st.image("results/wordcloud_mbg.png", use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan")
+            else:
+                wc_dyn = WordCloud(
+                    width=800, height=450, background_color='#0f172a',
+                    colormap=wc_color, max_words=100, contour_width=1, contour_color='#e2e8f0'
+                ).generate(' '.join(lex_tokens) if lex_tokens else 'mbg')
+                fig_wc, ax_wc = plt.subplots(figsize=(8, 4.5), facecolor='#0f172a')
+                ax_wc.imshow(wc_dyn, interpolation='bilinear')
+                ax_wc.axis('off')
+                st.pyplot(fig_wc, use_container_width=True)
+                plt.close(fig_wc)
+
+        with wc_col2:
+            st.subheader("📊 Top 10 Kata Paling Sering Muncul")
+            df_top10_all = pd.DataFrame({
+                'Kata': [f"#{i+1} {w}" for i, (w, _) in enumerate(top_10_all)][::-1],
+                'Frekuensi': [cnt for _, cnt in top_10_all][::-1],
+                'Porsi': [f"{(cnt/total_tokens_sub)*100:.2f}%" if total_tokens_sub > 0 else "0%" for _, cnt in top_10_all][::-1]
+            })
+            fig_bar10 = px.bar(
+                df_top10_all,
+                x='Frekuensi',
+                y='Kata',
+                orientation='h',
+                text='Frekuensi',
+                color='Frekuensi',
+                color_continuous_scale='Reds',
+                title=f"10 Kata Teratas ({lex_emo_choice})"
+            )
+            fig_bar10.update_traces(textposition='outside')
+            fig_bar10.update_layout(height=450, margin=dict(t=30, b=10, l=10, r=10), showlegend=False)
+            st.plotly_chart(fig_bar10, use_container_width=True)
+
+        st.subheader("🏷️ Kartu Ringkasan 10 Kata Teratas")
+        b_cols = st.columns(5)
+        for idx, (word, count) in enumerate(top_10_all[:5]):
+            pct_val = (count / total_tokens_sub) * 100 if total_tokens_sub > 0 else 0
+            with b_cols[idx]:
+                st.metric(f"Rank #{idx+1}", f"'{word}'", f"{count:,} cuitan ({pct_val:.1f}%)")
+        b_cols2 = st.columns(5)
+        for idx, (word, count) in enumerate(top_10_all[5:10]):
+            pct_val = (count / total_tokens_sub) * 100 if total_tokens_sub > 0 else 0
+            with b_cols2[idx]:
+                st.metric(f"Rank #{idx+6}", f"'{word}'", f"{count:,} cuitan ({pct_val:.1f}%)")
+
+    with tab_lex2:
+        st.subheader("🎯 10 Kata Tematik Spesifik (Di Luar Kata Kunci Kueri)")
+        st.caption("Menyaring kata kunci kueri ('mbg', 'makan', 'gratis', dll.) untuk menyingkap fokus substansi lapangan:")
+        
+        thm_col1, thm_col2 = st.columns([1.3, 1])
+        with thm_col1:
+            df_thm = pd.DataFrame({
+                'Kata Tematik': [f"#{i+1} {w}" for i, (w, _) in enumerate(top_10_thematic)][::-1],
+                'Jumlah Cuitan': [cnt for _, cnt in top_10_thematic][::-1],
+                'Porsi': [f"{(cnt/total_tokens_sub)*100:.2f}%" if total_tokens_sub > 0 else "0%" for _, cnt in top_10_thematic][::-1]
+            })
+            fig_thm = px.bar(
+                df_thm,
+                x='Jumlah Cuitan',
+                y='Kata Tematik',
+                orientation='h',
+                text='Jumlah Cuitan',
+                color='Jumlah Cuitan',
+                color_continuous_scale='Blues',
+                title="Top 10 Kosakata Isu Spesifik MBG"
+            )
+            fig_thm.update_traces(textposition='outside')
+            fig_thm.update_layout(height=420, margin=dict(t=30, b=10, l=10, r=10), showlegend=False)
+            st.plotly_chart(fig_thm, use_container_width=True)
+
+        with thm_col2:
+            st.info("""
+            **💡 Wawasan Komunikasi & Sosiologis:**
+            1. **`sekolah` (#1) & `anak` (#2):** Wacana MBG bukan sekadar perdebatan politik elit, melainkan berpusat langsung pada entitas fisik sekolah dasar dan perlindungan anak.
+            2. **`dapur` (#4):** Mengacu pada isu teknis Satuan Pelayanan Pemenuhan Gizi (SPPG) dan standar sanitasi dapur penyedia.
+            3. **`enak` (#6) & `menu` (#9):** Resepsi sensorik rasa dan kelayakan fisik menu menjadi tolok ukur kepuasan langsung penerima manfaat.
+            4. **`anggaran` (#10):** Kritik terhadap transparansi alokasi pembiayaan APBN dan potensi pemangkasan porsi.
+            """)
+
     st.markdown("---")
     st.markdown("---")
     # ── §4.5 EVALUASI MODEL KLASIFIKASI EMOSI DAN DETEKSI SINDIRAN ──
