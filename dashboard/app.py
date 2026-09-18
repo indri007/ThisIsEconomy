@@ -427,6 +427,130 @@ if page == "🏠 Beranda":
     """)
 
     st.markdown("---")
+    # ─── METODOLOGI & TAHAPAN PENELITIAN (BAB III) ───
+    st.header("🔬 §3 Desain Metodologi & Definisi Operasional Variabel")
+    st.markdown("""
+    > *Mengacu pada **Bab III Metode Penelitian**, riset ini menerapkan pendekatan **mixed-methods (explanatory sequential)** 
+    > berbasis paradigma **Computational Social Science**. Data komputasional kuantitatif diolah secara berjenjang 
+    > kemudian disintesiskan secara kualitatif dalam bingkai teori Marketing 6.0.*
+    """)
+
+    # ── Tabel 3.1 Definisi Operasional Variabel ──
+    st.subheader("📋 Tabel 3.1 Definisi Operasional Variabel")
+    st.caption("Operasionalisasi variabel konseptual ke dalam instrumen komputasi terukur (Bebas dari instrumen pihak ketiga non-aktif):")
+
+    op_var_data = {
+        "Variabel": [
+            "🎭 Emosi Granular",
+            "😏 Sindiran / Inkongruensi",
+            "🕸️ Sentralitas Aktor",
+            "⚡ Polarisasi Jaringan",
+            "📊 Sentimen per Aspek",
+            "🌐 Phygital Gap",
+        ],
+        "Definisi Konseptual": [
+            "9 kelas afektif diskret pada cuitan warganet",
+            "Ketidaksesuaian valensi antara teks tertulis dengan simbol visual (emoji)",
+            "Posisi strategis dan distribusi pengaruh akun dalam jaringan komunikasi",
+            "Tingkat keterpisahan struktural dan segregasi komunitas diskursus",
+            "Polaritas sentimen spesifik pada pilar operasional MBG",
+            "Kesenjangan persepsi antara narasi digital dengan realitas implementasi fisik",
+        ],
+        "Rujukan Teoretis": [
+            "Plutchik (1980)",
+            "Grice (1975); Camp (2012)",
+            "Freeman (1979)",
+            "Newman & Girvan (2004)",
+            "Pontiki dkk. (2014)",
+            "Kotler, Kartajaya & Setiawan (2023)",
+        ],
+        "Definisi Operasional": [
+            "Label kelas emosi hasil inferensi model klasifikasi berbasis konteks penuh",
+            "Status biner (sindiran vs non-sindiran) hasil deteksi inkongruensi teks-emoji",
+            "Tingkat kepentingan akun dalam jaringan mention berdasarkan metrik konektivitas",
+            "Kekuatan pembagian jaringan ke dalam klaster/komunitas independen",
+            "Valensi afektif warganet pada aspek anggaran, logistik, dan kualitas gizi",
+            "Diskrepansi terukur antara respon emosi daring dengan fakta capaian fisik program",
+        ],
+        "Indikator / Alat Ukur": [
+            "9 kelas keluaran model IndoBERT-base-p2",
+            "Kelas biner model IndoBERT multi-task & leksikon",
+            "Degree, betweenness, & eigenvector centrality (NetworkX)",
+            "Modularity Louvain, ambang batas 0,3 (Newman, 2006)",
+            "Aspect-Based Sentiment Analysis (ABSA) 3 dimensi",
+            "Triangulasi temuan komputasional (NLP + SNA) vs data riil",
+        ],
+    }
+    df_op = pd.DataFrame(op_var_data)
+    st.dataframe(df_op, use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+
+    # ── Tahapan Penelitian & Pipeline Komputasi ──
+    st.subheader("🔄 Tahapan Alur Penelitian (Research Pipeline)")
+    
+    th_col1, th_col2, th_col3, th_col4 = st.columns(4)
+    with th_col1:
+        st.info("""
+        **1️⃣ Akuisisi Data & Etika**
+        - Scraping platform X (Maret–Mei 2026)
+        - Filter kata kunci MBG & tagar resmi
+        - Korpus: 3.395 teks & 973 nodes
+        - Anonimisasi & eliminasi bot
+        """)
+    with th_col2:
+        st.warning("""
+        **2️⃣ Pra-Pemrosesan Teks**
+        - Noise removal (URL, RT, simbol)
+        - Case folding & normalisasi slang
+        - Punctuation removal (proteksi emoji)
+        - Stopword removal & Stemming Sastrawi
+        """)
+    with th_col3:
+        st.success("""
+        **3️⃣ Pemodelan Komputasional**
+        - **NLP**: IndoBERT 9 emosi & sindiran
+        - **SNA**: NetworkX (Centrality)
+        - **Komunitas**: Algoritma Louvain
+        - **ABSA**: Anggaran, logistik, gizi
+        """)
+    with th_col4:
+        st.error("""
+        **4️⃣ Sintesis & Evaluasi**
+        - Integrasi hasil NLP + SNA
+        - Uji 5 Proposisi Kerja
+        - Evaluasi Phygital Gap (Marketing 6.0)
+        - Rekomendasi mitigasi krisis fiskal
+        """)
+
+    st.markdown("---")
+
+    # ── Tiga Lapisan Analisis Data ──
+    st.subheader("🏛️ Tiga Lapisan Analisis Data (§3.6)")
+    lap1, lap2, lap3 = st.columns(3)
+    with lap1:
+        st.markdown("""
+        #### 🔤 Lapisan 1: Tekstual-Linguistik
+        - **Instrumen**: IndoBERT-base-p2 multi-task
+        - **Fokus**: Granularitas 9 emosi Plutchik & deteksi sindiran berbasis inkongruensi teks-emoji.
+        - **Output**: Distribusi afektif netizen & rasio resistensi linguistik warganet.
+        """)
+    with lap2:
+        st.markdown("""
+        #### 🕸️ Lapisan 2: Struktural-Relasional
+        - **Instrumen**: NetworkX & Algoritma Louvain
+        - **Fokus**: Topologi graf berarah, sentralitas akun kunci (Degree/Betweenness/Eigenvector), polarisasi modularity.
+        - **Output**: 332 komponen jaringan terfragmentasi, identifikasi Oracle (@grok) & Broker.
+        """)
+    with lap3:
+        st.markdown("""
+        #### 🎯 Lapisan 3: Diagnostik & Sintesis
+        - **Instrumen**: ABSA 3 Aspek & Kerangka Marketing 6.0
+        - **Fokus**: Pemetaan titik kritis sentimen (anggaran, logistik, gizi) terhadap celah implementasi fisik.
+        - **Output**: Penjelasan komprehensif akar krisis kepercayaan (*phygital gap*).
+        """)
+
+    st.markdown("---")
     st.markdown("📌 Silakan gunakan menu navigasi di sebelah kiri untuk mengeksplorasi data secara interaktif!")
 
 

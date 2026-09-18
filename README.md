@@ -364,7 +364,6 @@ DIGITAL PROMISE (Government)      vs      PHYSICAL REALITY (Public)
 | Tool | Purpose | Status |
 |------|---------|--------|
 | Gephi | Advanced network visualization | `Proposed` |
-| NodeXL | Excel-based SNA | `Proposed` |
 
 ---
 
