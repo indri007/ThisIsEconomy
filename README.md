@@ -75,70 +75,177 @@
 
 ---
 
-## 💻 PANDUAN MENJALANKAN DI LOCALHOST (LOCAL HOST RUN GUIDE)
+## 📖 PANDUAN LENGKAP & TUTORIAL REPRODUKSI RISET (END-TO-END TUTORIAL)
 
-Bagi penguji, dosen pembimbing, maupun peneliti yang ingin mereproduksi hasil dan menjalankan **Dashboard Interaktif Streamlit** secara lokal (*localhost*), silakan ikuti panduan praktis berikut:
-
-### 1. Prasyarat Sistem (*Prerequisites*)
-- **Python 3.10** atau lebih baru.
-- **Git** terpasang di sistem operasi Anda (macOS, Linux, atau Windows).
-- Ram minimal 4 GB disarankan.
-
-### 2. Kloning Repositori & Menyiapkan Lingkungan
-Buka terminal Anda dan jalankan perintah:
-```bash
-# 1. Kloning repositori resmi dari GitHub
-git clone https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA.git
-cd INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA
-
-# 2. Buat & aktifkan virtual environment (Sangat Disarankan)
-python3 -m venv .venv
-
-# Di macOS / Linux:
-source .venv/bin/activate
-
-# Di Windows (PowerShell / Command Prompt):
-# .venv\Scripts\activate
-
-# 3. Pasang semua dependensi riset
-pip install -r requirements.txt
-```
-
-### 3. Menjalankan Dashboard Streamlit di Localhost
-Jalankan dashboard melalui terminal dengan perintah:
-```bash
-streamlit run dashboard/app.py
-```
-Aplikasi web interaktif akan otomatis terbuka di peramban web Anda pada alamat:
-- 🌐 **Localhost URL:** [`http://localhost:8501`](http://localhost:8501)
-- 📡 **Network URL:** `http://<ip-lokal-anda>:8501` *(dapat diakses dari gawai/laptop lain dalam satu jaringan WiFi)*
+Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) dengan mudah oleh penguji tesis, dosen pembimbing, peneliti *computational social science*, maupun praktisi kebijakan publik. Berikut adalah seluruh panduan dan tutorial teknis:
 
 ---
 
-### 🌟 Eksplorasi Fitur Unggulan di Localhost
+### 🚀 TUTORIAL 1: MENJALANKAN DASHBOARD STREAMLIT (LOCAL & CLOUD)
 
-| Halaman / Fitur | Deskripsi Interaktif |
-| :--- | :--- |
-| 🏠 **Beranda & Sintesis Masterpiece** | Hero card eksekutif, Grand Research Question, peta teori Marketing 6.0, dan sintesis *Phygital Gap*. |
-| 🏛️ **Landasan Teori & Pemikiran (Bab II)** | Peta interaktif Sunburst & Treemap 37 sub-bab (Hal. 26–84), 8 pilar konseptual, diagram alur *Phygital Gap*, dan validasi empiris 5 proposisi kerja. |
-| 📊 **Eksplorasi Data Mentah** | Filter data dinamis cuitan riil ($N=5.263$), korpus validasi sindiran ($N=3.395$), dan metrik sentralitas. |
-| 😊 **Analisis Emosi (NLP) & Leksikal** | Treemap interaktif 9 emosi Plutchik, **Word Cloud modern** (120 kata dengan tema gelap), dan **Top 10 Kata Paling Sering Muncul** (Kata Umum vs Kata Tematik MBG). |
-| 🕸️ **Analisis Jaringan (CNA/SNA)** | **Graf Interaktif PyVis**: Node diwarnai klaster Louvain riil, zoom & drag-and-drop, identifikasi aktor utama (`@grok` AI Oracle, `@prabowo` Power Vacuum, `@4Y4NKZ` Broker), dan grafik batang in-degree vs out-degree. |
-| 🖼️ **Visual Storytelling** | 5 Tab galeri visual resolusi tinggi (Praproses Data, NLP & IndoBERT, CNA & Jaringan, Sintesis Masterpiece). |
+#### Opsi A: Akses Cepat via Cloud (Tanpa Instalasi)
+Dashboard telah terdeploy secara publik dan aktif 24/7 di Streamlit Community Cloud:
+- 🌐 **URL Cloud:** [https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/)
+
+#### Opsi B: Menjalankan di Komputer Lokal (*Localhost*)
+
+1. **Prasyarat Sistem (*System Prerequisites*):**
+   - **Python 3.10** atau lebih baru.
+   - **Git** terpasang di komputer Anda.
+   - RAM disarankan minimal 4 GB.
+
+2. **Langkah 1 — Kloning Repositori dari GitHub:**
+   ```bash
+   git clone https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA.git
+   cd INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA
+   ```
+
+3. **Langkah 2 — Menyiapkan Python Virtual Environment (Sangat Disarankan):**
+   ```bash
+   # Membuat virtual environment bernama .venv
+   python3 -m venv .venv
+
+   # Mengaktifkan di macOS / Linux:
+   source .venv/bin/activate
+
+   # Mengaktifkan di Windows (PowerShell / Command Prompt):
+   # .venv\Scripts\activate
+   ```
+
+4. **Langkah 3 — Instalasi Seluruh Dependensi:**
+   ```bash
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+   *Dependensi mencakup: `streamlit`, `plotly`, `pandas`, `numpy`, `networkx`, `torch`, `transformers`, `wordcloud`, `matplotlib`, `seaborn`, `pyvis`, `scikit-learn`.*
+
+5. **Langkah 4 — Menjalankan Aplikasi Streamlit:**
+   ```bash
+   streamlit run dashboard/app.py
+   ```
+   Peramban web (*browser*) Anda akan otomatis membuka antarmuka dashboard pada:
+   - 🌐 **Local URL:** [`http://localhost:8501`](http://localhost:8501)
+   - 📡 **Network URL:** `http://<ip-lokal-anda>:8501` *(dapat dibuka dari HP atau tablet dalam satu jaringan Wi-Fi)*
+
+   *Tips:* Jika port 8501 sedang digunakan oleh aplikasi lain, jalankan pada port alternatif:
+   ```bash
+   streamlit run dashboard/app.py --server.port 8502
+   ```
 
 ---
 
-### 🧪 Menjalankan Skrip Evaluasi Model & Plotting
-Untuk memverifikasi metrik komputasional secara langsung dari terminal:
+### 🧭 TUTORIAL 2: PANDUAN NAVIGASI & EKSPLORASI FITUR DASHBOARD
+
+Dashboard tesis ini memiliki **6 menu utama** yang dapat dipilih melalui panel navigasi sidebar di sebelah kiri:
+
+#### 1. 🏠 Beranda & Sintesis Masterpiece
+- **Ringkasan Metrik Ground-Truth:** Memeriksa 6 metrik utama (971 nodes, 666 edges, 3.395 sampel validasi sindiran, 5.263 korpus inferensi, 332 komunitas Louvain, dan skor modularitas $Q = 0.9837$).
+- **Rumusan Masalah Utama (Grand RQ):** Menelaah integrasi teori krisis berjejaring (*Networked Crisis Communication*) dan sintesis *Phygital Gap* (Marketing 6.0 Kotler et al.).
+- **Word Cloud Interaktif & Top 10 Kata Populer:** Menampilkan leksikon wacana publik teratas bertema gelap modern serta komparasi kata umum vs kata tematik kebijakan MBG (anggaran, gizi, siswa, uji coba, dsb.).
+
+#### 2. 🏛️ Landasan Teori & Pemikiran (Bab II)
+- **Peta Interaktif Taksonomi Teori:**
+  - **Mode Sunburst Radial:** Klik pada salah satu pilar teori (misal: *2.1 Risiko Fiskal* atau *2.6 SNA & Graf*) untuk melakukan *drill-down* visual ke sub-bab dan nomor halaman tesis. Klik bagian tengah untuk *zoom out*.
+  - **Mode Treemap Hierarkis:** Memetakan proporsi luas kajian 37 sub-bab secara proporsional.
+- **Eksplorasi 8 Pilar Teori:** Membuka tab teori untuk menelaah landasan teoritis (SCCT Coombs, Schultz et al., Habermas, Devlin et al., Blondel et al., dsb.).
+- **Diagram Alur Kausalitas Phygital Gap:** Bagan visual alur stimulus kebijakan fisik ke reaksi siber berjejaring.
+- **Validasi 5 Proposisi Riset (P1–P5):** Matriks pengujian empiris hipotesis tesis terhadap bukti data riil.
+
+#### 3. 📊 Eksplorasi Data Mentah
+- **Filter Multi-Kriteria:** Filter data cuitan riil ($N=5.263$) berdasarkan kelas emosi, kategori sindiran (sarkas/non-sarkas), serta pencarian kata kunci tertentu.
+- **Ekspor Data:** Mengunduh subset data hasil filter ke file CSV untuk audit independen.
+
+#### 4. 😊 Analisis Emosi (NLP) & Leksikal
+- **Treemap Distribusi 9 Emosi Plutchik:** Visualisasi dominasi emosi *Disgust* (56,24%), *Anger*, *Joy*, *Trust*, dan lainnya.
+- **Analisis Sindiran & Inkongruensi:** Grafik proporsi sindiran warganet (315 cuitan bersindiran valid pada korpus n=3.395).
+- **Showcase Kata Sering Muncul:** Visualisasi kata kunci bernilai diagnostik kebijakan.
+
+#### 5. 🕸️ Analisis Jaringan Komunikasi (CNA / SNA)
+- **Graf Interaktif PyVis:**
+  - Node diwarnai berdasarkan klaster komunitas Louvain riil.
+  - Interaksi drag-and-drop, zoom-in/zoom-out, dan hover untuk melihat metrik derajat tiap pengguna.
+- **Analisis Tiga Anomali Struktural Kunci:**
+  1. `@grok` (AI Oracle Takeover — out-degree=42, mengisi kekosongan komunikasi otoritatif).
+  2. `@prabowo` (Power Vacuum — in-degree=68, out-degree=0, sasaran kritik tanpa respons timbal-balik).
+  3. `@4Y4NKZ` (Structural Broker — penghubung klaster komunitas terisolasi).
+- **Grafik Asimetri Sentralitas:** Komparasi In-Degree vs Out-Degree aktor utama.
+
+#### 6. 🖼️ Visual Storytelling
+- **Galeri 10 Visual Resolusi Tinggi:** Menyajikan visualisasi standar publikasi akademik yang membedah data dari tahap pra-proses, performa model IndoBERT, topologi graf jaringan, hingga sintesis master 3-panel.
+- **Interpretasi Naratif Akademik:** Penjelasan mendalam dari setiap gambar sebagai basis penulisan artikel jurnal.
+
+#### 7. 📑 Audit Referensi Scopus
+- **Matriks Reputasi Literatur:** Audit kepatuhan sitasi terhadap jurnal internasional bereputasi (Q1/Q2 Scopus) dan konfirmasi keselarasan teori di Bab II tesis.
+
+---
+
+### 🧪 TUTORIAL 3: MENJALANKAN SKRIP PIPELINE & EVALUASI MODEL (CLI)
+
+Seluruh komputasi dapat diverifikasi secara mandiri melalui perintah terminal:
+
 ```bash
-# 1. Evaluasi model IndoBERT pada data validasi riil (n=1.053)
+# 1. Menjalankan Evaluasi Kinerja Model IndoBERT
 python scripts/evaluate.py
-# Menghasilkan: results/confusion_matrix.png & results/f1_scores.png
-
-# 2. Re-generasi Master Visual Integrasi 3-Panel SNA x NLP
-python scripts/plot_integrated.py
-# Menghasilkan: results/integrated_sna_nlp.png
 ```
+*Output yang dihasilkan:*
+- Menghitung metrik akurasi, Precision, Recall, Macro F1-Score, dan Weighted F1-Score pada data validasi riil ($n=1.053$).
+- Memperbarui file grafik resolusi tinggi: `results/confusion_matrix.png` dan `results/f1_scores.png`.
+
+```bash
+# 2. Menghasilkan Master Visual Terintegrasi (3-Panel SNA x NLP x ABSA)
+python scripts/plot_integrated.py
+```
+*Output yang dihasilkan:*
+- Menggabungkan topologi graf jaringan Louvain, heatmap emosi per klaster komunitas, dan diagram aspek sentimen ke dalam satu gambar komprehensif: `results/integrated_sna_nlp.png`.
+
+```bash
+# 3. Menghasilkan Plot Distribusi Dataset & Word Cloud
+python scripts/plot_dataset.py
+```
+*Output yang dihasilkan:*
+- Grafik batang distribusi 9 kelas emosi dan visualisasi kata paling sering muncul ke direktori `results/`.
+
+```bash
+# 4. Menjalankan Komputasi Topologi Jaringan & Louvain Community Detection
+python scripts/sna.py
+```
+*Output yang dihasilkan:*
+- Menghitung In-Degree, Out-Degree, Betweenness, Closeness, dan partisi komunitas Louvain dengan skor modularitas $Q = 0.9837$.
+
+---
+
+### 📓 TUTORIAL 4: MENJALANKAN REPRODUKSI VIA JUPYTER NOTEBOOK
+
+Bagi peneliti yang ingin memeriksa kode sel demi sel (*step-by-step interactive execution*):
+
+1. **Jalankan Jupyter Notebook di terminal:**
+   ```bash
+   jupyter notebook notebooks/tesis_mbg.ipynb
+   ```
+2. **Urutan Eksekusi Sel:**
+   - **Bagian 1: Data Ingestion & Preprocessing:** Memuat data mentah cuitan X ($N=5.310$), pembersihan noise, dan penanganan teks slang bahasa Indonesia.
+   - **Bagian 2: Deteksi Sindiran & Anotasi Leksikal:** Ekstraksi pola inkongruensi leksikal dan filter kevalidan sindiran ($N=3.395$).
+   - **Bagian 3: IndoBERT Fine-Tuning & Inference:** Arsitektur transformer `indobert-base-p2` untuk 9 kelas emosi Plutchik.
+   - **Bagian 4: Social Network Analysis (SNA):** Ekstraksi interaksi mention/reply, pemodelan directed graph via NetworkX, deteksi komunitas Louvain, dan metrik sentralitas.
+   - **Bagian 5: Visualisasi Terintegrasi:** Plot komparatif multi-dimensi.
+
+---
+
+### 🛠️ TUTORIAL 5: TROUBLESHOOTING & FAQ
+
+- **T: Mengapa visual Sunburst sempat tidak tampil (layar gelap)?**  
+  *J:* Pada implementasi awal, parameter `branchvalues='total'` di Plotly Express mewajibkan nilai node induk (*parent*) sama persis secara matematis dengan jumlah anak (*children*). Hal ini telah diperbaiki tuntas dengan menerapkan struktur hierarkis `path=['Pilar', 'SubBab']` yang secara inheren mengkalkulasi proporsi secara otomatis tanpa kendala nilai hierarki.
+
+- **T: Kendala saat instalasi pustaka `wordcloud` di sistem macOS Apple Silicon (M1/M2/M3)?**  
+  *J:* Jalankan perintah instalasi tanpa isolasi build atau melalui conda-forge:
+  ```bash
+  pip install wordcloud --no-build-isolation
+  # atau
+  conda install -c conda-forge wordcloud
+  ```
+
+- **T: Bagaimana memastikan metrik di dashboard 100% konsisten dengan data penelitian tesis?**  
+  *J:* Dashboard tidak menggunakan angka statis tiruan (*mock data*). Seluruh visualisasi membaca langsung dari dataset kanonik di direktori `data/` dan `results/` (`indobert_9_emosi_fixed.csv`, `network_edges.csv`, `dataset_sindiran_valid.csv`, dan `sna_degree.csv`).
 
 ---
 

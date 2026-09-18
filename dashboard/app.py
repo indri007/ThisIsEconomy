@@ -738,99 +738,87 @@ elif page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
 
     viz_type = st.radio("Pilih Mode Tampilan Visual:", ["🌟 Sunburst Radial (Lingkaran Bertingkat)", "🔲 Treemap Hierarkis (Proporsi Luas)"], horizontal=True)
 
-    # Hierarchical Dataframe Construction
-    sun_data = [
-        # Level 0
-        dict(id='Bab II', parent='', label='Bab II: Landasan Teori & Pemikiran', value=37, color='#1e1b4b'),
-        
-        # Level 1 (8 Pillars)
-        dict(id='2.1', parent='Bab II', label='2.1 Komunikasi Risiko Fiskal Makro (Hal. 26)', value=5, color='#ef4444'),
-        dict(id='2.2', parent='Bab II', label='2.2 Networked Crisis Comm. (Hal. 32)', value=6, color='#f97316'),
-        dict(id='2.3', parent='Bab II', label='2.3 Ruang Publik & Afordansi X (Hal. 37)', value=5, color='#3b82f6'),
-        dict(id='2.4', parent='Bab II', label='2.4 Inkongruensi & Sindiran Digital (Hal. 42)', value=6, color='#ec4899'),
-        dict(id='2.5', parent='Bab II', label='2.5 NLP & Arsitektur IndoBERT (Hal. 48)', value=8, color='#8b5cf6'),
-        dict(id='2.6', parent='Bab II', label='2.6 SNA & Teori Graf Jaringan (Hal. 55)', value=9, color='#06b6d4'),
-        dict(id='2.9', parent='Bab II', label='2.9 Kerangka Pemikiran Konseptual (Hal. 74)', value=2, color='#10b981'),
-        dict(id='2.10-11', parent='Bab II', label='2.10-11 Proposisi & Etika Riset (Hal. 80)', value=3, color='#eab308'),
-
-        # Level 2 (Sub-sections)
+    # Hierarchical Dataframe Construction (Robust path-based structure)
+    hier_data = [
         # 2.1
-        dict(id='2.1.1', parent='2.1', label='2.1.1 Konsep Dasar Risk Comm (Hal. 27)', value=1, color='#f87171'),
-        dict(id='2.1.2', parent='2.1', label='2.1.2 Fiscal Risk & Kepercayaan Publik (Hal. 28)', value=1, color='#f87171'),
-        dict(id='2.1.3', parent='2.1', label='2.1.3 Risiko Reputasi Negara (Hal. 29)', value=1, color='#f87171'),
-        dict(id='2.1.4', parent='2.1', label='2.1.4 Erosi Kepercayaan Institusional (Hal. 29)', value=1, color='#f87171'),
-        dict(id='2.1.5', parent='2.1', label='2.1.5 Optimism Bias Anggaran Kebijakan (Hal. 31)', value=1, color='#f87171'),
+        {'Pilar': '2.1 Risiko Fiskal Makro (Hal. 26)', 'SubBab': '2.1.1 Konsep Dasar Risk Comm (Hal. 27)', 'Deskripsi': 'Komunikasi risiko fiskal & transparansi', 'Bobot': 1},
+        {'Pilar': '2.1 Risiko Fiskal Makro (Hal. 26)', 'SubBab': '2.1.2 Fiscal Risk & Kepercayaan (Hal. 28)', 'Deskripsi': 'Dampak beban APBN pada persepsi publik', 'Bobot': 1},
+        {'Pilar': '2.1 Risiko Fiskal Makro (Hal. 26)', 'SubBab': '2.1.3 Risiko Reputasi Negara (Hal. 29)', 'Deskripsi': 'Kredibilitas fiskal & sovereign rating', 'Bobot': 1},
+        {'Pilar': '2.1 Risiko Fiskal Makro (Hal. 26)', 'SubBab': '2.1.4 Erosi Kepercayaan Institusi (Hal. 29)', 'Deskripsi': 'Defisit kepercayaan terhadap institusi publik', 'Bobot': 1},
+        {'Pilar': '2.1 Risiko Fiskal Makro (Hal. 26)', 'SubBab': '2.1.5 Optimism Bias Anggaran (Hal. 31)', 'Deskripsi': 'Overestimasi manfaat & underestimasi biaya', 'Bobot': 1},
 
         # 2.2
-        dict(id='2.2.1', parent='2.2', label='2.2.1 SCCT Titik Tolak (Coombs) (Hal. 32)', value=1, color='#fb923c'),
-        dict(id='2.2.2', parent='2.2', label='2.2.2 Networked Crisis Comm (Schultz et al.) (Hal. 32)', value=1, color='#fb923c'),
-        dict(id='2.2.3', parent='2.2', label='2.2.3 Krisis Terdesentralisasi (Hal. 34)', value=1, color='#fb923c'),
-        dict(id='2.2.4', parent='2.2', label='2.2.4 Kritik Lanjutan atas NCC (Hal. 34)', value=1, color='#fb923c'),
-        dict(id='2.2.5', parent='2.2', label='2.2.5 Compound Crisis & Efek Akumulatif (Hal. 35)', value=1, color='#fb923c'),
-        dict(id='2.2.6', parent='2.2', label='2.2.6 Single Source of Truth & Jubir (Hal. 36)', value=1, color='#fb923c'),
+        {'Pilar': '2.2 Networked Crisis Comm (Hal. 32)', 'SubBab': '2.2.1 SCCT Titik Tolak (Coombs) (Hal. 32)', 'Deskripsi': 'Situational Crisis Communication Theory', 'Bobot': 1},
+        {'Pilar': '2.2 Networked Crisis Comm (Hal. 32)', 'SubBab': '2.2.2 NCC (Schultz et al.) (Hal. 32)', 'Deskripsi': 'Dinamika krisis multi-aktor di era jejaring', 'Bobot': 1},
+        {'Pilar': '2.2 Networked Crisis Comm (Hal. 32)', 'SubBab': '2.2.3 Krisis Terdesentralisasi (Hal. 34)', 'Deskripsi': 'Pusat kontrol narasi yang terpecah', 'Bobot': 1},
+        {'Pilar': '2.2 Networked Crisis Comm (Hal. 32)', 'SubBab': '2.2.4 Kritik Lanjutan atas NCC (Hal. 34)', 'Deskripsi': 'Keterbatasan model respons krisis linear', 'Bobot': 1},
+        {'Pilar': '2.2 Networked Crisis Comm (Hal. 32)', 'SubBab': '2.2.5 Compound Crisis & Akumulatif (Hal. 35)', 'Deskripsi': 'Tumpukan isu logistik, gizi & anggaran', 'Bobot': 1},
+        {'Pilar': '2.2 Networked Crisis Comm (Hal. 32)', 'SubBab': '2.2.6 Single Source of Truth & Jubir (Hal. 36)', 'Deskripsi': 'Urgensi kanal otoritatif tunggal komunikasi krisis', 'Bobot': 1},
 
         # 2.3
-        dict(id='2.3.1', parent='2.3', label='2.3.1 Deliberasi Ruang Publik Digital (Hal. 37)', value=1, color='#60a5fa'),
-        dict(id='2.3.2', parent='2.3', label='2.3.2 Karakteristik Afordansi Platform X (Hal. 38)', value=1, color='#60a5fa'),
-        dict(id='2.3.3', parent='2.3', label='2.3.3 Budaya Reply-Thread & Kritik (Hal. 39)', value=1, color='#60a5fa'),
-        dict(id='2.3.4', parent='2.3', label='2.3.4 Bahasa Gaul, Slang & Campur Kode (Hal. 40)', value=1, color='#60a5fa'),
-        dict(id='2.3.5', parent='2.3', label='2.3.5 Algoritma Rekomendasi & Atensi (Hal. 41)', value=1, color='#60a5fa'),
+        {'Pilar': '2.3 Ruang Publik & Afordansi X (Hal. 37)', 'SubBab': '2.3.1 Deliberasi Publik Digital (Hal. 37)', 'Deskripsi': 'Habermas dalam lanskap media sosial X/Twitter', 'Bobot': 1},
+        {'Pilar': '2.3 Ruang Publik & Afordansi X (Hal. 37)', 'SubBab': '2.3.2 Karakteristik Afordansi X (Hal. 38)', 'Deskripsi': 'Fitur quote, repost, thread penentu dinamika wacana', 'Bobot': 1},
+        {'Pilar': '2.3 Ruang Publik & Afordansi X (Hal. 37)', 'SubBab': '2.3.3 Budaya Reply-Thread & Kritik (Hal. 39)', 'Deskripsi': 'Konfrontasi argumen di kolom komentar warganet', 'Bobot': 1},
+        {'Pilar': '2.3 Ruang Publik & Afordansi X (Hal. 37)', 'SubBab': '2.3.4 Slang & Campur Kode (Hal. 40)', 'Deskripsi': 'Bahasa satir warganet dan ekspresi vernakular', 'Bobot': 1},
+        {'Pilar': '2.3 Ruang Publik & Afordansi X (Hal. 37)', 'SubBab': '2.3.5 Algoritma Rekomendasi & Atensi (Hal. 41)', 'Deskripsi': 'Amplifikasi konten polaritatif oleh rekomendasi platform', 'Bobot': 1},
 
         # 2.4
-        dict(id='2.4.1', parent='2.4', label='2.4.1 Pragmatik & Implikatur Percakapan (Hal. 42)', value=1, color='#f472b6'),
-        dict(id='2.4.2', parent='2.4', label='2.4.2 Incongruity Theory Makna (Hal. 43)', value=1, color='#f472b6'),
-        dict(id='2.4.3', parent='2.4', label='2.4.3 Sindiran dalam CMC (Hal. 43)', value=1, color='#f472b6'),
-        dict(id='2.4.4', parent='2.4', label='2.4.4 Inkongruensi Teks-Emoji Analitis (Hal. 44)', value=1, color='#f472b6'),
-        dict(id='2.4.5', parent='2.4', label='2.4.5 Sindiran Resistensi Simbolik (Hal. 46)', value=1, color='#f472b6'),
-        dict(id='2.4.6', parent='2.4', label='2.4.6 Multimodalitas Sindiran (Hal. 47)', value=1, color='#f472b6'),
+        {'Pilar': '2.4 Inkongruensi & Sindiran (Hal. 42)', 'SubBab': '2.4.1 Pragmatik & Implikatur (Hal. 42)', 'Deskripsi': 'Makna tersirat di balik ujaran literal', 'Bobot': 1},
+        {'Pilar': '2.4 Inkongruensi & Sindiran (Hal. 42)', 'SubBab': '2.4.2 Incongruity Theory Makna (Hal. 43)', 'Deskripsi': 'Kesenjangan ekspektasi vs realitas empiris', 'Bobot': 1},
+        {'Pilar': '2.4 Inkongruensi & Sindiran (Hal. 42)', 'SubBab': '2.4.3 Sindiran dalam CMC (Hal. 43)', 'Deskripsi': 'Bentuk ironi dalam interaksi berbasis komputer', 'Bobot': 1},
+        {'Pilar': '2.4 Inkongruensi & Sindiran (Hal. 42)', 'SubBab': '2.4.4 Inkongruensi Teks-Emoji (Hal. 44)', 'Deskripsi': 'Pujian semu disertai emoji tawa/ironi', 'Bobot': 1},
+        {'Pilar': '2.4 Inkongruensi & Sindiran (Hal. 42)', 'SubBab': '2.4.5 Sindiran Resistensi Simbolik (Hal. 46)', 'Deskripsi': 'Kritik warga sebagai bentuk counter-power rakyat', 'Bobot': 1},
+        {'Pilar': '2.4 Inkongruensi & Sindiran (Hal. 42)', 'SubBab': '2.4.6 Multimodalitas Sindiran (Hal. 47)', 'Deskripsi': 'Kombinasi meme, foto menu, dan teks sarkas', 'Bobot': 1},
 
         # 2.5
-        dict(id='2.5.1', parent='2.5', label='2.5.1 Evolusi NLP: Statistik ke DL (Hal. 48)', value=1, color='#a78bfa'),
-        dict(id='2.5.2', parent='2.5', label='2.5.2 Transformer & Self-Attention (Hal. 49)', value=1, color='#a78bfa'),
-        dict(id='2.5.3', parent='2.5', label='2.5.3 Arsitektur Dasar BERT (Devlin) (Hal. 49)', value=1, color='#a78bfa'),
-        dict(id='2.5.4', parent='2.5', label='2.5.4 IndoBERT Konteks Bahasa Indonesia (Hal. 50)', value=1, color='#a78bfa'),
-        dict(id='2.5.5', parent='2.5', label='2.5.5 Fine-Tuning 9 Emosi Granular (Hal. 51)', value=1, color='#a78bfa'),
-        dict(id='2.5.6', parent='2.5', label='2.5.6 Evaluasi Kinerja (Akurasi/F1) (Hal. 52)', value=1, color='#a78bfa'),
-        dict(id='2.5.7', parent='2.5', label='2.5.7 Isu Bias & Imbalanced Data (Hal. 53)', value=1, color='#a78bfa'),
-        dict(id='2.5.8', parent='2.5', label='2.5.8 Komparasi Model Alternatif (Hal. 54)', value=1, color='#a78bfa'),
+        {'Pilar': '2.5 IndoBERT & NLP (Hal. 48)', 'SubBab': '2.5.1 Evolusi NLP: Statistik ke DL (Hal. 48)', 'Deskripsi': 'Transisi representasi n-gram ke dense transformer', 'Bobot': 1},
+        {'Pilar': '2.5 IndoBERT & NLP (Hal. 48)', 'SubBab': '2.5.2 Transformer & Self-Attention (Hal. 49)', 'Deskripsi': 'Mekanisme perhatian kontekstual bidirectional', 'Bobot': 1},
+        {'Pilar': '2.5 IndoBERT & NLP (Hal. 48)', 'SubBab': '2.5.3 Arsitektur Dasar BERT (Hal. 49)', 'Deskripsi': 'Devlin et al. pre-training MLM + NSP', 'Bobot': 1},
+        {'Pilar': '2.5 IndoBERT & NLP (Hal. 48)', 'SubBab': '2.5.4 IndoBERT Bhs Indonesia (Hal. 50)', 'Deskripsi': 'Pre-training korpus bahasa Indonesia 4B+ token', 'Bobot': 1},
+        {'Pilar': '2.5 IndoBERT & NLP (Hal. 48)', 'SubBab': '2.5.5 Fine-Tuning 9 Emosi Granular (Hal. 51)', 'Deskripsi': 'Klasifikasi multi-kelas emosi granular spesifik MBG', 'Bobot': 1},
+        {'Pilar': '2.5 IndoBERT & NLP (Hal. 48)', 'SubBab': '2.5.6 Evaluasi Akurasi & F1-Score (Hal. 52)', 'Deskripsi': 'Metrik Macro/Weighted F1 & Confusion Matrix', 'Bobot': 1},
+        {'Pilar': '2.5 IndoBERT & NLP (Hal. 48)', 'SubBab': '2.5.7 Bias & Imbalanced Data (Hal. 53)', 'Deskripsi': 'Mitigasi ketimpangan kelas emosi minoritas', 'Bobot': 1},
+        {'Pilar': '2.5 IndoBERT & NLP (Hal. 48)', 'SubBab': '2.5.8 Komparasi Model Alternatif (Hal. 54)', 'Deskripsi': 'Benchmarking IndoBERT vs RoBERTa vs SVM', 'Bobot': 1},
 
         # 2.6
-        dict(id='2.6.1', parent='2.6', label='2.6.1 Dasar-Dasar Teori Graf (Hal. 55)', value=1, color='#22d3ee'),
-        dict(id='2.6.2', parent='2.6', label='2.6.2 Sentralitas dalam Jaringan (Hal. 55)', value=1, color='#22d3ee'),
-        dict(id='2.6.3', parent='2.6', label='2.6.3 Deteksi Komunitas Louvain (Hal. 56)', value=1, color='#22d3ee'),
-        dict(id='2.6.4', parent='2.6', label='2.6.4 Modularity Ukuran Polarisasi (Hal. 57)', value=1, color='#22d3ee'),
-        dict(id='2.6.5', parent='2.6', label='2.6.5 Homofili & Echo Chamber (Hal. 58)', value=1, color='#22d3ee'),
-        dict(id='2.6.6', parent='2.6', label='2.6.6 Visualisasi Diagnostik Kebijakan (Hal. 59)', value=1, color='#22d3ee'),
-        dict(id='2.6.7', parent='2.6', label='2.6.7 Jaringan Bipartit & Graf Sederhana (Hal. 60)', value=1, color='#22d3ee'),
-        dict(id='2.6.8', parent='2.6', label='2.6.8 Komparasi Algoritma Komunitas (Hal. 61)', value=1, color='#22d3ee'),
-        dict(id='2.6.9', parent='2.6', label='2.6.9 Analisis Sentralitas Jaringan (Hal. 62)', value=1, color='#22d3ee'),
+        {'Pilar': '2.6 SNA & Teori Graf (Hal. 55)', 'SubBab': '2.6.1 Dasar Teori Graf (Hal. 55)', 'Deskripsi': 'Node, edge, dan representasi matriks relasional', 'Bobot': 1},
+        {'Pilar': '2.6 SNA & Teori Graf (Hal. 55)', 'SubBab': '2.6.2 Sentralitas Derajat (Hal. 55)', 'Deskripsi': 'In-Degree, Out-Degree & keaktifan interaksi aktor', 'Bobot': 1},
+        {'Pilar': '2.6 SNA & Teori Graf (Hal. 55)', 'SubBab': '2.6.3 Deteksi Komunitas Louvain (Hal. 56)', 'Deskripsi': 'Optimasi modularitas partisi hierarkis', 'Bobot': 1},
+        {'Pilar': '2.6 SNA & Teori Graf (Hal. 55)', 'SubBab': '2.6.4 Modularity Polarisasi (Hal. 57)', 'Deskripsi': 'Skor modularitas Q sebagai indikator polarisasi publik', 'Bobot': 1},
+        {'Pilar': '2.6 SNA & Teori Graf (Hal. 55)', 'SubBab': '2.6.5 Homofili & Echo Chamber (Hal. 58)', 'Deskripsi': 'Klasterisasi aktor berbasis kesamaan pandangan', 'Bobot': 1},
+        {'Pilar': '2.6 SNA & Teori Graf (Hal. 55)', 'SubBab': '2.6.6 Visualisasi Diagnostik (Hal. 59)', 'Deskripsi': 'Peta topologi aktor utama penggerak opini', 'Bobot': 1},
+        {'Pilar': '2.6 SNA & Teori Graf (Hal. 55)', 'SubBab': '2.6.7 Jaringan Bipartit (Hal. 60)', 'Deskripsi': 'Relasi dua moda antara pengguna dan narasi isu', 'Bobot': 1},
+        {'Pilar': '2.6 SNA & Teori Graf (Hal. 55)', 'SubBab': '2.6.8 Komparasi Algoritma Komunitas (Hal. 61)', 'Deskripsi': 'Louvain vs Girvan-Newman vs Walktrap', 'Bobot': 1},
+        {'Pilar': '2.6 SNA & Teori Graf (Hal. 55)', 'SubBab': '2.6.9 Sentralitas Jaringan (Hal. 62)', 'Deskripsi': 'Betweenness, Closeness, & PageRank aktor kunci', 'Bobot': 1},
 
         # 2.9
-        dict(id='2.9.1', parent='2.9', label='2.9.1 Arah Kausalitas Konseptual (Hal. 77)', value=1, color='#34d399'),
-        dict(id='2.9.2', parent='2.9', label='2.9.2 Definisi Variabel Kunci (Hal. 78)', value=1, color='#34d399'),
+        {'Pilar': '2.9 Kerangka Pemikiran (Hal. 74)', 'SubBab': '2.9.1 Kausalitas Konseptual (Hal. 77)', 'Deskripsi': 'Alur logis stimulus kebijakan MBG ke reaksi siber', 'Bobot': 1},
+        {'Pilar': '2.9 Kerangka Pemikiran (Hal. 74)', 'SubBab': '2.9.2 Definisi Variabel Phygital (Hal. 78)', 'Deskripsi': 'Operasionalisasi diskrepansi fisik-digital program', 'Bobot': 1},
 
-        # 2.10 - 2.11
-        dict(id='2.10', parent='2.10-11', label='2.10 Proposisi Kerja Riset P1–P5 (Hal. 80)', value=1, color='#facc15'),
-        dict(id='2.11.1', parent='2.10-11', label='2.11.1 Privasi & Ekspektasi Wajar (Hal. 83)', value=1, color='#facc15'),
-        dict(id='2.11.2', parent='2.10-11', label='2.11.2 Akun Bot & Validitas Data (Hal. 83)', value=1, color='#facc15'),
+        # 2.10-11
+        {'Pilar': '2.10-11 Proposisi & Etika (Hal. 80)', 'SubBab': '2.10 Proposisi Riset P1–P5 (Hal. 80)', 'Deskripsi': '5 Hipotesis kerja teruji data riil 47k sampel', 'Bobot': 1},
+        {'Pilar': '2.10-11 Proposisi & Etika (Hal. 80)', 'SubBab': '2.11.1 Privasi & Ekspektasi Wajar (Hal. 83)', 'Deskripsi': 'Kepatuhan etika anonimisasi data media sosial', 'Bobot': 1},
+        {'Pilar': '2.10-11 Proposisi & Etika (Hal. 80)', 'SubBab': '2.11.2 Akun Bot & Validitas Data (Hal. 83)', 'Deskripsi': 'Filtrasi noise dan validasi keaslian sentimen publik', 'Bobot': 1}
     ]
 
-    df_hierarchy = pd.DataFrame(sun_data)
+    df_hierarchy = pd.DataFrame(hier_data)
 
     if "Sunburst" in viz_type:
         fig_hier = px.sunburst(
             df_hierarchy, 
-            ids='id', 
-            parents='parent', 
-            names='label', 
-            values='value',
-            branchvalues='total',
-            color='id',
+            path=['Pilar', 'SubBab'], 
+            values='Bobot',
+            color='Pilar',
             color_discrete_sequence=px.colors.qualitative.Prism,
-            height=620
+            height=650
+        )
+        fig_hier.update_traces(
+            textinfo="label",
+            insidetextorientation='radial',
+            hovertemplate="<b>%{label}</b><br>Jumlah Sub-Bab: %{value}<extra></extra>"
         )
         fig_hier.update_layout(
-            margin=dict(t=10, l=10, r=10, b=10),
+            margin=dict(t=20, l=20, r=20, b=20),
             paper_bgcolor="#0f172a",
             font=dict(family="Outfit, sans-serif", color="white", size=13)
         )
@@ -838,16 +826,17 @@ elif page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
     else:
         fig_hier = px.treemap(
             df_hierarchy,
-            ids='id',
-            parents='parent',
-            names='label',
-            values='value',
-            color='id',
+            path=['Pilar', 'SubBab'],
+            values='Bobot',
+            color='Pilar',
             color_discrete_sequence=px.colors.qualitative.Prism,
-            height=600
+            height=620
+        )
+        fig_hier.update_traces(
+            hovertemplate="<b>%{label}</b><br>Jumlah Sub-Bab: %{value}<extra></extra>"
         )
         fig_hier.update_layout(
-            margin=dict(t=10, l=10, r=10, b=10),
+            margin=dict(t=20, l=20, r=20, b=20),
             paper_bgcolor="#0f172a",
             font=dict(family="Outfit, sans-serif", color="white", size=13)
         )
@@ -2555,8 +2544,7 @@ Ini adalah bukti struktural dari **top-down communication failure** — publik b
 
 
 elif page == "🖼️ Visual Storytelling":
-    st.title("Galeri Visual Storytelling (Academic Blueprint)")
-    st.markdown("Berikut adalah pameran 10 visualisasi berstandar publikasi jurnal internasional (Scopus Q1/Q2). Blueprint ini menjadi panduan absolut sebelum gambar dimasukkan ke dalam manuscript utama.")
+    st.title("🖼️ Visual Storytelling")
     
     st.info("""
     ### 📖 Filosofi Storytelling
