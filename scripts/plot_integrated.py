@@ -24,40 +24,42 @@ ax1.axis('off')
 
 # Panel 2: Community Structure (Louvain Modularity)
 ax2 = plt.subplot(132)
-# Simulate Louvain clusters visually by coloring quadrants for aesthetic appeal
-colors = []
-for node in G.nodes():
-    x, y = pos[node]
-    if x > 0 and y > 0: colors.append('#ff9999')
-    elif x > 0 and y <= 0: colors.append('#66b3ff')
-    elif x <= 0 and y > 0: colors.append('#99ff99')
-    else: colors.append('#ffcc99')
-nx.draw_networkx_nodes(G, pos, node_size=20, node_color=colors, alpha=0.8, ax=ax2)
-nx.draw_networkx_edges(G, pos, alpha=0.05, edge_color='gray', ax=ax2)
-ax2.set_title("2. Community Structure\n(333 Clusters, Modularity 0.98)", fontsize=14, fontweight='bold', color='white')
+nodes_df = pd.read_csv("results/mbg_network_nodes_final.csv")
+node_comm_map = dict(zip(nodes_df['Id'], nodes_df['Community']))
+
+# Generate colors based on actual community IDs
+cmap = plt.cm.get_cmap('tab20', 20)
+colors = [cmap(node_comm_map.get(node, 0) % 20) for node in G.nodes()]
+nx.draw_networkx_nodes(G, pos, node_size=20, node_color=colors, alpha=0.85, ax=ax2)
+nx.draw_networkx_edges(G, pos, alpha=0.08, edge_color='gray', ax=ax2)
+ax2.set_title("2. Community Structure\n(333 Clusters, Modularity 0.9837)", fontsize=14, fontweight='bold', color='white')
 ax2.axis('off')
 
-# Panel 3: Emotion & Sarcasm Integration (NLP)
+# Panel 3: Emotion Integration per Komunitas (Data Riil)
 ax3 = plt.subplot(133)
-clusters = ['C1 (@grok)', 'C2 (@prabowo)', 'C3 (Media)', 'C4 (Public)']
-jijik = [70, 20, 30, 85]
-sarkasme = [15, 5, 10, 10]
-bahagia_percaya = [5, 60, 40, 0]
-netral = [10, 15, 20, 5]
+top5_comms = nodes_df['Community'].value_counts().head(5).index
+comm_labels = [f"K#{c} (n={nodes_df[nodes_df['Community']==c].shape[0]})" for c in top5_comms]
 
-barWidth = 0.6
-r = np.arange(len(clusters))
+ct = pd.crosstab(nodes_df['Community'], nodes_df['Dominant_Emotion'], normalize='index') * 100
+ct_top = ct.reindex(top5_comms).fillna(0)
 
-ax3.bar(r, jijik, color='#ff4d4d', edgecolor='white', width=barWidth, label='Jijik (NLP)')
-ax3.bar(r, sarkasme, bottom=jijik, color='#ff9999', edgecolor='white', width=barWidth, label='Sarkasme')
-ax3.bar(r, bahagia_percaya, bottom=[i+j for i,j in zip(jijik, sarkasme)], color='#4da6ff', edgecolor='white', width=barWidth, label='Bahagia/Percaya')
-ax3.bar(r, netral, bottom=[i+j+k for i,j,k in zip(jijik, sarkasme, bahagia_percaya)], color='#cccccc', edgecolor='white', width=barWidth, label='Netral')
+jijik_vals = ct_top['disgust'].values if 'disgust' in ct_top.columns else np.zeros(5)
+percaya_vals = ct_top['love'].values if 'love' in ct_top.columns else np.zeros(5)
+netral_vals = ct_top['neutral'].values if 'neutral' in ct_top.columns else np.zeros(5)
+
+barWidth = 0.55
+r = np.arange(len(top5_comms))
+
+ax3.bar(r, jijik_vals, color='#e74c3c', edgecolor='white', width=barWidth, label='🤢 Jijik (Disgust)')
+ax3.bar(r, percaya_vals, bottom=jijik_vals, color='#3498db', edgecolor='white', width=barWidth, label='🤝 Percaya (Trust)')
+ax3.bar(r, netral_vals, bottom=jijik_vals + percaya_vals, color='#95a5a6', edgecolor='white', width=barWidth, label='😐 Netral')
 
 ax3.set_xticks(r)
-ax3.set_xticklabels(clusters, rotation=15, color='white')
-ax3.set_ylabel("Percentage of Discourse (%)", color='white')
-ax3.set_title("3. Integrasi NLP & CNA\n(Emosi/Sarkasme per Komunitas)", fontsize=14, fontweight='bold', color='white')
-ax3.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=2)
+ax3.set_xticklabels(comm_labels, rotation=15, color='white', fontsize=10)
+ax3.set_ylabel("Porsi Emosi Dominan Aktor (%)", color='white', fontsize=11)
+ax3.set_ylim(0, 105)
+ax3.set_title("3. Integrasi CNA & NLP (Data Riil)\nDistribusi Emosi per Klaster Utama", fontsize=14, fontweight='bold', color='white')
+ax3.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=3, frameon=True)
 ax3.tick_params(colors='white')
 for spine in ax3.spines.values():
     spine.set_color('white')
