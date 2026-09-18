@@ -2568,6 +2568,128 @@ elif page == "🕸️ Analisis Jaringan (CNA)":
     )
     st.plotly_chart(fig_act_bars, use_container_width=True)
 
+    # ── §4.4b VISUALISASI KOMPREHENSIF SENTRALITAS AKTOR: DEGREE, BETWEENNESS, & EIGENVECTOR ──
+    st.markdown("---")
+    st.subheader("👑 §4.4b Visualisasi Tri-Metrik Sentralitas Aktor: Degree, Betweenness, & Eigenvector")
+    st.markdown("""
+    > *Dalam **Social Network Analysis (Freeman, 1979; Wasserman & Faust, 1994)**, struktur kekuasaan dan pengaruh aktor tidak cukup dinilai dari satu ukuran saja. 
+    > Riset ini mengkalkulasi dan memvisualisasikan **tiga dimensi sentralitas komplementer** dari graf interaksi riil MBG:*
+    > 1. **Degree Centrality:** Mengukur tingkat popularitas dan frekuensi interaksi langsung aktor (siapa yang paling aktif/disebut).
+    > 2. **Betweenness Centrality:** Mengukur peran aktor sebagai jembatan (*structural broker*) di antara kelompok-kelompok yang terpisah.
+    > 3. **Eigenvector Centrality:** Mengukur prestise dan pengaruh kualitatif (terhubung ke aktor-aktor yang juga memiliki pengaruh kuat).
+    """)
+
+    # Siapkan DataFrame lengkap metrik sentralitas seluruh node
+    cent_nodes_list = []
+    for n in G_dir.nodes():
+        cent_nodes_list.append({
+            'Akun': f"@{n}",
+            'Raw_Node': n,
+            'Degree Centrality': deg_d.get(n, 0.0),
+            'Betweenness Centrality': bet_d.get(n, 0.0),
+            'Eigenvector Centrality': eig_d.get(n, 0.0),
+            'In-Degree (Sasaran)': G_dir.in_degree(n),
+            'Out-Degree (Penyebar)': G_dir.out_degree(n),
+            'Total Relasi': G_dir.degree(n),
+            'Peran': peran_map.get(n, "🗣️ Partisipan Wacana")
+        })
+    df_cent_all = pd.DataFrame(cent_nodes_list)
+
+    cent_tab1, cent_tab2, cent_tab3, cent_tab4 = st.tabs([
+        "📊 1. Degree Centrality (Popularitas)",
+        "🔗 2. Betweenness Centrality (Brokerage)",
+        "💎 3. Eigenvector Centrality (Prestise)",
+        "🎯 4. Triangulasi Multi-Dimensi (Scatter Plot)"
+    ])
+
+    with cent_tab1:
+        st.markdown("#### 📊 Peringkat 10 Aktor dengan Degree Centrality Tertinggi")
+        st.caption("Mengukur aktor dengan volume relasi langsung terbanyak (In-Degree + Out-Degree):")
+        
+        df_top_deg = df_cent_all.sort_values(by='Degree Centrality', ascending=True).tail(10)
+        fig_deg_bar = px.bar(
+            df_top_deg,
+            y='Akun',
+            x='Degree Centrality',
+            orientation='h',
+            color='Degree Centrality',
+            color_continuous_scale='Blues',
+            text=df_top_deg['Degree Centrality'].apply(lambda x: f"{x:.4f}"),
+            title="Top 10 Aktor: Degree Centrality (Aktivitas & Keterhubungan Langsung)"
+        )
+        fig_deg_bar.update_traces(textposition='outside')
+        fig_deg_bar.update_layout(height=400, margin=dict(t=40, b=20, l=10, r=20), xaxis_title="Skor Degree Centrality", yaxis_title="Akun Pengguna")
+        st.plotly_chart(fig_deg_bar, use_container_width=True)
+        st.info("💡 **Insight Temuan:** Agen AI **@grok** menduduki sentralitas derajat tertinggi (**0,0433 / 42 relasi**), membuktikan fenomena *Algorithmic Trust Takeover*, di mana warganet lebih banyak berinteraksi dengan AI untuk memverifikasi kebenaran program ketimbang akun resmi pemerintah.")
+
+    with cent_tab2:
+        st.markdown("#### 🔗 Peringkat 10 Aktor dengan Betweenness Centrality Tertinggi")
+        st.caption("Mengukur aktor yang menduduki posisi jembatan krusial (*structural bridge / gatekeeper*) antarkelompok:")
+        
+        df_top_bet = df_cent_all.sort_values(by='Betweenness Centrality', ascending=True).tail(10)
+        fig_bet_bar = px.bar(
+            df_top_bet,
+            y='Akun',
+            x='Betweenness Centrality',
+            orientation='h',
+            color='Betweenness Centrality',
+            color_continuous_scale='Reds',
+            text=df_top_bet['Betweenness Centrality'].apply(lambda x: f"{x:.6f}"),
+            title="Top 10 Aktor: Betweenness Centrality (Kekuatan Jembatan Jaringan)"
+        )
+        fig_bet_bar.update_traces(textposition='outside')
+        fig_bet_bar.update_layout(height=400, margin=dict(t=40, b=20, l=10, r=30), xaxis_title="Skor Betweenness Centrality", yaxis_title="Akun Pengguna")
+        st.plotly_chart(fig_bet_bar, use_container_width=True)
+        st.success("🔗 **Insight Temuan:** **@4Y4NKZ** menduduki skor Betweenness tertinggi (**0,000016**), disusul oleh **@regar_op0sisi** (**0,000011**) dan **@multibank_io** (**0,000006**). Aktor-aktor ini merupakan *information brokers* langka di tengah jaringan yang sangat terfragmentasi ($Q = 0.9837$).")
+
+    with cent_tab3:
+        st.markdown("#### 💎 Peringkat 10 Aktor dengan Eigenvector Centrality Tertinggi")
+        st.caption("Mengukur pengaruh kualitatif aktor yang terhubung ke simpul-simpul berbobot tinggi lainnya:")
+        
+        df_top_eig = df_cent_all.sort_values(by='Eigenvector Centrality', ascending=True).tail(10)
+        fig_eig_bar = px.bar(
+            df_top_eig,
+            y='Akun',
+            x='Eigenvector Centrality',
+            orientation='h',
+            color='Eigenvector Centrality',
+            color_continuous_scale='Greens',
+            text=df_top_eig['Eigenvector Centrality'].apply(lambda x: f"{x:.4f}"),
+            title="Top 10 Aktor: Eigenvector Centrality (Koneksi ke Aktor Berpengaruh)"
+        )
+        fig_eig_bar.update_traces(textposition='outside')
+        fig_eig_bar.update_layout(height=400, margin=dict(t=40, b=20, l=10, r=20), xaxis_title="Skor Eigenvector Centrality", yaxis_title="Akun Pengguna")
+        st.plotly_chart(fig_eig_bar, use_container_width=True)
+        st.info("💎 **Insight Temuan:** Eigenvector Centrality tertinggi diraih oleh aktor seperti **@4Y4NKZ** dan **@newIding30** (skor **0,1166**), membuktikan bahwa relasi mereka terkonsentrasi pada simpul-simpul penggerak utama perdebatan publik.")
+
+    with cent_tab4:
+        st.markdown("#### 🎯 Triangulasi Multi-Dimensi Sentralitas (Scatter Plot Interaktif)")
+        st.caption("Memetakan posisi struktural aktor warganet: Sumbu X (Degree), Sumbu Y (Betweenness), Ukuran Bubble (Total Relasi):")
+        
+        df_scatter_top = df_cent_all.sort_values(by='Degree Centrality', ascending=False).head(25).copy()
+        
+        fig_cent_scatter = px.scatter(
+            df_scatter_top,
+            x='Degree Centrality',
+            y='Betweenness Centrality',
+            size='Total Relasi',
+            color='Peran',
+            text='Akun',
+            hover_data=['In-Degree (Sasaran)', 'Out-Degree (Penyebar)', 'Eigenvector Centrality'],
+            title="Peta Triangulasi Sentralitas Aktor Diskursus MBG",
+            color_discrete_sequence=['#06b6d4', '#ec4899', '#eab308', '#ef4444', '#10b981', '#8b5cf6', '#3b82f6']
+        )
+        fig_cent_scatter.update_traces(textposition='top right', marker=dict(line=dict(width=1, color='#ffffff')))
+        fig_cent_scatter.update_layout(
+            height=500,
+            margin=dict(t=50, b=30, l=10, r=20),
+            xaxis_title="Degree Centrality (Popularitas & Aktivitas)",
+            yaxis_title="Betweenness Centrality (Kekuatan Brokerage)",
+            legend_title="Peran Struktural Aktor"
+        )
+        st.plotly_chart(fig_cent_scatter, use_container_width=True)
+        st.caption("📌 **Keterangan Tipologi:** Aktor di kuadran kanan bawah (**@grok**) memiliki popularitas masif namun bukan perantara antarkelompok. Sebaliknya, aktor di bagian atas (**@4Y4NKZ**) memiliki peran kontrol informasi (*gatekeeping*) tertinggi.")
+
     st.markdown("---")
 
     # ── §4.4c 10 TOP MEDIA & KANAL KOMUNIKASI PENGHUBUNG (SELAIN CNN INDONESIA) ──
