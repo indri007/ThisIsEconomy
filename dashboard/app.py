@@ -4019,12 +4019,201 @@ elif "Bab V" in page:
               - Memperluas jangkauan ke platform visual seperti TikTok dan Instagram.
             """)
 
-        with st.expander("📌 5.4 Keterbatasan Penelitian (Hal. 113)"):
+        # ── §5.4 KETERBATASAN PENELITIAN & AGENDA RISET MENDATANG ──
+        st.markdown("---")
+        st.subheader("⚠️ 5.4 Visualisasi Keterbatasan Penelitian (Research Limitations) & Refleksi Kritis")
+        st.markdown("""
+        > *Transparansi akademik menuntut pengakuan jujur atas batas-batas ruang lingkup metodologis studi. 
+        > Berikut adalah pemetaan multidimensi 5 keterbatasan utama riset ini, strategi mitigasi yang telah diterapkan, 
+        > serta rekomendasi arah penelitian lanjutan (*future research agenda*).*
+        """)
+
+        # Panel 1: Interactive Radar Chart (Plotly)
+        col_rad, col_mat = st.columns([1.1, 1.3])
+
+        with col_rad:
+            st.markdown("##### 🕸️ A. Radar Profil Kapabilitas Metodologis vs Batas Horizon Riset")
+            
+            categories_radar = [
+                'Kedalaman NLP Emosi (9 Kelas)',
+                'Topologi Jaringan SNA (Louvain)',
+                'Triangulasi Phygital Mkt 6.0',
+                'Multimodalitas (Teks + CV)',
+                'Multi-Platform (X + TikTok + FB)',
+                'Horizon Temporal (Longitudinal)',
+                'Representasi Rural 3T'
+            ]
+            
+            fig_radar_lim = go.Figure()
+
+            # Ideal Full Horizon
+            fig_radar_lim.add_trace(go.Scatterpolar(
+                r=[100, 100, 100, 100, 100, 100, 100, 100],
+                theta=categories_radar + [categories_radar[0]],
+                fill='toself',
+                fillcolor='rgba(148, 163, 184, 0.08)',
+                line=dict(color='#94A3B8', dash='dash', width=1.5),
+                name='Batas Horizon Ideal (Teoritis)'
+            ))
+
+            # Thesis Scope
+            fig_radar_lim.add_trace(go.Scatterpolar(
+                r=[95, 92, 90, 20, 25, 35, 30, 95],
+                theta=categories_radar + [categories_radar[0]],
+                fill='toself',
+                fillcolor='rgba(2, 132, 199, 0.35)',
+                line=dict(color='#38BDF8', width=3),
+                name='Cakupan Metodologis Tesis Ini'
+            ))
+
+            fig_radar_lim.update_layout(
+                polar=dict(
+                    radialaxis=dict(
+                        visible=True,
+                        range=[0, 105],
+                        tickvals=[25, 50, 75, 100],
+                        ticktext=['25%', '50%', '75%', '100%'],
+                        color='#94A3B8',
+                        gridcolor='#334155'
+                    ),
+                    angularaxis=dict(
+                        color='#F8FAFC',
+                        gridcolor='#334155'
+                    ),
+                    bgcolor='#1E293B'
+                ),
+                paper_bgcolor='#0F172A',
+                plot_bgcolor='#0F172A',
+                margin=dict(l=40, r=40, t=30, b=30),
+                height=380,
+                legend=dict(
+                    orientation="h",
+                    yanchor="bottom",
+                    y=-0.2,
+                    xanchor="center",
+                    x=0.5,
+                    font=dict(color='#F8FAFC', size=10)
+                )
+            )
+            st.plotly_chart(fig_radar_lim, use_container_width=True)
+
+        with col_mat:
+            st.markdown("##### 📊 B. Skor Keterbatasan Metodologis & Potensi Risiko Bias")
+            
+            lim_bar_df = pd.DataFrame([
+                {"Dimensi Keterbatasan": "Single-Platform Boundary (X/Twitter Bias)", "Tingkat Keterbatasan": 75, "Area Fokus": "Eksternalitas"},
+                {"Dimensi Keterbatasan": "Unimodalitas Teks (Tanpa Visi Komputer)", "Tingkat Keterbatasan": 80, "Area Fokus": "Modalitas"},
+                {"Dimensi Keterbatasan": "Snapshot Temporal (Maret–Mei 2026)", "Tingkat Keterbatasan": 65, "Area Fokus": "Horizon Waktu"},
+                {"Dimensi Keterbatasan": "Ambiguitas Satir Vernakular Budaya", "Tingkat Keterbatasan": 45, "Area Fokus": "Linguistik"},
+                {"Dimensi Keterbatasan": "Representasi Demografis Rural 3T", "Tingkat Keterbatasan": 70, "Area Fokus": "Sampling"}
+            ])
+            
+            fig_bar_lim = px.bar(
+                lim_bar_df,
+                x="Tingkat Keterbatasan",
+                y="Dimensi Keterbatasan",
+                orientation='h',
+                color="Area Fokus",
+                color_discrete_map={
+                    "Eksternalitas": "#F59E0B",
+                    "Modalitas": "#EF4444",
+                    "Horizon Waktu": "#6366F1",
+                    "Linguistik": "#10B981",
+                    "Sampling": "#EC4899"
+                },
+                text="Tingkat Keterbatasan"
+            )
+            fig_bar_lim.update_traces(texttemplate='%{text}% Batasan', textposition='inside')
+            fig_bar_lim.update_layout(
+                paper_bgcolor='#0F172A',
+                plot_bgcolor='#1E293B',
+                font=dict(color='#F8FAFC'),
+                margin=dict(l=10, r=20, t=20, b=20),
+                height=380,
+                xaxis=dict(range=[0, 100], gridcolor='#334155', title="Skor Derajat Keterbatasan (0 = Bebas Bias, 100 = Sangat Dibatasi)"),
+                yaxis=dict(autorange="reversed", title="")
+            )
+            st.plotly_chart(fig_bar_lim, use_container_width=True)
+
+        # Detailed 5 Limitations Tabs
+        st.markdown("##### 🔍 C. Eksplorasi 5 Pilar Keterbatasan, Mitigasi & Riset Lanjutan")
+        
+        tab_lim1, tab_lim2, tab_lim3, tab_lim4, tab_lim5 = st.tabs([
+            "1️⃣ Platform X Bias",
+            "2️⃣ Unimodalitas Teks",
+            "3️⃣ Rentang Waktu",
+            "4️⃣ Satir & Budaya",
+            "5️⃣ Sampling Rural 3T"
+        ])
+
+        with tab_lim1:
             st.markdown("""
-            - **Platform Tunggal:** Analisis hanya bertumpu pada percakapan publik di platform X (Twitter).
-            - **Unimodalitas Teks:** Belum mencakup analisis visi komputer atas foto piring makan yang diunggah warganet.
-            - **Rentang Waktu:** Terfokus pada momentum kritis Maret–Mei 2026 (pemangkasan anggaran dan insiden awal).
+            **Pilar 1: Single-Platform Boundary Bias (Platform X / Twitter)**
+            * **Batas Metodologi:** Korpus data diambil khusus dari platform X (N=5.263). Percakapan di TikTok, Facebook Group, dan Instagram yang memiliki penetrasi tinggi di kalangan ibu rumah tangga dan wali murid belum tertangkap.
+            * **Risiko Bias:** Kecenderungan pengguna X yang lebih politis, kritis, dan berpendidikan tinggi dapat melebih-lebihkan sentimen *Disgust* dibanding populasi umum.
+            * **Mitigasi dalam Tesis:** Pembersihan bot otomatis via metrik SNA, verifikasi rasio edge/node (692 relasi aktif), serta normalisasi leksikon ragam santai Twitter.
+            * **Agenda Riset Masa Depan:** Mengembangkan agregator *cross-platform social listening* terintegrasi (X + TikTok + YouTube Comments + Facebook).
             """)
+
+        with tab_lim2:
+            st.markdown("""
+            **Pilar 2: Unimodalitas Teks (Text-Only NLP vs Computer Vision)**
+            * **Batas Metodologi:** Analisis murni mengolah teks cuitan warganet dan belum mencakup *Computer Vision* (CV) untuk menganalisis jutaan foto menu/piring makanan fisik yang diunggah warganet.
+            * **Risiko Bias:** Klaim tekstual "porsi sedikit" atau "sayur basi" diterima sebagai persepsi afektif warganet tanpa verifikasi visual komparatif atas piring makanan riil secara objektif.
+            * **Mitigasi dalam Tesis:** Triangulasi aspek ABSA (Gizi, Anggaran, Logistik) untuk memvalidasi konsistensi topik antar-klaster warganet yang independen.
+            * **Agenda Riset Masa Depan:** Menerapkan arsitektur multimodal Vision-Language (VLM) seperti CLIP atau LLaVA untuk mengkorelasikan teks sindiran dengan kalori visual piring makan.
+            """)
+
+        with tab_lim3:
+            st.markdown("""
+            **Pilar 3: Snapshot Horizon Temporal (Maret – Mei 2026)**
+            * **Batas Metodologi:** Pengambilan data difokuskan pada jendela krisis awal peluncuran kebijakan (isu pemangkasan anggaran dan kejadian makanan basi pertama kali).
+            * **Risiko Bias:** Bersifat *cross-sectional snapshot*, belum menangkap fase pemulihan (*recovery stage*) setelah Badan Gizi Nasional (BGN) mendirikan SPPG terstandar.
+            * **Mitigasi dalam Tesis:** Analisis time-series harian mikro untuk membedah titik lonjakan viralitas krisis (*viral crisis spikes*) secara presisi.
+            * **Agenda Riset Masa Depan:** Studi longitudinal berkala (12–24 bulan) untuk memotret kurva transisi dari krisis menuju penerimaan stabil kebijakan publik.
+            """)
+
+        with tab_lim4:
+            st.markdown("""
+            **Pilar 4: Sarkasme Vernakular & Kompleksitas Budaya Lokal**
+            * **Batas Metodologi:** Gaya tutur warganet Indonesia dipenuhi satir halus, metafora hiperbolik, serta idiom daerah (Jawa/Sunda) seperti *"sayur bening isi angin doang"*.
+            * **Risiko Bias:** Klasifikasi emosi berisiko mengalami *misclassification* antara emosi *Marah (Anger)*, *Jijik (Disgust)*, dan *Netral (Neutral)*.
+            * **Mitigasi dalam Tesis:** Integrasi korpus sindiran terverifikasi (N=3.395) dan evaluasi performa model IndoBERT mencapai Macro F1 0.8122.
+            * **Agenda Riset Masa Depan:** Memanfaatkan model penalaran pragmatik berbasis LLM kultural yang peka terhadap majas ironi bahasa daerah Indonesia.
+            """)
+
+        with tab_lim5:
+            st.markdown("""
+            **Pilar 5: Representasi Sampling (Urban-Skewed vs Rural 3T Non-Digital)**
+            * **Batas Metodologi:** Mayoritas pengguna aktif X berada di wilayah perkotaan (*urban-centric*). Persepsi penerima manfaat langsung di daerah 3T (Tertinggal, Terdepan, Terluar) belum memiliki jejak digital setara.
+            * **Risiko Bias:** Tesis lebih merefleksikan opini publik kelas menengah perkotaan dan aktivis media sosial ketimbang suara riil anak-anak sekolah pedesaan.
+            * **Mitigasi dalam Tesis:** Memfokuskan proposisi kesimpulan pada *pengawasan kebijakan makro nasional, transparansi tata kelola anggaran, dan relasi komunikasi krisis*.
+            * **Agenda Riset Masa Depan:** Triangulasi hibrida dengan survei lapangan tatap muka (*mixed-methods fieldwork*) bersamaan dengan pemantauan SNA digital.
+            """)
+
+        # Matriks Komprehensif Tabel
+        st.markdown("##### 📋 D. Matriks Komparasi Keterbatasan ↔ Mitigasi ↔ Riset Lanjutan")
+        lim_matrix_data = [
+            {"No": 1, "Pilar Keterbatasan": "Single-Platform Boundary", "Batas Ruang Lingkup": "Khusus platform X (Twitter)", "Mitigasi Riset Tesis": "Pembersihan bot & filter 692 relasi aktif", "Agenda Riset Masa Depan": "Agregasi multi-platform (TikTok, FB, IG)"},
+            {"No": 2, "Pilar Keterbatasan": "Unimodalitas Teks", "Batas Ruang Lingkup": "Hanya analisis teks cuitan", "Mitigasi Riset Tesis": "Triangulasi ABSA 3 pilar tematik", "Agenda Riset Masa Depan": "Multimodal Vision-Language (CLIP/LLaVA)"},
+            {"No": 3, "Pilar Keterbatasan": "Horizon Temporal", "Batas Ruang Lingkup": "Snapshot krisis Maret–Mei 2026", "Mitigasi Riset Tesis": "Pelacakan harian mikro lonjakan viralitas", "Agenda Riset Masa Depan": "Studi longitudinal berkala 12–24 bulan"},
+            {"No": 4, "Pilar Keterbatasan": "Satir Vernakular Lokal", "Batas Ruang Lingkup": "Metafora & idiom daerah", "Mitigasi Riset Tesis": "Dataset sindiran N=3.395, Macro F1 0.8122", "Agenda Riset Masa Depan": "Reasoning pragmatik kultural berbasis LLM"},
+            {"No": 5, "Pilar Keterbatasan": "Representasi Rural 3T", "Batas Ruang Lingkup": "Urban-skewed pengguna Twitter", "Mitigasi Riset Tesis": "Fokus pada tata kelola makro & transparansi", "Agenda Riset Masa Depan": "Mixed-methods hibrida survei tatap muka"}
+        ]
+        st.dataframe(pd.DataFrame(lim_matrix_data), use_container_width=True, hide_index=True)
+
+        # Display High-Resolution Thesis Plot
+        p_lim_img = get_result_path("keterbatasan_penelitian.png")
+        if os.path.exists(p_lim_img):
+            st.markdown("##### 🖼️ E. Gambar Masterpiece Keterbatasan Penelitian (Publikasi Naskah Tesis)")
+            st.image(p_lim_img, use_container_width=True, caption="Gambar 5.1. Peta Multidimensi Keterbatasan Penelitian, Mitigasi Empiris, dan Agenda Riset Masa Depan (300 DPI)")
+            with open(p_lim_img, "rb") as f_img:
+                st.download_button(
+                    label="⬇️ Unduh Gambar Keterbatasan Penelitian (PNG 300 DPI)",
+                    data=f_img.read(),
+                    file_name="keterbatasan_penelitian_mbg.png",
+                    mime="image/png"
+                )
 
     # Comprehensive Summary Table
     st.markdown("---")
