@@ -11,7 +11,28 @@ import streamlit.components.v1 as components
 import os
 import re
 from collections import Counter
-from wordcloud import WordCloud
+try:
+    from wordcloud import WordCloud
+    WORDCLOUD_AVAILABLE = True
+except ImportError:
+    WORDCLOUD_AVAILABLE = False
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+
+def get_result_path(filename):
+    candidates = [
+        os.path.join(PROJECT_ROOT, "results", filename),
+        os.path.join(PROJECT_ROOT, "results", "storytelling", filename),
+        os.path.join("results", filename),
+        os.path.join("results", "storytelling", filename),
+        os.path.join("..", "results", filename),
+        os.path.join("..", "results", "storytelling", filename),
+    ]
+    for c in candidates:
+        if os.path.exists(c):
+            return c
+    return os.path.join(PROJECT_ROOT, "results", filename)
 
 # Configuration
 st.set_page_config(
@@ -274,11 +295,31 @@ if page == "🏠 Beranda":
     st.markdown("Grafik terintegrasi di bawah ini merangkum keseluruhan narasi dari tesis ini. Mulai dari struktur jaringan yang tersebar (kiri), pembentukan sub-komunitas terisolasi (tengah), hingga distribusi emosi dan sarkasme di dalamnya (kanan).")
     
     # Define image path dynamically
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(current_dir)
-    master_visual_path = os.path.join(project_root, "results", "integrated_sna_nlp.png")
-    
+    master_visual_path = get_result_path("integrated_sna_nlp.png")
     st.image(master_visual_path, use_container_width=True)
+    
+    st.markdown("---")
+    st.subheader("☁️ Peta Leksikal Wacana MBG: Word Cloud & Top 10 Kata Paling Sering Muncul")
+    st.markdown("Menampilkan kata-kata kunci paling sering digunakan oleh warganet dalam membicarakan Program Makan Bergizi Gratis di platform X.")
+    
+    b_wc1, b_wc2 = st.columns([1.2, 1])
+    with b_wc1:
+        wc_main_img = get_result_path("wordcloud_mbg.png")
+        if os.path.exists(wc_main_img):
+            st.image(wc_main_img, use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan pada Korpus MBG")
+        else:
+            st.info("Visual Word Cloud sedang dimuat...")
+    with b_wc2:
+        st.markdown("#### 🏆 Top 10 Kata Dominan (Korpus Riil N=5.263)")
+        top10_home = [
+            ("#1 mbg", 2147, "40,8%"), ("#2 makanan", 1490, "28,3%"), ("#3 makan", 1409, "26,8%"),
+            ("#4 gratis", 1200, "22,8%"), ("#5 gizi", 829, "15,8%"), ("#6 program", 694, "13,2%"),
+            ("#7 sekolah", 679, "12,9%"), ("#8 bergizi", 537, "10,2%"), ("#9 anak", 442, "8,4%"),
+            ("#10 indonesia", 297, "5,6%")
+        ]
+        df_top_home = pd.DataFrame(top10_home, columns=["Kata", "Frekuensi", "Estimasi Kemunculan"])
+        st.dataframe(df_top_home, use_container_width=True, hide_index=True)
+        st.caption("💡 *Buka menu **😊 Analisis Emosi (NLP)** untuk filter leksikal per emosi dan analisis kata tematik lapangan (sekolah, anak, dapur, anggaran).*")
     
     st.markdown("---")
     
@@ -1496,18 +1537,29 @@ elif page == "😊 Analisis Emosi (NLP)":
         wc_col1, wc_col2 = st.columns([1.2, 1])
         with wc_col1:
             st.subheader("☁️ Visual Word Cloud Diskursus MBG")
-            if os.path.exists("results/wordcloud_mbg.png") and "Semua" in lex_emo_choice:
-                st.image("results/wordcloud_mbg.png", use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan")
+            wc_resolved = get_result_path("wordcloud_mbg.png")
+            if "Semua" in lex_emo_choice and os.path.exists(wc_resolved):
+                st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan")
+            elif WORDCLOUD_AVAILABLE:
+                try:
+                    wc_dyn = WordCloud(
+                        width=800, height=450, background_color='#0f172a',
+                        colormap=wc_color, max_words=100, contour_width=1, contour_color='#e2e8f0'
+                    ).generate(' '.join(lex_tokens) if lex_tokens else 'mbg')
+                    fig_wc, ax_wc = plt.subplots(figsize=(8, 4.5), facecolor='#0f172a')
+                    ax_wc.imshow(wc_dyn, interpolation='bilinear')
+                    ax_wc.axis('off')
+                    st.pyplot(fig_wc, use_container_width=True)
+                    plt.close(fig_wc)
+                except Exception as e:
+                    if os.path.exists(wc_resolved):
+                        st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud (Fallback Resolusi Tinggi)")
+                    else:
+                        st.warning(f"Gagal menghasilkan word cloud dinamis: {e}")
+            elif os.path.exists(wc_resolved):
+                st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan")
             else:
-                wc_dyn = WordCloud(
-                    width=800, height=450, background_color='#0f172a',
-                    colormap=wc_color, max_words=100, contour_width=1, contour_color='#e2e8f0'
-                ).generate(' '.join(lex_tokens) if lex_tokens else 'mbg')
-                fig_wc, ax_wc = plt.subplots(figsize=(8, 4.5), facecolor='#0f172a')
-                ax_wc.imshow(wc_dyn, interpolation='bilinear')
-                ax_wc.axis('off')
-                st.pyplot(fig_wc, use_container_width=True)
-                plt.close(fig_wc)
+                st.warning("⚠️ Modul `wordcloud` belum terpasang. Jalankan `pip install wordcloud` pada terminal.")
 
         with wc_col2:
             st.subheader("📊 Top 10 Kata Paling Sering Muncul")
