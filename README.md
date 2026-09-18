@@ -75,41 +75,169 @@
 
 ---
 
-## 📖 PANDUAN LENGKAP & TUTORIAL REPRODUKSI RISET (END-TO-END TUTORIAL)
+## 📖 MASTER TUTORIAL RISET TERPADU: BAB I S.D. BAB V
+### *(End-to-End Computational Research & Execution Tutorials: Chapters 1 to 5)*
 
-Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) dengan mudah oleh penguji tesis, dosen pembimbing, peneliti *computational social science*, maupun praktisi kebijakan publik. Berikut adalah seluruh panduan dan tutorial teknis:
+Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) secara utuh dan transparan oleh penguji tesis, dosen pembimbing, akademisi *Computational Social Science* (CSS), maupun praktisi kebijakan publik. Setiap bab di dalam naskah tesis didukung oleh tutorial operasional, perintah eksekusi kode, dan pembuktian data riil:
 
 ---
 
-### 🚀 TUTORIAL 1: MENJALANKAN DASHBOARD STREAMLIT (LOCAL & CLOUD)
+### 📘 TUTORIAL BAB I: PENDAHULUAN — FORMULASI MASALAH, PENGUMPULAN DATA & GROUND-TRUTH
+* **Konteks Akademis Bab I (Halaman 1 – 25):**  
+  Menjawab latar belakang krisis kebijakan Program Makan Bergizi Gratis (MBG), disparitas anggaran fiskal makro (ratusan triliun rupiah) vs resistensi publik di media sosial, merumuskan 6 Rumusan Masalah (RM Bab 1.2 Hal. 15), dan menyelaraskannya secara simetris dengan 6 Tujuan Penelitian (TP Bab 1.4 Hal. 19).
+* **Alur Pengumpulan & Penyiapan Korpus Data Digital:**
+  1. *Data Crawling & Scraping:* Mengumpulkan percakapan publik di platform X berbahasa Indonesia menggunakan kata kunci *"makan bergizi gratis"*, *"mbg"*, *"makan siang gratis"*, dan *"uji coba mbg"* selama periode krisis Maret–Mei 2026. File mentah awal terkumpul sebanyak $N=5.310$ cuitan.
+  2. *Penyaringan Noise & Bot Filtering:* Menghapus bot otomatis, cuitan promosi/jualan, spam giveaway, dan duplikasi teks, menghasilkan korpus bersih inferensi sebesar **$N=5.263$ cuitan** (`data/results/indobert_9_emosi_fixed.csv`).
+  3. *Penyusunan Korpus Validasi Leksikal:* Memilih **$N=3.395$ cuitan** yang memiliki kekayaan kosakata memadai untuk ekstraksi majas, sindiran, dan penanda emoji (`data/sarcasm/dataset_sindiran_valid.csv`).
+* **Langkah Eksekusi Terminal & Verifikasi Data Bab I:**
+  ```bash
+  # Verifikasi integritas baris korpus primer Bab I
+  python3 -c "
+  import pandas as pd
+  df_emo = pd.read_csv('data/results/indobert_9_emosi_fixed.csv')
+  df_sarc = pd.read_csv('data/sarcasm/dataset_sindiran_valid.csv')
+  print(f'✅ Korpus Bersih Inferensi IndoBERT (Bab I/IV): {len(df_emo):,} baris')
+  print(f'✅ Korpus Validasi Leksikal Sindiran (Bab I/IV): {len(df_sarc):,} baris')
+  "
+  ```
+* **Eksplorasi di Dashboard Streamlit:**
+  - Buka halaman **`🏠 Beranda`**:
+  - Amati **Diagram Alir Sankey Interaktif** yang membuktikan hubungan linier: **6 Rumusan Masalah (Bab 1.2) ➔ 3 Lapisan Metode Komputasional ➔ 6 Tujuan Penelitian (Bab 1.4) ➔ 6 Bukti Empiris Terverifikasi**.
+  - Buka **6 Tab Berpasangan (RM 1 ↔ TP 1 s.d RM 6 ↔ TP 6)** untuk memeriksa target operasional dan pembuktian data riil setiap rumusan masalah.
 
-#### Opsi A: Akses Cepat via Cloud (Tanpa Instalasi)
-Dashboard telah terdeploy secara publik dan aktif 24/7 di Streamlit Community Cloud:
-- 🌐 **URL Cloud:** [https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/)
+---
+
+### 📗 TUTORIAL BAB II: LANDASAN TEORI & KERANGKA PEMIKIRAN — OPERASIONALISASI KONSEPTUAL KE KODE
+* **Konteks Akademis Bab II (Halaman 26 – 84):**  
+  Membangun landasan teori multidisiplin yang mencakup **8 Pilar Utama dan 37 Sub-Bab Terstruktur**:
+  1. *Komunikasi Risiko Fiskal Makro* (Gelders & Ihlen, 2010; Coombs, 2007)
+  2. *Situational Crisis Communication Theory & Networked Crisis* (Schultz, Utz, & Göritz, 2011)
+  3. *Ruang Publik Digital & Afordansi Platform X* (Habermas, 2006; Boyd & Crawford, 2012)
+  4. *Pragmatik Bahasa & Teori Sindiran / Pretense Theory* (Grice, 1975; Camp, 2012; Joshi et al., 2017)
+  5. *Deep Learning NLP & Arsitektur IndoBERT* (Vaswani et al., 2017; Devlin et al., 2018; Wilie et al., 2020)
+  6. *Teori Graf & Social Network Analysis* (Freeman, 1979; Blondel et al., 2008; Newman, 2006)
+  7. *Marketing 6.0 & Konsep Phygital Gap* (Kotler, Kartajaya, & Setiawan, 2023)
+  8. *Etika Penambangan Data Besar & Kepatuhan Privasi* (Boyd & Crawford, 2012; Ferrara et al., 2016)
+* **Operasionalisasi 5 Proposisi Penelitian (P1 – P5) ke Kode Komputasional:**
+  - **Proposisi 1 (P1 - Inkongruensi Teks-Emoji):** Mengukur disparitas antara sentimen teks tertulis (pujian semu) dengan valence emoji mengejek (🤡, 🤮, 🗿). Diuji di `data/sarcasm/dataset_sindiran_valid.csv`.
+  - **Proposisi 2 (P2 - Dominasi Afektif Negatif):** Menguji apakah resistensi publik mewujud dalam emosi negatif dominan. Terbukti via probabilitas kelas *Disgust* (Jijik) mencapai 56,24% pada IndoBERT.
+  - **Proposisi 3 (P3 - Hyper-Polarization & Echo Chambers):** Mengukur koefisien modularitas Louvain. Teori menyatakan $Q > 0.4$ adalah polarisasi; riset menemukan **$Q = 0.9837$** (fragmentasi ekstrem).
+  - **Proposisi 4 (P4 - Asimetri Pengaruh & Power Vacuum):** Menguji ketimpangan In-Degree vs Out-Degree antara akun otoritas (@prabowo: in=15, out=0) vs entitas alternatif (@grok: out=42).
+  - **Proposisi 5 (P5 - Pembuktian Phygital Gap):** Membuktikan bahwa resistensi warganet bukan penolakan terhadap gagasan nutrisi, melainkan kekecewaan atas realitas fisik makanan melalui ABSA 3 Aspek Fisik.
+* **Langkah Eksekusi & Eksplorasi Teori di Streamlit:**
+  - Buka halaman **`🏛️ Landasan Teori & Pemikiran (Bab II)`**:
+  - Gunakan visualisasi interaktif **Radial Sunburst Chart** atau **Hierarchical Treemap**:
+    - Klik pilar teori untuk melakukan *drill-down* ke sub-bab dan nomor halaman naskah tesis.
+    - Periksa kartu interaktif **5 Proposisi Penelitian (P1 s.d P5)** dengan status validasi empiris Bab IV.
+
+---
+
+### 📙 TUTORIAL BAB III: METODE PENELITIAN — PIPELINE KOMPUTASIONAL & MODEL TRAINING
+* **Konteks Akademis Bab III (Halaman 85 – 93):**  
+  Merancang arsitektur penelitian *Computational Social Science* (CSS) terpadu yang memadukan Natural Language Processing (NLP), Social Network Analysis (SNA), dan Aspect-Based Sentiment Analysis (ABSA).
+* **Alur Langkah Komputasional Bab III:**
+  1. *Tahap 1: Text Preprocessing & Penanganan Slang Bahasa Indonesia:*
+     - Membersihkan mention, URL, tanda baca berlebih, dan karakter non-alfanumerik via RegEx.
+     - Normalisasi kata tidak baku (*informal slang normalization*) ke bentuk lema baku bahasa Indonesia.
+     - Ekstraksi kode Unicode emoji untuk analisis inkongruensi semiotik teks-visual.
+  2. *Tahap 2: Fine-Tuning Transformer IndoBERT 9 Emosi Plutchik:*
+     - Base Model: `indobenchmark/indobert-base-p2` (12-layer, 768 hidden units, 12 self-attention heads).
+     - Klasifikasi 9 Kelas Emosi: *Disgust (Jijik), Trust (Percaya), Neutral (Netral), Anticipation (Antisipasi), Anger (Marah), Sadness (Sedih), Joy (Senang), Surprise (Terkejut), Fear (Takut)*.
+     - Stratified Split: 80% data latih ($N=4.210$) dan 20% data uji validasi independen ($n=1.053$).
+  3. *Tahap 3: Algoritma Deteksi Sindiran & Majas Kontradiktif:*
+     - Aturan pencocokan leksikal (*Lexical Matching*) mendeteksi 181 pasang oposisi biner tajam (misal: kata pujian *"mewah/bergizi"* yang dipasangkan dengan konteks keluhan porsi minim atau emoji mual 🤮).
+  4. *Tahap 4: Pemodelan Graf Jaringan Sosial (SNA) & Deteksi Komunitas:*
+     - Pembentukan graf berarah $G = (V, E)$ dari interaksi mention dan reply warganet (`data/sna/network_edges.csv`).
+     - Deteksi partisi komunitas menggunakan Algoritma Louvain (*Blondel et al., 2008*) untuk memaksimalkan modularitas graf ($Q$).
+  5. *Tahap 5: Aspect-Based Sentiment Analysis (ABSA):*
+     - Segmentasi sentimen ke dalam 3 aspek operasional program MBG: *Logistik & Distribusi*, *Anggaran & Vendor*, serta *Kualitas Gizi Makanan*.
+* **Langkah Eksekusi Pipeline CLI:**
+  ```bash
+  # 1. Menjalankan evaluasi performa model IndoBERT pada data uji (n=1.053)
+  python scripts/evaluate.py
+
+  # 2. Menjalankan komputasi SNA & deteksi komunitas Louvain
+  python scripts/sna.py
+  ```
+
+---
+
+### 📕 TUTORIAL BAB IV: HASIL DAN PEMBAHASAN — REPLIKASI KOMPUTASIONAL 6 TEMUAN EMPIRIS
+* **Konteks Akademis Bab IV (Halaman 94 – 109):**  
+  Menguji hipotesis penelitian secara kuantitatif dan menyajikan 6 bukti empiris komputasional:
+  1. **§4.1 Karakteristik Korpus Data (Hal. 94):**
+     - Total $N=5.263$ cuitan; distribusi emosi didominasi secara absolut oleh **Disgust (56,24% / 2.960 cuitan)**, disusul **Trust (20,39% / 1.073 cuitan)**, **Neutral (12,33% / 649 cuitan)**, dan **Anticipation (9,60% / 505 cuitan)**.
+  2. **§4.2 Topologi Jaringan & Polarisasi (Hal. 95):**
+     - Graf jaringan komunikasi terdiri atas **971 node** (aktor warganet unik) dan **666 relasi interaksi / directed edges** (dari 692 interaksi mentah).
+     - Kepadatan graf (*Density*) bernilai **0.0011** (jaringan sangat renggang).
+     - Resiprositas (*Reciprocity*) hanya **1,21%**, membuktikan bahwa 98,79% percakapan berjalan satu arah (komunikasi monolog).
+  3. **§4.3 Dinamika Komunitas & Echo Chambers (Hal. 97):**
+     - Skor modularitas Louvain mencapai **$Q = 0.9837$** (mendekati batas teoritis maksimum 1.0), terfragmentasi ke dalam **332 komunitas terisolasi** tanpa komunikasi lintas kelompok.
+  4. **§4.4 Struktur Kekuasaan & Sentralitas Aktor (Hal. 98):**
+     - `@grok` (*AI Oracle*): Out-degree tertinggi = **42**, menjadi rujukan verifikasi warganet di tengah ketiadaan juru bicara resmi.
+     - `@4Y4NKZ` (*Structural Broker*): Betweenness = **0.000016**, satu-satunya simpul jembatan langka yang menghubungkan klaster terfragmentasi.
+     - `@prabowo` (*Target Pasif / Power Vacuum*): In-degree = **15**, Out-degree = **0**, menjadi muara keluhan publik tanpa dialog timbal-balik.
+  5. **§4.5 Evaluasi Model IndoBERT & Deteksi Sindiran (Hal. 101):**
+     - Model IndoBERT mencapai **Akurasi 57,45%**, **Macro F1 = 0.8122**, dengan **Recall kelas Disgust mencapai 96,92%** (F1 = 0.7178).
+     - Deteksi leksikal memvalidasi **315 cuitan (9,28%)** sindiran valid dengan tingkat keyakinan tinggi.
+  6. **§4.6 Sintesis Marketing 6.0 & Pembuktian Phygital Gap (Hal. 105):**
+     - ABSA membuktikan penolakan terpusat pada aspek fisik di lapangan: *Logistik & Distribusi* (**78,91% Disgust**), *Anggaran & Vendor* (**77,01% Disgust**), dan *Kualitas Gizi Makanan* (**71,13% Disgust**).
+* **Langkah Eksekusi & Replikasi Visualisasi Bab IV:**
+  ```bash
+  # Menghasilkan seluruh plot distribusi dataset & Word Cloud
+  python scripts/plot_dataset.py
+
+  # Menghasilkan Master Visual Terintegrasi (3-Panel SNA x NLP x ABSA)
+  python scripts/plot_integrated.py
+  ```
+  *Grafik resolusi tinggi akan otomatis diperbarui di direktori `results/`:*
+  - `results/integrated_sna_nlp.png` (Master Visual Komprehensif 3-Panel)
+  - `results/confusion_matrix.png` (Matriks Konfusi IndoBERT)
+  - `results/f1_scores.png` (Skor F1-Score per Kelas Emosi)
+  - `results/dataset_distribution.png` (Distribusi 9 Emosi & WordCloud)
+
+---
+
+### 📓 TUTORIAL BAB V: PENUTUP & REKOMENDASI KEBIJAKAN — OPERASIONALISASI DASHBOARD & STRATEGI BGN
+* **Konteks Akademis Bab V (Halaman 110 – 113):**  
+  Merumuskan kesimpulan terpadu (§5.1), implikasi akademis dan praktis (§5.2), matriks 5 rekomendasi strategis bagi Badan Gizi Nasional (§5.3), serta keterbatasan penelitian (§5.4).
+* **5 Rekomendasi Aksi Strategis Komunikasi Publik BGN Berbasis Bukti Empiris:**
+  1. *Transformasi Monolog Menjadi Dialog Terbuka:* Membentuk tim media sosial resmi di platform X guna meningkatkan resiprositas dari 1,21% menuju komunikasi deliberatif dua arah.
+  2. *Strategi Intervensi Simpul Broker Akar Rumput:* Merangkul aktor sentral penghubung seperti `@4Y4NKZ` untuk menyalurkan klarifikasi resmi ke klaster warganet yang terisolasi.
+  3. *Single Source of Truth Fisik (Transparansi Menu Harian):* Menerbitkan katalog digital harian berisi foto asli makanan, gramasi porsi, dan komposisi gizi per Satuan Pelayanan Pemenuhan Gizi (SPPG).
+  4. *Keterbukaan Anggaran dan Vendor Lokal:* Mempublikasikan proporsi alokasi biaya bahan baku vs biaya logistik/kemasan secara berkala untuk meredam kecurigaan pemotongan pagu makanan.
+  5. *Inokulasi Informasi Ramah Algoritma:* Memublikasikan rilis pers berbasis data terstruktur agar mesin pencari dan AI (`@grok`) merujuk informasi valid pemerintah.
+* **Panduan Operasionalisasi Dashboard untuk Pembuat Kebijakan & Peneliti:**
+  - Jalankan Streamlit: `streamlit run dashboard/app.py`.
+  - Buka menu **`🖼️ Visual Storytelling` ➔ Tab ke-6 `🏛️ Bab IV & Bab V: Peta Temuan Empiris & Rekomendasi`**.
+  - Gunakan visual interaktif sebagai instrumen *executive briefing* dalam perumusan kebijakan mitigasi krisis reputasi.
+  - Buka menu **`📚 Audit Referensi Scopus`** untuk mengunduh sitasi format APA 7th lengkap dengan tautan DOI untuk publikasi manuskrip jurnal internasional.
+
+---
+
+### 🚀 TUTORIAL OPERASIONAL: CARA CEPAT MENJALANKAN DASHBOARD STREAMLIT
+
+#### Opsi A: Akses Cepat via Cloud (Tanpa Perlu Instalasi)
+Dashboard telah terpasang dan aktif 24/7 di Streamlit Community Cloud:
+- 🌐 **URL Cloud Resmi:** [https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/)
 
 #### Opsi B: Menjalankan di Komputer Lokal (*Localhost*)
-
 1. **Prasyarat Sistem (*System Prerequisites*):**
    - **Python 3.10** atau lebih baru.
    - **Git** terpasang di komputer Anda.
    - RAM disarankan minimal 4 GB.
 
-2. **Langkah 1 — Kloning Repositori dari GitHub:**
+2. **Langkah 1 — Kloning Repositori:**
    ```bash
    git clone https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA.git
    cd INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA
    ```
 
-3. **Langkah 2 — Menyiapkan Python Virtual Environment (Sangat Disarankan):**
+3. **Langkah 2 — Menyiapkan Python Virtual Environment:**
    ```bash
-   # Membuat virtual environment bernama .venv
    python3 -m venv .venv
-
-   # Mengaktifkan di macOS / Linux:
-   source .venv/bin/activate
-
-   # Mengaktifkan di Windows (PowerShell / Command Prompt):
-   # .venv\Scripts\activate
+   source .venv/bin/activate  # macOS / Linux
+   # .venv\Scripts\activate   # Windows
    ```
 
 4. **Langkah 3 — Instalasi Seluruh Dependensi:**
@@ -117,135 +245,49 @@ Dashboard telah terdeploy secara publik dan aktif 24/7 di Streamlit Community Cl
    pip install --upgrade pip
    pip install -r requirements.txt
    ```
-   *Dependensi mencakup: `streamlit`, `plotly`, `pandas`, `numpy`, `networkx`, `torch`, `transformers`, `wordcloud`, `matplotlib`, `seaborn`, `pyvis`, `scikit-learn`.*
 
 5. **Langkah 4 — Menjalankan Aplikasi Streamlit:**
    ```bash
    streamlit run dashboard/app.py
    ```
-   Peramban web (*browser*) Anda akan otomatis membuka antarmuka dashboard pada:
-   - 🌐 **Local URL:** [`http://localhost:8501`](http://localhost:8501)
-   - 📡 **Network URL:** `http://<ip-lokal-anda>:8501` *(dapat dibuka dari HP atau tablet dalam satu jaringan Wi-Fi)*
-
-   *Tips:* Jika port 8501 sedang digunakan oleh aplikasi lain, jalankan pada port alternatif:
-   ```bash
-   streamlit run dashboard/app.py --server.port 8502
-   ```
+   Aplikasi otomatis terbuka di peramban web pada alamat [`http://localhost:8501`](http://localhost:8501).
 
 ---
 
-### 🧭 TUTORIAL 2: PANDUAN NAVIGASI & EKSPLORASI FITUR DASHBOARD STREAMLIT
+### 🧭 PANDUAN NAVIGASI & FITUR 6 MENU DASHBOARD STREAMLIT
 
-Dashboard tesis ini memiliki **6 menu utama** yang dapat dipilih melalui panel navigasi sidebar di sebelah kiri, dirancang secara interaktif dan terhubung langsung dengan berkas data kanonik:
-
-#### 1. 🏠 Beranda (Bab I: Pendahuluan & Ground-Truth)
-- **Ringkasan Metrik Ground-Truth:** Memeriksa 6 metrik utama (971 nodes, 692 edges, 3.395 sampel validasi sindiran, 5.263 korpus inferensi, 332 komunitas Louvain, dan skor modularitas $Q = 0.9837$).
-- **🌐 Diagram Alir Sankey Interaktif:** Visualisasi grafis Plotly yang menghubungkan secara linier: **6 Rumusan Masalah ➔ 3 Lapisan Metode Komputasional ➔ 6 Tujuan Penelitian ➔ 6 Bukti Empiris Terverifikasi**.
-- **📑 6 Tab Interaktif Berpasangan (1-to-1 RM ↔ TP):** Analisis berdampingan pertanyaan riset Bab 1.2 dan target operasional Bab 1.4 beserta bukti data riil.
-- **📋 Matriks Komparasi Keselarasan 6x6:** Tabel komparatif lengkap yang memetakan RM, TP, metode, dan status verifikasi.
-- **🔬 Panel Live Verification Integritas Data (Bab IV):** 4 grafik Plotly interaktif yang dihitung langsung (*live computation*) dari file CSV:
-  1. *Pie Chart 9 Emosi IndoBERT* (N=5.263: Disgust 56,24%, Trust 20,39%, Neutral 12,33%).
-  2. *Donut Chart Validasi Sindiran Leksikal* (N=3.395: 315 cuitan sindiran valid = 9,28%).
-  3. *Bar Chart Top Aktor Sentral SNA* (971 node: @grok out-degree=42, @4Y4NKZ, @prabowo).
-  4. *Grouped Bar Chart ABSA 3 Aspek* (Disgust vs Trust pada Logistik 78,91%, Anggaran 77,01%, Gizi 71,13%).
-- **Word Cloud Interaktif & Top 10 Kata Populer:** Analisis leksikal dominan warganet (mbg, makanan, gratis, gizi, dsb.).
-
-#### 2. 🏛️ Landasan Teori & Kerangka Pemikiran (Bab II, Hal. 26 – 84)
-- **Peta Interaktif Taksonomi Teori (37 Sub-Bab Terstruktur):**
-  - **Mode Sunburst Radial:** Klik pada salah satu pilar teori (misal: *2.1 Risiko Fiskal* atau *2.6 SNA & Graf*) untuk melakukan *drill-down* visual ke sub-bab dan nomor halaman tesis.
-  - **Mode Treemap Hierarkis:** Memetakan proporsi bobot kajian 37 sub-bab secara proporsional.
-- **Eksplorasi 8 Pilar Teori:** Menelaah landasan teoritis (SCCT Coombs, Schultz et al., Habermas, Devlin et al., Blondel et al., Kotler Marketing 6.0).
-- **Validasi 5 Proposisi Riset (P1–P5):** Matriks pengujian empiris hipotesis kerja terhadap bukti data riil di Bab IV.
-
-#### 3. 😊 Analisis Emosi (NLP) & Leksikal (Bab IV.1 & IV.5)
-- **Distribusi 9 Emosi Granular Plutchik:** Visualisasi interaktif dominasi emosi *Disgust* (56,24%), *Trust* (20,39%), *Neutral* (12,33%), dsb.
-- **Analisis Sindiran & Inkongruensi Pragmatik:** Grafik proporsi sindiran warganet (315 cuitan bersindiran valid pada korpus n=3.395).
-- **Eksplorasi Tweet Riil:** Filter cuitan berdasarkan emosi dan unduh data hasil filter (*CSV Export*).
-
-#### 4. 🕸️ Analisis Jaringan Komunikasi (CNA / SNA) (Bab IV.2 – IV.4)
-- **Graf Interaktif PyVis:** Node diwarnai berdasarkan komunitas Louvain riil, interaksi drag-and-drop, zoom, dan tooltip metrik sentralitas.
-- **Tiga Anomali Struktural Kunci:**
-  1. `@grok` (*AI Oracle Takeover* — out-degree=42, mengisi kekosongan komunikasi otoritatif).
-  2. `@prabowo` (*Target Pasif / Power Vacuum* — in-degree=15, out-degree=0, sasaran kritik tanpa respons timbal-balik).
-  3. `@4Y4NKZ` (*Structural Broker* — betweenness=0.000016, jembatan komunitas terfragmentasi).
-- **Metrik Global Jaringan:** Densitas 0.0011, Reciprocity 1,21% (monolog kebijakan), Modularity Q = 0.9837 (332 komunitas).
-
-#### 5. 🖼️ Visual Storytelling & Sintesis (Bab IV.6 & Bab V)
-- **Galeri 10 Visual Resolusi Tinggi:** 10 gambar publikasi jurnal internasional (praproses, performa IndoBERT, graf SNA, emosi x jaringan, ABSA tematik, dan master visual 3-panel).
-- **Tab Baru ke-6 `🏛️ Bab IV & Bab V: Peta Temuan Empiris & Rekomendasi (§4.1 - §5.4)`:**
-  - Rincian Bab IV Hasil & Pembahasan: §4.1 Data Korpus, §4.2 Topologi Sistem, §4.3 Clustering Louvain, §4.4 Level Aktor, §4.5 Evaluasi Model, §4.6 Sintesis Phygital Gap.
-  - Rincian Bab V Penutup: §5.1 Kesimpulan (menjawab 6 RM/TP), §5.2 Implikasi Akademis/Praktis, §5.3 Matriks 5 Rekomendasi Kebijakan BGN, §5.4 Keterbatasan Riset.
-
-#### 6. 📚 Audit Referensi Scopus / Sinta 1 (Daftar Pustaka)
-- **Master Taksonomi 33 Referensi Ilmiah:** Dikelompokkan ke dalam 5 Klaster Keilmuan (11 rujukan inti tesis + 20 rujukan Scopus Q1/Sinta 1 baru + 2 rujukan dasar).
-- **Filter Klaster Interaktif & Generator Sitasi APA 7th:** Filter instan per klaster dan blok salin-tempel format sitasi standar APA 7th Edition lengkap dengan DOI/URL.
+1. **🏠 Beranda (Bab I: Pendahuluan & Ground-Truth):** Ringkasan metrik utama (971 nodes, 666 edges, $Q=0.9837$), Diagram Alir Sankey 6 RM ↔ 6 TP, Tabulasi Harmonisasi 6x6, dan Panel Verifikasi Data Riil (4 grafik Plotly live dari CSV).
+2. **🏛️ Landasan Teori & Pemikiran (Bab II, Hal. 26–84):** Peta Interaktif 8 Pilar & 37 Sub-Bab (Mode Sunburst & Treemap), serta matriks pengujian 5 Proposisi Penelitian (P1–P5).
+3. **😊 Analisis Emosi & Majas Sindiran (NLP) (Bab IV.1 & IV.5):** Distribusi 9 emosi Plutchik, evaluasi performa IndoBERT, analisis inkongruensi leksikal sindiran, dan simulator prediksi teks real-time.
+4. **🕸️ Analisis Jaringan Komunikasi (CNA / SNA) (Bab IV.2–IV.4):** Graf interaktif PyVis dengan pewarnaan 332 komunitas Louvain, analisis sentralitas aktor kunci (@grok, @4Y4NKZ, @prabowo), dan metrik polarisasi.
+5. **🖼️ Visual Storytelling & Sintesis (Bab IV.6 & Bab V):** Galeri 10 visual resolusi tinggi, sintesis Phygital Gap, serta **Tab ke-6: Peta Temuan Empiris Bab IV (§4.1–§4.6) & 5 Rekomendasi Strategis Kebijakan BGN Bab V (§5.1–§5.4)**.
+6. **📚 Audit Referensi Scopus (Daftar Pustaka):** Master Taksonomi 33 referensi ilmiah (5 klaster keilmuan), filter pencarian interaktif, dan generator sitasi standar APA 7th Edition.
 
 ---
 
-### 🧪 TUTORIAL 3: MENJALANKAN SKRIP PIPELINE & EVALUASI MODEL (CLI)
+### 📓 TUTORIAL REPRODUKSI VIA JUPYTER NOTEBOOK
 
-Seluruh komputasi dapat diverifikasi secara mandiri melalui perintah terminal:
-
+Bagi penguji atau peneliti yang ingin meninjau eksekusi kode sel demi sel (*step-by-step notebook review*):
 ```bash
-# 1. Evaluasi performa model IndoBERT pada data tes riil (n=1.053)
-python scripts/evaluate.py
-- Memperbarui file grafik resolusi tinggi: `results/confusion_matrix.png` dan `results/f1_scores.png`.
-
-```bash
-# 2. Menghasilkan Master Visual Terintegrasi (3-Panel SNA x NLP x ABSA)
-python scripts/plot_integrated.py
+jupyter notebook notebooks/tesis_mbg.ipynb
 ```
-*Output yang dihasilkan:*
-- Menggabungkan topologi graf jaringan Louvain, heatmap emosi per klaster komunitas, dan diagram aspek sentimen ke dalam satu gambar komprehensif: `results/integrated_sna_nlp.png`.
-
-```bash
-# 3. Menghasilkan Plot Distribusi Dataset & Word Cloud
-python scripts/plot_dataset.py
-```
-*Output yang dihasilkan:*
-- Grafik batang distribusi 9 kelas emosi dan visualisasi kata paling sering muncul ke direktori `results/`.
-
-```bash
-# 4. Menjalankan Komputasi Topologi Jaringan & Louvain Community Detection
-python scripts/sna.py
-```
-*Output yang dihasilkan:*
-- Menghitung In-Degree, Out-Degree, Betweenness, Closeness, dan partisi komunitas Louvain dengan skor modularitas $Q = 0.9837$.
+*Struktur Eksekusi Sel di dalam Notebook:*
+- **Bagian 1: Data Ingestion & Preprocessing:** Pemuatan data mentah cuitan X, pembersihan noise, dan penanganan slang.
+- **Bagian 2: Deteksi Sindiran & Anotasi Leksikal:** Ekstraksi pola inkongruensi leksikal dan validasi korpus ($N=3.395$).
+- **Bagian 3: Fine-Tuning & Inferensi IndoBERT:** Arsitektur `indobert-base-p2` untuk 9 kelas emosi Plutchik.
+- **Bagian 4: Social Network Analysis (SNA):** Pemodelan graf berarah NetworkX, deteksi komunitas Louvain, dan kalkulasi sentralitas.
+- **Bagian 5: Visualisasi Terintegrasi & Ekspor Hasil:** Pembuatan grafik terintegrasi multi-dimensi.
 
 ---
 
-### 📓 TUTORIAL 4: MENJALANKAN REPRODUKSI VIA JUPYTER NOTEBOOK
+### 🛠️ TROUBLESHOOTING & FAQ TEKNIS
 
-Bagi peneliti yang ingin memeriksa kode sel demi sel (*step-by-step interactive execution*):
-
-1. **Jalankan Jupyter Notebook di terminal:**
-   ```bash
-   jupyter notebook notebooks/tesis_mbg.ipynb
-   ```
-2. **Urutan Eksekusi Sel:**
-   - **Bagian 1: Data Ingestion & Preprocessing:** Memuat data mentah cuitan X ($N=5.310$), pembersihan noise, dan penanganan teks slang bahasa Indonesia.
-   - **Bagian 2: Deteksi Sindiran & Anotasi Leksikal:** Ekstraksi pola inkongruensi leksikal dan filter kevalidan sindiran ($N=3.395$).
-   - **Bagian 3: IndoBERT Fine-Tuning & Inference:** Arsitektur transformer `indobert-base-p2` untuk 9 kelas emosi Plutchik.
-   - **Bagian 4: Social Network Analysis (SNA):** Ekstraksi interaksi mention/reply, pemodelan directed graph via NetworkX, deteksi komunitas Louvain, dan metrik sentralitas.
-   - **Bagian 5: Visualisasi Terintegrasi:** Plot komparatif multi-dimensi.
-
----
-
-### 🛠️ TUTORIAL 5: TROUBLESHOOTING & FAQ
-
-- **T: Mengapa visual Sunburst sempat tidak tampil (layar gelap)?**  
-  *J:* Pada implementasi awal, parameter `branchvalues='total'` di Plotly Express mewajibkan nilai node induk (*parent*) sama persis secara matematis dengan jumlah anak (*children*). Hal ini telah diperbaiki tuntas dengan menerapkan struktur hierarkis `path=['Pilar', 'SubBab']` yang secara inheren mengkalkulasi proporsi secara otomatis tanpa kendala nilai hierarki.
-
+- **T: Mengapa visual Sunburst sempat tidak tampil (layar kosong)?**  
+  *J:* Parameter `branchvalues='total'` di Plotly mewajibkan nilai induk sama persis dengan total anak. Solusi permanen telah diterapkan menggunakan parameter hierarkis `path=['Pilar', 'SubBab']` yang mengkalkulasi proporsi secara otomatis tanpa kendala numerik.
 - **T: Kendala saat instalasi pustaka `wordcloud` di sistem macOS Apple Silicon (M1/M2/M3)?**  
-  *J:* Jalankan perintah instalasi tanpa isolasi build atau melalui conda-forge:
-  ```bash
-  pip install wordcloud --no-build-isolation
-  # atau
-  conda install -c conda-forge wordcloud
-  ```
-
-- **T: Bagaimana memastikan metrik di dashboard 100% konsisten dengan data penelitian tesis?**  
-  *J:* Dashboard tidak menggunakan angka statis tiruan (*mock data*). Seluruh visualisasi membaca langsung dari dataset kanonik di direktori `data/` dan `results/` (`indobert_9_emosi_fixed.csv`, `network_edges.csv`, `dataset_sindiran_valid.csv`, dan `sna_degree.csv`).
+  *J:* Gunakan instalasi tanpa isolasi build: `pip install wordcloud --no-build-isolation` atau via conda: `conda install -c conda-forge wordcloud`.
+- **T: Bagaimana membuktikan bahwa dashboard tidak menggunakan data palsu (*mock data*)?**  
+  *J:* Seluruh visualisasi dan panel verifikasi membaca langsung berkas data kanonik di folder `data/` dan `results/` (`indobert_9_emosi_fixed.csv`, `network_edges.csv`, `dataset_sindiran_valid.csv`, dan `sna_degree.csv`). Anda dapat memeriksa fungsi pembacaan data di `dashboard/app.py` pada baris fungsi `load_data()`.
 
 ---
 
