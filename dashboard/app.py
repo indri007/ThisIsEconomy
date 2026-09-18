@@ -776,9 +776,28 @@ elif page == "😊 Analisis Emosi (NLP)":
         st.info(row['text'])
         
     st.markdown("---")
-    st.subheader("Evaluasi Model AI (Bagaimana Model Membacanya?)")
-    st.markdown("Visualisasi di bawah membuktikan bahwa arsitektur IndoBERT sangat valid dan akurat, meskipun terdapat tantangan semantik dalam membedakan umpatan sarkasme antara emosi *Anger* dan *Disgust*.")
-    
+    st.markdown("---")
+    # ── §4.5 EVALUASI MODEL KLASIFIKASI EMOSI DAN DETEKSI SINDIRAN ──
+    st.header("🎯 §4.5 Evaluasi Model Klasifikasi Emosi dan Deteksi Sindiran")
+    st.markdown("""
+    > *Evaluasi performa model **IndoBERT** hasil fine-tuning dilakukan pada **testing set sebesar 501 baris (15,02% dari total data siap-analisis)**, 
+    > yang dipisahkan secara acak (`random_state = 42`) dari korpus teks siap-analisis (±3.395 cuitan pasca-praproses). 
+    > Evaluasi mencakup dua tugas klasifikasi yang dilatih secara multi-task, yaitu **klasifikasi emosi (9 kelas)** 
+    > dan **deteksi sindiran (biner)**, yang masing-masing dilaporkan melalui *classification report* dan *confusion matrix*.*
+    """)
+
+    ev_col1, ev_col2, ev_col3 = st.columns(3)
+    with ev_col1:
+        st.metric("Ukuran Testing Set", "501 baris", "15,02% dari Total Data")
+    with ev_col2:
+        st.metric("Metode Pembagian", "Random Split", "random_state = 42")
+    with ev_col3:
+        st.metric("Tugas Klasifikasi", "Multi-Task", "9 Emosi + Biner Sindiran")
+
+    st.markdown("---")
+    st.subheader("📊 §4.5.1 & §4.5.2 Visualisasi Classification Report & Confusion Matrix")
+    st.markdown("Visualisasi diagnostik performa model IndoBERT pada testing set:")
+
     # Define image path dynamically
     current_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(current_dir)
@@ -790,6 +809,14 @@ elif page == "😊 Analisis Emosi (NLP)":
         st.image(f1_path, use_container_width=True, caption="Figure: IndoBERT Performance (Macro-F1)")
     with ecol2:
         st.image(cm_path, use_container_width=True, caption="Figure: Confusion Matrix")
+
+    st.markdown("---")
+    st.subheader("🔬 §4.5.3 Interpretasi Metodologis & Integritas Riset")
+    st.info("""
+    **💡 Catatan Metodologis & Transparansi Sains:**
+    - Hasil evaluasi awal berfungsi sebagai **checkpoint diagnostik** untuk mengidentifikasi distribusi kelas aktual pada data uji.
+    - Sesuai prinsip *reproducible computational social science*, penelitian ini mendokumentasikan secara terbuka proses audit dan perbaikan pelabelan data melalui skrip `PERBAIKAN_LABELING.py` guna memastikan integritas saintifik manuskrip sebelum sidang akhir.
+    """)
         
 elif page == "🕸️ Analisis Jaringan (CNA)":
     st.title("Peta Jaringan Komunikasi (Communication Network)")
