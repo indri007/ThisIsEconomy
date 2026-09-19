@@ -277,10 +277,9 @@ The author has no financial or proprietary interests in any material, organizati
 ### Data and Code Availability (Open Science & Reproducibility)
 In full compliance with Open Science, FAIR data principles (Findable, Accessible, Interoperable, and Reusable), and reproducibility guidelines:
 - The verified inference emotion corpus ($N = 5,263$ tweets), sarcasm validation dataset ($N = 3,395$ tweets), directed network adjacency edges ($|V|=971, |E|=666$), Louvain community partitions, and centrality metrics are openly accessible under the Creative Commons Attribution 4.0 International license (CC-BY 4.0).
-- All Python replication scripts (`evaluate.py`, `sna.py`, `plot_dataset.py`, `plot_integrated.py`), Jupyter notebooks, and trained model artifacts are publicly available in the permanent GitHub repository:  
-  **Repository:** https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA  
-  **Machine-Readable Metadata:** [`CITATION.cff`](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/CITATION.cff)  
-  **Interactive Web Dashboard:** https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/
+- All Python replication scripts (`evaluate.py`, `sna.py`, `plot_dataset.py`, `plot_integrated.py`), Jupyter notebooks, and trained model artifacts are archived for peer review:  
+  **Repository:** [Blinded for Double-Blind Peer Review; complete public GitHub URL, machine-readable `CITATION.cff`, and replication code provided in the separate Title Page submitted to the Editor]  
+  **Interactive Web Dashboard:** [Blinded for Double-Blind Peer Review; access details provided in Title Page]
 
 ### Author Contributions (CRediT Taxonomy)
 Author contributions have been blinded to ensure rigorous double-blind peer review compliance. Full CRediT contribution taxonomy is documented in the separate Title Page submitted to the Editor.
