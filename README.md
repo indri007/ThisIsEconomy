@@ -119,7 +119,7 @@
   <img src="docs/assets/indri_avatar.png" width="120" style="border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.25);" alt="Indri Anjar Kartikasari"/>
   <h3><b>INDRI ANJAR KARTIKASARI</b></h3>
   <p><b>AI Engineer & Peneliti Magister Ilmu Komunikasi</b> (UPN "Veteran" Jawa Timur)<br/>
-  📍 Rungkut Asri Timur, Surabaya, Jawa Timur | 📱 0821-4173-3187 | ✉️ indri.kartikasari007@gmail.com</p>
+  📍 Surabaya, Jawa Timur, Indonesia | ✉️ indri.kartikasari007@gmail.com</p>
   
   <p>
     <a href="https://github.com/indri007"><img src="https://img.shields.io/badge/GitHub-indri007-181717?logo=github&style=flat-square"/></a>
@@ -143,26 +143,11 @@ Profesional yang *hasil-oriented*, bertransisi ke bidang **AI Engineering** sete
 
 ---
 
-### 🎓 Pelatihan Profesional — Purwadhika Digital Technology School
-Menyelesaikan 3 program *Job Connector Bootcamp* Purwadhika secara berurutan, membangun fondasi lintas disiplin digital marketing, software engineering, dan AI engineering:
-1. **Job Connector Bootcamp — AI Engineering** (No. Sertifikat: `202602009256`, Periode: 02.02.2026 – 30.07.2026): Data science foundation, machine learning, deep learning, neural networks, NLP, fine-tuning LLM & RAG, Computer Vision, otomasi AI n8n, MLOps cloud deployment.
-2. **Job Connector Bootcamp — Full Stack Software Development**: JavaScript, OOP, algoritma & struktur data, React.js, Node.js, REST API, Docker, CI/CD cloud deployment.
-3. **Job Connector Bootcamp — Digital Marketing** (2024 · 12 minggu): Business model canvas, branding & content, SEO/SEM (GEO), paid media (Google/Meta/TikTok Ads), digital marketing analytics.
-
-<div align="center">
-  <img src="docs/assets/purwadhika_ai_engineering_certificate.png" width="80%" alt="Certificate of Graduation AI Engineering Purwadhika - Indri Anjar Kartika Sari"/>
-  <p><sub><i>Bukti Otentik Kelulusan: Certificate of Graduation — Job Connector Bootcamp AI Engineering (No. 202602009256) | Purwadhika Digital Technology School</i></sub></p>
-</div>
-
----
-
-### 📜 Sertifikasi Kompetensi Machine Learning — Kaggle
-- **Intro to Machine Learning:** Diselesaikan pada 12 September 2026. Diajarkan oleh Dan Becker (Kaggle Instructor) & Alexis Cook (Head of Kaggle Learn). Memperkuat fondasi *Decision Trees, Random Forests*, evaluasi Mean Absolute Error (MAE), dan validasi model prediktif.
-
-<div align="center">
-  <img src="docs/assets/kaggle_intro_to_ml_certificate.png" width="75%" alt="Kaggle Certificate of Completion Intro to Machine Learning - Indri Anjar Kartika Sari"/>
-  <p><sub><i>Bukti Kelulusan Resmi: Kaggle Certificate of Completion — Intro to Machine Learning (12 September 2026)</i></sub></p>
-</div>
+### 🎓 Pelatihan Profesional & Kredensial Akademik
+- **Purwadhika Digital Technology School — AI Engineering:** Lulusan program *Job Connector Bootcamp* (No. Sertifikat: `202602009256`, 02.02.2026 – 30.07.2026). Fokus: *Data science foundation, machine learning, deep learning, neural networks, Transformer NLP, fine-tuning LLM & RAG, Computer Vision, MLOps cloud deployment*.
+- **Purwadhika Digital Technology School — Full Stack Software Development:** JavaScript, OOP, algoritma & struktur data, React.js, Node.js, REST API, Docker, CI/CD cloud deployment.
+- **Purwadhika Digital Technology School — Digital Marketing (2024 · 12 minggu):** Business model canvas, branding & content, SEO/SEM (GEO), paid media, digital marketing analytics.
+- **Kaggle (Google LLC) — Intro to Machine Learning:** Diselesaikan pada 12 September 2026 (Instruktur: Dan Becker & Alexis Cook). Fondasi *Decision Trees, Random Forests, Validation, MAE Optimization*.
 
 ---
 
@@ -172,11 +157,6 @@ Selain aktivitas riset komputasi dan rekayasa kecerdasan buatan (*AI engineering
 - 🎵 **TikTok:** 23.000+ Followers (`23K`)
 - 🎥 **YouTube:** 987 Subscribers
 - 🤍 **Filosofi Belajar:** *"Hadir, belajar, dan berusaha agar tidak tertinggal — membawa kembali manfaat teknologi kecerdasan buatan kepada perempuan dan ibu-ibu Indonesia melalui @ibuibu_digitall."*
-
-<div align="center">
-  <img src="docs/assets/indri_kaggle_post.png" width="60%" alt="Dokumentasi Lifelong Learning dan Komunitas @ibuibu_digitall"/>
-  <p><sub><i>Dokumentasi Perjalanan Belajar Berkelanjutan (Lifelong Learning) & Pemberdayaan Komunitas</i></sub></p>
-</div>
 
 ---
 
@@ -188,11 +168,6 @@ Selain aktivitas riset komputasi dan rekayasa kecerdasan buatan (*AI engineering
 - [`todo-list-nextjs`](https://github.com/indri007/todo-list-nextjs): Aplikasi to-do list modern berbasis Next.js/JavaScript.
 - [`to-do-app`](https://github.com/indri007/to-do-app): Aplikasi to-do list berbasis TypeScript.
 - **Situs Digital Tambahan:** [digimeta007.com](https://digimeta007.com) & [digimetashop.com](https://digimetashop.com) (proyek digital marketing & e-commerce).
-
-<div align="center">
-  <img src="docs/assets/indri_anjar_kartikasari_cv.png" width="75%" alt="Curriculum Vitae Indri Anjar Kartikasari"/>
-  <p><sub><i>Berkas Resume Resmi: Indri Anjar Kartikasari (AI Engineer & Researcher)</i></sub></p>
-</div>
 
 ---
 
