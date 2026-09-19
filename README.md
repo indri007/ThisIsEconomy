@@ -434,7 +434,7 @@ Kajian konseptual mendalam mencakup **8 Pilar Utama dan 37 Sub-Bab Terstruktur**
   - 2.6.6 Visualisasi Jaringan sebagai Instrumen Diagnostik Kebijakan (Hal. 59)
   - 2.6.7 Jaringan Bipartit dan Keterbatasan Representasi Graf Sederhana (Hal. 60)
   - 2.6.8 Perbandingan Algoritma Deteksi Komunitas (Hal. 61)
-  - 2.6.9 NodeXL sebagai Instrumen Triangulasi Sentralitas Jaringan (Hal. 62)
+  - 2.6.9 Validasi Metrik Sentralitas Jaringan Berbasis Python/NetworkX (Hal. 62)
 - **2.7 Paradigma Marketing 6.0 & Konsep Phygital Gap (Hal. 63 – 84):**
   - Landasan operasionalisasi kesenjangan janji promosi digital terhadap kualitas fisik di lapangan (Kotler, Kartajaya, & Setiawan, 2023).
   - 5 Proposisi Kerja Riset (P1 s.d P5) yang diuji secara empiris.
