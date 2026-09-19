@@ -1359,6 +1359,7 @@ tesis_mbg/
     <a href="https://indri007.vercel.app"><img src="https://img.shields.io/badge/Portofolio-indri007.vercel.app-000000?logo=vercel&style=flat-square"/></a>
     <a href="https://digimeta007.com"><img src="https://img.shields.io/badge/Website-digimeta007.com-2563eb?style=flat-square"/></a>
     <a href="https://orcid.org/0009-0002-8419-7231"><img src="https://img.shields.io/badge/ORCID-0009--0002--8419--7231-A6CE39?logo=orcid&style=flat-square"/></a>
+    <a href="https://ipssj.com/index.php/ojs/article/view/2024"><img src="https://img.shields.io/badge/Journal_Publication-IPSSJ_Vol._3_(2026)-0284c7?logo=academia&style=flat-square"/></a>
   </p>
 </div>
 
@@ -1381,6 +1382,23 @@ Profesional yang *hasil-oriented*, bertransisi ke bidang **AI Engineering** sete
 - **Purwadhika Digital Technology School — Full Stack Software Development:** JavaScript, OOP, algoritma & struktur data, React.js, Node.js, REST API, Docker, CI/CD cloud deployment.
 - **Purwadhika Digital Technology School — Digital Marketing (2024 · 12 minggu):** Business model canvas, branding & content, SEO/SEM (GEO), paid media, digital marketing analytics.
 - **Kaggle (Google LLC) — Intro to Machine Learning:** Diselesaikan pada 12 September 2026 (Instruktur: Dan Becker & Alexis Cook). Fondasi *Decision Trees, Random Forests, Validation, MAE Optimization*.
+
+---
+
+### 📑 Publikasi Jurnal Ilmiah Peer-Reviewed Terindeks (Published Journal Article)
+Selain naskah publikasi Tesis MBG (*Social Network Analysis and Mining* Springer Scopus Q1 & *Mediator* SINTA 2), peneliti telah mempublikasikan artikel ilmiah di jurnal bereputasi:
+
+> **JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia**  
+> **Penulis Tunggal:** Indri Anjar Kartika Sari  
+> **Afiliasi Penulis:** Job Connector Bootcamp AI Engineering (JCAI) Program, Purwadhika Digital Technology School, Surabaya, Indonesia  
+> **Jurnal:** *Integrative Perspectives of Social and Science Journal* (IPSSJ) | **ISSN:** `3064-4011`  
+> **Volume & Isu:** Vol. 3 No. 09 September (2026), Halaman 333–340 | **Terbit:** 17 September 2026  
+> **Akses Berkas Publikasi:**  
+> - 🌐 **Laman Resmi Jurnal OJS:** [https://ipssj.com/index.php/ojs/article/view/2024](https://ipssj.com/index.php/ojs/article/view/2024)  
+> - 📥 **Unduh PDF Langsung (OJS Direct Download):** [https://ipssj.com/index.php/ojs/article/download/2024/1868](https://ipssj.com/index.php/ojs/article/download/2024/1868)  
+> - 📁 **Berkas Arsip PDF Repositori:** [`references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf`](references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf)  
+> - 📝 **Sitasi Baku (APA 7th):**  
+>   *Sari, I. A. K. (2026). JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia. Integrative Perspectives of Social and Science Journal, 3(09 September), 333–340. https://ipssj.com/index.php/ojs/article/view/2024*
 
 ---
 
@@ -1437,8 +1455,9 @@ Riset ini ditopang oleh **33 rujukan ilmiah bereputasi** yang diklasifikasikan k
 | 9 | **SemEval-2014 Task 4 (ABSA)** | Pontiki et al. (2014) | Fondasi Sentimen Berbasis Aspek (3 Pilar) | [📥 Buka PDF](references/Pontiki_et_al_2014_SemEval_ABSA.pdf) |
 | 10 | **Emotion & Sentiment Tweets BERT** | Chiorrini et al. (2021) | Klasifikasi Afektif Twitter Berbasis BERT | [📥 Buka PDF](references/Chiorrini_et_al_2021_BERT_Emotion_Tweets.pdf) |
 | 11 | **The Rise of Social Bots** | Ferrara et al. (2016) | Karakteristik Bot & Amplifikasi Suara Medsos | [📥 Buka PDF](references/Ferrara_et_al_2016_Social_Bots.pdf) |
+| 12 | **JobsMatchAI (IPSSJ Journal Article)** | Indri Anjar Kartika Sari (2026) | Publikasi Jurnal Penulis Terindeks IPSSJ (333–340) | [📥 Buka PDF](references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf) |
 
-👉 **Katalog Lengkap 27 Referensi Tesis beserta DOI & Tautan Penerbit:** Silakan buka dokumen [`references/README.md`](references/README.md).
+👉 **Katalog Lengkap 28 Referensi Tesis beserta DOI & Tautan Penerbit:** Silakan buka dokumen [`references/README.md`](references/README.md).
 
 
 ---
@@ -1448,7 +1467,7 @@ Riset ini ditopang oleh **33 rujukan ilmiah bereputasi** yang diklasifikasikan k
 | | Reference |
 |:---:|---|
 | 📄 | **Sari, I. A. K., Suratnoaji, C., & Widiyarta, A.** (2026). Analisis jaringan sosial dalam isu percakapan MBG di media sosial X. *IPSSJ, 3*(9), 248–257. |
-| 📄 | **Sari, I. A. K.** (2026). JobMatchAI: Platform generatif AI pencocokan kerja semantik. *IPSSJ, 3*(9), 333–340. |
+| 📄 | **Sari, I. A. K.** (2026). JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia. *Integrative Perspectives of Social and Science Journal (IPSSJ)*, 3(09 September), 333–340. [[🌐 Laman OJS]](https://ipssj.com/index.php/ojs/article/view/2024) [[📥 Unduh PDF]](https://ipssj.com/index.php/ojs/article/download/2024/1868) [[📄 PDF Lokal]](references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf) |
 | 📺 | Portal **JTV** (2026). *"Lebih dari 37 persen percakapan MBG di X bernada sindiran"* |
 | 📰 | **Netral News** (2026). *"Riset UPN Jatim: 37 persen percakapan MBG di X bernada sindiran"* |
 

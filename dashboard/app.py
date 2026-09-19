@@ -502,6 +502,7 @@ def render_author_biography():
         - 🌐 **Brand Digital:** [digimeta007.com](https://digimeta007.com)
         - 🛍️ **E-Commerce:** [digimetashop.com](https://digimetashop.com)
         - 🐙 **GitHub Terverifikasi:** [github.com/indri007](https://github.com/indri007)
+        - 📑 **Publikasi Jurnal IPSSJ:** [Artikel JobsMatchAI (2026)](https://ipssj.com/index.php/ojs/article/view/2024)
         - 🆔 **ORCID iD:** [0009-0002-8419-7231](https://orcid.org/0009-0002-8419-7231)
         """)
 
@@ -562,6 +563,34 @@ def render_author_biography():
             - Social Media Campaigns & Google Analytics
             - Conversion Optimization
             """)
+
+    st.markdown("---")
+
+    # Publikasi Jurnal Ilmiah
+    st.subheader("📑 Publikasi Jurnal Ilmiah Terindeks (Peer-Reviewed Journal Publication)")
+    st.markdown("""
+    <div style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(30, 41, 59, 0.7)); border: 1px solid rgba(14, 165, 233, 0.4); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
+            <span style="background: #0284c7; color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: bold;">Jurnal Ilmiah Peer-Reviewed</span>
+            <span style="background: rgba(14, 165, 233, 0.2); color: #38bdf8; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(14, 165, 233, 0.3);">ISSN: 3064-4011</span>
+            <span style="background: rgba(34, 197, 94, 0.2); color: #86efac; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(34, 197, 94, 0.3);">Terbit: 17 September 2026</span>
+        </div>
+        <h3 style="margin: 8px 0 6px 0; color: #f8fafc; font-size: 1.25rem;">JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia</h3>
+        <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px;">
+            <b>Penulis Tunggal:</b> Indri Anjar Kartika Sari | <b>Afiliasi:</b> Job Connector Bootcamp AI Engineering (JCAI), Purwadhika Digital Technology School, Surabaya<br>
+            <b>Jurnal:</b> <i>Integrative Perspectives of Social and Science Journal</i> (IPSSJ) | Vol. 3 No. 09 September (2026), pp. 333–340
+        </p>
+        <p style="color: #cbd5e1; font-size: 0.88rem; line-height: 1.5; margin-bottom: 14px;">
+            <b>Abstrak Riset:</b> Mengembangkan JobsMatchAI, platform dukungan karier berbasis AI end-to-end untuk pasar tenaga kerja Indonesia yang mengintegrasikan pemrosesan CV otomatis, pencocokan kerja semantik, analisis CV berorientasi ATS, konsultasi karier berbasis AI, dan simulasi wawancara kerja dalam alur kerja berbasis web Streamlit, Vector DB, dan basis data relasional.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    pub_c1, pub_c2 = st.columns(2)
+    with pub_c1:
+        st.link_button("🌐 Buka Artikel Resmi di OJS IPSSJ", "https://ipssj.com/index.php/ojs/article/view/2024", use_container_width=True)
+    with pub_c2:
+        st.link_button("📥 Unduh Naskah Lengkap PDF Jurnal (333–340)", "https://ipssj.com/index.php/ojs/article/download/2024/1868", use_container_width=True)
 
     st.markdown("---")
 

@@ -21,6 +21,7 @@ Direktori `references/` menyimpan salinan digital resmi (*Open Access / Pre-prin
 | 9 | [`Chiorrini_et_al_2021_BERT_Emotion_Tweets.pdf`](file:///Users/jevin/Documents/tesis_mbg/references/Chiorrini_et_al_2021_BERT_Emotion_Tweets.pdf) | Chiorrini et al. (2021) | *Emotion and Sentiment Analysis of Tweets using BERT (CEUR)* | 968 KB |
 | 10 | [`Ferrara_et_al_2016_Social_Bots.pdf`](file:///Users/jevin/Documents/tesis_mbg/references/Ferrara_et_al_2016_Social_Bots.pdf) | Ferrara et al. (2016) | *The Rise of Social Bots (ACM Communications)* | 861 KB |
 | 11 | [`Easley_Kleinberg_2010_Networks_Book.pdf`](file:///Users/jevin/Documents/tesis_mbg/references/Easley_Kleinberg_2010_Networks_Book.pdf) | Easley & Kleinberg (2010) | *Networks, Crowds, and Markets (Buku Lengkap / Cornell Ed.)* | 19 MB |
+| 12 | [`JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf`](file:///Users/jevin/Documents/tesis_mbg/references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf) | Indri Anjar Kartika Sari (2026) | *JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik (IPSSJ Vol. 3 No. 9)* | 211 KB |
 
 ---
 
@@ -70,3 +71,23 @@ Pada draf manuskrip jurnal SINTA 2 ([`manuscript/Mediator_Manuskrip_Indri_Anjar_
 4. **Papacharissi (2015)** — *Affective Publics: Sentiment, Technology, and Politics*: Oxford University Press.
 5. **Coombs (2007)** — *Situational Crisis Communication Theory (SCCT)*: Corporate Reputation Review.
 6. **Habermas (1989, 2006)** — *Ruang Publik & Komunikasi Politik dalam Masyarakat Media*.
+
+---
+
+## 4. Karya Publikasi Ilmiah Penulis Terindeks (Author's Peer-Reviewed Journal Articles)
+
+Selain riset tesis komputasional MBG ini, berikut adalah artikel ilmiah terbitan jurnal *peer-reviewed* yang telah dipublikasikan oleh penulis:
+
+- **Judul Artikel:** *JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia*
+- **Penulis:** Indri Anjar Kartika Sari
+- **Afiliasi:** Job Connector Bootcamp AI Engineering (JCAI) Program, Purwadhika Digital Technology School, Surabaya, Indonesia
+- **Nama Jurnal:** *Integrative Perspectives of Social and Science Journal* (IPSSJ)
+- **ISSN:** 3064-4011
+- **Volume & Nomor:** Vol. 3 No. 09 September (2026), Halaman 333–340
+- **Tanggal Terbit:** 17 September 2026
+- **Tautan Resmi Jurnal (OJS):** [https://ipssj.com/index.php/ojs/article/view/2024](https://ipssj.com/index.php/ojs/article/view/2024)
+- **Tautan Unduh PDF Jurnal:** [https://ipssj.com/index.php/ojs/article/download/2024/1868](https://ipssj.com/index.php/ojs/article/download/2024/1868)
+- **Berkas Fisik PDF di Repositori:** [`references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf`](file:///Users/jevin/Documents/tesis_mbg/references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf)
+- **Sitasi Baku (APA 7th):**  
+  > Sari, I. A. K. (2026). JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia. *Integrative Perspectives of Social and Science Journal*, *3*(09 September), 333–340. https://ipssj.com/index.php/ojs/article/view/2024
+
