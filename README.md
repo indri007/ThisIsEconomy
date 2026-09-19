@@ -99,6 +99,7 @@
 <div align="center">
 
 ### 🧭 MENU NAVIGASI CEPAT & DIREKTORI RESMI RISET
+[👤 Profil Peneliti](#author-bio) &nbsp;•&nbsp; 
 [📊 Snapshot Metrik](#research-snapshot) &nbsp;•&nbsp; 
 [📥 Download Center](#download-center) &nbsp;•&nbsp; 
 [📄 Naskah Tesis & Manuskrip](#manuscripts-thesis) &nbsp;•&nbsp; 
@@ -107,6 +108,61 @@
 [📚 Digital Library PDF](#digital-library) &nbsp;•&nbsp; 
 [🚀 Live Dashboard](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/)
 
+</div>
+
+---
+
+<a id="author-bio"></a>
+## 👤 PROFIL PENELITI & AI ENGINEER (AUTHOR BIOGRAPHY)
+
+<div align="center">
+  <img src="docs/assets/indri_avatar.png" width="120" style="border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.25);" alt="Indri Anjar Kartikasari"/>
+  <h3><b>INDRI ANJAR KARTIKASARI</b></h3>
+  <p><b>AI Engineer & Peneliti Magister Ilmu Komunikasi</b> (UPN "Veteran" Jawa Timur)<br/>
+  📍 Rungkut Asri Timur, Surabaya, Jawa Timur | 📱 0821-4173-3187 | ✉️ indri.kartikasari007@gmail.com</p>
+  
+  <p>
+    <a href="https://github.com/indri007"><img src="https://img.shields.io/badge/GitHub-indri007-181717?logo=github&style=flat-square"/></a>
+    <a href="https://indri007.vercel.app"><img src="https://img.shields.io/badge/Portofolio-indri007.vercel.app-000000?logo=vercel&style=flat-square"/></a>
+    <a href="https://digimeta007.com"><img src="https://img.shields.io/badge/Website-digimeta007.com-2563eb?style=flat-square"/></a>
+    <a href="https://orcid.org/0009-0002-8419-7231"><img src="https://img.shields.io/badge/ORCID-0009--0002--8419--7231-A6CE39?logo=orcid&style=flat-square"/></a>
+  </p>
+</div>
+
+### 💼 Ringkasan Profil Profesional
+Profesional yang *hasil-oriented*, bertransisi ke bidang **AI Engineering** setelah **15+ tahun memimpin tim dan membangun bisnis di sektor jasa keuangan**. Menyelesaikan program AI Engineering di **Purwadhika Digital Technology School** dan sejak itu merancang serta merilis beberapa sistem AI *production-ready* — chatbot *multi-agent*, pipeline *RAG*, dan integrasi LLM (*Groq, Gemini*) — yang di-deploy di **Google Cloud Run**. Portofolio proyek terdokumentasi secara publik di GitHub (54 repository) dan situs pribadi, memadukan keahlian *leadership* serta strategi bisnis dengan kemampuan teknis *hands-on* di AI/ML dan *Computational Social Science*.
+
+---
+
+### 🛠️ Keahlian Teknis & Tech Stack
+- **🤖 AI / ML & LLM:** RAG (Retrieval-Augmented Generation), Multi-Agent Systems, Prompt Engineering, Groq (LLaMA 3.3-70B), Gemini API & Gemini Live, Cohere Embeddings, Qdrant Vector DB, LangChain / Langflow, IndoBERT Transformer.
+- **💻 Bahasa & Framework:** Python, Streamlit, React.js, Next.js, n8n (workflow automation).
+- **🗄️ Database:** MySQL (Aiven Cloud Managed), Oracle DB, Qdrant (vector DB).
+- **☁️ Cloud & DevOps:** Google Cloud Run / GCP, Docker Containerization, Ollama Local LLMs, IDCloudHost VPS, Vercel, CI/CD pipelines.
+- **📈 Digital Marketing:** SEO/SEM, Generative Engine Optimization (GEO), Social Media Campaign, Content Creation, Google Analytics, Conversion Optimization.
+
+---
+
+### 🎓 Pelatihan Profesional — Purwadhika Digital Technology School
+Menyelesaikan 3 program *Job Connector Bootcamp* Purwadhika secara berurutan, membangun fondasi lintas disiplin digital marketing, software engineering, dan AI engineering:
+1. **Job Connector Bootcamp — AI Engineering** (No. Sertifikat: `202602009256`, Periode: 02.02.2026 – 30.07.2026): Data science foundation, machine learning, deep learning, neural networks, NLP, fine-tuning LLM & RAG, Computer Vision, otomasi AI n8n, MLOps cloud deployment.
+2. **Job Connector Bootcamp — Full Stack Software Development**: JavaScript, OOP, algoritma & struktur data, React.js, Node.js, REST API, Docker, CI/CD cloud deployment.
+3. **Job Connector Bootcamp — Digital Marketing** (2024 · 12 minggu): Business model canvas, branding & content, SEO/SEM (GEO), paid media (Google/Meta/TikTok Ads), digital marketing analytics.
+
+---
+
+### 🐙 Portofolio GitHub Terverifikasi (`github.com/indri007`)
+*54 Repository Publik | Pencapaian Pull Shark*
+- **Multi-Agent Job Seeker Chatbot (Capstone AI Purwadhika Kelompok 1):** Chatbot multi-agent untuk pencari kerja Indonesia (Python, Streamlit, n8n, Qdrant, Groq LLaMA 3.3-70B, Cohere, MySQL Aiven, Google Cloud Run, Gemini API).
+- [`chatbot-agent`](https://github.com/indri007/chatbot-agent): Chatbot berbasis Python terintegrasi RAG (*retrieval-augmented generation*).
+- [`cvatsjob`](https://github.com/indri007/cvatsjob): Proyek Python sistem ATS CV & pencocokan lowongan kerja cerdas.
+- [`todo-list-nextjs`](https://github.com/indri007/todo-list-nextjs): Aplikasi to-do list modern berbasis Next.js/JavaScript.
+- [`to-do-app`](https://github.com/indri007/to-do-app): Aplikasi to-do list berbasis TypeScript.
+- **Situs Digital Tambahan:** [digimeta007.com](https://digimeta007.com) & [digimetashop.com](https://digimetashop.com) (proyek digital marketing & e-commerce).
+
+<div align="center">
+  <img src="docs/assets/indri_anjar_kartikasari_cv.png" width="75%" alt="Curriculum Vitae Indri Anjar Kartikasari"/>
+  <p><sub><i>Berkas Resume Resmi: Indri Anjar Kartikasari (AI Engineer & Researcher)</i></sub></p>
 </div>
 
 ---

@@ -450,6 +450,198 @@ def render_submission_checklist_50_points():
         st.link_button("📦 Unduh Seluruh Repositori (.ZIP)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip", use_container_width=True)
 
 
+# Function to render author biography in Streamlit
+
+def render_author_biography():
+    st.markdown("""
+    <div class="hero-banner">
+        <div class="hero-badge">👤 Peneliti Tesis & AI Engineer — Profil Publik</div>
+        <div class="hero-title">Indri Anjar Kartikasari</div>
+        <div class="hero-desc">
+            <b>AI Engineer & Magister Ilmu Komunikasi</b> (UPN Veteran Jawa Timur) | 
+            15+ Tahun Leadership Sektor Finansial & Transitioned to Enterprise AI/ML Systems.
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px;">
+            <span style="background: rgba(59, 130, 246, 0.25); color: #93c5fd; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; border: 1px solid rgba(59, 130, 246, 0.4);">
+                📍 <b>Domisili:</b> Rungkut Asri Timur, Surabaya
+            </span>
+            <span style="background: rgba(34, 197, 94, 0.25); color: #86efac; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; border: 1px solid rgba(34, 197, 94, 0.4);">
+                🎓 <b>Purwadhika Alum:</b> AI Engineering (No. 202602009256)
+            </span>
+            <span style="background: rgba(168, 85, 247, 0.25); color: #d8b4fe; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; border: 1px solid rgba(168, 85, 247, 0.4);">
+                🦈 <b>GitHub:</b> 54 Public Repos (Pull Shark)
+            </span>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # Main Grid: Left (Profile & Contacts) | Right (Full Narrative & Tech Stack)
+    c_left, c_right = st.columns([1, 2])
+
+    with c_left:
+        cv_img_path = os.path.join(PROJECT_ROOT, "docs", "assets", "indri_anjar_kartikasari_cv.png")
+        avatar_path = os.path.join(PROJECT_ROOT, "docs", "assets", "indri_avatar.png")
+        
+        if os.path.exists(avatar_path):
+            st.image(avatar_path, width=160, caption="Indri Anjar Kartikasari")
+        elif os.path.exists(cv_img_path):
+            st.image(cv_img_path, use_container_width=True)
+
+        st.markdown("### 📇 Kontak & Portofolio Resmi")
+        st.markdown("""
+        - 📱 **Telepon / WhatsApp:** `0821-4173-3187`
+        - ✉️ **Email Utama:** [indri.kartikasari007@gmail.com](mailto:indri.kartikasari007@gmail.com)
+        - ✉️ **Email Akademik:** `indrianjar@gmail.com`
+        - 🌐 **Situs Portofolio:** [indri007.vercel.app](https://indri007.vercel.app)
+        - 🌐 **Brand Digital:** [digimeta007.com](https://digimeta007.com)
+        - 🛍️ **E-Commerce:** [digimetashop.com](https://digimetashop.com)
+        - 🐙 **GitHub Terverifikasi:** [github.com/indri007](https://github.com/indri007)
+        - 🆔 **ORCID iD:** [0009-0002-8419-7231](https://orcid.org/0009-0002-8419-7231)
+        """)
+
+        if os.path.exists(cv_img_path):
+            with open(cv_img_path, "rb") as f:
+                st.download_button(
+                    label="📥 Unduh Resume / CV Asli (.PNG)",
+                    data=f.read(),
+                    file_name="Indri_Anjar_Kartikasari_CV.png",
+                    mime="image/png",
+                    use_container_width=True
+                )
+
+    with c_right:
+        st.markdown("### 💼 Profil Profesional")
+        st.info("""
+        **Profesional yang hasil-oriented**, bertransisi ke bidang **AI Engineering** setelah **15+ tahun memimpin tim dan membangun bisnis** di sektor jasa keuangan. 
+
+        Menyelesaikan program **AI Engineering di Purwadhika Digital Technology School** dan sejak itu merancang serta merilis beberapa sistem AI *production-ready* — chatbot *multi-agent*, pipeline *RAG*, dan integrasi LLM (*Groq, Gemini*) — yang di-deploy di **Google Cloud Run**. 
+        
+        Portofolio proyek terdokumentasi secara publik di GitHub (54 repository) dan situs pribadi, memadukan keahlian *leadership* serta strategi bisnis dengan kemampuan teknis *hands-on* di bidang AI/ML dan *Computational Social Science*.
+        """)
+
+        st.markdown("### 🛠️ Tech Stack & Kompetensi Teknis")
+        t_col1, t_col2 = st.columns(2)
+        with t_col1:
+            st.markdown("""
+            **🤖 AI / ML & LLM:**
+            - RAG (Retrieval-Augmented Generation)
+            - Multi-Agent Systems (LangChain / Langflow)
+            - Prompt Engineering & Fine-Tuning
+            - Groq (LLaMA 3.3-70B), Gemini API & Gemini Live
+            - Cohere Embeddings & Vector Search
+            - IndoBERT Transformer & Sentiment/Emotion Modeling
+
+            **💻 Bahasa & Framework:**
+            - Python (Data Science, NLP, PyTorch, NetworkX)
+            - Streamlit (Production Web Apps)
+            - React.js & Next.js
+            - n8n (Workflow Automation)
+            """)
+        with t_col2:
+            st.markdown("""
+            **🗄️ Database & Vector Stores:**
+            - Qdrant (Vector Database for RAG)
+            - MySQL (Aiven Cloud Managed)
+            - Oracle DB
+
+            **☁️ Cloud & DevOps:**
+            - Google Cloud Run & GCP Ecosystem
+            - Docker Containerization
+            - Ollama Local LLMs
+            - IDCloudHost VPS & Vercel
+            - CI/CD Pipelines
+
+            **📈 Digital Marketing & Growth:**
+            - SEO / SEM & Generative Engine Optimization (GEO)
+            - Social Media Campaigns & Google Analytics
+            - Conversion Optimization
+            """)
+
+    st.markdown("---")
+
+    # Lower Grid: Certifications, GitHub Repos, and Capstone Projects
+    st.subheader("🎓 Pelatihan Profesional — Purwadhika Digital Technology School")
+    st.markdown("*Menyelesaikan 3 program Job Connector Bootcamp Purwadhika secara berurutan, membangun fondasi lintas disiplin digital marketing, software engineering, dan AI engineering:*")
+
+    cert_col1, cert_col2, cert_col3 = st.columns(3)
+    with cert_col1:
+        st.markdown("""
+        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; border-radius: 12px; padding: 18px;">
+            <span style="background: #1d4ed8; color: white; padding: 3px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: bold;">Sertifikasi Utama</span>
+            <h4 style="margin: 8px 0 4px 0; color: #f8fafc;">AI Engineering</h4>
+            <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 8px;">Purwadhika School (02.02.2026 – 30.07.2026)<br><b>No. Sertifikat: 202602009256</b></p>
+            <ul style="font-size: 0.82rem; color: #cbd5e1; padding-left: 18px; margin: 0;">
+                <li>Data Science Foundation (Python, Pandas, SQL)</li>
+                <li>Machine Learning, Deep Learning, Neural Nets</li>
+                <li>NLP, Fine-Tuning LLM, RAG & Vector DB</li>
+                <li>Computer Vision, CNN, Multimodal Systems</li>
+                <li>Otomasi AI n8n & MLOps Cloud Deployment</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    with cert_col2:
+        st.markdown("""
+        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; border-radius: 12px; padding: 18px;">
+            <span style="background: #0f766e; color: white; padding: 3px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: bold;">Full-Stack Track</span>
+            <h4 style="margin: 8px 0 4px 0; color: #f8fafc;">Full Stack Development</h4>
+            <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 8px;">Purwadhika School</p>
+            <ul style="font-size: 0.82rem; color: #cbd5e1; padding-left: 18px; margin: 0;">
+                <li>JavaScript, OOP, Algoritma & Struktur Data</li>
+                <li>Frontend Modern dengan React.js & Next.js</li>
+                <li>Backend REST API dengan Node.js & ORM</li>
+                <li>Autentikasi, Real-Time Communication</li>
+                <li>Docker Container & Cloud Deployment</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    with cert_col3:
+        st.markdown("""
+        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; border-radius: 12px; padding: 18px;">
+            <span style="background: #c2410c; color: white; padding: 3px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: bold;">Marketing Track</span>
+            <h4 style="margin: 8px 0 4px 0; color: #f8fafc;">Digital Marketing</h4>
+            <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 8px;">Purwadhika School (2024 · 12 minggu)</p>
+            <ul style="font-size: 0.82rem; color: #cbd5e1; padding-left: 18px; margin: 0;">
+                <li>Business Model Canvas & Customer Journey</li>
+                <li>Branding, Content & SEO/SEM (GEO)</li>
+                <li>Paid Media (Google Ads, Meta, TikTok)</li>
+                <li>Digital Marketing Analytics</li>
+                <li>AI Marketing: Prompting Riset & Iklan</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    # Portofolio GitHub & Capstone
+    st.subheader("🐙 Portofolio GitHub Terverifikasi & Proyek Unggulan AI")
+    st.markdown("**Akun:** [`github.com/indri007`](https://github.com/indri007) *(54 Public Repositories, Pull Shark Achievement)*")
+
+    p_col1, p_col2 = st.columns(2)
+    with p_col1:
+        st.markdown("""
+        **🚀 Capstone Project AI Engineering (Purwadhika - Kelompok 1):**
+        - **Multi-Agent Job Seeker Chatbot:** Merancang dan membangun chatbot *multi-agent* untuk pencari kerja Indonesia menggunakan Python, Streamlit, n8n, Qdrant Vector DB, Groq (LLaMA 3.3-70B Versatile), Cohere embeddings, dan MySQL (Aiven).
+        - **Cloud Deployment:** Deploy ke *production* di Google Cloud Run; mengintegrasikan fitur review CV otomatis bertenaga Gemini API.
+        """)
+    with p_col2:
+        st.markdown("""
+        **📦 Repositori Unggulan di GitHub:**
+        - [`chatbot-agent`](https://github.com/indri007/chatbot-agent): Chatbot berbasis Python terintegrasi proses RAG (*retrieval-augmented generation*).
+        - [`cvatsjob`](https://github.com/indri007/cvatsjob): Proyek Python sistem ATS CV & pencocokan lowongan kerja cerdas.
+        - [`todo-list-nextjs`](https://github.com/indri007/todo-list-nextjs): Aplikasi to-do list modern berbasis Next.js/JavaScript.
+        - [`to-do-app`](https://github.com/indri007/to-do-app): Aplikasi to-do list berbasis TypeScript.
+        - [`INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA`](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA): Repositori Tesis Magister & Manuskrip Scopus Q1.
+        """)
+
+    st.markdown("---")
+    st.subheader("📄 Berkas Dokumen Resume / Curriculum Vitae Resmi")
+    cv_full_path = os.path.join(PROJECT_ROOT, "docs", "assets", "indri_anjar_kartikasari_cv.png")
+    if os.path.exists(cv_full_path):
+        st.image(cv_full_path, caption="Resume / CV Resmi: Indri Anjar Kartikasari (AI Engineer)", use_container_width=True)
+
+
 # Sidebar Navigation
 st.sidebar.title("🧭 Navigasi Manuskrip Tesis")
 st.sidebar.markdown("**Alur Pembacaan Berurutan (Bab I – Bab V):**")
@@ -462,7 +654,8 @@ menu_options = [
     "5️⃣ Bab V: Kesimpulan & Rekomendasi Kebijakan BGN",
     "🖼️ Galeri Visual Storytelling (10 Master Plot Tesis)",
     "📚 Audit Integritas Data & Referensi Scopus",
-    "🎯 Checklist Submit Scopus Q1 (50 Poin)"
+    "🎯 Checklist Submit Scopus Q1 (50 Poin)",
+    "👤 Profil Peneliti & AI Engineer"
 ]
 
 page = st.sidebar.radio("Pilih Bab / Modul:", menu_options, index=0)
@@ -5187,3 +5380,6 @@ elif "Audit Integritas Data" in page:
 
 elif "Checklist Submit" in page:
     render_submission_checklist_50_points()
+
+elif "Profil Peneliti" in page:
+    render_author_biography()

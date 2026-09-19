@@ -45,6 +45,11 @@
 - **Number of Tables:** 2 tables
 - **Total Cited References:** 27 references (74.07% published within 2016–2026)
 
+## BRIEF BIOGRAPHICAL NOTES
+- **Indri Anjar Kartika Sari** is an AI Engineer and postgraduate researcher in the Master of Communication Science Program at Universitas Pembangunan Nasional 'Veteran' Jawa Timur. She holds professional certifications in AI Engineering, Full Stack Software Development, and Digital Marketing from Purwadhika Digital Technology School, with 15+ years of prior financial leadership experience. Her research focuses on Transformer NLP (IndoBERT), multi-agent AI systems, Retrieval-Augmented Generation (RAG), and computational social science.
+- **Dr. Catur Suratnoaji, M.Si.** is an Associate Professor of Communication Science at Universitas Pembangunan Nasional 'Veteran' Jawa Timur, specializing in political communication, public opinion, and new media dynamics.
+- **Dr. Agus Widiyarta, S.Sos., M.Si.** is an Assistant Professor of Communication Science at Universitas Pembangunan Nasional 'Veteran' Jawa Timur, specializing in crisis communication, public relations, and social research methodology.
+
 ---
 
 ## STATEMENTS AND DECLARATIONS
