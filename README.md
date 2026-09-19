@@ -840,6 +840,7 @@ Selain klasifikasi emosi kalimat penuh dengan IndoBERT, riset ini melakukan **an
 
 ---
 
+<a id="visual-gallery"></a>
 ## 🖼️ GALERI VISUALISASI RISET PUBLIK (12 MASTER PLOT 300 DPI — AKSES & UNDUH LANGSUNG)
 > *Seluruh figur visualisasi naskah tesis di bawah ini bersifat **100% publik, beresolusi cetak tinggi (300 DPI)**, dan dapat diakses/diunduh langsung secara bebas.*
 
