@@ -156,6 +156,30 @@ Menyelesaikan 3 program *Job Connector Bootcamp* Purwadhika secara berurutan, me
 
 ---
 
+### 📜 Sertifikasi Kompetensi Machine Learning — Kaggle
+- **Intro to Machine Learning:** Diselesaikan pada 12 September 2026. Diajarkan oleh Dan Becker (Kaggle Instructor) & Alexis Cook (Head of Kaggle Learn). Memperkuat fondasi *Decision Trees, Random Forests*, evaluasi Mean Absolute Error (MAE), dan validasi model prediktif.
+
+<div align="center">
+  <img src="docs/assets/kaggle_intro_to_ml_certificate.png" width="75%" alt="Kaggle Certificate of Completion Intro to Machine Learning - Indri Anjar Kartika Sari"/>
+  <p><sub><i>Bukti Kelulusan Resmi: Kaggle Certificate of Completion — Intro to Machine Learning (12 September 2026)</i></sub></p>
+</div>
+
+---
+
+### 🌸 Pemberdayaan Komunitas Digital & Jejak Audiens Publik (`@ibuibu_digitall`)
+Selain aktivitas riset komputasi dan rekayasa kecerdasan buatan (*AI engineering*), Indri aktif membagikan literasi teknologi dan AI kepada komunitas perempuan serta ibu-ibu Indonesia melalui inisiatif sosial **@ibuibu_digitall**:
+- 📱 **Instagram:** 49.000+ Followers (`49K`)
+- 🎵 **TikTok:** 23.000+ Followers (`23K`)
+- 🎥 **YouTube:** 987 Subscribers
+- 🤍 **Filosofi Belajar:** *"Hadir, belajar, dan berusaha agar tidak tertinggal — membawa kembali manfaat teknologi kecerdasan buatan kepada perempuan dan ibu-ibu Indonesia melalui @ibuibu_digitall."*
+
+<div align="center">
+  <img src="docs/assets/indri_kaggle_post.png" width="60%" alt="Dokumentasi Lifelong Learning dan Komunitas @ibuibu_digitall"/>
+  <p><sub><i>Dokumentasi Perjalanan Belajar Berkelanjutan (Lifelong Learning) & Pemberdayaan Komunitas</i></sub></p>
+</div>
+
+---
+
 ### 🐙 Portofolio GitHub Terverifikasi (`github.com/indri007`)
 *54 Repository Publik | Pencapaian Pull Shark*
 - **Multi-Agent Job Seeker Chatbot (Capstone AI Purwadhika Kelompok 1):** Chatbot multi-agent untuk pencari kerja Indonesia (Python, Streamlit, n8n, Qdrant, Groq LLaMA 3.3-70B, Cohere, MySQL Aiven, Google Cloud Run, Gemini API).

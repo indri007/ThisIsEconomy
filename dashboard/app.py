@@ -658,6 +658,50 @@ def render_author_biography():
             )
 
     st.markdown("---")
+    st.subheader("📜 Sertifikat Kompetensi Machine Learning — Kaggle")
+    st.markdown("""
+    **Authentic Verification:** *Kaggle Certificate of Completion — Intro to Machine Learning*  
+    - **Nama Peserta:** Indri anjar kartika sari
+    - **Tanggal Penyelesaian:** 12 September 2026
+    - **Instruktur:** Dan Becker (Kaggle Instructor) & Alexis Cook (Head of Kaggle Learn)
+    - **Kompetensi:** Decision Trees, Random Forests, Validation, Mean Absolute Error (MAE) Optimization.
+    """)
+    kaggle_cert_path = os.path.join(PROJECT_ROOT, "docs", "assets", "kaggle_intro_to_ml_certificate.png")
+    if os.path.exists(kaggle_cert_path):
+        st.image(kaggle_cert_path, caption="Kaggle Certificate: Intro to Machine Learning (12 September 2026)", use_container_width=True)
+        with open(kaggle_cert_path, "rb") as f:
+            st.download_button(
+                label="📥 Unduh Sertifikat Kaggle Machine Learning (.PNG)",
+                data=f.read(),
+                file_name="Kaggle_Intro_to_ML_Indri_Anjar.png",
+                mime="image/png",
+                use_container_width=True
+            )
+
+    st.markdown("---")
+    st.subheader("🌸 Inisiatif Komunitas & Jejak Digital Publik (@ibuibu_digitall)")
+    st.markdown("""
+    Dedikasi pemberdayaan masyarakat melalui literasi teknologi, kecerdasan buatan, dan digital marketing untuk perempuan dan ibu-ibu Indonesia:
+    """)
+    s_col1, s_col2, s_col3, s_col4 = st.columns(4)
+    with s_col1:
+        st.metric("Instagram Followers", "49.000+", "49K Audience", delta_color="normal")
+    with s_col2:
+        st.metric("TikTok Followers", "23.000+", "23K Audience", delta_color="normal")
+    with s_col3:
+        st.metric("YouTube Subscribers", "987", "Organic Growth", delta_color="normal")
+    with s_col4:
+        st.metric("Inisiatif Komunitas", "@ibuibu_digitall", "Pemberdayaan Ibu", delta_color="normal")
+
+    st.info("""
+    🤍 **Filosofi Belajar Berkelanjutan (*Lifelong Learning*):**  
+    *"Sertifikat ini sendiri tidak terlalu penting, tapi merupakan bagian dari upaya yang sama: hadir, belajar, dan berusaha agar tidak tertinggal — terutama sekarang ketika saya bisa membawa sebagian dari itu kembali kepada perempuan dan ibu yang saya bantu melalui @ibuibu_digitall. Masih belajar. Masih membangun."*
+    """)
+    kaggle_post_path = os.path.join(PROJECT_ROOT, "docs", "assets", "indri_kaggle_post.png")
+    if os.path.exists(kaggle_post_path):
+        st.image(kaggle_post_path, caption="Dokumentasi Lifelong Learning & Dampak Pemberdayaan Komunitas @ibuibu_digitall", use_container_width=True)
+
+    st.markdown("---")
     st.subheader("📄 Berkas Dokumen Resume / Curriculum Vitae Resmi")
     cv_full_path = os.path.join(PROJECT_ROOT, "docs", "assets", "indri_anjar_kartikasari_cv.png")
     if os.path.exists(cv_full_path):
