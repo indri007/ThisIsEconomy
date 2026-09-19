@@ -27,6 +27,7 @@
 
 ---
 
+<a id="research-snapshot"></a>
 ## 📊 RESEARCH SNAPSHOT (GROUND-TRUTH METRICS)
 
 <div align="center">
@@ -78,18 +79,19 @@
 <div align="center">
 
 ### 🧭 MENU NAVIGASI CEPAT & DIREKTORI RESMI RISET
-[📊 Snapshot Metrik](#-research-snapshot-ground-truth-metrics) &nbsp;•&nbsp; 
-[📥 Download Center](#-pusat-akses--direct-download-dataset-publik-open-data--reproducibility) &nbsp;•&nbsp; 
-[📄 Naskah Tesis & Manuskrip](#-pusat-unduh-manuskrip-publikasi-ilmiah--naskah-lengkap-tesis) &nbsp;•&nbsp; 
-[🎯 Scopus Q1 Gaps & Novelty](#-scopus-q1-research-gaps--novelty-framework) &nbsp;•&nbsp; 
-[🖼️ Galeri Visual 300 DPI](#-galeri-visualisasi-riset-publik-12-master-plot-300-dpi--akses--unduh-langsung) &nbsp;•&nbsp; 
-[📚 Digital Library PDF](#-digital-reference-library--pertanggungjawaban-akademik-references) &nbsp;•&nbsp; 
+[📊 Snapshot Metrik](#research-snapshot) &nbsp;•&nbsp; 
+[📥 Download Center](#download-center) &nbsp;•&nbsp; 
+[📄 Naskah Tesis & Manuskrip](#manuscripts-thesis) &nbsp;•&nbsp; 
+[🎯 Scopus Q1 Gaps & Novelty](#scopus-q1-gaps) &nbsp;•&nbsp; 
+[🖼️ Galeri Visual 300 DPI](#visual-gallery) &nbsp;•&nbsp; 
+[📚 Digital Library PDF](#digital-library) &nbsp;•&nbsp; 
 [🚀 Live Dashboard](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/)
 
 </div>
 
 ---
 
+<a id="download-center"></a>
 ## 📥 PUSAT AKSES & DIRECT DOWNLOAD DATASET PUBLIK (OPEN DATA & REPRODUCIBILITY)
 > *Sesuai prinsip **Open Science & Computational Verifiability**, seluruh data empiris, tabel sentralitas, laporan metrik model, dan visualisasi riset ini dibuka 100% untuk publik dan dapat diakses/diunduh secara instan tanpa perlu login atau token.*
 
@@ -109,6 +111,7 @@
 
 ---
 
+<a id="manuscripts-thesis"></a>
 ### 📄 PUSAT UNDUH MANUSKRIP PUBLIKASI ILMIAH & NASKAH LENGKAP TESIS:
 > *Seluruh naskah publikasi jurnal dan naskah tesis lengkap dapat diakses dan diunduh langsung dalam format dokumen baku (.docx) dan transkrip terbuka (.md / .txt):*
 
@@ -139,6 +142,7 @@ HASIL: 42 DARI 42 ASET TERVERIFIKASI ONLINE & DAPAT DIUNDUH BEBAS
 
 ---
 
+<a id="scopus-q1-gaps"></a>
 ## 🎯 SCOPUS Q1 RESEARCH GAPS & NOVELTY FRAMEWORK
 
 > *Penelitian ini dirancang secara khusus untuk memenuhi kriteria ketat jurnal internasional terindeks Scopus Q1 (seperti Social Network Analysis and Mining / Springer atau Information, Communication & Society / Taylor & Francis) dengan menjembatani empat kesenjangan keilmuan (*4 Epistemological Gaps*):*
@@ -910,6 +914,7 @@ Selain klasifikasi emosi kalimat penuh dengan IndoBERT, riset ini melakukan **an
 
 ---
 
+<a id="visual-gallery"></a>
 ## 🖼️ GALERI VISUALISASI RISET PUBLIK (12 MASTER PLOT 300 DPI — AKSES & UNDUH LANGSUNG)
 > *Seluruh figur visualisasi naskah tesis di bawah ini bersifat **100% publik, beresolusi cetak tinggi (300 DPI)**, dan dapat diakses/diunduh langsung secara bebas.*
 
@@ -1280,6 +1285,7 @@ tesis_mbg/
 
 ---
 
+<a id="digital-library"></a>
 ## 📚 DIGITAL REFERENCE LIBRARY & PERTANGGUNGJAWABAN AKADEMIK (`references/`)
 
 > *Sebagai pemenuhan standar integritas ilmiah, transparansi riset komputasi, dan akuntabilitas sidang tesis Magister, seluruh literatur acuan primer disimpan dalam repositori dan dipetakan ke identitas digital resmi (DOI & Open Access):*
