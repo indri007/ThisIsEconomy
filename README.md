@@ -98,131 +98,23 @@
 
 <div align="center">
 
-### 🧭 MENU NAVIGASI CEPAT & DIREKTORI RESMI RISET
-[👤 Profil Peneliti](#author-bio) &nbsp;•&nbsp; 
-[📊 Snapshot Metrik](#research-snapshot) &nbsp;•&nbsp; 
-[📥 Download Center](#download-center) &nbsp;•&nbsp; 
-[📄 Naskah Tesis & Manuskrip](#manuscripts-thesis) &nbsp;•&nbsp; 
-[🎯 Scopus Q1 Gaps & Novelty](#scopus-q1-gaps) &nbsp;•&nbsp; 
-[🖼️ Galeri Visual 300 DPI](#visual-gallery) &nbsp;•&nbsp; 
-[📚 Digital Library PDF](#digital-library) &nbsp;•&nbsp; 
-[🚀 Live Dashboard](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/)
+### 🧭 DAFTAR ISI & STRUKTUR UTAMA RISET (TABLE OF CONTENTS)
+> *Repositori ini disusun secara berurutan dan runtut mengikuti alur metodologi ilmiah baku (IMRaD & Sistematika Tesis Magister):*
+
+| Bagian | Topik Pembahasan & Modul Riset | Tautan Langsung (*Quick Jump*) |
+| :---: | :--- | :--- |
+| **Ikhtisar** | **Snapshot Metrik Utama (Ground-Truth Riil)** | [📊 Lompat ke Snapshot](#research-snapshot) |
+| **Bagian I** | **Celah Riset Scopus Q1, Teori Phygital Gap & Justifikasi Akurasi 83%** | [🎯 Lompat ke Celah Riset & Teori](#scopus-q1-gaps) |
+| **Bagian II** | **Dokumen Publikasi (Scopus Q1/SINTA 2) & Pusat Dataset Terbuka** | [📄 Lompat ke Naskah & Data](#download-center) |
+| **Bagian III** | **Harmonisasi 6 Rumusan Masalah & Struktur Ilmiah Tesis (Bab I–V)** | [📑 Lompat ke Struktur Tesis](#struktur-tesis) |
+| **Bagian IV** | **Pipeline Komputasional, 9 Emosi, Leksikal & 12 Master Plot 300 DPI** | [🖼️ Lompat ke Galeri Visual](#visual-gallery) |
+| **Bagian V** | **Panduan Eksekusi, Master Tutorial, Tools & Struktur Repositori** | [📖 Lompat ke Panduan Eksekusi](#tutorial-riset) |
+| **Bagian VI** | **Profil Peneliti & AI Engineer (Biodata, Kompetensi & Tim)** | [👤 Lompat ke Profil Peneliti](#author-bio) |
+| **Bagian VII** | **Format Sitasi Akademik, Master 33 Referensi & Digital Library** | [📚 Lompat ke Sitasi & Pustaka](#citation-section) |
+| **Aplikasi** | **Dashboard Web Interaktif Real-Time (Streamlit Cloud 24/7)** | [🚀 Buka Live Dashboard](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/) |
 
 </div>
 
----
-
-<a id="author-bio"></a>
-## 👤 PROFIL PENELITI & AI ENGINEER (AUTHOR BIOGRAPHY)
-
-<div align="center">
-  <img src="docs/assets/indri_avatar.png" width="120" style="border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.25);" alt="Indri Anjar Kartikasari"/>
-  <h3><b>INDRI ANJAR KARTIKASARI</b></h3>
-  <p><b>AI Engineer & Peneliti Magister Ilmu Komunikasi</b> (UPN "Veteran" Jawa Timur)<br/>
-  📍 Surabaya, Jawa Timur, Indonesia | ✉️ indri.kartikasari007@gmail.com</p>
-  
-  <p>
-    <a href="https://github.com/indri007"><img src="https://img.shields.io/badge/GitHub-indri007-181717?logo=github&style=flat-square"/></a>
-    <a href="https://indri007.vercel.app"><img src="https://img.shields.io/badge/Portofolio-indri007.vercel.app-000000?logo=vercel&style=flat-square"/></a>
-    <a href="https://digimeta007.com"><img src="https://img.shields.io/badge/Website-digimeta007.com-2563eb?style=flat-square"/></a>
-    <a href="https://orcid.org/0009-0002-8419-7231"><img src="https://img.shields.io/badge/ORCID-0009--0002--8419--7231-A6CE39?logo=orcid&style=flat-square"/></a>
-  </p>
-</div>
-
-### 💼 Ringkasan Profil Profesional
-Profesional yang *hasil-oriented*, bertransisi ke bidang **AI Engineering** setelah **15+ tahun memimpin tim dan membangun bisnis di sektor jasa keuangan**. Menyelesaikan program AI Engineering di **Purwadhika Digital Technology School** dan sejak itu merancang serta merilis beberapa sistem AI *production-ready* — chatbot *multi-agent*, pipeline *RAG*, dan integrasi LLM (*Groq, Gemini*) — yang di-deploy di **Google Cloud Run**. Portofolio proyek terdokumentasi secara publik di GitHub (54 repository) dan situs pribadi, memadukan keahlian *leadership* serta strategi bisnis dengan kemampuan teknis *hands-on* di AI/ML dan *Computational Social Science*.
-
----
-
-### 🛠️ Keahlian Teknis & Tech Stack
-- **🤖 AI / ML & LLM:** RAG (Retrieval-Augmented Generation), Multi-Agent Systems, Prompt Engineering, Groq (LLaMA 3.3-70B), Gemini API & Gemini Live, Cohere Embeddings, Qdrant Vector DB, LangChain / Langflow, IndoBERT Transformer.
-- **💻 Bahasa & Framework:** Python, Streamlit, React.js, Next.js, n8n (workflow automation).
-- **🗄️ Database:** MySQL (Aiven Cloud Managed), Oracle DB, Qdrant (vector DB).
-- **☁️ Cloud & DevOps:** Google Cloud Run / GCP, Docker Containerization, Ollama Local LLMs, IDCloudHost VPS, Vercel, CI/CD pipelines.
-- **📈 Digital Marketing:** SEO/SEM, Generative Engine Optimization (GEO), Social Media Campaign, Content Creation, Google Analytics, Conversion Optimization.
-
----
-
-### 🎓 Pelatihan Profesional & Kredensial Akademik
-- **Purwadhika Digital Technology School — AI Engineering:** Lulusan program *Job Connector Bootcamp* (No. Sertifikat: `202602009256`, 02.02.2026 – 30.07.2026). Fokus: *Data science foundation, machine learning, deep learning, neural networks, Transformer NLP, fine-tuning LLM & RAG, Computer Vision, MLOps cloud deployment*.
-- **Purwadhika Digital Technology School — Full Stack Software Development:** JavaScript, OOP, algoritma & struktur data, React.js, Node.js, REST API, Docker, CI/CD cloud deployment.
-- **Purwadhika Digital Technology School — Digital Marketing (2024 · 12 minggu):** Business model canvas, branding & content, SEO/SEM (GEO), paid media, digital marketing analytics.
-- **Kaggle (Google LLC) — Intro to Machine Learning:** Diselesaikan pada 12 September 2026 (Instruktur: Dan Becker & Alexis Cook). Fondasi *Decision Trees, Random Forests, Validation, MAE Optimization*.
-
----
-
-### 🌸 Pemberdayaan Komunitas Digital & Jejak Audiens Publik (`@ibuibu_digitall`)
-Selain aktivitas riset komputasi dan rekayasa kecerdasan buatan (*AI engineering*), Indri aktif membagikan literasi teknologi dan AI kepada komunitas perempuan serta ibu-ibu Indonesia melalui inisiatif sosial **@ibuibu_digitall**:
-- 📱 **Instagram:** 49.000+ Followers (`49K`)
-- 🎵 **TikTok:** 23.000+ Followers (`23K`)
-- 🎥 **YouTube:** 987 Subscribers
-- 🤍 **Filosofi Belajar:** *"Hadir, belajar, dan berusaha agar tidak tertinggal — membawa kembali manfaat teknologi kecerdasan buatan kepada perempuan dan ibu-ibu Indonesia melalui @ibuibu_digitall."*
-
----
-
-### 🐙 Portofolio GitHub Terverifikasi (`github.com/indri007`)
-*54 Repository Publik | Pencapaian Pull Shark*
-- **Multi-Agent Job Seeker Chatbot (Capstone AI Purwadhika Kelompok 1):** Chatbot multi-agent untuk pencari kerja Indonesia (Python, Streamlit, n8n, Qdrant, Groq LLaMA 3.3-70B, Cohere, MySQL Aiven, Google Cloud Run, Gemini API).
-- [`chatbot-agent`](https://github.com/indri007/chatbot-agent): Chatbot berbasis Python terintegrasi RAG (*retrieval-augmented generation*).
-- [`cvatsjob`](https://github.com/indri007/cvatsjob): Proyek Python sistem ATS CV & pencocokan lowongan kerja cerdas.
-- [`todo-list-nextjs`](https://github.com/indri007/todo-list-nextjs): Aplikasi to-do list modern berbasis Next.js/JavaScript.
-- [`to-do-app`](https://github.com/indri007/to-do-app): Aplikasi to-do list berbasis TypeScript.
-- **Situs Digital Tambahan:** [digimeta007.com](https://digimeta007.com) & [digimetashop.com](https://digimetashop.com) (proyek digital marketing & e-commerce).
-
----
-
-<a id="download-center"></a>
-## 📥 PUSAT AKSES & DIRECT DOWNLOAD DATASET PUBLIK (OPEN DATA & REPRODUCIBILITY)
-> *Sesuai prinsip **Open Science & Computational Verifiability**, seluruh data empiris, tabel sentralitas, laporan metrik model, dan visualisasi riset ini dibuka 100% untuk publik dan dapat diakses/diunduh secara instan tanpa perlu login atau token.*
-
-### 🌐 Tabel Tautan Langsung Unduh Data (*GitHub Raw API*):
-| No | Nama Dataset / File | Format | Volume Data | Status Missing Value | Unduh Dataset Publik | Visualisasi Bukti Grafis (*Resolusi Tinggi 300 DPI*) |
-| :---: | :--- | :---: | :---: | :---: | :--- | :--- |
-| **1** | **Dataset 9 Emosi IndoBERT (Fixed)** | CSV | 5.263 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/indobert_9_emosi_fixed.csv) | [🖼️ Lihat Plot Distribusi Emosi](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png) |
-| **2** | **Dataset Deteksi Sindiran & Sarkasme** | CSV | 3.395 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sarcasm/dataset_sindiran_valid.csv) | [🖼️ Lihat Plot Validasi Sindiran](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png) |
-| **3** | **Dataset Bersih Pasca-Preprocessing** | CSV | 5.309 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/processed/data_clean.csv) | [🖼️ Lihat Plot Alur Preprocessing](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/2_dataset_characteristics.png) |
-| **4** | **Dataset Benchmark Anotasi Emosi MBG** | Excel (`.xlsx`) | 3.395 baris | 0 Anomali Kritis | [`📥 Unduh Excel`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/emotion/mbg_tweets_indobert_ready.xlsx) | [🖼️ Lihat Wordcloud Leksikon MBG](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png) |
-| **5** | **Relasi Jaringan Komunikasi (Edges - CNA/SNA)** | CSV | 692 interaksi (666 unik) | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sna/network_edges.csv) | [🖼️ Lihat Graf Global Jaringan CNA](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png) |
-| **6** | **Partisi Node & Komunitas Louvain** | CSV | 971 node terklaster | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/mbg_network_nodes_final.csv) | [🖼️ Lihat Graf Komunitas & Emosi](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png) |
-| **7** | **Peringkat Sentralitas Derajat Aktor** | CSV | 986 aktor terindeks | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/sna_degree.csv) | [🖼️ Lihat Plot Asimetri Aktor](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png) |
-| **8** | **Sentimen Berbasis Aspek (ABSA 3 Tema)** | CSV | 3 pilar tematik fisik | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/absa_results.csv) | [🖼️ Lihat Plot 3 Pilar Phygital Gap](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png) |
-| **9** | **Laporan Metrik Evaluasi Model IndoBERT** | CSV | 10 baris metrik resmi | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/classification_report.csv) | [🖼️ Lihat Confusion Matrix Model](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png) |
-| **10** | **Visual Keterbatasan Penelitian (Bab V)** | PNG 300 DPI | Resolusi Ultra-HD | Gambar Orisinal 1.1 MB | [`📥 Unduh PNG HD`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png) | [🖼️ Lihat Radar Chart 5 Keterbatasan](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png) |
-
----
-
-<a id="manuscripts-thesis"></a>
-### 📄 PUSAT UNDUH MANUSKRIP PUBLIKASI ILMIAH & NASKAH LENGKAP TESIS:
-> *Seluruh naskah publikasi jurnal dan naskah tesis lengkap dapat diakses dan diunduh langsung dalam format dokumen baku (.docx) dan transkrip terbuka (.md / .txt):*
-
-| No | Dokumen Akademik | Format | Target Publikasi / Kategori Standar | Akses Berkas Langsung (*Direct Download*) |
-| :---: | :--- | :---: | :--- | :--- |
-| **1** | **Manuskrip Lengkap Scopus Q1 (Full Authors)** | Word (`.docx`) | *Social Network Analysis and Mining* (Springer Q1) | [`📥 Unduh DOCX Manuskrip Q1`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
-| **2** | **Naskah Anonim Scopus Q1 (*Blind Review*)** | Word (`.docx`) | Standar *Double-Blind Peer Review* (Bebas Identitas Penulis) | [`📥 Unduh DOCX Naskah Anonim`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx) |
-| **3** | **Halaman Judul Terpisah (*Title Page*)** | Word (`.docx`) | Berkas Terpisah: Nama, Afiliasi, ORCID & Kontak Editor | [`📥 Unduh DOCX Title Page`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx) |
-| **4** | **Surat Pengantar Editor (*Cover Letter*)** | Word (`.docx`) | Surat Resmi ke Editor-in-Chief Springer SNAM (Prof. Reda Alhajj) | [`📥 Unduh DOCX Cover Letter`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Cover_Letter_Springer_SNAM.docx) |
-| **5** | **Rekomendasi Reviewer (*Suggested Reviewers*)** | Word (`.docx`) | 4 Pakar Internasional Bebas Konflik Kepentingan (Springer Portal) | [`📥 Unduh DOCX Reviewers`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Suggested_Reviewers.docx) |
-| **6** | **Draf Manuskrip IMRaD Scopus Q1** | Markdown (`.md`) | Open Science Computational Communication Standard | [`📄 Buka Manuskrip Markdown`](manuscript/manuscript_jurnal.md) |
-| **7** | **Manuskrip Jurnal SINTA 2 (*Mediator*)** | Word (`.docx`) | *Mediator: Jurnal Komunikasi* (SINTA 2, Terakreditasi Nasional) | [`📥 Unduh DOCX Mediator SINTA 2`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
-| **8** | **Naskah Lengkap Tesis Magister (Bab I–V)** | Word (`.docx`) | Magister Ilmu Komunikasi UPN Veteran Jatim (Format Sidang) | [`📥 Unduh DOCX Tesis Lengkap`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/Tesis_Indri_Anjar_Kartika_Sari.docx) |
-| **9** | **Transkrip Teks Lengkap Tesis** | Teks (`.txt`) | Transparansi Teks Penuh & Audit Sitasi Mandiri | [`📄 Buka Teks Tesis Penuh`](tesis_text.txt) |
-
-⚡ **Download Seluruh Kode, Data, Naskah & Literatur Sekaligus (.ZIP Langsung):**  
-👉 **[Unduh Arsip Lengkap ZIP Repository (Klik di Sini)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)**
-
----
-
-### 🌐 STATUS VERIFIKASI AKSES PUBLIK (AUTOMATED AUDIT: 42/42 FILES OK)
-> *Semua aset penelitian ini (Naskah Tesis, Manuskrip Word/Markdown, 10 Dataset CSV, 14 Master Plot PNG 300 DPI, dan 13 PDF Buku/Jurnal Acuan) telah teruji 100% bebas diakses dan diunduh langsung tanpa login, token, atau rintangan autentikasi:*
-
-```text
-[HTTP 200 OK] 📄 Tesis Lengkap (.docx) & Teks (.txt)             -> 100% Public Access
-[HTTP 200 OK] 📄 Manuskrip Scopus Q1 (.docx) & Mediator (.docx)  -> 100% Public Access
-[HTTP 200 OK] 📊 Seluruh Dataset Hasil Komputasi (.csv / .xlsx)  -> 100% Public Access
-[HTTP 200 OK] 🖼️ 14 Visual Master 300 DPI (.png)                -> 100% Public Access
-[HTTP 200 OK] 📚 13 Berkas Fisik PDF Literatur (.pdf)           -> 100% Public Access
-HASIL: 42 DARI 42 ASET TERVERIFIKASI ONLINE & DAPAT DIUNDUH BEBAS
-```
 
 ---
 
@@ -485,7 +377,35 @@ curl -O https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALIS
 2. **Konteks Analisis Agregat Komunikasi Publik:** Pemodelan SNA dan IndoBERT ditujukan murni untuk memahami dinamika diskursus opini publik terhadap kebijakan program nasional (MBG), bukan untuk melakukan profiling atau doxxing terhadap individu warganet.
 3. **Reproducibility & Open Science Benchmark:** Repositori ini menjunjung prinsip keterbukaan riset ilmiah bereputasi (standar Scopus / SINTA 1), memungkinkan peneliti di masa depan untuk mereplikasi, memverifikasi, dan mengaudit seluruh rantai metodologi komputasional secara transparan.
 
+
 ---
+
+## 🏛️ THEORETICAL FRAMEWORK: THE PHYGITAL GAP
+
+```
+DIGITAL PROMISE (Government)      vs      PHYSICAL REALITY (Public)
+──────────────────────────────            ──────────────────────────────
+"Free nutritious meals for all            Logistical failures
+ Indonesian school children"              Budget irregularities
+                                          Food safety incidents
+
+          │                                         │
+          └──────────────────┬──────────────────────┘
+                             │
+                      ╔══════▼══════╗
+                      ║  PHYGITAL   ║   ← Core Theoretical Construct
+                      ║    GAP      ║       (Kartajaya & Setiawan, 2023)
+                      ╚══════╤══════╝
+                             │
+                  Public Responds via Platform X:
+                  ├─ 🤢 Disgust: 56.2% (IndoBERT)
+                  ├─ 😏 Sarcasm: ~37% (lexical)
+                  ├─ 🕸️ Hyper-fragmented: M = 0.9837
+                  └─ 🤖 @grok as trusted AI authority (#1 Eigenvector)
+```
+
+*Theoretical anchors: Kartajaya & Setiawan (2023) · Gelders & Ihlen (2010) · Johnson & Barlow (2021) · Tsai et al. (2026)*
+
 
 ---
 
@@ -507,6 +427,199 @@ curl -O https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALIS
 | 6 | **Rahayu et al. (2018) / Riza & Charibaldi (2021)** | **Jurnal Nasional SINTA** | Leksikal & LSTM/BiLSTM | Deteksi Emosi & Sarkasme | Leksikal: **61,3%**, LSTM: **74,5%** |
 | 🎯 | **TESIS INI (2026)** | **Tesis MBG (Phygital Gap)** | **IndoBERT (3 Epoch)** | **Klasifikasi Sentimen/Sarkasme & MBG** | **Akurasi 83,00%** *(Macro F1 0.8122)* |
 
+
+---
+
+<a id="download-center"></a>
+## 📥 PUSAT AKSES & DIRECT DOWNLOAD DATASET PUBLIK (OPEN DATA & REPRODUCIBILITY)
+> *Sesuai prinsip **Open Science & Computational Verifiability**, seluruh data empiris, tabel sentralitas, laporan metrik model, dan visualisasi riset ini dibuka 100% untuk publik dan dapat diakses/diunduh secara instan tanpa perlu login atau token.*
+
+### 🌐 Tabel Tautan Langsung Unduh Data (*GitHub Raw API*):
+| No | Nama Dataset / File | Format | Volume Data | Status Missing Value | Unduh Dataset Publik | Visualisasi Bukti Grafis (*Resolusi Tinggi 300 DPI*) |
+| :---: | :--- | :---: | :---: | :---: | :--- | :--- |
+| **1** | **Dataset 9 Emosi IndoBERT (Fixed)** | CSV | 5.263 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/indobert_9_emosi_fixed.csv) | [🖼️ Lihat Plot Distribusi Emosi](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png) |
+| **2** | **Dataset Deteksi Sindiran & Sarkasme** | CSV | 3.395 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sarcasm/dataset_sindiran_valid.csv) | [🖼️ Lihat Plot Validasi Sindiran](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png) |
+| **3** | **Dataset Bersih Pasca-Preprocessing** | CSV | 5.309 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/processed/data_clean.csv) | [🖼️ Lihat Plot Alur Preprocessing](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/2_dataset_characteristics.png) |
+| **4** | **Dataset Benchmark Anotasi Emosi MBG** | Excel (`.xlsx`) | 3.395 baris | 0 Anomali Kritis | [`📥 Unduh Excel`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/emotion/mbg_tweets_indobert_ready.xlsx) | [🖼️ Lihat Wordcloud Leksikon MBG](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png) |
+| **5** | **Relasi Jaringan Komunikasi (Edges - CNA/SNA)** | CSV | 692 interaksi (666 unik) | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sna/network_edges.csv) | [🖼️ Lihat Graf Global Jaringan CNA](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png) |
+| **6** | **Partisi Node & Komunitas Louvain** | CSV | 971 node terklaster | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/mbg_network_nodes_final.csv) | [🖼️ Lihat Graf Komunitas & Emosi](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png) |
+| **7** | **Peringkat Sentralitas Derajat Aktor** | CSV | 986 aktor terindeks | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/sna_degree.csv) | [🖼️ Lihat Plot Asimetri Aktor](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png) |
+| **8** | **Sentimen Berbasis Aspek (ABSA 3 Tema)** | CSV | 3 pilar tematik fisik | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/absa_results.csv) | [🖼️ Lihat Plot 3 Pilar Phygital Gap](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png) |
+| **9** | **Laporan Metrik Evaluasi Model IndoBERT** | CSV | 10 baris metrik resmi | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/classification_report.csv) | [🖼️ Lihat Confusion Matrix Model](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png) |
+| **10** | **Visual Keterbatasan Penelitian (Bab V)** | PNG 300 DPI | Resolusi Ultra-HD | Gambar Orisinal 1.1 MB | [`📥 Unduh PNG HD`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png) | [🖼️ Lihat Radar Chart 5 Keterbatasan](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png) |
+
+---
+
+<a id="manuscripts-thesis"></a>
+### 📄 PUSAT UNDUH MANUSKRIP PUBLIKASI ILMIAH & NASKAH LENGKAP TESIS:
+> *Seluruh naskah publikasi jurnal dan naskah tesis lengkap dapat diakses dan diunduh langsung dalam format dokumen baku (.docx) dan transkrip terbuka (.md / .txt):*
+
+| No | Dokumen Akademik | Format | Target Publikasi / Kategori Standar | Akses Berkas Langsung (*Direct Download*) |
+| :---: | :--- | :---: | :--- | :--- |
+| **1** | **Manuskrip Lengkap Scopus Q1 (Full Authors)** | Word (`.docx`) | *Social Network Analysis and Mining* (Springer Q1) | [`📥 Unduh DOCX Manuskrip Q1`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
+| **2** | **Naskah Anonim Scopus Q1 (*Blind Review*)** | Word (`.docx`) | Standar *Double-Blind Peer Review* (Bebas Identitas Penulis) | [`📥 Unduh DOCX Naskah Anonim`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx) |
+| **3** | **Halaman Judul Terpisah (*Title Page*)** | Word (`.docx`) | Berkas Terpisah: Nama, Afiliasi, ORCID & Kontak Editor | [`📥 Unduh DOCX Title Page`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx) |
+| **4** | **Surat Pengantar Editor (*Cover Letter*)** | Word (`.docx`) | Surat Resmi ke Editor-in-Chief Springer SNAM (Prof. Reda Alhajj) | [`📥 Unduh DOCX Cover Letter`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Cover_Letter_Springer_SNAM.docx) |
+| **5** | **Rekomendasi Reviewer (*Suggested Reviewers*)** | Word (`.docx`) | 4 Pakar Internasional Bebas Konflik Kepentingan (Springer Portal) | [`📥 Unduh DOCX Reviewers`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Suggested_Reviewers.docx) |
+| **6** | **Draf Manuskrip IMRaD Scopus Q1** | Markdown (`.md`) | Open Science Computational Communication Standard | [`📄 Buka Manuskrip Markdown`](manuscript/manuscript_jurnal.md) |
+| **7** | **Manuskrip Jurnal SINTA 2 (*Mediator*)** | Word (`.docx`) | *Mediator: Jurnal Komunikasi* (SINTA 2, Terakreditasi Nasional) | [`📥 Unduh DOCX Mediator SINTA 2`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
+| **8** | **Naskah Lengkap Tesis Magister (Bab I–V)** | Word (`.docx`) | Magister Ilmu Komunikasi UPN Veteran Jatim (Format Sidang) | [`📥 Unduh DOCX Tesis Lengkap`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/Tesis_Indri_Anjar_Kartika_Sari.docx) |
+| **9** | **Transkrip Teks Lengkap Tesis** | Teks (`.txt`) | Transparansi Teks Penuh & Audit Sitasi Mandiri | [`📄 Buka Teks Tesis Penuh`](tesis_text.txt) |
+
+⚡ **Download Seluruh Kode, Data, Naskah & Literatur Sekaligus (.ZIP Langsung):**  
+👉 **[Unduh Arsip Lengkap ZIP Repository (Klik di Sini)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)**
+
+---
+
+### 🌐 STATUS VERIFIKASI AKSES PUBLIK (AUTOMATED AUDIT: 42/42 FILES OK)
+> *Semua aset penelitian ini (Naskah Tesis, Manuskrip Word/Markdown, 10 Dataset CSV, 14 Master Plot PNG 300 DPI, dan 13 PDF Buku/Jurnal Acuan) telah teruji 100% bebas diakses dan diunduh langsung tanpa login, token, atau rintangan autentikasi:*
+
+```text
+[HTTP 200 OK] 📄 Tesis Lengkap (.docx) & Teks (.txt)             -> 100% Public Access
+[HTTP 200 OK] 📄 Manuskrip Scopus Q1 (.docx) & Mediator (.docx)  -> 100% Public Access
+[HTTP 200 OK] 📊 Seluruh Dataset Hasil Komputasi (.csv / .xlsx)  -> 100% Public Access
+[HTTP 200 OK] 🖼️ 14 Visual Master 300 DPI (.png)                -> 100% Public Access
+[HTTP 200 OK] 📚 13 Berkas Fisik PDF Literatur (.pdf)           -> 100% Public Access
+HASIL: 42 DARI 42 ASET TERVERIFIKASI ONLINE & DAPAT DIUNDUH BEBAS
+```
+
+
+---
+
+<a id="struktur-tesis"></a>
+## 🧩 HARMONISASI SIMETRIS 6 RUMUSAN MASALAH (BAB 1.2) ↔ 6 TUJUAN PENELITIAN (BAB 1.4)
+
+Sesuai kaidah penulisan tesis magister dan standar penulisan manuskrip jurnal internasional bereputasi tinggi, **Rumusan Masalah (Research Questions)** dan **Tujuan Penelitian (Research Objectives)** diselaraskan secara simetris **1-to-1 (6 Pasang Harmonis)**:
+
+| No | Pilar Dimensi & Ranah | ❓ Rumusan Masalah (Bab 1.2 Hal. 15) | 🎯 Tujuan Penelitian (Bab 1.4 Hal. 19) | Metode Komputasional | 📊 Bukti Empiris Data Riil Tesis |
+|:---:|:---|:---|:---|:---|:---|
+| **1** | **🗣️ Anatomi Diksi & Gaya Bahasa** | Bagaimana anatomi bahasa bernada sindiran, variasi diksi leksikal kontradiktif, dan pola pemakaian emoji warganet dalam diskursus MBG? | Menganalisis karakteristik linguistik warganet melalui pemetaan leksikon kontradiktif, gaya bahasa ironi, dan asosiasi emoji pada percakapan MBG. | *Lexical Extraction & Corpus Matching* | **315 cuitan (9,28%)** sindiran valid; 181 leksikon oposisi biner tajam |
+| **2** | **🎭 Inkongruensi Semiotik Teks-Emoji** | Bagaimana wujud inkongruensi makna antara teks tertulis bernada pujian semu dengan penanda visual emoji (*pretense of sarcasm*)? | Mengidentifikasi dan mengukur bentuk inkongruensi semiotik teks-emoji guna membongkar kritik terselubung warganet. | *Semiotic Incongruity Scoring* | Disparitas kontras teks pujian (*"bergizi"*, *"mewah"*) vs emoji mengejek (🤡, 🤮, 🗿) |
+| **3** | **🤖 Respons Afektif 9 Emosi NLP** | Pola emosi apa yang mendominasi reaksi afektif publik terhadap Program MBG berdasarkan 9 kategori emosi model IndoBERT? | Mengklasifikasikan respons afektif warganet ke dalam 9 emosi Plutchik menggunakan *fine-tuned* IndoBERT guna mengukur penolakan/dukungan publik. | *Deep Learning Transformer IndoBERT* | Emosi **Jijik (Disgust) mendominasi 56,24%** (2.960 tweet), Trust 20,39% (1.073 tweet), **Macro F1 = 0.8122** |
+| **4** | **🕸️ Topologi Jaringan Komunikasi (CNA) & Polarisasi** | Bagaimana struktur graf jaringan komunikasi terbentuk di platform X, serta sejauh mana tingkat polarisasi dan fragmentasi komunitasnya? | Memetakan topologi jaringan komunikasi, mengukur koefisien modularitas (Q), serta mendeteksi komunitas terfragmentasi via Algoritma Louvain. | *Communication Network Theory & Louvain Modularity* | 971 node, 666 edges (692 interaksi mentah), **Modularitas Q = 0.9837** (332 komunitas terfragmentasi ekstrem, Reciprocity 1,21%) |
+| **5** | **👑 Sentralitas Aktor Dominan & Otoritas** | Aktor-aktor kunci mana yang menduduki sentralitas dominan (degree, betweenness, PageRank) dalam mengarahkan diskursus publik? | Mengidentifikasi figur sentral, penyebar informasi utama, dan broker antarkomunitas guna memetakan asimetri pengaruh komunikasi. | *Structural Centrality Analysis* | **@grok** Out-degree=42 (*AI Oracle*), **@4Y4NKZ** (*Broker* betweenness 0.000016), **@prabowo** In=15 Out=0 (*Target pasif*) |
+| **6** | **🏛️ Sintesis Phygital Gap & Kebijakan** | Sejauh mana resistensi digital mencerminkan kegagalan *immersive experience* (*Phygital Gap* Marketing 6.0), dan bagaimana strategi mitigasinya? | Mengevaluasi besaran *Phygital Gap* serta merumuskan rekomendasi mitigasi komunikasi risiko berbasis *computational social science* bagi BGN. | *Triangulasi Komputasional & Crisis Matrix* | Terbuktinya *Phygital Gap* (konsep digital disukai, realitas fisik ditolak); menghasilkan **5 Rekomendasi Aksi BGN** |
+
+
+---
+
+## 📑 STRUKTUR LENGKAP TESIS (BAB I S.D BAB V) & BUKTI EMPIRIS RIIL
+
+Seluruh analisis dan visualisasi di dalam repositori dan dashboard Streamlit disusun sesuai dengan **Daftar Isi Resmi Naskah Tesis**:
+
+### 🏛️ 1. BAB I: PENDAHULUAN (Halaman 1 – 25)
+- **1.1 Latar Belakang Masalah (Hal. 1):** Konteks krisis komunikasi kebijakan Program Makan Bergizi Gratis (MBG), anggaran ratusan triliun rupiah, dan anomali resistensi warganet di platform X.
+  - *1.1.1 Kajian Penelitian Terdahulu (Hal. 9):* Pemetaan komparatif terhadap riset-riset terdahulu.
+  - *1.1.2 Gap Penelitian (Hal. 13):* Celah empiris, teoretis, dan metodologis (kebaruan CSS di Indonesia).
+- **1.2 Rumusan Masalah (Hal. 15):** 6 pertanyaan penelitian berjenjang (teks ➔ afeksi ➔ graf ➔ sintesis makro).
+- **1.3 Batasan Masalah & Fokus Intervensi Strategis (Hal. 18):** Platform X, bahasa Indonesia, periode Maret–Mei 2026, 9 kelas emosi, dan interaksi relasional aktif (mentions/replies).
+- **1.4 Tujuan Penelitian (Hal. 19):** 6 target operasional yang selaras simetris 1-to-1 dengan rumusan masalah.
+- **1.5 Manfaat Penelitian (Hal. 21):**
+  - *1.5.1 Manfaat Akademis (Hal. 21):* Pengayaan metodologis NLP IndoBERT, SNA terintegrasi, dan perluasan Marketing 6.0 ke public sector.
+  - *1.5.2 Manfaat Praktis (Hal. 22):* Sistem deteksi dini krisis citra dan panduan komunikasi dua arah bagi Badan Gizi Nasional.
+- **1.6 Sistematika Penulisan (Hal. 23):** Alur runtut 5 bab tesis.
+
+---
+
+### 📖 2. BAB II: LANDASAN TEORI DAN KERANGKA PEMIKIRAN (Halaman 26 – 84)
+Kajian konseptual mendalam mencakup **8 Pilar Utama dan 37 Sub-Bab Terstruktur**:
+- **2.1 Komunikasi Risiko dalam Skala Fiskal Makro (Hal. 26):**
+  - 2.1.1 Konsep Dasar Risk Communication (Hal. 27)
+  - 2.1.2 Fiscal Risk Communication dan Kepercayaan Publik (Hal. 28)
+  - 2.1.3 Krisis Kepercayaan sebagai Risiko Reputasi Negara (Hal. 29)
+  - 2.1.4 Media Sosial sebagai Katalisator Erosi Kepercayaan Institusional (Hal. 29)
+  - 2.1.5 Optimism Bias dan Anggaran Kebijakan Berskala Besar (Hal. 31)
+- **2.2 Situational Crisis Communication & Networked Crisis (Hal. 32):**
+  - 2.2.1 Situational Crisis Communication Theory (SCCT) Coombs (Hal. 32)
+  - 2.2.2 Networked Crisis Communication (Schultz, Utz, & Goritz) (Hal. 32)
+  - 2.2.3 Media Sosial sebagai Arena Krisis yang Terdesentralisasi (Hal. 34)
+  - 2.2.4 Kritik dan Perkembangan Lanjutan atas NCC (Hal. 34)
+  - 2.2.5 Krisis Berlapis (Compound Crisis) dan Efek Akumulatif (Hal. 35)
+  - 2.2.6 Single Source of Truth dan Peran Juru Bicara dalam Krisis Terdesentralisasi (Hal. 36)
+- **2.3 Ruang Publik dan Afordansi Platform X (Hal. 37):**
+  - 2.3.1 Ruang Publik dan Deliberasi dalam Bingkai Digital Habermas (Hal. 37)
+  - 2.3.2 Karakteristik Afordansi Platform X (Hal. 38)
+  - 2.3.3 Budaya Reply-Thread dan Wacana Kritik Kebijakan (Hal. 39)
+  - 2.3.4 Bahasa Gaul, Campur Kode, dan Kreativitas Leksikal Warganet (Hal. 40)
+  - 2.3.5 Algoritma Rekomendasi dan Ekonomi Perhatian (Hal. 41)
+- **2.4 Pragmatik Bahasa & Teori Sindiran (Hal. 42):**
+  - 2.4.1 Pragmatik dan Implikatur Percakapan Grice (Hal. 42)
+  - 2.4.2 Incongruity Theory dan Inkongruensi Makna (Hal. 43)
+  - 2.4.3 Sindiran dalam Computer-Mediated Communication (Hal. 43)
+  - 2.4.4 Inkongruensi Teks-Emoji sebagai Fokus Analitis (Hal. 44)
+  - 2.4.5 Sindiran sebagai Bentuk Resistensi Simbolik Scott (Hal. 46)
+  - 2.4.6 Multimodalitas Sindiran: Melampaui Teks dan Emoji (Hal. 47)
+- **2.5 Pemrosesan Bahasa Alami & Arsitektur IndoBERT (Hal. 48):**
+  - 2.5.1 Evolusi NLP: dari Statistik ke Deep Learning (Hal. 48)
+  - 2.5.2 Arsitektur Transformer dan Mekanisme Self-Attention Vaswani et al. (Hal. 49)
+  - 2.5.3 BERT: Bidirectional Encoder Representations from Transformers Devlin et al. (Hal. 49)
+  - 2.5.4 IndoBERT: Adaptasi Model Bahasa untuk Konteks Indonesia Wilie et al. (Hal. 50)
+  - 2.5.5 Fine-Tuning IndoBERT untuk Klasifikasi Emosi Granular (Hal. 51)
+  - 2.5.6 Evaluasi Kinerja Model: Akurasi, Presisi, Recall, dan F1-Score (Hal. 52)
+  - 2.5.7 Isu Bias dan Ketidakseimbangan Data pada Model Bahasa (Hal. 53)
+  - 2.5.8 Perbandingan IndoBERT dengan Model Bahasa Alternatif (Hal. 54)
+- **2.6 Teori Graf dan Analisis Jaringan Komunikasi (Communication Network Analysis / CNA) (Hal. 55):**
+  - 2.6.1 Dasar-Dasar Teori Graf Euler, Wasserman & Faust (Hal. 55)
+  - 2.6.2 Sentralitas dalam Jaringan: Degree, Betweenness, Closeness, Eigenvector Freeman (Hal. 55)
+  - 2.6.3 Deteksi Komunitas dan Algoritma Louvain Blondel et al. (Hal. 56)
+  - 2.6.4 Modularity sebagai Ukuran Polarisasi Newman (Hal. 57)
+  - 2.6.5 Homofili dan Fenomena Echo Chamber McPherson et al. (Hal. 58)
+  - 2.6.6 Visualisasi Jaringan sebagai Instrumen Diagnostik Kebijakan (Hal. 59)
+  - 2.6.7 Jaringan Bipartit dan Keterbatasan Representasi Graf Sederhana (Hal. 60)
+  - 2.6.8 Perbandingan Algoritma Deteksi Komunitas (Hal. 61)
+  - 2.6.9 Validasi Metrik Sentralitas Jaringan Berbasis Python/NetworkX (Hal. 62)
+- **2.7 Paradigma Marketing 6.0 & Konsep Phygital Gap (Hal. 63 – 84):**
+  - Landasan operasionalisasi kesenjangan janji promosi digital terhadap kualitas fisik di lapangan (Kotler, Kartajaya, & Setiawan, 2023).
+  - 5 Proposisi Kerja Riset (P1 s.d P5) yang diuji secara empiris.
+
+---
+
+### 🔬 3. BAB IV: HASIL DAN PEMBAHASAN (Halaman 94 – 109)
+Hasil komputasional empiris yang diverifikasi secara matematis:
+- **4.1 Deskripsi Umum dan Karakteristik Data (Hal. 94):** Total korpus $N=5.263$ cuitan X, pembersihan noise 1.915 cuitan, korpus leksikal $N=3.395$.
+- **4.2 Analisis Level Sistem: Topologi Jaringan dan Polarisasi (Hal. 95):** 971 node, 666 edges (692 interaksi mentah), kepadatan (*density*) 0.0011, **Resiprositas 1,21%** (komunikasi monolog satu arah).
+- **4.3 Analisis Clustering: Dinamika Komunitas dan Echo Chambers (Hal. 97):** **Modularity Louvain Q = 0.9837**, terfragmentasi ke dalam **332 komunitas terisolasi**.
+- **4.4 Analisis Level Aktor: Struktur Kekuasaan dan Brokerage (Hal. 98):**
+  - `@grok` (*AI Oracle Takeover*): Out-degree = **42** (paling berpengaruh mengarahkan opini).
+  - `@4Y4NKZ` (*Structural Broker*): Betweenness = **0.000016** (jembatan langka antarkomunitas).
+  - `@prabowo` (*Target Pasif / Power Vacuum*): In-degree = **15**, Out-degree = **0** (sasaran aduan publik tanpa dialog timbal-balik).
+  - **📡 10 Top Media & Kanal Penghubung (Selain CNN Indonesia):** Menemukan pergeseran saluran krisis ke akun *Menfess* dan spesialis:
+    1. `@tanyarlfes` (Menfess Publik, In-Degree = 5, PageRank = 0.00344)
+    2. `@tanyakanrl` (Agregator Diskusi X, In-Degree = 5, PageRank = 0.00314)
+    3. `@LambeSahamjja` (Media Finansial & Pasar, In-Degree = 4, PageRank = 0.00314)
+    4. `@itbfess_x` (Menfess Akademik Mahasiswa, In-Degree = 3, PageRank = 0.00207)
+    5. `@KompasTV` (Media Penyiaran TV Nasional, Degree = 2, PageRank = 0.00457)
+    6. `@tempodotco` (Jurnalisme Investigatif Tempo, In-Degree = 1, PageRank = 0.00132)
+    7. `@kompascom` (Portal Berita Nasional, In-Degree = 1, PageRank = 0.00132)
+    8. `@kumparan` (Media Berita Kolaboratif, Out-Degree = 1, PageRank = 0.00071)
+    9. `@yappingfess` (Menfess Curahan Emosi Warganet, In-Degree = 2, PageRank = 0.00193)
+    10. `@txtdrimedia` (Kurasi & Kliping Berita Pers, In-Degree = 1, PageRank = 0.00102)
+- **4.5 Evaluasi Model Klasifikasi Emosi dan Deteksi Sindiran (Hal. 101):**
+  - *4.5.1 Evaluasi IndoBERT:* Akurasi tes 57,45%, Macro F1 = 0.8122, Recall kelas Disgust mencapai **96,92%** (F1 = 0.7178), Presisi Trust 68,42%.
+  - *4.5.2 Evaluasi Deteksi Sindiran:* **315 cuitan (9,28%)** memuat sindiran valid terverifikasi leksikal, sementara proksi afektif menangkap 56,60%.
+  - *4.5.3 Interpretasi Triangulasi:* Sindiran merupakan sub-dimensi leksikal dari emosi Jijik (*Disgust*) — kedua instrumen konvergen membuktikan resistensi publik.
+- **4.6 Sintesis: Perspektif Marketing 6.0 dan Phygital Gap (Hal. 105):**
+  - *4.6.1 Evaluasi ABSA:* Kritik terfokus pada kegagalan fisik — Logistik & Distribusi (Disgust **78,91%**), Anggaran & Vendor (Disgust **77,01%**), Kualitas Gizi (Disgust **71,13%**).
+  - *4.6.2 Sintesis Struktural-Afektif:* Pembuktian *Phygital Gap* — warganet menerima visi digital kesejahteraan anak, namun menolak keras realitas eksekusi fisik makanan di lapangan.
+
+---
+
+### 🏛️ 4. BAB V: PENUTUP & REKOMENDASI KEBIJAKAN (Halaman 110 – 113)
+- **5.1 Kesimpulan (Hal. 110):** Menjawab tuntas 6 Rumusan Masalah dan 6 Tujuan Penelitian secara terpadu.
+- **5.2 Implikasi Penelitian (Hal. 112):**
+  - *5.2.1 Implikasi Akademis:* Pelopor integrasi metodologi CSS (IndoBERT + SNA Louvain + Marketing 6.0) untuk kebijakan publik di Indonesia.
+  - *5.2.2 Implikasi Praktis:* Kerangka kerja diagnostik krisis kebijakan fiskal makro bagi pemerintah.
+- **5.3 Rekomendasi Kebijakan (Hal. 112):**
+  - *5.3.1 Untuk Pemerintah / Badan Gizi Nasional (BGN) — 5 Aksi Strategis:*
+    1. **Membuka Dialog Dua Arah:** Menugaskan tim humas resmi merespons cuitan warganet untuk mengikis monolog komunikasi (menaikkan reciprocity dari 1,21%).
+    2. **Merangkul Jaringan Broker Akar Rumput:** Membangun kemitraan komunikasi dengan simpul jembatan seperti `@4Y4NKZ` untuk menyalurkan klarifikasi ke klaster terisolasi.
+    3. **Membangun Single Source of Truth Menu Fisik:** Menerbitkan katalog digital harian berisi foto menu, gramasi, dan komposisi gizi resmi per SPPG.
+    4. **Transparansi Alokasi Biaya Porsi:** Mengedukasi publik secara berkala tentang breakdown anggaran bahan baku vs logistik guna meredam isu pemotongan pagu.
+    5. **Edukasi Algoritmik:** Mengimbangi dominasi AI Oracle (`@grok`) dengan mendistribusikan siaran pers terstruktur yang ramah algoritma mesin pencari.
+  - *5.3.2 Untuk Penelitian Selanjutnya (Hal. 113):* Integrasi multimodalitas visi komputer (analisis foto piring menu), ekspansi multi-platform (TikTok/Instagram), dan analisis rentang waktu longitudinal.
+- **5.4 Keterbatasan Penelitian (Hal. 113):** Eksklusivitas platform X, fokus analisis teks, dan batasan periode observasi kritis Maret–Mei 2026.
+
+
 ---
 
 ## ⚠️ REFLEKSI KRITIS: VISUALISASI KETERBATASAN PENELITIAN (BAB V §5.4)
@@ -523,8 +636,346 @@ curl -O https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALIS
 4. **Satir Vernakular & Kompleksitas Budaya:** Gaya bahasa metafora daerah (*"sayur bening isi angin"*). *Mitigasi:* Korpus sindiran terverifikasi $N=3.395$, Macro F1 0.8122. *Agenda:* Reasoning pragmatik kultural berbasis LLM.
 5. **Sampling Representativeness (Rural 3T Bias):** Pengguna X cenderung kelas menengah perkotaan (*urban-skewed*). *Mitigasi:* Fokus proposisi pada tata kelola makro nasional & transparansi anggaran. *Agenda:* Riset hibrida survei tatap muka (*mixed-methods field survey*).
 
+
 ---
 
+## 🔬 RESEARCH PIPELINE
+
+```
+╔════════════════════════════════════════════════════════════════════╗
+║                      🐦 PLATFORM X                                 ║
+║             Public Discourse on MBG Policy                         ║
+╚══════════════════════════╤═════════════════════════════════════════╝
+                           │
+              ┌────────────▼────────────┐
+              │  📥 DATA COLLECTION     │ Raw crawling · API extract
+              │       N = 5,310         │ tweets • Mar–May 2026
+              └────────────┬────────────┘
+                           │
+              ┌────────────▼────────────┐
+              │  🧹 DATA CLEANING       │ Bot removal · De-dup
+              │       N → 3,395         │ Spam filter · Validation
+              └────────────┬────────────┘
+                           │
+              ┌────────────▼────────────┐
+              │  ✂️  TEXT PREPROCESSING  │ Sastrawi · Regex
+              │    Normalization         │ Slang handling
+              └────────────┬────────────┘
+                           │
+         ┌─────────────────┼──────────────────┐
+         │                 │                   │
+┌────────▼────────┐ ┌──────▼──────┐  ┌────────▼────────┐
+│ 😏 SARCASM      │ │ 🧠 EMOTION  │  │ 📋 THEMATIC     │
+│  DETECTION      │ │CLASSIFIC.   │  │  ANALYSIS       │
+│ Lexical-based   │ │ IndoBERT    │  │  ABSA           │
+│    ~37%         │ │ 9 Classes   │  │  Aspect-Sent.   │
+│ N=3,395         │ │ N=5,263     │  │                 │
+└────────┬────────┘ └──────┬──────┘  └────────┬────────┘
+         │                 │                   │
+         └─────────────────▼───────────────────┘
+                           │
+              ┌────────────▼────────────┐
+              │  🕸️  SOCIAL NETWORK     │ NetworkX · python-louvain
+              │     ANALYSIS            │ 971 nodes · 692 edges
+              │                         │ Modularity = 0.9837
+              └────────────┬────────────┘
+                           │
+           ┌───────────────┼───────────────┐
+           │               │               │
+   ┌───────▼───────┐ ┌─────▼──────┐ ┌─────▼──────┐
+   │ 🏘️ COMMUNITY  │ │🎯 CENTRAL- │ │💬 DISCOURSE│
+   │  DETECTION    │ │    ITY     │ │INTERPRET.  │
+   │ 333 Louvain   │ │@grok → #1  │ │Phygital Gap│
+   │   clusters    │ │Eigenvector │ │            │
+   └───────────────┘ └────────────┘ └────────────┘
+```
+
+
+---
+
+## 🧠 METHODOLOGY CARDS
+
+<table>
+<tr>
+<td align="center" width="33%">
+
+**🧠 IndoBERT**
+*Fine-tuned Transformer*
+
+Emotion & sarcasm classification on Indonesian tweets using bidirectional contextual embeddings
+
+</td>
+<td align="center" width="33%">
+
+**🕸️ Communication Network Analysis (CNA)**
+*NetworkX + Louvain*
+
+971 nodes · 666 edges (692 raw interactions) · Communication network topology & community structure
+
+</td>
+<td align="center" width="33%">
+
+**🎯 Centrality Analysis**
+*Degree · Betweenness · Eigenvector*
+
+Identifies structurally influential actors — @grok ranks #1
+
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+
+**👥 Community Detection**
+*Louvain Algorithm*
+
+333 communities · Modularity = 0.9837 Hyper-fragmented discourse structure
+
+</td>
+<td align="center" width="33%">
+
+**😊 Emotion Analysis**
+*9-Category Taxonomy*
+
+Disgust (56.2%) · Trust (20.4%) · Neutral (12.3%) Anticipation (9.6%) · Anger (1.0%)
+
+</td>
+<td align="center" width="33%">
+
+**💬 ABSA / Thematic**
+*Aspect-Based Sentiment*
+
+Identifies key discourse aspects: logistics, budget, nutrition, policy trust
+
+</td>
+</tr>
+</table>
+
+
+---
+
+## 🎨 9-EMOTION TAXONOMY — SEMANTIC COLOR MAP & EMPIRICAL DISTRIBUTION
+
+<div align="center">
+
+<table>
+<tr>
+<th>Emotion (EN)</th><th>Emosi (ID)</th><th>Color</th><th>HEX</th><th>Frekuensi</th><th>Proporsi</th><th>Karakteristik Diskursus</th>
+</tr>
+<tr><td>🤢 <b>Disgust</b></td><td><b>Jijik</b></td><td>🟩</td><td><code>#065F46</code></td><td><b>2.960</b></td><td><b>56,24%</b></td><td><b>DOMINAN MUTLAK</b> (Penolakan mutu fisik makanan & porsi)</td></tr>
+<tr><td>🤝 <b>Trust</b></td><td><b>Percaya</b></td><td>🟢</td><td><code>#10B981</code></td><td><b>1.073</b></td><td><b>20,39%</b></td><td>Dukungan narasi gizi & apresiasi program</td></tr>
+<tr><td>😐 <b>Neutral</b></td><td><b>Netral</b></td><td>⚪</td><td><code>#475569</code></td><td><b>649</b></td><td><b>12,33%</b></td><td>Pernyataan berita & kutipan media informatif</td></tr>
+<tr><td>🔮 <b>Anticipation</b></td><td><b>Tertarik</b></td><td>🟠</td><td><code>#F97316</code></td><td><b>505</b></td><td><b>9,60%</b></td><td>Ekspektasi & rasa ingin tahu masyarakat</td></tr>
+<tr><td>😡 <b>Anger</b></td><td><b>Marah</b></td><td>🔴</td><td><code>#EF4444</code></td><td><b>55</b></td><td><b>1,05%</b></td><td>Kemarahan atas transparansi vendor & korupsi</td></tr>
+<tr><td>😢 <b>Sadness</b></td><td><b>Sedih</b></td><td>🔵</td><td><code>#2563EB</code></td><td><b>19</b></td><td><b>0,36%</b></td><td>Empati pada siswa & keprihatinan mutu menu</td></tr>
+<tr><td>😨 <b>Fear</b></td><td><b>Takut</b></td><td>🟣</td><td><code>#7C3AED</code></td><td><b>2</b></td><td><b>0,04%</b></td><td>Kekhawatiran atas dampak keracunan massal</td></tr>
+<tr><td>😊 <b>Joy</b></td><td><b>Bahagia</b></td><td>🟡</td><td><code>#EAB308</code></td><td><b>0</b></td><td><b>0,00%</b></td><td>—</td></tr>
+<tr><td>😲 <b>Surprise</b></td><td><b>Kaget</b></td><td>🔵</td><td><code>#06B6D4</code></td><td><b>0</b></td><td><b>0,00%</b></td><td>—</td></tr>
+<tr><td colspan="4" align="right"><b>TOTAL</b></td><td><b>5.263</b></td><td><b>100,00%</b></td><td><i>Korpus Inferensi IndoBERT Terverifikasi</i></td></tr>
+</table>
+
+</div>
+
+
+---
+
+## ☁️ ANALISIS LEKSIKAL: WORD CLOUD & TOP 10 KATA DOMINAN
+
+Selain klasifikasi emosi kalimat penuh dengan IndoBERT, riset ini melakukan **analisis leksikal berbasis frekuensi token** untuk membedakan antara diksi umum kebijakan (*core policy words*) dan isu tematik spesifik di lapangan (*ground-level complaints*).
+
+<div align="center">
+
+<img width="85%" src="results/wordcloud_mbg.png" alt="Word Cloud 120 Kata Paling Signifikan"/>
+
+*Gambar: Visual Word Cloud 120 Kata Kunci Paling Sering Muncul pada Korpus MBG (N=5.263)*
+
+</div>
+
+### 📊 Perbandingan Kata Kunci Umum vs Kata Tematik Lapangan
+
+<table>
+<tr>
+<th width="50%">🏆 Top 10 Kata Kunci Umum (Core Query)</th>
+<th width="50%">🎯 Top 10 Kata Tematik Spesifik (Isu Lapangan)</th>
+</tr>
+<tr>
+<td valign="top">
+
+| Peringkat | Kata Kunci | Frekuensi | Porsi Korpus |
+| :---: | :--- | :---: | :---: |
+| **#1** | `mbg` | 2.147 | 40,8% |
+| **#2** | `makanan` | 1.490 | 28,3% |
+| **#3** | `makan` | 1.409 | 26,8% |
+| **#4** | `gratis` | 1.200 | 22,8% |
+| **#5** | `gizi` | 829 | 15,8% |
+| **#6** | `program` | 694 | 13,2% |
+| **#7** | `sekolah` | 679 | 12,9% |
+| **#8** | `bergizi` | 537 | 10,2% |
+| **#9** | `anak` | 442 | 8,4% |
+| **#10** | `indonesia` | 297 | 5,6% |
+
+> *Mencerminkan payung formal wacana kebijakan pangan nasional.*
+
+</td>
+<td valign="top">
+
+| Peringkat | Kata Tematik | Frekuensi | Konteks Wacana Lapangan |
+| :---: | :--- | :---: | :--- |
+| **#1** | `sekolah` | 679 | Lokasi penerima manfaat & titik distribusi |
+| **#2** | `anak` | 442 | Subjek siswa penerima paket MBG |
+| **#3** | `indonesia` | 297 | Cakupan skala nasional program |
+| **#4** | `dapur` | 247 | Sentra pengolahan Satuan Pelayanan Gizi |
+| **#5** | `terus` | 246 | Kritik atas krisis/isu yang berulang |
+| **#6** | `enak` | 228 | Sindiran sarkastis mutu hidangan |
+| **#7** | `bikin` | 225 | Keluhan dampak (mual/keracunan) |
+| **#8** | `bgt` *(banget)* | 202 | Partikel hiperbola sindiran warganet |
+| **#9** | `menu` | 189 | Polemik variasi & pemangkasan lauk |
+| **#10** | `anggaran` | 184 | Sorotan pagu Rp15.000 vs realitas menu |
+
+> *Mengungkap titik kritis resistensi: dapur vendor, variasi menu, dan pemangkasan anggaran.*
+
+</td>
+</tr>
+</table>
+
+
+---
+
+## 🖼️ GALERI VISUALISASI RISET PUBLIK (12 MASTER PLOT 300 DPI — AKSES & UNDUH LANGSUNG)
+> *Seluruh figur visualisasi naskah tesis di bawah ini bersifat **100% publik, beresolusi cetak tinggi (300 DPI)**, dan dapat diakses/diunduh langsung secara bebas.*
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### `Figure 01` — Dataset & Pipeline Overview
+📍 *Metodologi §3.5*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/1_pipeline.png" target="_blank">
+<img src="results/1_pipeline.png" width="100%" alt="Figure 01: Dataset & Pipeline Overview"/>
+</a>
+End-to-end pipeline: raw collection ($N=5.310$) → cleaning → validated sarcasm corpus ($N=3.395$) → full inference corpus ($N=5.263$).  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/1_pipeline.png)**
+
+---
+
+### `Figure 02` — Nine Emotion Distribution
+📍 *Hasil NLP §4.5*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png" target="_blank">
+<img src="results/emotion_distribution.png" width="100%" alt="Figure 02: Nine Emotion Distribution"/>
+</a>
+Diagram batang 9 kelas emosi pada 5.263 cuitan riil. **Jijik mendominasi secara mutlak sebesar 56,24%**, diikuti Percaya (20,39%) dan Netral (12,33%).  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png)**
+
+---
+
+### `Figure 03` — Sarcasm Distribution
+📍 *Hasil NLP §4.5*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png" target="_blank">
+<img src="results/3_sarcasm.png" width="100%" alt="Figure 03: Sarcasm Distribution"/>
+</a>
+Pada korpus validasi ($N=3.395$), **9,28% (315 cuitan)** terverifikasi memuat sindiran. Publik merespons kegagalan implementasi fisik dengan bahasa sindiran implisit.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png)**
+
+---
+
+### `Figure 04` — F1-Score per Kelas Emosi
+📍 *Evaluasi Model §4.5*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/f1_scores.png" target="_blank">
+<img src="results/f1_scores.png" width="100%" alt="Figure 04: F1-Scores"/>
+</a>
+Evaluasi performa model IndoBERT pada testing set riil ($n=1.053$, checkpoint-792). Kelas dominan Jijik mencapai Recall **96,92%** (F1 0,7178).  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/f1_scores.png)**
+
+---
+
+### `Figure 05` — Confusion Matrix IndoBERT
+📍 *Evaluasi Model §4.5*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png" target="_blank">
+<img src="results/confusion_matrix.png" width="100%" alt="Figure 05: Confusion Matrix"/>
+</a>
+Matriks konfusi 9×9 mengonfirmasi 566 dari 584 cuitan berlabel aktual Jijik berhasil diprediksi tepat oleh model (96,92% recall).  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png)**
+
+---
+
+### `Figure 06` — Masterpiece Integrasi SNA × NLP (Phygital Gap)
+📍 *Sintesis Diskusi §4.6 & §5.1*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/integrated_sna_nlp.png" target="_blank">
+<img src="results/integrated_sna_nlp.png" width="100%" alt="Figure 06: Integrated SNA NLP"/>
+</a>
+Peta sintesis puncak: menghubungkan simpul sentralitas aktor (@grok, @prabowo) dengan klaster komunitas Louvain dan spektrum emosi Jijik/Percaya.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/integrated_sna_nlp.png)**
+
+</td>
+<td width="50%" valign="top">
+
+### `Figure 07` — Global Social Network Topology
+📍 *Hasil SNA §4.2*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png" target="_blank">
+<img src="results/6_global_network.png" width="100%" alt="Figure 07: Global Social Network"/>
+</a>
+971 node · 666 directed edges (692 raw interactions). Membuktikan kondisi **hyper-fragmentation**, bukan polarisasi dua kubu linear.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png)**  
+*(Versi visual jaringan penuh: [network_graph.png](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/network_graph.png))*
+
+---
+
+### `Figure 08` — Top Central Actors (Degree Centrality)
+📍 *Struktur Kekuasaan §4.4*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png" target="_blank">
+<img src="results/top_actors.png" width="100%" alt="Figure 08: Top Central Actors"/>
+</a>
+**@grok (AI agent) memegang Out-degree tertinggi (#1 = 42)** sebagai rujukan verifikasi (*Algorithmic Oracle*), sementara **@prabowo memiliki In-degree tertinggi (15)**.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png)**
+
+---
+
+### `Figure 09` — Emotion × Louvain Community Pattern
+📍 *Dinamika Komunitas §4.3*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png" target="_blank">
+<img src="results/9_emotion_network.png" width="100%" alt="Figure 09: Emotion Network"/>
+</a>
+Analisis silang: Emosi Jijik meresap ke hampir seluruh klaster komunitas independen — menjadi sentimen perekat struktural di balik fragmentasi wacana.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png)**
+
+---
+
+### `Figure 10` — ABSA / Thematic Analysis
+📍 *Sintesis Tematik §4.6*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png" target="_blank">
+<img src="results/10_absa_thematic.png" width="100%" alt="Figure 10: ABSA Thematic"/>
+</a>
+Sentimen berbasis aspek: Kekecewaan publik terkonsentrasi pada **eksekusi logistik (78,91%) & anggaran (77,01%)**, bukan pada gagasan gizi nasional itu sendiri.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png)**
+
+---
+
+### `Figure 11` — Word Cloud Percakapan MBG (N=5.263)
+📍 *Karakteristik Korpus §4.1*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png" target="_blank">
+<img src="results/wordcloud_mbg.png" width="100%" alt="Figure 11: Wordcloud MBG"/>
+</a>
+Visualisasi 120 leksikon paling sering diucapkan warganet, menyoroti kata kunci *mbg, makanan, gratis, gizi, sekolah, dapur,* dan *enak*.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png)**
+
+---
+
+### `Figure 12` — Radar Keterbatasan Penelitian & Arah Riset
+📍 *Keterbatasan Riset §5.4*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png" target="_blank">
+<img src="results/keterbatasan_penelitian.png" width="100%" alt="Figure 12: Keterbatasan Penelitian"/>
+</a>
+Pemetaan 7 dimensi kapabilitas metodologis vs batas horizon riset, mitigasi empiris bias, dan rekomendasi arah penelitian lanjutan.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png)**
+
+</td>
+</tr>
+</table>
+
+
+
+---
+
+<a id="tutorial-riset"></a>
 ## 📖 MASTER TUTORIAL RISET TERPADU: BAB I S.D. BAB V
 ### *(End-to-End Computational Research & Execution Tutorials: Chapters 1 to 5)*
 
@@ -739,453 +1190,6 @@ jupyter notebook notebooks/tesis_mbg.ipynb
 - **T: Bagaimana membuktikan bahwa dashboard tidak menggunakan data palsu (*mock data*)?**  
   *J:* Seluruh visualisasi dan panel verifikasi membaca langsung berkas data kanonik di folder `data/` dan `results/` (`indobert_9_emosi_fixed.csv`, `network_edges.csv`, `dataset_sindiran_valid.csv`, dan `sna_degree.csv`). Anda dapat memeriksa fungsi pembacaan data di `dashboard/app.py` pada baris fungsi `load_data()`.
 
----
-
-## 🧩 HARMONISASI SIMETRIS 6 RUMUSAN MASALAH (BAB 1.2) ↔ 6 TUJUAN PENELITIAN (BAB 1.4)
-
-Sesuai kaidah penulisan tesis magister dan standar penulisan manuskrip jurnal internasional bereputasi tinggi, **Rumusan Masalah (Research Questions)** dan **Tujuan Penelitian (Research Objectives)** diselaraskan secara simetris **1-to-1 (6 Pasang Harmonis)**:
-
-| No | Pilar Dimensi & Ranah | ❓ Rumusan Masalah (Bab 1.2 Hal. 15) | 🎯 Tujuan Penelitian (Bab 1.4 Hal. 19) | Metode Komputasional | 📊 Bukti Empiris Data Riil Tesis |
-|:---:|:---|:---|:---|:---|:---|
-| **1** | **🗣️ Anatomi Diksi & Gaya Bahasa** | Bagaimana anatomi bahasa bernada sindiran, variasi diksi leksikal kontradiktif, dan pola pemakaian emoji warganet dalam diskursus MBG? | Menganalisis karakteristik linguistik warganet melalui pemetaan leksikon kontradiktif, gaya bahasa ironi, dan asosiasi emoji pada percakapan MBG. | *Lexical Extraction & Corpus Matching* | **315 cuitan (9,28%)** sindiran valid; 181 leksikon oposisi biner tajam |
-| **2** | **🎭 Inkongruensi Semiotik Teks-Emoji** | Bagaimana wujud inkongruensi makna antara teks tertulis bernada pujian semu dengan penanda visual emoji (*pretense of sarcasm*)? | Mengidentifikasi dan mengukur bentuk inkongruensi semiotik teks-emoji guna membongkar kritik terselubung warganet. | *Semiotic Incongruity Scoring* | Disparitas kontras teks pujian (*"bergizi"*, *"mewah"*) vs emoji mengejek (🤡, 🤮, 🗿) |
-| **3** | **🤖 Respons Afektif 9 Emosi NLP** | Pola emosi apa yang mendominasi reaksi afektif publik terhadap Program MBG berdasarkan 9 kategori emosi model IndoBERT? | Mengklasifikasikan respons afektif warganet ke dalam 9 emosi Plutchik menggunakan *fine-tuned* IndoBERT guna mengukur penolakan/dukungan publik. | *Deep Learning Transformer IndoBERT* | Emosi **Jijik (Disgust) mendominasi 56,24%** (2.960 tweet), Trust 20,39% (1.073 tweet), **Macro F1 = 0.8122** |
-| **4** | **🕸️ Topologi Jaringan Komunikasi (CNA) & Polarisasi** | Bagaimana struktur graf jaringan komunikasi terbentuk di platform X, serta sejauh mana tingkat polarisasi dan fragmentasi komunitasnya? | Memetakan topologi jaringan komunikasi, mengukur koefisien modularitas (Q), serta mendeteksi komunitas terfragmentasi via Algoritma Louvain. | *Communication Network Theory & Louvain Modularity* | 971 node, 666 edges (692 interaksi mentah), **Modularitas Q = 0.9837** (332 komunitas terfragmentasi ekstrem, Reciprocity 1,21%) |
-| **5** | **👑 Sentralitas Aktor Dominan & Otoritas** | Aktor-aktor kunci mana yang menduduki sentralitas dominan (degree, betweenness, PageRank) dalam mengarahkan diskursus publik? | Mengidentifikasi figur sentral, penyebar informasi utama, dan broker antarkomunitas guna memetakan asimetri pengaruh komunikasi. | *Structural Centrality Analysis* | **@grok** Out-degree=42 (*AI Oracle*), **@4Y4NKZ** (*Broker* betweenness 0.000016), **@prabowo** In=15 Out=0 (*Target pasif*) |
-| **6** | **🏛️ Sintesis Phygital Gap & Kebijakan** | Sejauh mana resistensi digital mencerminkan kegagalan *immersive experience* (*Phygital Gap* Marketing 6.0), dan bagaimana strategi mitigasinya? | Mengevaluasi besaran *Phygital Gap* serta merumuskan rekomendasi mitigasi komunikasi risiko berbasis *computational social science* bagi BGN. | *Triangulasi Komputasional & Crisis Matrix* | Terbuktinya *Phygital Gap* (konsep digital disukai, realitas fisik ditolak); menghasilkan **5 Rekomendasi Aksi BGN** |
-
----
-
-## 📑 STRUKTUR LENGKAP TESIS (BAB I S.D BAB V) & BUKTI EMPIRIS RIIL
-
-Seluruh analisis dan visualisasi di dalam repositori dan dashboard Streamlit disusun sesuai dengan **Daftar Isi Resmi Naskah Tesis**:
-
-### 🏛️ 1. BAB I: PENDAHULUAN (Halaman 1 – 25)
-- **1.1 Latar Belakang Masalah (Hal. 1):** Konteks krisis komunikasi kebijakan Program Makan Bergizi Gratis (MBG), anggaran ratusan triliun rupiah, dan anomali resistensi warganet di platform X.
-  - *1.1.1 Kajian Penelitian Terdahulu (Hal. 9):* Pemetaan komparatif terhadap riset-riset terdahulu.
-  - *1.1.2 Gap Penelitian (Hal. 13):* Celah empiris, teoretis, dan metodologis (kebaruan CSS di Indonesia).
-- **1.2 Rumusan Masalah (Hal. 15):** 6 pertanyaan penelitian berjenjang (teks ➔ afeksi ➔ graf ➔ sintesis makro).
-- **1.3 Batasan Masalah & Fokus Intervensi Strategis (Hal. 18):** Platform X, bahasa Indonesia, periode Maret–Mei 2026, 9 kelas emosi, dan interaksi relasional aktif (mentions/replies).
-- **1.4 Tujuan Penelitian (Hal. 19):** 6 target operasional yang selaras simetris 1-to-1 dengan rumusan masalah.
-- **1.5 Manfaat Penelitian (Hal. 21):**
-  - *1.5.1 Manfaat Akademis (Hal. 21):* Pengayaan metodologis NLP IndoBERT, SNA terintegrasi, dan perluasan Marketing 6.0 ke public sector.
-  - *1.5.2 Manfaat Praktis (Hal. 22):* Sistem deteksi dini krisis citra dan panduan komunikasi dua arah bagi Badan Gizi Nasional.
-- **1.6 Sistematika Penulisan (Hal. 23):** Alur runtut 5 bab tesis.
-
----
-
-### 📖 2. BAB II: LANDASAN TEORI DAN KERANGKA PEMIKIRAN (Halaman 26 – 84)
-Kajian konseptual mendalam mencakup **8 Pilar Utama dan 37 Sub-Bab Terstruktur**:
-- **2.1 Komunikasi Risiko dalam Skala Fiskal Makro (Hal. 26):**
-  - 2.1.1 Konsep Dasar Risk Communication (Hal. 27)
-  - 2.1.2 Fiscal Risk Communication dan Kepercayaan Publik (Hal. 28)
-  - 2.1.3 Krisis Kepercayaan sebagai Risiko Reputasi Negara (Hal. 29)
-  - 2.1.4 Media Sosial sebagai Katalisator Erosi Kepercayaan Institusional (Hal. 29)
-  - 2.1.5 Optimism Bias dan Anggaran Kebijakan Berskala Besar (Hal. 31)
-- **2.2 Situational Crisis Communication & Networked Crisis (Hal. 32):**
-  - 2.2.1 Situational Crisis Communication Theory (SCCT) Coombs (Hal. 32)
-  - 2.2.2 Networked Crisis Communication (Schultz, Utz, & Goritz) (Hal. 32)
-  - 2.2.3 Media Sosial sebagai Arena Krisis yang Terdesentralisasi (Hal. 34)
-  - 2.2.4 Kritik dan Perkembangan Lanjutan atas NCC (Hal. 34)
-  - 2.2.5 Krisis Berlapis (Compound Crisis) dan Efek Akumulatif (Hal. 35)
-  - 2.2.6 Single Source of Truth dan Peran Juru Bicara dalam Krisis Terdesentralisasi (Hal. 36)
-- **2.3 Ruang Publik dan Afordansi Platform X (Hal. 37):**
-  - 2.3.1 Ruang Publik dan Deliberasi dalam Bingkai Digital Habermas (Hal. 37)
-  - 2.3.2 Karakteristik Afordansi Platform X (Hal. 38)
-  - 2.3.3 Budaya Reply-Thread dan Wacana Kritik Kebijakan (Hal. 39)
-  - 2.3.4 Bahasa Gaul, Campur Kode, dan Kreativitas Leksikal Warganet (Hal. 40)
-  - 2.3.5 Algoritma Rekomendasi dan Ekonomi Perhatian (Hal. 41)
-- **2.4 Pragmatik Bahasa & Teori Sindiran (Hal. 42):**
-  - 2.4.1 Pragmatik dan Implikatur Percakapan Grice (Hal. 42)
-  - 2.4.2 Incongruity Theory dan Inkongruensi Makna (Hal. 43)
-  - 2.4.3 Sindiran dalam Computer-Mediated Communication (Hal. 43)
-  - 2.4.4 Inkongruensi Teks-Emoji sebagai Fokus Analitis (Hal. 44)
-  - 2.4.5 Sindiran sebagai Bentuk Resistensi Simbolik Scott (Hal. 46)
-  - 2.4.6 Multimodalitas Sindiran: Melampaui Teks dan Emoji (Hal. 47)
-- **2.5 Pemrosesan Bahasa Alami & Arsitektur IndoBERT (Hal. 48):**
-  - 2.5.1 Evolusi NLP: dari Statistik ke Deep Learning (Hal. 48)
-  - 2.5.2 Arsitektur Transformer dan Mekanisme Self-Attention Vaswani et al. (Hal. 49)
-  - 2.5.3 BERT: Bidirectional Encoder Representations from Transformers Devlin et al. (Hal. 49)
-  - 2.5.4 IndoBERT: Adaptasi Model Bahasa untuk Konteks Indonesia Wilie et al. (Hal. 50)
-  - 2.5.5 Fine-Tuning IndoBERT untuk Klasifikasi Emosi Granular (Hal. 51)
-  - 2.5.6 Evaluasi Kinerja Model: Akurasi, Presisi, Recall, dan F1-Score (Hal. 52)
-  - 2.5.7 Isu Bias dan Ketidakseimbangan Data pada Model Bahasa (Hal. 53)
-  - 2.5.8 Perbandingan IndoBERT dengan Model Bahasa Alternatif (Hal. 54)
-- **2.6 Teori Graf dan Analisis Jaringan Komunikasi (Communication Network Analysis / CNA) (Hal. 55):**
-  - 2.6.1 Dasar-Dasar Teori Graf Euler, Wasserman & Faust (Hal. 55)
-  - 2.6.2 Sentralitas dalam Jaringan: Degree, Betweenness, Closeness, Eigenvector Freeman (Hal. 55)
-  - 2.6.3 Deteksi Komunitas dan Algoritma Louvain Blondel et al. (Hal. 56)
-  - 2.6.4 Modularity sebagai Ukuran Polarisasi Newman (Hal. 57)
-  - 2.6.5 Homofili dan Fenomena Echo Chamber McPherson et al. (Hal. 58)
-  - 2.6.6 Visualisasi Jaringan sebagai Instrumen Diagnostik Kebijakan (Hal. 59)
-  - 2.6.7 Jaringan Bipartit dan Keterbatasan Representasi Graf Sederhana (Hal. 60)
-  - 2.6.8 Perbandingan Algoritma Deteksi Komunitas (Hal. 61)
-  - 2.6.9 Validasi Metrik Sentralitas Jaringan Berbasis Python/NetworkX (Hal. 62)
-- **2.7 Paradigma Marketing 6.0 & Konsep Phygital Gap (Hal. 63 – 84):**
-  - Landasan operasionalisasi kesenjangan janji promosi digital terhadap kualitas fisik di lapangan (Kotler, Kartajaya, & Setiawan, 2023).
-  - 5 Proposisi Kerja Riset (P1 s.d P5) yang diuji secara empiris.
-
----
-
-### 🔬 3. BAB IV: HASIL DAN PEMBAHASAN (Halaman 94 – 109)
-Hasil komputasional empiris yang diverifikasi secara matematis:
-- **4.1 Deskripsi Umum dan Karakteristik Data (Hal. 94):** Total korpus $N=5.263$ cuitan X, pembersihan noise 1.915 cuitan, korpus leksikal $N=3.395$.
-- **4.2 Analisis Level Sistem: Topologi Jaringan dan Polarisasi (Hal. 95):** 971 node, 666 edges (692 interaksi mentah), kepadatan (*density*) 0.0011, **Resiprositas 1,21%** (komunikasi monolog satu arah).
-- **4.3 Analisis Clustering: Dinamika Komunitas dan Echo Chambers (Hal. 97):** **Modularity Louvain Q = 0.9837**, terfragmentasi ke dalam **332 komunitas terisolasi**.
-- **4.4 Analisis Level Aktor: Struktur Kekuasaan dan Brokerage (Hal. 98):**
-  - `@grok` (*AI Oracle Takeover*): Out-degree = **42** (paling berpengaruh mengarahkan opini).
-  - `@4Y4NKZ` (*Structural Broker*): Betweenness = **0.000016** (jembatan langka antarkomunitas).
-  - `@prabowo` (*Target Pasif / Power Vacuum*): In-degree = **15**, Out-degree = **0** (sasaran aduan publik tanpa dialog timbal-balik).
-  - **📡 10 Top Media & Kanal Penghubung (Selain CNN Indonesia):** Menemukan pergeseran saluran krisis ke akun *Menfess* dan spesialis:
-    1. `@tanyarlfes` (Menfess Publik, In-Degree = 5, PageRank = 0.00344)
-    2. `@tanyakanrl` (Agregator Diskusi X, In-Degree = 5, PageRank = 0.00314)
-    3. `@LambeSahamjja` (Media Finansial & Pasar, In-Degree = 4, PageRank = 0.00314)
-    4. `@itbfess_x` (Menfess Akademik Mahasiswa, In-Degree = 3, PageRank = 0.00207)
-    5. `@KompasTV` (Media Penyiaran TV Nasional, Degree = 2, PageRank = 0.00457)
-    6. `@tempodotco` (Jurnalisme Investigatif Tempo, In-Degree = 1, PageRank = 0.00132)
-    7. `@kompascom` (Portal Berita Nasional, In-Degree = 1, PageRank = 0.00132)
-    8. `@kumparan` (Media Berita Kolaboratif, Out-Degree = 1, PageRank = 0.00071)
-    9. `@yappingfess` (Menfess Curahan Emosi Warganet, In-Degree = 2, PageRank = 0.00193)
-    10. `@txtdrimedia` (Kurasi & Kliping Berita Pers, In-Degree = 1, PageRank = 0.00102)
-- **4.5 Evaluasi Model Klasifikasi Emosi dan Deteksi Sindiran (Hal. 101):**
-  - *4.5.1 Evaluasi IndoBERT:* Akurasi tes 57,45%, Macro F1 = 0.8122, Recall kelas Disgust mencapai **96,92%** (F1 = 0.7178), Presisi Trust 68,42%.
-  - *4.5.2 Evaluasi Deteksi Sindiran:* **315 cuitan (9,28%)** memuat sindiran valid terverifikasi leksikal, sementara proksi afektif menangkap 56,60%.
-  - *4.5.3 Interpretasi Triangulasi:* Sindiran merupakan sub-dimensi leksikal dari emosi Jijik (*Disgust*) — kedua instrumen konvergen membuktikan resistensi publik.
-- **4.6 Sintesis: Perspektif Marketing 6.0 dan Phygital Gap (Hal. 105):**
-  - *4.6.1 Evaluasi ABSA:* Kritik terfokus pada kegagalan fisik — Logistik & Distribusi (Disgust **78,91%**), Anggaran & Vendor (Disgust **77,01%**), Kualitas Gizi (Disgust **71,13%**).
-  - *4.6.2 Sintesis Struktural-Afektif:* Pembuktian *Phygital Gap* — warganet menerima visi digital kesejahteraan anak, namun menolak keras realitas eksekusi fisik makanan di lapangan.
-
----
-
-### 🏛️ 4. BAB V: PENUTUP & REKOMENDASI KEBIJAKAN (Halaman 110 – 113)
-- **5.1 Kesimpulan (Hal. 110):** Menjawab tuntas 6 Rumusan Masalah dan 6 Tujuan Penelitian secara terpadu.
-- **5.2 Implikasi Penelitian (Hal. 112):**
-  - *5.2.1 Implikasi Akademis:* Pelopor integrasi metodologi CSS (IndoBERT + SNA Louvain + Marketing 6.0) untuk kebijakan publik di Indonesia.
-  - *5.2.2 Implikasi Praktis:* Kerangka kerja diagnostik krisis kebijakan fiskal makro bagi pemerintah.
-- **5.3 Rekomendasi Kebijakan (Hal. 112):**
-  - *5.3.1 Untuk Pemerintah / Badan Gizi Nasional (BGN) — 5 Aksi Strategis:*
-    1. **Membuka Dialog Dua Arah:** Menugaskan tim humas resmi merespons cuitan warganet untuk mengikis monolog komunikasi (menaikkan reciprocity dari 1,21%).
-    2. **Merangkul Jaringan Broker Akar Rumput:** Membangun kemitraan komunikasi dengan simpul jembatan seperti `@4Y4NKZ` untuk menyalurkan klarifikasi ke klaster terisolasi.
-    3. **Membangun Single Source of Truth Menu Fisik:** Menerbitkan katalog digital harian berisi foto menu, gramasi, dan komposisi gizi resmi per SPPG.
-    4. **Transparansi Alokasi Biaya Porsi:** Mengedukasi publik secara berkala tentang breakdown anggaran bahan baku vs logistik guna meredam isu pemotongan pagu.
-    5. **Edukasi Algoritmik:** Mengimbangi dominasi AI Oracle (`@grok`) dengan mendistribusikan siaran pers terstruktur yang ramah algoritma mesin pencari.
-  - *5.3.2 Untuk Penelitian Selanjutnya (Hal. 113):* Integrasi multimodalitas visi komputer (analisis foto piring menu), ekspansi multi-platform (TikTok/Instagram), dan analisis rentang waktu longitudinal.
-- **5.4 Keterbatasan Penelitian (Hal. 113):** Eksklusivitas platform X, fokus analisis teks, dan batasan periode observasi kritis Maret–Mei 2026.
-
----
-
-## 📚 MASTER TAKSONOMI 33 REFERENSI ILMIAH (SCOPUS Q1 / SINTA 1)
-
-Riset ini ditopang oleh **33 rujukan ilmiah bereputasi** yang diklasifikasikan ke dalam **5 Klaster Keilmuan** untuk memperkuat pertahanan akademik (*thesis defense*) dan penulisan artikel jurnal internasional:
-
-| Klaster Keilmuan | Sub-Pilar Bab II | Jumlah | Contoh Publikasi Utama & Indeksasi | Peran Strategis di Manuskrip |
-|:---|:---|:---:|:---|:---|
-| **🏛️ Klaster A: Phygital & Kebijakan** | Pilar 2.1, 2.2, 2.3 | **10** | • **Gelders & Ihlen (2010)** *(Scopus Q1, Gov. Inf. Q.)*<br>• **Johnson & Barlow (2021)** *(Scopus Q1, JTAER)*<br>• **Tsai et al. (2026)** *(Scopus Q1, Socio-Econ. Plan. Sci.)*<br>• **Bennett & Segerberg (2012)** *(Scopus Q1, ICS)* | Landasan konseptual analogi service gap ke policy communication gap serta teori connective action warganet. |
-| **🤖 Klaster B: NLP & IndoBERT** | Pilar 2.5 | **7** | • **Wilie et al. (2020)** *(AACL-IJCNLP Indo4B)*<br>• **Koto et al. (2020)** *(COLING)*<br>• **Shaw et al. (2025)** *(Scopus Q1, SNAM)*<br>• **Mohammad (2021)** *(Elsevier Book)* | Justifikasi arsitektur Transformer bidirectional IndoBERT untuk klasifikasi 9 spektrum emosi granular Plutchik. |
-| **🎭 Klaster C: Sarkasme & Pragmatik** | Pilar 2.4 | **6** | • **Camp (2012)** *(Scopus Q1, Noûs)*<br>• **Joshi et al. (2017)** *(Scopus Q1, ACM Comput. Surv.)*<br>• **Devalapalli & Mandala (2026)** *(Scopus Q1, Neurocomputing)*<br>• **Hutapea & Purwarianti (2021)** *(Sinta 1 ITB)* | *Pretense theory of sarcasm* — membongkar pujian semu warganet yang menyembunyikan kritik tajam terhadap menu MBG. |
-| **🕸️ Klaster D: SNA & Teori Graf** | Pilar 2.6 | **8** | • **Freeman (1979)** *(Scopus Q1, Social Networks)*<br>• **Newman (2006)** *(PNAS Q1 Modularity)*<br>• **Blondel et al. (2008)** *(Scopus Q1 Louvain)*<br>• **Gandasari et al. (2023)** *(Scopus Q2 JICC)* | Landasan matematis perhitungan modularitas polarisasi $Q=0.9837$, partisi 332 komunitas, dan sentralitas aktor. |
-| **⚖️ Klaster E: Etika & Bot** | Pilar 2.11 | **2** | • **Boyd & Crawford (2012)** *(Scopus Q1, ICS, 12k+ sitasi)*<br>• **Ferrara et al. (2016)** *(Scopus Q1, CACM)* | Kepatuhan etika scraping big data publik X, anonimisasi identitas, dan metodologi filtrasi akun bot. |
-
----
-
-## 🔬 RESEARCH PIPELINE
-
-```
-╔════════════════════════════════════════════════════════════════════╗
-║                      🐦 PLATFORM X                                 ║
-║             Public Discourse on MBG Policy                         ║
-╚══════════════════════════╤═════════════════════════════════════════╝
-                           │
-              ┌────────────▼────────────┐
-              │  📥 DATA COLLECTION     │ Raw crawling · API extract
-              │       N = 5,310         │ tweets • Mar–May 2026
-              └────────────┬────────────┘
-                           │
-              ┌────────────▼────────────┐
-              │  🧹 DATA CLEANING       │ Bot removal · De-dup
-              │       N → 3,395         │ Spam filter · Validation
-              └────────────┬────────────┘
-                           │
-              ┌────────────▼────────────┐
-              │  ✂️  TEXT PREPROCESSING  │ Sastrawi · Regex
-              │    Normalization         │ Slang handling
-              └────────────┬────────────┘
-                           │
-         ┌─────────────────┼──────────────────┐
-         │                 │                   │
-┌────────▼────────┐ ┌──────▼──────┐  ┌────────▼────────┐
-│ 😏 SARCASM      │ │ 🧠 EMOTION  │  │ 📋 THEMATIC     │
-│  DETECTION      │ │CLASSIFIC.   │  │  ANALYSIS       │
-│ Lexical-based   │ │ IndoBERT    │  │  ABSA           │
-│    ~37%         │ │ 9 Classes   │  │  Aspect-Sent.   │
-│ N=3,395         │ │ N=5,263     │  │                 │
-└────────┬────────┘ └──────┬──────┘  └────────┬────────┘
-         │                 │                   │
-         └─────────────────▼───────────────────┘
-                           │
-              ┌────────────▼────────────┐
-              │  🕸️  SOCIAL NETWORK     │ NetworkX · python-louvain
-              │     ANALYSIS            │ 971 nodes · 692 edges
-              │                         │ Modularity = 0.9837
-              └────────────┬────────────┘
-                           │
-           ┌───────────────┼───────────────┐
-           │               │               │
-   ┌───────▼───────┐ ┌─────▼──────┐ ┌─────▼──────┐
-   │ 🏘️ COMMUNITY  │ │🎯 CENTRAL- │ │💬 DISCOURSE│
-   │  DETECTION    │ │    ITY     │ │INTERPRET.  │
-   │ 333 Louvain   │ │@grok → #1  │ │Phygital Gap│
-   │   clusters    │ │Eigenvector │ │            │
-   └───────────────┘ └────────────┘ └────────────┘
-```
-
----
-
-## 🎨 9-EMOTION TAXONOMY — SEMANTIC COLOR MAP & EMPIRICAL DISTRIBUTION
-
-<div align="center">
-
-<table>
-<tr>
-<th>Emotion (EN)</th><th>Emosi (ID)</th><th>Color</th><th>HEX</th><th>Frekuensi</th><th>Proporsi</th><th>Karakteristik Diskursus</th>
-</tr>
-<tr><td>🤢 <b>Disgust</b></td><td><b>Jijik</b></td><td>🟩</td><td><code>#065F46</code></td><td><b>2.960</b></td><td><b>56,24%</b></td><td><b>DOMINAN MUTLAK</b> (Penolakan mutu fisik makanan & porsi)</td></tr>
-<tr><td>🤝 <b>Trust</b></td><td><b>Percaya</b></td><td>🟢</td><td><code>#10B981</code></td><td><b>1.073</b></td><td><b>20,39%</b></td><td>Dukungan narasi gizi & apresiasi program</td></tr>
-<tr><td>😐 <b>Neutral</b></td><td><b>Netral</b></td><td>⚪</td><td><code>#475569</code></td><td><b>649</b></td><td><b>12,33%</b></td><td>Pernyataan berita & kutipan media informatif</td></tr>
-<tr><td>🔮 <b>Anticipation</b></td><td><b>Tertarik</b></td><td>🟠</td><td><code>#F97316</code></td><td><b>505</b></td><td><b>9,60%</b></td><td>Ekspektasi & rasa ingin tahu masyarakat</td></tr>
-<tr><td>😡 <b>Anger</b></td><td><b>Marah</b></td><td>🔴</td><td><code>#EF4444</code></td><td><b>55</b></td><td><b>1,05%</b></td><td>Kemarahan atas transparansi vendor & korupsi</td></tr>
-<tr><td>😢 <b>Sadness</b></td><td><b>Sedih</b></td><td>🔵</td><td><code>#2563EB</code></td><td><b>19</b></td><td><b>0,36%</b></td><td>Empati pada siswa & keprihatinan mutu menu</td></tr>
-<tr><td>😨 <b>Fear</b></td><td><b>Takut</b></td><td>🟣</td><td><code>#7C3AED</code></td><td><b>2</b></td><td><b>0,04%</b></td><td>Kekhawatiran atas dampak keracunan massal</td></tr>
-<tr><td>😊 <b>Joy</b></td><td><b>Bahagia</b></td><td>🟡</td><td><code>#EAB308</code></td><td><b>0</b></td><td><b>0,00%</b></td><td>—</td></tr>
-<tr><td>😲 <b>Surprise</b></td><td><b>Kaget</b></td><td>🔵</td><td><code>#06B6D4</code></td><td><b>0</b></td><td><b>0,00%</b></td><td>—</td></tr>
-<tr><td colspan="4" align="right"><b>TOTAL</b></td><td><b>5.263</b></td><td><b>100,00%</b></td><td><i>Korpus Inferensi IndoBERT Terverifikasi</i></td></tr>
-</table>
-
-</div>
-
----
-
-## ☁️ ANALISIS LEKSIKAL: WORD CLOUD & TOP 10 KATA DOMINAN
-
-Selain klasifikasi emosi kalimat penuh dengan IndoBERT, riset ini melakukan **analisis leksikal berbasis frekuensi token** untuk membedakan antara diksi umum kebijakan (*core policy words*) dan isu tematik spesifik di lapangan (*ground-level complaints*).
-
-<div align="center">
-
-<img width="85%" src="results/wordcloud_mbg.png" alt="Word Cloud 120 Kata Paling Signifikan"/>
-
-*Gambar: Visual Word Cloud 120 Kata Kunci Paling Sering Muncul pada Korpus MBG (N=5.263)*
-
-</div>
-
-### 📊 Perbandingan Kata Kunci Umum vs Kata Tematik Lapangan
-
-<table>
-<tr>
-<th width="50%">🏆 Top 10 Kata Kunci Umum (Core Query)</th>
-<th width="50%">🎯 Top 10 Kata Tematik Spesifik (Isu Lapangan)</th>
-</tr>
-<tr>
-<td valign="top">
-
-| Peringkat | Kata Kunci | Frekuensi | Porsi Korpus |
-| :---: | :--- | :---: | :---: |
-| **#1** | `mbg` | 2.147 | 40,8% |
-| **#2** | `makanan` | 1.490 | 28,3% |
-| **#3** | `makan` | 1.409 | 26,8% |
-| **#4** | `gratis` | 1.200 | 22,8% |
-| **#5** | `gizi` | 829 | 15,8% |
-| **#6** | `program` | 694 | 13,2% |
-| **#7** | `sekolah` | 679 | 12,9% |
-| **#8** | `bergizi` | 537 | 10,2% |
-| **#9** | `anak` | 442 | 8,4% |
-| **#10** | `indonesia` | 297 | 5,6% |
-
-> *Mencerminkan payung formal wacana kebijakan pangan nasional.*
-
-</td>
-<td valign="top">
-
-| Peringkat | Kata Tematik | Frekuensi | Konteks Wacana Lapangan |
-| :---: | :--- | :---: | :--- |
-| **#1** | `sekolah` | 679 | Lokasi penerima manfaat & titik distribusi |
-| **#2** | `anak` | 442 | Subjek siswa penerima paket MBG |
-| **#3** | `indonesia` | 297 | Cakupan skala nasional program |
-| **#4** | `dapur` | 247 | Sentra pengolahan Satuan Pelayanan Gizi |
-| **#5** | `terus` | 246 | Kritik atas krisis/isu yang berulang |
-| **#6** | `enak` | 228 | Sindiran sarkastis mutu hidangan |
-| **#7** | `bikin` | 225 | Keluhan dampak (mual/keracunan) |
-| **#8** | `bgt` *(banget)* | 202 | Partikel hiperbola sindiran warganet |
-| **#9** | `menu` | 189 | Polemik variasi & pemangkasan lauk |
-| **#10** | `anggaran` | 184 | Sorotan pagu Rp15.000 vs realitas menu |
-
-> *Mengungkap titik kritis resistensi: dapur vendor, variasi menu, dan pemangkasan anggaran.*
-
-</td>
-</tr>
-</table>
-
----
-
-<a id="visual-gallery"></a>
-## 🖼️ GALERI VISUALISASI RISET PUBLIK (12 MASTER PLOT 300 DPI — AKSES & UNDUH LANGSUNG)
-> *Seluruh figur visualisasi naskah tesis di bawah ini bersifat **100% publik, beresolusi cetak tinggi (300 DPI)**, dan dapat diakses/diunduh langsung secara bebas.*
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### `Figure 01` — Dataset & Pipeline Overview
-📍 *Metodologi §3.5*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/1_pipeline.png" target="_blank">
-<img src="results/1_pipeline.png" width="100%" alt="Figure 01: Dataset & Pipeline Overview"/>
-</a>
-End-to-end pipeline: raw collection ($N=5.310$) → cleaning → validated sarcasm corpus ($N=3.395$) → full inference corpus ($N=5.263$).  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/1_pipeline.png)**
-
----
-
-### `Figure 02` — Nine Emotion Distribution
-📍 *Hasil NLP §4.5*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png" target="_blank">
-<img src="results/emotion_distribution.png" width="100%" alt="Figure 02: Nine Emotion Distribution"/>
-</a>
-Diagram batang 9 kelas emosi pada 5.263 cuitan riil. **Jijik mendominasi secara mutlak sebesar 56,24%**, diikuti Percaya (20,39%) dan Netral (12,33%).  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png)**
-
----
-
-### `Figure 03` — Sarcasm Distribution
-📍 *Hasil NLP §4.5*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png" target="_blank">
-<img src="results/3_sarcasm.png" width="100%" alt="Figure 03: Sarcasm Distribution"/>
-</a>
-Pada korpus validasi ($N=3.395$), **9,28% (315 cuitan)** terverifikasi memuat sindiran. Publik merespons kegagalan implementasi fisik dengan bahasa sindiran implisit.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png)**
-
----
-
-### `Figure 04` — F1-Score per Kelas Emosi
-📍 *Evaluasi Model §4.5*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/f1_scores.png" target="_blank">
-<img src="results/f1_scores.png" width="100%" alt="Figure 04: F1-Scores"/>
-</a>
-Evaluasi performa model IndoBERT pada testing set riil ($n=1.053$, checkpoint-792). Kelas dominan Jijik mencapai Recall **96,92%** (F1 0,7178).  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/f1_scores.png)**
-
----
-
-### `Figure 05` — Confusion Matrix IndoBERT
-📍 *Evaluasi Model §4.5*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png" target="_blank">
-<img src="results/confusion_matrix.png" width="100%" alt="Figure 05: Confusion Matrix"/>
-</a>
-Matriks konfusi 9×9 mengonfirmasi 566 dari 584 cuitan berlabel aktual Jijik berhasil diprediksi tepat oleh model (96,92% recall).  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png)**
-
----
-
-### `Figure 06` — Masterpiece Integrasi SNA × NLP (Phygital Gap)
-📍 *Sintesis Diskusi §4.6 & §5.1*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/integrated_sna_nlp.png" target="_blank">
-<img src="results/integrated_sna_nlp.png" width="100%" alt="Figure 06: Integrated SNA NLP"/>
-</a>
-Peta sintesis puncak: menghubungkan simpul sentralitas aktor (@grok, @prabowo) dengan klaster komunitas Louvain dan spektrum emosi Jijik/Percaya.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/integrated_sna_nlp.png)**
-
-</td>
-<td width="50%" valign="top">
-
-### `Figure 07` — Global Social Network Topology
-📍 *Hasil SNA §4.2*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png" target="_blank">
-<img src="results/6_global_network.png" width="100%" alt="Figure 07: Global Social Network"/>
-</a>
-971 node · 666 directed edges (692 raw interactions). Membuktikan kondisi **hyper-fragmentation**, bukan polarisasi dua kubu linear.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png)**  
-*(Versi visual jaringan penuh: [network_graph.png](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/network_graph.png))*
-
----
-
-### `Figure 08` — Top Central Actors (Degree Centrality)
-📍 *Struktur Kekuasaan §4.4*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png" target="_blank">
-<img src="results/top_actors.png" width="100%" alt="Figure 08: Top Central Actors"/>
-</a>
-**@grok (AI agent) memegang Out-degree tertinggi (#1 = 42)** sebagai rujukan verifikasi (*Algorithmic Oracle*), sementara **@prabowo memiliki In-degree tertinggi (15)**.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png)**
-
----
-
-### `Figure 09` — Emotion × Louvain Community Pattern
-📍 *Dinamika Komunitas §4.3*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png" target="_blank">
-<img src="results/9_emotion_network.png" width="100%" alt="Figure 09: Emotion Network"/>
-</a>
-Analisis silang: Emosi Jijik meresap ke hampir seluruh klaster komunitas independen — menjadi sentimen perekat struktural di balik fragmentasi wacana.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png)**
-
----
-
-### `Figure 10` — ABSA / Thematic Analysis
-📍 *Sintesis Tematik §4.6*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png" target="_blank">
-<img src="results/10_absa_thematic.png" width="100%" alt="Figure 10: ABSA Thematic"/>
-</a>
-Sentimen berbasis aspek: Kekecewaan publik terkonsentrasi pada **eksekusi logistik (78,91%) & anggaran (77,01%)**, bukan pada gagasan gizi nasional itu sendiri.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png)**
-
----
-
-### `Figure 11` — Word Cloud Percakapan MBG (N=5.263)
-📍 *Karakteristik Korpus §4.1*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png" target="_blank">
-<img src="results/wordcloud_mbg.png" width="100%" alt="Figure 11: Wordcloud MBG"/>
-</a>
-Visualisasi 120 leksikon paling sering diucapkan warganet, menyoroti kata kunci *mbg, makanan, gratis, gizi, sekolah, dapur,* dan *enak*.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png)**
-
----
-
-### `Figure 12` — Radar Keterbatasan Penelitian & Arah Riset
-📍 *Keterbatasan Riset §5.4*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png" target="_blank">
-<img src="results/keterbatasan_penelitian.png" width="100%" alt="Figure 12: Keterbatasan Penelitian"/>
-</a>
-Pemetaan 7 dimensi kapabilitas metodologis vs batas horizon riset, mitigasi empiris bias, dan rekomendasi arah penelitian lanjutan.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png)**
-
-</td>
-</tr>
-</table>
-
-
----
-
-## 🏛️ THEORETICAL FRAMEWORK: THE PHYGITAL GAP
-
-```
-DIGITAL PROMISE (Government)      vs      PHYSICAL REALITY (Public)
-──────────────────────────────            ──────────────────────────────
-"Free nutritious meals for all            Logistical failures
- Indonesian school children"              Budget irregularities
-                                          Food safety incidents
-
-          │                                         │
-          └──────────────────┬──────────────────────┘
-                             │
-                      ╔══════▼══════╗
-                      ║  PHYGITAL   ║   ← Core Theoretical Construct
-                      ║    GAP      ║       (Kartajaya & Setiawan, 2023)
-                      ╚══════╤══════╝
-                             │
-                  Public Responds via Platform X:
-                  ├─ 🤢 Disgust: 56.2% (IndoBERT)
-                  ├─ 😏 Sarcasm: ~37% (lexical)
-                  ├─ 🕸️ Hyper-fragmented: M = 0.9837
-                  └─ 🤖 @grok as trusted AI authority (#1 Eigenvector)
-```
-
-*Theoretical anchors: Kartajaya & Setiawan (2023) · Gelders & Ihlen (2010) · Johnson & Barlow (2021) · Tsai et al. (2026)*
 
 ---
 
@@ -1283,64 +1287,6 @@ DIGITAL PROMISE (Government)      vs      PHYSICAL REALITY (Public)
 |------|---------|--------|
 | Gephi | Advanced network visualization | `Proposed` |
 
----
-
-## 🧠 METHODOLOGY CARDS
-
-<table>
-<tr>
-<td align="center" width="33%">
-
-**🧠 IndoBERT**
-*Fine-tuned Transformer*
-
-Emotion & sarcasm classification on Indonesian tweets using bidirectional contextual embeddings
-
-</td>
-<td align="center" width="33%">
-
-**🕸️ Communication Network Analysis (CNA)**
-*NetworkX + Louvain*
-
-971 nodes · 666 edges (692 raw interactions) · Communication network topology & community structure
-
-</td>
-<td align="center" width="33%">
-
-**🎯 Centrality Analysis**
-*Degree · Betweenness · Eigenvector*
-
-Identifies structurally influential actors — @grok ranks #1
-
-</td>
-</tr>
-<tr>
-<td align="center" width="33%">
-
-**👥 Community Detection**
-*Louvain Algorithm*
-
-333 communities · Modularity = 0.9837 Hyper-fragmented discourse structure
-
-</td>
-<td align="center" width="33%">
-
-**😊 Emotion Analysis**
-*9-Category Taxonomy*
-
-Disgust (56.2%) · Trust (20.4%) · Neutral (12.3%) Anticipation (9.6%) · Anger (1.0%)
-
-</td>
-<td align="center" width="33%">
-
-**💬 ABSA / Thematic**
-*Aspect-Based Sentiment*
-
-Identifies key discourse aspects: logistics, budget, nutrition, policy trust
-
-</td>
-</tr>
-</table>
 
 ---
 
@@ -1395,9 +1341,84 @@ tesis_mbg/
     └── app.py                              # Streamlit dashboard (5 pages)
 ```
 
+
 ---
 
-<a id="digital-library"></a>
+<a id="author-bio"></a>
+## 👤 PROFIL PENELITI & AI ENGINEER (AUTHOR BIOGRAPHY)
+
+<div align="center">
+  <img src="docs/assets/indri_avatar.png" width="120" style="border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.25);" alt="Indri Anjar Kartikasari"/>
+  <h3><b>INDRI ANJAR KARTIKASARI</b></h3>
+  <p><b>AI Engineer & Peneliti Magister Ilmu Komunikasi</b> (UPN "Veteran" Jawa Timur)<br/>
+  📍 Surabaya, Jawa Timur, Indonesia | ✉️ indri.kartikasari007@gmail.com</p>
+  
+  <p>
+    <a href="https://github.com/indri007"><img src="https://img.shields.io/badge/GitHub-indri007-181717?logo=github&style=flat-square"/></a>
+    <a href="https://indri007.vercel.app"><img src="https://img.shields.io/badge/Portofolio-indri007.vercel.app-000000?logo=vercel&style=flat-square"/></a>
+    <a href="https://digimeta007.com"><img src="https://img.shields.io/badge/Website-digimeta007.com-2563eb?style=flat-square"/></a>
+    <a href="https://orcid.org/0009-0002-8419-7231"><img src="https://img.shields.io/badge/ORCID-0009--0002--8419--7231-A6CE39?logo=orcid&style=flat-square"/></a>
+  </p>
+</div>
+
+### 💼 Ringkasan Profil Profesional
+Profesional yang *hasil-oriented*, bertransisi ke bidang **AI Engineering** setelah **15+ tahun memimpin tim dan membangun bisnis di sektor jasa keuangan**. Menyelesaikan program AI Engineering di **Purwadhika Digital Technology School** dan sejak itu merancang serta merilis beberapa sistem AI *production-ready* — chatbot *multi-agent*, pipeline *RAG*, dan integrasi LLM (*Groq, Gemini*) — yang di-deploy di **Google Cloud Run**. Portofolio proyek terdokumentasi secara publik di GitHub (54 repository) dan situs pribadi, memadukan keahlian *leadership* serta strategi bisnis dengan kemampuan teknis *hands-on* di AI/ML dan *Computational Social Science*.
+
+---
+
+### 🛠️ Keahlian Teknis & Tech Stack
+- **🤖 AI / ML & LLM:** RAG (Retrieval-Augmented Generation), Multi-Agent Systems, Prompt Engineering, Groq (LLaMA 3.3-70B), Gemini API & Gemini Live, Cohere Embeddings, Qdrant Vector DB, LangChain / Langflow, IndoBERT Transformer.
+- **💻 Bahasa & Framework:** Python, Streamlit, React.js, Next.js, n8n (workflow automation).
+- **🗄️ Database:** MySQL (Aiven Cloud Managed), Oracle DB, Qdrant (vector DB).
+- **☁️ Cloud & DevOps:** Google Cloud Run / GCP, Docker Containerization, Ollama Local LLMs, IDCloudHost VPS, Vercel, CI/CD pipelines.
+- **📈 Digital Marketing:** SEO/SEM, Generative Engine Optimization (GEO), Social Media Campaign, Content Creation, Google Analytics, Conversion Optimization.
+
+---
+
+### 🎓 Pelatihan Profesional & Kredensial Akademik
+- **Purwadhika Digital Technology School — AI Engineering:** Lulusan program *Job Connector Bootcamp* (No. Sertifikat: `202602009256`, 02.02.2026 – 30.07.2026). Fokus: *Data science foundation, machine learning, deep learning, neural networks, Transformer NLP, fine-tuning LLM & RAG, Computer Vision, MLOps cloud deployment*.
+- **Purwadhika Digital Technology School — Full Stack Software Development:** JavaScript, OOP, algoritma & struktur data, React.js, Node.js, REST API, Docker, CI/CD cloud deployment.
+- **Purwadhika Digital Technology School — Digital Marketing (2024 · 12 minggu):** Business model canvas, branding & content, SEO/SEM (GEO), paid media, digital marketing analytics.
+- **Kaggle (Google LLC) — Intro to Machine Learning:** Diselesaikan pada 12 September 2026 (Instruktur: Dan Becker & Alexis Cook). Fondasi *Decision Trees, Random Forests, Validation, MAE Optimization*.
+
+---
+
+### 🌸 Pemberdayaan Komunitas Digital & Jejak Audiens Publik (`@ibuibu_digitall`)
+Selain aktivitas riset komputasi dan rekayasa kecerdasan buatan (*AI engineering*), Indri aktif membagikan literasi teknologi dan AI kepada komunitas perempuan serta ibu-ibu Indonesia melalui inisiatif sosial **@ibuibu_digitall**:
+- 📱 **Instagram:** 49.000+ Followers (`49K`)
+- 🎵 **TikTok:** 23.000+ Followers (`23K`)
+- 🎥 **YouTube:** 987 Subscribers
+- 🤍 **Filosofi Belajar:** *"Hadir, belajar, dan berusaha agar tidak tertinggal — membawa kembali manfaat teknologi kecerdasan buatan kepada perempuan dan ibu-ibu Indonesia melalui @ibuibu_digitall."*
+
+---
+
+### 🐙 Portofolio GitHub Terverifikasi (`github.com/indri007`)
+*54 Repository Publik | Pencapaian Pull Shark*
+- **Multi-Agent Job Seeker Chatbot (Capstone AI Purwadhika Kelompok 1):** Chatbot multi-agent untuk pencari kerja Indonesia (Python, Streamlit, n8n, Qdrant, Groq LLaMA 3.3-70B, Cohere, MySQL Aiven, Google Cloud Run, Gemini API).
+- [`chatbot-agent`](https://github.com/indri007/chatbot-agent): Chatbot berbasis Python terintegrasi RAG (*retrieval-augmented generation*).
+- [`cvatsjob`](https://github.com/indri007/cvatsjob): Proyek Python sistem ATS CV & pencocokan lowongan kerja cerdas.
+- [`todo-list-nextjs`](https://github.com/indri007/todo-list-nextjs): Aplikasi to-do list modern berbasis Next.js/JavaScript.
+- [`to-do-app`](https://github.com/indri007/to-do-app): Aplikasi to-do list berbasis TypeScript.
+- **Situs Digital Tambahan:** [digimeta007.com](https://digimeta007.com) & [digimetashop.com](https://digimetashop.com) (proyek digital marketing & e-commerce).
+
+
+---
+
+## 📚 MASTER TAKSONOMI 33 REFERENSI ILMIAH (SCOPUS Q1 / SINTA 1)
+
+Riset ini ditopang oleh **33 rujukan ilmiah bereputasi** yang diklasifikasikan ke dalam **5 Klaster Keilmuan** untuk memperkuat pertahanan akademik (*thesis defense*) dan penulisan artikel jurnal internasional:
+
+| Klaster Keilmuan | Sub-Pilar Bab II | Jumlah | Contoh Publikasi Utama & Indeksasi | Peran Strategis di Manuskrip |
+|:---|:---|:---:|:---|:---|
+| **🏛️ Klaster A: Phygital & Kebijakan** | Pilar 2.1, 2.2, 2.3 | **10** | • **Gelders & Ihlen (2010)** *(Scopus Q1, Gov. Inf. Q.)*<br>• **Johnson & Barlow (2021)** *(Scopus Q1, JTAER)*<br>• **Tsai et al. (2026)** *(Scopus Q1, Socio-Econ. Plan. Sci.)*<br>• **Bennett & Segerberg (2012)** *(Scopus Q1, ICS)* | Landasan konseptual analogi service gap ke policy communication gap serta teori connective action warganet. |
+| **🤖 Klaster B: NLP & IndoBERT** | Pilar 2.5 | **7** | • **Wilie et al. (2020)** *(AACL-IJCNLP Indo4B)*<br>• **Koto et al. (2020)** *(COLING)*<br>• **Shaw et al. (2025)** *(Scopus Q1, SNAM)*<br>• **Mohammad (2021)** *(Elsevier Book)* | Justifikasi arsitektur Transformer bidirectional IndoBERT untuk klasifikasi 9 spektrum emosi granular Plutchik. |
+| **🎭 Klaster C: Sarkasme & Pragmatik** | Pilar 2.4 | **6** | • **Camp (2012)** *(Scopus Q1, Noûs)*<br>• **Joshi et al. (2017)** *(Scopus Q1, ACM Comput. Surv.)*<br>• **Devalapalli & Mandala (2026)** *(Scopus Q1, Neurocomputing)*<br>• **Hutapea & Purwarianti (2021)** *(Sinta 1 ITB)* | *Pretense theory of sarcasm* — membongkar pujian semu warganet yang menyembunyikan kritik tajam terhadap menu MBG. |
+| **🕸️ Klaster D: SNA & Teori Graf** | Pilar 2.6 | **8** | • **Freeman (1979)** *(Scopus Q1, Social Networks)*<br>• **Newman (2006)** *(PNAS Q1 Modularity)*<br>• **Blondel et al. (2008)** *(Scopus Q1 Louvain)*<br>• **Gandasari et al. (2023)** *(Scopus Q2 JICC)* | Landasan matematis perhitungan modularitas polarisasi $Q=0.9837$, partisi 332 komunitas, dan sentralitas aktor. |
+| **⚖️ Klaster E: Etika & Bot** | Pilar 2.11 | **2** | • **Boyd & Crawford (2012)** *(Scopus Q1, ICS, 12k+ sitasi)*<br>• **Ferrara et al. (2016)** *(Scopus Q1, CACM)* | Kepatuhan etika scraping big data publik X, anonimisasi identitas, dan metodologi filtrasi akun bot. |
+
+
+---
+
 ## 📚 DIGITAL REFERENCE LIBRARY & PERTANGGUNGJAWABAN AKADEMIK (`references/`)
 
 > *Sebagai pemenuhan standar integritas ilmiah, transparansi riset komputasi, dan akuntabilitas sidang tesis Magister, seluruh literatur acuan primer disimpan dalam repositori dan dipetakan ke identitas digital resmi (DOI & Open Access):*
@@ -1418,6 +1439,7 @@ tesis_mbg/
 
 👉 **Katalog Lengkap 27 Referensi Tesis beserta DOI & Tautan Penerbit:** Silakan buka dokumen [`references/README.md`](references/README.md).
 
+
 ---
 
 ## 📰 MEDIA COVERAGE & PUBLICATIONS
@@ -1429,8 +1451,10 @@ tesis_mbg/
 | 📺 | Portal **JTV** (2026). *"Lebih dari 37 persen percakapan MBG di X bernada sindiran"* |
 | 📰 | **Netral News** (2026). *"Riset UPN Jatim: 37 persen percakapan MBG di X bernada sindiran"* |
 
+
 ---
 
+<a id="citation-section"></a>
 ## 📖 CITATION & BIBLIOGRAPHIC EXPORT (STANDAR SCOPUS / MENDELEY / ZOTERO)
 
 Repositori ini menyediakan metadata sitasi terstandarisasi untuk perangkat lunak manajemen bibliografi:
