@@ -4873,67 +4873,128 @@ elif "Audit" in page or "Scopus" in page:
     > seluruh korpus data empiris, kode pemodelan, dan naskah penelitian dapat diunduh langsung secara publik.*
     """)
 
-    # 4 Download buttons in columns
+    # Comprehensive Download Center (8 Primary Datasets & Metrics)
+    st.subheader("📦 Unduh Langsung Dataset Empiris Tesis (Open Data)")
+
     dcol1, dcol2, dcol3, dcol4 = st.columns(4)
     with dcol1:
-        path_dl_emo = "data/results/indobert_9_emosi_fixed.csv"
-        if not os.path.exists(path_dl_emo):
-            path_dl_emo = "../data/results/indobert_9_emosi_fixed.csv"
-        if os.path.exists(path_dl_emo):
-            with open(path_dl_emo, "rb") as f_dl:
+        p_emo = get_data_path("indobert_9_emosi_fixed.csv")
+        if os.path.exists(p_emo):
+            with open(p_emo, "rb") as f:
                 st.download_button(
-                    label="💾 Unduh Dataset Emosi (N=5.263)",
-                    data=f_dl.read(),
-                    file_name="dataset_indobert_9_emosi_fixed.csv",
+                    label="📊 Dataset Emosi (N=5.263)",
+                    data=f.read(),
+                    file_name="indobert_9_emosi_fixed.csv",
                     mime="text/csv",
                     use_container_width=True
                 )
     with dcol2:
-        path_dl_sin = "data/sarcasm/dataset_sindiran_valid.csv"
-        if not os.path.exists(path_dl_sin):
-            path_dl_sin = "../data/sarcasm/dataset_sindiran_valid.csv"
-        if os.path.exists(path_dl_sin):
-            with open(path_dl_sin, "rb") as f_dl:
+        p_sin = get_data_path("dataset_sindiran_valid.csv")
+        if os.path.exists(p_sin):
+            with open(p_sin, "rb") as f:
                 st.download_button(
-                    label="💾 Unduh Data Sindiran (N=3.395)",
-                    data=f_dl.read(),
+                    label="🎭 Data Sindiran (N=3.395)",
+                    data=f.read(),
                     file_name="dataset_sindiran_valid.csv",
                     mime="text/csv",
                     use_container_width=True
                 )
     with dcol3:
-        path_dl_absa = get_result_path("absa_results.csv")
-        if not os.path.exists(path_dl_absa):
-            path_dl_absa = "results/absa_results.csv"
-        if os.path.exists(path_dl_absa):
-            with open(path_dl_absa, "rb") as f_dl:
+        p_raw = get_data_path("mbg_tweets_indobert_ready.xlsx")
+        if os.path.exists(p_raw):
+            with open(p_raw, "rb") as f:
                 st.download_button(
-                    label="💾 Unduh Data ABSA 3 Aspek",
-                    data=f_dl.read(),
+                    label="📗 Data Mentah (Excel N=3.395)",
+                    data=f.read(),
+                    file_name="mbg_tweets_indobert_ready.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    use_container_width=True
+                )
+    with dcol4:
+        p_absa = get_result_path("absa_results.csv")
+        if os.path.exists(p_absa):
+            with open(p_absa, "rb") as f:
+                st.download_button(
+                    label="🎯 Data Tematik ABSA",
+                    data=f.read(),
                     file_name="absa_results.csv",
                     mime="text/csv",
                     use_container_width=True
                 )
-    with dcol4:
-        path_dl_nodes = "data/results/sna_degree.csv"
-        if not os.path.exists(path_dl_nodes):
-            path_dl_nodes = "../data/results/sna_degree.csv"
-        if os.path.exists(path_dl_nodes):
-            with open(path_dl_nodes, "rb") as f_dl:
+
+    dcol5, dcol6, dcol7, dcol8 = st.columns(4)
+    with dcol5:
+        p_edges = get_data_path("network_edges.csv")
+        if os.path.exists(p_edges):
+            with open(p_edges, "rb") as f:
                 st.download_button(
-                    label="💾 Unduh Data Sentralitas SNA",
-                    data=f_dl.read(),
+                    label="🕸️ Jaringan SNA (692 Edges)",
+                    data=f.read(),
+                    file_name="network_edges.csv",
+                    mime="text/csv",
+                    use_container_width=True
+                )
+    with dcol6:
+        p_nodes = get_result_path("mbg_network_nodes_final.csv")
+        if os.path.exists(p_nodes):
+            with open(p_nodes, "rb") as f:
+                st.download_button(
+                    label="👥 Komunitas Louvain (971 Nodes)",
+                    data=f.read(),
+                    file_name="mbg_network_nodes_final.csv",
+                    mime="text/csv",
+                    use_container_width=True
+                )
+    with dcol7:
+        p_deg = get_result_path("sna_degree.csv")
+        if os.path.exists(p_deg):
+            with open(p_deg, "rb") as f:
+                st.download_button(
+                    label="🏆 Sentralitas Aktor (986 Aktor)",
+                    data=f.read(),
                     file_name="sna_degree.csv",
                     mime="text/csv",
                     use_container_width=True
                 )
+    with dcol8:
+        p_rep = get_result_path("classification_report.csv")
+        if os.path.exists(p_rep):
+            with open(p_rep, "rb") as f:
+                st.download_button(
+                    label="📈 Metrik Evaluasi Model",
+                    data=f.read(),
+                    file_name="classification_report.csv",
+                    mime="text/csv",
+                    use_container_width=True
+                )
+
+    st.markdown("---")
+    # Public Direct Raw Links Table
+    st.subheader("🌐 Tautan Akses Terbuka & Direct Download Publik (GitHub Raw API)")
+    st.markdown("""
+    Siapa pun di internet dapat mengunduh seluruh data secara programmatic (*Python/R/curl*) atau via browser melalui tautan publik resmi di bawah ini:
+    """)
+
+    repo_raw_base = "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main"
+    public_links_data = [
+        {"No": 1, "Nama Dataset": "IndoBERT 9 Emosi (Fixed)", "Format": "CSV", "Ukuran / Baris": "5.263 baris", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/indobert_9_emosi_fixed.csv"},
+        {"No": 2, "Nama Dataset": "Deteksi Sindiran & Sarkasme", "Format": "CSV", "Ukuran / Baris": "3.395 baris", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/sarcasm/dataset_sindiran_valid.csv"},
+        {"No": 3, "Nama Dataset": "Cuitan MBG Mentah Siap Olah", "Format": "Excel (.xlsx)", "Ukuran / Baris": "3.395 baris", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/emotion/mbg_tweets_indobert_ready.xlsx"},
+        {"No": 4, "Nama Dataset": "Relasi Jaringan Komunikasi SNA", "Format": "CSV", "Ukuran / Baris": "692 edges", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/sna/network_edges.csv"},
+        {"No": 5, "Nama Dataset": "Node Aktor & Klaster Louvain", "Format": "CSV", "Ukuran / Baris": "971 nodes", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/results/mbg_network_nodes_final.csv"},
+        {"No": 6, "Nama Dataset": "Skor Sentralitas Derajat Aktor", "Format": "CSV", "Ukuran / Baris": "986 aktor", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/results/sna_degree.csv"},
+        {"No": 7, "Nama Dataset": "Sentimen Berbasis Aspek (ABSA)", "Format": "CSV", "Ukuran / Baris": "3 aspek tematik", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/results/absa_results.csv"},
+        {"No": 8, "Nama Dataset": "Laporan Klasifikasi & Evaluasi", "Format": "CSV", "Ukuran / Baris": "Precision, Recall, F1", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/results/classification_report.csv"},
+        {"No": 9, "Nama Dataset": "Visual Keterbatasan Riset", "Format": "PNG 300 DPI", "Ukuran / Baris": "1.1 MB", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/results/keterbatasan_penelitian.png"},
+    ]
+    st.dataframe(pd.DataFrame(public_links_data), use_container_width=True, hide_index=True)
 
     # Repository links card
     st.info("""
-    🌐 **Akses Repositori GitHub & Direct Download Link:**
-    - 📦 **Repositori Utama:** [github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)
-    - ⚡ **Direct Download (Full ZIP):** [Unduh Semua Kode & Data (.ZIP)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)
-    - 🚀 **Deploy Publik ke Internet:** Hubungkan repositori GitHub ini ke [share.streamlit.io](https://share.streamlit.io/) dengan file `dashboard/app.py` agar dashboard dapat diakses publik 24/7.
+    🚀 **Pusat Repositori & Arsip Kode Sumber Terbuka:**
+    - 📦 **Repositori GitHub Publik:** [github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)
+    - ⚡ **Download Seluruh Kode & Data Sekaligus (.ZIP):** [Unduh Arsip Lengkap ZIP](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)
+    - 🌐 **Deploy Publik Dashboard (24/7 Gratis):** Hubungkan repositori GitHub ini ke [share.streamlit.io](https://share.streamlit.io/) dengan path `dashboard/app.py` agar dosen penguji dan masyarakat umum dapat mengakses dashboard interaktif secara online.
     """)
 
 
