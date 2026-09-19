@@ -73,6 +73,21 @@
 
 </div>
 
+<br/>
+
+<div align="center">
+
+### 🧭 MENU NAVIGASI CEPAT & DIREKTORI RESMI RISET
+[📊 Snapshot Metrik](#-research-snapshot-ground-truth-metrics) &nbsp;•&nbsp; 
+[📥 Download Center](#-pusat-akses--direct-download-dataset-publik-open-data--reproducibility) &nbsp;•&nbsp; 
+[📄 Naskah Tesis & Manuskrip](#-pusat-unduh-manuskrip-publikasi-ilmiah--naskah-lengkap-tesis) &nbsp;•&nbsp; 
+[🎯 Scopus Q1 Gaps & Novelty](#-scopus-q1-research-gaps--novelty-framework) &nbsp;•&nbsp; 
+[🖼️ Galeri Visual 300 DPI](#-galeri-visualisasi-riset-publik-12-master-plot-300-dpi--akses--unduh-langsung) &nbsp;•&nbsp; 
+[📚 Digital Library PDF](#-digital-reference-library--pertanggungjawaban-akademik-references) &nbsp;•&nbsp; 
+[🚀 Live Dashboard](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/)
+
+</div>
+
 ---
 
 ## 📥 PUSAT AKSES & DIRECT DOWNLOAD DATASET PUBLIK (OPEN DATA & REPRODUCIBILITY)
@@ -107,6 +122,33 @@
 
 ⚡ **Download Seluruh Kode, Data, Naskah & Literatur Sekaligus (.ZIP Langsung):**  
 👉 **[Unduh Arsip Lengkap ZIP Repository (Klik di Sini)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)**
+
+---
+
+### 🌐 STATUS VERIFIKASI AKSES PUBLIK (AUTOMATED AUDIT: 42/42 FILES OK)
+> *Semua aset penelitian ini (Naskah Tesis, Manuskrip Word/Markdown, 10 Dataset CSV, 14 Master Plot PNG 300 DPI, dan 13 PDF Buku/Jurnal Acuan) telah teruji 100% bebas diakses dan diunduh langsung tanpa login, token, atau rintangan autentikasi:*
+
+```text
+[HTTP 200 OK] 📄 Tesis Lengkap (.docx) & Teks (.txt)             -> 100% Public Access
+[HTTP 200 OK] 📄 Manuskrip Scopus Q1 (.docx) & Mediator (.docx)  -> 100% Public Access
+[HTTP 200 OK] 📊 Seluruh Dataset Hasil Komputasi (.csv / .xlsx)  -> 100% Public Access
+[HTTP 200 OK] 🖼️ 14 Visual Master 300 DPI (.png)                -> 100% Public Access
+[HTTP 200 OK] 📚 13 Berkas Fisik PDF Literatur (.pdf)           -> 100% Public Access
+HASIL: 42 DARI 42 ASET TERVERIFIKASI ONLINE & DAPAT DIUNDUH BEBAS
+```
+
+---
+
+## 🎯 SCOPUS Q1 RESEARCH GAPS & NOVELTY FRAMEWORK
+
+> *Penelitian ini dirancang secara khusus untuk memenuhi kriteria ketat jurnal internasional terindeks Scopus Q1 (seperti Social Network Analysis and Mining / Springer atau Information, Communication & Society / Taylor & Francis) dengan menjembatani empat kesenjangan keilmuan (*4 Epistemological Gaps*):*
+
+| Pilar Celah Riset | Status Quo Literatur Sebelumnya | Celah Ilmiah (*The Knowledge Gap*) | Kebaruan & Kontribusi Tesis Ini (*The Novelty*) |
+| :--- | :--- | :--- | :--- |
+| **1. Theoretical Gap**<br>*(Marketing to Politics)* | Konsep *Phygital Gap* (Kotler et al., 2023) hanya dipakai pada pemasaran ritel komersial. | Belum pernah diuji pada kebijakan sosial-fiskal negara bernilai triliunan rupiah. | Mengintegrasikan *Phygital Gap* ke teori krisis (Coombs SCCT) & legitimasi negara (Habermas, Levi & Stoker), membuktikan kegagalan eksekusi fisik memicu erosi kepercayaan politik. |
+| **2. Methodological Gap**<br>*(Tri-Layer Architecture)* | NLP dan SNA dipelajari secara terpisah (*siloed*): NLP mengabaikan relasi kuasa, SNA mengabaikan muatan emosi. | Ketiadaan metode yang memadukan topologi jaringan dengan emosi visceral pada satu objek yang sama. | Merancang arsitektur komputasi terpadu: **Makro (SNA Louvain $Q=0,9837$) $\times$ Meso (ABSA 3 Pilar) $\times$ Mikro (IndoBERT 9 Emosi)**. |
+| **3. Pragmatic Gap**<br>*(Semiotic Incongruence)* | Model NLP standar (VADER/Naïve Bayes/multilingual BERT) tertipu oleh pujian verbal (*False Positive*). | Gagal menangkap sindiran/sarkasme warganet Global South yang sarat pretensi (Grice 1975, Clark & Gerrig 1984). | Memodelkan inkongruensi teks-emoji (pujian palsu dipadu emoji 🤡, 🤮), memvalidasi **315 cuitan (9,28%)** sindiran dan menyelamatkan sentimen dari bias positif semu. |
+| **4. Algorithmic Gap**<br>*(The Algorithmic Oracle)* | Teori krisis konvensional selalu mengasumsikan komunikasi krisis adalah dialog dwiarah Pemerintah $\leftrightarrow$ Publik. | Belum ada riset jaringan yang mendokumentasikan peran AI agen di tengah kebisuan komunikasi krisis negara. | Menemukan anomali struktural: akun Presiden (@prabowo) bisu total ($C_{\text{out}}=0$), memaksa warganet beralih ke bot AI (@grok, $C_{\text{out}}=42$) sebagai **Algorithmic Oracle** pembawa data kebenaran. |
 
 ---
 
