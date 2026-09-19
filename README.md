@@ -1208,9 +1208,42 @@ tesis_mbg/
 │   ├── network_graph.png                   # Figure 07
 │   └── integrated_sna_nlp.png              # Master Visual (3-panel)
 │
+├── 📚 references/                          # Digital PDF Library & Catalog (11 Canonical Papers)
+│   ├── README.md                           # Verification Catalog & DOIs (27 References)
+│   ├── Wilie_et_al_2020_IndoNLU.pdf        # IndoBERT Benchmark Foundation
+│   ├── Blondel_et_al_2008_Louvain.pdf      # Louvain Modularity SNA Algorithm
+│   ├── Easley_Kleinberg_2010_Networks_Book.pdf # Networks, Crowds & Markets (19 MB)
+│   └── ...                                 # PNAS, ACM, SemEval, ACL, Cornell
+│
+├── 📝 manuscript/                          # Journal Submission Documents
+│   ├── Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx # Target SINTA 2 (Mediator)
+│   └── manuscript_jurnal.md                # International IMRaD Draft
+│
 └── 🌐 dashboard/
     └── app.py                              # Streamlit dashboard (5 pages)
 ```
+
+---
+
+## 📚 DIGITAL REFERENCE LIBRARY & PERTANGGUNGJAWABAN AKADEMIK (`references/`)
+
+> *Sebagai pemenuhan standar integritas ilmiah, transparansi riset komputasi, dan akuntabilitas sidang tesis Magister, seluruh literatur acuan primer disimpan dalam repositori dan dipetakan ke identitas digital resmi (DOI & Open Access):*
+
+| No | Dokumen PDF Literatur | Penulis & Tahun | Fokus Teori / Metodologi | Akses Berkas di GitHub |
+| :---: | :--- | :--- | :--- | :---: |
+| 1 | **IndoNLU Benchmark / IndoBERT** | Wilie et al. (2020) | Fondasi Arsitektur IndoBERT Base | [📥 Buka PDF](references/Wilie_et_al_2020_IndoNLU.pdf) |
+| 2 | **Fast Unfolding Louvain Algorithm** | Blondel et al. (2008) | Algoritma Deteksi Komunitas SNA ($Q=0.9837$) | [📥 Buka PDF](references/Blondel_et_al_2008_Louvain.pdf) |
+| 3 | **BERT Pre-training Deep Bidirectional** | Devlin et al. (2018) | Fondasi Pre-trained Transformer Model | [📥 Buka PDF](references/Devlin_et_al_2018_BERT.pdf) |
+| 4 | **IndoLEM & IndoBERT Evaluation** | Koto et al. (2020) | Evaluasi Model Bahasa Alami Indonesia | [📥 Buka PDF](references/Koto_et_al_2020_IndoLEM_IndoBERT.pdf) |
+| 5 | **Networks, Crowds, and Markets** | Easley & Kleinberg (2010) | Buku Teks Lengkap Analisis Graf Jaringan (19 MB) | [📥 Buka PDF](references/Easley_Kleinberg_2010_Networks_Book.pdf) |
+| 6 | **Modularity & Community Structure** | Newman (2006) | Formulasi Matematis Metrik Modularitas $Q$ | [📥 Buka PDF](references/Newman_2006_Modularity.pdf) |
+| 7 | **Community Structure in Networks** | Newman & Girvan (2004) | Evaluasi Klastering & Partisi Jaringan | [📥 Buka PDF](references/Newman_Girvan_2004_Community_Structure.pdf) |
+| 8 | **Community in Social & Biological Net** | Girvan & Newman (2002) | Jurnal Acuan PNAS Pemisahan Komunitas | [📥 Buka PDF](references/Girvan_Newman_2002_Community_PNAS.pdf) |
+| 9 | **SemEval-2014 Task 4 (ABSA)** | Pontiki et al. (2014) | Fondasi Sentimen Berbasis Aspek (3 Pilar) | [📥 Buka PDF](references/Pontiki_et_al_2014_SemEval_ABSA.pdf) |
+| 10 | **Emotion & Sentiment Tweets BERT** | Chiorrini et al. (2021) | Klasifikasi Afektif Twitter Berbasis BERT | [📥 Buka PDF](references/Chiorrini_et_al_2021_BERT_Emotion_Tweets.pdf) |
+| 11 | **The Rise of Social Bots** | Ferrara et al. (2016) | Karakteristik Bot & Amplifikasi Suara Medsos | [📥 Buka PDF](references/Ferrara_et_al_2016_Social_Bots.pdf) |
+
+👉 **Katalog Lengkap 27 Referensi Tesis beserta DOI & Tautan Penerbit:** Silakan buka dokumen [`references/README.md`](references/README.md).
 
 ---
 
