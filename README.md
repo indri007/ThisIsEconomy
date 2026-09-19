@@ -137,11 +137,13 @@
 
 | No | Dokumen Akademik | Format | Target Publikasi / Kategori Standar | Akses Berkas Langsung (*Direct Download*) |
 | :---: | :--- | :---: | :--- | :--- |
-| **1** | **Manuskrip Jurnal Scopus Q1 (English)** | Word (`.docx`) | *Social Network Analysis and Mining* (Springer Q1) / *ICS* | [`📥 Unduh DOCX Manuskrip Q1`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
-| **2** | **Draf Manuskrip IMRaD Scopus Q1** | Markdown (`.md`) | Open Science Computational Communication Standard | [`📄 Buka Manuskrip Markdown`](manuscript/manuscript_jurnal.md) |
-| **3** | **Manuskrip Jurnal SINTA 2 (*Mediator*)** | Word (`.docx`) | *Mediator: Jurnal Komunikasi* (SINTA 2, Terakreditasi Nasional) | [`📥 Unduh DOCX Mediator SINTA 2`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
-| **4** | **Naskah Lengkap Tesis Magister (Bab I–V)** | Word (`.docx`) | Magister Ilmu Komunikasi UPN Veteran Jatim (Format Sidang) | [`📥 Unduh DOCX Tesis Lengkap`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/Tesis_Indri_Anjar_Kartika_Sari.docx) |
-| **5** | **Transkrip Teks Lengkap Tesis** | Teks (`.txt`) | Transparansi Teks Penuh & Audit Sitasi Mandiri | [`📄 Buka Teks Tesis Penuh`](tesis_text.txt) |
+| **1** | **Manuskrip Lengkap Scopus Q1 (Full Authors)** | Word (`.docx`) | *Social Network Analysis and Mining* (Springer Q1) | [`📥 Unduh DOCX Manuskrip Q1`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
+| **2** | **Naskah Anonim Scopus Q1 (*Blind Review*)** | Word (`.docx`) | Standar *Double-Blind Peer Review* (Bebas Identitas Penulis) | [`📥 Unduh DOCX Naskah Anonim`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx) |
+| **3** | **Halaman Judul Terpisah (*Title Page*)** | Word (`.docx`) | Berkas Terpisah: Nama, Afiliasi, ORCID & Kontak Editor | [`📥 Unduh DOCX Title Page`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx) |
+| **4** | **Draf Manuskrip IMRaD Scopus Q1** | Markdown (`.md`) | Open Science Computational Communication Standard | [`📄 Buka Manuskrip Markdown`](manuscript/manuscript_jurnal.md) |
+| **5** | **Manuskrip Jurnal SINTA 2 (*Mediator*)** | Word (`.docx`) | *Mediator: Jurnal Komunikasi* (SINTA 2, Terakreditasi Nasional) | [`📥 Unduh DOCX Mediator SINTA 2`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
+| **6** | **Naskah Lengkap Tesis Magister (Bab I–V)** | Word (`.docx`) | Magister Ilmu Komunikasi UPN Veteran Jatim (Format Sidang) | [`📥 Unduh DOCX Tesis Lengkap`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/Tesis_Indri_Anjar_Kartika_Sari.docx) |
+| **7** | **Transkrip Teks Lengkap Tesis** | Teks (`.txt`) | Transparansi Teks Penuh & Audit Sitasi Mandiri | [`📄 Buka Teks Tesis Penuh`](tesis_text.txt) |
 
 ⚡ **Download Seluruh Kode, Data, Naskah & Literatur Sekaligus (.ZIP Langsung):**  
 👉 **[Unduh Arsip Lengkap ZIP Repository (Klik di Sini)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)**
