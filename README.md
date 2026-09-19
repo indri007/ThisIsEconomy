@@ -640,86 +640,137 @@ Selain klasifikasi emosi kalimat penuh dengan IndoBERT, riset ini melakukan **an
 
 ---
 
-## 🖼️ 10 VISUAL LENSES INTO THE MBG CONVERSATION
-
-> 🚀 **Interactive dashboard** → [y6cqezpxxq2ftdwb6yvrab.streamlit.app](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/)
+## 🖼️ GALERI VISUALISASI RISET PUBLIK (12 MASTER PLOT 300 DPI — AKSES & UNDUH LANGSUNG)
+> *Seluruh figur visualisasi naskah tesis di bawah ini bersifat **100% publik, beresolusi cetak tinggi (300 DPI)**, dan dapat diakses/diunduh langsung secara bebas.*
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
 ### `Figure 01` — Dataset & Pipeline Overview
-📍 *Methods §3*
-End-to-end pipeline: raw collection (N=5,310) → cleaning → validated sarcasm corpus (N=3,395) → full inference corpus (N=5,263).
-> **"Penyaringan data berlapis menjamin integritas dan validitas analitis."**
+📍 *Metodologi §3.5*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/1_pipeline.png" target="_blank">
+<img src="results/1_pipeline.png" width="100%" alt="Figure 01: Dataset & Pipeline Overview"/>
+</a>
+End-to-end pipeline: raw collection ($N=5.310$) → cleaning → validated sarcasm corpus ($N=3.395$) → full inference corpus ($N=5.263$).  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/1_pipeline.png)**
 
 ---
 
 ### `Figure 02` — Nine Emotion Distribution
-📍 *Results §4*
-Diagram batang 9 kelas emosi pada 5.263 cuitan riil. **Jijik mendominasi secara mutlak sebesar 56,24%**, diikuti Percaya (20,39%) dan Netral (12,33%).
-> **"Jijik bukan sekadar anomali — ini adalah respons afektif sistemik."**
+📍 *Hasil NLP §4.5*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png" target="_blank">
+<img src="results/emotion_distribution.png" width="100%" alt="Figure 02: Nine Emotion Distribution"/>
+</a>
+Diagram batang 9 kelas emosi pada 5.263 cuitan riil. **Jijik mendominasi secara mutlak sebesar 56,24%**, diikuti Percaya (20,39%) dan Netral (12,33%).  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png)**
 
 ---
 
 ### `Figure 03` — Sarcasm Distribution
-📍 *Results §4*
-Pada korpus validasi (N=3.395), **9,28% (315 cuitan)** terverifikasi memuat sindiran. Pada rekonstruksi leksikon kontradiktif (N=5.263), tercatat 181 cuitan sindiran eksplisit (3,44%) dan 2.979 cuitan (56,60%) proksi penolakan.
-> **"Publik merespons kegagalan implementasi fisik dengan bahasa sindiran."**
+📍 *Hasil NLP §4.5*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png" target="_blank">
+<img src="results/3_sarcasm.png" width="100%" alt="Figure 03: Sarcasm Distribution"/>
+</a>
+Pada korpus validasi ($N=3.395$), **9,28% (315 cuitan)** terverifikasi memuat sindiran. Publik merespons kegagalan implementasi fisik dengan bahasa sindiran implisit.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png)**
 
 ---
 
-### `Figure 04` — IndoBERT Performance
-📍 *Results §4*
-Evaluasi model pada validation set riil ($n=1.053$, checkpoint-792): Akurasi **57,45%**, Weighted F1 **0,4563**, Macro F1 **0,1444**. Kelas dominan Jijik mencapai Recall **96,92%** (F1 0,7178) dan kelas Percaya mencapai Presisi **68,42%**.
-> **"Model IndoBERT terbukti sensitif mendeteksi sinyal keluhan fisik makanan."**
+### `Figure 04` — F1-Score per Kelas Emosi
+📍 *Evaluasi Model §4.5*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/f1_scores.png" target="_blank">
+<img src="results/f1_scores.png" width="100%" alt="Figure 04: F1-Scores"/>
+</a>
+Evaluasi performa model IndoBERT pada testing set riil ($n=1.053$, checkpoint-792). Kelas dominan Jijik mencapai Recall **96,92%** (F1 0,7178).  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/f1_scores.png)**
 
 ---
 
-### `Figure 05` — Confusion Matrix
-📍 *Results §4*
-Matriks konfusi 9×9 mengonfirmasi 566 dari 584 cuitan berlabel aktual Jijik berhasil diprediksi tepat oleh model (96,92% recall), membuktikan tingginya daya tangkap sentimen penolakan.
-> **"Transparansi komputasional dalam mengevaluasi kekuatan model deep learning."**
+### `Figure 05` — Confusion Matrix IndoBERT
+📍 *Evaluasi Model §4.5*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png" target="_blank">
+<img src="results/confusion_matrix.png" width="100%" alt="Figure 05: Confusion Matrix"/>
+</a>
+Matriks konfusi 9×9 mengonfirmasi 566 dari 584 cuitan berlabel aktual Jijik berhasil diprediksi tepat oleh model (96,92% recall).  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png)**
+
+---
+
+### `Figure 06` — Masterpiece Integrasi SNA × NLP (Phygital Gap)
+📍 *Sintesis Diskusi §4.6 & §5.1*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/integrated_sna_nlp.png" target="_blank">
+<img src="results/integrated_sna_nlp.png" width="100%" alt="Figure 06: Integrated SNA NLP"/>
+</a>
+Peta sintesis puncak: menghubungkan simpul sentralitas aktor (@grok, @prabowo) dengan klaster komunitas Louvain dan spektrum emosi Jijik/Percaya.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/integrated_sna_nlp.png)**
 
 </td>
 <td width="50%" valign="top">
 
-### `Figure 06` — Global Social Network
-📍 *Results §4*
-971 nodes · 666 directed edges (692 raw interactions). Tanpa hub dialog pusat; membuktikan kondisi **hyper-fragmentation**, bukan polarisasi dua kubu.
-> **"Wacana publik terfragmentasi dalam ratusan kantong percakapan terisolasi."**
+### `Figure 07` — Global Social Network Topology
+📍 *Hasil SNA §4.2*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png" target="_blank">
+<img src="results/6_global_network.png" width="100%" alt="Figure 07: Global Social Network"/>
+</a>
+971 node · 666 directed edges (692 raw interactions). Membuktikan kondisi **hyper-fragmentation**, bukan polarisasi dua kubu linear.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png)**  
+*(Versi visual jaringan penuh: [network_graph.png](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/network_graph.png))*
 
 ---
 
-### `Figure 07` — Community Structure
-📍 *Results §4*
-332–341 komunitas Louvain · **Modularity = 0,9837** (sangat tinggi). Giant component hanya mencakup 9,1% (89 node) dari total aktor, dengan resiprositas hanya 1,21%.
-> **"Hyper-fragmentation: ratusan pulau percakapan terpisah tanpa arena konsensus."**
+### `Figure 08` — Top Central Actors (Degree Centrality)
+📍 *Struktur Kekuasaan §4.4*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png" target="_blank">
+<img src="results/top_actors.png" width="100%" alt="Figure 08: Top Central Actors"/>
+</a>
+**@grok (AI agent) memegang Out-degree tertinggi (#1 = 42)** sebagai rujukan verifikasi (*Algorithmic Oracle*), sementara **@prabowo memiliki In-degree tertinggi (15)**.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png)**
 
 ---
 
-### `Figure 08` — Top Central Actors
-📍 *Results §4*
-**@grok (AI agent) memegang Out-degree tertinggi (#1 = 42)** sebagai rujukan verifikasi klaim publik (*Algorithmic Oracle*), sementara **@prabowo memiliki In-degree tertinggi (15) dengan Out-degree 0** (*Power Vacuum*).
-> **"Algorithmic Trust mengambil alih fungsi di tengah kevakuman otoritas manusia."**
-
----
-
-### `Figure 09` — Emotion × Network Pattern
-📍 *Discussion §5*
-Analisis silang: Emosi Jijik meresap ke hampir seluruh klaster komunitas independen — menjadi sentimen perekat di balik fragmentasi wacana.
-> **"Emosi jijik menjadi benang merah struktural di seluruh jaringan wacana."**
+### `Figure 09` — Emotion × Louvain Community Pattern
+📍 *Dinamika Komunitas §4.3*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png" target="_blank">
+<img src="results/9_emotion_network.png" width="100%" alt="Figure 09: Emotion Network"/>
+</a>
+Analisis silang: Emosi Jijik meresap ke hampir seluruh klaster komunitas independen — menjadi sentimen perekat struktural di balik fragmentasi wacana.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png)**
 
 ---
 
 ### `Figure 10` — ABSA / Thematic Analysis
-📍 *Discussion §5*
-Sentimen berbasis aspek: Kekecewaan publik terkonsentrasi pada **eksekusi logistik (makanan basi) & pemotongan anggaran**, bukan pada konsep gizi itu sendiri.
-> **"Program didukung, tetapi eksekusi fisik menu ditolak — Inilah Phygital Gap."**
+📍 *Sintesis Tematik §4.6*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png" target="_blank">
+<img src="results/10_absa_thematic.png" width="100%" alt="Figure 10: ABSA Thematic"/>
+</a>
+Sentimen berbasis aspek: Kekecewaan publik terkonsentrasi pada **eksekusi logistik (78,91%) & anggaran (77,01%)**, bukan pada gagasan gizi nasional itu sendiri.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png)**
+
+---
+
+### `Figure 11` — Word Cloud Percakapan MBG (N=5.263)
+📍 *Karakteristik Korpus §4.1*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png" target="_blank">
+<img src="results/wordcloud_mbg.png" width="100%" alt="Figure 11: Wordcloud MBG"/>
+</a>
+Visualisasi 120 leksikon paling sering diucapkan warganet, menyoroti kata kunci *mbg, makanan, gratis, gizi, sekolah, dapur,* dan *enak*.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png)**
+
+---
+
+### `Figure 12` — Radar Keterbatasan Penelitian & Arah Riset
+📍 *Keterbatasan Riset §5.4*  
+<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png" target="_blank">
+<img src="results/keterbatasan_penelitian.png" width="100%" alt="Figure 12: Keterbatasan Penelitian"/>
+</a>
+Pemetaan 7 dimensi kapabilitas metodologis vs batas horizon riset, mitigasi empiris bias, dan rekomendasi arah penelitian lanjutan.  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png)**
 
 </td>
 </tr>
 </table>
+
 
 ---
 
