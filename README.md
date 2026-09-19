@@ -1246,9 +1246,13 @@ jupyter notebook notebooks/tesis_mbg.ipynb
 <td>Interactive research notebook</td>
 </tr>
 <tr>
-<td rowspan="2"><b>🕸️ SNA</b></td>
+<td rowspan="3"><b>🕸️ SNA</b></td>
 <td><img src="https://img.shields.io/badge/NetworkX-4BA3C7?style=flat-square"/> NetworkX</td>
 <td>Graph construction & centrality analysis</td>
+</tr>
+<tr>
+<td><img src="https://img.shields.io/badge/NodeXL_Pro-Order_14103-1E40AF?style=flat-square&logo=microsoft-excel"/> <a href="https://nodexl.com/my-account/view-order/14103/">NodeXL Pro</a></td>
+<td>SMRF Academic Network Analysis & Social Media Graph License (<a href="https://nodexl.com/my-account/view-order/14103/">Order #14103</a>)</td>
 </tr>
 <tr>
 <td><img src="https://img.shields.io/badge/Louvain-06B6D4?style=flat-square"/> Louvain</td>

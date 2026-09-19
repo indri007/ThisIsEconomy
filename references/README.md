@@ -91,3 +91,16 @@ Selain riset tesis komputasional MBG ini, berikut adalah artikel ilmiah terbitan
 - **Sitasi Baku (APA 7th):**  
   > Sari, I. A. K. (2026). JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia. *Integrative Perspectives of Social and Science Journal*, *3*(09 September), 333–340. https://ipssj.com/index.php/ojs/article/view/2024
 
+---
+
+## 5. Lisensi Resmi Instrumen & Perangkat Lunak Riset Jaringan (SNA Tooling License)
+
+Untuk menjamin kepatuhan etika riset, keterulangan komputasional (*computational reproducibility*), serta validitas akademik pada analisis jaringan komunikasi (CNA), penelitian ini didukung perangkat lunak analisis jaringan bersertifikasi resmi:
+
+- **Nama Perangkat Lunak:** **NodeXL Pro** (*Network Overview, Discovery and Exploration for Excel*)
+- **Penerbit / Yayasan:** *Social Media Research Foundation* (SMRF)
+- **Status Lisensi:** Lisensi Akademik Resmi (*Academic Researcher License*)
+- **Nomor Pesanan / Bukti Lisensi:** [Order #14103](https://nodexl.com/my-account/view-order/14103)
+- **Tautan Verifikasi Akun:** [`https://nodexl.com/my-account/view-order/14103`](https://nodexl.com/my-account/view-order/14103)
+- **Fungsi dalam Riset:** Digunakan untuk audit data relasi interaksi media sosial X, eksplorasi topologi jaringan komunikasi, serta validasi silang metrik sentralitas (*degree, betweenness, eigenvector*) dan modularitas komunitas dengan pustaka Python NetworkX dan algoritma Louvain.
+

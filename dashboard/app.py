@@ -344,7 +344,7 @@ def render_submission_checklist_70_points():
         {"No": 15, "Kategori": "B. Naskah (Manuscript)", "Poin Audit": "Minimal >70% referensi primer 5 tahun terakhir", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "20 dari 27 referensi (74.07%) adalah publikasi tahun 2016–2026, melampaui batas minimum Kemenristekdikti (>70%)."},
         {"No": 16, "Kategori": "B. Naskah (Manuscript)", "Poin Audit": "Novelty/kontribusi riset dinyatakan eksplisit", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Dinyatakan eksplisit pada akhir Pendahuluan & Pembahasan: Tri-Layer framework, Algorithmic Oracle, dan pembuktian Phygital Gap."},
         {"No": 17, "Kategori": "B. Naskah (Manuscript)", "Poin Audit": "Gap penelitian didukung literature review terbaru", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Mendokumentasikan gap pemisahan antara riset NLP murni (tanpa topologi jaringan) dan riset SNA murni (tanpa kedalaman emosi)."},
-        {"No": 18, "Kategori": "B. Naskah (Manuscript)", "Poin Audit": "Metodologi detail & replicable (versi IndoBERT, parameter SNA)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Model: indobenchmark/indobert-base-p2, batch=32, lr=2e-5, graf NetworkX directed 971 node, Louvain modularity Q=0.9837."},
+        {"No": 18, "Kategori": "B. Naskah (Manuscript)", "Poin Audit": "Metodologi detail & replicable (versi IndoBERT, parameter SNA)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Model: indobenchmark/indobert-base-p2, batch=32, lr=2e-5; instrumen CNA: Python NetworkX & NodeXL Pro (Lisensi Akademik Resmi Order #14103: nodexl.com/my-account/view-order/14103), directed 971 node, Louvain modularity Q=0.9837."},
         {"No": 19, "Kategori": "B. Naskah (Manuscript)", "Poin Audit": "Hasil & pembahasan terpisah jelas, didukung visualisasi (grafik jaringan, confusion matrix)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "14 Master Plot visual resolusi tinggi 300 DPI: Confusion Matrix IndoBERT, Distribusi Emosi, Graf Jaringan, Klaster Louvain, ABSA."},
         {"No": 20, "Kategori": "B. Naskah (Manuscript)", "Poin Audit": "Limitations dicantumkan", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Subbab Research Limitations membahas observasi single platform (X), temporal window 3 bulan, dan perlunya analisis multi-platform."},
         {"No": 21, "Kategori": "B. Naskah (Manuscript)", "Poin Audit": "Implikasi teoritis & praktis (phygital gap, kebijakan MBG)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Implikasi teoritis SCCT Coombs & Kotler 6.0; implikasi praktis 3 rekomendasi taktis komunikasi Badan Gizi Nasional (BGN)."},
@@ -590,6 +590,7 @@ def render_author_biography():
 
             **💻 Bahasa & Framework:**
             - Python (Data Science, NLP, PyTorch, NetworkX)
+            - NodeXL Pro (Lisensi Akademik Resmi Order #14103)
             - Streamlit (Production Web Apps)
             - React.js & Next.js
             - n8n (Workflow Automation)
@@ -2329,7 +2330,7 @@ elif "Bab III" in page:
     with lap2:
         st.markdown("""
         #### 🕸️ Lapisan 2: Struktural-Relasional
-        - **Instrumen**: NetworkX & Algoritma Louvain
+        - **Instrumen**: NetworkX, NodeXL Pro ([Lisensi Akademik Resmi Order #14103](https://nodexl.com/my-account/view-order/14103/)) & Algoritma Louvain
         - **Fokus**: Topologi graf berarah, sentralitas akun kunci (Degree/Betweenness/Eigenvector), polarisasi modularity.
         - **Output**: 332 komponen jaringan terfragmentasi, identifikasi Oracle (@grok) & Broker.
         """)
