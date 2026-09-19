@@ -8,6 +8,23 @@
 
 <br/>
 
+<!-- MULTI-LANGUAGE TRANSLATION SWITCHER -->
+<p align="center">
+  <b>🌐 Select Language / Pilih Bahasa:</b><br/>
+  <a href="https://translate.google.com/translate?sl=id&tl=en&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/English-🇬🇧_Translate-1d4ed8?style=flat-square" alt="Translate to English"/></a> &nbsp;
+  <a href="https://translate.google.com/translate?sl=id&tl=ja&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/日本語-🇯🇵_翻訳-b91c1c?style=flat-square" alt="Translate to Japanese"/></a> &nbsp;
+  <a href="https://translate.google.com/translate?sl=id&tl=zh-CN&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/中文-🇨🇳_翻译-ca8a04?style=flat-square" alt="Translate to Chinese"/></a> &nbsp;
+  <a href="https://translate.google.com/translate?sl=id&tl=ar&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/العربية-🇸🇦_ترجمة-15803d?style=flat-square" alt="Translate to Arabic"/></a> &nbsp;
+  <a href="https://translate.google.com/translate?sl=id&tl=es&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/Español-🇪🇸_Traducir-c2410c?style=flat-square" alt="Translate to Spanish"/></a> &nbsp;
+  <a href="https://translate.google.com/translate?sl=id&tl=de&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/Deutsch-🇩🇪_Übersetzen-374151?style=flat-square" alt="Translate to German"/></a> &nbsp;
+  <a href="https://translate.google.com/translate?sl=id&tl=fr&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/Français-🇫🇷_Traduire-6b21a8?style=flat-square" alt="Translate to French"/></a> &nbsp;
+  <a href="https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/Bahasa_Indonesia-🇮🇩_Asli-047857?style=flat-square" alt="Bahasa Indonesia Asli"/></a>
+  <br/>
+  <sub><i>💡 Click any badge above to automatically translate this entire repository into your language.</i></sub>
+</p>
+
+<br/>
+
 <!-- BADGES -->
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![IndoBERT](https://img.shields.io/badge/IndoBERT-Fine--tuned-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/indobenchmark/indobert-base-p2)
