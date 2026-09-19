@@ -1,4 +1,6 @@
-# Mapping the 'Phygital Gap' in Public Policy Crisis: A Tri-Layer Computational Communication Study of Indonesia's Free Nutritious Meal (MBG) Program on Platform X
+import os
+
+content = """# Mapping the 'Phygital Gap' in Public Policy Crisis: A Tri-Layer Computational Communication Study of Indonesia's Free Nutritious Meal (MBG) Program on Platform X
 
 **Author:** Indri Anjar Kartika Sari  
 **Affiliation:** Master of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional 'Veteran' Jawa Timur, Surabaya, Indonesia  
@@ -94,7 +96,7 @@ We adapted Robert Plutchik's psycho-evolutionary emotion taxonomy into 9 operati
 - **Dataset Partitioning:** Stratified splitting of annotated data into 80% training set ($N = 4,210$) and 20% independent holdout test set ($n = 1,053$).
 - **Hyperparameter Specifications:**
   - Optimizer: AdamW with weight decay $\lambda = 0.01$.
-  - Learning Rate: $\eta = 2 	imes 10^{-5}$ with linear learning rate warmup.
+  - Learning Rate: $\eta = 2 \times 10^{-5}$ with linear learning rate warmup.
   - Batch Size: 16 per device.
   - Epochs: 3 epochs (following Devlin et al., 2018 and Wilie et al., 2020 to prevent catastrophic forgetting and overfitting).
   - Maximum Sequence Length: 128 tokens.
@@ -108,8 +110,8 @@ Tweets matching combinations of praise adjectives with complaint context, or pos
 The interaction network was modeled as a directed, weighted graph $G = (V, E)$, where $V$ represents unique X user accounts ($|V| = 971$) and $E$ represents directed communication ties ($|E| = 666$ unique edges, originating from 692 raw interaction instances including mentions, replies, and quotes).
 
 - **Structural Centrality:**
-  - *In-Degree Centrality ($C_{	ext{in}}(v)$):* Quantifies prestige and attention received.
-  - *Out-Degree Centrality ($C_{	ext{out}}(v)$):* Quantifies active communicative broadcasting.
+  - *In-Degree Centrality ($C_{\text{in}}(v)$):* Quantifies prestige and attention received.
+  - *Out-Degree Centrality ($C_{\text{out}}(v)$):* Quantifies active communicative broadcasting.
   - *Betweenness Centrality ($C_B(v)$):* Identifies structural brokers bridging otherwise disconnected clusters.
 - **Community Detection:** Modularity optimization using the Louvain heuristic algorithm (Blondel et al., 2008).
 
@@ -166,7 +168,7 @@ The network density of $0.0011$ and reciprocity of $1.21\%$ indicate an absolute
 ### 4.4 Structural Power Asymmetry: The Algorithmic Oracle vs. Institutional Silence
 Centrality calculations exposed an acute disparity between formal political power and digital communicative authority:
 
-| Rank | User Account | In-Degree ($C_{	ext{in}}$) | Out-Degree ($C_{	ext{out}}$) | Betweenness ($C_B$) | Role in Discourse Network |
+| Rank | User Account | In-Degree ($C_{\text{in}}$) | Out-Degree ($C_{\text{out}}$) | Betweenness ($C_B$) | Role in Discourse Network |
 | :---: | :--- | :---: | :---: | :---: | :--- |
 | **1** | `@grok` | 0 | **42** | 0.000000 | **Algorithmic Oracle (Primary Broadcast Hub)** |
 | **2** | `@4Y4NKZ` | 1 | 8 | **0.000016** | **Structural Broker (Inter-cluster bridge)** |
@@ -174,9 +176,9 @@ Centrality calculations exposed an acute disparity between formal political powe
 | **4** | `@jokowi` | 9 | 0 | 0.000000 | Secondary Institutional Target |
 | **5** | `@gibran_tweet`| 7 | 0 | 0.000000 | Secondary Institutional Target |
 
-While the executive head of state (`@prabowo`) accumulated the highest In-Degree (15) as the designated target of public accountability, his Out-Degree remained absolute zero ($C_{	ext{out}} = 0$). Government figures acted as passive receptacles of grievance, offering zero digital engagement.
+While the executive head of state (`@prabowo`) accumulated the highest In-Degree (15) as the designated target of public accountability, his Out-Degree remained absolute zero ($C_{\text{out}} = 0$). Government figures acted as passive receptacles of grievance, offering zero digital engagement.
 
-In stark contrast, xAI's conversational agent (`@grok`) commanded the highest Out-Degree in the entire network ($C_{	ext{out}} = 42$). When netizens sought verification regarding meal pricing formulas or poisoning statistics, they tagged `@grok` to synthesize facts. The artificial intelligence agent thus stepped in as an **Algorithmic Oracle**, assuming the communicative role abandoned by state public relations.
+In stark contrast, xAI's conversational agent (`@grok`) commanded the highest Out-Degree in the entire network ($C_{\text{out}} = 42$). When netizens sought verification regarding meal pricing formulas or poisoning statistics, they tagged `@grok` to synthesize facts. The artificial intelligence agent thus stepped in as an **Algorithmic Oracle**, assuming the communicative role abandoned by state public relations.
 
 ### 4.5 Model Performance and Evaluation
 Evaluating IndoBERT (`checkpoint-792`) on the independent test set ($n = 1,053$) yielded the following per-class metrics:
@@ -221,7 +223,7 @@ Habermas (2006) cautioned that internet-mediated public spheres risk communicati
 Coupled with a reciprocity rate of only **1.21%**, this reveals that the digital discourse was functionally dead as a deliberative space. Citizens broadcasted their frustration into localized micro-clusters, while government actors failed to engage in reciprocal dialogue. The giant component captured only $9.17\%$ of nodes, proving that no single narrative could bridge the fragmented silos.
 
 ### 5.3 The Emergence of the 'Algorithmic Oracle'
-Perhaps the most transformative empirical finding is the communicative role assumed by artificial intelligence. In classical crisis communication models (Coombs, 2007), epistemic authority rests with institutional leaders, official spokespersons, or verified investigative journalists. In this network, however, `@grok` achieved an Out-Degree of 42, dominating the graph's broadcasting capability, while `@prabowo` remained silent ($C_{	ext{out}} = 0$).
+Perhaps the most transformative empirical finding is the communicative role assumed by artificial intelligence. In classical crisis communication models (Coombs, 2007), epistemic authority rests with institutional leaders, official spokespersons, or verified investigative journalists. In this network, however, `@grok` achieved an Out-Degree of 42, dominating the graph's broadcasting capability, while `@prabowo` remained silent ($C_{\text{out}} = 0$).
 
 When state actors create a **Power Vacuum** by failing to respond to legitimate operational queries, digital citizens do not abandon inquiry; instead, they pivot to synthetic authority. Netizens tagged `@grok` to verify contract values, calculate vendor margins, and cross-reference nutritional standards. The AI agent operated as an impartial *Algorithmic Oracle*, synthesizing facts in real time. This signals a historic paradigm shift in digital public relations: future state communication strategies will not merely interact with human journalists or influencers, but must contend with autonomous algorithms operating as primary epistemic gatekeepers in the network.
 
@@ -288,3 +290,10 @@ Sulafasyah, L. (2026). *Analisis jaringan komunikasi isu keracunan MBG di Twitte
 Sunstein, C. R. (2017). *#Republic: Divided democracy in the age of social media*. Princeton University Press.
 Wasserman, S., & Faust, K. (1994). *Social network analysis: Methods and applications*. Cambridge University Press.
 Wilie, B., Vincentio, K., Winata, G. I., Cahyawijaya, S., Li, X., Lim, Z. Y., Soleman, S., Mahendra, R., Fung, P., Bahar, S., & Purwarianti, A. (2020). IndoNLU: Benchmark and resources for evaluating Indonesian natural language understanding. *Proceedings of AACL-IJCNLP 2020*, 843–860.
+"""
+
+target_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "manuscript", "manuscript_jurnal.md")
+with open(target_path, "w", encoding="utf-8") as f:
+    f.write(content.strip() + "\n")
+
+print(f"Successfully generated clean manuscript at: {target_path} with {len(content)} chars.")
