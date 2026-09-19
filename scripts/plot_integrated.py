@@ -20,7 +20,7 @@ os.makedirs(get_result_path(""), exist_ok=True)
 plt.style.use('dark_background')
 fig = plt.figure(figsize=(18, 9)) # Increased height for the text box
 
-# Panel 1: Global Network (SNA)
+# Panel 1: Global Network (CNA / Communication Networks)
 ax1 = plt.subplot(131)
 edges = pd.read_csv(get_data_path("network_edges.csv"))
 G = nx.from_pandas_edgelist(edges, 'Source', 'Target')
@@ -28,7 +28,7 @@ G = nx.from_pandas_edgelist(edges, 'Source', 'Target')
 pos = nx.spring_layout(G, k=0.15, iterations=20, seed=42)
 nx.draw_networkx_nodes(G, pos, node_size=15, node_color='cyan', alpha=0.6, ax=ax1)
 nx.draw_networkx_edges(G, pos, alpha=0.15, edge_color='white', ax=ax1)
-ax1.set_title("1. Global Network Structure\n(SNA Topology)", fontsize=14, fontweight='bold', color='white')
+ax1.set_title("1. Communication Network Structure\n(CNA Topology)", fontsize=14, fontweight='bold', color='white')
 ax1.axis('off')
 
 # Panel 2: Community Structure (Louvain Modularity)
@@ -73,7 +73,7 @@ ax3.tick_params(colors='white')
 for spine in ax3.spines.values():
     spine.set_color('white')
 
-plt.suptitle("INTEGRATED PHYGITAL GAP ANALYSIS: SNA x NLP", fontsize=20, fontweight='bold', color='white', y=0.98)
+plt.suptitle("INTEGRATED PHYGITAL GAP ANALYSIS: CNA x NLP", fontsize=20, fontweight='bold', color='white', y=0.98)
 
 # Adjust layout to make room for narrative
 plt.subplots_adjust(bottom=0.35, top=0.85)

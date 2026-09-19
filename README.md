@@ -102,7 +102,7 @@
 | **2** | **Dataset Deteksi Sindiran & Sarkasme** | CSV | 3.395 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sarcasm/dataset_sindiran_valid.csv) | [🖼️ Lihat Plot Validasi Sindiran](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png) |
 | **3** | **Dataset Bersih Pasca-Preprocessing** | CSV | 5.309 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/processed/data_clean.csv) | [🖼️ Lihat Plot Alur Preprocessing](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/2_dataset_characteristics.png) |
 | **4** | **Dataset Benchmark Anotasi Emosi MBG** | Excel (`.xlsx`) | 3.395 baris | 0 Anomali Kritis | [`📥 Unduh Excel`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/emotion/mbg_tweets_indobert_ready.xlsx) | [🖼️ Lihat Wordcloud Leksikon MBG](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png) |
-| **5** | **Relasi Jaringan Komunikasi SNA (Edges)** | CSV | 692 interaksi (666 unik) | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sna/network_edges.csv) | [🖼️ Lihat Graf Global Jaringan SNA](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png) |
+| **5** | **Relasi Jaringan Komunikasi (Edges - CNA/SNA)** | CSV | 692 interaksi (666 unik) | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sna/network_edges.csv) | [🖼️ Lihat Graf Global Jaringan CNA](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png) |
 | **6** | **Partisi Node & Komunitas Louvain** | CSV | 971 node terklaster | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/mbg_network_nodes_final.csv) | [🖼️ Lihat Graf Komunitas & Emosi](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png) |
 | **7** | **Peringkat Sentralitas Derajat Aktor** | CSV | 986 aktor terindeks | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/sna_degree.csv) | [🖼️ Lihat Plot Asimetri Aktor](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png) |
 | **8** | **Sentimen Berbasis Aspek (ABSA 3 Tema)** | CSV | 3 pilar tematik fisik | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/absa_results.csv) | [🖼️ Lihat Plot 3 Pilar Phygital Gap](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png) |
@@ -150,7 +150,7 @@ HASIL: 42 DARI 42 ASET TERVERIFIKASI ONLINE & DAPAT DIUNDUH BEBAS
 | Pilar Celah Riset | Status Quo Literatur Sebelumnya | Celah Ilmiah (*The Knowledge Gap*) | Kebaruan & Kontribusi Tesis Ini (*The Novelty*) |
 | :--- | :--- | :--- | :--- |
 | **1. Theoretical Gap**<br>*(Marketing to Politics)* | Konsep *Phygital Gap* (Kotler et al., 2023) hanya dipakai pada pemasaran ritel komersial. | Belum pernah diuji pada kebijakan sosial-fiskal negara bernilai triliunan rupiah. | Mengintegrasikan *Phygital Gap* ke teori krisis (Coombs SCCT) & legitimasi negara (Habermas, Levi & Stoker), membuktikan kegagalan eksekusi fisik memicu erosi kepercayaan politik. |
-| **2. Methodological Gap**<br>*(Tri-Layer Architecture)* | NLP dan SNA dipelajari secara terpisah (*siloed*): NLP mengabaikan relasi kuasa, SNA mengabaikan muatan emosi. | Ketiadaan metode yang memadukan topologi jaringan dengan emosi visceral pada satu objek yang sama. | Merancang arsitektur komputasi terpadu: **Makro (SNA Louvain $Q=0,9837$) $\times$ Meso (ABSA 3 Pilar) $\times$ Mikro (IndoBERT 9 Emosi)**. |
+| **2. Methodological Gap**<br>*(Tri-Layer Architecture)* | NLP dan analisis jaringan dipelajari secara terpisah (*siloed*): NLP mengabaikan relasi kuasa/aliran informasi, analisis jaringan mengabaikan kedalaman muatan emosi. | Ketiadaan metode yang memadukan topologi jaringan komunikasi dengan emosi visceral pada satu objek yang sama. | Merancang arsitektur komputasi terpadu: **Makro (Analisis Jaringan Komunikasi / CNA Louvain $Q=0,9837$) $\times$ Meso (ABSA 3 Pilar) $\times$ Mikro (IndoBERT 9 Emosi)**. |
 | **3. Pragmatic Gap**<br>*(Semiotic Incongruence)* | Model NLP standar (VADER/Naïve Bayes/multilingual BERT) tertipu oleh pujian verbal (*False Positive*). | Gagal menangkap sindiran/sarkasme warganet Global South yang sarat pretensi (Grice 1975, Clark & Gerrig 1984). | Memodelkan inkongruensi teks-emoji (pujian palsu dipadu emoji 🤡, 🤮), memvalidasi **315 cuitan (9,28%)** sindiran dan menyelamatkan sentimen dari bias positif semu. |
 | **4. Algorithmic Gap**<br>*(The Algorithmic Oracle)* | Teori krisis konvensional selalu mengasumsikan komunikasi krisis adalah dialog dwiarah Pemerintah $\leftrightarrow$ Publik. | Belum ada riset jaringan yang mendokumentasikan peran AI agen di tengah kebisuan komunikasi krisis negara. | Menemukan anomali struktural: akun Presiden (@prabowo) bisu total ($C_{\text{out}}=0$), memaksa warganet beralih ke bot AI (@grok, $C_{\text{out}}=42$) sebagai **Algorithmic Oracle** pembawa data kebenaran. |
 
@@ -236,7 +236,7 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
 </div>
 
 
-#### 5. Relasi Jaringan Komunikasi SNA (`data/sna/network_edges.csv`)
+#### 5. Relasi Jaringan Komunikasi (Communication Network Analysis - CNA) (`data/sna/network_edges.csv`)
 * **Peran Akademis:** Menjawab **Rumusan Masalah 3 & 4 (Bab 1.2)**, dasar pembentukan graf berarah $G=(V, E)$ pada **Bab 3.3.4 & Bab 4.2**.
 * **Format & Dimensi:** CSV | $692$ interaksi mentah ($666$ relasi berarah unik) $\times$ $2$ kolom | **0 Nilai Kosong**.
 * **Kamus Variabel (*Data Dictionary*):**
@@ -246,10 +246,10 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
 * **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
 <div align="center">
   <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png" width="85%" alt="Graf Global Jaringan SNA"/>
+    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png" width="85%" alt="Graf Global Jaringan Komunikasi CNA"/>
   </a>
   <br/>
-  <sub><b>Gambar D5:</b> Topologi Graf Global Jaringan Sosial MBG (971 Nodes, 666 Directed Edges, Kepadatan 0.0011, Resiprositas 1,21%). Klik gambar untuk membuka resolusi penuh.</sub>
+  <sub><b>Gambar D5:</b> Topologi Graf Global Jaringan Komunikasi MBG (971 Nodes, 666 Directed Edges, Kepadatan 0.0011, Resiprositas 1,21%). Klik gambar untuk membuka resolusi penuh.</sub>
 </div>
 
 
@@ -453,7 +453,7 @@ Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) secara u
   3. *Ruang Publik Digital & Afordansi Platform X* (Habermas, 2006; Boyd & Crawford, 2012)
   4. *Pragmatik Bahasa & Teori Sindiran / Pretense Theory* (Grice, 1975; Camp, 2012; Joshi et al., 2017)
   5. *Deep Learning NLP & Arsitektur IndoBERT* (Vaswani et al., 2017; Devlin et al., 2018; Wilie et al., 2020)
-  6. *Teori Graf & Social Network Analysis* (Freeman, 1979; Blondel et al., 2008; Newman, 2006)
+  6. *Teori Graf & Analisis Jaringan Komunikasi (Communication Network Analysis)* (Freeman, 1979; Blondel et al., 2008; Newman, 2006; Monge & Contractor, 2003)
   7. *Marketing 6.0 & Konsep Phygital Gap* (Kotler, Kartajaya, & Setiawan, 2023)
   8. *Etika Penambangan Data Besar & Kepatuhan Privasi* (Boyd & Crawford, 2012; Ferrara et al., 2016)
 * **Operasionalisasi 5 Proposisi Penelitian (P1 – P5) ke Kode Komputasional:**
@@ -472,7 +472,7 @@ Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) secara u
 
 ### 📙 TUTORIAL BAB III: METODE PENELITIAN — PIPELINE KOMPUTASIONAL & MODEL TRAINING
 * **Konteks Akademis Bab III (Halaman 85 – 93):**  
-  Merancang arsitektur penelitian *Computational Social Science* (CSS) terpadu yang memadukan Natural Language Processing (NLP), Social Network Analysis (SNA), dan Aspect-Based Sentiment Analysis (ABSA).
+  Merancang arsitektur penelitian *Computational Communication Science* (CCS) terpadu yang memadukan Natural Language Processing (NLP), Analisis Jaringan Komunikasi (Communication Network Analysis / CNA), dan Aspect-Based Sentiment Analysis (ABSA).
 * **Alur Langkah Komputasional Bab III:**
   1. *Tahap 1: Text Preprocessing & Penanganan Slang Bahasa Indonesia:*
      - Membersihkan mention, URL, tanda baca berlebih, dan karakter non-alfanumerik via RegEx.
@@ -484,7 +484,7 @@ Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) secara u
      - Stratified Split: 80% data latih ($N=4.210$) dan 20% data uji validasi independen ($n=1.053$).
   3. *Tahap 3: Algoritma Deteksi Sindiran & Majas Kontradiktif:*
      - Aturan pencocokan leksikal (*Lexical Matching*) mendeteksi 181 pasang oposisi biner tajam (misal: kata pujian *"mewah/bergizi"* yang dipasangkan dengan konteks keluhan porsi minim atau emoji mual 🤮).
-  4. *Tahap 4: Pemodelan Graf Jaringan Sosial (SNA) & Deteksi Komunitas:*
+  4. *Tahap 4: Pemodelan Graf Jaringan Komunikasi (CNA / SNA) & Deteksi Komunitas:*
      - Pembentukan graf berarah $G = (V, E)$ dari interaksi mention dan reply warganet (`data/sna/network_edges.csv`).
      - Deteksi partisi komunitas menggunakan Algoritma Louvain (*Blondel et al., 2008*) untuk memaksimalkan modularitas graf ($Q$).
   5. *Tahap 5: Aspect-Based Sentiment Analysis (ABSA):*
@@ -494,7 +494,7 @@ Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) secara u
   # 1. Menjalankan evaluasi performa model IndoBERT pada data uji (n=1.053)
   python scripts/evaluate.py
 
-  # 2. Menjalankan komputasi SNA & deteksi komunitas Louvain
+  # 2. Menjalankan komputasi CNA & deteksi komunitas Louvain
   python scripts/sna.py
   ```
 
@@ -505,7 +505,7 @@ Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) secara u
   Menguji hipotesis penelitian secara kuantitatif dan menyajikan 6 bukti empiris komputasional:
   1. **§4.1 Karakteristik Korpus Data (Hal. 94):**
      - Total $N=5.263$ cuitan; distribusi emosi didominasi secara absolut oleh **Disgust (56,24% / 2.960 cuitan)**, disusul **Trust (20,39% / 1.073 cuitan)**, **Neutral (12,33% / 649 cuitan)**, dan **Anticipation (9,60% / 505 cuitan)**.
-  2. **§4.2 Topologi Jaringan & Polarisasi (Hal. 95):**
+  2. **§4.2 Topologi Jaringan Komunikasi & Polarisasi (Hal. 95):**
      - Graf jaringan komunikasi terdiri atas **971 node** (aktor warganet unik) dan **666 relasi interaksi / directed edges** (dari 692 interaksi mentah).
      - Kepadatan graf (*Density*) bernilai **0.0011** (jaringan sangat renggang).
      - Resiprositas (*Reciprocity*) hanya **1,21%**, membuktikan bahwa 98,79% percakapan berjalan satu arah (komunikasi monolog).
@@ -525,7 +525,7 @@ Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) secara u
   # Menghasilkan seluruh plot distribusi dataset & Word Cloud
   python scripts/plot_dataset.py
 
-  # Menghasilkan Master Visual Terintegrasi (3-Panel SNA x NLP x ABSA)
+  # Menghasilkan Master Visual Terintegrasi (3-Panel CNA x NLP x ABSA)
   python scripts/plot_integrated.py
   ```
   *Grafik resolusi tinggi akan otomatis diperbarui di direktori `results/`:*
@@ -613,7 +613,7 @@ jupyter notebook notebooks/tesis_mbg.ipynb
 - **Bagian 1: Data Ingestion & Preprocessing:** Pemuatan data mentah cuitan X, pembersihan noise, dan penanganan slang.
 - **Bagian 2: Deteksi Sindiran & Anotasi Leksikal:** Ekstraksi pola inkongruensi leksikal dan validasi korpus ($N=3.395$).
 - **Bagian 3: Fine-Tuning & Inferensi IndoBERT:** Arsitektur `indobert-base-p2` untuk 9 kelas emosi Plutchik.
-- **Bagian 4: Social Network Analysis (SNA):** Pemodelan graf berarah NetworkX, deteksi komunitas Louvain, dan kalkulasi sentralitas.
+- **Bagian 4: Analisis Jaringan Komunikasi (Communication Network Analysis / CNA):** Pemodelan graf berarah NetworkX, deteksi komunitas Louvain, dan kalkulasi sentralitas.
 - **Bagian 5: Visualisasi Terintegrasi & Ekspor Hasil:** Pembuatan grafik terintegrasi multi-dimensi.
 
 ---
@@ -638,7 +638,7 @@ Sesuai kaidah penulisan tesis magister dan standar penulisan manuskrip jurnal in
 | **1** | **🗣️ Anatomi Diksi & Gaya Bahasa** | Bagaimana anatomi bahasa bernada sindiran, variasi diksi leksikal kontradiktif, dan pola pemakaian emoji warganet dalam diskursus MBG? | Menganalisis karakteristik linguistik warganet melalui pemetaan leksikon kontradiktif, gaya bahasa ironi, dan asosiasi emoji pada percakapan MBG. | *Lexical Extraction & Corpus Matching* | **315 cuitan (9,28%)** sindiran valid; 181 leksikon oposisi biner tajam |
 | **2** | **🎭 Inkongruensi Semiotik Teks-Emoji** | Bagaimana wujud inkongruensi makna antara teks tertulis bernada pujian semu dengan penanda visual emoji (*pretense of sarcasm*)? | Mengidentifikasi dan mengukur bentuk inkongruensi semiotik teks-emoji guna membongkar kritik terselubung warganet. | *Semiotic Incongruity Scoring* | Disparitas kontras teks pujian (*"bergizi"*, *"mewah"*) vs emoji mengejek (🤡, 🤮, 🗿) |
 | **3** | **🤖 Respons Afektif 9 Emosi NLP** | Pola emosi apa yang mendominasi reaksi afektif publik terhadap Program MBG berdasarkan 9 kategori emosi model IndoBERT? | Mengklasifikasikan respons afektif warganet ke dalam 9 emosi Plutchik menggunakan *fine-tuned* IndoBERT guna mengukur penolakan/dukungan publik. | *Deep Learning Transformer IndoBERT* | Emosi **Jijik (Disgust) mendominasi 56,24%** (2.960 tweet), Trust 20,39% (1.073 tweet), **Macro F1 = 0.8122** |
-| **4** | **🕸️ Topologi Jaringan & Polarisasi SNA** | Bagaimana struktur graf jaringan komunikasi terbentuk di platform X, serta sejauh mana tingkat polarisasi dan fragmentasi komunitasnya? | Memetakan topologi jaringan, mengukur koefisien modularitas (Q), serta mendeteksi komunitas terfragmentasi via Algoritma Louvain. | *Graph Theory & Louvain Modularity* | 971 node, 666 edges (692 interaksi mentah), **Modularitas Q = 0.9837** (332 komunitas terfragmentasi ekstrem, Reciprocity 1,21%) |
+| **4** | **🕸️ Topologi Jaringan Komunikasi (CNA) & Polarisasi** | Bagaimana struktur graf jaringan komunikasi terbentuk di platform X, serta sejauh mana tingkat polarisasi dan fragmentasi komunitasnya? | Memetakan topologi jaringan komunikasi, mengukur koefisien modularitas (Q), serta mendeteksi komunitas terfragmentasi via Algoritma Louvain. | *Communication Network Theory & Louvain Modularity* | 971 node, 666 edges (692 interaksi mentah), **Modularitas Q = 0.9837** (332 komunitas terfragmentasi ekstrem, Reciprocity 1,21%) |
 | **5** | **👑 Sentralitas Aktor Dominan & Otoritas** | Aktor-aktor kunci mana yang menduduki sentralitas dominan (degree, betweenness, PageRank) dalam mengarahkan diskursus publik? | Mengidentifikasi figur sentral, penyebar informasi utama, dan broker antarkomunitas guna memetakan asimetri pengaruh komunikasi. | *Structural Centrality Analysis* | **@grok** Out-degree=42 (*AI Oracle*), **@4Y4NKZ** (*Broker* betweenness 0.000016), **@prabowo** In=15 Out=0 (*Target pasif*) |
 | **6** | **🏛️ Sintesis Phygital Gap & Kebijakan** | Sejauh mana resistensi digital mencerminkan kegagalan *immersive experience* (*Phygital Gap* Marketing 6.0), dan bagaimana strategi mitigasinya? | Mengevaluasi besaran *Phygital Gap* serta merumuskan rekomendasi mitigasi komunikasi risiko berbasis *computational social science* bagi BGN. | *Triangulasi Komputasional & Crisis Matrix* | Terbuktinya *Phygital Gap* (konsep digital disukai, realitas fisik ditolak); menghasilkan **5 Rekomendasi Aksi BGN** |
 
@@ -699,7 +699,7 @@ Kajian konseptual mendalam mencakup **8 Pilar Utama dan 37 Sub-Bab Terstruktur**
   - 2.5.6 Evaluasi Kinerja Model: Akurasi, Presisi, Recall, dan F1-Score (Hal. 52)
   - 2.5.7 Isu Bias dan Ketidakseimbangan Data pada Model Bahasa (Hal. 53)
   - 2.5.8 Perbandingan IndoBERT dengan Model Bahasa Alternatif (Hal. 54)
-- **2.6 Teori Graf dan Social Network Analysis (SNA) (Hal. 55):**
+- **2.6 Teori Graf dan Analisis Jaringan Komunikasi (Communication Network Analysis / CNA) (Hal. 55):**
   - 2.6.1 Dasar-Dasar Teori Graf Euler, Wasserman & Faust (Hal. 55)
   - 2.6.2 Sentralitas dalam Jaringan: Degree, Betweenness, Closeness, Eigenvector Freeman (Hal. 55)
   - 2.6.3 Deteksi Komunitas dan Algoritma Louvain Blondel et al. (Hal. 56)
@@ -1187,10 +1187,10 @@ Emotion & sarcasm classification on Indonesian tweets using bidirectional contex
 </td>
 <td align="center" width="33%">
 
-**🕸️ Social Network Analysis**
+**🕸️ Communication Network Analysis (CNA)**
 *NetworkX + Louvain*
 
-971 nodes · 692 edges Network topology & community structure
+971 nodes · 666 edges (692 raw interactions) · Communication network topology & community structure
 
 </td>
 <td align="center" width="33%">
