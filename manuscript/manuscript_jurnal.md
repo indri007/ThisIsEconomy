@@ -1,17 +1,24 @@
 # Mapping the 'Phygital Gap' in Public Policy Crisis: A Tri-Layer Computational Communication Study of Indonesia's Free Nutritious Meal (MBG) Program on Platform X
 
-**Author:** Indri Anjar Kartika Sari  
-**ORCID iD:** [0009-0002-8419-7231](https://orcid.org)  
-**Affiliation:** Master of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional 'Veteran' Jawa Timur, Surabaya, Indonesia  
-**Correspondence:** `indrianjar@gmail.com`  
-**Target Publication:** *Social Network Analysis and Mining* (Springer, Scopus Q1) / *Jurnal Komunikasi: Malaysian Journal of Communication* (Scopus Q2 / SINTA 1)  
+**Authors:**  
+1. **Indri Anjar Kartika Sari**¹* (ORCID: [0009-0002-8419-7231](https://orcid.org)) — *Principal Investigator & First Author*  
+2. **Catur Suratnoaji**¹ (ORCID: [0000-0002-8596-3914](https://orcid.org)) — *Associate Professor, Thesis Advisor I*  
+3. **Agus Widiyarta**¹ (ORCID: [0000-0002-7104-5820](https://orcid.org)) — *Assistant Professor, Thesis Advisor II*  
+
+**Affiliation:**  
+¹ Department of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional 'Veteran' Jawa Timur, Surabaya, 60294, Indonesia  
+
+***Corresponding Author:** `indrianjar@gmail.com`  
+**Target Publication:** *Social Network Analysis and Mining* (Springer Nature Switzerland, Scopus Q1, SJR 0.76)  
+**Scopus ASJC Classification:** `3315` (Communication), `1702` (Artificial Intelligence), `3312` (Sociology and Political Science)  
 
 ---
 
 ### ABSTRACT
 Public policy communication in the algorithmic era faces severe scrutiny when polished digital narratives clash with ground-level physical execution failures. This research investigates the digital crisis surrounding Indonesia's flagship Free Nutritious Meal (*Makan Bergizi Gratis* / MBG) program on Platform X (formerly Twitter) through an integrated tri-layer computational communication science framework. Bridging Philip Kotler's Marketing 6.0 concept of the *Phygital Gap* with Coombs' Situational Crisis Communication Theory (SCCT), Clark & Gerrig's *Pretense Theory* of irony, and Habermas' structural transformation of the digital public sphere, this study audits a verified inference corpus of $N = 5,263$ tweets and a dedicated sarcasm validation corpus of $N = 3,395$ tweets. Methodologically, the research executes: (1) a fine-tuned transformer language model (`indobenchmark/indobert-base-p2`) for granular 9-category emotion classification adapted from Plutchik's taxonomy; (2) rule-based algorithmic modeling of binary lexical contradictions and text-emoji semiotic incongruence to capture digital sarcasm; (3) directed Communication Network Analysis (CNA / SNA) via NetworkX and Louvain community detection to measure topological polarization and network modularity; and (4) thematic Aspect-Based Sentiment Analysis (ABSA) across three operational pillars (logistics, budgeting, and nutritional quality). Empirical results demonstrate that public affective response is overwhelmingly dominated by **Disgust (56.24%, 2,960 tweets)**, followed by **Trust (20.39%, 1,073 tweets)**, **Neutral (12.33%, 649 tweets)**, and **Anticipation (9.60%, 505 tweets)**, while Anger, Sadness, Joy, Surprise, and Fear collectively constitute less than 2%. Sarcasm detection validated 315 tweets (9.28%) characterized by sharp binary semantic oppositions pairing superficial praise with nauseated emojis (🤡, 🤮). Topological graph modeling ($|V| = 971$ nodes, $|E| = 666$ unique directed edges) revealed extreme network sparsity (density = 0.0011) and near-zero reciprocity (1.21%), demonstrating a catastrophic failure of deliberative dialogue. Community detection uncovered hyper-fragmentation with a modularity score of **$Q = 0.9837$ across 332 isolated clusters**, where the giant component encompassed only 9.17% of participating nodes. Structural centrality exposed a stark *Power Asymmetry*: while the designated institutional authority figure (@prabowo) exhibited high in-degree (15) but zero out-degree (0), representing an epistemic power vacuum, an artificial intelligence agent (@grok) emerged as the supreme *Algorithmic Oracle* commanding the highest out-degree (42). Finally, ABSA empirically substantiated the *Phygital Gap*, demonstrating that public disgust concentrated specifically on operational breakdowns in Logistics (78.91% Disgust), Budgeting (77.01% Disgust), and Nutrition (71.13% Disgust). This study provides a reproducible, open-science framework for computational public relations, proving that in hyper-fragmented digital arenas, algorithmic verifiers supplant silent institutions when public policy experiences physical-digital decoupling.
 
-**Keywords:** Phygital Gap, Marketing 6.0, Computational Communication, IndoBERT, Communication Network Analysis, Social Network Analysis, Sarcasm Detection, Algorithmic Oracle, Public Policy Crisis.
+**Keywords:** Phygital Gap, Marketing 6.0, Computational Communication Science, IndoBERT, Communication Network Analysis, Social Network Analysis, Sarcasm Detection, Algorithmic Oracle, Public Policy Crisis.  
+**Scopus Subject Area:** Social Sciences (Communication) · Computer Science (Artificial Intelligence)
 
 ---
 
@@ -284,7 +291,9 @@ In full compliance with Open Science, FAIR data principles (Findable, Accessible
   **Interactive Web Dashboard:** https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/
 
 ### Author Contributions (CRediT Taxonomy)
-**Indri Anjar Kartika Sari:** Conceptualization, Methodology, Software, Data Curation, Formal Analysis, Investigation, Validation, Visualization, Writing – Original Draft, Writing – Review & Editing, Project Administration.
+- **Indri Anjar Kartika Sari:** Conceptualization, Methodology, Software, Data Curation, Formal Analysis, Investigation, Validation, Visualization, Writing – Original Draft, Project Administration.
+- **Catur Suratnoaji:** Supervision, Conceptualization, Theoretical Framework, Formal Analysis Review, Writing – Review & Editing.
+- **Agus Widiyarta:** Supervision, Methodology Review, Communication Policy Analysis, Validation, Writing – Review & Editing.
 
 ### Ethics Approval and Consent to Participate
 This research was conducted in strict adherence to Platform X Developer Policy and standard computational social science data mining ethics (Boyd & Crawford, 2012; Ferrara et al., 2016). Only publicly available posts were harvested. No private or direct messages were accessed. All user data were analyzed in aggregate for public policy communication analysis without individual profiling, stalking, or doxxing.

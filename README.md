@@ -176,6 +176,34 @@ HASIL: 42 DARI 42 ASET TERVERIFIKASI ONLINE & DAPAT DIUNDUH BEBAS
 
 ---
 
+### 🛡️ VERIFIKASI JURNAL TARGET SCOPUS Q1 (STANDAR BEBAS PREDATOR KEMENRISTEKDIKTI)
+
+> *Sesuai pedoman Kementerian Riset, Teknologi, dan Pendidikan Tinggi (Buku Profil Publikasi Scopus Bab I.D & E) mengenai pencegahan jurnal predator dan pemenuhan kriteria jurnal internasional bereputasi tinggi, naskah ini ditargetkan ke jurnal resmi bereputasi global:*
+
+| Parameter Evaluasi Scopus | Data Profil Jurnal Sasaran Utama | Keterangan Verifikasi (*Think-Check-Submit*) |
+| :--- | :--- | :--- |
+| **Nama Jurnal Ilmiah** | ***Social Network Analysis and Mining* (SNAM)** | Jurnal utama bidang analisis jaringan komunikasi & penambangan sosial |
+| **Penerbit (*Publisher*)** | **Springer Nature Switzerland** | Penerbit global terkemuka non-predator (Anggota COPE & OASPA) |
+| **Indeksasi Basis Data** | **Scopus, Web of Science (ESCI), DBLP, Google Scholar** | Terindeks Scopus secara berkelanjutan sejak Volume 1 (2011) – Sekarang |
+| **Scopus Source ID / ISSN** | Source ID: `21100204705` \| ISSN: `1869-5450` (print), `1869-5469` (web) | Terdaftar resmi di basis data scopus.com |
+| **Quartile & Peringkat Ilmiah** | **Scopus Q1** (*Top 15% Category*) \| **SJR 2024: 0.76** \| **CiteScore: 5.8** | Kategori *Computer Science Applications* & *Communication Networks* |
+| **Klasifikasi Bidang Ilmu (ASJC)** | **`3315` (Communication)** · **`1702` (Artificial Intelligence)** | Sesuai fokus tesis: integrasi CNA $\times$ NLP IndoBERT $\times$ Kebijakan Publik |
+| **Model Akses Terbuka** | **Hybrid / Open Choice** | Mendukung kebijakan Open Access Kemenristekdikti & LPDP |
+
+---
+
+### 📈 MATRIKS KEMUTAKHIRAN REFERENSI (STATE-OF-THE-ART STANDAR DIKTI)
+
+> *Buku Kemenristekdikti (Bab I.D.1) menegaskan bahwa salah satu syarat mutlak naskah bereputasi internasional adalah penggunaan literatur mutakhir (10 tahun terakhir, 2016–2026) dari sumber primer untuk memperkuat state of the art:*
+
+| Kategori Literatur | Rentang Tahun | Jumlah Pustaka | Porsi (%) | Contoh Rujukan Utama & Peran Metodologis |
+| :--- | :---: | :---: | :---: | :--- |
+| **Pustaka Primer Mutakhir (< 10 Tahun)** | **2016 – 2026** | **20 Referensi** | **74,07%** | Shaw et al. (2025, SNAM Q1), Suaib & Pratiwi (2025), Kotler et al. (*Marketing 6.0*, 2023), Chiorrini et al. (2021), Wilie et al. (*IndoBERT*, 2020), Koto et al. (2020), Devlin et al. (*BERT*, 2018), Ferrara et al. (*Bots*, 2016), Sunstein (2017). |
+| **Teori Fondasi & Kanonikal Epistemik** | **Klasik / Fondasional** | **7 Referensi** | **25,93%** | Freeman (1979, *Centrality*), Wasserman & Faust (1994, *SNA Book*), Blondel et al. (2008, *Louvain*), Newman (2006, *Modularity*), Clark & Gerrig (1984, *Pretense*), Grice (1975, *Maxims*), Habermas (1989/2006). |
+| **TOTAL SELURUH PUSTAKA ACUAN** | — | **27 Referensi** | **100,0%** | **Memenuhi Standar Dikti (Pustaka mutakhir 74,07% > ambang batas 70%)** |
+
+---
+
 ### 📖 PANDUAN LENGKAP & DESKRIPSI DATASET PUBLIK (DATA DICTIONARY & CODEBOOK)
 
 Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses kurasi data berstandar akademik tinggi, pembersihan karakter non-standar, penghapusan duplikasi (*deduplication*), serta validasi nol nilai kosong (*zero null validation*). Berikut adalah rincian struktur, fungsi, dan kamus variabel untuk masing-masing dataset:
@@ -1339,11 +1367,16 @@ tesis_mbg/
 
 ---
 
-## 📖 CITATION
+## 📖 CITATION & BIBLIOGRAPHIC EXPORT (STANDAR SCOPUS / MENDELEY / ZOTERO)
+
+Repositori ini menyediakan metadata sitasi terstandarisasi untuk perangkat lunak manajemen bibliografi:
+- **GitHub Citation:** Otomatis melalui tombol **`Cite this repository`** di pojok kanan atas halaman.
+- **Mendeley / Zotero / EndNote:** [`📥 Unduh File citation.ris`](citation.ris)
+- **DataCite / CFF Standard:** [`📥 Unduh File CITATION.cff`](CITATION.cff)
 
 ```bibtex
 @mastersthesis{sari2026mbg,
-  author  = {Sari, I. A. K.},
+  author  = {Sari, I. A. K. and Suratnoaji, C. and Widiyarta, A.},
   title   = {Communication Network Analysis of Sarcasm in MBG Discourse:
              Decoding Emotion Behind the Network},
   school  = {Universitas Pembangunan Nasional Veteran Jawa Timur},

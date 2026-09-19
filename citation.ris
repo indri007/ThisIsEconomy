@@ -1,0 +1,26 @@
+TY  - THES
+AU  - Sari, Indri Anjar Kartika
+TI  - Communication Network Analysis of Sarcasm in MBG Discourse: Decoding Emotion Behind the Network
+T2  - Master's Thesis in Communication Science
+PB  - Universitas Pembangunan Nasional 'Veteran' Jawa Timur
+CY  - Surabaya, Indonesia
+PY  - 2026
+DA  - 2026/03/15/
+UR  - https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA
+KW  - Communication Network Analysis
+KW  - Social Network Analysis
+KW  - Computational Communication Science
+KW  - IndoBERT
+KW  - Emotion Classification
+KW  - Sarcasm Detection
+KW  - Pretense Theory
+KW  - Phygital Gap
+KW  - Marketing 6.0
+KW  - Aspect-Based Sentiment Analysis
+KW  - Louvain Modularity
+KW  - Makan Bergizi Gratis
+KW  - Platform X
+KW  - ASJC 3315 Communication
+KW  - ASJC 1702 Artificial Intelligence
+AB  - An integrated tri-layer computational communication science study investigating the digital crisis surrounding Indonesia's Free Nutritious Meal (Makan Bergizi Gratis / MBG) program on Platform X. Combines fine-tuned IndoBERT (9 Plutchik emotions), semiotic sarcasm detection, directed Communication Network Analysis (CNA/SNA via NetworkX and Louvain community detection, Q=0.9837), and Aspect-Based Sentiment Analysis (ABSA) demonstrating the Phygital Gap.
+ER  - 
