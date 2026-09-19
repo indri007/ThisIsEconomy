@@ -131,6 +131,13 @@ print(classification_report(
     zero_division=0
 ))
 
+# Save Classification Report CSV
+report_df = pd.DataFrame(report).transpose().reset_index()
+report_df.rename(columns={'index': 'Emotion'}, inplace=True)
+csv_save_path = os.path.join(base_dir, "results", "classification_report.csv")
+report_df.to_csv(csv_save_path, index=False)
+print(f"Classification Report saved to {csv_save_path}")
+
 # Save Confusion Matrix
 cm = confusion_matrix(val_labels, preds, labels=present_labels_idx)
 plt.figure(figsize=(10, 8))
