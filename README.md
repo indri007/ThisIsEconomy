@@ -1,10 +1,10 @@
 <div align="center">
 
 <!-- HERO -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=DECODING%20THE%20EMOTION%20BEHIND%20THE%20NETWORK&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=SNA%20%C3%97%20IndoBERT%20%C3%97%209%20Emotions%20%C3%97%20Sarcasm%20%C3%97%20ABSA%20%C3%97%20Public%20Discourse&descAlignY=60&descAlign=50"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=DECODING%20THE%20EMOTION%20BEHIND%20THE%20NETWORK&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=CNA%20%C3%97%20IndoBERT%20%C3%97%209%20Emotions%20%C3%97%20Sarcasm%20%C3%97%20ABSA%20%C3%97%20Communication%20Networks&descAlignY=60&descAlign=50"/>
 
-<h2>Social Network Analysis of Sarcasm in MBG Discourse</h2>
-<h3><i>Computational analysis of sarcasm, emotions, social networks, and public discourse surrounding Indonesia's<br/>Free Nutritious Meal Program (Makan Bergizi Gratis) on Platform X</i></h3>
+<h2>Communication Network Analysis of Sarcasm in MBG Discourse</h2>
+<h3><i>Computational analysis of sarcasm, emotions, communication networks, and public discourse surrounding Indonesia's<br/>Free Nutritious Meal Program (Makan Bergizi Gratis) on Platform X</i></h3>
 
 <br/>
 
@@ -14,7 +14,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org)
 [![Platform X](https://img.shields.io/badge/Data_Source-Platform%20X-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com)
 [![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/)
-[![NetworkX](https://img.shields.io/badge/SNA-NetworkX-4BA3C7?style=for-the-badge)](https://networkx.org)
+[![CNA](https://img.shields.io/badge/CNA-NetworkX-4BA3C7?style=for-the-badge)](https://networkx.org)
 [![NLP](https://img.shields.io/badge/NLP-9_Emotion_Classes-DB2777?style=for-the-badge)](notebooks/)
 [![ABSA](https://img.shields.io/badge/ABSA-Thematic_Analysis-EAB308?style=for-the-badge)](notebooks/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge)](LICENSE)
@@ -1324,12 +1324,12 @@ tesis_mbg/
 ```bibtex
 @mastersthesis{sari2026mbg,
   author  = {Sari, I. A. K.},
-  title   = {Social Network Analysis of Sarcasm in MBG Discourse:
+  title   = {Communication Network Analysis of Sarcasm in MBG Discourse:
              Decoding Emotion Behind the Network},
   school  = {Universitas Pembangunan Nasional Veteran Jawa Timur},
   year    = {2026},
   type    = {Master's Thesis in Communication Science},
-  note    = {SNA · IndoBERT · 9-Emotion Classification · Phygital Gap · Platform X}
+  note    = {CNA · IndoBERT · 9-Emotion Classification · Phygital Gap · Platform X}
 }
 ```
 
