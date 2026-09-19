@@ -277,10 +277,10 @@ This study mapped the digital crisis of Indonesia's Free Nutritious Meal (MBG) p
 ## STATEMENTS AND DECLARATIONS
 
 ### Funding
-The author declares that no external funding, grants, or financial support were received for the research, authorship, or publication of this article. This study was conducted independently as part of a Master of Communication Science thesis project at Universitas Pembangunan Nasional 'Veteran' Jawa Timur.
+The authors declare that no external funding, grants, or financial support were received for the research, authorship, or publication of this article. This study was conducted independently at Universitas Pembangunan Nasional 'Veteran' Jawa Timur.
 
 ### Competing Interests / Conflict of Interest
-The author has no financial or proprietary interests in any material, organization, or commercial entity discussed in this article. The author declares no conflicts of interest, political affiliations, or personal relationships that could have inappropriately influenced or biased the objectivity and findings of this research.
+The authors have no financial or proprietary interests in any material, organization, or commercial entity discussed in this article. The authors declare no conflicts of interest, political affiliations, or personal relationships that could have inappropriately influenced or biased the objectivity and findings of this research.
 
 ### Data and Code Availability (Open Science & Reproducibility)
 In full compliance with Open Science, FAIR data principles (Findable, Accessible, Interoperable, and Reusable), and reproducibility guidelines:

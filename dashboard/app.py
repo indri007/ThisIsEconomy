@@ -442,12 +442,16 @@ def render_submission_checklist_50_points():
     with c_dl1:
         st.link_button("📄 1. Manuskrip Lengkap Q1 (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
         st.link_button("🕶️ 2. Naskah Anonim (Blind Review)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx", use_container_width=True)
+        st.link_button("📑 7. Manuskrip Mediator SINTA 2", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
     with c_dl2:
         st.link_button("🏷️ 3. Title Page Terpisah (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
         st.link_button("✉️ 4. Cover Letter Springer (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Cover_Letter_Springer_SNAM.docx", use_container_width=True)
+        st.link_button("🎓 8. Naskah Lengkap Tesis (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/Tesis_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
     with c_dl3:
         st.link_button("👨‍🏫 5. Suggested Reviewers (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Suggested_Reviewers.docx", use_container_width=True)
-        st.link_button("📦 Unduh Seluruh Repositori (.ZIP)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip", use_container_width=True)
+        st.link_button("📝 6. Draf Manuskrip IMRaD (.md)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/manuscript/manuscript_jurnal.md", use_container_width=True)
+        st.link_button("📜 9. Transkrip Teks Tesis (.txt)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/tesis_text.txt", use_container_width=True)
+    st.link_button("📦 Unduh Seluruh Repositori, Kode & Data Riset Sekaligus (.ZIP)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip", use_container_width=True)
 
 
 # Function to render author biography in Streamlit
