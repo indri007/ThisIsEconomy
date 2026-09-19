@@ -55,6 +55,7 @@ results_to_check = [
     "6_global_network.png",
     "9_emotion_network.png",
     "10_absa_thematic.png",
+    "keterbatasan_penelitian.png",
 ]
 
 print("\n" + "=" * 60)
