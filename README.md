@@ -79,18 +79,18 @@
 > *Sesuai prinsip **Open Science & Computational Verifiability**, seluruh data empiris, tabel sentralitas, laporan metrik model, dan visualisasi riset ini dibuka 100% untuk publik dan dapat diakses/diunduh secara instan tanpa perlu login atau token.*
 
 ### 🌐 Tabel Tautan Langsung Unduh Data (*GitHub Raw API*):
-| No | Nama Dataset / File | Format | Volume Data | Status Missing Value | Tautan Langsung Publik (*Klik / Salin URL*) |
-| :---: | :--- | :---: | :---: | :---: | :--- |
-| **1** | **Dataset 9 Emosi IndoBERT (Fixed)** | CSV | 5.263 cuitan | 0 Null (100% Bersih) | [`data/results/indobert_9_emosi_fixed.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/indobert_9_emosi_fixed.csv) |
-| **2** | **Dataset Deteksi Sindiran & Sarkasme** | CSV | 3.395 cuitan | 0 Null (100% Bersih) | [`data/sarcasm/dataset_sindiran_valid.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sarcasm/dataset_sindiran_valid.csv) |
-| **3** | **Dataset Bersih Pasca-Preprocessing** | CSV | 5.309 cuitan | 0 Null (100% Bersih) | [`data/processed/data_clean.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/processed/data_clean.csv) |
-| **4** | **Dataset Benchmark Anotasi Emosi MBG** | Excel (`.xlsx`) | 3.395 baris | 0 Anomali Kritis | [`data/emotion/mbg_tweets_indobert_ready.xlsx`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/emotion/mbg_tweets_indobert_ready.xlsx) |
-| **5** | **Relasi Jaringan Komunikasi SNA (Edges)** | CSV | 692 interaksi (666 unik) | 0 Null (100% Bersih) | [`data/sna/network_edges.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sna/network_edges.csv) |
-| **6** | **Partisi Node & Komunitas Louvain** | CSV | 971 node terklaster | 0 Null (100% Bersih) | [`results/mbg_network_nodes_final.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/mbg_network_nodes_final.csv) |
-| **7** | **Peringkat Sentralitas Derajat Aktor** | CSV | 986 aktor terindeks | 0 Null (100% Bersih) | [`data/results/sna_degree.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/sna_degree.csv) |
-| **8** | **Sentimen Berbasis Aspek (ABSA 3 Tema)** | CSV | 3 pilar tematik fisik | 0 Null (100% Bersih) | [`results/absa_results.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/absa_results.csv) |
-| **9** | **Laporan Metrik Evaluasi Model IndoBERT** | CSV | 10 baris metrik resmi | 0 Null (100% Bersih) | [`results/classification_report.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/classification_report.csv) |
-| **10** | **Visual Keterbatasan Penelitian (Bab V)** | PNG 300 DPI | Resolusi Ultra-HD | Gambar Orisinal 1.1 MB | [`results/keterbatasan_penelitian.png`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png) |
+| No | Nama Dataset / File | Format | Volume Data | Status Missing Value | Unduh Dataset Publik | Visualisasi Bukti Grafis (*Resolusi Tinggi 300 DPI*) |
+| :---: | :--- | :---: | :---: | :---: | :--- | :--- |
+| **1** | **Dataset 9 Emosi IndoBERT (Fixed)** | CSV | 5.263 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/indobert_9_emosi_fixed.csv) | [🖼️ Lihat Plot Distribusi Emosi](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png) |
+| **2** | **Dataset Deteksi Sindiran & Sarkasme** | CSV | 3.395 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sarcasm/dataset_sindiran_valid.csv) | [🖼️ Lihat Plot Validasi Sindiran](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png) |
+| **3** | **Dataset Bersih Pasca-Preprocessing** | CSV | 5.309 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/processed/data_clean.csv) | [🖼️ Lihat Plot Alur Preprocessing](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/2_dataset_characteristics.png) |
+| **4** | **Dataset Benchmark Anotasi Emosi MBG** | Excel (`.xlsx`) | 3.395 baris | 0 Anomali Kritis | [`📥 Unduh Excel`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/emotion/mbg_tweets_indobert_ready.xlsx) | [🖼️ Lihat Wordcloud Leksikon MBG](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png) |
+| **5** | **Relasi Jaringan Komunikasi SNA (Edges)** | CSV | 692 interaksi (666 unik) | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sna/network_edges.csv) | [🖼️ Lihat Graf Global Jaringan SNA](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png) |
+| **6** | **Partisi Node & Komunitas Louvain** | CSV | 971 node terklaster | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/mbg_network_nodes_final.csv) | [🖼️ Lihat Graf Komunitas & Emosi](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png) |
+| **7** | **Peringkat Sentralitas Derajat Aktor** | CSV | 986 aktor terindeks | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/sna_degree.csv) | [🖼️ Lihat Plot Asimetri Aktor](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png) |
+| **8** | **Sentimen Berbasis Aspek (ABSA 3 Tema)** | CSV | 3 pilar tematik fisik | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/absa_results.csv) | [🖼️ Lihat Plot 3 Pilar Phygital Gap](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png) |
+| **9** | **Laporan Metrik Evaluasi Model IndoBERT** | CSV | 10 baris metrik resmi | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/classification_report.csv) | [🖼️ Lihat Confusion Matrix Model](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png) |
+| **10** | **Visual Keterbatasan Penelitian (Bab V)** | PNG 300 DPI | Resolusi Ultra-HD | Gambar Orisinal 1.1 MB | [`📥 Unduh PNG HD`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png) | [🖼️ Lihat Radar Chart 5 Keterbatasan](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png) |
 
 ⚡ **Download Seluruh Kode & Data Sekaligus (.ZIP Langsung):**  
 👉 **[Unduh Arsip Lengkap ZIP Repository (Klik di Sini)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)**
@@ -119,6 +119,15 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
   - `processed_text` (*string*): Teks setelah normalisasi slang bahasa Indonesia informal ke lema baku.
   - `predicted_emotion` (*string*): Label kelas emosi hasil inferensi model transformer IndoBERT-base (*Disgust, Trust, Neutral, Anticipation, Anger, Sadness, Joy, Surprise, Fear*).
 * **Temuan Kunci:** Emosi **Disgust (Jijik)** mendominasi secara absolut dengan **56,24% (2.960 cuitan)**, mencerminkan resistensi viseral terhadap menu fisik MBG.
+* **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
+<div align="center">
+  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png" width="85%" alt="Distribusi 9 Emosi IndoBERT"/>
+  </a>
+  <br/>
+  <sub><b>Gambar D1:</b> Visualisasi Distribusi 9 Emosi Hasil Inferensi IndoBERT (Disgust 56,24%, Trust 20,39%, Neutral 12,33%, Anticipation 9,60%). Klik gambar untuk membuka resolusi penuh.</sub>
+</div>
+
 
 #### 2. Dataset Validasi Sindiran & Sarkasme (`data/sarcasm/dataset_sindiran_valid.csv`)
 * **Peran Akademis:** Menjawab **Rumusan Masalah 2 (Bab 1.2)**, menguji **Proposisi 1 (Bab 2)**, dan verifikasi empiris **Pragmatik Bahasa / Pretense Theory (Bab 4.5.2)**.
@@ -130,16 +139,43 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
     - `1`: Terverifikasi memuat majas sindiran / sarkasme (315 cuitan / **9,28%**).
     - `0`: Wacana literal non-sindiran (3.080 cuitan / **90,72%**).
 * **Temuan Kunci:** Teridentifikasi 181 cuitan dengan pola oposisi biner tajam (misal leksikon pujian semu *"mewah/bergizi"* yang dipadukan dengan konteks keluhan porsi minim atau emoji ejekan 🤡, 🤮, 🗿).
+* **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
+<div align="center">
+  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png" width="85%" alt="Karakteristik Majas Sindiran"/>
+  </a>
+  <br/>
+  <sub><b>Gambar D2:</b> Visualisasi Validasi Majas Sindiran & Kontradiksi Semantik Teks-Emoji (N=3.395, 315 Sindiran Valid 9,28%). Klik gambar untuk membuka resolusi penuh.</sub>
+</div>
+
 
 #### 3. Dataset Bersih Pasca-Preprocessing (`data/processed/data_clean.csv`)
 * **Peran Akademis:** Menjamin transparansi metodologis **Tahap 1 Preprocessing (Bab 3.3.1)** sebelum dilakukan penyaringan inferensi akhir.
 * **Format & Dimensi:** CSV | $5.309$ baris $\times$ $12$ kolom | **0 Nilai Kosong (*Zero Nulls*)**.
 * **Kamus Variabel (*Data Dictionary*):** Memuat seluruh metadata keterlibatan warganet (`like_count`, `retweet_count`, `reply_count`, `quote_count`, `view_count`), teks asli (`text`), teks terfilter (`clean_text`), dan teks ternormalisasi (`processed_text`).
+* **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
+<div align="center">
+  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/2_dataset_characteristics.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/2_dataset_characteristics.png" width="85%" alt="Karakteristik Dataset & Tahap Preprocessing"/>
+  </a>
+  <br/>
+  <sub><b>Gambar D3:</b> Karakteristik Korpus Data dari Mentah Scraped (N=5.310) hingga Korpus Bersih Preprocessing (N=5.309). Klik gambar untuk membuka resolusi penuh.</sub>
+</div>
+
 
 #### 4. Dataset Benchmark Anotasi Emosi MBG (`data/emotion/mbg_tweets_indobert_ready.xlsx`)
 * **Peran Akademis:** Korpus teranotasi acuan (*ground-truth benchmark*) untuk pelatihan dan evaluasi model IndoBERT pada bab metodologi.
 * **Format & Dimensi:** Microsoft Excel (`.xlsx`) | $3.395$ baris $\times$ $13$ kolom | Terverifikasi integritas sel.
 * **Kamus Variabel (*Data Dictionary*):** Memuat teks mentah, teks bersih, label anotasi emosi manusia (*ground truth*), metadata waktu, metrik keterlibatan, dan skor agregat interaksi (*engagement score*).
+* **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
+<div align="center">
+  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png" width="80%" alt="Wordcloud Leksikon MBG"/>
+  </a>
+  <br/>
+  <sub><b>Gambar D4:</b> Wordcloud 120 Leksikon Paling Signifikan dalam Korpus Teranotasi MBG. Klik gambar untuk membuka resolusi penuh.</sub>
+</div>
+
 
 #### 5. Relasi Jaringan Komunikasi SNA (`data/sna/network_edges.csv`)
 * **Peran Akademis:** Menjawab **Rumusan Masalah 3 & 4 (Bab 1.2)**, dasar pembentukan graf berarah $G=(V, E)$ pada **Bab 3.3.4 & Bab 4.2**.
@@ -148,6 +184,15 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
   - `Source` (*string*): Username akun X yang menginisiasi interaksi (pengirim mention / komentar).
   - `Target` (*string*): Username akun X yang menjadi sasaran komunikasi (penerima mention / sasaran kritik).
 * **Temuan Kunci:** Kepadatan jaringan sangat renggang (*Density = 0.0011*) dengan tingkat timbal-balik (*Reciprocity*) hanya **1,21%**, membuktikan pola komunikasi yang terjadi bersifat searah (*one-way broadcast*).
+* **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
+<div align="center">
+  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png" width="85%" alt="Graf Global Jaringan SNA"/>
+  </a>
+  <br/>
+  <sub><b>Gambar D5:</b> Topologi Graf Global Jaringan Sosial MBG (971 Nodes, 666 Directed Edges, Kepadatan 0.0011, Resiprositas 1,21%). Klik gambar untuk membuka resolusi penuh.</sub>
+</div>
+
 
 #### 6. Partisi Node & Komunitas Louvain (`results/mbg_network_nodes_final.csv`)
 * **Peran Akademis:** Mengukur topologi struktural jaringan warganet dan membuktikan hipotesis *Echo Chambers* pada **Bab 4.3**.
@@ -160,6 +205,15 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
   - `Community` (*int64*): Nomor klaster komunitas hasil algoritma Louvain ($0$ s.d $340$).
   - `Dominant_Emotion` (*string*): Emosi dominan yang diekspresikan oleh klaster node tersebut.
 * **Temuan Kunci:** Skor modularitas graf mencapai **$Q = 0.9837$** (mendekati batas teoritis 1.0), membuktikan fragmentasi wacana ke dalam **332 komunitas terisolasi**.
+* **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
+<div align="center">
+  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png" width="85%" alt="Graf Komunitas Louvain & Emosi"/>
+  </a>
+  <br/>
+  <sub><b>Gambar D6:</b> Partisi Komunitas Louvain (Q = 0.9837, 332 Klaster) yang Ditumpangkan dengan Sebaran Emosi Dominan. Klik gambar untuk membuka resolusi penuh.</sub>
+</div>
+
 
 #### 7. Peringkat Sentralitas Derajat Aktor (`data/results/sna_degree.csv`)
 * **Peran Akademis:** Mengidentifikasi struktur kekuasaan dan **Asimetri Pengaruh (Bab 4.4)**.
@@ -168,6 +222,15 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
   - `node` (*string*): Username warganet atau institusi.
   - `degree_centrality` (*float64*): Nilai sentralitas derajat ternormalisasi.
 * **Temuan Kunci:** Membuktikan fenomena *Algorithmic Oracle* (`@grok`, Out-degree = 42) yang menggantikan peran lembaga pemerintah di tengah kekosongan komunikasi (*Power Vacuum* `@prabowo`, In-degree = 15, Out-degree = 0).
+* **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
+<div align="center">
+  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png" width="85%" alt="Peringkat Sentralitas Derajat Aktor"/>
+  </a>
+  <br/>
+  <sub><b>Gambar D7:</b> Peringkat Sentralitas Derajat Aktor Membuktikan Asimetri Kekuasaan (@grok Out=42 vs @prabowo In=15, Out=0). Klik gambar untuk membuka resolusi penuh.</sub>
+</div>
+
 
 #### 8. Sentimen Berbasis Aspek / ABSA (`results/absa_results.csv`)
 * **Peran Akademis:** Menjawab **Rumusan Masalah 6 (Bab 1.2)** dan pembuktian empiris **Sintesis Teori Marketing 6.0 & Phygital Gap (Bab 4.6)**.
@@ -179,6 +242,15 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
   - `Trust_Count` (*int64*) & `Trust_Pct` (*float64*): Frekuensi dan persentase emosi percaya.
   - `Neutral_Interest_Count` (*int64*) & `Neutral_Interest_Pct` (*float64*): Frekuensi dan persentase emosi netral/antisipasi.
 * **Temuan Kunci:** Sentimen penolakan terbukti berkonsentrasi pada aspek operasional fisik: Logistik (**78,91% Disgust**), Anggaran (**77,01% Disgust**), dan Kualitas Gizi (**71,13% Disgust**).
+* **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
+<div align="center">
+  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png" width="85%" alt="Visualisasi Sentimen Berbasis Aspek"/>
+  </a>
+  <br/>
+  <sub><b>Gambar D8:</b> Pembuktian Empiris Phygital Gap pada 3 Aspek Fisik (Logistik 78,91% Disgust, Anggaran 77,01% Disgust, Mutu Gizi 71,13% Disgust). Klik gambar untuk membuka resolusi penuh.</sub>
+</div>
+
 
 #### 9. Laporan Metrik Evaluasi Model IndoBERT (`results/classification_report.csv`)
 * **Peran Akademis:** Menyajikan transparansi metrik performa klasifikasi emosi pada **Bab 4.5.1**.
@@ -189,6 +261,15 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
   - `recall` (*float64*): Kepekaan penangkapan data riil (Disgust mencapai **96,92%**).
   - `f1-score` (*float64*): Skor keseimbangan harmonik.
   - `support` (*int64*): Jumlah data uji aktual per-kelas pada populasi $n=1.053$.
+* **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
+<div align="center">
+  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png" width="85%" alt="Confusion Matrix IndoBERT"/>
+  </a>
+  <br/>
+  <sub><b>Gambar D9:</b> Confusion Matrix Klasifikasi Emosi IndoBERT pada Data Uji Riil (n=1.053). Klik gambar untuk membuka resolusi penuh.</sub>
+</div>
+
 
 ---
 
