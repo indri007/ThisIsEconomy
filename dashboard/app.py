@@ -4960,6 +4960,22 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         st.image(get_image_path("top_actors.png"), use_container_width=True)
         st.info("**Caption Akademik:** Figure 8 ranks the discourse leaders. The AI agent @grok dominates the network's out-degree influence (42), significantly overtaking human political figures like the President-elect (@prabowo, in-degree=15, out-degree=0).\n\n**Pesan/Temuan:** Supremasi Algorithmic Trust. Otoritas kebenaran bergeser kepada agen kecerdasan buatan akibat absennya respons institusi manusia.\n\n**Posisi Manuskrip:** Bab IV Hasil CNA (§4.4)")
         st.markdown("---")
+
+        st.subheader("🎨 Visualisasi Khusus Material Design 3: Hubungan Komunikasi Antar-Akun Twitter")
+        st.markdown(
+            "Visualisasi interaktif dengan sistem desain **Google Material Design 3 (M3 Dark Theme)** "
+            "memetakan arah komunikasi asimetris antar-aktor: **Target Sinks** (`@prabowo`), "
+            "**Opinion Brokers** (`@regar_op0sisi`), **Algorithmic Oracle** (`@grok`), dan klaster sarkasme warganet."
+        )
+        c_m3_1, c_m3_2 = st.columns([11, 7])
+        with c_m3_1:
+            st.image(get_image_path("15_material3_network_interaction.png"), use_container_width=True, caption="Visualisasi Empiris M3: Topologi Relasi Antar-Akun Platform X (Data Riil |V|=971, |E|=666, 300 DPI)")
+        with c_m3_2:
+            m3_mock_path = os.path.join(project_root, "docs", "assets", "m3_twitter_network_ui.png")
+            if os.path.exists(m3_mock_path):
+                st.image(m3_mock_path, use_container_width=True, caption="Konsep Material Design 3 UI: Hubungan Interaksi Twitter X")
+        st.info("**Pesan Kunci Material 3:** Hubungan komunikasi bersifat *asimetris* — akun pemerintah menjadi *Target Sink* yang menerima gelombang mention sepihak tanpa dialog timbal-balik, sementara *Opinion Broker* oposisi mengorkestrasi wacana kritis dan AI (*Grok*) dijadikan *Algorithmic Oracle* pencari fakta anggaran.")
+        st.markdown("---")
         
         st.markdown("### 💥 Bagian IV: Bagaimana Emosi Membentuk Diskursus?")
         st.success("**Membuktikan bahwa sentimen jijik publik berakar pada kegagalan fisik (logistik & mutu gizi) — mendefinisikan Phygital Gap.**")
@@ -5010,6 +5026,10 @@ elif "Visual Storytelling" in page or "Galeri" in page:
             st.image(get_image_path("network_graph.png"), use_container_width=True, caption="Gambar 7: Partisi Komunitas Louvain (Modularity 0.9837)")
         with col_t4_b:
             st.image(get_image_path("top_actors.png"), use_container_width=True, caption="Gambar 8: Sentralitas Aktor Utama (@grok vs @prabowo)")
+        
+        st.markdown("---")
+        st.subheader("🎨 Visualisasi Material Design 3: Topologi Relasi Komunikasi Antar-Akun")
+        st.image(get_image_path("15_material3_network_interaction.png"), use_container_width=True, caption="Gambar 8B: Pemetaan Interaksi Antar-Akun Platform X dalam Estetika Google Material 3 (300 DPI)")
 
     # ── TAB 5: TAHAP 4 ──
     with v_tabs[4]:
