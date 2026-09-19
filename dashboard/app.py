@@ -636,10 +636,40 @@ def render_author_biography():
         """)
 
     st.markdown("---")
+    st.subheader("📜 Sertifikat Kelulusan Resmi — Purwadhika Digital Technology School")
+    st.markdown("""
+    **Authentic Verification:** *Certificate of Graduation — Job Connector Bootcamp AI Engineering*  
+    - **Nama Peserta:** Indri Anjar Kartika Sari
+    - **No. Sertifikat:** `202602009256`
+    - **Periode Pelatihan:** 02.02.2026 – 30.07.2026
+    - **Pengajar / Lecturer:** Rusnandi Fikri
+    - **CEO & Founder:** Purwa Hartono, MSCNG BSCS
+    """)
+    cert_full_path = os.path.join(PROJECT_ROOT, "docs", "assets", "purwadhika_ai_engineering_certificate.png")
+    if os.path.exists(cert_full_path):
+        st.image(cert_full_path, caption="Certificate of Graduation: Job Connector Bootcamp AI Engineering (No. 202602009256) | Purwadhika", use_container_width=True)
+        with open(cert_full_path, "rb") as f:
+            st.download_button(
+                label="📥 Unduh Sertifikat AI Engineering Resmi (.PNG)",
+                data=f.read(),
+                file_name="Purwadhika_AI_Engineering_Certificate_Indri_Anjar.png",
+                mime="image/png",
+                use_container_width=True
+            )
+
+    st.markdown("---")
     st.subheader("📄 Berkas Dokumen Resume / Curriculum Vitae Resmi")
     cv_full_path = os.path.join(PROJECT_ROOT, "docs", "assets", "indri_anjar_kartikasari_cv.png")
     if os.path.exists(cv_full_path):
         st.image(cv_full_path, caption="Resume / CV Resmi: Indri Anjar Kartikasari (AI Engineer)", use_container_width=True)
+        with open(cv_full_path, "rb") as f:
+            st.download_button(
+                label="📥 Unduh Curriculum Vitae Resmi (.PNG)",
+                data=f.read(),
+                file_name="Indri_Anjar_Kartikasari_CV.png",
+                mime="image/png",
+                use_container_width=True
+            )
 
 
 # Sidebar Navigation

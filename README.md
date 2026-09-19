@@ -149,6 +149,11 @@ Menyelesaikan 3 program *Job Connector Bootcamp* Purwadhika secara berurutan, me
 2. **Job Connector Bootcamp — Full Stack Software Development**: JavaScript, OOP, algoritma & struktur data, React.js, Node.js, REST API, Docker, CI/CD cloud deployment.
 3. **Job Connector Bootcamp — Digital Marketing** (2024 · 12 minggu): Business model canvas, branding & content, SEO/SEM (GEO), paid media (Google/Meta/TikTok Ads), digital marketing analytics.
 
+<div align="center">
+  <img src="docs/assets/purwadhika_ai_engineering_certificate.png" width="80%" alt="Certificate of Graduation AI Engineering Purwadhika - Indri Anjar Kartika Sari"/>
+  <p><sub><i>Bukti Otentik Kelulusan: Certificate of Graduation — Job Connector Bootcamp AI Engineering (No. 202602009256) | Purwadhika Digital Technology School</i></sub></p>
+</div>
+
 ---
 
 ### 🐙 Portofolio GitHub Terverifikasi (`github.com/indri007`)
