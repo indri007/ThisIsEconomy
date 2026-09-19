@@ -1356,6 +1356,7 @@ tesis_mbg/
   
   <p>
     <a href="https://github.com/indri007"><img src="https://img.shields.io/badge/GitHub-indri007-181717?logo=github&style=flat-square"/></a>
+    <a href="https://lnkd.in/p/g9-VgRjH"><img src="https://img.shields.io/badge/LinkedIn-Diseminasi_Riset_MBG-0a66c2?logo=linkedin&style=flat-square"/></a>
     <a href="https://indri007.vercel.app"><img src="https://img.shields.io/badge/Portofolio-indri007.vercel.app-000000?logo=vercel&style=flat-square"/></a>
     <a href="https://digimeta007.com"><img src="https://img.shields.io/badge/Website-digimeta007.com-2563eb?style=flat-square"/></a>
     <a href="https://orcid.org/0009-0002-8419-7231"><img src="https://img.shields.io/badge/ORCID-0009--0002--8419--7231-A6CE39?logo=orcid&style=flat-square"/></a>
@@ -1404,6 +1405,16 @@ Selain naskah publikasi Tesis MBG (*Social Network Analysis and Mining* Springer
    - **Akses Berkas Publikasi:** [🌐 Laman OJS](https://ipssj.com/index.php/ojs/article/view/2024) \| [📥 Unduh PDF OJS](https://ipssj.com/index.php/ojs/article/download/2024/1868) \| [📄 PDF Repositori](references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf)  
    - **Sitasi Baku (APA 7th):**  
      *Sari, I. A. K. (2026). JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia. Integrative Perspectives of Social and Science Journal, 3(09 September), 333–340. https://ipssj.com/index.php/ojs/article/view/2024*
+
+---
+
+### 📢 Diseminasi Publik Resmi di LinkedIn & Liputan Media Massa (Portal JTV)
+Riset tesis MBG ini telah diseminasi secara resmi oleh peneliti ke jejaring akademik dan publik melalui LinkedIn, serta diliput secara luas oleh media massa:
+- 🔗 **Post Diseminasi Resmi LinkedIn:** [37% of MBG Conversations on X Carry a Tone of Sarcasm — What Are People Really Saying?](https://lnkd.in/p/g9-VgRjH)
+- 📰 **Liputan Berita Media (Portal JTV):**
+  - Artikel 1: [Riset Komputasional Sentimen MBG di Media Sosial X](https://lnkd.in/g-2Tgsha)
+  - Artikel 2: [Analisis IndoBERT & Social Network Analysis Wacana Publik](https://lnkd.in/gaZc9Y_J)
+> *"Our research found that more than 37% of MBG-related conversations on X contained a sarcastic or satirical tone—a finding that raises an important question: What lies behind these digital expressions? ... Sometimes, the most interesting story is not what people say—but how they say it."* — **Indri Anjar Kartika Sari**
 
 ---
 

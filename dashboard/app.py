@@ -274,10 +274,10 @@ def render_submission_checklist_70_points():
         </div>
         <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px;">
             <span style="background: rgba(34, 197, 94, 0.25); color: #86efac; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; border: 1px solid rgba(34, 197, 94, 0.4);">
-                ✅ <b>Sudah Siap (Dokumen & Teknis):</b> 61 / 70 Poin (87.1%)
+                ✅ <b>Sudah Siap (Dokumen & Teknis):</b> 62 / 70 Poin (88.6%)
             </span>
             <span style="background: rgba(234, 179, 8, 0.25); color: #fef08a; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; border: 1px solid rgba(234, 179, 8, 0.4);">
-                ⏳ <b>Tindakan Penulis & Pasca-Submit:</b> 9 / 70 Poin (12.9%)
+                ⏳ <b>Tindakan Penulis & Pasca-Submit:</b> 8 / 70 Poin (11.4%)
             </span>
             <span style="background: rgba(255, 255, 255, 0.15); color: #e2e8f0; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem;">
                 🛡️ <b>Risiko Desk Reject:</b> 0% (Zero Risk)
@@ -293,15 +293,15 @@ def render_submission_checklist_70_points():
     with col1:
         st.metric("Total Parameter Audit", "70 Poin", "12 Kategori (A–L)")
     with col2:
-        st.metric("Sudah Selesai (Ready)", "61 Poin", "87.1% Terpenuhi", delta_color="normal")
+        st.metric("Sudah Selesai (Ready)", "62 Poin", "88.6% Terpenuhi", delta_color="normal")
     with col3:
-        st.metric("Tindakan Penulis", "9 Poin", "Portal, Sidang & LPPM", delta_color="off")
+        st.metric("Tindakan Penulis", "8 Poin", "Portal, Sidang & LPPM", delta_color="off")
     with col4:
         st.metric("Kesiapan Berkas Naskah", "100%", "9 Paket Dokumen + 2 LoA", delta_color="normal")
 
     st.markdown("### 📊 Status Kelulusan Parameter Audit (Progress Kesiapan)")
-    st.progress(61 / 70)
-    st.caption("🚀 **61 dari 70 poin audit teknis, metodologis, indeksasi, dan naskah telah tuntas 100%.** Sisa 9 poin merupakan langkah praktis pembuatan akun portal jurnal oleh penulis, tanda tangan pembimbing, screening LPPM, dan tindak lanjut pasca-submit.")
+    st.progress(62 / 70)
+    st.caption("🚀 **62 dari 70 poin audit teknis, metodologis, indeksasi, dan naskah telah tuntas 100%.** Sisa 8 poin merupakan langkah praktis pembuatan akun portal jurnal oleh penulis, tanda tangan pembimbing, screening LPPM, dan tindak lanjut pasca-submit.")
 
     st.markdown("---")
 
@@ -415,7 +415,7 @@ def render_submission_checklist_70_points():
 
         # L. Pasca-Terbit (68-70)
         {"No": 68, "Kategori": "L. Pasca-Terbit", "Poin Audit": "Update CV akademik & portofolio riset dengan sitasi lengkap", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "CV akademik, portofolio GitHub, dan biografi di Streamlit telah diperbarui memuat publikasi IPSSJ dan naskah tesis MBG."},
-        {"No": 69, "Kategori": "L. Pasca-Terbit", "Poin Audit": "Sosialisasikan artikel (LinkedIn, ResearchGate, repository kampus) untuk tracking sitasi", "Status": "⏳ ACTION REQUIRED", "Bukti & Realisasi pada Riset": "Setelah terbit resmi, ringkasan eksekutif dan infografis riset akan diseminasi via LinkedIn, ResearchGate, dan kanal komunitas @ibuibu_digitall."},
+        {"No": 69, "Kategori": "L. Pasca-Terbit", "Poin Audit": "Sosialisasikan artikel (LinkedIn, ResearchGate, repository kampus) untuk tracking sitasi", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Diseminasi resmi telah dipublikasikan di LinkedIn: '37% of MBG Conversations on X Carry a Tone of Sarcasm' (lnkd.in/p/g9-VgRjH) serta diliput Portal JTV."},
         {"No": 70, "Kategori": "L. Pasca-Terbit", "Poin Audit": "Simpan bukti korespondensi lengkap (email accept, LOA, proof of publication) untuk syarat administrasi kelulusan/beasiswa", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "2 berkas LoA resmi dari IPSSJ (No. 2009 & No. 2024) telah diunduh, dikonversi ke resolusi tinggi, dan diarsipkan permanen di direktori docs/assets/ dan references/."}
     ]
 
@@ -423,7 +423,7 @@ def render_submission_checklist_70_points():
 
     with tab_all:
         st.subheader("📋 Ringkasan Lengkap Seluruh 70 Parameter Audit")
-        f_status = st.radio("Filter Status:", ["Semua (70 Poin)", "✅ SUDAH (61 Poin)", "⏳ ACTION REQUIRED (9 Poin)"], horizontal=True)
+        f_status = st.radio("Filter Status:", ["Semua (70 Poin)", "✅ SUDAH (62 Poin)", "⏳ ACTION REQUIRED (8 Poin)"], horizontal=True)
         if "SUDAH" in f_status:
             df_display = df_check[df_check["Status"] == "✅ SUDAH"]
         elif "ACTION" in f_status:
@@ -546,6 +546,8 @@ def render_author_biography():
         - 📱 **Telepon / WhatsApp:** `0821-4173-3187`
         - ✉️ **Email Utama:** [indri.kartikasari007@gmail.com](mailto:indri.kartikasari007@gmail.com)
         - ✉️ **Email Akademik:** `indrianjar@gmail.com`
+        - 📢 **Diseminasi Riset LinkedIn:** [Post Riset MBG 37% Sarcasm (lnkd.in/p/g9-VgRjH)](https://lnkd.in/p/g9-VgRjH)
+        - 📺 **Liputan Berita Media:** [Portal JTV Liputan Riset MBG](https://lnkd.in/g-2Tgsha) & [JTV Berita](https://lnkd.in/gaZc9Y_J)
         - 🌐 **Situs Portofolio:** [indri007.vercel.app](https://indri007.vercel.app)
         - 🌐 **Brand Digital:** [digimeta007.com](https://digimeta007.com)
         - 🛍️ **E-Commerce:** [digimetashop.com](https://digimetashop.com)
@@ -614,18 +616,17 @@ def render_author_biography():
 
     st.markdown("---")
 
-    st.markdown("---")
-
-    # Rekam Jejak Publikasi Jurnal & LoA
-    st.subheader("📑 Rekam Jejak Publikasi Ilmiah & Bukti Penerimaan Resmi (Letter of Acceptance / LoA)")
+    # Rekam Jejak Publikasi Jurnal, LoA & Diseminasi Media
+    st.subheader("📑 Rekam Jejak Publikasi Ilmiah, LoA Resmi & Liputan Media")
     st.markdown("""
-    *Selain penulisan manuskrip jurnal internasional bereputasi Scopus Q1 (Springer Nature SNAM) dan SINTA 2 (Mediator), peneliti telah resmi memperoleh dua **Letter of Acceptance (LoA)** dari jurnal ilmiah **Integrative Perspectives of Social and Science Journal (IPSSJ)**, E-ISSN: 3064-4011:*
+    *Selain penulisan manuskrip jurnal internasional bereputasi Scopus Q1 (Springer Nature SNAM) dan SINTA 2 (Mediator), peneliti telah resmi memperoleh dua **Letter of Acceptance (LoA)** dari jurnal ilmiah **IPSSJ** (E-ISSN: 3064-4011), mempublikasikan diseminasi resmi di **LinkedIn**, serta diliput oleh **Portal JTV**:*
     """)
 
-    # Grid 2 Publikasi & LoA
-    pub_tab1, pub_tab2 = st.tabs([
+    # Grid 3 Publikasi, LoA & Diseminasi
+    pub_tab1, pub_tab2, pub_tab3 = st.tabs([
         "📄 1. LoA Publikasi Tesis MBG (#2009)",
-        "🤖 2. LoA & Artikel JobsMatchAI (#2024)"
+        "🤖 2. LoA & Artikel JobsMatchAI (#2024)",
+        "📢 3. Diseminasi LinkedIn & Liputan Media JTV"
     ])
 
     with pub_tab1:
@@ -711,7 +712,36 @@ def render_author_biography():
                     )
             st.caption("💡 Salinan digital naskah jurnal juga telah diarsipkan secara lokal di `references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf`.")
 
-    st.markdown("---")
+    with pub_tab3:
+        st.markdown("""
+        <div style="background: linear-gradient(135deg, rgba(10, 102, 194, 0.15), rgba(30, 41, 59, 0.7)); border: 1px solid rgba(10, 102, 194, 0.4); border-radius: 12px; padding: 20px; margin-bottom: 16px;">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
+                <span style="background: #0a66c2; color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: bold;">Diseminasi Resmi LinkedIn</span>
+                <span style="background: rgba(10, 102, 194, 0.2); color: #93c5fd; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(10, 102, 194, 0.3);">Tautan: lnkd.in/p/g9-VgRjH</span>
+                <span style="background: rgba(234, 179, 8, 0.2); color: #fef08a; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(234, 179, 8, 0.3);">Liputan Media JTV</span>
+            </div>
+            <h3 style="margin: 8px 0 6px 0; color: #f8fafc; font-size: 1.22rem;">"37% of MBG Conversations on X Carry a Tone of Sarcasm — What Are People Really Saying?"</h3>
+            <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 12px;">
+                <b>Penulis:</b> Indri Anjar Kartika Sari | <b>Platform:</b> LinkedIn Official Post & Portal JTV News
+            </p>
+            <div style="background: rgba(15, 23, 42, 0.6); border-left: 4px solid #0a66c2; padding: 12px 16px; border-radius: 6px; margin-bottom: 14px; font-style: italic; color: #cbd5e1; font-size: 0.9rem; line-height: 1.6;">
+                "Our research found that more than 37% of MBG-related conversations on X contained a sarcastic or satirical tone—a finding that raises an important question: What lies behind these digital expressions?<br><br>
+                Rather than looking at public opinion through a single lens, this study combines Social Network Analysis (SNA) with nine-category emotion classification using IndoBERT to examine both the structure of online conversations and the emotions expressed within them.<br><br>
+                <b>Sometimes, the most interesting story is not what people say—but how they say it.</b>"
+            </div>
+            <p style="color: #cbd5e1; font-size: 0.86rem; line-height: 1.5; margin-bottom: 8px;">
+                <b>Kemitraan & Liputan Media:</b> Riset ini resmi diliput dan dipublikasikan oleh <b>Portal JTV</b> sebagai kajian komputasional pionir dalam menganalisis persepsi publik terhadap program Makan Bergizi Gratis di Indonesia.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        c_li_btn1, c_li_btn2, c_li_btn3 = st.columns(3)
+        with c_li_btn1:
+            st.link_button("🔗 Buka Postingan Asli LinkedIn", "https://lnkd.in/p/g9-VgRjH", use_container_width=True)
+        with c_li_btn2:
+            st.link_button("📰 Liputan Portal JTV (Artikel 1)", "https://lnkd.in/g-2Tgsha", use_container_width=True)
+        with c_li_btn3:
+            st.link_button("📺 Liputan Portal JTV (Artikel 2)", "https://lnkd.in/gaZc9Y_J", use_container_width=True)
 
     # Lower Grid: Certifications, GitHub Repos, and Capstone Projects
     st.subheader("🎓 Pelatihan Profesional — Purwadhika Digital Technology School")
