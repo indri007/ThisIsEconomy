@@ -443,14 +443,17 @@ def render_submission_checklist_50_points():
         st.link_button("📄 1. Manuskrip Lengkap Q1 (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
         st.link_button("🕶️ 2. Naskah Anonim (Blind Review)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx", use_container_width=True)
         st.link_button("📑 7. Manuskrip Mediator SINTA 2", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
+        st.link_button("📜 LoA IPSSJ Tesis MBG (#2009)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_mbg_2009.pdf", use_container_width=True)
     with c_dl2:
         st.link_button("🏷️ 3. Title Page Terpisah (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
         st.link_button("✉️ 4. Cover Letter Springer (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Cover_Letter_Springer_SNAM.docx", use_container_width=True)
         st.link_button("🎓 8. Naskah Lengkap Tesis (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/Tesis_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
+        st.link_button("📜 LoA IPSSJ JobsMatchAI (#2024)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_jobsmatchai_2024.pdf", use_container_width=True)
     with c_dl3:
         st.link_button("👨‍🏫 5. Suggested Reviewers (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Suggested_Reviewers.docx", use_container_width=True)
         st.link_button("📝 6. Draf Manuskrip IMRaD (.md)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/manuscript/manuscript_jurnal.md", use_container_width=True)
         st.link_button("📜 9. Transkrip Teks Tesis (.txt)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/tesis_text.txt", use_container_width=True)
+        st.link_button("📄 PDF JobsMatchAI IPSSJ", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf", use_container_width=True)
     st.link_button("📦 Unduh Seluruh Repositori, Kode & Data Riset Sekaligus (.ZIP)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip", use_container_width=True)
 
 
@@ -566,31 +569,102 @@ def render_author_biography():
 
     st.markdown("---")
 
-    # Publikasi Jurnal Ilmiah
-    st.subheader("📑 Publikasi Jurnal Ilmiah Terindeks (Peer-Reviewed Journal Publication)")
-    st.markdown("""
-    <div style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(30, 41, 59, 0.7)); border: 1px solid rgba(14, 165, 233, 0.4); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
-            <span style="background: #0284c7; color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: bold;">Jurnal Ilmiah Peer-Reviewed</span>
-            <span style="background: rgba(14, 165, 233, 0.2); color: #38bdf8; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(14, 165, 233, 0.3);">ISSN: 3064-4011</span>
-            <span style="background: rgba(34, 197, 94, 0.2); color: #86efac; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(34, 197, 94, 0.3);">Terbit: 17 September 2026</span>
-        </div>
-        <h3 style="margin: 8px 0 6px 0; color: #f8fafc; font-size: 1.25rem;">JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia</h3>
-        <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px;">
-            <b>Penulis Tunggal:</b> Indri Anjar Kartika Sari | <b>Afiliasi:</b> Job Connector Bootcamp AI Engineering (JCAI), Purwadhika Digital Technology School, Surabaya<br>
-            <b>Jurnal:</b> <i>Integrative Perspectives of Social and Science Journal</i> (IPSSJ) | Vol. 3 No. 09 September (2026), pp. 333–340
-        </p>
-        <p style="color: #cbd5e1; font-size: 0.88rem; line-height: 1.5; margin-bottom: 14px;">
-            <b>Abstrak Riset:</b> Mengembangkan JobsMatchAI, platform dukungan karier berbasis AI end-to-end untuk pasar tenaga kerja Indonesia yang mengintegrasikan pemrosesan CV otomatis, pencocokan kerja semantik, analisis CV berorientasi ATS, konsultasi karier berbasis AI, dan simulasi wawancara kerja dalam alur kerja berbasis web Streamlit, Vector DB, dan basis data relasional.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("---")
 
-    pub_c1, pub_c2 = st.columns(2)
-    with pub_c1:
-        st.link_button("🌐 Buka Artikel Resmi di OJS IPSSJ", "https://ipssj.com/index.php/ojs/article/view/2024", use_container_width=True)
-    with pub_c2:
-        st.link_button("📥 Unduh Naskah Lengkap PDF Jurnal (333–340)", "https://ipssj.com/index.php/ojs/article/download/2024/1868", use_container_width=True)
+    # Rekam Jejak Publikasi Jurnal & LoA
+    st.subheader("📑 Rekam Jejak Publikasi Ilmiah & Bukti Penerimaan Resmi (Letter of Acceptance / LoA)")
+    st.markdown("""
+    *Selain penulisan manuskrip jurnal internasional bereputasi Scopus Q1 (Springer Nature SNAM) dan SINTA 2 (Mediator), peneliti telah resmi memperoleh dua **Letter of Acceptance (LoA)** dari jurnal ilmiah **Integrative Perspectives of Social and Science Journal (IPSSJ)**, E-ISSN: 3064-4011:*
+    """)
+
+    # Grid 2 Publikasi & LoA
+    pub_tab1, pub_tab2 = st.tabs([
+        "📄 1. LoA Publikasi Tesis MBG (#2009)",
+        "🤖 2. LoA & Artikel JobsMatchAI (#2024)"
+    ])
+
+    with pub_tab1:
+        st.markdown("""
+        <div style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(30, 41, 59, 0.7)); border: 1px solid rgba(34, 197, 94, 0.4); border-radius: 12px; padding: 20px; margin-bottom: 16px;">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
+                <span style="background: #15803d; color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: bold;">Bukti LoA Diterima</span>
+                <span style="background: rgba(34, 197, 94, 0.2); color: #86efac; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(34, 197, 94, 0.3);">No. Surat: 2009/IPSSJ/I/2026</span>
+                <span style="background: rgba(59, 130, 246, 0.2); color: #93c5fd; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(59, 130, 246, 0.3);">Malang, 15 September 2026</span>
+            </div>
+            <h3 style="margin: 8px 0 6px 0; color: #f8fafc; font-size: 1.22rem;">Analisis Jaringan Sosial Triliunan Rupiah Makan Bergizi Gratis Di Media Sosial X</h3>
+            <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 10px;">
+                <b>Tim Penulis:</b> Indri Anjar Kartika Sari¹*, Dr. Catur Suratnoaji, M.Si.², Dr. Agus Widiyarta, S.Sos., M.Si.³<br>
+                <b>Afiliasi:</b> Program Studi Magister Ilmu Komunikasi, FISIP, UPN "Veteran" Jawa Timur<br>
+                <b>Jurnal Penerbit:</b> <i>Integrative Perspectives of Social and Science Journal</i> (IPSSJ) | E-ISSN: 3064-4011<br>
+                <b>Edisi Penerbitan:</b> Volume 3, Nomor 9, Edisi September 2026 | <b>Chief Editor:</b> M. Ilham Nurhakim, S.Pd, M.Sos
+            </p>
+            <p style="color: #cbd5e1; font-size: 0.86rem; line-height: 1.5; margin-bottom: 12px;">
+                <b>Fokus Kajian:</b> Diseminasi hasil riset tesis mengenai pemetaan struktur jaringan komunikasi SNA, polarisasi diskursus publik, sentralitas aktor (@prabowo vs @grok), dan pembuktian empiris <i>Phygital Gap</i> pada implementasi awal Program MBG di Indonesia.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        loa_mbg_col1, loa_mbg_col2 = st.columns([1.2, 1])
+        with loa_mbg_col1:
+            loa_mbg_img = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_mbg_2009.png")
+            if os.path.exists(loa_mbg_img):
+                st.image(loa_mbg_img, caption="Surat Penerimaan Naskah Publikasi Jurnal No. 2009/IPSSJ/I/2026 (IPSSJ)", use_container_width=True)
+        with loa_mbg_col2:
+            st.markdown("#### 📥 Akses Berkas LoA Resmi:")
+            loa_mbg_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_mbg_2009.pdf")
+            if os.path.exists(loa_mbg_pdf):
+                with open(loa_mbg_pdf, "rb") as f:
+                    st.download_button(
+                        label="📥 Unduh Berkas PDF LoA Tesis MBG (#2009)",
+                        data=f.read(),
+                        file_name="LoA_IPSSJ_2009_MBG_Indri_Anjar.pdf",
+                        mime="application/pdf",
+                        use_container_width=True
+                    )
+            st.link_button("🌐 Buka Portal Resmi OJS IPSSJ", "http://ipssj.com/index.php/ojs", use_container_width=True)
+            st.info("💡 Berkas fisik PDF ini juga telah tersimpan secara permanen pada direktori repositori: `docs/assets/loa_ipssj_mbg_2009.pdf`.")
+
+    with pub_tab2:
+        st.markdown("""
+        <div style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(30, 41, 59, 0.7)); border: 1px solid rgba(14, 165, 233, 0.4); border-radius: 12px; padding: 20px; margin-bottom: 16px;">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
+                <span style="background: #0284c7; color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: bold;">Terbit & Terindeks OJS</span>
+                <span style="background: rgba(14, 165, 233, 0.2); color: #38bdf8; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(14, 165, 233, 0.3);">No. Surat: 2024/IPSSJ/I/2026</span>
+                <span style="background: rgba(34, 197, 94, 0.2); color: #86efac; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(34, 197, 94, 0.3);">Terbit: 17 September 2026</span>
+            </div>
+            <h3 style="margin: 8px 0 6px 0; color: #f8fafc; font-size: 1.22rem;">JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia</h3>
+            <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 10px;">
+                <b>Penulis Tunggal:</b> Indri Anjar Kartika Sari | <b>Afiliasi:</b> Job Connector Bootcamp AI Engineering (JCAI), Purwadhika Digital Technology School, Surabaya<br>
+                <b>Jurnal Penerbit:</b> <i>Integrative Perspectives of Social and Science Journal</i> (IPSSJ) | E-ISSN: 3064-4011<br>
+                <b>Edisi & Halaman:</b> Volume 3, Nomor 9, Edisi September 2026, pp. 333–340
+            </p>
+            <p style="color: #cbd5e1; font-size: 0.86rem; line-height: 1.5; margin-bottom: 12px;">
+                <b>Abstrak Riset:</b> Mengembangkan platform dukungan karier berbasis GenAI end-to-end terintegrasi Streamlit, basis data vektor, dan basis data relasional untuk pencocokan kerja semantik, analisis resume ATS, konsultasi karier berbasis AI, dan simulasi wawancara kerja yang disesuaikan dengan pasar tenaga kerja Indonesia.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        loa_job_col1, loa_job_col2 = st.columns([1.2, 1])
+        with loa_job_col1:
+            loa_job_img = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_jobsmatchai_2024.png")
+            if os.path.exists(loa_job_img):
+                st.image(loa_job_img, caption="Surat Penerimaan Naskah Publikasi Jurnal No. 2024/IPSSJ/I/2026 (JobsMatchAI)", use_container_width=True)
+        with loa_job_col2:
+            st.markdown("#### 📥 Akses Artikel & LoA Resmi:")
+            st.link_button("🌐 Buka Laman Artikel Resmi di OJS IPSSJ", "https://ipssj.com/index.php/ojs/article/view/2024", use_container_width=True)
+            st.link_button("📥 Unduh Naskah Lengkap PDF Jurnal (333–340)", "https://ipssj.com/index.php/ojs/article/download/2024/1868", use_container_width=True)
+            
+            loa_job_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_jobsmatchai_2024.pdf")
+            if os.path.exists(loa_job_pdf):
+                with open(loa_job_pdf, "rb") as f:
+                    st.download_button(
+                        label="📥 Unduh Berkas PDF LoA JobsMatchAI (#2024)",
+                        data=f.read(),
+                        file_name="LoA_IPSSJ_2024_JobsMatchAI_Indri_Anjar.pdf",
+                        mime="application/pdf",
+                        use_container_width=True
+                    )
+            st.caption("💡 Salinan digital naskah jurnal juga telah diarsipkan secara lokal di `references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf`.")
 
     st.markdown("---")
 
@@ -778,6 +852,8 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("### 🌐 Akses Publik & Unduhan")
 st.sidebar.markdown("📦 [Repositori GitHub Publik](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)")
 st.sidebar.markdown("⚡ [Unduh Semua Kode & Data (.ZIP)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)")
+st.sidebar.markdown("📜 [LoA IPSSJ Tesis MBG (#2009)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_mbg_2009.pdf)")
+st.sidebar.markdown("📜 [LoA IPSSJ JobsMatchAI (#2024)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_jobsmatchai_2024.pdf)")
 
 
 if "Bab I" in page or page == "🏠 Beranda":
@@ -960,13 +1036,35 @@ if "Bab I" in page or page == "🏠 Beranda":
     
     st.markdown("---")
     
-    st.subheader("📰 Dampak Publik & Pencapaian Publikasi")
+    st.subheader("📰 Dampak Publik & Pencapaian Publikasi Ilmiah")
     st.success("""
-    **Riset ini telah meraih dampak publikasi ganda (akademik & publik):**
+    **Riset ini telah meraih dampak publikasi ganda (liputan media publik & penerimaan jurnal ilmiah resmi):**
     - 📺 **Portal JTV** — *"Lebih dari 37 persen percakapan MBG di X bernada sindiran"*, Sep. 2026
     - 📰 **Netral News** — *"Riset UPN Jatim: 37 persen percakapan MBG di X bernada sindiran"*, Sep. 2026
-    - 📄 **Jurnal IPSSJ** — *Analisis Jaringan Sosial wacana MBG di Media Sosial X*, IPSSJ vol. 3 no. 9, 2026
+    - 📄 **Jurnal Ilmiah IPSSJ (LoA #2009)** — *Analisis Jaringan Sosial Triliunan Rupiah Makan Bergizi Gratis Di Media Sosial X*, Vol. 3 No. 9, 2026 (Indri Anjar Kartika Sari, Dr. Catur Suratnoaji, M.Si., Dr. Agus Widiyarta, S.Sos., M.Si.)
+    - 🤖 **Jurnal Ilmiah IPSSJ (LoA #2024)** — *JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia*, Vol. 3 No. 9, 2026, pp. 333–340 (Indri Anjar Kartika Sari)
     """)
+
+    with st.expander("📜 Buka & Tinjau Surat Penerimaan Naskah Resmi (Letter of Acceptance / LoA IPSSJ)", expanded=False):
+        exp_col1, exp_col2 = st.columns(2)
+        with exp_col1:
+            st.markdown("##### 📄 LoA Tesis MBG (No. 2009/IPSSJ/I/2026)")
+            loa1_p = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_mbg_2009.png")
+            if os.path.exists(loa1_p):
+                st.image(loa1_p, caption="LoA Riset MBG X (15 September 2026)", use_container_width=True)
+            loa1_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_mbg_2009.pdf")
+            if os.path.exists(loa1_pdf):
+                with open(loa1_pdf, "rb") as f:
+                    st.download_button("📥 Unduh LoA MBG (.PDF)", f.read(), "LoA_IPSSJ_2009_MBG.pdf", "application/pdf", key="dl_loa_mbg_home", use_container_width=True)
+        with exp_col2:
+            st.markdown("##### 🤖 LoA JobsMatchAI (No. 2024/IPSSJ/I/2026)")
+            loa2_p = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_jobsmatchai_2024.png")
+            if os.path.exists(loa2_p):
+                st.image(loa2_p, caption="LoA JobsMatchAI (17 September 2026)", use_container_width=True)
+            loa2_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_jobsmatchai_2024.pdf")
+            if os.path.exists(loa2_pdf):
+                with open(loa2_pdf, "rb") as f:
+                    st.download_button("📥 Unduh LoA JobsMatchAI (.PDF)", f.read(), "LoA_IPSSJ_2024_JobsMatchAI.pdf", "application/pdf", key="dl_loa_job_home", use_container_width=True)
     
     st.info("""
     ### 🔬 Pendekatan Pengukuran Berlapis (Multi-Layer Measurement)

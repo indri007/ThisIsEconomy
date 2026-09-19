@@ -1385,20 +1385,25 @@ Profesional yang *hasil-oriented*, bertransisi ke bidang **AI Engineering** sete
 
 ---
 
-### 📑 Publikasi Jurnal Ilmiah Peer-Reviewed Terindeks (Published Journal Article)
-Selain naskah publikasi Tesis MBG (*Social Network Analysis and Mining* Springer Scopus Q1 & *Mediator* SINTA 2), peneliti telah mempublikasikan artikel ilmiah di jurnal bereputasi:
+### 📑 Rekam Jejak Publikasi Jurnal Ilmiah & Bukti Penerimaan (Letter of Acceptance / LoA)
+Selain naskah publikasi Tesis MBG (*Social Network Analysis and Mining* Springer Scopus Q1 & *Mediator* SINTA 2), peneliti telah menerima **2 Letter of Acceptance (LoA)** dari jurnal ilmiah bereputasi:
 
-> **JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia**  
-> **Penulis Tunggal:** Indri Anjar Kartika Sari  
-> **Afiliasi Penulis:** Job Connector Bootcamp AI Engineering (JCAI) Program, Purwadhika Digital Technology School, Surabaya, Indonesia  
-> **Jurnal:** *Integrative Perspectives of Social and Science Journal* (IPSSJ) | **ISSN:** `3064-4011`  
-> **Volume & Isu:** Vol. 3 No. 09 September (2026), Halaman 333–340 | **Terbit:** 17 September 2026  
-> **Akses Berkas Publikasi:**  
-> - 🌐 **Laman Resmi Jurnal OJS:** [https://ipssj.com/index.php/ojs/article/view/2024](https://ipssj.com/index.php/ojs/article/view/2024)  
-> - 📥 **Unduh PDF Langsung (OJS Direct Download):** [https://ipssj.com/index.php/ojs/article/download/2024/1868](https://ipssj.com/index.php/ojs/article/download/2024/1868)  
-> - 📁 **Berkas Arsip PDF Repositori:** [`references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf`](references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf)  
-> - 📝 **Sitasi Baku (APA 7th):**  
->   *Sari, I. A. K. (2026). JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia. Integrative Perspectives of Social and Science Journal, 3(09 September), 333–340. https://ipssj.com/index.php/ojs/article/view/2024*
+1. **Analisis Jaringan Sosial Triliunan Rupiah Makan Bergizi Gratis Di Media Sosial X**  
+   - **Tim Penulis:** Indri Anjar Kartika Sari¹*, Dr. Catur Suratnoaji, M.Si.², Dr. Agus Widiyarta, S.Sos., M.Si.³  
+   - **Afiliasi:** Program Magister Ilmu Komunikasi, FISIP, UPN "Veteran" Jawa Timur  
+   - **Jurnal:** *Integrative Perspectives of Social and Science Journal* (IPSSJ) | **E-ISSN:** `3064-4011`  
+   - **Edisi:** Vol. 3 No. 09 September (2026) | **Chief Editor:** M. Ilham Nurhakim, S.Pd, M.Sos  
+   - **Bukti Penerimaan:** [📜 Unduh LoA Resmi No. 2009/IPSSJ/I/2026](docs/assets/loa_ipssj_mbg_2009.pdf)  
+
+2. **JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia**  
+   - **Penulis Tunggal:** Indri Anjar Kartika Sari  
+   - **Afiliasi:** Job Connector Bootcamp AI Engineering (JCAI) Program, Purwadhika Digital Technology School, Surabaya, Indonesia  
+   - **Jurnal:** *Integrative Perspectives of Social and Science Journal* (IPSSJ) | **E-ISSN:** `3064-4011`  
+   - **Edisi & Halaman:** Vol. 3 No. 09 September (2026), Halaman 333–340 | **Terbit:** 17 September 2026  
+   - **Bukti Penerimaan:** [📜 Unduh LoA Resmi No. 2024/IPSSJ/I/2026](docs/assets/loa_ipssj_jobsmatchai_2024.pdf)  
+   - **Akses Berkas Publikasi:** [🌐 Laman OJS](https://ipssj.com/index.php/ojs/article/view/2024) \| [📥 Unduh PDF OJS](https://ipssj.com/index.php/ojs/article/download/2024/1868) \| [📄 PDF Repositori](references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf)  
+   - **Sitasi Baku (APA 7th):**  
+     *Sari, I. A. K. (2026). JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia. Integrative Perspectives of Social and Science Journal, 3(09 September), 333–340. https://ipssj.com/index.php/ojs/article/view/2024*
 
 ---
 
@@ -1466,8 +1471,8 @@ Riset ini ditopang oleh **33 rujukan ilmiah bereputasi** yang diklasifikasikan k
 
 | | Reference |
 |:---:|---|
-| 📄 | **Sari, I. A. K., Suratnoaji, C., & Widiyarta, A.** (2026). Analisis jaringan sosial dalam isu percakapan MBG di media sosial X. *IPSSJ, 3*(9), 248–257. |
-| 📄 | **Sari, I. A. K.** (2026). JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia. *Integrative Perspectives of Social and Science Journal (IPSSJ)*, 3(09 September), 333–340. [[🌐 Laman OJS]](https://ipssj.com/index.php/ojs/article/view/2024) [[📥 Unduh PDF]](https://ipssj.com/index.php/ojs/article/download/2024/1868) [[📄 PDF Lokal]](references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf) |
+| 📄 | **Sari, I. A. K., Suratnoaji, C., & Widiyarta, A.** (2026). Analisis jaringan sosial dalam isu percakapan MBG di media sosial X. *IPSSJ, 3*(9), 248–257. [[📜 Unduh LoA Resmi #2009]](docs/assets/loa_ipssj_mbg_2009.pdf) |
+| 📄 | **Sari, I. A. K.** (2026). JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia. *Integrative Perspectives of Social and Science Journal (IPSSJ)*, 3(09 September), 333–340. [[🌐 Laman OJS]](https://ipssj.com/index.php/ojs/article/view/2024) [[📥 Unduh PDF]](https://ipssj.com/index.php/ojs/article/download/2024/1868) [[📄 PDF Lokal]](references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf) [[📜 Unduh LoA Resmi #2024]](docs/assets/loa_ipssj_jobsmatchai_2024.pdf) |
 | 📺 | Portal **JTV** (2026). *"Lebih dari 37 persen percakapan MBG di X bernada sindiran"* |
 | 📰 | **Netral News** (2026). *"Riset UPN Jatim: 37 persen percakapan MBG di X bernada sindiran"* |
 
