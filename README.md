@@ -34,7 +34,10 @@
 [![CNA](https://img.shields.io/badge/CNA-NetworkX-4BA3C7?style=for-the-badge)](https://networkx.org)
 [![NLP](https://img.shields.io/badge/NLP-9_Emotion_Classes-DB2777?style=for-the-badge)](notebooks/)
 [![ABSA](https://img.shields.io/badge/ABSA-Thematic_Analysis-EAB308?style=for-the-badge)](notebooks/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge)](LICENSE)
+[![License: Dual](https://img.shields.io/badge/License-MIT_%26_CC--BY_4.0-10B981?style=for-the-badge)](LICENSE)
+[![ORCID](https://img.shields.io/badge/ORCID-0009--0002--8419--7231-A6CE39?style=for-the-badge&logo=orcid&logoColor=white)](https://orcid.org)
+[![Open Access](https://img.shields.io/badge/Open_Access-Gold_OA-F68212?style=for-the-badge&logo=openaccess&logoColor=white)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)
+[![Cite](https://img.shields.io/badge/Cite-CITATION.cff-6366F1?style=for-the-badge&logo=github)](CITATION.cff)
 
 <br/>
 

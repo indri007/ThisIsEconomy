@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+message: "If you use this software, dataset, or research methodology, please cite it using the metadata from this file."
+title: "Communication Network Analysis of Sarcasm in MBG Discourse: Decoding Emotion Behind the Network"
+abstract: "An integrated tri-layer computational communication science study investigating the digital crisis surrounding Indonesia's Free Nutritious Meal (Makan Bergizi Gratis / MBG) program on Platform X. Combines fine-tuned IndoBERT (9 Plutchik emotions), semiotic sarcasm detection, directed Communication Network Analysis (CNA/SNA via NetworkX and Louvain community detection, Q=0.9837), and Aspect-Based Sentiment Analysis (ABSA) demonstrating the Phygital Gap."
+authors:
+  - family-names: "Sari"
+    given-names: "Indri Anjar Kartika"
+    affiliation: "Master of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional 'Veteran' Jawa Timur"
+    email: "indrianjar@gmail.com"
+version: "1.0.0"
+date-released: 2026-03-15
+license: "MIT"
+repository-code: "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"
+url: "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"
+keywords:
+  - "communication network analysis"
+  - "social network analysis"
+  - "computational communication science"
+  - "indobert"
+  - "transformers"
+  - "emotion classification"
+  - "sarcasm detection"
+  - "pretense theory"
+  - "phygital gap"
+  - "marketing 6.0"
+  - "aspect-based sentiment analysis"
+  - "louvain modularity"
+  - "platform x"
+  - "makan bergizi gratis"
+  - "scopus q1"
+type: "software"
+preferred-citation:
+  type: "thesis"
+  authors:
+    - family-names: "Sari"
+      given-names: "Indri Anjar Kartika"
+      affiliation: "Master of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional 'Veteran' Jawa Timur"
+  title: "Communication Network Analysis of Sarcasm in MBG Discourse: Decoding Emotion Behind the Network"
+  thesis-type: "Master's Thesis in Communication Science"
+  department: "Master of Communication Science, Faculty of Social and Political Sciences"
+  institution:
+    name: "Universitas Pembangunan Nasional 'Veteran' Jawa Timur"
+    city: "Surabaya"
+    country: "ID"
+  year: 2026
+  url: "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"

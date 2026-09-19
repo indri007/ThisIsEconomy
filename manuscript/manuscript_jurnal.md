@@ -1,6 +1,7 @@
 # Mapping the 'Phygital Gap' in Public Policy Crisis: A Tri-Layer Computational Communication Study of Indonesia's Free Nutritious Meal (MBG) Program on Platform X
 
 **Author:** Indri Anjar Kartika Sari  
+**ORCID iD:** [0009-0002-8419-7231](https://orcid.org)  
 **Affiliation:** Master of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional 'Veteran' Jawa Timur, Surabaya, Indonesia  
 **Correspondence:** `indrianjar@gmail.com`  
 **Target Publication:** *Social Network Analysis and Mining* (Springer, Scopus Q1) / *Jurnal Komunikasi: Malaysian Journal of Communication* (Scopus Q2 / SINTA 1)  
@@ -266,30 +267,80 @@ This study mapped the digital crisis of Indonesia's Free Nutritious Meal (MBG) p
 
 ---
 
+## STATEMENTS AND DECLARATIONS
+
+### Funding
+The author declares that no external funding, grants, or financial support were received for the research, authorship, or publication of this article. This study was conducted independently as part of a Master of Communication Science thesis project at Universitas Pembangunan Nasional 'Veteran' Jawa Timur.
+
+### Competing Interests / Conflict of Interest
+The author has no financial or proprietary interests in any material, organization, or commercial entity discussed in this article. The author declares no conflicts of interest, political affiliations, or personal relationships that could have inappropriately influenced or biased the objectivity and findings of this research.
+
+### Data and Code Availability (Open Science & Reproducibility)
+In full compliance with Open Science, FAIR data principles (Findable, Accessible, Interoperable, and Reusable), and reproducibility guidelines:
+- The verified inference emotion corpus ($N = 5,263$ tweets), sarcasm validation dataset ($N = 3,395$ tweets), directed network adjacency edges ($|V|=971, |E|=666$), Louvain community partitions, and centrality metrics are openly accessible under the Creative Commons Attribution 4.0 International license (CC-BY 4.0).
+- All Python replication scripts (`evaluate.py`, `sna.py`, `plot_dataset.py`, `plot_integrated.py`), Jupyter notebooks, and trained model artifacts are publicly available in the permanent GitHub repository:  
+  **Repository:** https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA  
+  **Machine-Readable Metadata:** [`CITATION.cff`](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/CITATION.cff)  
+  **Interactive Web Dashboard:** https://y6cqezpxxq2ftdwb6yvrab.streamlit.app/
+
+### Author Contributions (CRediT Taxonomy)
+**Indri Anjar Kartika Sari:** Conceptualization, Methodology, Software, Data Curation, Formal Analysis, Investigation, Validation, Visualization, Writing – Original Draft, Writing – Review & Editing, Project Administration.
+
+### Ethics Approval and Consent to Participate
+This research was conducted in strict adherence to Platform X Developer Policy and standard computational social science data mining ethics (Boyd & Crawford, 2012; Ferrara et al., 2016). Only publicly available posts were harvested. No private or direct messages were accessed. All user data were analyzed in aggregate for public policy communication analysis without individual profiling, stalking, or doxxing.
+
+---
+
 ## REFERENCES
-Blondel, V. D., Guillaume, J.-L., Lambiotte, R., & Lefebvre, E. (2008). Fast unfolding of communities in large networks. *Journal of Statistical Mechanics: Theory and Experiment*, 2008(10), P10008.
-Boyd, D., & Crawford, K. (2012). Critical questions for big data. *Information, Communication & Society*, 15(5), 662–679.
-Camp, E. (2012). Sarcasm, pretense, and the semantics/pragmatics distinction. *Noûs*, 46(4), 587–634.
-Chiorrini, A., Diamantini, C., Mircoli, A., & Potena, D. (2021). Emotion and sentiment analysis of tweets using BERT. *CEUR Workshop Proceedings*, 2841.
-Clark, H. H., & Gerrig, R. J. (1984). On the pretense theory of irony. *Journal of Experimental Psychology: General*, 113(1), 121–126.
-Coombs, W. T. (2007). Protecting organization reputations during a crisis: The development and application of situational crisis communication theory. *Corporate Reputation Review*, 10(3), 163–176.
-Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2018). BERT: Pre-training of deep bidirectional transformers for language understanding. *arXiv preprint arXiv:1810.04805*.
-Freeman, L. C. (1979). Centrality in social networks: Conceptual clarification. *Social Networks*, 1(3), 215–239.
+Blondel, V. D., Guillaume, J.-L., Lambiotte, R., & Lefebvre, E. (2008). Fast unfolding of communities in large networks. *Journal of Statistical Mechanics: Theory and Experiment*, 2008(10), P10008. https://doi.org/10.1088/1742-5468/2008/10/P10008
+
+Boyd, D., & Crawford, K. (2012). Critical questions for big data: Provocations for a cultural, technological, and scholarly phenomenon. *Information, Communication & Society*, 15(5), 662–679. https://doi.org/10.1080/1369118X.2012.678878
+
+Camp, E. (2012). Sarcasm, pretense, and the semantics/pragmatics distinction. *Noûs*, 46(4), 587–634. https://doi.org/10.1111/j.1468-0068.2010.00822.x
+
+Chiorrini, A., Diamantini, C., Mircoli, A., & Potena, D. (2021). Emotion and sentiment analysis of tweets using BERT. In *CEUR Workshop Proceedings* (Vol. 2841, pp. 24–33). http://ceur-ws.org/Vol-2841/
+
+Clark, H. H., & Gerrig, R. J. (1984). On the pretense theory of irony. *Journal of Experimental Psychology: General*, 113(1), 121–126. https://doi.org/10.1037/0096-3445.113.1.121
+
+Coombs, W. T. (2007). Protecting organization reputations during a crisis: The development and application of situational crisis communication theory. *Corporate Reputation Review*, 10(3), 163–176. https://doi.org/10.1057/palgrave.crr.1550049
+
+Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2018). BERT: Pre-training of deep bidirectional transformers for language understanding. *arXiv preprint arXiv:1810.04805*. https://arxiv.org/abs/1810.04805
+
+Freeman, L. C. (1979). Centrality in social networks: Conceptual clarification. *Social Networks*, 1(3), 215–239. https://doi.org/10.1016/0378-8733(78)90021-7
+
 Grice, H. P. (1975). Logic and conversation. In P. Cole & J. L. Morgan (Eds.), *Syntax and Semantics: Vol. 3. Speech Acts* (pp. 41–58). Academic Press.
-Habermas, J. (1989). *The structural transformation of the public sphere*. MIT Press.
-Habermas, J. (2006). Political communication in media society: Does democracy still enjoy an epistemic dimension? *Communication Theory*, 16(4), 411–426.
+
+Habermas, J. (1989). *The structural transformation of the public sphere: An inquiry into a category of bourgeois society*. MIT Press.
+
+Habermas, J. (2006). Political communication in media society: Does democracy still enjoy an epistemic dimension? *Communication Theory*, 16(4), 411–426. https://doi.org/10.1111/j.1468-2885.2006.00280.x
+
 Kotler, P., Kartajaya, H., & Setiawan, I. (2023). *Marketing 6.0: The future is immersive*. John Wiley & Sons.
-Koto, F., Rahimi, A., Lau, J. H., & Baldwin, T. (2020). IndoLEM and IndoBERT: A benchmark dataset and pre-trained language model for Indonesian NLP. *Proceedings of the 28th International Conference on Computational Linguistics (COLING 2020)*, 757–770.
-Newman, M. E. J. (2006). Modularity and community structure in networks. *Proceedings of the National Academy of Sciences*, 103(23), 8577–8582.
-Papacharissi, Z. (2015). *Affective publics: Sentiment, technology, and politics*. Oxford University Press.
+
+Koto, F., Rahimi, A., Lau, J. H., & Baldwin, T. (2020). IndoLEM and IndoBERT: A benchmark dataset and pre-trained language model for Indonesian NLP. In *Proceedings of the 28th International Conference on Computational Linguistics (COLING 2020)* (pp. 757–770). https://doi.org/10.18653/v1/2020.coling-main.67
+
+Newman, M. E. J. (2006). Modularity and community structure in networks. *Proceedings of the National Academy of Sciences*, 103(23), 8577–8582. https://doi.org/10.1073/pnas.0601602103
+
+Papacharissi, Z. (2015). *Affective publics: Sentiment, technology, and politics*. Oxford University Press. https://doi.org/10.1093/acprof:oso/9780199999736.001.0001
+
 Pariser, E. (2011). *The filter bubble: What the internet is hiding from you*. Penguin Press.
-Plutchik, R. (1980). A general psychoevolutionary theory of emotion. In *Theories of Emotion* (pp. 3–33). Academic Press.
-Riza, A., & Charibaldi, N. (2021). Implementasi deteksi emosi pada teks bahasa Indonesia menggunakan FastText dan LSTM. *Jurnal RESTI*, 5(2), 241–248.
-Saputri, M. S., Mahendra, R., & Adriani, M. (2018). Emotion classification on Indonesian Twitter dataset. *2018 International Conference on Asian Language Processing (IALP)*, 90–95.
-Schultz, F., Utz, S., & Göritz, A. (2011). Is the medium the message? Perceptions of and reactions to crisis communication via Twitter, blogs and traditional media. *Public Relations Review*, 37(1), 20–27.
-Shaw, P., LaCasse, K., & Champagne, C. (2025). Transfer learning for emotion classification in low-resource Indonesian social discourse. *Social Network Analysis and Mining*, 15(1), 42–58.
-Suaib, A., & Pratiwi, R. (2025). Social network analysis in the dissemination of MBG program information on social media X. *Jurnal Studi Komunikasi*, 9(1), 112–129.
+
+Plutchik, R. (1980). A general psychoevolutionary theory of emotion. In *Theories of Emotion* (pp. 3–33). Academic Press. https://doi.org/10.1016/B978-0-12-558701-3.50007-7
+
+Riza, A., & Charibaldi, N. (2021). Implementasi deteksi emosi pada teks bahasa Indonesia menggunakan FastText dan LSTM. *Jurnal RESTI (Rekayasa Sistem dan Teknologi Informasi)*, 5(2), 241–248. https://doi.org/10.29207/resti.v5i2.2858
+
+Saputri, M. S., Mahendra, R., & Adriani, M. (2018). Emotion classification on Indonesian Twitter dataset. In *2018 International Conference on Asian Language Processing (IALP)* (pp. 90–95). IEEE. https://doi.org/10.1109/IALP.2018.8629145
+
+Schultz, F., Utz, S., & Göritz, A. (2011). Is the medium the message? Perceptions of and reactions to crisis communication via Twitter, blogs and traditional media. *Public Relations Review*, 37(1), 20–27. https://doi.org/10.1016/j.pubrev.2010.12.001
+
+Shaw, P., LaCasse, K., & Champagne, C. (2025). Transfer learning for emotion classification in low-resource Indonesian social discourse. *Social Network Analysis and Mining*, 15(1), 42–58. https://doi.org/10.1007/s13278-024-01256-w
+
+Suaib, A., & Pratiwi, R. (2025). Social network analysis in the dissemination of MBG program information on social media X. *Jurnal Studi Komunikasi*, 9(1), 112–129. https://doi.org/10.56127/jushpen.v4i2.2067
+
 Sulafasyah, L. (2026). *Analisis jaringan komunikasi isu keracunan MBG di Twitter* [Unpublished master's thesis]. Universitas Pembangunan Nasional 'Veteran' Jawa Timur.
-Sunstein, C. R. (2017). *#Republic: Divided democracy in the age of social media*. Princeton University Press.
-Wasserman, S., & Faust, K. (1994). *Social network analysis: Methods and applications*. Cambridge University Press.
-Wilie, B., Vincentio, K., Winata, G. I., Cahyawijaya, S., Li, X., Lim, Z. Y., Soleman, S., Mahendra, R., Fung, P., Bahar, S., & Purwarianti, A. (2020). IndoNLU: Benchmark and resources for evaluating Indonesian natural language understanding. *Proceedings of AACL-IJCNLP 2020*, 843–860.
+
+Sunstein, C. R. (2017). *#Republic: Divided democracy in the age of social media*. Princeton University Press. https://doi.org/10.1515/9781400884711
+
+Wasserman, S., & Faust, K. (1994). *Social network analysis: Methods and applications*. Cambridge University Press. https://doi.org/10.1017/CBO9780511815478
+
+Wilie, B., Vincentio, K., Winata, G. I., Cahyawijaya, S., Li, X., Lim, Z. Y., Soleman, S., Mahendra, R., Fung, P., Bahar, S., & Purwarianti, A. (2020). IndoNLU: Benchmark and resources for evaluating Indonesian natural language understanding. In *Proceedings of AACL-IJCNLP 2020* (pp. 843–860). https://aclanthology.org/2020.aacl-main.85/
+
