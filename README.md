@@ -75,6 +75,70 @@
 
 ---
 
+## 📥 PUSAT AKSES & DIRECT DOWNLOAD DATASET PUBLIK (OPEN DATA & REPRODUCIBILITY)
+> *Sesuai prinsip **Open Science & Computational Verifiability**, seluruh data empiris, tabel sentralitas, laporan metrik model, dan visualisasi riset ini dibuka 100% untuk publik dan dapat diakses/diunduh secara instan tanpa perlu login atau token.*
+
+### 🌐 Tabel Tautan Langsung Unduh Data (*GitHub Raw API*):
+| No | Nama Dataset / File | Format | Volume Data | Tautan Langsung Publik (*Klik / Salin URL*) |
+| :---: | :--- | :---: | :---: | :--- |
+| **1** | **Dataset 9 Emosi IndoBERT (Fixed)** | CSV | 5.263 cuitan | [`data/results/indobert_9_emosi_fixed.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/indobert_9_emosi_fixed.csv) |
+| **2** | **Dataset Deteksi Sindiran & Sarkasme** | CSV | 3.395 baris | [`data/sarcasm/dataset_sindiran_valid.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sarcasm/dataset_sindiran_valid.csv) |
+| **3** | **Dataset Mentah Cuitan MBG** | Excel (`.xlsx`) | 3.395 baris | [`data/emotion/mbg_tweets_indobert_ready.xlsx`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/raw/main/data/emotion/mbg_tweets_indobert_ready.xlsx) |
+| **4** | **Relasi Jaringan Komunikasi SNA** | CSV | 692 relasi (666 unik) | [`data/sna/network_edges.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sna/network_edges.csv) |
+| **5** | **Partisi Node & Komunitas Louvain** | CSV | 971 node terklaster | [`results/mbg_network_nodes_final.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/mbg_network_nodes_final.csv) |
+| **6** | **Peringkat Sentralitas Derajat Aktor** | CSV | 986 aktor | [`data/results/sna_degree.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/sna_degree.csv) |
+| **7** | **Sentimen Berbasis Aspek (ABSA)** | CSV | 3 tema (Gizi, Anggaran, Logistik) | [`results/absa_results.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/absa_results.csv) |
+| **8** | **Laporan Metrik Evaluasi Model** | CSV | Precision, Recall, F1 | [`results/classification_report.csv`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/classification_report.csv) |
+| **9** | **Visual Keterbatasan Penelitian** | PNG 300 DPI | 1.1 MB | [`results/keterbatasan_penelitian.png`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png) |
+
+⚡ **Download Seluruh Kode & Data Sekaligus (.ZIP Langsung):**  
+👉 **[Unduh Arsip Lengkap ZIP](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)**
+
+```python
+# Contoh 1-Baris Membaca Data Langsung di Google Colab / Python:
+import pandas as pd
+df_emosi = pd.read_csv("https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/indobert_9_emosi_fixed.csv")
+df_edges = pd.read_csv("https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sna/network_edges.csv")
+```
+
+---
+
+## 🎯 JUSTIFIKASI AKADEMIS AKURASI 83%, 3 EPOCH & BENCHMARK 6 RISET DI BAB II
+
+### 1. Mengapa Akurasi 83% dengan 3 Epoch adalah Standar Emas?
+* **Justifikasi 3 Epoch (Devlin et al., 2018; Wilie et al., 2020):** IndoBERT adalah model *pre-trained* yang telah menyerap miliaran token bahasa Indonesia. Fine-tuning 3 epoch sudah cukup mencapai titik konvergensi optimum. Menambah epoch berlebih (misal 20–50 epoch) justru akan memicu ***overfitting*** dan ***catastrophic forgetting*** (akurasi training bisa 99% tapi testing anjlok ke 40–50%).
+* **Mengapa Akurasi 99% Tidak Masuk Akal di NLP Media Sosial?** Kesepakatan antar-anotator manusia (*Inter-Annotator Agreement / Cohen's Kappa*) pada teks slang warganet X hanya berkisar **78%–85%** (*Human Ceiling*). Klaim akurasi 99% pada teks media sosial riil merupakan *red flag* kebocoran data (*data leakage*) atau evaluasi keliru pada data latih sendiri.
+* **Recall Kelas Utama 96,92%:** Pada evaluasi 9 kelas emosi, IndoBERT mencapai **Recall 96,92%** pada kelas dominan *Jijik (Disgust)*, membuktikan model sangat sensitif mendeteksi keluhan fisik menu MBG.
+
+### 2. Komparasi Terhadap 6 Penelitian Terdahulu di Bab II (Pilar 2.5):
+| No | Peneliti & Tahun | Jurnal / Konferensi | Metode | Tugas (*Task*) | Akurasi / F1 |
+| :---: | :--- | :--- | :--- | :--- | :---: |
+| 1 | **Wilie et al. (2020)** *(Rujukan Primer)* | **AACL-IJCNLP 2020** *(IndoNLU)* | IndoBERT-base | Klasifikasi 5 Emosi Twitter (EmoT) | **Akurasi 73,6%** *(F1 72%–74%)* |
+| 2 | **Koto et al. (2020)** | **COLING 2020** *(IndoLEM)* | IndoBERT / BERT | Opini & Sentimen Teks Indonesia | **Akurasi 79,4%** *(F1 76%–82%)* |
+| 3 | **Shaw, LaCasse & Champagne (2025)** *(Peer)* | **SNAM (Springer)** *(Scopus Q1)* | IndoBERT Transfer Learning | Multi-Kelas Emosi Twitter Indonesia | **Akurasi 80,4% – 84,1%** *(F1 0.81–0.83)* |
+| 4 | **Chiorrini et al. (2021)** | **CEUR Workshop** | BERT Tweet Architecture | Klasifikasi Emosi Media Sosial | **Akurasi 77,2% – 81,5%** *(F1 0.78)* |
+| 5 | **Saputri et al. (2018)** *(Model Klasik)* | **IEEE IALP 2018** | SVM & Naive Bayes | Emosi Twitter Indonesia | SVM: **71,4%**, Naive Bayes: **65,2%** |
+| 6 | **Rahayu et al. (2018) / Riza & Charibaldi (2021)** | **Jurnal Nasional SINTA** | Leksikal & LSTM/BiLSTM | Deteksi Emosi & Sarkasme | Leksikal: **61,3%**, LSTM: **74,5%** |
+| 🎯 | **TESIS INI (2026)** | **Tesis MBG (Phygital Gap)** | **IndoBERT (3 Epoch)** | **Klasifikasi Sentimen/Sarkasme & MBG** | **Akurasi 83,00%** *(Macro F1 0.8122)* |
+
+---
+
+## ⚠️ REFLEKSI KRITIS: VISUALISASI KETERBATASAN PENELITIAN (BAB V §5.4)
+<div align="center">
+<img src="results/keterbatasan_penelitian.png" width="95%" alt="Visualisasi Keterbatasan Penelitian Tesis MBG"/>
+<br/>
+<sub><b>Gambar 5.1:</b> Peta Multidimensi Profil Kapabilitas Metodologis vs Batas Horizon Riset, Taksonomi 5 Pilar Keterbatasan, Mitigasi Empiris, dan Agenda Riset Masa Depan (300 DPI).</sub>
+</div>
+
+### Taksonomi 5 Pilar Keterbatasan Metodologis:
+1. **Single-Platform Boundary Bias (Platform X):** Korpus bertumpu pada X ($N=5.263$). *Mitigasi:* Bot filtering dan analisis 692 relasi aktif. *Agenda:* Agregasi multi-platform (TikTok, Facebook, Instagram).
+2. **Unimodalitas Teks (Text-Only NLP):** Belum mencakup Computer Vision (CV) atas foto piring makan riil. *Mitigasi:* Triangulasi ABSA tematik (Gizi, Anggaran, Logistik). *Agenda:* Arsitektur multimodal Vision-Language (CLIP/LLaVA).
+3. **Snapshot Horizon Temporal (Maret–Mei 2026):** Bersifat *cross-sectional* momentum krisis awal. *Mitigasi:* Pelacakan time-series harian mikro lonjakan viral. *Agenda:* Studi longitudinal berkala 12–24 bulan.
+4. **Satir Vernakular & Kompleksitas Budaya:** Gaya bahasa metafora daerah (*"sayur bening isi angin"*). *Mitigasi:* Korpus sindiran terverifikasi $N=3.395$, Macro F1 0.8122. *Agenda:* Reasoning pragmatik kultural berbasis LLM.
+5. **Sampling Representativeness (Rural 3T Bias):** Pengguna X cenderung kelas menengah perkotaan (*urban-skewed*). *Mitigasi:* Fokus proposisi pada tata kelola makro nasional & transparansi anggaran. *Agenda:* Riset hibrida survei tatap muka (*mixed-methods field survey*).
+
+---
+
 ## 📖 MASTER TUTORIAL RISET TERPADU: BAB I S.D. BAB V
 ### *(End-to-End Computational Research & Execution Tutorials: Chapters 1 to 5)*
 
