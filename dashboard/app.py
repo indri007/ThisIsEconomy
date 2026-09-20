@@ -489,11 +489,13 @@ def render_submission_checklist_70_points():
         st.link_button("🕶️ 2. Naskah Anonim (Blind Review)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx", use_container_width=True)
         st.link_button("📑 7. Manuskrip Mediator SINTA 2", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
         st.link_button("📜 LoA IPSSJ Tesis MBG (#2009)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_mbg_2009.pdf", use_container_width=True)
+        st.link_button("📊 10. Buku Kerja NodeXL Pro (.xlsx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/NodeXL_MBG_Tesis_Indri_Anjar.xlsx", use_container_width=True)
     with c_dl2:
         st.link_button("🏷️ 3. Title Page Terpisah (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
         st.link_button("✉️ 4. Cover Letter Springer (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Cover_Letter_Springer_SNAM.docx", use_container_width=True)
         st.link_button("🎓 8. Naskah Lengkap Tesis (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/Tesis_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
         st.link_button("📜 LoA IPSSJ JobsMatchAI (#2024)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_jobsmatchai_2024.pdf", use_container_width=True)
+        st.link_button("☁️ Sesi NodeXL Pro Cloud Streaming", "https://www.nodexlgraphgallery.org/Pages/Cloud.aspx?token=c1d8d71236e1cae9628f0b5c7a55b581", use_container_width=True)
     with c_dl3:
         st.link_button("👨‍🏫 5. Suggested Reviewers (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Suggested_Reviewers.docx", use_container_width=True)
         st.link_button("📝 6. Draf Manuskrip IMRaD (.md)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/manuscript/manuscript_jurnal.md", use_container_width=True)
