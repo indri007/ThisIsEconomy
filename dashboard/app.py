@@ -3041,6 +3041,21 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 df_sel_members['Emosi Dominan'] = df_sel_members['Emosi Dominan'].map(emo_id_labels).fillna(df_sel_members['Emosi Dominan'])
                 st.dataframe(df_sel_members.sort_values(by='Degree Centrality', ascending=False), use_container_width=True, hide_index=True)
 
+        echo_img_p = os.path.join(project_root, "results", "19_community_echo_chambers.png")
+        if os.path.exists(echo_img_p):
+            st.markdown("---")
+            st.subheader("📊 Analisis Dimensi 3: Partisi Komunitas & Deteksi Ruang Gema (Echo Chambers)")
+            st.markdown(
+                "Visualisasi komprehensif membuktikan tingkat segregasi struktural diskursus MBG: "
+                "dari 692 relasi komunikasi, **99,86% (691 relasi)** terkunci di dalam ruang gema kelompoknya masing-masing, "
+                "dan hanya **0,14% (1 relasi)** yang menyeberang antar-komunitas (*Modularity Q = 0,9837*):"
+            )
+            st.image(
+                echo_img_p,
+                use_container_width=True,
+                caption="Gambar 4.7C: Partisi Komunitas Louvain & Diagnostik Ruang Gema Struktural 99.86% Kedap (300 DPI)"
+            )
+
         nodexl_viz_path = os.path.join(project_root, "results", "16_nodexl_graph_visualization.png")
         if os.path.exists(nodexl_viz_path):
             st.markdown("---")
@@ -3262,6 +3277,21 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
             )
             st.plotly_chart(fig_cent_scatter, use_container_width=True)
             st.caption("📌 **Keterangan Tipologi:** Aktor di kuadran kanan bawah (**@grok**) memiliki popularitas masif namun bukan perantara antarkelompok. Sebaliknya, aktor di bagian atas (**@4Y4NKZ**) memiliki peran kontrol informasi (*gatekeeping*) tertinggi.")
+
+        actor_typ_img_p = os.path.join(project_root, "results", "18_actor_centrality_typology.png")
+        if os.path.exists(actor_typ_img_p):
+            st.markdown("---")
+            st.subheader("📊 Analisis Dimensi 2: Sentralitas Aktor & Tipologi Peran Komunikasi (SNA Standar NodeXL)")
+            st.markdown(
+                "Pemetaan 4 kuadran tipologi peran komunikasi berdasarkan kombinasi In-Degree, Out-Degree, dan Betweenness Centrality. "
+                "Menegaskan `@prabowo` sebagai *Target Sink* absolut (In-Degree=15, Out-Degree=0), `@grok` sebagai *Algorithmic Oracle* (Degree=42), "
+                "dan `@regar_op0sisi` sebagai *Opinion Broker* oposisi (Betweenness=0.00456):"
+            )
+            st.image(
+                actor_typ_img_p,
+                use_container_width=True,
+                caption="Gambar 4.8B: Matriks Sentralitas Aktor & Tipologi Peran Komunikasi Platform X (300 DPI)"
+            )
 
         st.markdown("---")
 
@@ -5125,6 +5155,14 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         st.markdown("---")
         st.subheader("📊 Visualisasi Parameter Makro Topologi: NodeXL & NetworkX")
         st.image(get_image_path("17_macro_topology_metrics.png"), use_container_width=True, caption="Gambar 8D: Analisis Empiris Struktur Makro Topologi Jaringan Komunikasi MBG (300 DPI)")
+
+        st.markdown("---")
+        st.subheader("📊 Visualisasi Sentralitas Aktor & Tipologi Peran Komunikasi: Dimensi 2")
+        st.image(get_image_path("18_actor_centrality_typology.png"), use_container_width=True, caption="Gambar 8E: Pemetaan Sentralitas Aktor & Tipologi Peran Komunikasi (Target Sink, Oracle, Broker, 300 DPI)")
+
+        st.markdown("---")
+        st.subheader("📊 Visualisasi Partisi Komunitas & Deteksi Ruang Gema: Dimensi 3")
+        st.image(get_image_path("19_community_echo_chambers.png"), use_container_width=True, caption="Gambar 8F: Analisis Empiris Partisi Komunitas Louvain & Isolasi Ruang Gema 99.86% (300 DPI)")
 
     # ── TAB 5: TAHAP 4 ──
     with v_tabs[4]:

@@ -1,0 +1,83 @@
+{
+  "modularity_q": 0.9837407928003549,
+  "num_communities": 342,
+  "total_edges": 692,
+  "internal_edges": 691,
+  "internal_pct": 99.85549132947978,
+  "external_edges": 1,
+  "external_pct": 0.1445086705202312,
+  "top_communities": [
+    {
+      "Community_Id": 15,
+      "Nama_Wacana": "Klaster Elit & Target Otoritas (@prabowo, @regar_op0sisi)",
+      "Jumlah_Aktor": 46,
+      "Persentase_Populasi": 4.74,
+      "Emosi_Dominan": "disgust",
+      "Distribusi_Emosi": {
+        "disgust": 27,
+        "neutral": 19
+      },
+      "Top_Aktor": "@prabowo, @regar_op0sisi, @daffiriffi"
+    },
+    {
+      "Community_Id": 61,
+      "Nama_Wacana": "Klaster AI Fact-Checking Oracle (@grok)",
+      "Jumlah_Aktor": 43,
+      "Persentase_Populasi": 4.43,
+      "Emosi_Dominan": "neutral",
+      "Distribusi_Emosi": {
+        "neutral": 36,
+        "disgust": 7
+      },
+      "Top_Aktor": "@grok, @unmagnetism, @JuanJulianto2"
+    },
+    {
+      "Community_Id": 16,
+      "Nama_Wacana": "Klaster Diskursus #16",
+      "Jumlah_Aktor": 18,
+      "Persentase_Populasi": 1.85,
+      "Emosi_Dominan": "neutral",
+      "Distribusi_Emosi": {
+        "neutral": 15,
+        "disgust": 3
+      },
+      "Top_Aktor": "@4Y4NKZ, @newIding30, @Capitalisborju"
+    },
+    {
+      "Community_Id": 259,
+      "Nama_Wacana": "Klaster Diskursus #259",
+      "Jumlah_Aktor": 14,
+      "Persentase_Populasi": 1.44,
+      "Emosi_Dominan": "neutral",
+      "Distribusi_Emosi": {
+        "neutral": 13,
+        "disgust": 1
+      },
+      "Top_Aktor": "@dbdbidip, @greeniefloo, @renregalia"
+    },
+    {
+      "Community_Id": 8,
+      "Nama_Wacana": "Klaster Diskursus #8",
+      "Jumlah_Aktor": 11,
+      "Persentase_Populasi": 1.13,
+      "Emosi_Dominan": "neutral",
+      "Distribusi_Emosi": {
+        "neutral": 10,
+        "disgust": 1
+      },
+      "Top_Aktor": "@Casagrande10939, @SauloLinsFreir1, @misteriouspavao"
+    },
+    {
+      "Community_Id": 264,
+      "Nama_Wacana": "Klaster Diskursus #264",
+      "Jumlah_Aktor": 10,
+      "Persentase_Populasi": 1.03,
+      "Emosi_Dominan": "neutral",
+      "Distribusi_Emosi": {
+        "neutral": 9,
+        "disgust": 1
+      },
+      "Top_Aktor": "@luvdysh_, @helloyosh_, @ayiurswoo"
+    }
+  ]
+}
