@@ -2678,6 +2678,27 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
         st.info(f"💡 **Catatan Metodologis:** Sebanyak **{isolated_small} komponen ({(isolated_small/len(components))*100:.1f}%)** beranggotakan <= 2 aktor (dyad/isolated pair), membuktikan tidak adanya arena sentral percakapan publik nasional.")
 
         st.markdown("---")
+        st.subheader("📊 Analisis Dimensi 1: Struktur Makro Topologi Jaringan (Standar NodeXL Pro & NetworkX)")
+        st.markdown(
+            "Visualisasi komprehensif 4-panel struktur makro graf komunikasi MBG mencakup distribusi derajat bebas-skala (*power-law scaling*), "
+            "ukuran komponen raksasa (*giant component* vs pulau terisolasi), resiprositas asimetris, dan ringkasan scorecard parameter jaringan:"
+        )
+        macro_img_p = os.path.join(project_root, "results", "17_macro_topology_metrics.png")
+        if os.path.exists(macro_img_p):
+            st.image(macro_img_p, use_container_width=True, caption="Gambar 4.2B: Struktur Makro Topologi Jaringan Komunikasi MBG (Buku Kerja NodeXL Pro & NetworkX, 300 DPI)")
+
+        macro_json_p = os.path.join(project_root, "results", "macro_topology_metrics.json")
+        if os.path.exists(macro_json_p):
+            with open(macro_json_p, "r", encoding="utf-8") as f_macro:
+                m_data = json.load(f_macro)
+            df_macro_table = pd.DataFrame([
+                {"Parameter Topologi Makro": k, "Nilai Empiris": v}
+                for k, v in m_data.items()
+            ])
+            with st.expander("📑 Lihat Tabel Lengkap Parameter Topologi Makro Graf (15+ Metrik Resmi)", expanded=False):
+                st.dataframe(df_macro_table, use_container_width=True, hide_index=True)
+
+        st.markdown("---")
 
         # ── §4.3 Analisis Clustering Komunitas Louvain (Dihitung Dinamis dari Nodes CSV) ──
 
@@ -5100,6 +5121,10 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         st.markdown("---")
         st.subheader("📊 Visualisasi Standar Industri: NodeXL Pro Group-in-a-Box (GIB) Layout")
         st.image(get_image_path("16_nodexl_graph_visualization.png"), use_container_width=True, caption="Gambar 8C: Pemetaan Jaringan Komunikasi Versi NodeXL Pro Group-in-a-Box Layout (300 DPI)")
+
+        st.markdown("---")
+        st.subheader("📊 Visualisasi Parameter Makro Topologi: NodeXL & NetworkX")
+        st.image(get_image_path("17_macro_topology_metrics.png"), use_container_width=True, caption="Gambar 8D: Analisis Empiris Struktur Makro Topologi Jaringan Komunikasi MBG (300 DPI)")
 
     # ── TAB 5: TAHAP 4 ──
     with v_tabs[4]:
