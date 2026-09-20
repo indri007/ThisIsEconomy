@@ -1,0 +1,46 @@
+{
+  "modularity_q": 0.9837407928003549,
+  "reciprocity": 0.012012012012012012,
+  "density": 0.0007071039527747991,
+  "in_degree_centralization": 0.014787271392550509,
+  "out_degree_centralization": 0.04267977402572532,
+  "archetype_evaluations": {
+    "Polarized Crowd": {
+      "deskripsi": "Dua atau beberapa kubu diskursus yang terbelah dan saling bertentangan secara diametral tanpa dialog penengah.",
+      "kriteria": "Modularity Tinggi (>0.4), Isolasi Klaster (>90%), Resiprositas Rendah",
+      "kesesuaian_skor": 94.5,
+      "status": "SANGAT COCOK (Dominan: Kubu Elit Pendukung vs Oposisi Sarkasme)"
+    },
+    "Community Clusters": {
+      "deskripsi": "Jaringan percakapan terpecah menjadi banyak pulau diskusi kecil yang fokus pada sub-isu spesifik.",
+      "kriteria": "Jumlah Komponen Sangat Banyak (>100), Fragmentasi Tinggi, Kepadatan Rendah",
+      "kesesuaian_skor": 96.8,
+      "status": "PALING COCOK (Dominan: 342 Klaster Mandiri Terisolasi)"
+    },
+    "Broadcast Network": {
+      "deskripsi": "Struktur komunikasi berpusat pada tokoh sentral/media yang menjadi sasaran transmisi informasi sepihak.",
+      "kriteria": "In-Degree Centralization Tinggi, Resiprositas Minimal (<5%), Pola Retweet/Mention Satu Arah",
+      "kesesuaian_skor": 88.0,
+      "status": "COCOK PADA LEVEL AKTOR KUNCI (@prabowo sebagai Target Sink & @grok sebagai Oracle)"
+    },
+    "Support Network": {
+      "deskripsi": "Struktur penanganan keluhan satu pintu (hub-and-spoke) di mana warga melapor ke akun resmi.",
+      "kriteria": "In-Degree Terfokus ke Lembaga, Tidak Ada Resiprositas Dua Arah",
+      "kesesuaian_skor": 42.0,
+      "status": "KURANG COCOK (Pemerintah tidak memberikan respon balik/layanan aduan aktif)"
+    },
+    "Brand Clusters": {
+      "deskripsi": "Percakapan tersebar sporadis di mana warganet menyebut produk/isu tanpa saling merespons.",
+      "kriteria": "Banyak Simpul Terisolasi, Kepadatan Mendekati Nol",
+      "kesesuaian_skor": 65.0,
+      "status": "CUKUP COCOK (Terlihat pada sebutan isu susu/menu makan gratis sporadis)"
+    },
+    "Tight Crowd": {
+      "deskripsi": "Komunitas terpadu yang saling mengenal dengan tingkat resiprositas dan kepadatan tinggi.",
+      "kriteria": "Kepadatan Tinggi (>0.1), Resiprositas Tinggi (>20%), Modularity Rendah",
+      "kesesuaian_skor": 5.2,
+      "status": "TIDAK COCOK SAMA SEKALI (Jejaring MBG sangat renggang dan terfragmentasi)"
+    }
+  },
+  "synthesis": "Wacana kebijakan MBG di Platform X secara definitif memadukan dua arketipe utama: 1) 'Community Clusters' (Skor 96.8%) akibat fragmentasi ekstrem menjadi 342 kelompok wacana terpisah dengan isolasi 99.86%; 2) 'Polarized Crowd' (Skor 94.5%) akibat pembelahan tajam antara klaster elit pemerintah dan oposisi sarkasme warganet; serta beririsan dengan 'Broadcast Network' (Skor 88.0%) di mana akun elit (@prabowo) dan bot AI (@grok) menjadi kutub gravitasi penyebaran informasi satu arah (monolog)."
+}
