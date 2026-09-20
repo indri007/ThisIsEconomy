@@ -3020,6 +3020,25 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 df_sel_members['Emosi Dominan'] = df_sel_members['Emosi Dominan'].map(emo_id_labels).fillna(df_sel_members['Emosi Dominan'])
                 st.dataframe(df_sel_members.sort_values(by='Degree Centrality', ascending=False), use_container_width=True, hide_index=True)
 
+        nodexl_viz_path = os.path.join(project_root, "results", "16_nodexl_graph_visualization.png")
+        if os.path.exists(nodexl_viz_path):
+            st.markdown("---")
+            st.subheader("📊 Pemetaan Visual Jaringan Komunikasi Versi NodeXL Pro (Group-in-a-Box Layout)")
+            st.markdown(
+                "Pemetaan visual standar buku kerja **NodeXL Pro** ([Lisensi Akademik Resmi Order #14103](https://nodexl.com/my-account/view-order/14103/)) "
+                "menggunakan tata letak kanonis *Group-in-a-Box (GIB)* berdasarkan partisi klaster wacana, dilengkapi panel ringkasan metrik graf keseluruhan:"
+            )
+            st.image(
+                nodexl_viz_path,
+                use_container_width=True,
+                caption="Gambar 4.7B: Visualisasi Jaringan Komunikasi NodeXL Pro Group-in-a-Box Layout (|V|=971, |E|=666, 300 DPI)"
+            )
+            col_nx_dl1, col_nx_dl2 = st.columns(2)
+            with col_nx_dl1:
+                st.link_button("📊 Unduh Buku Kerja NodeXL Pro (.xlsx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/NodeXL_MBG_Tesis_Indri_Anjar.xlsx", use_container_width=True)
+            with col_nx_dl2:
+                st.link_button("☁️ Buka Sesi NodeXL Cloud Streaming", "https://www.nodexlgraphgallery.org/Pages/Cloud.aspx?token=c1d8d71236e1cae9628f0b5c7a55b581", use_container_width=True)
+
         st.markdown("---")
 
         # ── Tabel 4.3 15 Aktor Sentralitas Tertinggi (Dihitung Dinamis via NetworkX) ──
@@ -5009,6 +5028,20 @@ elif "Visual Storytelling" in page or "Galeri" in page:
                 st.image(m3_mock_path, use_container_width=True, caption="Konsep Material Design 3 UI: Hubungan Interaksi Twitter X")
         st.info("**Pesan Kunci Material 3:** Hubungan komunikasi bersifat *asimetris* — akun pemerintah menjadi *Target Sink* yang menerima gelombang mention sepihak tanpa dialog timbal-balik, sementara *Opinion Broker* oposisi mengorkestrasi wacana kritis dan AI (*Grok*) dijadikan *Algorithmic Oracle* pencari fakta anggaran.")
         st.markdown("---")
+
+        st.subheader("📊 Visualisasi Standar Industri: NodeXL Pro Group-in-a-Box (GIB) Layout")
+        st.markdown(
+            "Visualisasi kanonis **NodeXL Pro** ([Lisensi Akademik Resmi Order #14103](https://nodexl.com/my-account/view-order/14103/)) "
+            "dengan tata letak *Group-in-a-Box (GIB)* yang mengelompokkan simpul aktor ke dalam kotak partisi tematik, "
+            "dilengkapi panel parameter graf baku NodeXL Graph Metrics Pane:"
+        )
+        st.image(
+            get_image_path("16_nodexl_graph_visualization.png"),
+            use_container_width=True,
+            caption="Visualisasi Empiris NodeXL Pro: Group-in-a-Box Network Topology & Graph Pane Metrics (|V|=971, |E|=666, 300 DPI)"
+        )
+        st.info("**Pesan Kunci NodeXL Pro:** Tata letak Group-in-a-Box (GIB) mengisolasi klaster polarisasi (G1 Pemerintah vs G3 Oposisi/Sarkasme) sembari menampilkan interkoneksi lintas batas (*inter-group bridge edges*) dan parameter global jaringan (*Graph Density = 0.00071, Modularity Q = 0.9837*).")
+        st.markdown("---")
         
         st.markdown("### 💥 Bagian IV: Bagaimana Emosi Membentuk Diskursus?")
         st.success("**Membuktikan bahwa sentimen jijik publik berakar pada kegagalan fisik (logistik & mutu gizi) — mendefinisikan Phygital Gap.**")
@@ -5063,6 +5096,10 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         st.markdown("---")
         st.subheader("🎨 Visualisasi Material Design 3: Topologi Relasi Komunikasi Antar-Akun")
         st.image(get_image_path("15_material3_network_interaction.png"), use_container_width=True, caption="Gambar 8B: Pemetaan Interaksi Antar-Akun Platform X dalam Estetika Google Material 3 (300 DPI)")
+
+        st.markdown("---")
+        st.subheader("📊 Visualisasi Standar Industri: NodeXL Pro Group-in-a-Box (GIB) Layout")
+        st.image(get_image_path("16_nodexl_graph_visualization.png"), use_container_width=True, caption="Gambar 8C: Pemetaan Jaringan Komunikasi Versi NodeXL Pro Group-in-a-Box Layout (300 DPI)")
 
     # ── TAB 5: TAHAP 4 ──
     with v_tabs[4]:
