@@ -648,7 +648,7 @@ def render_author_biography():
                 <b>Edisi Penerbitan:</b> Volume 3, Nomor 9, Edisi September 2026 | <b>Chief Editor:</b> M. Ilham Nurhakim, S.Pd, M.Sos
             </p>
             <p style="color: #cbd5e1; font-size: 0.86rem; line-height: 1.5; margin-bottom: 12px;">
-                <b>Fokus Kajian:</b> Diseminasi hasil riset tesis mengenai pemetaan struktur jaringan komunikasi SNA, polarisasi diskursus publik, sentralitas aktor (@prabowo vs @grok), dan pembuktian empiris <i>Phygital Gap</i> pada implementasi awal Program MBG di Indonesia.
+                <b>Fokus Kajian:</b> Diseminasi hasil riset tesis mengenai pemetaan struktur jaringan komunikasi SNA, sentralitas aktor (@prabowo vs @grok), dan analisis <i>Phygital Gap</i> pada implementasi awal Program MBG di Indonesia.
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -2166,7 +2166,7 @@ elif "Bab II" in page or page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
             },
             {
                 "Proposisi": "P3: Strong Community Structure Jaringan Komunikasi",
-                "Klaim Teoretis (Hal. 81)": "Polarisasi diskursus terwujud dalam bentuk ratusan kantong percakapan kecil terisolasi, bukan sekadar dua kubu ideologis besar.",
+                "Klaim Teoretis (Hal. 81)": "Struktur keterhubungan jaringan menunjukkan ratusan komponen terhubung; temuan ini digunakan untuk mendeskripsikan struktur jaringan, bukan untuk mengukur polarisasi ideologis.",
                 "Status Empiris": "✅ Terkonfirmasi",
                 "Bukti Data Riil": "Modularity 0,9837; 342 komunitas Louvain; komponen raksasa hanya 9,1% (89 node); reciprocity 1,20%."
             },
@@ -2585,8 +2585,8 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
 
         st.warning("""
         **📢 Temuan Kunci Level Sistem:**
-        1. **Strong Community Structure (Modularity 0,9837):** Nilai modularitas menunjukkan struktur komunitas yang kuat. Percakapan warganet terpecah ke dalam **341 komponen terhubung secara terpisah** (bukan dua kubu ideologis besar, melainkan ratusan kelompok percakapan kecil).
-        2. **Komunikasi Searah (Reciprocity 0,0120):** Reciprocity jaringan tercatat rendah (hanya 1,2%). Netizen lebih banyak me-mention figur otoritas sebagai bentuk keluhan/protes satu arah tanpa adanya respon balik (*low reciprocity dalam graf mention*).
+        1. **Strong Community Structure (Modularity 0,9837):** Nilai modularitas menunjukkan struktur komunitas yang kuat. Graf jaringan terdiri atas **341 weakly connected components**, yang digunakan untuk mendeskripsikan keterhubungan struktural jaringan.
+        2. **Komunikasi Searah (Reciprocity 0,0120):** Reciprocity jaringan tercatat rendah (hanya 1,2%). Graf mention menunjukkan interaksi yang dominan satu arah dengan reciprocity 1,20%; metrik ini digunakan untuk mendeskripsikan pola keterhubungan dan tidak digunakan untuk menyimpulkan motif atau respons aktual.
         """)
 
         # ── Visualisasi Spektrum & Gauge Modularitas (Newman, 2006) ──
@@ -3866,7 +3866,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
             ### 🟡 Pola 2
             ## PERBEDAAN POSISI STRUKTURAL
 
-            **Definisi:** AI agent menggantikan otoritas manusia sebagai penyebar informasi utama
+            **Definisi:** @grok memiliki out-degree tertinggi dalam graf mention, yaitu 42; metrik ini digunakan untuk mendeskripsikan posisi struktural dan tidak digunakan untuk menyimpulkan fungsi otoritas informasi.
 
             **Bukti data:**
             - @grok: Out=**42** (tertinggi)
@@ -3902,7 +3902,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
 
         > *"Graph-based analysis reveals three latent structural patterns invisible to content analysis alone:
         (1) a **asymmetric interaction structure** in which the @prabowo (in-degree=15) memiliki in-degree=15 dalam graf mention; reciprocity jaringan tercatat sebesar 1,20%;
-        (2) an **Perbedaan Posisi Centrality** in which an AI agent (@grok, out-degree=42) surpasses all human actors as the aktor dengan out-degree tertinggi dalam graf yang dianalisis;
+        (2) an **Perbedaan Posisi Centrality** in which @grok memiliki out-degree=42, yaitu nilai out-degree tertinggi dalam graf yang dianalisis;
         and (3) an **Community Separation Pattern** in which 342 communities (modularity=0.9837) were identified, with 1 edge record crossing community boundaries among 692 edge records.
         These patterns collectively operationalize the Phygital Gap as a structural — not merely perceptual — phenomenon (Newman, 2006; Gandasari et al., 2023)."*
         """)
@@ -4511,7 +4511,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
             - **Proksi Inkongruensi:** 56,60% (2.979 tweet)
 
             **Temuan Kunci:**
-            Mayoritas warganet tidak menolak dengan agresi frontal (*Marah hanya 1,8%*), melainkan dengan **sinisme, humor gelap, dan kejijikan afektif** atas inkongruensi janji vs realitas.
+            Distribusi emosi pada dataset digunakan untuk mendeskripsikan hasil klasifikasi model; temuan ini tidak digunakan untuk menyimpulkan motif atau sikap psikologis warganet.
             """)
         with tri_c2:
             st.info("""
@@ -4551,7 +4551,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 "Lapisan Analisis": "Lapis 2: Topologi (SNA Louvain)",
                 "Instrumen / Algoritma": "Graf Berarah, Algoritma Komunitas Louvain, Degree, Betweenness, & Eigenvector Centrality",
                 "Data Empiris Riil": "Modularity Q = 0,9837 (342 komunitas), Resiprositas 1,20%, @prabowo memiliki in-degree=15 dan @grok memiliki out-degree=42",
-                "Kontribusi Interpretasi Phygital Gap": "Menganalisis pola keterhubungan akun dari akun resmi; kepasifan pemerintah menciptakan kekosongan otoritas (asymmetric interaction structure)."
+                "Kontribusi Interpretasi Phygital Gap": "Menganalisis pola keterhubungan akun dalam graf mention; struktur interaksi digunakan sebagai deskripsi jaringan dan tidak digunakan untuk menyimpulkan kepasifan atau kekosongan otoritas."
             },
             {
                 "Lapisan Analisis": "Lapis 3: Diagnostik (ABSA 3 Aspek)",
@@ -5030,7 +5030,7 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         
         st.subheader("3. Karakteristik Sarkasme")
         st.image(get_image_path("3_sarcasm.png"), use_container_width=True)
-        st.info("**Caption Akademik:** Figure 3 highlights the prevalence of sarcasm and irony in public reactions, functioning as a primary coping mechanism toward logistical failures.\n\n**Pesan/Temuan:** Publik merespons krisis dengan sindiran halus ketimbang adu argumen logis.\n\n**Posisi Manuskrip:** Bab IV Hasil NLP (§4.5)")
+        st.info("**Caption Akademik:** Figure 3 highlights the prevalence of sarcasm and irony in public reactions, functioning as a primary coping mechanism toward logistical failures.\n\n**Pesan/Temuan:** Dataset menunjukkan adanya cuitan yang terklasifikasi sebagai sindiran; temuan ini dilaporkan sebagai karakteristik data tanpa menyimpulkan motif komunikasi publik.\n\n**Posisi Manuskrip:** Bab IV Hasil NLP (§4.5)")
         st.markdown("---")
         
         st.markdown("### 🤖 Bagian II: Bagaimana Model Membacanya?")
