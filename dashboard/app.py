@@ -10,6 +10,7 @@ except ImportError:
     PYVIS_AVAILABLE = False
 import streamlit.components.v1 as components
 import os
+import sys
 import re
 from collections import Counter
 try:
@@ -17,6 +18,18 @@ try:
     WORDCLOUD_AVAILABLE = True
 except ImportError:
     WORDCLOUD_AVAILABLE = False
+
+# Brand24 client (server-side only)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'scripts'))
+try:
+    from brand24_client import (
+        get_api_key, list_projects, get_mentions,
+        get_project_stats, get_sentiment_breakdown,
+        get_top_sources, get_authors, compute_early_warning_score
+    )
+    BRAND24_AVAILABLE = True
+except ImportError:
+    BRAND24_AVAILABLE = False
 
 try:
     import matplotlib
@@ -1101,6 +1114,7 @@ menu_options = [
     "3️⃣ Bab III: Metodologi & Pipeline Komputasional",
     "4️⃣ Bab IV: Hasil & Pembahasan (Empiris Terintegrasi)",
     "5️⃣ Bab V: Kesimpulan & Rekomendasi Kebijakan BGN",
+    "📡 Brand24 Real-Time Monitor (EWS)",
     "📑 Naskah Jurnal Internasional (Scopus Q1 Ready)",
     "🖼️ Galeri Visual Storytelling (10 Master Plot Tesis)",
     "📚 Audit Integritas Data & Referensi Scopus",
@@ -6009,4 +6023,192 @@ elif "Checklist Submit" in page:
 elif "Profil Peneliti" in page:
     render_author_biography()
 
+elif "Brand24" in page:
+    # ─────────────────────────────────────────────────────────────
+    # 📡 BRAND24 REAL-TIME MONITOR  — Early Warning System (EWS)
+    # ─────────────────────────────────────────────────────────────
+    st.markdown("# 📡 Brand24 Real-Time Monitor")
+    st.markdown("""
+    > **Early Warning System (EWS)** — Pemantauan real-time sebaran diskusi MBG
+    > di platform digital: Twitter/X, Instagram, berita online, forum, dan blog.
+    > Data ditarik langsung dari API Brand24 (server-side) dan dianalisis secara otomatis.
+    """)
 
+    if not BRAND24_AVAILABLE:
+        st.error("Modul `brand24_client` tidak ditemukan. Pastikan `scripts/brand24_client.py` ada di repositori.")
+        st.stop()
+
+    # ── Konfigurasi API Key ──────────────────────────────────────
+    st.markdown("### 🔑 Konfigurasi API Key")
+    col_key1, col_key2 = st.columns([3, 1])
+    with col_key1:
+        manual_key = st.text_input(
+            "Masukkan Brand24 API Key (opsional — bisa juga via .env):",
+            type="password",
+            placeholder="b24-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            help="API Key tersimpan hanya di session ini dan tidak dikirim ke server eksternal selain Brand24."
+        )
+    with col_key2:
+        since_days = st.selectbox("Rentang Waktu:", [7, 14, 30, 90], index=0,
+                                   format_func=lambda x: f"{x} Hari Terakhir")
+
+    api_key = manual_key.strip() if manual_key.strip() else get_api_key()
+
+    if not api_key:
+        st.warning("""
+        ⚠️ **API Key belum dikonfigurasi.**
+        Masukkan key di kotak di atas, atau simpan di file `.env`:
+        ```
+        BRAND24_API_KEY=your_brand24_api_key_here
+        ```
+        """)
+        st.info("""
+        🔗 Dapatkan API Key Anda di:
+        [app.brand24.com/account/integrations-api-data](https://app.brand24.com/account/integrations-api-data?tab=apiKey)
+        """)
+        st.stop()
+
+    # ── Ambil daftar proyek ──────────────────────────────────────
+    with st.spinner("🔌 Menghubungkan ke Brand24 API..."):
+        projects_data = list_projects(api_key)
+
+    if not projects_data:
+        st.error("❌ Gagal terhubung ke Brand24 API. Periksa API Key dan koneksi internet.")
+        st.stop()
+
+    project_list = projects_data.get("results", projects_data if isinstance(projects_data, list) else [])
+    if not project_list:
+        st.warning("Tidak ada proyek monitoring yang ditemukan di akun ini.")
+        st.stop()
+
+    # ── Pilih Proyek ─────────────────────────────────────────────
+    proj_options = {f"[{p.get('id','?')}] {p.get('name', p.get('keyword','Proyek'))}": p for p in project_list}
+    selected_label = st.selectbox("📁 Pilih Proyek Monitoring:", list(proj_options.keys()))
+    selected_proj  = proj_options[selected_label]
+    project_id     = selected_proj.get("id") or selected_proj.get("project_id")
+
+    st.markdown("---")
+
+    # ── Ambil data paralel ────────────────────────────────────────
+    with st.spinner("⏳ Mengambil data dari Brand24..."):
+        stats    = get_project_stats(api_key, project_id, since_days=since_days)
+        sents    = get_sentiment_breakdown(api_key, project_id, since_days=since_days)
+        mentions = get_mentions(api_key, project_id, since_days=since_days, max_results=200)
+        sources  = get_top_sources(api_key, project_id, since_days=since_days)
+        authors  = get_authors(api_key, project_id, since_days=since_days)
+
+    # ── Early Warning Score ───────────────────────────────────────
+    ews = compute_early_warning_score(stats, sents)
+
+    st.markdown("### 🚨 Early Warning Score (EWS)")
+    col_g1, col_g2, col_g3, col_g4 = st.columns(4)
+    col_g1.metric("🎯 EWS Score",   f"{ews['score']}/100",    ews['level'])
+    col_g2.metric("💬 Total Mention", f"{ews['raw']['total_mentions']:,}")
+    col_g3.metric("😡 Rasio Negatif", f"{ews['raw']['neg_ratio_pct']}%")
+    col_g4.metric("😊 Positif",       f"{ews['raw']['positive']:,}")
+
+    # EWS Gauge chart
+    fig_gauge = go.Figure(go.Indicator(
+        mode  = "gauge+number+delta",
+        value = ews['score'],
+        title = {"text": "Early Warning Score (EWS)", "font": {"size": 18}},
+        gauge = {
+            "axis"  : {"range": [0, 100], "tickwidth": 1},
+            "bar"   : {"color": "#EF4444" if ews['score'] >= 75 else
+                                "#F97316" if ews['score'] >= 50 else
+                                "#EAB308" if ews['score'] >= 25 else "#22C55E"},
+            "steps" : [
+                {"range": [0,  25], "color": "#DCFCE7"},
+                {"range": [25, 50], "color": "#FEF9C3"},
+                {"range": [50, 75], "color": "#FFEDD5"},
+                {"range": [75,100], "color": "#FEE2E2"},
+            ],
+            "threshold": {"line": {"color": "red", "width": 3}, "value": 75},
+        },
+        delta = {"reference": 50, "increasing": {"color": "red"}, "decreasing": {"color": "green"}},
+    ))
+    fig_gauge.update_layout(height=280, margin={"t": 40, "b": 10})
+    st.plotly_chart(fig_gauge, use_container_width=True)
+
+    st.markdown("---")
+
+    # ── Sentiment Breakdown ───────────────────────────────────────
+    st.markdown("### 📊 Distribusi Sentimen")
+    sent_raw = ews['raw']
+    sent_df  = pd.DataFrame({
+        "Sentimen": ["😡 Negatif", "😊 Positif", "😐 Netral"],
+        "Jumlah"  : [sent_raw['negative'], sent_raw['positive'], sent_raw['neutral']],
+    })
+    fig_sent = px.bar(
+        sent_df, x="Sentimen", y="Jumlah", color="Sentimen",
+        color_discrete_map={"😡 Negatif": "#EF4444", "😊 Positif": "#22C55E", "😐 Netral": "#94A3B8"},
+        title=f"Distribusi Sentimen — {since_days} Hari Terakhir",
+        text="Jumlah",
+    )
+    fig_sent.update_traces(textposition="outside")
+    fig_sent.update_layout(showlegend=False, height=340)
+    st.plotly_chart(fig_sent, use_container_width=True)
+
+    st.markdown("---")
+
+    # ── Top Sources ───────────────────────────────────────────────
+    if sources:
+        src_list = sources.get("results", sources if isinstance(sources, list) else [])
+        if src_list:
+            st.markdown("### 🌐 Sumber Media Terpopuler")
+            src_df = pd.DataFrame(src_list)
+            if "name" in src_df.columns and "count" in src_df.columns:
+                fig_src = px.pie(
+                    src_df.head(10), names="name", values="count",
+                    title="Distribusi Sumber Media",
+                    color_discrete_sequence=px.colors.qualitative.Bold,
+                )
+                st.plotly_chart(fig_src, use_container_width=True)
+
+    # ── Mentions Table ─────────────────────────────────────────────
+    st.markdown("### 💬 Mention Terbaru")
+    if mentions:
+        rows = []
+        for m in mentions[:100]:
+            rows.append({
+                "Waktu"    : m.get("published_at", m.get("created_at", "-"))[:19].replace("T", " "),
+                "Platform" : m.get("source", m.get("social_media_type", "-")),
+                "Penulis"  : m.get("author_name", m.get("username", "-")),
+                "Sentimen" : ("😡 Negatif" if m.get("sentiment", "") == "negative" else
+                              "😊 Positif" if m.get("sentiment", "") == "positive" else "😐 Netral"),
+                "Konten"   : (m.get("content", m.get("text", "-"))[:160] + "..."
+                              if len(m.get("content", m.get("text", ""))) > 160
+                              else m.get("content", m.get("text", "-"))),
+                "URL"      : m.get("url", "-"),
+            })
+        mention_df = pd.DataFrame(rows)
+        st.dataframe(mention_df, use_container_width=True, hide_index=True,
+                     column_config={"URL": st.column_config.LinkColumn("🔗 Link")})
+
+        # Download
+        csv_mentions = mention_df.to_csv(index=False).encode("utf-8")
+        st.download_button(
+            "⬇️ Unduh Mention (CSV)", csv_mentions,
+            f"brand24_mentions_{project_id}_{since_days}d.csv", "text/csv",
+            use_container_width=True,
+        )
+    else:
+        st.info("Tidak ada mention yang ditemukan untuk periode ini.")
+
+    st.markdown("---")
+
+    # ── Top Authors ───────────────────────────────────────────────
+    if authors:
+        auth_list = authors.get("results", authors if isinstance(authors, list) else [])
+        if auth_list:
+            st.markdown("### 👥 Akun Paling Aktif (Top Authors)")
+            auth_df = pd.DataFrame(auth_list)
+            disp_cols = [c for c in ["name","username","mentions_count","reach","influence","url"] if c in auth_df.columns]
+            st.dataframe(auth_df[disp_cols].head(20), use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+    st.caption(
+        f"Data diambil dari Brand24 API · Account ID: 614604830 · "
+        f"Rentang: {since_days} hari terakhir · "
+        "Dibuat otomatis oleh dashboard riset MBG SNA Indri Anjar K.S."
+    )
