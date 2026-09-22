@@ -501,6 +501,7 @@ def render_submission_checklist_70_points():
         st.link_button("📝 6. Draf Manuskrip IMRaD (.md)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/manuscript/manuscript_jurnal.md", use_container_width=True)
         st.link_button("📜 9. Transkrip Teks Tesis (.txt)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/tesis_text.txt", use_container_width=True)
         st.link_button("📄 PDF JobsMatchAI IPSSJ", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf", use_container_width=True)
+        st.link_button("📜 LoA INOVASI IndoBERT TikTok (#88)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_inovasi_indobert_tiktok_2026.pdf", use_container_width=True)
     st.link_button("📦 Unduh Seluruh Repositori, Kode & Data Riset Sekaligus (.ZIP)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip", use_container_width=True)
 
 
@@ -622,17 +623,61 @@ def render_author_biography():
     # Rekam Jejak Publikasi Jurnal, LoA & Diseminasi Media
     st.subheader("📑 Rekam Jejak Publikasi Ilmiah, LoA Resmi & Liputan Media")
     st.markdown("""
-    *Selain penulisan manuskrip jurnal internasional bereputasi Scopus Q1 (Springer Nature SNAM) dan SINTA 2 (Mediator), peneliti telah resmi memperoleh dua **Letter of Acceptance (LoA)** dari jurnal ilmiah **IPSSJ** (E-ISSN: 3064-4011), mempublikasikan diseminasi resmi di **LinkedIn**, serta diliput oleh **Portal JTV**:*
+    *Selain penulisan manuskrip jurnal internasional bereputasi Scopus Q1 (Springer Nature SNAM) dan SINTA 2 (Mediator), peneliti telah resmi memperoleh tiga **Letter of Acceptance (LoA)** dari jurnal ilmiah **INOVASI** (P-ISSN: 2442-5923 / E-ISSN: 3090-3300) dan **IPSSJ** (E-ISSN: 3064-4011), mempublikasikan diseminasi resmi di **LinkedIn**, serta diliput oleh **Portal JTV**:*
     """)
 
-    # Grid 3 Publikasi, LoA & Diseminasi
-    pub_tab1, pub_tab2, pub_tab3 = st.tabs([
-        "📄 1. LoA Publikasi Tesis MBG (#2009)",
-        "🤖 2. LoA & Artikel JobsMatchAI (#2024)",
-        "📢 3. Diseminasi LinkedIn & Liputan Media JTV"
+    # Grid 4 Publikasi, LoA & Diseminasi
+    pub_tab1, pub_tab2, pub_tab3, pub_tab4 = st.tabs([
+        "📑 1. LoA INOVASI: IndoBERT TikTok (#88)",
+        "📄 2. LoA Publikasi Tesis MBG (#2009)",
+        "🤖 3. LoA & Artikel JobsMatchAI (#2024)",
+        "📢 4. Diseminasi LinkedIn & Liputan Media JTV"
     ])
 
     with pub_tab1:
+        st.markdown("""
+        <div style="background: linear-gradient(135deg, rgba(234, 179, 8, 0.12), rgba(30, 41, 59, 0.7)); border: 1px solid rgba(234, 179, 8, 0.4); border-radius: 12px; padding: 20px; margin-bottom: 16px;">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
+                <span style="background: #ca8a04; color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: bold;">Accepted for Publication</span>
+                <span style="background: rgba(234, 179, 8, 0.2); color: #fde047; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(234, 179, 8, 0.3);">No. Surat: 88 / Nus-INN/LOA/V.12/N.3/12-2026</span>
+                <span style="background: rgba(59, 130, 246, 0.2); color: #93c5fd; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(59, 130, 246, 0.3);">Probolinggo, 21 September 2026</span>
+            </div>
+            <h3 style="margin: 8px 0 6px 0; color: #f8fafc; font-size: 1.22rem;">Reading Emotions Behind TikTok Text: Fine-Tuning IndoBERT for Nine-Class Emotion Classification in the Indonesian Language</h3>
+            <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 10px;">
+                <b>Tim Penulis:</b> Indri Anjar Kartika Sari¹*, Dr. Catur Suratnoaji, M.Si.², Dr. Agus Widiyarta, S.Sos., M.Si.³<br>
+                <b>Afiliasi:</b> Universitas Pembangunan Nasional "Veteran" Jawa Timur<br>
+                <b>Jurnal Penerbit:</b> <i>INOVASI: Jurnal Inovasi Pendidikan</i> | P-ISSN: 2442-5923 | E-ISSN: 3090-3300<br>
+                <b>Edisi Penerbitan:</b> Volume 12, Issue 3, 2026 | <b>Editor-in-Chief:</b> Adiba Maulidiyah, M.Pd.
+            </p>
+            <p style="color: #cbd5e1; font-size: 0.86rem; line-height: 1.5; margin-bottom: 12px;">
+                <b>Fokus Kajian:</b> Fine-tuning model transformer IndoBERT untuk klasifikasi emosi 9 kelas (Plutchik emotions) pada teks media sosial berbasis video TikTok dalam bahasa Indonesia, mengungkap dinamika afektif dan penanda emosional warganet.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        loa_ino_col1, loa_ino_col2 = st.columns([1.2, 1])
+        with loa_ino_col1:
+            loa_ino_img = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_inovasi_indobert_tiktok_2026.png")
+            if os.path.exists(loa_ino_img):
+                st.image(loa_ino_img, caption="Surat Penerimaan Naskah Publikasi Jurnal No. 88 / Nus-INN/LOA/V.12/N.3/12-2026 (INOVASI)", use_container_width=True)
+        with loa_ino_col2:
+            st.markdown("#### 📥 Akses Berkas LoA Resmi:")
+            loa_ino_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_inovasi_indobert_tiktok_2026.pdf")
+            if os.path.exists(loa_ino_pdf):
+                with open(loa_ino_pdf, "rb") as f:
+                    st.download_button(
+                        label="📥 Unduh Berkas PDF LoA INOVASI (#88)",
+                        data=f.read(),
+                        file_name="LoA_INOVASI_88_IndoBERT_TikTok_Indri_Anjar.pdf",
+                        mime="application/pdf",
+                        key="dl_loa_inovasi_profile",
+                        use_container_width=True
+                    )
+            st.link_button("🌐 Buka Portal Resmi INOVASI", "https://journal.nuspublications.or.id/innovasi", use_container_width=True)
+            st.info("💡 Berkas fisik PDF ini juga telah tersimpan secara permanen pada direktori repositori: `docs/assets/loa_inovasi_indobert_tiktok_2026.pdf`.")
+
+
+    with pub_tab2:
         st.markdown("""
         <div style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(30, 41, 59, 0.7)); border: 1px solid rgba(34, 197, 94, 0.4); border-radius: 12px; padding: 20px; margin-bottom: 16px;">
             <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
@@ -673,7 +718,7 @@ def render_author_biography():
             st.link_button("🌐 Buka Portal Resmi OJS IPSSJ", "http://ipssj.com/index.php/ojs", use_container_width=True)
             st.info("💡 Berkas fisik PDF ini juga telah tersimpan secara permanen pada direktori repositori: `docs/assets/loa_ipssj_mbg_2009.pdf`.")
 
-    with pub_tab2:
+    with pub_tab3:
         st.markdown("""
         <div style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(30, 41, 59, 0.7)); border: 1px solid rgba(14, 165, 233, 0.4); border-radius: 12px; padding: 20px; margin-bottom: 16px;">
             <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
@@ -715,7 +760,8 @@ def render_author_biography():
                     )
             st.caption("💡 Salinan digital naskah jurnal juga telah diarsipkan secara lokal di `references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf`.")
 
-    with pub_tab3:
+    with pub_tab4:
+
         st.markdown("""
         <div style="background: linear-gradient(135deg, rgba(10, 102, 194, 0.15), rgba(30, 41, 59, 0.7)); border: 1px solid rgba(10, 102, 194, 0.4); border-radius: 12px; padding: 20px; margin-bottom: 16px;">
             <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
@@ -843,50 +889,6 @@ def render_author_biography():
             )
 
     st.markdown("---")
-    st.subheader("📜 Sertifikat Kompetensi Machine Learning — Kaggle")
-    st.markdown("""
-    **Authentic Verification:** *Kaggle Certificate of Completion — Intro to Machine Learning*  
-    - **Nama Peserta:** Indri anjar kartika sari
-    - **Tanggal Penyelesaian:** 12 September 2026
-    - **Instruktur:** Dan Becker (Kaggle Instructor) & Alexis Cook (Head of Kaggle Learn)
-    - **Kompetensi:** Decision Trees, Random Forests, Validation, Mean Absolute Error (MAE) Optimization.
-    """)
-    kaggle_cert_path = os.path.join(PROJECT_ROOT, "docs", "assets", "kaggle_intro_to_ml_certificate.png")
-    if os.path.exists(kaggle_cert_path):
-        st.image(kaggle_cert_path, caption="Kaggle Certificate: Intro to Machine Learning (12 September 2026)", use_container_width=True)
-        with open(kaggle_cert_path, "rb") as f:
-            st.download_button(
-                label="📥 Unduh Sertifikat Kaggle Machine Learning (.PNG)",
-                data=f.read(),
-                file_name="Kaggle_Intro_to_ML_Indri_Anjar.png",
-                mime="image/png",
-                use_container_width=True
-            )
-
-    st.markdown("---")
-    st.subheader("🌸 Inisiatif Komunitas & Jejak Digital Publik (@ibuibu_digitall)")
-    st.markdown("""
-    Dedikasi pemberdayaan masyarakat melalui literasi teknologi, kecerdasan buatan, dan digital marketing untuk perempuan dan ibu-ibu Indonesia:
-    """)
-    s_col1, s_col2, s_col3, s_col4 = st.columns(4)
-    with s_col1:
-        st.metric("Instagram Followers", "49.000+", "49K Audience", delta_color="normal")
-    with s_col2:
-        st.metric("TikTok Followers", "23.000+", "23K Audience", delta_color="normal")
-    with s_col3:
-        st.metric("YouTube Subscribers", "987", "Organic Growth", delta_color="normal")
-    with s_col4:
-        st.metric("Inisiatif Komunitas", "@ibuibu_digitall", "Pemberdayaan Ibu", delta_color="normal")
-
-    st.info("""
-    🤍 **Filosofi Belajar Berkelanjutan (*Lifelong Learning*):**  
-    *"Sertifikat ini sendiri tidak terlalu penting, tapi merupakan bagian dari upaya yang sama: hadir, belajar, dan berusaha agar tidak tertinggal — terutama sekarang ketika saya bisa membawa sebagian dari itu kembali kepada perempuan dan ibu yang saya bantu melalui @ibuibu_digitall. Masih belajar. Masih membangun."*
-    """)
-    kaggle_post_path = os.path.join(PROJECT_ROOT, "docs", "assets", "indri_kaggle_post.png")
-    if os.path.exists(kaggle_post_path):
-        st.image(kaggle_post_path, caption="Dokumentasi Lifelong Learning & Dampak Pemberdayaan Komunitas @ibuibu_digitall", use_container_width=True)
-
-    st.markdown("---")
     st.subheader("📄 Berkas Dokumen Resume / Curriculum Vitae Resmi")
     cv_full_path = os.path.join(PROJECT_ROOT, "docs", "assets", "indri_anjar_kartikasari_cv.png")
     if os.path.exists(cv_full_path):
@@ -901,6 +903,194 @@ def render_author_biography():
             )
 
 
+def render_international_journal_page():
+    st.markdown("""
+    <div class="hero-banner">
+        <div class="hero-badge">📑 International Journal Article — Scopus Q1 Submission Ready</div>
+        <div class="hero-title">Digital Sarcasm as a Signal of Policy Distrust: Social Network Analysis and Emotion Classification of Indonesia's Free Nutritious Meal Program Discourse on X (Twitter)</div>
+        <div class="hero-subtitle">Penulis: <b>Indri Anjar Kartika Sari</b> | Magister Ilmu Komunikasi UPN 'Veteran' Jawa Timur | Target: <i>Telematics and Informatics</i> (Elsevier, Q1) / <i>New Media & Society</i> (SAGE, Q1)</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Key Manuscript Metrics
+    m1, m2, m3, m4 = st.columns(4)
+    with m1:
+        st.metric("Total Kata Naskah", "12,355 Kata", "Academic English")
+    with m2:
+        st.metric("Estimasi Halaman", "46–48 Halaman", "Standard Double-Spaced")
+    with m3:
+        st.metric("Gambar Ilmiah Tersemat", "11 Gambar", "300 DPI High-Res")
+    with m4:
+        st.metric("Tabel Empiris & Notasi", "7 Tabel + 4 Appendix", "APA 7th Standard")
+
+    st.markdown("---")
+
+    # Action / Download Bar
+    st.markdown("### 📥 Unduh Naskah Lengkap & Berkas Graf Penelitian")
+    d1, d2, d3, d4 = st.columns(4)
+    p_docx = os.path.join(PROJECT_ROOT, "Journal_Paper_Indri_Anjar_MBG_SNA.docx")
+    p_md = os.path.join(PROJECT_ROOT, "journal_paper_mbg_sna.md")
+    p_gexf = os.path.join(PROJECT_ROOT, "results", "mbg_network_official.gexf")
+
+    with d1:
+        if os.path.exists(p_docx):
+            with open(p_docx, "rb") as f_d:
+                st.download_button(
+                    "📑 Unduh Word (.docx, 8.9 MB)",
+                    data=f_d.read(),
+                    file_name="Journal_Paper_Indri_Anjar_MBG_SNA.docx",
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    use_container_width=True
+                )
+        else:
+            st.button("📑 File Word belum siap", disabled=True, use_container_width=True)
+
+    with d2:
+        if os.path.exists(p_md):
+            with open(p_md, "r", encoding="utf-8") as f_m:
+                st.download_button(
+                    "📄 Unduh Markdown (.md)",
+                    data=f_m.read(),
+                    file_name="journal_paper_mbg_sna.md",
+                    mime="text/markdown",
+                    use_container_width=True
+                )
+        else:
+            st.button("📄 File Markdown belum siap", disabled=True, use_container_width=True)
+
+    with d3:
+        if os.path.exists(p_gexf):
+            with open(p_gexf, "rb") as f_g:
+                st.download_button(
+                    "🌐 Unduh Graf Gephi (.gexf)",
+                    data=f_g.read(),
+                    file_name="mbg_network_official.gexf",
+                    mime="application/xml",
+                    use_container_width=True
+                )
+        else:
+            st.button("🌐 File Gephi belum siap", disabled=True, use_container_width=True)
+
+    with d4:
+        st.link_button(
+            "📦 Repositori GitHub Publik",
+            "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA",
+            use_container_width=True
+        )
+
+    st.markdown("---")
+
+    # Interactive Tabs
+    jtab1, jtab2, jtab3, jtab4 = st.tabs([
+        "🔄 Matriks Sebab-Akibat-Solusi",
+        "🤖 Analisis Aktor @grok & Solusi",
+        "🚀 5 Poin Agenda Riset Lanjutan",
+        "📖 Teks Lengkap Naskah Jurnal"
+    ])
+
+    with jtab1:
+        st.subheader("Closed-Loop Governance Matrix: Mengaitkan Akar Masalah Awal dengan Solusi Strategis")
+        st.markdown("""
+        Berdasarkan sintesis antara latar belakang teori di awal (*Section 1 & 2*), hasil analitik komputasional (*Section 4*), 
+        dan rekomendasi tata kelola (*Section 6*), setiap solusi dirancang secara terarah (*closed-loop*) menjawab akar kegagalan di lapangan:
+        """)
+
+        matrix_data = [
+            {
+                "No": "1",
+                "Akar Masalah Awal (Teori)": "The Phygital Gap (Kotler et al., 2023)\nBranding digital mewah bertolak belakang dengan fakta fisik makanan di sekolah.",
+                "Bukti Komputasional (Data)": "ABSA: Kualitas Gizi menghasilkan volume terbesar (1.344 tweet) dengan 71.13% Disgust; leksikal keracunan & basi dominan.",
+                "Dampak Institusional": "Penolakan moral & disonansi kognitif warga; kemarahan orang tua atas bahaya fisik anak.",
+                "Solusi Tata Kelola": "Section 6.3: Alihkan 100% dana PR/influencer ke audit independen higienitas SPPG.\nSection 6.6: Aplikasi ko-monitoring partisipatif oleh wali murid & komite sekolah."
+            },
+            {
+                "No": "2",
+                "Akar Masalah Awal (Teori)": "Politik Simbolik Fiskal (Edelman, 1964)\nPengumuman pemotongan anggaran Rp 67T tanpa kalkulasi teknis transparan.",
+                "Bukti Komputasional (Data)": "ABSA: Budget & Procurement mencatat 77.01% Disgust; asosiasi kata 'triliun' dengan 'bancakan/korupsi'.",
+                "Dampak Institusional": "Angka pemangkasan ditafsirkan sebagai simbol kegagalan kebijakan dan bancakan politik.",
+                "Solusi Tata Kelola": "Section 6.4: Buka API publik machine-readable rincian biaya per porsi (bahan baku, operasional, logistik) secara real-time."
+            },
+            {
+                "No": "3",
+                "Akar Masalah Awal (Teori)": "Vakum Deliberatif (Habermas, 1989)\nKomunikasi monolog satu arah birokrasi dan bantahan defensif dari pusat.",
+                "Bukti Komputasional (Data)": "SNA: Modularity Q = 0.9837 (341 komponen terpisah), Densitas 0.0007, Resiprositas hanya 1.20% (monolog warganet ke @prabowo).",
+                "Dampak Institusional": "Insularitas total; siaran pers satu arah dari Jakarta tidak mampu menembus 340 pulau komunitas warganet.",
+                "Solusi Tata Kelola": "Section 6.2: Bubarkan rilis terpusat; bentuk kader respon cepat regional yang berdialog empatik di kolom balasan warganet."
+            },
+            {
+                "No": "4",
+                "Akar Masalah Awal (Teori)": "Perisai Paralinguistik (Scott, 1985; Camp, 2012)\nAncaman UU ITE memaksa warga menyamarkan kemarahan dalam sarkasme (🤡, 🙃).",
+                "Bukti Komputasional (Data)": "Sarkasme Tipologi 1 mendominasi (pembuka laudatori dibatalkan emoji sindiran); NLP konvensional tertipu membaca 'positif'.",
+                "Dampak Institusional": "Intelijen media pemerintah gagal mendeteksi krisis kepercayaan sejak dini hingga meledak ke aksi fisik.",
+                "Solusi Tata Kelola": "Section 6.5: Integrasikan model Transformer sadar-emoji (IndoBERT) pada dashboard intelijen media sebagai indikator peringatan dini."
+            },
+            {
+                "No": "5",
+                "Akar Masalah Awal (Teori)": "Vakum Epistemik Otoritas Kebenaran\nKeterlambatan verifikasi resmi membuat warga kehilangan kepercayaan pada rujukan fakta.",
+                "Bukti Komputasional (Data)": "SNA Centrality: Akun AI @grok menduduki Peringkat 1 In-Degree (k=42); @prabowo menjadi target keluhan (k=15).",
+                "Dampak Institusional": "Warga menggusur jurnalis dan humas negara, mendelegasikan otoritas kebenaran pada bot AI swasta asing.",
+                "Solusi Tata Kelola": "Section 6.4: Kemitraan grounding algoritmik dengan xAI/OpenAI & peluncuran bot verifikasi resmi BGN (@BGN_VerifikasiBot)."
+            }
+        ]
+        st.dataframe(pd.DataFrame(matrix_data), use_container_width=True, hide_index=True)
+
+    with jtab2:
+        st.subheader("Fenomena Algorithmic Epistemic Displacement: Posisi Sentral Akun @grok")
+        st.info("""
+        Dalam jaringan komunikasi MBG, akun **`@grok` (AI asisten bawaan platform X milik xAI)** meraih **In-Degree = 42** (Tertinggi di seluruh jaringan, mengalahkan akun Presiden `@prabowo` yang meraih In-Degree = 15).
+        Ini membuktikan terjadinya fenomena pergeseran otoritas kebenaran (*Algorithmic Epistemic Displacement*).
+        """)
+
+        gcol1, gcol2 = st.columns(2)
+        with gcol1:
+            st.markdown("#### 🚨 4 Dampak Kritis Akun @grok:")
+            st.markdown("""
+            1. **Disintermediasi Lembaga Cek Fakta Tradisional**: Warga tidak lagi me-mention jurnalis investigasi atau akademisi, melainkan memanggil `@grok` sebagai hakim kebenaran instan.
+            2. **Kerentanan Halusinasi & Black-Box AI**: Respons Grok terdengar objektif dan netral, sehingga kesalahan inferensi atau rumor liar yang diserap Grok langsung dianggap sebagai "fakta ilmiah" oleh warganet.
+            3. **Kehilangan Monopoli Narasi Pemerintah**: Siaran pers panjang dari birokrasi tidak dibaca warga; warga lebih percaya rangkuman 3 kalimat dari Grok.
+            4. **Ketergantungan Kedaulatan Digital pada Swasta Asing**: Logika inferensi dan parameter bot berada di yurisdiksi korporasi asing (xAI) tanpa pengawasan otoritas Indonesia.
+            """)
+        with gcol2:
+            st.markdown("#### 🛡️ 5 Solusi Strategis untuk Pemerintah:")
+            st.markdown("""
+            1. **Open Data Machine-Readable API**: BGN & Kemenkeu menyediakan API terbuka agar data anggaran dan status SPPG terbaca otomatis oleh mesin AI.
+            2. **Algorithmic Grounding**: Kemkomdigi bermitra dengan penyedia LLM agar kueri gizi nasional merujuk ke *Knowledge Graph* resmi negara.
+            3. **Sovereign Counter-Oracle Bot**: Meluncurkan `@BGN_VerifikasiBot` resmi di X dan WhatsApp yang responsif dan berbasis bukti lapangan.
+            4. **Predictive Sentiment Mining**: Memantau topik pertanyaan warga ke Grok sebagai *early warning indicator* 24–48 jam sebelum krisis meledak.
+            5. **Penyempurnaan Titik Sentuh Fisik**: Memastikan makanan di sekolah higienis, hangat, dan bergizi karena keunggulan fisik adalah komunikasi paling kredibel.
+            """)
+
+    with jtab3:
+        st.subheader("5 Poin Agenda Penelitian Lanjutan (Future Research Agenda)")
+        f1, f2 = st.columns(2)
+        with f1:
+            st.markdown("##### 1. Rekalibrasi IndoBERT & Benchmark Terbuka")
+            st.write("Anotasi ulang korpus uji dengan 3 anotator independen (Cohen's Kappa > 0.85, Krippendorff's Alpha > 0.80) untuk mempublikasikan benchmark F1 9 emosi dan deteksi sarkasme terbuka.")
+
+            st.markdown("##### 2. Analisis Komparatif Multimodal (X vs TikTok vs Instagram)")
+            st.write("Mengintegrasikan visi komputer (CLIP/ViT) untuk mengkaji unboxing makanan MBG di TikTok vs kurasi visual di Instagram vs sindiran teks di X.")
+
+            st.markdown("##### 3. Pemodelan Jaringan Temporal (TERGM & SIENA 2025–2029)")
+            st.write("Melacak evolusi struktural longitudinal: apakah atomisasi (Q = 0.9837) menetap permanen atau mengkristal menjadi polarisasi biner dua kubu.")
+
+        with f2:
+            st.markdown("##### 4. Formulasi Digital Public Policy Trust Index (DPPTI)")
+            st.latex(r"\text{DPPTI}_t = w_1 \cdot \left(\frac{\text{Trust}_t}{\text{Trust}_t + \text{Disgust}_t + \epsilon}\right) + w_2 \cdot (1 - Q_t) + w_3 \cdot R_t + w_4 \cdot \text{NetValence}_t")
+            st.write("Metrik komposit terintegrasi berbasis waktu nyata untuk mendeteksi krisis legitimasi institusi sebelum terjadi penolakan fisik.")
+
+            st.markdown("##### 5. Audit Algoritmik & Tata Kelola Epistemik AI")
+            st.write("Eksperimen audit empiris pada LLM komersial (Grok, ChatGPT, Claude, Gemini) untuk mengukur tingkat halusinasi, bias ideologis, dan ketergantungan warga terhadap AI.")
+
+    with jtab4:
+        st.subheader("Teks Lengkap Manuskrip Jurnal Internasional (Scopus Q1)")
+        if os.path.exists(p_md):
+            with open(p_md, "r", encoding="utf-8") as f_full:
+                full_text = f_full.read()
+            st.markdown(full_text)
+        else:
+            st.warning("Berkas journal_paper_mbg_sna.md belum ditemukan di repositori.")
+
+
 # Sidebar Navigation
 st.sidebar.title("🧭 Navigasi Manuskrip Tesis")
 st.sidebar.markdown("**Alur Pembacaan Berurutan (Bab I – Bab V):**")
@@ -911,6 +1101,7 @@ menu_options = [
     "3️⃣ Bab III: Metodologi & Pipeline Komputasional",
     "4️⃣ Bab IV: Hasil & Pembahasan (Empiris Terintegrasi)",
     "5️⃣ Bab V: Kesimpulan & Rekomendasi Kebijakan BGN",
+    "📑 Naskah Jurnal Internasional (Scopus Q1 Ready)",
     "🖼️ Galeri Visual Storytelling (10 Master Plot Tesis)",
     "📚 Audit Integritas Data & Referensi Scopus",
     "🎯 Checklist Submit Scopus Q1 (70 Poin)",
@@ -928,8 +1119,33 @@ st.sidebar.info(
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("### 🌐 Akses Publik & Unduhan")
+
+# Direct journal download buttons in sidebar
+p_docx_side = os.path.join(PROJECT_ROOT, "Journal_Paper_Indri_Anjar_MBG_SNA.docx")
+if os.path.exists(p_docx_side):
+    with open(p_docx_side, "rb") as f_side_docx:
+        st.sidebar.download_button(
+            "📑 Unduh Naskah Jurnal (.docx)",
+            data=f_side_docx.read(),
+            file_name="Journal_Paper_Indri_Anjar_MBG_SNA.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            use_container_width=True
+        )
+
+p_gexf_side = os.path.join(PROJECT_ROOT, "results", "mbg_network_official.gexf")
+if os.path.exists(p_gexf_side):
+    with open(p_gexf_side, "rb") as f_side_gexf:
+        st.sidebar.download_button(
+            "🌐 Unduh Graf Gephi (.gexf)",
+            data=f_side_gexf.read(),
+            file_name="mbg_network_official.gexf",
+            mime="application/xml",
+            use_container_width=True
+        )
+
 st.sidebar.markdown("📦 [Repositori GitHub Publik](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)")
 st.sidebar.markdown("⚡ [Unduh Semua Kode & Data (.ZIP)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)")
+st.sidebar.markdown("📜 [LoA INOVASI IndoBERT TikTok (#88)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_inovasi_indobert_tiktok_2026.pdf)")
 st.sidebar.markdown("📜 [LoA IPSSJ Tesis MBG (#2009)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_mbg_2009.pdf)")
 st.sidebar.markdown("📜 [LoA IPSSJ JobsMatchAI (#2024)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_jobsmatchai_2024.pdf)")
 
@@ -1119,14 +1335,24 @@ if "Bab I" in page or page == "🏠 Beranda":
     **Riset ini telah meraih dampak publikasi ganda (liputan media publik & penerimaan jurnal ilmiah resmi):**
     - 📺 **Portal JTV** — *"Lebih dari 37 persen percakapan MBG di X bernada sindiran"*, Sep. 2026
     - 📰 **Netral News** — *"Riset UPN Jatim: 37 persen percakapan MBG di X bernada sindiran"*, Sep. 2026
+    - 📄 **Jurnal Ilmiah INOVASI (LoA #88)** — *Reading Emotions Behind TikTok Text: Fine-Tuning IndoBERT for Nine-Class Emotion Classification in the Indonesian Language*, Vol. 12 Iss. 3, 2026 (Indri Anjar Kartika Sari, Dr. Catur Suratnoaji, M.Si., Dr. Agus Widiyarta, S.Sos., M.Si.)
     - 📄 **Jurnal Ilmiah IPSSJ (LoA #2009)** — *Analisis Jaringan Sosial Triliunan Rupiah Makan Bergizi Gratis Di Media Sosial X*, Vol. 3 No. 9, 2026 (Indri Anjar Kartika Sari, Dr. Catur Suratnoaji, M.Si., Dr. Agus Widiyarta, S.Sos., M.Si.)
     - 🤖 **Jurnal Ilmiah IPSSJ (LoA #2024)** — *JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia*, Vol. 3 No. 9, 2026, pp. 333–340 (Indri Anjar Kartika Sari)
     """)
 
-    with st.expander("📜 Buka & Tinjau Surat Penerimaan Naskah Resmi (Letter of Acceptance / LoA IPSSJ)", expanded=False):
-        exp_col1, exp_col2 = st.columns(2)
+    with st.expander("📜 Buka & Tinjau Surat Penerimaan Naskah Resmi (Letter of Acceptance / LoA Jurnal)", expanded=False):
+        exp_col1, exp_col2, exp_col3 = st.columns(3)
         with exp_col1:
-            st.markdown("##### 📄 LoA Tesis MBG (No. 2009/IPSSJ/I/2026)")
+            st.markdown("##### 📄 LoA INOVASI IndoBERT (#88)")
+            loa0_p = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_inovasi_indobert_tiktok_2026.png")
+            if os.path.exists(loa0_p):
+                st.image(loa0_p, caption="LoA IndoBERT TikTok (21 September 2026)", use_container_width=True)
+            loa0_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_inovasi_indobert_tiktok_2026.pdf")
+            if os.path.exists(loa0_pdf):
+                with open(loa0_pdf, "rb") as f:
+                    st.download_button("📥 Unduh LoA INOVASI (.PDF)", f.read(), "LoA_INOVASI_88_IndoBERT_TikTok.pdf", "application/pdf", key="dl_loa_inovasi_home", use_container_width=True)
+        with exp_col2:
+            st.markdown("##### 📄 LoA Tesis MBG (#2009)")
             loa1_p = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_mbg_2009.png")
             if os.path.exists(loa1_p):
                 st.image(loa1_p, caption="LoA Riset MBG X (15 September 2026)", use_container_width=True)
@@ -1134,8 +1360,8 @@ if "Bab I" in page or page == "🏠 Beranda":
             if os.path.exists(loa1_pdf):
                 with open(loa1_pdf, "rb") as f:
                     st.download_button("📥 Unduh LoA MBG (.PDF)", f.read(), "LoA_IPSSJ_2009_MBG.pdf", "application/pdf", key="dl_loa_mbg_home", use_container_width=True)
-        with exp_col2:
-            st.markdown("##### 🤖 LoA JobsMatchAI (No. 2024/IPSSJ/I/2026)")
+        with exp_col3:
+            st.markdown("##### 🤖 LoA JobsMatchAI (#2024)")
             loa2_p = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_jobsmatchai_2024.png")
             if os.path.exists(loa2_p):
                 st.image(loa2_p, caption="LoA JobsMatchAI (17 September 2026)", use_container_width=True)
@@ -1143,6 +1369,7 @@ if "Bab I" in page or page == "🏠 Beranda":
             if os.path.exists(loa2_pdf):
                 with open(loa2_pdf, "rb") as f:
                     st.download_button("📥 Unduh LoA JobsMatchAI (.PDF)", f.read(), "LoA_IPSSJ_2024_JobsMatchAI.pdf", "application/pdf", key="dl_loa_job_home", use_container_width=True)
+
     
     st.info("""
     ### 🔬 Pendekatan Pengukuran Berlapis (Multi-Layer Measurement)
@@ -1488,10 +1715,8 @@ if "Bab I" in page or page == "🏠 Beranda":
         df_audit_deg = pd.read_csv(path_deg).head(8) if os.path.exists(path_deg) else None
         
         # 4. ABSA Data
-        path_absa = "results/absa_results.csv"
-        if not os.path.exists(path_absa):
-            path_absa = "../results/absa_results.csv"
-        df_audit_absa = pd.read_csv(path_absa) if os.path.exists(path_absa) else None
+        path_absa = get_result_path("absa_results.csv")
+        df_audit_absa = pd.read_csv(path_absa) if (path_absa and os.path.exists(path_absa)) else None
 
         # Row 1 of Verification Charts
         vrow1_c1, vrow1_c2 = st.columns(2)
@@ -2455,10 +2680,8 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
             df_audit_deg = pd.read_csv(path_deg).head(8) if os.path.exists(path_deg) else None
             
             # 4. ABSA Data
-            path_absa = "results/absa_results.csv"
-            if not os.path.exists(path_absa):
-                path_absa = "../results/absa_results.csv"
-            df_audit_absa = pd.read_csv(path_absa) if os.path.exists(path_absa) else None
+            path_absa = get_result_path("absa_results.csv")
+            df_audit_absa = pd.read_csv(path_absa) if (path_absa and os.path.exists(path_absa)) else None
 
             # Row 1 of Verification Charts
             vrow1_c1, vrow1_c2 = st.columns(2)
@@ -4200,10 +4423,6 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
 
         # 1. Load Data ABSA
         path_absa_file = get_result_path("absa_results.csv")
-        if not os.path.exists(path_absa_file):
-            path_absa_file = "results/absa_results.csv"
-        if not os.path.exists(path_absa_file):
-            path_absa_file = "../results/absa_results.csv"
             
         if os.path.exists(path_absa_file):
             df_absa_data = pd.read_csv(path_absa_file)
@@ -5781,8 +6000,13 @@ elif "Audit Integritas Data" in page:
     - 🌐 **Deploy Publik Dashboard (24/7 Gratis):** Hubungkan repositori GitHub ini ke [share.streamlit.io](https://share.streamlit.io/) dengan path `dashboard/app.py` agar dosen penguji dan masyarakat umum dapat mengakses dashboard interaktif secara online.
     """)
 
+elif "Naskah Jurnal" in page:
+    render_international_journal_page()
+
 elif "Checklist Submit" in page:
     render_submission_checklist_70_points()
 
 elif "Profil Peneliti" in page:
     render_author_biography()
+
+

@@ -78,6 +78,21 @@ Pada draf manuskrip jurnal SINTA 2 ([`manuscript/Mediator_Manuskrip_Indri_Anjar_
 
 Selain riset tesis komputasional MBG ini, berikut adalah artikel ilmiah terbitan jurnal *peer-reviewed* yang telah dipublikasikan oleh penulis:
 
+- **Judul Artikel:** *Reading Emotions Behind TikTok Text: Fine-Tuning IndoBERT for Nine-Class Emotion Classification in the Indonesian Language*
+- **Penulis:** Indri Anjar Kartika Sari, Catur Suratnoaji, Agus Widiyarta
+- **Afiliasi:** Universitas Pembangunan Nasional "Veteran" Jawa Timur
+- **Nama Jurnal:** *INOVASI: Jurnal Inovasi Pendidikan*
+- **P-ISSN:** 2442-5923 | **E-ISSN:** 3090-3300
+- **Volume & Nomor:** Volume 12, Issue 3, 2026
+- **Status Publikasi:** Accepted for Publication (*Letter of Acceptance* Ref No: `88 / Nus-INN/LOA/V.12/N.3/12-2026`, tanggal 21 September 2026)
+- **Penerbit:** Nus Publications, Probolinggo
+- **Tautan Resmi Jurnal:** [https://journal.nuspublications.or.id/innovasi](https://journal.nuspublications.or.id/innovasi)
+- **Berkas Fisik LoA di Repositori:** [`docs/assets/loa_inovasi_indobert_tiktok_2026.pdf`](file:///Users/jevin/Documents/tesis_mbg/docs/assets/loa_inovasi_indobert_tiktok_2026.pdf)
+- **Sitasi Baku (APA 7th):**  
+  > Sari, I. A. K., Suratnoaji, C., & Widiyarta, A. (2026). Reading emotions behind TikTok text: Fine-tuning IndoBERT for nine-class emotion classification in the Indonesian language. *INOVASI: Jurnal Inovasi Pendidikan*, *12*(3). https://journal.nuspublications.or.id/innovasi
+
+<br/>
+
 - **Judul Artikel:** *JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia*
 - **Penulis:** Indri Anjar Kartika Sari
 - **Afiliasi:** Job Connector Bootcamp AI Engineering (JCAI) Program, Purwadhika Digital Technology School, Surabaya, Indonesia

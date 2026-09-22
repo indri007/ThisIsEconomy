@@ -1,0 +1,7 @@
+Community_Id,Nama_Wacana,Jumlah_Aktor,Persentase_Populasi,Emosi_Dominan,Top_Aktor,Distribusi_Emosi_JSON
+15,"Klaster Elit & Target Otoritas (@prabowo, @regar_op0sisi)",46,4.74,disgust,"@prabowo, @regar_op0sisi, @daffiriffi","{""disgust"": 27, ""neutral"": 19}"
+61,Klaster AI Fact-Checking Oracle (@grok),43,4.43,neutral,"@grok, @unmagnetism, @JuanJulianto2","{""neutral"": 36, ""disgust"": 7}"
+16,"Klaster Diskursus Kritis Warganet (@4Y4NKZ, @newIding30)",18,1.85,neutral,"@4Y4NKZ, @newIding30, @Capitalisborju","{""neutral"": 15, ""disgust"": 3}"
+259,"Klaster Percakapan Solidaritas Publik (@dbdbidip, @greeniefloo)",14,1.44,neutral,"@dbdbidip, @greeniefloo, @renregalia","{""neutral"": 13, ""disgust"": 1}"
+8,Klaster Komunikasi Internasional / Akun Global (@Casagrande10939),11,1.13,neutral,"@Casagrande10939, @SauloLinsFreir1, @misteriouspavao","{""neutral"": 10, ""disgust"": 1}"
+264,"Klaster Diskusi Sosial Interaktif (@luvdysh_, @helloyosh_)",10,1.03,neutral,"@luvdysh_, @helloyosh_, @ayiurswoo","{""neutral"": 9, ""disgust"": 1}"

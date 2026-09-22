@@ -76,6 +76,10 @@ print(f"Rasio Isolasi Komunitas         : {internal_pct:.2f}% (Tingkat Kedap Per
 fokus_map = {
     15: "Klaster Elit & Target Otoritas (@prabowo, @regar_op0sisi)",
     61: "Klaster AI Fact-Checking Oracle (@grok)",
+    16: "Klaster Diskursus Kritis Warganet (@4Y4NKZ, @newIding30)",
+    259: "Klaster Percakapan Solidaritas Publik (@dbdbidip, @greeniefloo)",
+    8: "Klaster Komunikasi Internasional / Akun Global (@Casagrande10939)",
+    264: "Klaster Diskusi Sosial Interaktif (@luvdysh_, @helloyosh_)",
     27: "Klaster Pengawasan Anggaran & Fiskal APBN",
     32: "Klaster Keluhan Logistik Fisik & Keracunan Menu",
     45: "Klaster Sosialisasi & Dukungan Kebijakan",
@@ -94,9 +98,9 @@ for cid in top_comm_ids:
     emo_counts = c_df['Dominant_Emotion'].value_counts().to_dict()
     dominant_emo = c_df['Dominant_Emotion'].mode()[0] if not c_df.empty else 'neutral'
     
-    # Top akun di klaster ini
+    # Top akun di klaster ini (format aman @username)
     top_accs = c_df.sort_values(by='Degree', ascending=False)['Label'].head(3).tolist()
-    top_accs_str = ", ".join(['@' + str(a) for a in top_accs])
+    top_accs_str = ", ".join([str(a) if str(a).startswith('@') else '@' + str(a) for a in top_accs])
     
     comm_summary.append({
         'Community_Id': int(cid),
@@ -113,7 +117,10 @@ for cs in comm_summary:
     print(f"• Klaster #{cs['Community_Id']:>2} ({cs['Jumlah_Aktor']:>2} aktor, {cs['Persentase_Populasi']:>5.2f}%): {cs['Nama_Wacana']}")
     print(f"  Emosi Dominan : {cs['Emosi_Dominan'].upper()} | Top Aktor: {cs['Top_Aktor']}")
 
-# Simpan CSV & JSON
+# Pastikan direktori output tersedia
+os.makedirs(os.path.join(base_dir, "results"), exist_ok=True)
+
+# 1. Simpan JSON (kompatibel penuh dengan pipeline visualisasi & dashboard)
 out_json = os.path.join(base_dir, "results", "community_echo_chambers.json")
 with open(out_json, "w", encoding="utf-8") as f:
     json.dump({
@@ -127,18 +134,41 @@ with open(out_json, "w", encoding="utf-8") as f:
         'top_communities': comm_summary
     }, f, indent=2, ensure_ascii=False)
 
+# 2. Simpan CSV Tabular
+out_csv = os.path.join(base_dir, "results", "community_echo_chambers.csv")
+df_export = pd.DataFrame([
+    {
+        'Community_Id': cs['Community_Id'],
+        'Nama_Wacana': cs['Nama_Wacana'],
+        'Jumlah_Aktor': cs['Jumlah_Aktor'],
+        'Persentase_Populasi': cs['Persentase_Populasi'],
+        'Emosi_Dominan': cs['Emosi_Dominan'],
+        'Top_Aktor': cs['Top_Aktor'],
+        'Distribusi_Emosi_JSON': json.dumps(cs['Distribusi_Emosi'], ensure_ascii=False)
+    }
+    for cs in comm_summary
+])
+df_export.to_csv(out_csv, index=False, encoding="utf-8")
+
+# 3. Simpan Laporan Markdown Akademik
 out_md = os.path.join(base_dir, "results", "community_echo_chambers_report.md")
 with open(out_md, "w", encoding="utf-8") as f:
     f.write("# Laporan Analisis Dimensi 3: Partisi Komunitas & Deteksi Ruang Gema (SNA MBG)\n\n")
-    f.write(f"- **Algoritma Klasterisasi:** Louvain Modularity Optimization (Blondel dkk., 2008)\n")
-    f.write(f"- **Skor Modularitas ($Q$):** **{modularity_q:.4f}** (Ambang Batas Polarisasi $Q > 0,30$)\n")
-    f.write(f"- **Total Komunitas Terbentuk:** {num_communities} kelompok wacana independen\n")
-    f.write(f"- **Tepi Internal (Dalam Kelompok):** {internal_edges} ({internal_pct:.2f}%)\n")
-    f.write(f"- **Tepi Eksternal (Lintas Kelompok):** {external_edges} ({external_pct:.2f}%)\n\n")
-    f.write("### Tabel Ringkasan Komunitas Utama & Karakteristik Afektif\n\n")
-    f.write("| Klaster | Label Tema Wacana | Aktor (|V|) | Emosi Dominan | Tokoh Kunci |\n")
-    f.write("| :---: | :--- | :---: | :---: | :--- |\n")
-    for cs in comm_summary:
-        f.write(f"| **#{cs['Community_Id']}** | {cs['Nama_Wacana']} | {cs['Jumlah_Aktor']} ({cs['Persentase_Populasi']}%) | **{cs['Emosi_Dominan'].upper()}** | {cs['Top_Aktor']} |\n")
+    f.write("## 1. Parameter Topologi & Isolasi Struktural (Echo Chamber Metrics)\n\n")
+    f.write(f"- **Algoritma Partisi:** Louvain Modularity Optimization (Blondel dkk., 2008)\n")
+    f.write(f"- **Skor Modularitas ($Q$):** **{modularity_q:.4f}** (Ambang Batas Polarisasi Ekstrem $Q > 0,30$; Newman, 2006)\n")
+    f.write(f"- **Total Komunitas Terbentuk:** **{num_communities}** kelompok wacana independen\n")
+    f.write(f"- **Total Relasi Komunikasi (|E|):** **{total_edges}** interaksi terarah\n")
+    f.write(f"- **Tepi Internal (Dalam Komunitas / Ruang Gema):** **{internal_edges}** relasi (**{internal_pct:.2f}%**)\n")
+    f.write(f"- **Tepi Lintas-Batas (Penghubung Antar-Komunitas):** **{external_edges}** relasi (**{external_pct:.2f}%**)\n")
+    f.write(f"- **Tingkat Kedap Ruang Gema (*Echo Chamber Ratio*):** **{internal_pct:.2f}%** (Menunjukkan fragmentasi komunikasi parah tanpa adanya jembatan dialog publik antar-kelompok)\n\n")
+    f.write("## 2. Tabel Ringkasan Komunitas Utama & Karakteristik Afektif\n\n")
+    f.write("| No | Klaster | Label Tema Wacana | Aktor (|V|) | Emosi Dominan | Tokoh Kunci |\n")
+    f.write("| :-: | :---: | :--- | :---: | :---: | :--- |\n")
+    for idx, cs in enumerate(comm_summary, 1):
+        f.write(f"| {idx} | **#{cs['Community_Id']}** | {cs['Nama_Wacana']} | {cs['Jumlah_Aktor']} ({cs['Persentase_Populasi']}%) | **{cs['Emosi_Dominan'].upper()}** | {cs['Top_Aktor']} |\n")
+    f.write("\n---\n\n")
+    f.write("*Catatan Metodologis:* Data dihitung dari korpus resmi relasi interaksi media sosial X (|V|=971 aktor, |E|=692 relasi terarah) yang dipartisi menggunakan optimasi modularitas Louvain standar NodeXL Pro & NetworkX.\n")
 
-print(f"\nHasil Dimensi 3 tersimpan:\n1. {out_json}\n2. {out_md}")
+print(f"\nHasil Dimensi 3 tersimpan:\n1. {out_json}\n2. {out_csv}\n3. {out_md}")
+

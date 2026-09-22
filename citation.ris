@@ -23,4 +23,30 @@ KW  - Platform X
 KW  - ASJC 3315 Communication
 KW  - ASJC 1702 Artificial Intelligence
 AB  - An integrated tri-layer computational communication science study investigating the digital crisis surrounding Indonesia's Free Nutritious Meal (Makan Bergizi Gratis / MBG) program on Platform X. Combines fine-tuned IndoBERT (9 Plutchik emotions), semiotic sarcasm detection, directed Communication Network Analysis (CNA/SNA via NetworkX and Louvain community detection, Q=0.9837), and Aspect-Based Sentiment Analysis (ABSA) demonstrating the Phygital Gap.
+
+TY  - JOUR
+AU  - Sari, Indri Anjar Kartika
+AU  - Suratnoaji, Catur
+AU  - Widiyarta, Agus
+TI  - Reading Emotions Behind TikTok Text: Fine-Tuning IndoBERT for Nine-Class Emotion Classification in the Indonesian Language
+T2  - INOVASI: Jurnal Inovasi Pendidikan
+VL  - 12
+IS  - 3
+PY  - 2026
+DA  - 2026/09/21/
+SN  - 2442-5923
+SN  - 3090-3300
+PB  - Nus Publications
+CY  - Probolinggo, Indonesia
+UR  - https://journal.nuspublications.or.id/innovasi
+KW  - IndoBERT
+KW  - Emotion Classification
+KW  - Nine-Class Emotion
+KW  - TikTok Text
+KW  - Natural Language Processing
+KW  - Indonesian Language
+KW  - Deep Learning
+KW  - Transformers
+AB  - Fine-tuning IndoBERT for nine-class emotion classification on Indonesian language text extracted from TikTok, decoding emotion representations and linguistic markers behind user generated content.
+M1  - Reference No: 88 / Nus-INN/LOA/V.12/N.3/12-2026
 ER  - 

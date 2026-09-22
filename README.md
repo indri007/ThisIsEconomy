@@ -1387,7 +1387,6 @@ Profesional yang *hasil-oriented*, bertransisi ke bidang **AI Engineering** sete
 - **Purwadhika Digital Technology School — AI Engineering:** Lulusan program *Job Connector Bootcamp* (No. Sertifikat: `202602009256`, 02.02.2026 – 30.07.2026). Fokus: *Data science foundation, machine learning, deep learning, neural networks, Transformer NLP, fine-tuning LLM & RAG, Computer Vision, MLOps cloud deployment*.
 - **Purwadhika Digital Technology School — Full Stack Software Development:** JavaScript, OOP, algoritma & struktur data, React.js, Node.js, REST API, Docker, CI/CD cloud deployment.
 - **Purwadhika Digital Technology School — Digital Marketing (2024 · 12 minggu):** Business model canvas, branding & content, SEO/SEM (GEO), paid media, digital marketing analytics.
-- **Kaggle (Google LLC) — Intro to Machine Learning:** Diselesaikan pada 12 September 2026 (Instruktur: Dan Becker & Alexis Cook). Fondasi *Decision Trees, Random Forests, Validation, MAE Optimization*.
 
 ---
 
@@ -1420,15 +1419,6 @@ Riset tesis MBG ini telah diseminasi secara resmi oleh peneliti ke jejaring akad
   - Artikel 1: [Riset Komputasional Sentimen MBG di Media Sosial X](https://lnkd.in/g-2Tgsha)
   - Artikel 2: [Analisis IndoBERT & Social Network Analysis Wacana Publik](https://lnkd.in/gaZc9Y_J)
 > *"Our research found that more than 37% of MBG-related conversations on X contained a sarcastic or satirical tone—a finding that raises an important question: What lies behind these digital expressions? ... Sometimes, the most interesting story is not what people say—but how they say it."* — **Indri Anjar Kartika Sari**
-
----
-
-### 🌸 Pemberdayaan Komunitas Digital & Jejak Audiens Publik (`@ibuibu_digitall`)
-Selain aktivitas riset komputasi dan rekayasa kecerdasan buatan (*AI engineering*), Indri aktif membagikan literasi teknologi dan AI kepada komunitas perempuan serta ibu-ibu Indonesia melalui inisiatif sosial **@ibuibu_digitall**:
-- 📱 **Instagram:** 49.000+ Followers (`49K`)
-- 🎵 **TikTok:** 23.000+ Followers (`23K`)
-- 🎥 **YouTube:** 987 Subscribers
-- 🤍 **Filosofi Belajar:** *"Hadir, belajar, dan berusaha agar tidak tertinggal — membawa kembali manfaat teknologi kecerdasan buatan kepada perempuan dan ibu-ibu Indonesia melalui @ibuibu_digitall."*
 
 ---
 
@@ -1487,6 +1477,7 @@ Riset ini ditopang oleh **33 rujukan ilmiah bereputasi** yang diklasifikasikan k
 
 | | Reference |
 |:---:|---|
+| 📄 | **Sari, I. A. K., Suratnoaji, C., & Widiyarta, A.** (2026). Reading Emotions Behind TikTok Text: Fine-Tuning IndoBERT for Nine-Class Emotion Classification in the Indonesian Language. *INOVASI: Jurnal Inovasi Pendidikan, 12*(3). [[📜 Unduh LoA Resmi #88]](docs/assets/loa_inovasi_indobert_tiktok_2026.pdf) [[🌐 Laman Penerbit]](https://journal.nuspublications.or.id/innovasi) |
 | 📄 | **Sari, I. A. K., Suratnoaji, C., & Widiyarta, A.** (2026). Analisis jaringan sosial dalam isu percakapan MBG di media sosial X. *IPSSJ, 3*(9), 248–257. [[📜 Unduh LoA Resmi #2009]](docs/assets/loa_ipssj_mbg_2009.pdf) |
 | 📄 | **Sari, I. A. K.** (2026). JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia. *Integrative Perspectives of Social and Science Journal (IPSSJ)*, 3(09 September), 333–340. [[🌐 Laman OJS]](https://ipssj.com/index.php/ojs/article/view/2024) [[📥 Unduh PDF]](https://ipssj.com/index.php/ojs/article/download/2024/1868) [[📄 PDF Lokal]](references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf) [[📜 Unduh LoA Resmi #2024]](docs/assets/loa_ipssj_jobsmatchai_2024.pdf) |
 | 📺 | Portal **JTV** (2026). *"Lebih dari 37 persen percakapan MBG di X bernada sindiran"* |
@@ -1501,19 +1492,35 @@ Riset ini ditopang oleh **33 rujukan ilmiah bereputasi** yang diklasifikasikan k
 Repositori ini menyediakan metadata sitasi terstandarisasi untuk perangkat lunak manajemen bibliografi:
 - **GitHub Citation:** Otomatis melalui tombol **`Cite this repository`** di pojok kanan atas halaman.
 - **Mendeley / Zotero / EndNote:** [`📥 Unduh File citation.ris`](citation.ris)
+- **BibTeX Database:** [`📥 Unduh File citation.bib`](citation.bib)
 - **DataCite / CFF Standard:** [`📥 Unduh File CITATION.cff`](CITATION.cff)
 
 ```bibtex
+@article{sari2026readingemotions,
+  author    = {Sari, Indri Anjar Kartika and Suratnoaji, Catur and Widiyarta, Agus},
+  title     = {Reading Emotions Behind {TikTok} Text: Fine-Tuning {IndoBERT} for Nine-Class Emotion Classification in the {Indonesian} Language},
+  journal   = {INOVASI: Jurnal Inovasi Pendidikan},
+  volume    = {12},
+  number    = {3},
+  year      = {2026},
+  issn      = {2442-5923},
+  eissn     = {3090-3300},
+  publisher = {Nus Publications},
+  url       = {https://journal.nuspublications.or.id/innovasi},
+  note      = {Accepted for Publication, LoA Ref: 88 / Nus-INN/LOA/V.12/N.3/12-2026}
+}
+
 @mastersthesis{sari2026mbg,
   author  = {Sari, I. A. K. and Suratnoaji, C. and Widiyarta, A.},
   title   = {Communication Network Analysis of Sarcasm in MBG Discourse:
              Decoding Emotion Behind the Network},
-  school  = {Universitas Pembangunan Nasional Veteran Jawa Timur},
+  school  = {Universitas Pembangunan Nasional "Veteran" Jawa Timur},
   year    = {2026},
   type    = {Master's Thesis in Communication Science},
   note    = {CNA · IndoBERT · 9-Emotion Classification · Phygital Gap · Platform X}
 }
 ```
+
 
 ---
 
