@@ -1,3 +1,18 @@
+# Environment & Secrets (CRITICAL: DO NOT COMMIT TO GITHUB)
+.env
+.env.*
+*.env
+*.pem
+*.key
+cookies.json
+secrets.toml
+.streamlit/secrets.toml
+
+# Logs & Temporary
+*.log
+/tmp/
+
+# Cache & Models
 __pycache__/
 *.pyc
 .ipynb_checkpoints/

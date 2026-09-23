@@ -1,0 +1,22 @@
+# Credentials & Secrets (JANGAN SAMPAI KE GITHUB)
+.env
+.env.*
+cookies.json
+.streamlit/secrets.toml
+
+# Data Output
+*.csv
+!sample_tweets.csv
+*.jsonl
+*.xlsx
+
+# Python & Environment
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+
+# macOS
+.DS_Store

@@ -1,0 +1,101 @@
+{
+  "timestamp": "2026-09-22T21:54:04.643790",
+  "source_file": "/Users/jevin/Documents/tesis_mbg/data/sarcasm/dataset_sindiran_valid.csv",
+  "total_tweets": 3395,
+  "ews": {
+    "score": 66.9,
+    "status": "🟠 BAHAYA — RESPONS CEPAT DIPERLUKAN",
+    "action": "Siapkan pernyataan resmi. Pantau perkembangan setiap 6 jam.",
+    "breakdown": {
+      "A_crisis_keywords": 30,
+      "B_sarcasm_emojis": 20,
+      "C_neg_sentiment": 15.0,
+      "D_sarcasm_rate": 1.9
+    },
+    "rates": {
+      "kw_weighted_rate_pct": 34.23,
+      "emoji_rate_pct": 35.08,
+      "neg_sentiment_pct": 50.0,
+      "sarcasm_pct": 9.3
+    }
+  },
+  "crisis_keywords": {
+    "tier1": {
+      "keracunan": 73,
+      "dirawat": 3,
+      "pingsan": 3,
+      "masuk rs": 2,
+      "mati": 82,
+      "meninggal": 8,
+      "ambulans": 4,
+      "rumah sakit": 10
+    },
+    "tier2": {
+      "basi": 14,
+      "busuk": 7,
+      "belatung": 5,
+      "ulat": 17,
+      "kotor": 2,
+      "menjijikkan": 1,
+      "korupsi": 36,
+      "dihentikan": 7,
+      "ditutup": 6,
+      "dibekukan": 2,
+      "sppg": 133
+    },
+    "tier3": {
+      "kecewa": 8,
+      "malu": 19,
+      "gagal": 12,
+      "bohong": 3,
+      "janji": 10,
+      "tidak sesuai": 6,
+      "kurang": 84,
+      "tidak layak": 3,
+      "tidak bergizi": 2
+    }
+  },
+  "emoji_analysis": {
+    "sarcasm": {
+      "🤡": 17,
+      "🙃": 22,
+      "🤮": 9,
+      "🤢": 7,
+      "😒": 18,
+      "😑": 4,
+      "😤": 13,
+      "🤬": 12,
+      "💀": 17,
+      "☠️": 6,
+      "🚮": 1,
+      "👎": 3,
+      "🤦": 9,
+      "😅": 67,
+      "🙄": 20
+    },
+    "fake_positive": {
+      "😍": 62,
+      "🥰": 95,
+      "👍": 58,
+      "🎉": 26,
+      "✨": 270,
+      "🌟": 21,
+      "❤️": 129,
+      "🥺": 49,
+      "😊": 31
+    }
+  },
+  "sentiment": {
+    "available": false
+  },
+  "sarcasm": {
+    "available": true,
+    "total": 3395,
+    "sarcasm_count": 315,
+    "sarcasm_pct": 9.3,
+    "top_labels": {
+      "false": 3080,
+      "true": 315
+    }
+  }
+}
