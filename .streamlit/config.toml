@@ -1,2 +1,11 @@
 [server]
+<<<<<<< HEAD
 port = 8502
+=======
+port = 8501
+address = "0.0.0.0"
+headless = true
+
+[browser]
+serverPort = 8501
+>>>>>>> origin/old-version

@@ -81,12 +81,12 @@ giant_ratio = (giant_size / num_nodes) * 100
 try:
     diameter_giant = nx.diameter(giant_subgraph_undir)
 except Exception:
-    diameter_giant = 4
+    diameter_giant = None
 
 try:
     avg_path_len_giant = nx.average_shortest_path_length(giant_subgraph_undir)
 except Exception:
-    avg_path_len_giant = 2.12
+    avg_path_len_giant = None
 
 # Clustering Coefficient & Transitivity
 avg_clustering = nx.average_clustering(G_undir)
@@ -161,14 +161,14 @@ print(f"2. Resiprositas Minimalis (Reciprocity = {reciprocity_val*100:.2f}%):")
 print("   Komunikasi didominasi pola asimetris (satu arah). Aktor publik dan institusi pemerintah (@prabowo)")
 print("   tidak merespons balik mention dari warganet, mempertegas status mereka sebagai 'Target Sink'.")
 print(f"3. Modularitas Ekstrem Tinggi (Q = {modularity_q:.4f}):")
-print("   Nilai Q mendekati 1,0 membuktikan tingkat fragmentasi dan polarisasi yang absolut.")
-print("   Diskursus terbelah menjadi pulau-pulau echo chamber independen tanpa interkoneksi lintas batas.")
+print("   Nilai Q yang tinggi menunjukkan struktur komunitas yang kuat; Q tidak dengan sendirinya membuktikan polarisasi atau echo chamber.")
+print("   Struktur komunitas menunjukkan segmentasi yang kuat dalam jaringan yang dianalisis.")
 print(f"4. Asortativitas Negatif (r = {degree_assortativity:.4f}):")
 print("   Jaringan bersifat 'disassortative'. Simpul berderajat rendah (akun warga biasa) cenderung terhubung")
-print("   langsung ke simpul berderajat sangat tinggi (hub seperti @grok dan @prabowo), bukan ke sesama akun biasa.")
+print("   dengan simpul berderajat tinggi; statistik assortativitas saja tidak menentukan identitas sosial atau arah hubungan tersebut.")
 print(f"5. Scale-Free & Power-Law (Alpha = {alpha_power_law:.3f}):")
-print("   Distribusi derajat mengikuti hukum pangkat (scale-free network), di mana segelintir kecil aktor (hub)")
-print("   menguasai proporsi interaksi yang luar biasa besar (prinsip Pareto interaksi digital).")
+print("   Estimator menghasilkan struktur derajat heavy-tailed; hasil ini tidak dengan sendirinya membuktikan power-law.")
+print("   Validasi formal power-law memerlukan optimasi cutoff dan goodness-of-fit yang tidak dilakukan oleh estimator ini.")
 print("=" * 80)
 
 # Simpan hasil dalam format JSON dan Markdown untuk integrasi Naskah Tesis & Dashboard
@@ -179,7 +179,7 @@ with open(out_json, "w", encoding="utf-8") as f:
 out_md = os.path.join(base_dir, "results", "macro_topology_report.md")
 with open(out_md, "w", encoding="utf-8") as f:
     f.write("# Laporan Analisis Makro Topologi Jaringan Komunikasi MBG (NodeXL & NetworkX)\n\n")
-    f.write("Tabel ini merangkum metrik parameter topologi makro dari graf komunikasi platform X (|V|=971, |E|=666):\n\n")
+    f.write("Tabel ini merangkum metrik parameter topologi makro dari graf komunikasi platform X (|V|=971; 692 raw interaction records; 666 unique directed edges; 662 unique undirected pairs):\n\n")
     f.write("| Parameter Topologi Makro | Nilai Empiris | Interpretasi Ilmiah |\n")
     f.write("| :--- | :---: | :--- |\n")
     f.write(f"| **Tipe Graf** | {metrics_dict['Graph Type']} | Arah komunikasi interaksi (mention/reply) |\n")
@@ -193,8 +193,8 @@ with open(out_md, "w", encoding="utf-8") as f:
     f.write(f"| **Diameter Jaringan** | **{diameter_giant}** | Jarak terpanjang yang memisahkan dua aktor |\n")
     f.write(f"| **Jarak Rerata Terpendek** | **{avg_path_len_giant:.2f}** | Langkah transmisi rata-rata penyebaran pesan |\n")
     f.write(f"| **Koefisien Clustering Rerata** | {avg_clustering:.4f} | Kecenderungan warganet membentuk kelompok segitiga |\n")
-    f.write(f"| **Modularitas Louvain (Q)** | **{modularity_q:.4f}** | Polarisasi ekstrem (Q > 0.4 membuktikan echo chamber) |\n")
-    f.write(f"| **Koefisien Asortativitas (r)** | **{degree_assortativity:.4f}** | Hubungan disassortative (warga biasa mengarah ke hub elit) |\n")
-    f.write(f"| **Eksponen Power-Law (Alpha)** | **{alpha_power_law:.2f}** | Struktur jaringan bebas-skala (*scale-free topology*) |\n\n")
+    f.write(f"| **Modularitas Louvain (Q)** | **{modularity_q:.4f}** | Struktur komunitas kuat; Q tidak dengan sendirinya membuktikan echo chamber |\n")
+    f.write(f"| **Koefisien Asortativitas (r)** | **{degree_assortativity:.4f}** | Pola pencampuran derajat yang cenderung disassortative |\n")
+    f.write(f"| **Eksponen Power-Law (Alpha)** | **{alpha_power_law:.2f}** | Estimasi struktur derajat heavy-tailed; bukan bukti definitif power-law |\n\n")
 
 print(f"Berkas laporan berhasil disimpan ke:\n1. {out_json}\n2. {out_md}\n")

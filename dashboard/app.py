@@ -1,4 +1,5 @@
 import streamlit as st
+from pathlib import Path
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -524,7 +525,7 @@ def render_submission_checklist_70_points():
         st.link_button("📜 9. Transkrip Teks Tesis (.txt)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/tesis_text.txt", width='stretch')
         st.link_button("📄 PDF JobsMatchAI IPSSJ", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf", width='stretch')
         st.link_button("📜 LoA INOVASI IndoBERT TikTok (#88)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_inovasi_indobert_tiktok_2026.pdf", width='stretch')
-    st.link_button("📦 Unduh Seluruh Repositori, Kode & Data Riset Sekaligus (.ZIP)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip", width='stretch')
+    st.link_button("📦 Unduh Seluruh Repositori, Kode & Data Riset Sekaligus (.ZIP)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/old-version.zip", width='stretch')
 
 
 # Function to render author biography in Streamlit
@@ -6335,7 +6336,7 @@ elif "Audit Integritas Data" in page:
     Siapa pun di internet dapat mengunduh seluruh data secara programmatic (*Python/R/curl*) atau via browser melalui tautan publik resmi di bawah ini:
     """)
 
-    repo_raw_base = "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main"
+    repo_raw_base = "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/old-version"
     public_links_data = [
         {"No": 1, "Nama Dataset": "IndoBERT 9 Emosi — Audit Rekonsiliasi", "Format": "CSV", "Ukuran / Baris": "dataset hasil inferensi — audit rekonsiliasi", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/indobert_9_emosi_fixed.csv"},
         {"No": 2, "Nama Dataset": "Deteksi Sindiran & Sarkasme", "Format": "CSV", "Ukuran / Baris": "3.395 baris", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/sarcasm/dataset_sindiran_valid.csv"},
@@ -6346,8 +6347,26 @@ elif "Audit Integritas Data" in page:
         {"No": 7, "Nama Dataset": "Sentimen Berbasis Aspek (ABSA)", "Format": "CSV", "Ukuran / Baris": "3 aspek tematik", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/results/absa_results.csv"},
         {"No": 8, "Nama Dataset": "Laporan Klasifikasi & Evaluasi", "Format": "CSV", "Ukuran / Baris": "Precision, Recall, F1", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/results/classification_report.csv"},
         {"No": 9, "Nama Dataset": "Visual Keterbatasan Riset", "Format": "PNG 300 DPI", "Ukuran / Baris": "1.1 MB", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/results/keterbatasan_penelitian.png"},
+        {"No": 10, "Nama Dataset": "Presentasi Tesis MBG — Indri Anjar Kartika Sari", "Format": "PowerPoint (.pptx)", "Ukuran / Baris": "Presentasi tesis", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/presentation/Presentasi_Tesis_MBG_Indri_Anjar_Kartika_Sari.pptx"},
     ]
     st.dataframe(pd.DataFrame(public_links_data), width='stretch', hide_index=True)
+
+    # ── Download Presentasi Tesis ────────────────────────────────
+    ppt_path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "presentation",
+        "Presentasi_Tesis_MBG_Indri_Anjar_Kartika_Sari.pptx"
+    )
+
+    if os.path.exists(ppt_path):
+        with open(ppt_path, "rb") as ppt_file:
+            st.download_button(
+                label="📽️ Unduh Presentasi Tesis (.PPTX)",
+                data=ppt_file.read(),
+                file_name="Presentasi_Tesis_MBG_Indri_Anjar_Kartika_Sari.pptx",
+                mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                width='stretch'
+            )
 
     # Repository links card
     st.info("""
@@ -6558,3 +6577,101 @@ elif "Brand24" in page:
         f"Rentang: {since_days} hari terakhir · "
         "Dibuat otomatis oleh dashboard riset MBG SNA Indri Anjar K.S."
     )
+
+
+# ============================================================
+# PUSAT UNDUHAN — DOKUMEN DAN DATA PENELITIAN MBG
+# ============================================================
+st.markdown("---")
+st.header("📥 Pusat Unduhan")
+st.write(
+    "Dokumen, data jaringan, dan visualisasi yang tersedia "
+    "untuk penelitian MBG Social Network Analysis."
+)
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+DOWNLOAD_FILES = [
+    (
+        "📄 Manuskrip Jurnal — PDF",
+        BASE_DIR / "journal" / "rendered" / "journal_paper_mbg_sna_v2.pdf",
+        "journal_paper_mbg_sna_v2.pdf",
+        "application/pdf",
+    ),
+    (
+        "📊 Data Network Edges — CSV",
+        BASE_DIR / "results" / "mbg_network_edges_final.csv",
+        "mbg_network_edges_final.csv",
+        "text/csv",
+    ),
+    (
+        "👥 Data Network Nodes — CSV",
+        BASE_DIR / "results" / "mbg_network_nodes_final.csv",
+        "mbg_network_nodes_final.csv",
+        "text/csv",
+    ),
+    (
+        "🖼️ Macro Topology — PNG",
+        BASE_DIR / "results" / "17_macro_topology_metrics.png",
+        "17_macro_topology_metrics.png",
+        "image/png",
+    ),
+    (
+        "🖼️ Community — PNG",
+        BASE_DIR / "results" / "19_community_echo_chambers.png",
+        "19_community_echo_chambers.png",
+        "image/png",
+    ),
+    (
+        "🖼️ Actor Centrality — PNG",
+        BASE_DIR / "results" / "18_actor_centrality_typology.png",
+        "18_actor_centrality_typology.png",
+        "image/png",
+    ),
+    (
+        "🖼️ Network Interaction — PNG",
+        BASE_DIR / "results" / "15_material3_network_interaction.png",
+        "15_material3_network_interaction.png",
+        "image/png",
+    ),
+    (
+        "🖼️ NodeXL Visualization — PNG",
+        BASE_DIR / "results" / "16_nodexl_graph_visualization.png",
+        "16_nodexl_graph_visualization.png",
+        "image/png",
+    ),
+    (
+        "🖼️ Word Cloud MBG — PNG",
+        BASE_DIR / "results" / "wordcloud_mbg.png",
+        "wordcloud_mbg.png",
+        "image/png",
+    ),
+]
+
+available_downloads = 0
+
+for label, file_path, file_name, mime_type in DOWNLOAD_FILES:
+
+    if file_path.is_file():
+
+        available_downloads += 1
+
+        file_bytes = file_path.read_bytes()
+
+        st.download_button(
+            label=label,
+            data=file_bytes,
+            file_name=file_name,
+            mime=mime_type,
+            use_container_width=True,
+            key=f"download_{file_name.replace('.', '_').replace('-', '_')}",
+        )
+
+    else:
+        st.warning(
+            f"File tidak tersedia: {file_name}"
+        )
+
+st.caption(
+    f"{available_downloads} file tersedia untuk diunduh."
+)
