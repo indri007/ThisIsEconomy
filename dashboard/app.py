@@ -1,4 +1,5 @@
 import streamlit as st
+from pathlib import Path
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -6558,3 +6559,101 @@ elif "Brand24" in page:
         f"Rentang: {since_days} hari terakhir · "
         "Dibuat otomatis oleh dashboard riset MBG SNA Indri Anjar K.S."
     )
+
+
+# ============================================================
+# PUSAT UNDUHAN — DOKUMEN DAN DATA PENELITIAN MBG
+# ============================================================
+st.markdown("---")
+st.header("📥 Pusat Unduhan")
+st.write(
+    "Dokumen, data jaringan, dan visualisasi yang tersedia "
+    "untuk penelitian MBG Social Network Analysis."
+)
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+DOWNLOAD_FILES = [
+    (
+        "📄 Manuskrip Jurnal — PDF",
+        BASE_DIR / "journal" / "rendered" / "journal_paper_mbg_sna_v2.pdf",
+        "journal_paper_mbg_sna_v2.pdf",
+        "application/pdf",
+    ),
+    (
+        "📊 Data Network Edges — CSV",
+        BASE_DIR / "results" / "mbg_network_edges_final.csv",
+        "mbg_network_edges_final.csv",
+        "text/csv",
+    ),
+    (
+        "👥 Data Network Nodes — CSV",
+        BASE_DIR / "results" / "mbg_network_nodes_final.csv",
+        "mbg_network_nodes_final.csv",
+        "text/csv",
+    ),
+    (
+        "🖼️ Macro Topology — PNG",
+        BASE_DIR / "results" / "17_macro_topology_metrics.png",
+        "17_macro_topology_metrics.png",
+        "image/png",
+    ),
+    (
+        "🖼️ Community — PNG",
+        BASE_DIR / "results" / "19_community_echo_chambers.png",
+        "19_community_echo_chambers.png",
+        "image/png",
+    ),
+    (
+        "🖼️ Actor Centrality — PNG",
+        BASE_DIR / "results" / "18_actor_centrality_typology.png",
+        "18_actor_centrality_typology.png",
+        "image/png",
+    ),
+    (
+        "🖼️ Network Interaction — PNG",
+        BASE_DIR / "results" / "15_material3_network_interaction.png",
+        "15_material3_network_interaction.png",
+        "image/png",
+    ),
+    (
+        "🖼️ NodeXL Visualization — PNG",
+        BASE_DIR / "results" / "16_nodexl_graph_visualization.png",
+        "16_nodexl_graph_visualization.png",
+        "image/png",
+    ),
+    (
+        "🖼️ Word Cloud MBG — PNG",
+        BASE_DIR / "results" / "wordcloud_mbg.png",
+        "wordcloud_mbg.png",
+        "image/png",
+    ),
+]
+
+available_downloads = 0
+
+for label, file_path, file_name, mime_type in DOWNLOAD_FILES:
+
+    if file_path.is_file():
+
+        available_downloads += 1
+
+        file_bytes = file_path.read_bytes()
+
+        st.download_button(
+            label=label,
+            data=file_bytes,
+            file_name=file_name,
+            mime=mime_type,
+            use_container_width=True,
+            key=f"download_{file_name.replace('.', '_').replace('-', '_')}",
+        )
+
+    else:
+        st.warning(
+            f"File tidak tersedia: {file_name}"
+        )
+
+st.caption(
+    f"{available_downloads} file tersedia untuk diunduh."
+)
