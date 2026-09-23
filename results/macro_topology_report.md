@@ -1,6 +1,6 @@
 # Laporan Analisis Makro Topologi Jaringan Komunikasi MBG (NodeXL & NetworkX)
 
-Tabel ini merangkum metrik parameter topologi makro dari graf komunikasi platform X (|V|=971, |E|=666):
+Tabel ini merangkum metrik parameter topologi makro dari graf komunikasi platform X (|V|=971; 692 raw interaction records; 666 unique directed edges; 662 unique undirected pairs):
 
 | Parameter Topologi Makro | Nilai Empiris | Interpretasi Ilmiah |
 | :--- | :---: | :--- |
@@ -15,7 +15,7 @@ Tabel ini merangkum metrik parameter topologi makro dari graf komunikasi platfor
 | **Diameter Jaringan** | **9** | Jarak terpanjang yang memisahkan dua aktor |
 | **Jarak Rerata Terpendek** | **3.67** | Langkah transmisi rata-rata penyebaran pesan |
 | **Koefisien Clustering Rerata** | 0.0171 | Kecenderungan warganet membentuk kelompok segitiga |
-| **Modularitas Louvain (Q)** | **0.9837** | Polarisasi ekstrem (Q > 0.4 membuktikan echo chamber) |
-| **Koefisien Asortativitas (r)** | **-0.0847** | Hubungan disassortative (warga biasa mengarah ke hub elit) |
-| **Eksponen Power-Law (Alpha)** | **2.17** | Struktur jaringan bebas-skala (*scale-free topology*) |
+| **Modularitas Louvain (Q)** | **0.9837** | Struktur komunitas kuat; Q tidak dengan sendirinya membuktikan echo chamber |
+| **Koefisien Asortativitas (r)** | **-0.0847** | Pola pencampuran derajat yang cenderung disassortative |
+| **Eksponen Power-Law (Alpha)** | **2.17** | Estimasi struktur derajat heavy-tailed; bukan bukti definitif power-law |
 

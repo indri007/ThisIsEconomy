@@ -1,0 +1,2851 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>MBG SNA Journal Manuscript</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="journal.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">MBG SNA Journal Manuscript</h1>
+</header>
+<h1
+id="digital-sarcasm-as-a-signal-of-policy-distrust-social-network-analysis-and-emotion-classification-of-indonesias-free-nutritious-meal-program-discourse-on-x-twitter">Digital
+Sarcasm as a Signal of Policy Distrust: Social Network Analysis and
+Emotion Classification of Indonesia’s Free Nutritious Meal Program
+Discourse on X (Twitter)</h1>
+<p><strong>Indri Anjar Kartika Sari</strong> <em>Master’s Program in
+Communication Science, Faculty of Social Sciences, Cultural Studies, and
+Political Science</em> <em>Universitas Pembangunan Nasional “Veteran”
+Jawa Timur, Surabaya, Indonesia</em> <em>Corresponding Author Email:
+25067020011@student.upnjatim.ac.id</em></p>
+<hr />
+<blockquote>
+<p><strong>Target Submission Venues</strong>: <em>Telematics and
+Informatics</em> (Elsevier, Q1) / <em>New Media &amp; Society</em>
+(SAGE, Q1) / <em>Social Networks</em> (Elsevier, Q1) / <em>Government
+Information Quarterly</em> (Elsevier, Q1) <strong>Manuscript
+Type</strong>: Original Research Article <strong>Estimated
+Length</strong>: ~16,000 words (approximately 42–45 standard
+double-spaced academic pages) <strong>Keywords</strong>: Social Network
+Analysis; IndoBERT; Emotion Classification; Digital Sarcasm; Free
+Nutritious Meal Program; Echo Chamber; Phygital Gap; Marketing 6.0;
+Algorithmic Epistemic Authority; Public Policy Communication</p>
+</blockquote>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>Indonesia’s <em>Makan Bergizi Gratis</em> (MBG, Free Nutritious Meal)
+program—a flagship nationwide public health and human capital
+intervention backed by an indicative state budget exceeding IDR 268
+trillion—triggered an intense wave of sarcastic, ironic, and critical
+digital discourse on the social media platform X (formerly Twitter)
+during its initial rollout phase (March–May 2026). This study
+investigates the linguistic, affective, and structural anatomy of this
+public dissent through an explanatory-sequential mixed-method
+computational framework. The analytical pipeline integrates three
+computational tiers: (1) natural language processing using a fine-tuned
+IndoBERT model for nine-class granular emotion classification and
+sarcasm identification based on pragmatic text-emoji incongruence; (2)
+directed Social Network Analysis (SNA) using NetworkX with Louvain
+community detection and degree assortativity measurement; and (3)
+Aspect-Based Sentiment Analysis (ABSA) targeting three operational
+facets of policy delivery—Budget &amp; Procurement, Logistics &amp;
+Distribution, and Nutritional Quality. The official empirical corpus
+comprises 971 unique actor nodes and 692 raw interaction records,
+yielding 666 unique directed edges and 662 unique undirected pairs. The
+distinction between raw records and unique edges is retained throughout
+the network analysis to avoid denominator ambiguity. connected through
+692 directed interaction edges, complemented by 3,395 domain-specific
+tweets. Topological analysis reveals extreme structural fragmentation: a
+Louvain modularity score of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mn>0.9837</mn></mrow><annotation encoding="application/x-tex">Q = 0.9837</annotation></semantics></math>,
+341 weakly connected components, an overall graph density of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mn>0.000735</mn></mrow><annotation encoding="application/x-tex">\rho = 0.000735</annotation></semantics></math>,
+a dyadic reciprocity rate of merely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>1.20</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">R = 1.20\%</annotation></semantics></math>,
+and a giant component encapsulating only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9.17</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">9.17\%</annotation></semantics></math>
+of total network actors. The network exhibits a heavy-tailed degree
+distribution consistent with a scale-free model
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>2.168</mn></mrow><annotation encoding="application/x-tex">\alpha = 2.168</annotation></semantics></math>)
+and disassortative mixing
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>−</mi><mn>0.0847</mn></mrow><annotation encoding="application/x-tex">r = -0.0847</annotation></semantics></math>),
+demonstrating a stark hub-and-spoke monologue dynamic. Crucially, the
+platform-native artificial intelligence account <code>@grok</code> and
+the presidential account <code>@prabowo</code> emerged as the two
+highest-centrality actors—with <code>@grok</code> receiving direct
+information-verification requests and <code>@prabowo</code> functioning
+as a high in-degree target for public grievances. ABSA results
+demonstrate that <em>disgust</em> constitutes the overwhelmingly
+dominant affective orientation across all three policy facets: Logistics
+&amp; Distribution
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>78.91</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">78.91\%</annotation></semantics></math>),
+Budget &amp; Procurement
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>77.01</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">77.01\%</annotation></semantics></math>),
+and Nutritional Quality
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>71.13</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">71.13\%</annotation></semantics></math>),
+with Nutritional Quality generating the largest absolute discursive
+volume
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>344</mn></mrow><annotation encoding="application/x-tex">n = 1{,}344</annotation></semantics></math>
+tweets). These empirical findings are synthesized through the diagnostic
+lens of Marketing 6.0’s <em>phygital gap</em> concept—the communicative
+rift between high-salience digital policy branding and flawed physical
+service delivery. Digital sarcasm operates not as frivolous noise but as
+a sophisticated coping mechanism and paralinguistic shield enabling
+citizens to register sharp moral critique while navigating platform
+algorithms and institutional surveillance. The study concludes with an
+integrated implementation roadmap and actionable institutional
+blueprints for responsive governance, algorithmic risk management, and
+restorative public health communication.</p>
+<p>The directed graph density was
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mn>0.000707</mn></mrow><annotation encoding="application/x-tex">\rho = 0.000707</annotation></semantics></math>,
+calculated from 666 unique directed edges among 971 nodes.</p>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<h3 id="background-and-problem-statement">1.1 Background and Problem
+Statement</h3>
+<p>Public policy initiatives of monumental fiscal scale inevitably
+trigger communicative reverberations that rival their operational
+complexity. Beginning in late 2024 and accelerating through early 2026,
+the Government of Indonesia embarked upon one of the most ambitious
+social welfare programs in modern Southeast Asian history: the <em>Makan
+Bergizi Gratis</em> (MBG), or Free Nutritious Meal, initiative.
+Positioned as the foundational pillar of the national development agenda
+toward <em>Indonesia Emas</em> 2045 (Golden Indonesia 2045), the program
+seeks to eliminate childhood malnutrition, reduce stunting from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>21.6</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">21.6\%</annotation></semantics></math>
+to single digits, and stimulate grassroots agricultural economies. To
+finance this vision, an initial state budget allocation of IDR 71
+trillion was dedicated in the 2025 fiscal year, nested within an
+indicative multi-year expenditure framework originally projected to
+reach IDR 335 trillion before being recalibrated to IDR 268 trillion for
+fiscal year 2026 (Bloomberg Technoz, 2026; National Nutrition Agency,
+2026).</p>
+<p>However, public policy execution is never evaluated by citizens in an
+informational vacuum. As Edelman (1964) argued in his seminal treatise
+on symbolic politics, government allocations, bureaucratic
+announcements, and administrative adjustments are not merely technical
+ledger entries; they are highly charged symbolic spectacles that
+citizens interpret through cognitive heuristics, affective filters, and
+social networks. When the National Nutrition Agency (<em>Badan Gizi
+Nasional</em>, BGN) and relevant economic ministries announced a
+technical reduction of IDR 67 trillion from the program’s upper
+budgetary ceiling—explaining the revision as a prudent reallocation of
+unabsorbed contingency reserves—public digital spheres did not process
+this announcement through the clinical logic of fiscal administration.
+Instead, digital publics on platform X (formerly Twitter) seized upon
+the IDR 67 trillion subtraction as symbolic confirmation of
+institutional incompetence, fiscal vulnerability, or perceived
+corruption risk.</p>
+<p>Compounding this fiscal skepticism was a cascade of tangible
+operational breakdowns during the March–May 2026 implementation window:
+1. <strong>Supply Chain Suspensions</strong>: The formal shutdown or
+temporary suspension of 4,581 out of approximately 27,952 Nutrition
+Fulfillment Service Units (<em>Satuan Pelayanan Pemenuhan Gizi</em>,
+SPPG), with 1,152 units remaining suspended into May 2026 due to hygiene
+and standard violations (ANTARA, 2026). 2. <strong>Food Safety
+Crises</strong>: High-profile, viral outbreaks of acute foodborne
+illness and mass food poisoning (<em>keracunan massal</em>) affecting
+hundreds of elementary school pupils across West Java, Central Java, and
+East Nusa Tenggara. 3. <strong>Procurement Scandals</strong>: Public
+controversies regarding the importation of food containers
+(<em>ompreng</em>) from foreign manufacturers, alongside allegations of
+“fictitious SPPGs” and political favoritism in vendor selection.</p>
+<p>The communicative fallout was acknowledged at the highest
+bureaucratic levels. During an emergency inter-agency coordination forum
+in Bekasi on April 6, 2026, Khairul Hidayati, Head of the Legal and
+Public Relations Bureau of BGN, explicitly declared that the virulence
+of social media hoaxes, sarcasm, and negative framing had escalated into
+a strategic vulnerability requiring proactive crisis countermeasures
+(BGN, 2026). This admission confirmed that the crisis of MBG had crossed
+the threshold from an operational logistics challenge to an existential
+crisis of institutional legitimacy and public trust.</p>
+<h3
+id="digital-sarcasm-as-a-methodological-and-communicative-problem">1.2
+Digital Sarcasm as a Methodological and Communicative Problem</h3>
+<p>On platform X, public dissatisfaction did not manifest primarily
+through formal petitions, structured legal challenges, or conventional
+political argumentation. Instead, it manifested through an overwhelming
+deluge of <em>digital sarcasm, biting satire, and affective
+mockery</em>. Citizens consistently constructed messages whose literal,
+textual surfaces mimicked laudatory praise or patriotic compliance, but
+whose pragmatic meaning was inverted through the strategic deployment of
+emojis, hyperbole, and contextual juxtaposition (e.g., pairing phrases
+such as <em>“What a glorious world-class meal”</em> with clown faces 🤡,
+upside-down smiles 🙃, or imagery of decayed food items).</p>
+<p>This communicative behavior presents a severe methodological
+challenge to conventional sentiment analysis. Traditional Lexicon-based
+algorithms (such as VADER or SentiStrength) and classical machine
+learning classifiers (such as Naïve Bayes, Support Vector Machines, or
+shallow LSTMs) rely heavily on overt lexical polarity. When confronted
+with a sentence like <em>“A magnificent 268-trillion program for our
+beloved children 🤡”</em>, classical models misclassify the document as
+strongly positive due to the presence of high-valence tokens
+(<em>“magnificent”</em>, <em>“beloved”</em>, <em>“program”</em>). They
+fail to process the paralinguistic and multimodal inversion signaled by
+the terminal clown emoji. In political communication, such
+misclassification distorts intelligence, leading government agencies to
+systematically underestimate public rage and cynicism.</p>
+<p>Furthermore, digital communication does not circulate in an amorphous
+space; it flows through structured topologies. Who amplifies these
+sarcastic narratives? Do critics and defenders engage in deliberative
+contestation, or are they entombed within impenetrable informational
+silos? How does an algorithmically governed environment alter the nature
+of opinion leadership? Addressing these questions requires an integrated
+computational architecture uniting deep contextual Natural Language
+Processing (NLP) with graph-theoretic Social Network Analysis (SNA).</p>
+<h3 id="research-objectives-and-theoretical-focus">1.3 Research
+Objectives and Theoretical Focus</h3>
+<p>To unpack these dynamics, this study establishes five interrelated
+Research Objectives (RO) and corresponding Research Questions (RQ):</p>
+<ul>
+<li><strong>RO1 / RQ1</strong>: To decode the linguistic and syntactic
+anatomy of digital sarcasm in MBG discourse on platform X, identifying
+salient diction, metaphorical structures, and rhetorical devices.</li>
+<li><strong>RO2 / RQ2</strong>: To quantify the role of text-emoji
+incongruence as a pragmatic vehicle of valence inversion, determining
+how paralinguistic tokens systematically reverse literal semantics.</li>
+<li><strong>RO3 / RQ3</strong>: To map the macro- and meso-topological
+properties of the MBG interaction network, establishing its degree of
+structural fragmentation, clustering, and echo-chamber segregation.</li>
+<li><strong>RO4 / RQ4</strong>: To identify high-centrality actor
+typologies, examining how human political figures, citizen activists,
+and artificial intelligence agents direct public communicative
+flows.</li>
+<li><strong>RO5 / RQ5</strong>: To interpret these computational
+patterns through the theoretical framework of Marketing 6.0 (Kotler,
+Kartajaya, &amp; Setiawan, 2023), evaluating whether observed sarcasm
+manifests a profound <em>phygital gap</em>—the rupture between
+high-concept digital brand positioning and physical operational
+delivery.</li>
+</ul>
+<hr />
+<h2 id="literature-review-and-theoretical-framework">2. Literature
+Review and Theoretical Framework</h2>
+<h3 id="public-trust-risk-communication-and-symbolic-politics">2.1
+Public Trust, Risk Communication, and Symbolic Politics</h3>
+<p>Public trust in government is defined by Levi and Stoker (2000) as a
+multidimensional construct resting upon two distinct cognitive pillars:
+<em>competence trust</em> (the citizen’s belief that political
+institutions possess the administrative, technical, and operational
+capacity to deliver public goods) and <em>moral/fiduciary trust</em>
+(the belief that political elites act with benevolent intent and
+integrity rather than corrupt self-interest). In large-scale social
+welfare programs, these two dimensions are deeply entwined. When an
+administrative apparatus struggles to distribute school lunches without
+inducing bacterial contamination, competence trust collapses
+immediately. When budget adjustments of IDR 67 trillion occur alongside
+procurement controversies, moral trust is simultaneously undermined.</p>
+<p>Classical risk communication theory (Covello, von Winterfeldt, &amp;
+Slovic, 1986; Renn, 1992; Slovic, 1987) posits that public perception of
+risk is rarely an objective mathematical function of probability and
+consequence
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>i</mi><mi>s</mi><mi>k</mi><mo>≠</mo><mi>H</mi><mi>a</mi><mi>z</mi><mi>a</mi><mi>r</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">Risk \neq Hazard</annotation></semantics></math>).
+Rather, risk perception is mediated by <em>outrage
+factors</em>—including lack of voluntariness, perceptions of unfair
+benefit distribution, institutional secrecy, and distrust in regulatory
+authorities. In the MBG program, parents surrender control over their
+children’s nutritional intake to state-appointed private caterers
+(SPPG). Any failure at that physical touchpoint triggers acute
+psychological outrage that far outweighs the government’s statistical
+claims that 95% of distribution units operate without incident.</p>
+<p>This dynamic is amplified by Edelman’s (1964) <em>symbolic
+politics</em>. Edelman argued that the vast majority of citizens possess
+no direct, unmediated knowledge of complex fiscal operations.
+Consequently, citizens rely on administrative symbols as cognitive
+shortcuts. Large budget figures (IDR 268 trillion) serve as grand
+symbols of national grandeur; downward revisions serve as symbols of
+retrenchment or deceit; and an unhygienic meal serves as an irrefutable
+physical symbol that contradicts the state’s entire modernizing
+narrative.</p>
+<h3 id="networked-framing-and-the-ecology-of-digital-dissent">2.2
+Networked Framing and the Ecology of Digital Dissent</h3>
+<p>In contemporary computational media spaces, public policy framing no
+longer flows downward through a hypodermic, broadcast model of
+communication. Rather, it operates through what Bennett and Segerberg
+(2012) term the <em>logic of connective action</em>. In connective
+action networks, political engagement is not organized through rigid
+hierarchical associations; it crystallizes around personal, digitally
+mediated expressions of identity, grievance, and humor that diffuse
+rapidly across social topologies.</p>
+<p>Schultz, Utz, and Göritz (2011) extended this into the <em>Networked
+Crisis Communication</em> model, demonstrating that on social media
+platforms, crises unfold through non-linear multi-directional feedback
+loops. Every citizen node acts simultaneously as an audience, an
+evaluator, and an investigative broadcaster. Platforms like X function
+under what boyd and Crawford (2012) and Marwick and boyd (2011) identify
+as <em>context collapse</em>—an environment where diverse social
+audiences collapse into a single communicative stream, forcing users to
+navigate surveillance from peers, state authorities, and commercial
+algorithms simultaneously.</p>
+<p>Under conditions of context collapse, political dissent frequently
+migrates into the register of <em>irony and sarcasm</em>. As Scott
+(1985) articulated in his influential theory of “weapons of the weak”
+and everyday forms of subaltern resistance, subordinated populations who
+perceive direct political confrontation to be dangerous or futile adopt
+subversive humor, deliberate foot-dragging, and coded speech to contest
+dominant hegemony. On Indonesian social media, where the Electronic
+Information and Transactions Law (<em>Undang-Undang Informasi dan
+Transaksi Elektronik</em>, UU ITE) has historically been weaponized
+against direct government critics, digital sarcasm provides a
+paralinguistic cloak. Citizens avoid explicit defamation by crafting
+surface-positive text while embedding subversion in emojis,
+double-entendres, and hyperbole.</p>
+<h3 id="pragmatic-incongruence-paralinguistics-and-sarcasm-theory">2.3
+Pragmatic Incongruence, Paralinguistics, and Sarcasm Theory</h3>
+<p>Linguistically, sarcasm represents a sophisticated communicative act
+governed by <em>pragmatic incongruence</em> (Attardo, 2000; Camp, 2012;
+Gibbs, 2000; Giora, 2003; Grice, 1975). Grice’s Cooperative Principle
+establishes the Maxim of Quality: <em>“Do not say that which you believe
+to be false.”</em> Sarcasm operates through the blatant, intentional
+flouting of the Maxim of Quality. The speaker utters proposition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>,
+fully intending the recipient to recognize that the speaker actually
+believes proposition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>¬</mo><mi>P</mi></mrow><annotation encoding="application/x-tex">\neg P</annotation></semantics></math>
+(not-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>).</p>
+<p>In computer-mediated communication (CMC), where acoustic inflection,
+facial grimaces, and vocal pitch are stripped away, text-based sarcasm
+faces an acute risk of communicative failure (Poe’s Law). To overcome
+this limitation, digital communicators deploy <em>emojis as
+paralinguistic tone markers</em> (Dresner &amp; Herring, 2010; Skovholt,
+Grønning, &amp; Kankaanranta, 2014). An emoji does not merely illustrate
+a sentence; it functions as an illocutionary force indicator. When an
+actor writes <em>“The menu today is truly five-star quality 🤮”</em>,
+the nauseated emoji operates as a metapragmatic operator that
+structurally invalidates the literal semantic value of “five-star
+quality,” forcing an inverted interpretation.</p>
+<h3 id="deep-learning-indobert-and-emotion-classification">2.4 Deep
+Learning, IndoBERT, and Emotion Classification</h3>
+<p>Capturing these subtle pragmatic nuances requires natural language
+processing systems that transcend bag-of-words and n-gram architectures.
+The introduction of the Transformer architecture (Vaswani et al., 2017)
+and Bidirectional Encoder Representations from Transformers (BERT)
+(Devlin et al., 2019) revolutionized computational linguistics by
+utilizing multi-head self-attention mechanisms. Self-attention enables
+the model to dynamically compute the semantic representation of a given
+token by simultaneously evaluating all surrounding tokens in both
+forward and backward directions.</p>
+<p>For the Indonesian language, Wilie et al. (2020) developed
+<strong>IndoBERT</strong>, pre-trained on the comprehensive Indo4B
+corpus encompassing over 4 billion tokens derived from Indonesian news
+portals, Wikipedia, and social media platforms. IndoBERT possesses deep
+knowledge of Indonesian morphological systems, affixation patterns, and
+syntax. When fine-tuned on social media discourse, IndoBERT captures the
+colloquial dialects, slang (<em>bahasa gaul</em>), abbreviations, and
+code-mixing characteristic of Indonesian political discourse on platform
+X. Rather than collapsing sentiment into coarse, binary (positive
+vs. negative) classifications, fine-tuning IndoBERT for granular emotion
+classification (Ekman, 1992; Plutchik, 1980) enables the empirical
+isolation of <em>disgust, anger, fear, sadness, and trust</em>,
+providing nuanced diagnostic visibility into citizen affective
+states.</p>
+<h3
+id="social-network-analysis-scale-free-networks-and-echo-chambers">2.5
+Social Network Analysis, Scale-Free Networks, and Echo Chambers</h3>
+<p>Social Network Analysis (SNA) models social systems as directed
+graphs
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo>,</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">G = (V, E)</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+denotes the set of vertices (actors/user accounts) and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+represents the set of directed edges (mentions, retweets, replies)
+(Freeman, 1979; Wasserman &amp; Faust, 1994). Network topology dictates
+how information diffuses, how social capital concentrates, and how
+ideological polarization hardens.</p>
+<p>Key topological laws and metrics govern online political interaction:
+1. <strong>Heavy-Tailed Degree Structure and Network
+Heterogeneity</strong>: Real-world communication networks rarely conform
+to random Poisson graph models (Erdős &amp; Rényi, 1960). Instead, they
+exhibit power-law degree distributions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>∼</mo><msup><mi>k</mi><mrow><mi>−</mi><mi>α</mi></mrow></msup></mrow><annotation encoding="application/x-tex">P(k) \sim k^{-\alpha}</annotation></semantics></math>,
+characteristic of heavy-tailed network structures driven by preferential
+attachment (“the rich get richer”) (Barabási &amp; Albert, 1999). A tiny
+minority of elite nodes (hubs) accumulate massive connectivity, while
+the overwhelming majority of nodes inhabit the sparse periphery. 2.
+<strong>Louvain Modularity and Echo Chambers</strong>: Modularity
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>)
+quantifies the extent to which a network partitions into dense,
+internally cohesive sub-communities with minimal cross-community
+boundary connections (Blondel et al., 2008; Newman, 2006). When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>&gt;</mo><mn>0.4</mn></mrow><annotation encoding="application/x-tex">Q &gt; 0.4</annotation></semantics></math>,
+a network demonstrates significant community structuring; when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>&gt;</mo><mn>0.7</mn></mrow><annotation encoding="application/x-tex">Q &gt; 0.7</annotation></semantics></math>,
+it approaches structural hyper-segregation. If these structural clusters
+align with uniform affective or ideological stances, they function as
+<em>echo chambers</em> (Jamieson &amp; Cappella, 2008; Sunstein, 2001),
+reinforcing intra-group consensus while shielding members from dissonant
+external information. 3. <strong>Degree Assortativity
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>)</strong>:
+Formulated by Newman (2002), the assortativity coefficient measures the
+correlation between the degrees of connected nodes. Positive
+assortativity
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r &gt; 0</annotation></semantics></math>)
+implies that high-degree hubs interact predominantly with other hubs (an
+elite oligarchy). Negative assortativity
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r &lt; 0</annotation></semantics></math>,
+disassortative mixing) reveals that peripheral, low-degree nodes connect
+predominantly to high-degree hubs, characteristic of broadcast or
+complaint architectures where ordinary citizens direct appeals to
+institutional centers.</p>
+<h3
+id="the-marketing-6.0-phygital-gap-framework-in-public-administration">2.6
+The Marketing 6.0 Phygital Gap Framework in Public Administration</h3>
+<p>In the commercial discipline, Philip Kotler, Hermawan Kartajaya, and
+Iwan Setiawan (2023) formulated <strong>Marketing 6.0: The Future is
+Immersive</strong>. Marketing 6.0 posits that in an era saturated with
+artificial intelligence, ubiquitous connectivity, and spatial computing,
+the defining determinant of brand survival is the management of the
+<strong>phygital experience</strong>—the seamless, frictionless
+synchronization between <em>digital brand touchpoints</em> (social media
+storytelling, digital advertising, algorithmic personalization) and
+<em>physical touchpoints</em> (brick-and-mortar stores, product
+packaging, human customer service).</p>
+<p>The <strong>phygital gap</strong> occurs when a severe,
+irreconcilable discrepancy emerges between the idealized digital promise
+and the tangible physical delivery. When a consumer is promised a
+revolutionary digital journey but encounters defective physical
+execution, cognitive dissonance spikes, leading to rapid brand
+abandonment, vocal boycott, and mockery.</p>
+<p>While formulated for private enterprises, this study proposes an
+innovative theoretical translation of the Marketing 6.0 phygital gap
+into <em>public administration and political communication</em>: -
+<strong>The State as Brand</strong>: The Indonesian state functions as a
+macro-brand communicating its vision of <em>Indonesia Emas 2045</em>
+through mass-mediated digital public relations. - <strong>The Citizen as
+End-User/Beneficiary</strong>: Schoolchildren and their taxpaying
+parents are the ultimate co-creators of policy value (Vargo &amp; Lusch,
+2004, 2016). - <strong>The Policy Delivery Infrastructure as Physical
+Touchpoint</strong>: The decentralized network of 27,952 SPPG kitchens,
+catering contractors, and distribution vans constitutes the physical
+touchpoint where policy meets reality. - <strong>The Phygital Policy
+Gap</strong>: When state digital channels project hyper-modern,
+nutritionally balanced, sterile feasts funded by hundreds of trillions
+of rupiah, but parents physically open school lunchboxes to discover
+spoiled rice, microscopic portions, or food poisoning pathogens, the
+phygital gap yawns wide. Digital sarcasm emerges as the primary
+expressive mechanism through which citizens negotiate this profound
+betrayal of expectations.</p>
+<hr />
+<h2 id="methodology">3. Methodology</h2>
+<h3 id="research-design-and-methodological-architecture">3.1 Research
+Design and Methodological Architecture</h3>
+<p>This study adopts an explanatory-sequential mixed-method design
+grounded in Computational Social Science (CSS) (Lazer et al., 2009,
+2020). The research pipeline executes sequentially across three
+integrated computational tiers: (1) deep learning natural language
+processing for emotion and sarcasm parsing; (2) graph-theoretic social
+network modeling; and (3) aspect-based sentiment decomposition,
+culminating in an inductive theoretical synthesis.</p>
+<p>The overall methodological architecture is visualized in Figure
+1.</p>
+<figure>
+<img src="results/integrated_sna_nlp.png"
+alt="Figure 1: Methodological and Analytical Architecture" />
+<figcaption aria-hidden="true">Figure 1: Methodological and Analytical
+Architecture</figcaption>
+</figure>
+<p>As demonstrated in Figure 1, the raw platform X data stream undergoes
+rigorous multi-stage preprocessing before branching simultaneously into
+the NLP emotion/sarcasm fine-tuning pipeline and the NetworkX graph
+engine. The convergence of these streams produces the empirical
+foundation for Aspect-Based Sentiment Analysis (ABSA) and the Marketing
+6.0 phygital synthesis.</p>
+<h3 id="data-collection-and-ethical-considerations">3.2 Data Collection
+and Ethical Considerations</h3>
+<p>Data collection was executed using a specialized Python-based web
+extraction suite targeting platform X between March 1, 2026, and May 31,
+2026. This timeframe coincides with the most turbulent phase of the MBG
+rollout, encompassing the formal budget reallocation announcements,
+initial large-scale SPPG suspensions, and prominent food poisoning
+outbreaks.</p>
+<p>Search queries utilized domain-specific Boolean keyword clusters:</p>
+<pre><code>(&quot;Makan Bergizi Gratis&quot; OR &quot;MBG&quot; OR &quot;Makan Siang Gratis&quot; OR &quot;SPPG&quot; OR &quot;Badan Gizi Nasional&quot; OR &quot;BGN&quot;)
+AND (lang:id)</code></pre>
+<p>For each captured tweet, the system extracted: (a) unique tweet ID;
+(b) raw string content; (c) author username handle; (d) timestamp (ISO
+8601 UTC+7); (e) directed relational metadata (reply-to user, mentioned
+users, quote source); and (f) engagement metrics (retweet count, like
+count, reply count, quote count, view count).</p>
+<p><strong>Research Ethics and Privacy Protocol</strong>: 1.
+<strong>Anonymization and Pseudonymization</strong>: All non-public
+individual accounts were pseudonymized during qualitative quotation to
+safeguard citizen privacy against potential administrative or legal
+reprisal under the Indonesian UU ITE. Public political officials (e.g.,
+<code>@prabowo</code>), government agency accounts (e.g.,
+<code>@kemkomdigi</code>), and platform-integrated AI entities (e.g.,
+<code>@grok</code>) were retained unmasked as their interactions
+constitute public civic record. 2. <strong>Bot and Sybil
+Filtering</strong>: To ensure corpus authenticity, algorithmic bot
+filtering was deployed. Accounts demonstrating superhuman posting
+frequencies (&gt;120 tweets per day), mechanical circadian intervals,
+extreme following-to-follower anomalies (&gt;5,000 following with zero
+followers), or repetitive verbatim copy-paste behavior were excised from
+the analytical dataset. 3. <strong>Institutional Compliance</strong>:
+The protocol complied fully with institutional review board guidelines
+for internet research (Association of Internet Researchers, AoIR) and
+accessed only publicly accessible social media discourse.</p>
+<h3 id="corpus-composition-and-text-preprocessing">3.3 Corpus
+Composition and Text Preprocessing</h3>
+<p>The primary empirical data consists of two parallel datasets: -
+<strong>Network Graph Corpus
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>)</strong>:
+971 unique actor nodes
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>V</mi><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mn>971</mn></mrow><annotation encoding="application/x-tex">|V| = 971</annotation></semantics></math>)
+and 692 directed interaction edges
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mn>692</mn></mrow><annotation encoding="application/x-tex">|E| = 692</annotation></semantics></math>).
+- <strong>NLP Text Classification Corpus
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>)</strong>:
+3,395 domain-specific tweets, partitioned through stratified random
+sampling (seed = 42) into: - Training Set: 2,334 tweets
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>68.75</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">68.75\%</annotation></semantics></math>)
+- Validation Set: 500 tweets
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>14.73</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">14.73\%</annotation></semantics></math>)
+- Testing Set: 561 tweets
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>16.52</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">16.52\%</annotation></semantics></math>)</p>
+<p>The text preprocessing pipeline was meticulously engineered to
+resolve the informal, noisy morphology of Indonesian Twitter while
+strictly safeguarding paralinguistic sarcasm markers: 1. <strong>URL and
+Metadata Stripping</strong>: Elimination of <code>http://</code>,
+<code>https://</code>, and RT routing tokens. 2. <strong>Case
+Folding</strong>: Conversion to lowercase, executed selectively to
+maintain capitalization cues for hyperbolic emphasis prior to
+vectorization. 3. <strong>Emoji Extraction and Protection</strong>:
+Crucially, standard punctuation stripping routines were modified to
+<strong>protect all Unicode emoji codepoints</strong>. Emojis were
+extracted, mapped to their canonical textual descriptions using the
+Python <code>emoji</code> library (e.g., 🤡
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math>
+<code>:clown_face:</code>, 🤮
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math>
+<code>:face_vomiting:</code>), and preserved within the token sequence.
+4. <strong>Slang Normalization and Lexicon Expansion</strong>:
+Indonesian social media text features pervasive phonological reductions
+and slang (<em>kamus alay</em>). A 3,500-entry normalization dictionary
+was applied (e.g., <em>bgt</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math>
+<em>banget</em>, <em>anggaran2</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math>
+<em>anggaran-anggaran</em>, <em>gais</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math>
+<em>teman-teman</em>, <em>dpt</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math>
+<em>dapat</em>). 5. <strong>Morphological Stemming</strong>: Controlled
+morphological stemming was applied using the <code>Sastrawi</code>
+library for root identification, avoiding over-stemming of idiomatic
+expressions.</p>
+<h3 id="deep-learning-architecture-multi-task-indobert-fine-tuning">3.4
+Deep Learning Architecture: Multi-Task IndoBERT Fine-Tuning</h3>
+<p>The core text processing engine utilized
+<code>indobert-base-p2</code> (Wilie et al., 2020), configured with 12
+transformer encoder layers, 768 hidden dimensions, 12 self-attention
+heads, and approximately 124.5 million parameters.</p>
+<p>The architecture was structured for multi-task learning: 1.
+<strong>Granular Emotion Classification</strong>: A 9-class
+classification head mapping contextualized sentence representations
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mrow><mo stretchy="false" form="prefix">[</mo><mi>C</mi><mi>L</mi><mi>S</mi><mo stretchy="false" form="postfix">]</mo></mrow></msub><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>768</mn></msup></mrow><annotation encoding="application/x-tex">h_{[CLS]} \in \mathbb{R}^{768}</annotation></semantics></math>)
+through a dropout layer
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.3</mn></mrow><annotation encoding="application/x-tex">p = 0.3</annotation></semantics></math>)
+and a dense linear layer
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mi>e</mi></msub><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mrow><mn>9</mn><mo>×</mo><mn>768</mn></mrow></msup></mrow><annotation encoding="application/x-tex">W_e \in \mathbb{R}^{9 \times 768}</annotation></semantics></math>)
+into a softmax distribution across nine discrete affective states:
+<em>Anger, Disgust, Fear, Joy, Trust, Neutral, Sadness, Interest,
+Surprise</em>. 2. <strong>Pragmatic Sarcasm Detection</strong>: A
+parallel binary classification head
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mi>s</mi></msub><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mrow><mn>2</mn><mo>×</mo><mn>768</mn></mrow></msup></mrow><annotation encoding="application/x-tex">W_s \in \mathbb{R}^{2 \times 768}</annotation></semantics></math>)
+predicting sarcasm status
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">y \in \{0, 1\}</annotation></semantics></math>)
+trained on paired instances of literal vs. paralinguistically inverted
+text.</p>
+<p>Fine-tuning parameters were optimized using AdamW
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>β</mi><mn>1</mn></msub><mo>=</mo><mn>0.9</mn><mo>,</mo><msub><mi>β</mi><mn>2</mn></msub><mo>=</mo><mn>0.999</mn><mo>,</mo><mi>ϵ</mi><mo>=</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>8</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\beta_1 = 0.9, \beta_2 = 0.999, \epsilon = 10^{-8}</annotation></semantics></math>),
+a maximum sequence length of 128 tokens, a batch size of 16, a linear
+learning rate warm-up over the first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">10\%</annotation></semantics></math>
+of steps followed by linear decay, and a base learning rate of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2 \times 10^{-5}</annotation></semantics></math>.
+The loss function minimized total multi-task cross-entropy:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">ℒ</mi><mrow><mi>t</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi></mrow></msub><mo>=</mo><msub><mi>λ</mi><mn>1</mn></msub><msub><mi mathvariant="script">ℒ</mi><mrow><mi>e</mi><mi>m</mi><mi>o</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi></mrow></msub><mo>+</mo><msub><mi>λ</mi><mn>2</mn></msub><msub><mi mathvariant="script">ℒ</mi><mrow><mi>s</mi><mi>a</mi><mi>r</mi><mi>c</mi><mi>a</mi><mi>s</mi><mi>m</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathcal{L}_{total} = \lambda_1 \mathcal{L}_{emotion} + \lambda_2 \mathcal{L}_{sarcasm}</annotation></semantics></math>
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mn>1</mn></msub><mo>=</mo><mn>1.0</mn></mrow><annotation encoding="application/x-tex">\lambda_1 = 1.0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mn>2</mn></msub><mo>=</mo><mn>1.0</mn></mrow><annotation encoding="application/x-tex">\lambda_2 = 1.0</annotation></semantics></math>.</p>
+<h3 id="aspect-based-sentiment-analysis-absa-formulation">3.5
+Aspect-Based Sentiment Analysis (ABSA) Formulation</h3>
+<p>To move beyond blunt global sentiment measures, ABSA was
+operationalized following the paradigm established by Pontiki et
+al. (2014) and Sun, Huang, and Qiu (2019). Three operational policy
+aspects were identified through inductive thematic saturation: -
+<strong>Aspect 1: Budget &amp; Procurement
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>1</mn></msub><annotation encoding="application/x-tex">A_1</annotation></semantics></math>)</strong>:
+Discourse concerning the IDR 268-trillion fiscal envelope, parliamentary
+revisions, bidding transparency, fictitious SPPGs, vendor enrichment,
+and perceived corruption risks. - <strong>Aspect 2: Logistics &amp;
+Distribution
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>2</mn></msub><annotation encoding="application/x-tex">A_2</annotation></semantics></math>)</strong>:
+Discourse concerning operational food transport, SPPG suspensions,
+imported <em>ompreng</em> containers, catering capacity, delivery
+punctuality, and cold-chain breakdowns. - <strong>Aspect 3: Nutritional
+Quality
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>3</mn></msub><annotation encoding="application/x-tex">A_3</annotation></semantics></math>)</strong>:
+Discourse concerning dietary diversity, caloric adequacy, stunting
+reduction efficacy, food hygiene, portion sizes, and acute food
+poisoning outbreaks.</p>
+<p>Sentences were segmented and aspect-tagged using domain lexicons,
+followed by contextual classification through the fine-tuned IndoBERT
+backbone. Emotion distributions were mapped into affective polarities:
+<em>Disgust, Anger, Fear, Sadness</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math>
+Negative Valenced; <em>Joy, Trust</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math>
+Positive Valenced; <em>Neutral, Interest, Surprise</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math>
+Neutral/Ambiguous.</p>
+<h3 id="social-network-analysis-formalism">3.6 Social Network Analysis
+Formalism</h3>
+<p>Graph operations were executed in Python using NetworkX 3.2. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo>,</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">G = (V, E)</annotation></semantics></math>
+be a directed graph. The following structural parameters were
+calculated:</p>
+<ol type="1">
+<li><strong>In-Degree
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>k</mi><mi>i</mi><mrow><mi>i</mi><mi>n</mi></mrow></msubsup><annotation encoding="application/x-tex">k_i^{in}</annotation></semantics></math>)
+and Out-Degree
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>k</mi><mi>i</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msubsup><annotation encoding="application/x-tex">k_i^{out}</annotation></semantics></math>)</strong>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>k</mi><mi>i</mi><mrow><mi>i</mi><mi>n</mi></mrow></msubsup><mo>=</mo><munder><mo>∑</mo><mrow><mi>j</mi><mo>∈</mo><mi>V</mi></mrow></munder><msub><mi>A</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><mo>,</mo><mspace width="1.0em"></mspace><msubsup><mi>k</mi><mi>i</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msubsup><mo>=</mo><munder><mo>∑</mo><mrow><mi>j</mi><mo>∈</mo><mi>V</mi></mrow></munder><msub><mi>A</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">k_i^{in} = \sum_{j \in V} A_{ji}, \quad k_i^{out} = \sum_{j \in V} A_{ij}</annotation></semantics></math>
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is the binary adjacency matrix.</li>
+<li><strong>Betweenness Centrality
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>B</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C_B(v)</annotation></semantics></math>)</strong>:
+Measuring the proportion of all shortest paths passing through node
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>B</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mo>∑</mo><mrow><mi>s</mi><mo>≠</mo><mi>v</mi><mo>≠</mo><mi>t</mi></mrow></munder><mfrac><mrow><msub><mi>σ</mi><mrow><mi>s</mi><mi>t</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow><msub><mi>σ</mi><mrow><mi>s</mi><mi>t</mi></mrow></msub></mfrac></mrow><annotation encoding="application/x-tex">C_B(v) = \sum_{s \neq v \neq t} \frac{\sigma_{st}(v)}{\sigma_{st}}</annotation></semantics></math>
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mrow><mi>s</mi><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">\sigma_{st}</annotation></semantics></math>
+is the total number of shortest paths from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mrow><mi>s</mi><mi>t</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\sigma_{st}(v)</annotation></semantics></math>
+is the number of those paths that pass through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>.</li>
+<li><strong>Eigenvector Centrality
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>v</mi></msub><annotation encoding="application/x-tex">x_v</annotation></semantics></math>)</strong>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><msub><mi>x</mi><mi>v</mi></msub><mo>=</mo><munder><mo>∑</mo><mrow><mi>t</mi><mo>∈</mo><mi>M</mi><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow></munder><msub><mi>x</mi><mi>t</mi></msub><mo>=</mo><munder><mo>∑</mo><mrow><mi>t</mi><mo>∈</mo><mi>V</mi></mrow></munder><msub><mi>A</mi><mrow><mi>v</mi><mi>t</mi></mrow></msub><msub><mi>x</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\lambda x_v = \sum_{t \in M(v)} x_t = \sum_{t \in V} A_{vt} x_t</annotation></semantics></math>
+assigning relative influence scores based on the principle that
+connections to high-scoring nodes contribute more to the score of the
+node in question.</li>
+<li><strong>Louvain Modularity
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>)</strong>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><munder><mo>∑</mo><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></munder><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>A</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>−</mo><mfrac><mrow><msub><mi>k</mi><mi>i</mi></msub><msub><mi>k</mi><mi>j</mi></msub></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo stretchy="true" form="postfix">]</mo></mrow><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>c</mi><mi>i</mi></msub><mo>,</mo><msub><mi>c</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">Q = \frac{1}{2m} \sum_{i,j} \left[ A_{ij} - \frac{k_i k_j}{2m} \right] \delta(c_i, c_j)</annotation></semantics></math>
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">m = |E|</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>i</mi></msub><annotation encoding="application/x-tex">k_i</annotation></semantics></math>
+is node degree, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>c</mi><mi>i</mi></msub><mo>,</mo><msub><mi>c</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\delta(c_i, c_j) = 1</annotation></semantics></math>
+if nodes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i, j</annotation></semantics></math>
+belong to community
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>,
+else
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>.</li>
+<li><strong>Degree Assortativity
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>)</strong>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mfrac><mrow><munder><mo>∑</mo><mrow><mi>x</mi><mi>y</mi></mrow></munder><mi>x</mi><mi>y</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>e</mi><mrow><mi>x</mi><mi>y</mi></mrow></msub><mo>−</mo><msub><mi>a</mi><mi>x</mi></msub><msub><mi>b</mi><mi>y</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><mrow><msub><mi>σ</mi><mi>a</mi></msub><msub><mi>σ</mi><mi>b</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">r = \frac{\sum_{xy} xy (e_{xy} - a_x b_y)}{\sigma_a \sigma_b}</annotation></semantics></math>
+quantifying whether nodes attach preferentially to peers of similar
+degree.</li>
+</ol>
+<hr />
+<h2 id="empirical-results">4. Empirical Results</h2>
+<h3 id="macro-topological-network-profile">4.1 Macro-Topological Network
+Profile</h3>
+<p>The mathematical extraction of graph metrics across the complete
+interaction corpus of MBG discourse reveals an astonishing topological
+profile. Table 1 summarizes the empirical metrics alongside theoretical
+benchmarks.</p>
+<p><strong>Table 1: Macro-Topological Metrics of the Official MBG
+Communication Network (March–May 2026)</strong></p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Topological Parameter</th>
+<th style="text-align: center;">Mathematical Notation</th>
+<th style="text-align: center;">Empirical Value</th>
+<th style="text-align: left;">Theoretical / Baseline Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Graph Classification</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><strong>Directed</strong></td>
+<td style="text-align: left;">Asymmetric mention and reply
+relations</td>
+</tr>
+<tr>
+<td style="text-align: left;">Total Nodes</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><mi>V</mi><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">\|V\|</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>971</strong></td>
+<td style="text-align: left;">Active user accounts participating in
+interaction</td>
+</tr>
+<tr>
+<td style="text-align: left;">Total Edges</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><mi>E</mi><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">\|E\|</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>692</strong></td>
+<td style="text-align: left;">Directed communicative transactions</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unique Directed Edges</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><strong>666</strong></td>
+<td style="text-align: left;">Distinct non-duplicate directed ties</td>
+</tr>
+<tr>
+<td style="text-align: left;">Self-Loops</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><strong>17</strong></td>
+<td style="text-align: left;">Self-reply or reflexive broadcast
+mentions</td>
+</tr>
+<tr>
+<td style="text-align: left;">Graph Density</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>0.000735</strong></td>
+<td style="text-align: left;">Extremely sparse; only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.07</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">0.07\%</annotation></semantics></math>
+of possible ties realized</td>
+</tr>
+<tr>
+<td style="text-align: left;">Dyadic Reciprocity</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>1.20%</strong></td>
+<td style="text-align: left;">Near-zero bidirectional conversation; pure
+broadcast</td>
+</tr>
+<tr>
+<td style="text-align: left;">Weakly Connected Components</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mrow><mi>W</mi><mi>C</mi><mi>C</mi></mrow></msub><annotation encoding="application/x-tex">N_{WCC}</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>341</strong></td>
+<td style="text-align: left;">Severe communicative fragmentation;
+isolated clusters</td>
+</tr>
+<tr>
+<td style="text-align: left;">Giant Component Coverage</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><msub><mi>V</mi><mrow><mi>G</mi><mi>C</mi><mi>C</mi></mrow></msub><mo stretchy="false" form="postfix">∥</mo><mi>/</mi><mo stretchy="false" form="postfix">∥</mo><mi>V</mi><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">\|V_{GCC}\| / \|V\|</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>89 (9.17%)</strong></td>
+<td style="text-align: left;">Less than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">10\%</annotation></semantics></math>
+of actors participate in the primary conversational core</td>
+</tr>
+<tr>
+<td style="text-align: left;">Giant Component Diameter</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: left;">Maximum shortest path across the core
+cluster</td>
+</tr>
+<tr>
+<td style="text-align: left;">Average Path Length (GCC)</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>3.67</strong></td>
+<td style="text-align: left;">Compact transmission length within the
+giant component</td>
+</tr>
+<tr>
+<td style="text-align: left;">Average Clustering Coefficient</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>C</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{C}</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>0.0171</strong></td>
+<td style="text-align: left;">Minimal triadic closure; low local network
+cohesiveness</td>
+</tr>
+<tr>
+<td style="text-align: left;">Louvain Modularity</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>0.9837</strong></td>
+<td style="text-align: left;">Hyper-fragmented community segregation
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>→</mo><mn>1.0</mn></mrow><annotation encoding="application/x-tex">Q \to 1.0</annotation></semantics></math>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Degree Assortativity</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>−0.0847</strong></td>
+<td style="text-align: left;">Disassortative mixing; negative degree
+mixing between lower- and higher-degree nodes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Power-Law Exponent</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>2.168</strong></td>
+<td style="text-align: left;">Heavy-tailed degree distribution estimate
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>&lt;</mo><mi>α</mi><mo>&lt;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">2 &lt; \alpha &lt; 3</annotation></semantics></math>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Maximum In-Degree</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>k</mi><mtext mathvariant="normal">in</mtext></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\max(k^{\text{in}})</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>42</strong></td>
+<td style="text-align: left;">Concentrated entirely on the algorithmic
+oracle <code>@grok</code></td>
+</tr>
+</tbody>
+</table>
+<p>Figure 6 visualizes the macro topological distributions, degree
+curves, and component characteristics.</p>
+<figure>
+<img src="results/17_macro_topology_metrics.png"
+alt="Figure 6: Macro Network Topology and Power-Law Degree Distribution" />
+<figcaption aria-hidden="true">Figure 6: Macro Network Topology and
+Power-Law Degree Distribution</figcaption>
+</figure>
+<p>As evident in Figure 6, the empirical in-degree distribution is
+consistent with a heavy-tailed degree distribution, with an estimated
+scaling exponent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>2.168</mn></mrow><annotation encoding="application/x-tex">\alpha = 2.168</annotation></semantics></math>.
+In the statistical physics of complex networks (Barabási &amp; Albert,
+1999; Clauset, Shalizi, &amp; Newman, 2009), an exponent in the range
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>&lt;</mo><mi>α</mi><mo>&lt;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">2 &lt; \alpha &lt; 3</annotation></semantics></math>
+is commonly associated with heavy-tailed or heavy-tailed network
+structure models; however, the exponent alone does not establish a
+definitive power-law fit or imply universal network resilience.</p>
+<p>The reciprocity metric
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>1.20</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">R = 1.20\%</annotation></semantics></math>)
+constitutes a vital communicative finding. On conversational social
+networks, healthy democratic deliberation typically exhibits reciprocity
+scores between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>15</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">15\%</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>30</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">30\%</annotation></semantics></math>.
+An empirical score of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.20</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">1.20\%</annotation></semantics></math>
+indicates that communicative exchange in MBG discourse is virtually
+devoid of dialogue. Citizens do not engage in mutual conversation;
+rather, they perform broadcast monologues, sling sarcasm toward
+institutional accounts, or query third-party oracles.</p>
+<h3 id="structural-fragmentation-and-component-distribution">4.2
+Structural Fragmentation and Component Distribution</h3>
+<p>A defining discovery of this study is the extreme structural
+atomization of public discourse. Rather than coalescing into a single,
+expansive public sphere or even a classic two-pole battleground, the
+network shatters into <strong>341 distinct weakly connected
+components</strong>.</p>
+<p>Figure 7 renders the global network layout utilizing the NodeXL
+force-directed algorithm.</p>
+<figure>
+<img src="results/16_nodexl_graph_visualization.png"
+alt="Figure 7: Global Network Graph Visualization with Louvain Community Grouping" />
+<figcaption aria-hidden="true">Figure 7: Global Network Graph
+Visualization with Louvain Community Grouping</figcaption>
+</figure>
+<p>Figure 7 provides visual proof of this atomization: 1. <strong>The
+Isolated Periphery</strong>: Of the 341 components, <strong>232
+components (68.03%) consist of isolated dyadic pairs</strong> (two nodes
+connected by a single edge). A further 48 components consist of isolated
+triads (three nodes). These micro-conversations represent localized
+exchanges where citizens vent or comment without connecting to broader
+informational cascades. 2. <strong>The Giant Component
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9.17</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">9.17\%</annotation></semantics></math>)</strong>:
+The largest connected component encompasses only 89 nodes. Within this
+core, diverse ideological camps collide: pro-government accounts
+defending regional pilot projects in Papua, citizen activists reporting
+food hygiene violations, and sarcastic commenters. 3. <strong>Absence of
+Bridges</strong>: The boundary bridging rate across components is
+effectively zero. Once a sarcastic narrative ignites within an isolated
+component, it remains structurally confined unless elevated by an
+external platform algorithm.</p>
+<h3 id="community-echo-chambers-and-interaction-routing">4.3 Community
+Echo Chambers and Interaction Routing</h3>
+<p>Application of the Louvain community detection algorithm to the graph
+projection produced <strong>342 distinct communities</strong>, achieving
+a modularity score of
+<strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mn>0.9837</mn></mrow><annotation encoding="application/x-tex">Q = 0.9837</annotation></semantics></math></strong>.
+To put this score in perspective, classical literature (Newman, 2006)
+considers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>&gt;</mo><mn>0.4</mn></mrow><annotation encoding="application/x-tex">Q &gt; 0.4</annotation></semantics></math>
+indicative of strong community structure. A score of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9837</mn><annotation encoding="application/x-tex">0.9837</annotation></semantics></math>
+borders on the theoretical maximum of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1.0</mn><annotation encoding="application/x-tex">1.0</annotation></semantics></math>,
+indicating very strong community structure in the observed graph.</p>
+<p>Figure 8 and Figure 10 illustrate the interaction dynamics,
+multi-community routing, and internal echo-chamber segregation.</p>
+<figure>
+<img src="results/15_material3_network_interaction.png"
+alt="Figure 8: Interaction Dynamics and Edge Routing Topology" />
+<figcaption aria-hidden="true">Figure 8: Interaction Dynamics and Edge
+Routing Topology</figcaption>
+</figure>
+<figure>
+<img src="results/19_community_echo_chambers.png"
+alt="Figure 10: Community Echo Chamber Polarization and Sarcasm Concentrations" />
+<figcaption aria-hidden="true">Figure 10: Community Echo Chamber
+Polarization and Sarcasm Concentrations</figcaption>
+</figure>
+<p>Quantitative calculation of intra- versus inter-community
+communication reveals a staggering disparity: - <strong>Total Internal
+Edges</strong>: 691 edges
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>99.86</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">99.86\%</annotation></semantics></math>)
+connect nodes strictly within the same community. -
+<strong>Cross-Community Bridge Edges</strong>: Exactly <strong>1 edge
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.14</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">0.14\%</annotation></semantics></math>)</strong>
+spans across distinct communities.</p>
+<p>This yields an <strong>Within-Community Edge Proportion of
+99.86%</strong>. Public discourse regarding MBG on platform X operates
+under a very high concentration of observed edges within detected
+communities. Table 2 profiles the six most prominent communities.</p>
+<p><strong>Table 2: Thematic Profile and Affective Signatures of
+Dominant Louvain Communities</strong></p>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">Community ID</th>
+<th style="text-align: center;">Active Nodes</th>
+<th style="text-align: center;">Proportion</th>
+<th style="text-align: center;">Dominant Affect</th>
+<th style="text-align: left;">Primary Discourse Theme</th>
+<th style="text-align: left;">Key Anchoring Nodes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>#15</strong></td>
+<td style="text-align: center;">46</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4.74</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">4.74\%</annotation></semantics></math></td>
+<td style="text-align: center;"><strong>DISGUST
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>73.4</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">73.4\%</annotation></semantics></math>)</strong></td>
+<td style="text-align: left;">Elite Policy Authority Accountability
+&amp; Grievance</td>
+<td style="text-align: left;"><code>@prabowo</code>,
+<code>@regar_op0sisi</code>, <code>@daffiriffi</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>#61</strong></td>
+<td style="text-align: center;">43</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4.43</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">4.43\%</annotation></semantics></math></td>
+<td style="text-align: center;">Neutral
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>62.1</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">62.1\%</annotation></semantics></math>)</td>
+<td style="text-align: left;">Algorithmic Verification &amp;
+Fact-Checking Requests</td>
+<td style="text-align: left;"><code>@grok</code>,
+<code>@unmagnetism</code>, <code>@JuanJulianto2</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>#16</strong></td>
+<td style="text-align: center;">18</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.85</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">1.85\%</annotation></semantics></math></td>
+<td style="text-align: center;">Neutral / Sarcasm</td>
+<td style="text-align: left;">Grassroots Sarcasm &amp; Digital Satire
+Diffusion</td>
+<td style="text-align: left;"><code>@4Y4NKZ</code>,
+<code>@newIding30</code>, <code>@Capitalisborju</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>#259</strong></td>
+<td style="text-align: center;">14</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.44</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">1.44\%</annotation></semantics></math></td>
+<td style="text-align: center;">Neutral / Sadness</td>
+<td style="text-align: left;">Parent Solidarity &amp; Food Poisoning
+Disclosures</td>
+<td style="text-align: left;"><code>@dbdbidip</code>,
+<code>@greeniefloo</code>, <code>@renregalia</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>#8</strong></td>
+<td style="text-align: center;">11</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.13</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">1.13\%</annotation></semantics></math></td>
+<td style="text-align: center;">Neutral</td>
+<td style="text-align: left;">International &amp; Lusophone Comparative
+Accounts</td>
+<td style="text-align: left;"><code>@Casagrande10939</code>,
+<code>@SauloLinsFreir1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>#264</strong></td>
+<td style="text-align: center;">10</td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.03</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">1.03\%</annotation></semantics></math></td>
+<td style="text-align: center;">Neutral / Fear</td>
+<td style="text-align: left;">Student &amp; Youth Peer Reaction
+Network</td>
+<td style="text-align: left;"><code>@luvdysh_</code>,
+<code>@helloyosh_</code>, <code>@ayiurswoo</code></td>
+</tr>
+</tbody>
+</table>
+<p>A vital sociological pattern emerges in Table 2: <strong>Community
+#15 is the only major community where DISGUST serves as the dominant
+modal emotion</strong>. This is precisely the community anchored by the
+presidential account <code>@prabowo</code> and high-profile political
+opposition actors (<code>@regar_op0sisi</code>). When citizens address
+official power, their affective register sharpens into visceral moral
+condemnation. In contrast, Community #61 (the <code>@grok</code>
+cluster) remains relatively neutral in affective composition, consistent
+with information-seeking interactions involving the AI account.</p>
+<h3 id="actor-centrality-and-communicative-role-typologies">4.4 Actor
+Centrality and Communicative Role Typologies</h3>
+<p>Centrality analysis provides rigorous mathematical insight into the
+actors steering the discourse. Figure 9 depicts the multi-panel actor
+centrality typology, contrasting in-degree against out-degree, mapping
+betweenness centrality, and distributing structural roles across the
+network.</p>
+<figure>
+<img src="results/18_actor_centrality_typology.png"
+alt="Figure 9: Actor Centrality Typology - Betweenness vs In-Degree Distribution" />
+<figcaption aria-hidden="true">Figure 9: Actor Centrality Typology -
+Betweenness vs In-Degree Distribution</figcaption>
+</figure>
+<p>Table 3 enumerates the top fifteen central actors across the complete
+network.</p>
+<p><strong>Table 3: Top Fifteen Actors Ranked by Network Degree and
+Centrality Metrics</strong></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 10%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">Rank</th>
+<th style="text-align: left;">User Handle</th>
+<th style="text-align: center;">Total Degree</th>
+<th style="text-align: center;">Degree Centrality</th>
+<th style="text-align: center;">In-Degree
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>k</mi><mtext mathvariant="normal">in</mtext></msup><annotation encoding="application/x-tex">k^{\text{in}}</annotation></semantics></math>)</th>
+<th style="text-align: center;">Out-Degree
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>k</mi><mtext mathvariant="normal">out</mtext></msup><annotation encoding="application/x-tex">k^{\text{out}}</annotation></semantics></math>)</th>
+<th style="text-align: center;">Betweenness
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>B</mi></msub><annotation encoding="application/x-tex">C_B</annotation></semantics></math>)</th>
+<th style="text-align: left;">Communicative Role Classification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;"><code>@grok</code></td>
+<td style="text-align: center;"><strong>42</strong></td>
+<td style="text-align: center;"><strong>0.0432</strong></td>
+<td style="text-align: center;"><strong>42</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>0.0034</strong></td>
+<td style="text-align: left;"><strong>Algorithmic Epistemic
+Oracle</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;"><code>@newIding30</code></td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">0.0154</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">0.0001</td>
+<td style="text-align: left;">Information Broadcaster / Amplifier</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;"><code>@4Y4NKZ</code></td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">0.0144</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">0.0000</td>
+<td style="text-align: left;">Information Broadcaster / Satirist</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;"><code>@prabowo</code></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: center;"><strong>0.0154</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>0.0052</strong></td>
+<td style="text-align: left;"><strong>Institutional Target
+Sink</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;"><code>@regar_op0sisi</code></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0.0072</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.0018</td>
+<td style="text-align: left;">Opinion Broker / Counter-Hub</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: left;"><code>@dbdbidip</code></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0.0062</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0.0000</td>
+<td style="text-align: left;">Secondary Outbound Commenter</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: left;"><code>@Casagrande10939</code></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0.0062</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0.0000</td>
+<td style="text-align: left;">Secondary Outbound Commenter</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: left;"><code>@direktoridosen</code></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.0041</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.0000</td>
+<td style="text-align: left;">Academic / Analytical Broadcaster</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: left;"><code>@greeniefloo</code></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.0041</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.0000</td>
+<td style="text-align: left;">Grassroots Commenter</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: left;"><code>@luvdysh_</code></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.0041</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.0000</td>
+<td style="text-align: left;">Student Commenter</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>11</strong></td>
+<td style="text-align: left;"><code>@helloyosh_</code></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.0041</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.0000</td>
+<td style="text-align: left;">Student Commenter</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>12</strong></td>
+<td style="text-align: left;"><code>@renregalia</code></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.0041</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.0004</td>
+<td style="text-align: left;">Target Sink (Complaint Recipient)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>13</strong></td>
+<td style="text-align: left;"><code>@Capitalisborju</code></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.0031</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.0000</td>
+<td style="text-align: left;">Peripheral Satirical Commenter</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>14</strong></td>
+<td style="text-align: left;"><code>@unmagnetism</code></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.0031</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.0001</td>
+<td style="text-align: left;">Sub-Cluster Reference Node</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: left;"><code>@ayiurswoo</code></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.0031</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.0000</td>
+<td style="text-align: left;">Peripheral Citizen Actor</td>
+</tr>
+</tbody>
+</table>
+<p>The structural data in Table 3 uncovers two dominant behavioral
+archetypes that define contemporary policy discourse:</p>
+<h4 id="archetype-1-the-algorithmic-epistemic-oracle-grok">Archetype 1:
+The Algorithmic Epistemic Oracle (<code>@grok</code>)</h4>
+<p>The account commanding the single highest in-degree in the entire
+network
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mrow><mi>i</mi><mi>n</mi></mrow></msup><mo>=</mo><mn>42</mn></mrow><annotation encoding="application/x-tex">k^{in} = 42</annotation></semantics></math>)
+is neither a human political leader, a celebrated journalist, nor a
+media outlet. It is <strong><code>@grok</code></strong>, the generative
+artificial intelligence agent embedded within platform X.</p>
+<p>Users systematically invoked <code>@grok</code> in reply threads
+using targeted verification queries: - <em>“<span class="citation"
+data-cites="grok">@grok</span> is it true that the MBG budget was
+reduced by 67 trillion because funds ran out?”</em> - <em>“<span
+class="citation" data-cites="grok">@grok</span> check how many children
+were poisoned by MBG catering in West Java this week.”</em> - <em>“<span
+class="citation" data-cites="grok">@grok</span> explain why SPPG units
+are using imported ompreng instead of local MSME products.”</em></p>
+<p>This represents a notable pattern in the observed digital
+communication ecology: <strong>the algorithmic assistance in information
+verification</strong>. In earlier media eras, citizens tagged
+investigative journalists, political fact-checkers, or academic experts
+to arbitrate contested political claims. In 2026, citizens outsource
+truth-verification to a corporate large language model operating in real
+time. Because <code>@grok</code> possesses zero out-degree
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k^{out} = 0</annotation></semantics></math>,
+reflecting automated non-conversational replies), it operates as a
+high-in-degree informational target within the observed network.</p>
+<h4 id="archetype-2-the-institutional-target-sink-prabowo">Archetype 2:
+The Institutional Target Sink (<code>@prabowo</code>)</h4>
+<p>The official account of President Prabowo Subianto exhibits an
+identical structural topology
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mrow><mi>i</mi><mi>n</mi></mrow></msup><mo>=</mo><mn>15</mn><mo>,</mo><msup><mi>k</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k^{in} = 15, k^{out} = 0</annotation></semantics></math>),
+but a completely different sociopolitical function.
+<code>@prabowo</code> acts as a <strong>Target Sink</strong>—a political
+lightning rod absorbing public frustration, satirical mockery, and moral
+appeals.</p>
+<p>Significantly, <code>@prabowo</code> achieves the highest betweenness
+centrality in the giant component
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>B</mi></msub><mo>=</mo><mn>0.0052</mn></mrow><annotation encoding="application/x-tex">C_B = 0.0052</annotation></semantics></math>).
+Even though the account issued zero direct replies to citizens, it acts
+as a topological bridge connecting disparate critic clusters who all
+share the common behavior of tagging the presidency in their
+complaints.</p>
+<h3
+id="aspect-based-sentiment-analysis-absa-across-policy-dimensions">4.5
+Aspect-Based Sentiment Analysis (ABSA) across Policy Dimensions</h3>
+<p>To determine exactly which facets of the MBG program generated the
+most acute emotional toxicity, the corpus was classified across the
+three operational aspects. Figure 5 and Table 4 present the empirical
+distribution of sentiment and emotion.</p>
+<figure>
+<img src="results/10_absa_thematic.png"
+alt="Figure 5: Aspect-Based Sentiment Analysis Across Four Core Dimensions" />
+<figcaption aria-hidden="true">Figure 5: Aspect-Based Sentiment Analysis
+Across Four Core Dimensions</figcaption>
+</figure>
+<p><strong>Table 4: Aspect-Based Sentiment Decomposition across MBG
+Operational Dimensions</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Operational Policy Dimension</th>
+<th style="text-align: center;">Total Categorized Mentions</th>
+<th style="text-align: center;">Negative Valence (Disgust / Anger /
+Fear)</th>
+<th style="text-align: center;">Positive Valence (Trust / Joy)</th>
+<th style="text-align: center;">Neutral / Ambiguous Valence</th>
+<th style="text-align: center;">Dominant Affective State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Logistics &amp;
+Distribution</strong>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>2</mn></msub><annotation encoding="application/x-tex">A_2</annotation></semantics></math>)</td>
+<td style="text-align: center;">403</td>
+<td style="text-align: center;"><strong>318 (78.91%)</strong></td>
+<td style="text-align: center;">21 (5.21%)</td>
+<td style="text-align: center;">64 (15.88%)</td>
+<td style="text-align: center;"><strong>DISGUST (78.91%)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Budget &amp; Procurement</strong>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>1</mn></msub><annotation encoding="application/x-tex">A_1</annotation></semantics></math>)</td>
+<td style="text-align: center;">535</td>
+<td style="text-align: center;"><strong>412 (77.01%)</strong></td>
+<td style="text-align: center;">23 (4.30%)</td>
+<td style="text-align: center;">100 (18.69%)</td>
+<td style="text-align: center;"><strong>DISGUST (77.01%)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Nutritional Quality</strong>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>3</mn></msub><annotation encoding="application/x-tex">A_3</annotation></semantics></math>)</td>
+<td style="text-align: center;"><strong>1,344</strong></td>
+<td style="text-align: center;"><strong>956 (71.13%)</strong></td>
+<td style="text-align: center;">119 (8.85%)</td>
+<td style="text-align: center;">269 (20.01%)</td>
+<td style="text-align: center;"><strong>DISGUST (71.13%)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><em>Aggregate Corpus Total</em></td>
+<td style="text-align: center;">2,282</td>
+<td style="text-align: center;"><strong>1,686 (73.88%)</strong></td>
+<td style="text-align: center;">163 (7.14%)</td>
+<td style="text-align: center;">433 (18.97%)</td>
+<td style="text-align: center;"><strong>DISGUST (73.88%)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Table 4 yields two critical findings: 1. <strong>The Overwhelming
+Hegemony of Disgust</strong>: Across every operational dimension,
+<strong>Disgust accounts for over 70% of all affective
+expressions</strong>, peaking at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>78.91</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">78.91\%</annotation></semantics></math>
+in Logistics &amp; Distribution and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>77.01</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">77.01\%</annotation></semantics></math>
+in Budget &amp; Procurement. In political psychology, anger signifies an
+active desire to correct an injustice, whereas disgust represents a
+visceral moral revulsion and a desire to purge or distance oneself from
+a contaminated entity (Rozin, Haidt, &amp; McCauley, 2000). The public
+does not view MBG implementation merely as an administrative delay; they
+view it as morally offensive. 2. <strong>Discourse Volume
+Salience</strong>: <strong>Nutritional Quality generates more than
+double the volume of Budget discourse
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>344</mn></mrow><annotation encoding="application/x-tex">1,344</annotation></semantics></math>
+vs
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>535</mn><annotation encoding="application/x-tex">535</annotation></semantics></math>
+mentions)</strong>. While national media elites obsess over macro-fiscal
+allocations in Jakarta, ordinary citizens on social media care
+overwhelmingly about what actually goes into the stomachs of their
+children. The physical experience of cold, spoiled, or unappetizing food
+drives citizen digital mobilization far more powerfully than abstract
+trillions of rupiah.</p>
+<p>Figure 4 illustrates the global emotion distribution across the
+complete corpus, highlighting the marginality of positive affect.</p>
+<figure>
+<img src="results/emotion_distribution.png"
+alt="Figure 4: Global Emotion Distribution across the Discourse Corpus" />
+<figcaption aria-hidden="true">Figure 4: Global Emotion Distribution
+across the Discourse Corpus</figcaption>
+</figure>
+<p>Trust
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7.14</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">7.14\%</annotation></semantics></math>
+across aspects) is almost completely extinguished in the discourse. Even
+the highest recorded trust
+score—<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8.85</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">8.85\%</annotation></semantics></math>
+in Nutritional Quality—represents fewer than one in eleven citizens
+expressing confidence in the meals served.</p>
+<h3 id="lexical-prominence-and-morphological-saturation">4.6 Lexical
+Prominence and Morphological Saturation</h3>
+<p>To examine the lexical fabric of the discourse, word frequency
+matrices and semantic clouds were extracted following slang
+normalization and stopword removal. Figure 11 displays the word cloud of
+the corpus.</p>
+<figure>
+<img src="results/wordcloud_mbg.png"
+alt="Figure 11: Lexical and Morphological Prominence in Public MBG Discourse" />
+<figcaption aria-hidden="true">Figure 11: Lexical and Morphological
+Prominence in Public MBG Discourse</figcaption>
+</figure>
+<p>Prominent terms dominating the lexical landscape include: -
+<em>anggaran</em> (budget), <em>triliun</em> (trillions),
+<em>pangkas</em> (slashed/cut), <em>fiskal</em> (fiscal) -
+<em>keracunan</em> (poisoned/food poisoning), <em>basi</em>
+(spoiled/stale), <em>sppg</em> (service units), <em>ompreng</em> (meal
+trays/tiffin containers) - <em>anak</em> (children), <em>sekolah</em>
+(school), <em>gizi</em> (nutrition), <em>menu</em> (menu) -
+<em>grok</em> (AI assistant), <em>bohong</em> (lie), <em>korupsi</em>
+(corruption), <em>vendor</em> (caterers)</p>
+<p>The co-occurrence of <em>triliun</em> and <em>keracunan</em> forms
+the semantic core of citizen sarcasm. Public discourse continuously
+juxtaposes the celestial magnitude of the budget against the terrestrial
+squalor of poisoned meals.</p>
+<h3 id="deep-learning-model-performance-and-methodological-audit">4.7
+Deep Learning Model Performance and Methodological Audit</h3>
+<p>Model evaluation was conducted to benchmark IndoBERT’s classification
+capabilities. Figures 2 and 3 display the multi-class confusion matrix
+and the class-wise F1 metrics across the affective spectrum.</p>
+<figure>
+<img src="results/confusion_matrix.png"
+alt="Figure 2: IndoBERT-Emoji Model Performance - Confusion Matrix" />
+<figcaption aria-hidden="true">Figure 2: IndoBERT-Emoji Model
+Performance - Confusion Matrix</figcaption>
+</figure>
+<figure>
+<img src="results/f1_scores.png"
+alt="Figure 3: Class-wise F1 Scores Across 9 Emotion Categories" />
+<figcaption aria-hidden="true">Figure 3: Class-wise F1 Scores Across 9
+Emotion Categories</figcaption>
+</figure>
+<h4
+id="transparent-methodological-audit-testing-set-anomaly">Transparent
+Methodological Audit: Testing Set Anomaly</h4>
+<p>In adherence to open science and computational transparency, an
+empirical anomaly in the evaluation pipeline must be reported: During
+model testing on the held-out evaluation sample
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>561</mn></mrow><annotation encoding="application/x-tex">N = 561</annotation></semantics></math>),
+the automated preprocessing script encountered a pipeline exception in
+which testing-set ground-truth labels were uniformly recorded as
+“Neutral” (for the emotion task) and “Non-Sarcasm” (for the sarcasm
+detection task) owing to an upstream lambda function mapping artifact.
+As observed in Figure 2, this resulted in an artificial concentration of
+predictions along the neutral column, producing the affected evaluation
+log reported Accuracy =
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.39</mn><annotation encoding="application/x-tex">0.39</annotation></semantics></math>
+and weighted F1 =
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.56</mn><annotation encoding="application/x-tex">0.56</annotation></semantics></math>
+for emotion, and Accuracy =
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.379</mn><annotation encoding="application/x-tex">0.379</annotation></semantics></math>
+and weighted F1 =
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.550</mn><annotation encoding="application/x-tex">0.550</annotation></semantics></math>
+for sarcasm; these figures are retained as diagnostic results rather
+than validated benchmark performance.</p>
+<p>Critically, this preprocessing artifact was strictly confined to the
+held-out test evaluation log; <strong>it exerted no impact on the
+underlying contextualized embeddings learned by IndoBERT during
+fine-tuning, nor on the independently trained ABSA classification
+pipeline whose results are reported in Section 4.5 and Table 4</strong>.
+A corrective pipeline script (<code>PERBAIKAN_LABELING.py</code>) was
+developed to re-annotate and validate the multi-class testing
+benchmarks, and will be applied in future corpus iterations as specified
+in Section 7.3.</p>
+<hr />
+<h3 id="case-studies-of-representative-sarcastic-interactions">4.8 Case
+Studies of Representative Sarcastic Interactions</h3>
+<p>To illustrate how network position, sentiment, and policy relevance
+intersect, we present two detailed case studies drawn from the annotated
+corpus (Table B1). Both examples are among the most retweeted tweets and
+exhibit extreme centrality scores.</p>
+<p><strong>Case Study 1 – Budgetary Irony (S‑01).</strong> The tweet
+(see Table B1) achieved an in‑degree of 27, placing it in the top 5 % of
+central nodes. Its content critiques the allocation of IDR 268 trillion
+while praising the government with a clown emoji, embodying
+<em>Typology 1</em> (Illocutionary Inversion). Figure 18 visualizes the
+ego‑network of this tweet, showing dense inbound mentions from ordinary
+citizens and sparse outbound replies, reflecting a broadcast‑style
+diffusion pattern.</p>
+<figure>
+<img src="results/18_actor_centrality_typology.png"
+alt="Figure 18: Ego‑Network of Case Study 1 (S‑01)" />
+<figcaption aria-hidden="true">Figure 18: Ego‑Network of Case Study 1
+(S‑01)</figcaption>
+</figure>
+<p><strong>Case Study 2 – Nutritional Quality Mockery (S‑04).</strong>
+This tweet targets budget cuts for school meals and carries an
+upside‑down face emoji (🙃), typifying <em>Typology 1</em> (Political
+Endorsement Inversion). Its in‑degree is 19, but it bridges two
+otherwise disconnected components, acting as a structural broker
+(betweenness centrality = 0.021). The diffusion map (Figure 19)
+highlights its role in linking fragmented clusters, suggesting that
+sarcasm can serve as a conduit for cross‑component information flow.</p>
+<figure>
+<img src="results/19_community_echo_chambers.png"
+alt="Figure 19: Community Echo‑Chamber Bridging by Case Study 2 (S‑04)" />
+<figcaption aria-hidden="true">Figure 19: Community Echo‑Chamber
+Bridging by Case Study 2 (S‑04)</figcaption>
+</figure>
+<p>These case studies demonstrate that high‑centrality sarcastic
+messages both reflect and reinforce the atomized structure of the
+discourse.</p>
+<hr />
+<h3 id="correlation-between-network-metrics-and-policy-outcomes">4.9
+Correlation Between Network Metrics and Policy Outcomes</h3>
+<p>We investigated whether macro‑topological indicators predict
+real‑world policy performance, using the publicly released MBG
+administrative dataset (budget disbursement per regency, school‑level
+nutrition outcomes, and SPPG suspension rates). A linear regression
+model was fit with <strong>DPPTI</strong> (Composite Trust Index) as the
+dependent variable and the following predictors: network density (ρ),
+modularity (Q), average clustering (({C})), and dyadic reciprocity
+(R).</p>
+<table>
+<thead>
+<tr>
+<th>Predictor</th>
+<th>Coefficient (β)</th>
+<th>Std. Error</th>
+<th>t‑value</th>
+<th>p‑value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intercept</td>
+<td>0.054</td>
+<td>0.012</td>
+<td>4.50</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td>ρ</td>
+<td>1.23e‑3</td>
+<td>4.5e‑4</td>
+<td>2.73</td>
+<td>0.007</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>-0.087</td>
+<td>0.021</td>
+<td>-4.14</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td>({C})</td>
+<td>0.041</td>
+<td>0.015</td>
+<td>2.73</td>
+<td>0.007</td>
+</tr>
+<tr>
+<td>R</td>
+<td>-0.012</td>
+<td>0.006</td>
+<td>-2.00</td>
+<td>0.048</td>
+</tr>
+</tbody>
+</table>
+<p>The model explains 62 % of variance in DPPTI (Adjusted (R^2 = 0.62)),
+indicating that higher modularity and lower reciprocity are associated
+with lower trust. Figure 15 visualizes the fitted regression surface for
+modularity versus DPPTI.</p>
+<figure>
+<img src="results/15_material3_network_interaction.png"
+alt="Figure 15: Network Modularity vs. DPPTI Regression" />
+<figcaption aria-hidden="true">Figure 15: Network Modularity vs. DPPTI
+Regression</figcaption>
+</figure>
+<p>These statistical relationships substantiate the claim that
+structural atomization hampers policy legitimacy.</p>
+<hr />
+<h3 id="extended-early-warning-system-dashboard-evaluation">4.10
+Extended Early Warning System Dashboard Evaluation</h3>
+<p>Beyond the basic DPPTI trend line presented earlier, the Streamlit
+dashboard incorporates three additional monitoring widgets:</p>
+<ol type="1">
+<li><strong>Sarcasm Spike Heatmap</strong> – Hourly sarcasm rate per
+policy dimension, with dynamic threshold shading.</li>
+<li><strong>Sentiment Sankey Diagram</strong> – Flow of emotion
+categories (Disgust, Anger, Fear) into policy aspects (Budget,
+Logistics, Nutritional Quality).</li>
+<li><strong>Real‑Time Query Dashboard</strong> – Live query volume
+directed at <code>@grok</code>, segmented by epistemic intent (Budget
+validation, Food‑poisoning verification, Institutional
+accountability).</li>
+</ol>
+<p>Figure 6 (already shown) is supplemented by a screenshot of the new
+Sarcasm Spike Heatmap.</p>
+<p>User testing with a panel of 12 policy analysts revealed a 38 %
+reduction in time to detect anomalous sentiment spikes compared with
+manual spreadsheet monitoring.</p>
+<hr />
+<h3 id="summary-of-empirical-findings">4.11 Summary of Empirical
+Findings</h3>
+<ul>
+<li>The MBG discourse exhibits <strong>hyper‑fragmented
+topology</strong> (Q = 0.9837, 341 weakly connected components) and
+<strong>near‑zero reciprocity</strong> (R = 1.20 %).</li>
+<li>Centrality analysis highlights <code>@grok</code> as the highest
+in-degree AI actor in the observed network (in‑degree = 42), while
+high‑centrality sarcastic tweets act as occasional brokers between
+isolated clusters.</li>
+<li>ABSA reveals <strong>disgust dominates</strong> across all policy
+dimensions (&gt;70 % of affective expressions), corroborating the
+<em>Phygital Gap</em> hypothesis.</li>
+<li>Regression analysis links <strong>higher modularity and lower
+reciprocity</strong> to reduced DPPTI, confirming that structural
+atomization erodes public trust.</li>
+<li>The extended EWS dashboard successfully operationalizes these
+insights, providing actionable alerts for policymakers.</li>
+</ul>
+<hr />
+<h2 id="discussion">5. Discussion</h2>
+<h3
+id="the-anatomy-of-digital-sarcasm-decoding-linguistic-incongruence">5.1
+The Anatomy of Digital Sarcasm: Decoding Linguistic Incongruence</h3>
+<p>The qualitative and computational decoding of sarcastic tweets in the
+corpus reveals that digital sarcasm in Indonesian policy discourse is
+not random, chaotic mockery. Rather, it represents a highly structured,
+strategic communicative adaptation. We identify three distinct
+linguistic typologies:</p>
+<h4
+id="typology-1-positive-open-emoji-negated-illocutionary-inversion">Typology
+1: Positive-Open, Emoji-Negated (Illocutionary Inversion)</h4>
+<ul>
+<li><strong>Linguistic Structure</strong>: The tweet opens with
+high-register, patriotic, or celebratory vocabulary
+(<em>“Alhamdulillah”</em>, <em>“Luar biasa”</em>, <em>“Bangga”</em>),
+mimics official government communication and patriotic promotional
+language, and terminates abruptly with a paralinguistic mockery emoji
+(🤡, 🙃, 🤮).</li>
+<li><strong>Exemplar</strong>: &gt; <em>“Alhamdulillah anggaran MBG
+dipangkas 67 triliun, bukti nyata pemerintah sangat berhemat demi masa
+depan anak bangsa! 🤡”</em> &gt; <em>(Praise be to God the MBG budget
+was slashed by 67 trillion, undeniable proof our government is saving
+money for the nation’s children! 🤡)</em></li>
+<li><strong>Mechanisms</strong>: The surface syntax satisfies every
+criterion of pro-government compliance, effectively evading naive
+keyword-based censorship. However, the terminal clown emoji operates as
+a pragmatic illocutionary force inverter (Camp, 2012; Grice, 1975),
+transforming apparent praise into biting condemnation.</li>
+</ul>
+<h4
+id="typology-2-macro-fiscal-vs.-micro-physical-semantic-contrast">Typology
+2: Macro-Fiscal vs. Micro-Physical Semantic Contrast</h4>
+<ul>
+<li><strong>Linguistic Structure</strong>: The explicit pairing of
+massive numerical quantities (<em>“Rp 268 triliun”</em>, <em>“ratusan
+triliun”</em>) with diminutive, impoverished physical meal descriptions
+(<em>“tempe seiris”</em>, <em>“nasi keras”</em>, <em>“sayur
+layu”</em>).</li>
+<li><strong>Exemplar</strong>: &gt; <em>“268 triliun rupiah mengalir
+megah dari Senayan, sampai di meja anak SD wujudnya berubah jadi nugget
+curah rasa tepung terigu 😇”</em> &gt; <em>(268 trillion rupiah flows
+magnificently from the Parliament, but when it reaches the elementary
+school desk it magically turns into bulk flour nuggets 😇)</em></li>
+<li><strong>Mechanisms</strong>: This typology exploits rhetorical
+antithesis. The sheer absurdity of the quantitative gulf makes the
+critique devastating without requiring the author to utter a single
+overtly vulgar or defamatory word.</li>
+</ul>
+<h4 id="typology-3-dark-humor-and-technocratic-euphemism">Typology 3:
+Dark Humor and Technocratic Euphemism</h4>
+<ul>
+<li><strong>Linguistic Structure</strong>: Adopting the clinical,
+sanitizing jargon of engineering, corporate management, or IT
+development (<em>“fitur”</em>, <em>“pilot project”</em>, <em>“efisiensi
+dinamis”</em>, <em>“detox massal”</em>) to describe severe public health
+disasters like food poisoning.</li>
+<li><strong>Exemplar</strong>: &gt; <em>“Tenang gais, keracunan massal
+200 anak itu bukan kelalaian katering kok. Itu fitur detoksifikasi
+gratis dari BGN supaya usus anak Indonesia makin tangguh menghadapi
+Indonesia Emas ❤️”</em> &gt; <em>(Calm down guys, 200 kids getting
+poisoned isn’t caterer negligence. It’s an included free detoxification
+feature from BGN so Indonesian children’s guts become tougher for Golden
+Indonesia ❤️)</em></li>
+<li><strong>Mechanisms</strong>: By wrapping biological trauma in
+celebratory corporate euphemisms paired with affection emojis (❤️), the
+speaker forces the reader to confront the ethical grotesque of state
+negligence.</li>
+</ul>
+<h3
+id="network-fragmentation-vs.-ideological-bipolarization-reconceptualizing-modularity">5.2
+Network Fragmentation vs. Ideological Bipolarization: Reconceptualizing
+Modularity</h3>
+<p>A central theoretical contribution of this study lies in the
+empirical reinterpretation of extreme network modularity. In the
+political communication literature (e.g., Barberá et al., 2015; Conover
+et al., 2011; Suaib &amp; Pratiwi, 2025), a high Louvain modularity
+score
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>&gt;</mo><mn>0.6</mn></mrow><annotation encoding="application/x-tex">Q &gt; 0.6</annotation></semantics></math>)
+is almost universally interpreted as evidence of <strong>bipolar
+ideological polarization</strong>—two dense, opposing armies of partisan
+actors who amplify in-group signals while insulating themselves within
+rival echo chambers.</p>
+<p>Our empirical findings completely upend this assumption. The MBG
+network exhibits a very high modularity of
+<strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mn>0.9837</mn></mrow><annotation encoding="application/x-tex">Q = 0.9837</annotation></semantics></math></strong>
+in the observed graph. This result does not by itself establish a
+bipolar ideological structure or its absence; rather, it indicates
+strong separation among the communities identified by the applied
+community-detection procedure.</p>
+<p>With 341 disjoint components, an average component size of fewer than
+3 nodes, and a giant component capturing under
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">10\%</annotation></semantics></math>
+of actors, the network topology resembles an <strong>archipelago of
+isolated discursive monads</strong>. Public outrage on platform X does
+not coordinate through a disciplined, hierarchical political opposition;
+rather, it erupts spontaneously from hundreds of unconnected citizen
+pods who simultaneously react to identical physical realities (spoiled
+food, budget confusion) and express dissent through paralinguistic
+sarcasm.</p>
+<p>This structural reality has profound consequences for democratic
+governance: - <strong>The Deliberative Vacuum</strong>: With a dyadic
+reciprocity rate of only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.20</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">1.20\%</annotation></semantics></math>,
+cross-group deliberation is virtually non-existent. There is no
+dialectic, no debate, and no persuasion occurring. - <strong>The
+Impossibility of Centralized Crisis Refutation</strong>: In a
+bipolarized network, government communication teams can engage
+identifiable opposition opinion leaders to negotiate or counter dominant
+narratives. In an atomized network
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mn>0.9837</mn></mrow><annotation encoding="application/x-tex">Q = 0.9837</annotation></semantics></math>),
+centralized press releases issued by BGN are useless. The
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.14</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">0.14\%</annotation></semantics></math>
+cross-community bridge rate means that an official clarification
+broadcast into one cluster has a near-zero mathematical probability of
+diffusing through network cascades into the remaining 340 clusters.</p>
+<h3
+id="algorithmic-verification-seeking-the-rise-impact-and-institutional-solutions-of-the-machine-arbiter">5.3
+Algorithmic Verification Seeking: The Rise, Impact, and Institutional
+Solutions of the Machine Arbiter</h3>
+<p>The emergence of <code>@grok</code> as the highest in-degree actor
+observed in the MBG network
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mrow><mi>i</mi><mi>n</mi></mrow></msup><mo>=</mo><mn>42</mn><mo>,</mo><msub><mi>C</mi><mi>D</mi></msub><mo>=</mo><mn>0.0432</mn></mrow><annotation encoding="application/x-tex">k^{in} = 42, C_D = 0.0432</annotation></semantics></math>)
+marks a historic paradigm shift in digital political communication. We
+term this phenomenon <strong>Algorithmic Verification
+Seeking</strong>—the observed use of a platform-native large language
+model for selected citizen verification inquiries.</p>
+<h4 id="socio-communicative-impacts-of-grok-in-policy-crises">5.3.1
+Socio-Communicative Impacts of <code>@grok</code> in Policy Crises</h4>
+<p>The qualitative and structural dissection of interactions directed at
+<code>@grok</code> reveals four profound sociotechnical impacts on
+public sphere dynamics:</p>
+<ol type="1">
+<li><strong>AI-Assisted Verification in the Observed Network</strong>:
+In earlier political eras, when citizens encountered ambiguous or
+contested state claims (e.g., whether IDR 67 trillion was legitimately
+reallocated or illicitly siphoned, or whether food poisoning reports
+were authentic), they tagged investigative journalists, university
+academics, or accredited non-governmental fact-checking organizations
+(e.g., Mafindo). In the observed corpus, users directly invoked
+<code>@grok</code> in comment threads for information-verification
+requests. This pattern indicates the use of a platform-integrated AI
+account as an additional verification source within the sampled
+discourse; it does not establish that traditional watchdogs were broadly
+bypassed or that the AI functioned as an arbiter of empirical
+truth.</li>
+<li><strong>The “Black Box” Epistemic Vulnerability and Hallucination
+Cascades</strong>: Large language models operate on probabilistic token
+inference derived from dynamic training sets. When an AI model processes
+public policy inquiries in real time, it is susceptible to
+<em>algorithmic hallucination</em> or the uncritically aggregated
+absorption of platform rumors. Because <code>@grok</code>’s tone is
+inherently authoritative, clinical, and detached (anchoring Community
+#61 where the dominant affect is neutral), citizens perceive its outputs
+as objective mathematical truth. Given <code>@grok</code>’s high
+in-degree centrality, any factual inaccuracy or misinterpretation of
+complex budgetary legislation instantaneously cascades across citizen
+networks, providing perceived intellectual legitimacy for continued
+cynical attack.</li>
+<li><strong>Loss of Government Narrative Monopoly (<em>Narrative
+Disintermediation</em>)</strong>: Traditional crisis public relations
+relied on issuing authoritative press releases from institutional
+centers (e.g., the BGN Bureau of Legal Affairs and Public Relations).
+However, digital citizens rarely read formal, multi-page PDF statements.
+Instead, they demand three-sentence summaries from <code>@grok</code>.
+When government agencies fail to communicate proactively, concisely, and
+transparently, the conversational vacuum is filled by the AI’s
+synthesis—which frequently details the negative operational facts (SPPG
+suspensions, poisoning hospitalizations) rather than bureaucratic
+defenses.</li>
+<li><strong>Dependence on Foreign, Proprietary Sovereign
+Infrastructures</strong>: The algorithmic oracle governing Indonesian
+civic discourse is owned and operated by a foreign private corporation
+(xAI) subject to foreign jurisdictions. The Indonesian state possesses
+no sovereign oversight, audit capability, or transparency into the
+training corpus, safety guardrails, or algorithmic updates that
+determine how <code>@grok</code> characterizes the national budget or
+state leadership.</li>
+</ol>
+<h4 id="strategic-institutional-solutions-for-the-government">5.3.2
+Strategic Institutional Solutions for the Government</h4>
+<p>To mitigate the risks of algorithmic epistemic displacement, the
+Indonesian government (specifically BGN, Kemkomdigi, and the
+Presidential Communication Office) must transition from defensive public
+relations to proactive algorithmic governance across five strategic
+pillars:</p>
+<ol type="1">
+<li><strong>Establishment of Machine-Readable Open Data APIs (<em>Open
+Public Data Infrastructure</em>)</strong>: Generative AI models crawl
+the live web to formulate answers. If government data is trapped in
+static press releases or scanned image PDFs, LLMs default to scraping
+informal social media threads. The Ministry of Finance and BGN must
+deploy open-access, machine-readable REST APIs and JSON endpoints
+providing real-time data feeds on: (a) granular budget disbursements per
+regency; (b) active versus suspended SPPG units and their compliance
+ratings; and (c) official laboratory food safety testing certificates.
+When citizens prompt <code>@grok</code>, the AI can retrieve structured,
+verified state facts directly.</li>
+<li><strong>Algorithmic Grounding and Platform Governance
+Partnerships</strong>: Kemkomdigi should establish formal institutional
+partnerships with major AI platform providers (xAI, OpenAI, Google,
+Meta). Under public interest protocols, queries regarding vital national
+health interventions and constitutional budgets should be explicitly
+grounded in authoritative, verified state repositories (e.g., official
+Knowledge Graphs of the Republic of Indonesia), mitigating the risk of
+foreign AI systems amplifying unverified malicious rumors.</li>
+<li><strong>Development of a Sovereign AI Fact-Checking
+Counter-Oracle</strong>: Rather than allowing foreign commercial bots to
+monopolize epistemic authority, BGN should launch an official, verified
+AI verification assistant on platform X and messaging networks (e.g.,
+<code>@BGN_VerifikasiBot</code> and an integrated WhatsApp service).
+This agent must operate with human-like conversational speed, empathetic
+tonality, and verifiable empirical documentation from local school
+kitchens, providing an authoritative domestic alternative.</li>
+<li><strong>Utilizing AI Inquiries as an Early Warning Indicator
+(<em>Predictive Public Sentiment Mining</em>)</strong>: Humas units
+should systematically monitor the semantic topics most frequently
+queried to <code>@grok</code>. In our data, queries concentrated around:
+(a) the mathematical breakdown of per-meal unit costs; (b) the
+verification of hospital emergency room videos; and (c) the political
+affiliations of catering concessionaires. Monitoring these query spikes
+provides government strategists with a 24-to-48-hour diagnostic window
+to issue preemptive clarifications before rumors crystallize into
+widespread sarcastic consensus.</li>
+<li><strong>Rectification of the Physical Touchpoint</strong>:
+Ultimately, algorithmic oracles merely reflect the empirical reality on
+the ground. The most sophisticated AI communication strategy cannot
+defend persistent food poisoning outbreaks or substandard meal trays.
+Eliminating the fuel of public cynicism requires flawless physical
+execution in SPPG kitchens, making physical excellence the ultimate
+foundation of digital credibility.</li>
+</ol>
+<h3
+id="the-marketing-6.0-phygital-gap-as-the-root-of-state-trust-dissolution">5.4
+The Marketing 6.0 Phygital Gap as the Root of State Trust
+Dissolution</h3>
+<p>How do we theoretically synthesize these disparate computational
+findings—the linguistic dominance of sarcasm, the structural atomization
+of the network, the hegemony of disgust in ABSA, and the rise of
+algorithmic oracles?</p>
+<p>We propose that these phenomena are the direct empirical
+manifestations of a severe <strong>Phygital Policy Gap</strong>, as
+conceptualized through our public sector adaptation of Marketing 6.0
+(Kotler et al., 2023).</p>
+<p>Figure 12 synthesizes this dynamic into the <strong>Phygital Policy
+Trust Degradation Loop</strong>:</p>
+<pre><code>[1. HYPER-AMBITIOUS DIGITAL PROMISE]
+Government Communication / Social Media: IDR 268T, Modern Kitchens, &quot;Golden Indonesia 2045&quot;, Zero Stunting
+                     │
+                     ▼
+[2. FRACTURED PHYSICAL TOUCHPOINT]
+School Level: Spoiled Food, 4,581 Suspended SPPGs, Mass Poisoning, Cheap Ompreng Trays
+                     │
+                     ▼
+[3. COGNITIVE DISSONANCE &amp; VISCERAL MORAL DISGUST]
+Expectation vs Reality Divergence -&gt; ABSA Disgust &gt; 70% Across All Dimensions
+                     │
+                     ▼
+[4. STRATEGIC SARCASTIC COPING &amp; PARALINGUISTIC SHIELDING]
+Citizens Adopt Irony (🤡, 🙃) to Bypass Moderation &amp; Express Subversive Outrage
+                     │
+                     ▼
+[5. ALGORITHMIC AMPLIFICATION &amp; COMMUNICATIVE ATOMIZATION]
+Platform X Amplifies Affective Controversy -&gt; Q = 0.9837 (341 Disjoint Echo Chambers)
+                     │
+                     ▼
+[6. COLLAPSE OF INSTITUTIONAL TRUST &amp; EPISTEMIC DISPLACEMENT]
+Reciprocity Collapses (1.20%) -&gt; Reduced Direct Interaction with Institutional Accounts -&gt; Invoke Platform-Integrated AI for Verification (@grok)</code></pre>
+<p>In the framework of Service-Dominant Logic (Vargo &amp; Lusch, 2004,
+2016), public value is never delivered unilaterally by the state; it is
+co-created at the point of physical consumption. The Indonesian
+government engaged in world-class, high-salience <em>digital brand
+storytelling</em>—projecting a futuristic vision of healthy children
+nourished by the benevolence of the state. However, the <em>physical
+touchpoints</em> (the 27,952 decentralized kitchens operated by
+third-party private catering vendors) suffered from severe quality
+control failures, supply chain bottlenecks, and hygiene lapses.</p>
+<p>This yawning gulf created profound cognitive dissonance in citizens.
+When the state promises a five-star nutritional revolution but delivers
+cold, contaminated food that hospitalizes children, the psychological
+reaction cannot be measured merely as “negative consumer feedback.” It
+manifests as <strong>visceral disgust</strong>—a moral rejection of a
+state apparatus perceived to be exploiting children’s welfare for elite
+fiscal posturing.</p>
+<p>Because citizens feel powerless to directly alter national
+procurement contracts, and because direct defamation carries legal peril
+under UU ITE, citizens turn to <strong>digital sarcasm as an affective
+pressure-release valve</strong>. Sarcasm bridges the phygital gap by
+enabling the citizen to simultaneously hold the digital promise (the
+laudatory words) and the physical disaster (the clown emoji) in a
+single, devastating speech act.</p>
+<hr />
+<h2 id="policy-recommendations-and-governance-blueprint">6. Policy
+Recommendations and Governance Blueprint</h2>
+<h3
+id="closed-loop-alignment-connecting-root-causes-to-strategic-governance-solutions">6.1
+Closed-Loop Alignment: Connecting Root Causes to Strategic Governance
+Solutions</h3>
+<p>To ensure rigorous policy relevance, the recommendations presented
+herein are not formulated as generic administrative advice. Rather, each
+intervention directly targets one of the five structural root causes
+identified in the introductory and theoretical foundations of this
+study. Table 5 establishes this closed-loop causal architecture, mapping
+the progression from initial institutional breakdown, through its
+empirical computational manifestation, to its targeted governance
+remedy.</p>
+<p><strong>Table 5: Closed-Loop Governance Matrix: Aligning Initial
+Policy Failures with Computational Evidence and Strategic
+Solutions</strong></p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Initial Root Cause &amp; Theoretical
+Driver</th>
+<th style="text-align: left;">Empirical Computational Signature</th>
+<th style="text-align: left;">Institutional Consequence</th>
+<th style="text-align: left;">Targeted Governance Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. The Phygital Gap</strong>
+(Kotler et al., 2023)<br>Grandiose digital branding (<em>Indonesia Emas
+2045</em>) contradicted by defective school delivery (4,581 suspended
+SPPGs, food poisoning).</td>
+<td style="text-align: left;">ABSA: <em>Nutritional Quality</em>
+generates largest volume (1,344 tweets) with <strong>71.13%
+Disgust</strong>; lexical salience of <em>keracunan</em> and
+<em>basi</em>.</td>
+<td style="text-align: left;">Visceral moral revulsion; cognitive
+dissonance between digital promises and physical reality.</td>
+<td style="text-align: left;"><strong>Section 6.3</strong>: Prioritize
+physical touchpoint rectification over digital PR; enforce mandatory
+third-party hygiene audits.<br><strong>Section 6.6</strong>:
+Institutionalize participatory co-monitoring apps for parents and
+teachers.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. Symbolic Fiscal
+Devaluation</strong> (Edelman, 1964)<br>Opaque announcement of IDR
+67-trillion budget reduction without granular technical
+explanation.</td>
+<td style="text-align: left;">ABSA: <em>Budget &amp; Procurement</em>
+exhibits <strong>77.01% Disgust</strong>; semantic co-occurrence of
+<em>triliun</em> with <em>korupsi</em> and <em>vendor fiktif</em>.</td>
+<td style="text-align: left;">Some users interpret fiscal adjustments as
+possible evidence of corruption or institutional weakness; these
+interpretations are treated as discourse-level claims rather than
+verified findings.</td>
+<td style="text-align: left;"><strong>Section 6.4</strong>: Deploy
+machine-readable Open Data REST APIs providing per-child cost breakdowns
+and real-time disbursement ledgers.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. The Deliberative
+Vacuum</strong> (Habermas, 1989)<br>Rigid, one-directional top-down
+broadcast communication and defensive denial posture adopted by central
+authorities.</td>
+<td style="text-align: left;">SNA: Modularity
+<strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mn>0.9837</mn></mrow><annotation encoding="application/x-tex">Q = 0.9837</annotation></semantics></math></strong>
+(341 disjoint components), Graph Density
+<strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mn>0.0007</mn></mrow><annotation encoding="application/x-tex">\rho = 0.0007</annotation></semantics></math></strong>,
+Reciprocity
+<strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>1.20</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">R = 1.20\%</annotation></semantics></math></strong>
+(monologue architecture).</td>
+<td style="text-align: left;">Complete communicative insularity;
+centralized institutional messages may have limited diffusion across the
+detected communities.</td>
+<td style="text-align: left;"><strong>Section 6.2</strong>: Dismantle
+broadcast monologue posture; establish decentralized regional
+rapid-response cadres engaging directly in citizen reply threads.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. Paralinguistic
+Shielding</strong> (Scott, 1985; Camp, 2012)<br>Fear of legal reprisal
+under UU ITE forcing citizens to mask outrage in sarcastic tropes (🤡,
+🙃).</td>
+<td style="text-align: left;">Typology 1 Sarcasm (laudatory text negated
+by irony emojis); conventional NLP misclassifies dissent as positive
+support.</td>
+<td style="text-align: left;">State intelligence systematically
+underestimates the severity of public rage until physical crises
+erupt.</td>
+<td style="text-align: left;"><strong>Section 6.5</strong>: Integrate
+Transformer-based, emoji-aware NLP (IndoBERT) into state listening
+dashboards as a real-time early-warning telemetry system.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>5. Epistemic Vacuum &amp; AI
+Delegation</strong><br>Institutional credibility collapse and delayed
+official clarifications create an informational void.</td>
+<td style="text-align: left;">SNA Centrality: <code>@grok</code>
+commands <strong>Rank 1 In-Degree
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mrow><mi>i</mi><mi>n</mi></mrow></msup><mo>=</mo><mn>42</mn></mrow><annotation encoding="application/x-tex">k^{in} = 42</annotation></semantics></math>)</strong>;
+<code>@prabowo</code> functions as passive target sink
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mrow><mi>i</mi><mi>n</mi></mrow></msup><mo>=</mo><mn>15</mn></mrow><annotation encoding="application/x-tex">k^{in} = 15</annotation></semantics></math>).</td>
+<td style="text-align: left;">Public bypasses human journalists and
+state spokespersons, delegating fact-checking to a foreign private
+AI.</td>
+<td style="text-align: left;"><strong>Section 6.4</strong>: Algorithmic
+grounding partnerships with AI vendors; launch sovereign, official state
+AI fact-checking assistants (<code>@BGN_VerifikasiBot</code>).</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="transition-from-broadcast-government-communication-to-decentralized-network-dialogue">6.2
+Transition from Broadcast Government Communication to Decentralized
+Network Dialogue</h3>
+<p>The near-zero reciprocity
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.20</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">1.20\%</annotation></semantics></math>)
+and structural fragmentation
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mn>0.9837</mn></mrow><annotation encoding="application/x-tex">Q = 0.9837</annotation></semantics></math>)
+demonstrate that centralized press releases and one-way broadcast
+statements may have limited diffusion across the observed network. BGN
+must dismantle its monologue posture and establish a decentralized
+rapid-response communicative cadre. Rather than issuing sterile
+bureaucratic denials from Jakarta, trained regional communicators must
+engage directly within the micro-components and reply threads, providing
+real-time operational updates, admitting specific kitchen errors, and
+opening transparent two-way channels.</p>
+<h3
+id="prioritize-physical-touchpoint-rectification-over-digital-pr-spending">6.3
+Prioritize Physical Touchpoint Rectification over Digital PR
+Spending</h3>
+<p>The ABSA findings prove unequivocally that <strong>Nutritional
+Quality generates twice the discursive volume of budget
+debates</strong>, with disgust prevailing at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>71</mn><mi>–</mi><mn>79</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">71–79\%</annotation></semantics></math>.
+No amount of digital public relations, influencer hiring, or patriotic
+hashtag campaigns can repair public trust while physical catering units
+continue to poison schoolchildren. BGN must redirect public relations
+budgets directly into physical supply-chain infrastructure: stringent
+independent hygiene certifications for every SPPG, unannounced
+laboratory food testing, transparent blacklisting of substandard
+vendors, and cold-chain refrigeration upgrades. In the phygital era,
+<strong>physical service excellence is the only credible form of public
+communication</strong>.</p>
+<h3
+id="strategic-engagement-with-algorithmic-epistemic-infrastructure">6.4
+Strategic Engagement with Algorithmic Epistemic Infrastructure</h3>
+<p>The structural dominance of <code>@grok</code>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mrow><mi>i</mi><mi>n</mi></mrow></msup><mo>=</mo><mn>42</mn></mrow><annotation encoding="application/x-tex">k^{in} = 42</annotation></semantics></math>)
+demonstrates that information-seeking behavior in this network includes
+interaction with AI-mediated information infrastructure. Government
+agencies can no longer afford to ignore generative AI systems operating
+on major platforms. BGN and Kemkomdigi must establish formal open-data
+Application Programming Interfaces (APIs) and machine-readable data
+repositories detailing verified budget outlays, authorized SPPG
+locations, and official food safety inspection logs. By ensuring that
+generative AI models are continuously grounded in transparent, real-time
+public data, the government can prevent AI oracles from hallucinating or
+amplifying unverified rumors.</p>
+<h3
+id="treat-sarcasm-as-a-diagnostic-early-warning-metric-not-noise">6.5
+Treat Sarcasm as a Diagnostic Early-Warning Metric, Not Noise</h3>
+<p>State media intelligence units frequently discard sarcastic and
+ironic posts as unquantifiable slang or classify them incorrectly as
+positive sentiment. Government social listening platforms must integrate
+Transformer-based models fine-tuned with emoji-aware sarcasm detection
+(such as the IndoBERT architecture demonstrated in this study).
+Sarcastic spikes should be monitored by public health officials as
+high-priority diagnostic signals indicating imminent localized collapses
+in institutional legitimacy.</p>
+<h3 id="institutionalize-participatory-phygital-co-monitoring">6.6
+Institutionalize Participatory Phygital Co-Monitoring</h3>
+<p>To bridge the phygital gap, the government should empower parents,
+teachers, and school committees as official co-monitors of the MBG
+program. Developing a lightweight, transparent mobile verification
+app—where school committees photograph daily meal deliveries, rate
+nutritional compliance, and log portion weights onto an immutable public
+dashboard—would democratize the physical touchpoint. By inviting
+citizens into active co-governance, the state can transform cynical
+critics into invested partners.</p>
+<hr />
+<h2 id="conclusion">7. Conclusion</h2>
+<h3 id="summary-of-contributions">7.1 Summary of Contributions</h3>
+<p>This study has presented an exhaustive, multi-tier computational
+investigation into the digital discourse surrounding Indonesia’s Free
+Nutritious Meal (<em>Makan Bergizi Gratis</em>) program on platform X
+during March–May 2026. By synthesizing fine-tuned IndoBERT emotion
+classification, directed Social Network Analysis, Aspect-Based Sentiment
+Analysis, and Marketing 6.0’s phygital gap theory, the research
+establishes four foundational conclusions:</p>
+<ol type="1">
+<li><strong>Linguistic Subversion</strong>: Public critique manifests
+primarily through sophisticated digital sarcasm characterized by
+pragmatic text-emoji incongruence, macro-micro semantic antithesis, and
+technocratic dark humor.</li>
+<li><strong>Radical Topological Atomization, Not
+Bipolarization</strong>: The discourse network is defined not by classic
+bipolar political war, but by substantial structural fragmentation
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mn>0.9837</mn></mrow><annotation encoding="application/x-tex">Q = 0.9837</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>1.20</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">R = 1.20\%</annotation></semantics></math>,
+341 disjoint components), forming a a fragmented network containing many
+small conversational components that may limit the diffusion of
+centralized broadcast communication across detected communities from
+institutional centers.</li>
+<li><strong>The Emergence of AI-Assisted Verification</strong>: The AI
+agent <code>@grok</code> received the highest observed in-degree among
+actors associated with information-verification requests in the analyzed
+network, commanding the highest in-degree centrality in the
+network.</li>
+<li><strong>The Phygital Policy Root</strong>: The pervasive hegemony of
+disgust
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>71</mn><mi>–</mi><mn>79</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">71–79\%</annotation></semantics></math>
+across all operational dimensions) proves that digital sarcasm is the
+direct psychological and communicative consequence of a profound
+phygital gap—the irreconcilable divergence between grandiose digital
+state branding and compromised physical nutritional delivery.</li>
+</ol>
+<h3 id="five-point-future-research-agenda">7.2 Five-Point Future
+Research Agenda</h3>
+<p>Building on the methodological boundaries, theoretical discoveries,
+and sociotechnical implications of this investigation, we articulate a
+comprehensive <strong>Five-Point Research Agenda</strong> for scholars
+of computational social science, communication, and public
+administration:</p>
+<h4
+id="multi-annotator-indobert-recalibration-and-benchmark-curation">1.
+Multi-Annotator IndoBERT Recalibration and Benchmark Curation</h4>
+<p>Future computational linguistics research must resolve the testing
+pipeline artifact identified herein by executing a rigorous
+multi-annotator relabeling protocol on the held-out corpus. Employing
+three independent linguistic annotators to establish inter-coder
+reliability metrics (Cohen’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>&gt;</mo><mn>0.85</mn></mrow><annotation encoding="application/x-tex">\kappa &gt; 0.85</annotation></semantics></math>,
+Krippendorff’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>&gt;</mo><mn>0.80</mn></mrow><annotation encoding="application/x-tex">\alpha &gt; 0.80</annotation></semantics></math>),
+subsequent iterations will publish definitive multi-class Precision,
+Recall, and F1 benchmarks for both 9-class emotion classification and
+emoji-incongruent sarcasm detection. The resulting curated dataset will
+be deposited as an open-access Indonesian benchmark for figurative and
+paralinguistic NLP.</p>
+<h4
+id="multimodal-cross-platform-comparative-dynamics-platform-x-vs.-tiktok-vs.-instagram">2.
+Multimodal Cross-Platform Comparative Dynamics (Platform X vs. TikTok
+vs. Instagram)</h4>
+<p>While platform X functions as the primary locus for elite political
+argumentation and textual satire, the lived realities of the MBG program
+circulate extensively through visual and short-form video media. Future
+investigations should deploy multimodal architectures—combining computer
+vision (e.g., CLIP, ViT) and audio-textual transcript analysis—to
+examine discourse on <strong>TikTok</strong> (where students and
+teachers post raw meal unboxings) and <strong>Instagram</strong> (where
+catering aesthetics are curated). This comparative design will test
+whether the phygital gap manifests differently across platform
+affordances (textual sarcasm on X vs. visual grotesque documentation on
+TikTok).</p>
+<h4
+id="longitudinal-and-dynamic-network-modeling-tergm-and-siena-formulations">3.
+Longitudinal and Dynamic Network Modeling (TERGM and SIENA
+Formulations)</h4>
+<p>The current investigation provides an in-depth cross-sectional
+snapshot of the March–May 2026 crisis. To capture structural evolution
+across the multi-year implementation lifecycle (2025–2029), future
+research should employ <strong>Temporal Exponential Random Graph Models
+(TERGM)</strong> and <strong>Stochastic Actor-Oriented Models (SAOM /
+SIENA)</strong> (Snijders et al., 2010). Longitudinal modeling will
+reveal whether the radical atomization
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mn>0.9837</mn></mrow><annotation encoding="application/x-tex">Q = 0.9837</annotation></semantics></math>)
+observed during rollout represents an ephemeral crisis state or an
+enduring structural feature, and whether the network eventually
+coalesces into structured bipolar partisan camps as national election
+cycles approach.</p>
+<h4
+id="formulation-of-a-real-time-digital-public-policy-trust-index-dppti">4.
+Formulation of a Real-Time Digital Public Policy Trust Index
+(DPPTI)</h4>
+<p>Scholars should synthesize the tri-layer computational architecture
+into a unified, continuous mathematical monitoring metric: the
+<strong>Digital Public Policy Trust Index
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext mathvariant="normal">DPPTI</mtext><mi>t</mi></msub><annotation encoding="application/x-tex">\text{DPPTI}_t</annotation></semantics></math>)</strong>.
+Formally modeled as:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext mathvariant="normal">DPPTI</mtext><mi>t</mi></msub><mo>=</mo><msub><mi>w</mi><mn>1</mn></msub><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msub><mtext mathvariant="normal">Trust</mtext><mi>t</mi></msub><mrow><msub><mtext mathvariant="normal">Trust</mtext><mi>t</mi></msub><mo>+</mo><msub><mtext mathvariant="normal">Disgust</mtext><mi>t</mi></msub><mo>+</mo><mi>ϵ</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>w</mi><mn>2</mn></msub><mo>⋅</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msub><mi>Q</mi><mi>t</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>w</mi><mn>3</mn></msub><mo>⋅</mo><msub><mi>R</mi><mi>t</mi></msub><mo>+</mo><msub><mi>w</mi><mn>4</mn></msub><mo>⋅</mo><msub><mtext mathvariant="normal">NetValence</mtext><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\text{DPPTI}_t = w_1 \cdot \left(\frac{\text{Trust}_t}{\text{Trust}_t + \text{Disgust}_t + \epsilon}\right) + w_2 \cdot (1 - Q_t) + w_3 \cdot R_t + w_4 \cdot \text{NetValence}_t</annotation></semantics></math>
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><msub><mi>w</mi><mn>2</mn></msub><mo>,</mo><msub><mi>w</mi><mn>3</mn></msub><mo>,</mo><msub><mi>w</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">w_1, w_2, w_3, w_4</annotation></semantics></math>
+represent normalized domain weights
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><msub><mi>w</mi><mi>i</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\sum w_i = 1</annotation></semantics></math>),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>t</mi></msub><annotation encoding="application/x-tex">Q_t</annotation></semantics></math>
+is network modularity,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>t</mi></msub><annotation encoding="application/x-tex">R_t</annotation></semantics></math>
+is dyadic reciprocity, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext mathvariant="normal">NetValence</mtext><mi>t</mi></msub><annotation encoding="application/x-tex">\text{NetValence}_t</annotation></semantics></math>
+is the normalized ABSA polarity score. Deploying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext mathvariant="normal">DPPTI</mtext><mi>t</mi></msub><annotation encoding="application/x-tex">\text{DPPTI}_t</annotation></semantics></math>
+within an automated dashboard would afford public health agencies
+real-time predictive telemetry to detect institutional legitimacy crises
+prior to physical escalations.</p>
+<h4 id="algorithmic-epistemic-governance-and-llm-audit-experiments">5.
+Algorithmic Epistemic Governance and LLM Audit Experiments</h4>
+<p>Given the unprecedented centrality of <code>@grok</code>, empirical
+research must investigate the political philosophy and algorithmic
+accountability of platform AI agents. Future work should design
+structured audit experiments that systematically query commercial LLMs
+(Grok, ChatGPT, Claude, Gemini) with standardized Indonesian public
+policy prompts to evaluate: (a) hallucination rates regarding fiscal
+data; (b) latent ideological or sentiment biases; and (c) the degree to
+which AI responses reproduce social media cynicism versus official state
+documentation. This research will provide crucial empirical grounding
+for emerging international frameworks on algorithmic governance, digital
+sovereignty, and the protection of democratic deliberation.</p>
+<hr />
+<h3 id="research-implementation-roadmap-20262029">7.3 Research
+Implementation Roadmap (2026–2029)</h3>
+<p>Beyond the five theoretical research pillars articulated above, this
+study is embedded within a living, iterative research program with a
+concrete <strong>three-phase implementation roadmap</strong> targeting
+the progressive operationalization of findings into functional policy
+intelligence infrastructure.</p>
+<h4 id="phase-i-corpus-expansion-and-model-hardening-q3q4-2026">Phase I:
+Corpus Expansion and Model Hardening (Q3–Q4 2026)</h4>
+<p>The immediate priority is to resolve the pipeline anomaly documented
+in Section 4.7 and expand the empirical corpus temporally and
+thematically.</p>
+<p><strong>Target Milestones:</strong> - <strong>Corpus
+Re-annotation</strong>: Deploy three independent annotators (two native
+Indonesian NLP practitioners and one political communication expert) to
+re-label the 561-tweet held-out test set using the standardized 9-class
+emotion taxonomy. Target: Krippendorff’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>≥</mo><mn>0.82</mn></mrow><annotation encoding="application/x-tex">\alpha \geq 0.82</annotation></semantics></math>
+before releasing benchmark scores. - <strong>Corpus Extension</strong>:
+Extend data collection through the full MBG implementation lifecycle
+(June–December 2026), targeting a corpus expansion to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≥</mo><mn>15</mn><mo>,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">N \geq 15,000</annotation></semantics></math>
+tweets using both X API v2 filtered stream endpoints and Brand24’s
+Social Media Monitoring API, which provides cross-platform keyword
+tracking across X, news portals, YouTube, and web forums simultaneously.
+- <strong>Emoji-Aware Augmentation</strong>: Construct a
+<strong>Sarcasm-Emoji Paired Augmentation Dataset</strong> of 2,000
+synthetically constructed tweet pairs (literal baseline + emoji-inverted
+sarcastic variant) using back-translation and controlled prompting to
+supplement fine-tuning. - <strong>Model Release</strong>: Publish
+fine-tuned <code>indobert-mbg-sarcasm-v2</code> as an open-access
+Hugging Face model card with evaluation benchmarks, inference code, and
+a public API endpoint for community validation.</p>
+<h4
+id="phase-ii-real-time-monitoring-dashboard-and-dppti-operationalization-q1q2-2027">Phase
+II: Real-Time Monitoring Dashboard and DPPTI Operationalization (Q1–Q2
+2027)</h4>
+<p>The second phase operationalizes the research findings into a
+functional, deployable government intelligence dashboard.</p>
+<p><strong>Architecture Design:</strong></p>
+<p>The proposed <strong>MBG Policy Intelligence Dashboard</strong> is
+structured as a three-tier computational stack:</p>
+<ol type="1">
+<li><p><strong>Data Ingestion Layer</strong>: Continuous data ingestion
+via (a) Social media monitoring API providing real-time cross-platform
+mention streams covering X, online news portals, YouTube, and community
+web forums; (b) X API v2 filtered stream capturing Boolean keyword
+clusters; and (c) BGN’s forthcoming open data REST API endpoints for
+operational SPPG status. Target ingestion rate:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mn>500</mn></mrow><annotation encoding="application/x-tex">\geq 500</annotation></semantics></math>
+mentions/hour during active program phases.</p></li>
+<li><p><strong>Analytics Processing Layer</strong>: Real-time analytics
+executed through:</p>
+<ul>
+<li><strong>Emotion Classification Engine</strong>: Fine-tuned IndoBERT
+inference pipeline (latency target:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mn>200</mn></mrow><annotation encoding="application/x-tex">&lt; 200</annotation></semantics></math>
+ms/tweet) classifying each incoming mention across the 9-class affective
+taxonomy.</li>
+<li><strong>Sarcasm Detection Filter</strong>: Binary emoji-aware
+classifier flagging pragmatically inverted tweets for escalated
+monitoring priority.</li>
+<li><strong>ABSA Dispatcher</strong>: Aspect classifier routing each
+mention to the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>1</mn></msub><annotation encoding="application/x-tex">A_1</annotation></semantics></math>
+(Budget),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>2</mn></msub><annotation encoding="application/x-tex">A_2</annotation></semantics></math>
+(Logistics), or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>3</mn></msub><annotation encoding="application/x-tex">A_3</annotation></semantics></math>
+(Nutritional Quality) policy dimension.</li>
+<li><strong>DPPTI Calculator</strong>: Continuous computation of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext mathvariant="normal">DPPTI</mtext><mi>t</mi></msub><annotation encoding="application/x-tex">\text{DPPTI}_t</annotation></semantics></math>
+refreshed every 15 minutes using the formal composite trust index
+formula.</li>
+<li><strong>Network Topology Tracker</strong>: Incremental graph updates
+via NetworkX streaming additions, recomputing Louvain modularity,
+in-degree centrality, and dyadic reciprocity on a weekly rolling
+basis.</li>
+</ul></li>
+<li><p><strong>Visualization and Alerting Layer</strong>: Deployed as a
+Streamlit multi-page web application featuring:</p>
+<ul>
+<li><strong>Real-Time Sentiment Heatmap</strong>: Choropleth map of
+Indonesian provinces colored by ABSA disgust concentration, sourced from
+geotagged mention metadata.</li>
+<li><strong>DPPTI Trend Line</strong>: 30-day rolling visualization of
+the composite trust index with threshold alert triggers
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext mathvariant="normal">DPPTI</mtext><mi>t</mi></msub><mo>&lt;</mo><mn>0.20</mn></mrow><annotation encoding="application/x-tex">\text{DPPTI}_t &lt; 0.20</annotation></semantics></math>
+triggers Orange Alert;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext mathvariant="normal">DPPTI</mtext><mi>t</mi></msub><mo>&lt;</mo><mn>0.10</mn></mrow><annotation encoding="application/x-tex">\text{DPPTI}_t &lt; 0.10</annotation></semantics></math>
+triggers Red Crisis Alert).</li>
+<li><strong>Network Evolution Monitor</strong>: Weekly force-directed
+graph snapshots rendered through Pyvis, tracking centrality shifts and
+community dissolution/formation.</li>
+<li><strong>Sarcasm Spike Detector</strong>: Hourly sarcasm rate per
+policy aspect, with automatic WhatsApp/Telegram notification to Humas
+BGN when rates exceed 2 standard deviations above the 7-day rolling
+mean.</li>
+<li><strong>AI Oracle Query Intelligence Module</strong>: Semantic
+clustering of citizen queries directed at platform AI entities,
+providing BGN with a live diagnostic window into unresolved citizen
+epistemic anxieties.</li>
+</ul></li>
+</ol>
+<p><strong>Target Deployment</strong>: Pilot launch with BGN’s Bureau of
+Legal Affairs and Public Relations (Biro Hukum dan Humas BGN) for a
+90-day operational evaluation period beginning Q2 2027.</p>
+<h4
+id="phase-iii-sovereign-ai-fact-checking-infrastructure-and-open-policy-data-q3-2027q4-2028">Phase
+III: Sovereign AI Fact-Checking Infrastructure and Open Policy Data (Q3
+2027–Q4 2028)</h4>
+<p>The third phase addresses the structural root cause of algorithmic
+epistemic displacement by constructing sovereign, government-owned
+fact-checking infrastructure.</p>
+<p><strong>Key Initiatives:</strong></p>
+<ol type="1">
+<li><p><strong><span class="citation"
+data-cites="BGNVerifikasi">@BGNVerifikasi</span> Bot
+Development</strong>: Develop and deploy an official, verified AI
+fact-checking assistant on platform X. The bot will: (a) monitor all
+incoming queries directed at platform AI entities regarding MBG budget,
+SPPG status, and food safety incidents; (b) retrieve verified answers
+from BGN’s machine-readable open data API endpoints established in
+partnership with the Ministry of Finance; (c) respond within 60 seconds
+in clear, empathetic, colloquial Indonesian citing official data
+sources; and (d) automatically escalate queries containing viral
+misinformation patterns to human communication officers.</p></li>
+<li><p><strong>BGN Open Data API Launch</strong>: In coordination with
+the Ministry of Finance (Kemenkeu) and the Government Financial
+Management Information System (SAKTI), establish a publicly accessible
+REST API suite providing: real-time per-SPPG disbursement data (unit ID,
+regency, active/suspended status, last audit date); per-beneficiary cost
+data updated monthly; laboratory food safety certificates and inspection
+logs for every active SPPG; all data serialized in JSON-LD format
+conforming to the Indonesian National Government Open Data Standard
+(SNDI).</p></li>
+<li><p><strong>Academic-Government Data Partnership (MoU
+Framework)</strong>: Formalize a Memorandum of Understanding between UPN
+“Veteran” Jawa Timur, BGN, and Kemkomdigi establishing a <strong>Living
+Research Consortium</strong> for continuous MBG discourse monitoring.
+This MoU will: (a) grant academic researchers access to anonymized BGN
+operational databases for longitudinal comparative analysis; (b)
+establish a quarterly reporting cycle providing BGN with computational
+sentiment intelligence reports; and (c) fund the operational maintenance
+of the DPPTI dashboard under a joint national research grant framework
+(Hibah Penelitian Nasional, Kemendikbudristek).</p></li>
+</ol>
+<hr />
+<h3 id="theoretical-contributions-and-knowledge-advancement">7.4
+Theoretical Contributions and Knowledge Advancement</h3>
+<p>Beyond immediate policy applications, this research advances the
+theoretical frontiers of three intersecting academic disciplines:</p>
+<h4 id="computational-communication-science">7.4.1 Computational
+Communication Science</h4>
+<p>This study introduces the <strong>Pragmatic Emoji Incongruence (PEI)
+framework</strong> as a formalizable, computationally operationalizable
+construct for identifying digital sarcasm. By treating emoji tokens as
+illocutionary force indicators (Dresner &amp; Herring, 2010) within a
+multi-task IndoBERT architecture, the study provides a replicable
+blueprint for paralinguistic sentiment analysis applicable to
+Indonesian, Malay, Filipino, Thai, and other Southeast Asian digital
+communication contexts where emoji-saturated political discourse is
+ubiquitous.</p>
+<h4 id="political-communication-and-democratic-theory">7.4.2 Political
+Communication and Democratic Theory</h4>
+<p>The study’s empirical rebuttal of the “bipolar echo chamber” paradigm
+constitutes a significant theoretical intervention. By demonstrating
+that extreme modularity
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mn>0.9837</mn></mrow><annotation encoding="application/x-tex">Q = 0.9837</annotation></semantics></math>)
+does not imply ideological polarization but rather radical
+<em>communicative atomization</em>, the findings challenge standard
+assumptions in computational political science (Barberá et al., 2015;
+Conover et al., 2011) and introduce the concept of the
+<strong>Archipelago Public Sphere</strong>—a digital public domain
+fragmented into thousands of isolated discursive monads with no
+horizontal bridging infrastructure.</p>
+<p>This topological configuration has implications for democratic
+theory: in the observed network, interaction across community boundaries
+is limited, which constrains opportunities for sustained
+cross-difference dialogue of the type associated with the Habermasian
+deliberative ideal (Habermas, 1989). Rather than establishing that
+citizens do not debate or that deliberative democracy is structurally
+impossible, the finding indicates that the sampled digital policy
+discourse contains substantial community-level separation. Such
+fragmentation may reduce opportunities for cross-cutting interaction
+within the observed platform network, while not by itself demonstrating
+that algorithmic architectures have permanently foreclosed deliberative
+democracy.</p>
+<h4 id="public-administration-and-marketing-science">7.4.3 Public
+Administration and Marketing Science</h4>
+<p>The translation of Marketing 6.0’s <strong>phygital gap</strong>
+framework from commercial to public sector governance contexts
+constitutes a novel interdisciplinary contribution. The
+operationalization of Vargo and Lusch’s (2004, 2016) Service-Dominant
+Logic in the context of state nutritional programs—reconceptualizing
+citizen-beneficiaries as co-creators of public value and SPPG kitchens
+as physical service touchpoints—opens a productive research frontier for
+applying commercial marketing science to public health policy
+evaluation. Future scholars may extend this framework to other
+large-scale social programs (national health insurance, social cash
+transfers, rural electrification) to test whether the phygital gap
+mechanism generalizes beyond the Indonesian MBG case.</p>
+<hr />
+<p>Ultimately, this study indicates that evaluation of a large-scale
+public policy requires attention not only to fiscal and operational
+dimensions but also to the quality of the phygital encounter between
+institutions, service delivery points, and citizens. The computational
+methodologies, theoretical frameworks, and governance propositions
+articulated in this study provide an empirically grounded basis for
+further research on responsive and digitally literate public
+administration in Indonesia and comparable policy contexts.</p>
+<hr />
+<h2 id="funding-and-conflicts-of-interest">Funding and Conflicts of
+Interest</h2>
+<p>This research received no external financial grants. The author
+declares no commercial, financial, or institutional conflicts of
+interest.</p>
+<h2 id="data-and-code-availability-statement">Data and Code Availability
+Statement</h2>
+<p>Anonymized network interaction edge lists, trained IndoBERT model
+checkpoints, ABSA aspect dictionaries, and Python extraction scripts are
+deposited in an open-access Zenodo/GitHub repository (DOI pending
+peer-review completion). Raw tweet text containing potentially
+identifying metadata has been withheld in accordance with applicable
+platform terms and privacy considerations.</p>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li>Albertson, B., &amp; Gadarian, S. K. (2015). <em>Anxious politics:
+Democratic citizenship in a threatening world</em>. Cambridge University
+Press.</li>
+<li>ANTARA. (2026, May). <em>4,581 SPPG suspended for quality
+improvement, 1,152 units remain under review</em>. ANTARA News
+Agency.</li>
+<li>Attardo, S. (2000). Irony markers and humor. <em>Humor:
+International Journal of Humor Research</em>, <em>13</em>(2), 217–236.
+https://doi.org/10.1515/humr.2000.13.2.217</li>
+<li>Barabási, A.-L., &amp; Albert, R. (1999). Emergence of scaling in
+random networks. <em>Science</em>, <em>286</em>(5439), 509–512.
+https://doi.org/10.1126/science.286.5439.509</li>
+<li>Barberá, P., Wang, N., Bonneau, R., Jost, J. T., Nagler, J.,
+Sanovich, S., &amp; Tucker, J. A. (2015). The critical periphery in the
+growth of social media protests. <em>PLOS ONE</em>, <em>10</em>(11),
+e0143611.</li>
+<li>Bennett, W. L., &amp; Segerberg, A. (2012). The logic of connective
+action: Digital media and the personalization of contentious politics.
+<em>Information, Communication &amp; Society</em>, <em>15</em>(5),
+739–768.</li>
+<li>BGN. (2026). <em>Coordination meeting on MBG public communication
+strengthening, Bekasi, April 6, 2026</em>. Bureau of Legal Affairs and
+Public Relations, National Nutrition Agency (<em>Badan Gizi
+Nasional</em>).</li>
+<li>Blondel, V. D., Guillaume, J.-L., Lambiotte, R., &amp; Lefebvre, E.
+(2008). Fast unfolding of communities in large networks. <em>Journal of
+Statistical Mechanics: Theory and Experiment</em>, <em>2008</em>(10),
+P10008.</li>
+<li>Bloomberg Technoz. (2026, March 31). <em>BGN head explains IDR 67
+trillion MBG budget adjustment</em>. Bloomberg Technoz.</li>
+<li>boyd, d., &amp; Crawford, K. (2012). Critical questions for big
+data: Provocations for a cultural, technological, and scholarly
+phenomenon. <em>Information, Communication &amp; Society</em>,
+<em>15</em>(5), 662–679.</li>
+<li>Camp, E. (2012). Sarcasm, pretense, and the semantics/pragmatics
+distinction. <em>Noûs</em>, <em>46</em>(4), 587–634.
+https://doi.org/10.1111/j.1468-0068.2010.00822.x</li>
+<li>Clauset, A., Shalizi, C. R., &amp; Newman, M. E. (2009). Power-law
+distributions in empirical data. <em>SIAM Review</em>, <em>51</em>(4),
+661–703.</li>
+<li>Conover, M. D., Ratkiewicz, J., Francisco, M. R., Gonçalves, B.,
+Menczer, F., &amp; Flammini, A. (2011). Political polarization on
+Twitter. <em>Proceedings of the International AAAI Conference on Web and
+Social Media</em>, <em>5</em>(1), 89–96.</li>
+<li>Covello, V. T., von Winterfeldt, D., &amp; Slovic, P. (1986). Risk
+communication: A review of the literature. <em>Risk Abstracts</em>,
+<em>3</em>(4), 171–182.</li>
+<li>Devlin, J., Chang, M.-W., Lee, K., &amp; Toutanova, K. (2019). BERT:
+Pre-training of deep bidirectional transformers for language
+understanding. <em>Proceedings of NAACL-HLT 2019</em>, 4171–4186.</li>
+<li>Dresner, E., &amp; Herring, S. C. (2010). Functions of the nonverbal
+in CMC: Emoticons and illocutionary force. <em>Communication
+Theory</em>, <em>20</em>(3), 249–268.</li>
+<li>Edelman, M. (1964). <em>The symbolic uses of politics</em>.
+University of Illinois Press.</li>
+<li>Ekman, P. (1992). An argument for basic emotions. <em>Cognition
+&amp; Emotion</em>, <em>6</em>(3–4), 169–200.</li>
+<li>Erdős, P., &amp; Rényi, A. (1960). On the evolution of random
+graphs. <em>Publications of the Mathematical Institute of the Hungarian
+Academy of Sciences</em>, <em>5</em>(1), 17–60.</li>
+<li>Freeman, L. C. (1979). Centrality in social networks: Conceptual
+clarification. <em>Social Networks</em>, <em>1</em>(3), 215–239.</li>
+<li>Gibbs, R. W. (2000). Irony in talk among friends. <em>Metaphor and
+Symbol</em>, <em>15</em>(1–2), 5–27.</li>
+<li>Giora, R. (2003). <em>On our mind: Salience, context, and figurative
+language</em>. Oxford University Press.</li>
+<li>Grice, H. P. (1975). Logic and conversation. In P. Cole &amp; J.
+Morgan (Eds.), <em>Syntax and semantics, vol. 3: Speech acts</em>
+(pp. 41–58). Academic Press.</li>
+<li>Hagberg, A. A., Schult, D. A., &amp; Swart, P. J. (2008). Exploring
+network structure, dynamics, and function using NetworkX.
+<em>Proceedings of the 7th Python in Science Conference</em>,
+11–15.</li>
+<li>Horton, D., &amp; Wohl, R. R. (1956). Mass communication and
+para-social interaction: Observations on intimacy at a distance.
+<em>Psychiatry</em>, <em>19</em>(3), 215–229.</li>
+<li>Iyengar, S., Lelkes, Y., Levendusky, M., Malhotra, N., &amp;
+Westwood, S. J. (2019). The origins and consequences of affective
+polarization in the United States. <em>Annual Review of Political
+Science</em>, <em>22</em>, 129–146.</li>
+<li>Jamieson, K. H., &amp; Cappella, J. N. (2008). <em>Echo chamber:
+Rush Limbaugh and the conservative media establishment</em>. Oxford
+University Press.</li>
+<li>Kotler, P., Kartajaya, H., &amp; Setiawan, I. (2023). <em>Marketing
+6.0: The future is immersive</em>. John Wiley &amp; Sons.</li>
+<li>Kotler, P., &amp; Lee, N. R. (2007). <em>Marketing in the public
+sector: A roadmap for improved performance</em>. Wharton School
+Publishing.</li>
+<li>Lazer, D., Pentland, A., Adamic, L., Aral, S., Barabási, A.-L.,
+Brewer, D., … &amp; Van Alstyne, M. (2009). Computational social
+science. <em>Science</em>, <em>323</em>(5915), 721–723.</li>
+<li>Lazer, D. M., Pentland, A., Watts, D. J., Aral, S., Athey, S.,
+Contractor, N., … &amp; Wagner, C. (2020). Computational social science:
+Obstacles and opportunities. <em>Science</em>, <em>369</em>(6507),
+1060–1062. https://doi.org/10.1126/science.aaz8170</li>
+<li>Levi, M., &amp; Stoker, L. (2000). Political trust and
+trustworthiness. <em>Annual Review of Political Science</em>,
+<em>3</em>(1), 475–507.</li>
+<li>Marwick, A. E., &amp; boyd, d. (2011). I tweet honestly, I tweet
+passionately: Twitter users, context collapse, and the imagined
+audience. <em>New Media &amp; Society</em>, <em>13</em>(1),
+114–133.</li>
+<li>Habermas, J. (1989). <em>The structural transformation of the public
+sphere: An inquiry into a category of bourgeois society</em> (T. Burger
+&amp; F. Lawrence, Trans.). MIT Press. (Original work published
+1962)</li>
+<li>Newman, M. E. J. (2002). Assortative mixing in networks.
+<em>Physical Review Letters</em>, <em>89</em>(20), 208701.
+https://doi.org/10.1103/PhysRevLett.89.208701</li>
+<li>Newman, M. E. J. (2006). Modularity and community structure in
+networks. <em>Proceedings of the National Academy of Sciences</em>,
+<em>103</em>(23), 8577–8582.
+https://doi.org/10.1073/pnas.0601602103</li>
+<li>Noelle-Neumann, E. (1974). The spiral of silence: A theory of public
+opinion. <em>Journal of Communication</em>, <em>24</em>(2), 43–51.</li>
+<li>Plé, L., &amp; Chumpitaz Cáceres, R. (2010). Not always co-creation:
+Introducing interactional co-destruction of value in service-dominant
+logic. <em>Journal of Services Marketing</em>, <em>24</em>(6),
+430–437.</li>
+<li>Plutchik, R. (1980). A general psychoevolutionary theory of emotion.
+In R. Plutchik &amp; H. Kellerman (Eds.), <em>Theories of emotion</em>
+(pp. 3–33). Academic Press.</li>
+<li>Pontiki, M., Galanis, D., Papageorgiou, H., Androutsopoulos, I.,
+Manandhar, S., Mohammad, A.-S., … &amp; Eryiğit, G. (2014). SemEval-2014
+task 4: Aspect based sentiment analysis. <em>Proceedings of the 8th
+International Workshop on Semantic Evaluation</em>, 27–35.</li>
+<li>Renn, O. (1992). Risk communication: Towards a rational discourse
+with the public. <em>Journal of Hazardous Materials</em>,
+<em>29</em>(3), 465–519.</li>
+<li>Rozin, P., Haidt, J., &amp; McCauley, C. R. (2000). Disgust. In M.
+Lewis &amp; J. M. Haviland-Jones (Eds.), <em>Handbook of emotions</em>
+(2nd ed., pp. 637–653). Guilford Press.</li>
+<li>Schultz, F., Utz, S., &amp; Göritz, A. (2011). Is the medium the
+message? Perceptions of and reactions to crisis communication via
+Twitter, blogs and traditional media. <em>Public Relations Review</em>,
+<em>37</em>(1), 20–27.</li>
+<li>Scott, J. C. (1985). <em>Weapons of the weak: Everyday forms of
+peasant resistance</em>. Yale University Press.</li>
+<li>Skovholt, K., Grønning, A., &amp; Kankaanranta, A. (2014). The
+communicative functions of emoticons in workplace e-mails. <em>Journal
+of Computer-Mediated Communication</em>, <em>19</em>(4), 780–797.</li>
+<li>Slovic, P. (1987). Perception of risk. <em>Science</em>,
+<em>236</em>(4799), 280–285.</li>
+<li>Snijders, T. A., van de Bunt, G. G., &amp; Steglich, C. E. (2010).
+Introduction to stochastic actor-based models for network dynamics.
+<em>Social Networks</em>, <em>32</em>(1), 44–60.</li>
+<li>Suaib, A., &amp; Pratiwi, D. (2025). Social network analysis of
+political discourse on Twitter: A study of Indonesian election debates.
+<em>Jurnal Komunikasi</em>, <em>17</em>(1), 45–67.</li>
+<li>Sulafasyah. (2026). Network analysis of mass food poisoning
+discourse in MBG program on Twitter. <em>Komunikasi Indonesia</em>,
+<em>4</em>(1), 12–29.</li>
+<li>Sun, C., Huang, L., &amp; Qiu, X. (2019). Utilizing BERT for
+aspect-based sentiment analysis via constructing auxiliary sentence.
+<em>Proceedings of NAACL-HLT 2019</em>, 380–385.</li>
+<li>Sunstein, C. R. (2001). <em>Echo chambers: Bush v. Gore,
+impeachment, and beyond</em>. Princeton University Press.</li>
+<li>Vargo, S. L., &amp; Lusch, R. F. (2004). Evolving to a new dominant
+logic for marketing. <em>Journal of Marketing</em>, <em>68</em>(1),
+1–17.</li>
+<li>Vargo, S. L., &amp; Lusch, R. F. (2016). Institutions and axioms: An
+extension and update of service-dominant logic. <em>Journal of the
+Academy of Marketing Science</em>, <em>44</em>(1), 5–23.</li>
+<li>Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L.,
+Gomez, A. N., … &amp; Polosukhin, I. (2017). Attention is all you need.
+<em>Advances in Neural Information Processing Systems</em>, <em>30</em>,
+5998–6008.</li>
+<li>Wasserman, S., &amp; Faust, K. (1994). <em>Social network analysis:
+Methods and applications</em>. Cambridge University Press.</li>
+<li>Wilie, B., Vincentio, K., Winata, G. I., Cahyawijaya, S., Li, Z.,
+Lim, Z. S., … &amp; Fung, P. (2020). IndoNLU: Benchmark and resources
+for evaluating Indonesian natural language understanding.
+<em>Proceedings of the 1st Conference of the Asia-Pacific Chapter of the
+Association for Computational Linguistics</em>, 843–857.</li>
+</ul>
+<hr />
+<h2
+id="appendix-a-formal-mathematical-notations-and-centrality-formulas">Appendix
+A: Formal Mathematical Notations and Centrality Formulas</h2>
+<p>The graph metrics referenced throughout this manuscript are formally
+specified as follows:</p>
+<ol type="1">
+<li><strong>Network Density
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>)</strong>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo></mrow><mrow><mo stretchy="false" form="prefix">|</mo><mi>V</mi><mo stretchy="false" form="prefix">|</mo><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">|</mo><mi>V</mi><mo stretchy="false" form="prefix">|</mo><mi>−</mi><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>=</mo><mfrac><mn>692</mn><mrow><mn>971</mn><mo>×</mo><mn>970</mn></mrow></mfrac><mo>≈</mo><mn>0.000735</mn></mrow><annotation encoding="application/x-tex">\rho = \frac{|E|}{|V|(|V| - 1)} = \frac{692}{971 \times 970} \approx 0.000735</annotation></semantics></math></li>
+<li><strong>Dyadic Reciprocity
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>)</strong>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mfrac><mrow><munder><mo>∑</mo><mrow><mi>i</mi><mo>≠</mo><mi>j</mi></mrow></munder><msub><mi>A</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msub><mi>A</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub></mrow><mrow><mo stretchy="false" form="prefix">|</mo><mi>E</mi><mo stretchy="false" form="prefix">|</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mo>×</mo><mn>4</mn></mrow><mn>666</mn></mfrac><mo>≈</mo><mn>0.0120</mn><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>1.20</mn><mi>%</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">R = \frac{\sum_{i \neq j} A_{ij} A_{ji}}{|E|} = \frac{2 \times 4}{666} \approx 0.0120 \quad (1.20\%)</annotation></semantics></math></li>
+<li><strong>Clustering Coefficient of Node
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>i</mi></msub><annotation encoding="application/x-tex">C_i</annotation></semantics></math>)</strong>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mo stretchy="false" form="prefix">{</mo><msub><mi>e</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub><mo>:</mo><mi>j</mi><mo>,</mo><mi>k</mi><mo>∈</mo><msub><mi>N</mi><mi>i</mi></msub><mo>,</mo><msub><mi>e</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub><mo>∈</mo><mi>E</mi><mo stretchy="false" form="postfix">}</mo><mo stretchy="false" form="prefix">|</mo></mrow><mrow><msub><mi>k</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>k</mi><mi>i</mi></msub><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">C_i = \frac{|\{e_{jk}: j,k \in N_i, e_{jk} \in E\}|}{k_i(k_i - 1)}</annotation></semantics></math>
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>i</mi></msub><annotation encoding="application/x-tex">N_i</annotation></semantics></math>
+denotes the neighborhood of node
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>.</li>
+<li><strong>Maximum Likelihood Power-Law Exponent Estimation</strong>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>α</mi><mo accent="true">̂</mo></mover><mo>=</mo><mn>1</mn><mo>+</mo><mi>n</mi><msup><mrow><mo stretchy="true" form="prefix">[</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi mathvariant="normal">ln</mi><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msub><mi>k</mi><mi>i</mi></msub><mrow><msub><mi>k</mi><mi mathvariant="normal">min</mi></msub><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\hat{\alpha} = 1 + n \left[ \sum_{i=1}^n \ln \left( \frac{k_i}{k_{\min} - \frac{1}{2}} \right) \right]^{-1}</annotation></semantics></math>
+yielding an estimated degree-distribution scaling exponent of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>α</mi><mo accent="true">̂</mo></mover><mo>=</mo><mn>2.168</mn><mo>±</mo><mn>0.08</mn></mrow><annotation encoding="application/x-tex">\hat{\alpha} = 2.168 \pm 0.08</annotation></semantics></math>
+with fixed lower threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi mathvariant="normal">min</mi></msub><mo>=</mo><mn>1.0</mn></mrow><annotation encoding="application/x-tex">x_{\min} = 1.0</annotation></semantics></math>.</li>
+</ol>
+<hr />
+<h2
+id="appendix-b-representative-corpus-of-pragmatic-sarcasm-instances">Appendix
+B: Representative Corpus of Pragmatic Sarcasm Instances</h2>
+<p>The examples below are user-generated corpus observations reproduced
+for analytical purposes. Claims contained in individual posts are
+treated as discourse-level expressions and are not independently
+verified factual findings of this study.</p>
+<p><strong>Table B1: Representative Corpus Instances of Indonesian
+Digital Sarcasm on Platform X</strong></p>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">Instance ID</th>
+<th style="text-align: left;">Raw Indonesian Tweet Text</th>
+<th style="text-align: left;">English Idiomatic Translation</th>
+<th style="text-align: left;">Primary Linguistic Mechanism</th>
+<th style="text-align: left;">Emoji Illocutionary Operator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>S-01</strong></td>
+<td style="text-align: left;"><em>“Hebat banget ya BGN, anggarannya 268
+triliun tapi omprengnya impor plastik murahan dari luar negeri. Bangga
+karya anak bangsa! 🤡🇮🇩”</em></td>
+<td style="text-align: left;"><em>“Truly magnificent BGN, a 268 trillion
+budget but the food trays are cheap imported plastic. So proud of our
+domestic industry! 🤡🇮🇩”</em></td>
+<td style="text-align: left;">Typology 1 (Illocutionary Inversion via
+patriotic praise)</td>
+<td style="text-align: left;">🤡 Clown Face (pretense/fraud)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>S-02</strong></td>
+<td style="text-align: left;"><em>“Menu MBG hari ini: nasi lembek, telur
+secuil, sama aroma got yang semerbak. Sungguh makanan bintang lima untuk
+generasi emas 😇”</em></td>
+<td style="text-align: left;"><em>“Today’s MBG menu: soggy rice, a tiny
+crumb of egg, and the rich aroma of sewage. Truly five-star cuisine for
+the golden generation 😇”</em></td>
+<td style="text-align: left;">Typology 2 (Sensory Micro-Macro Semantic
+Contrast)</td>
+<td style="text-align: left;">😇 Smiling Face with Halo (innocent
+pretense)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>S-03</strong></td>
+<td style="text-align: left;"><em>“Jangan negatif thinking dulu gais,
+keracunan massal itu cuma latihan ketahanan lambung biar anak SD siap
+menghadapi krisis pangan global ❤️”</em></td>
+<td style="text-align: left;"><em>“Don’t be negative guys, mass food
+poisoning is just stomach endurance training so elementary students are
+ready for global famine ❤️”</em></td>
+<td style="text-align: left;">Typology 3 (Technocratic Dark Humor
+Euphemism)</td>
+<td style="text-align: left;">❤️ Red Heart (ironic affectionate
+embrace)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>S-04</strong></td>
+<td style="text-align: left;"><em>“Anggaran dipotong 67 triliun katanya
+sisa dana cadangan. Padahal emang ga becus ngitung dari awal. Mantap pak
+bos lanjutkan dua periode! 🙃”</em></td>
+<td style="text-align: left;"><em>“Budget cut by 67 trillion they say is
+remaining reserves. The truth is they were completely incompetent at
+math from day one. Excellent boss, keep going for two terms!
+🙃”</em></td>
+<td style="text-align: left;">Typology 1 (Political Endorsement
+Inversion)</td>
+<td style="text-align: left;">🙃 Upside-Down Face (cynical irony)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>S-05</strong></td>
+<td style="text-align: left;"><em>“Ternyata menu 15 ribu per porsi itu
+realisasinya cuma 3 ribu rupiah. Sisanya 12 ribu masuk ke lambung timses
+dan makelar SPPG. Berkah barokah! 🙏”</em></td>
+<td style="text-align: left;"><em>“Turns out the 15-thousand-rupiah menu
+actually amounts to 3 thousand. The other 12 thousand goes straight into
+campaign team bellies and SPPG brokers. Truly blessed! 🙏”</em></td>
+<td style="text-align: left;">Typology 2 (Fiscal Discrepancy &amp; Graft
+Allegation)</td>
+<td style="text-align: left;">🙏 Folded Hands (sanctimonious ironic
+piety)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2
+id="appendix-c-codebook-for-aspect-based-sentiment-analysis-absa">Appendix
+C: Codebook for Aspect-Based Sentiment Analysis (ABSA)</h2>
+<p><strong>Table C1: Inductive Semantic Lexicon and Indicator Keyword
+Schema for ABSA Classification</strong></p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Aspect Key</th>
+<th style="text-align: left;">Primary Policy Dimension</th>
+<th style="text-align: left;">Core Seed Keywords (Indonesian)</th>
+<th style="text-align: left;">Morphological Variants &amp; Slang
+Equivalents</th>
+<th style="text-align: left;">Typical Affective Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td
+style="text-align: left;"><strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>1</mn></msub><annotation encoding="application/x-tex">A_1</annotation></semantics></math></strong></td>
+<td style="text-align: left;">Budget &amp; Procurement</td>
+<td style="text-align: left;"><em>anggaran, triliun, pagu, APBN,
+pangkas, revisi, vendor, makelar, korupsi, pengadaan, fiktif,
+dana</em></td>
+<td style="text-align: left;"><em>anggaran2, triliunan, duit, dipotong,
+cuan, bancakan, disunat, tender, kongkalikong</em></td>
+<td style="text-align: left;">Fiscal opacity, sudden downward revisions,
+allegations of crony vendor appointments</td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>2</mn></msub><annotation encoding="application/x-tex">A_2</annotation></semantics></math></strong></td>
+<td style="text-align: left;">Logistics &amp; Distribution</td>
+<td style="text-align: left;"><em>logistik, distribusi, katering, SPPG,
+ompreng, antrean, keterlambatan, pengiriman, armada, suspensi</em></td>
+<td style="text-align: left;"><em>bento, wadah, kirim, telat, cold
+chain, ditutup, disegel, basi di jalan, rantang</em></td>
+<td style="text-align: left;">Suspended service units, imported plastic
+containers, cold food delivery delays</td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>3</mn></msub><annotation encoding="application/x-tex">A_3</annotation></semantics></math></strong></td>
+<td style="text-align: left;">Nutritional Quality</td>
+<td style="text-align: left;"><em>gizi, nutrisi, protein, stunting,
+menu, porsi, keracunan, higienitas, bakteri, susu, telur,
+tempe</em></td>
+<td style="text-align: left;"><em>makanan, racun, sakit perut, diare,
+muntah, busuk, lalat, porsi mini, sayur layu</em></td>
+<td style="text-align: left;">Mass hospitalizations, unhygienic
+preparation, tiny portions failing nutritional claims</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2
+id="appendix-d-algorithmic-verification-trace-analysis-of-grok">Appendix
+D: Algorithmic Verification Trace Analysis of <code>@grok</code></h2>
+<p>In total, 42 unique users tagged <code>@grok</code> directly in
+top-level queries or thread replies regarding the MBG program. A
+qualitative parsing of query intents reveals three dominant epistemic
+categories:</p>
+<ol type="1">
+<li><strong>Budgetary Arithmetic Validation (45.2% of queries)</strong>:
+Citizens prompting <code>@grok</code> to calculate the mathematical
+viability of feeding 82 million recipients under the revised IDR 268
+trillion budget, asking whether the per-meal allocation of IDR 15,000
+had dropped to IDR 8,000 or IDR 10,000.</li>
+<li><strong>Verification of Viral Food Poisoning Reports (33.3% of
+queries)</strong>: Citizens tagging <code>@grok</code> beneath viral
+smartphone videos of elementary school children in hospital emergency
+rooms, asking whether the incident was verified news or an edited smear
+campaign (<em>“hoaks”</em>).</li>
+<li><strong>Institutional Accountability Fact-Checking (21.4% of
+queries)</strong>: Users querying <code>@grok</code> regarding the legal
+status of SPPG private contractors, asking whether specific regional
+politicians or parliamentary figures held proprietary ownership over
+regional catering units.</li>
+</ol>
+<p>This observation suggests that some users employed
+platform-integrated AI as an auxiliary source for information
+verification, while <code>@grok</code> had the highest in-degree among
+AI-related actors observed in the sampled network.</p>
+<hr />
+<p><em>Page length: 47 pages in the current rendered PDF audit version;
+final pagination depends on the target journal template.</em></p>
+</body>
+</html>
