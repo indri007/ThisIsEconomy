@@ -1,0 +1,82 @@
+================================================================================
+HMC JOURNAL — PYTHON MANUSCRIPT AUDIT
+================================================================================
+
+Source : /Users/jevin/Documents/tesis_mbg/hmc_submission/HMC_REVIEW_MANUSCRIPT.docx
+Output : /Users/jevin/Documents/tesis_mbg/hmc_submission/HMC_MANUSCRIPT_AUDIT_PY.txt
+
+[PASS] DOCX FILE
+    /Users/jevin/Documents/tesis_mbg/hmc_submission/HMC_REVIEW_MANUSCRIPT.docx
+[PASS] DOCUMENT METADATA
+    No populated metadata fields.
+[PASS] ANONYMIZATION
+    Configured author-identifying terms not found.
+[PASS] ABSTRACT 150-250 WORDS
+    222 words
+[PASS] KEYWORDS 4-6
+    5: ['Makan Bergizi Gratis', 'Platform X', 'IndoBERT', 'Social Network Analysis', 'Phygital Gap']
+[PASS] 12-POINT STANDARD FONT
+    No font-size/name exceptions detected.
+[PASS] DOUBLE SPACING
+    No explicit non-double spacing detected.
+[PASS] 1-INCH MARGINS
+    All margins approximately 1 inch.
+[PASS] PAGE NUMBERS
+    PAGE field detected in footer.
+[REVIEW] CONTINUOUS LINE NUMBERS
+    Line-numbering XML not detected.
+[PASS] UNDERLINE AUDIT
+    No underlined text detected.
+[PASS] STRONG CLAIM AUDIT
+    No configured strong-claim phrases remain.
+[INFO] FIGURE CALLOUTS
+    Figures referenced: []
+[INFO] TABLE CALLOUTS
+    Tables referenced: []
+[INFO] EMBEDDED FIGURES
+    0 inline shape(s) detected.
+[INFO] TABLE OBJECTS
+    0 Word table object(s) detected.
+[PASS] REFERENCES SECTION
+    Found at paragraph 210.
+[INFO] IN-TEXT CITATION DETECTION
+    Approximate author-year citation groups detected: 9
+[INFO] DOI URL AUDIT
+    DOI/DOI-URL occurrences detected: 18
+[PRESENT — AUTHOR VERIFICATION] Funding
+[PRESENT — AUTHOR VERIFICATION] Conflict of Interest
+[PRESENT — AUTHOR VERIFICATION] Data Availability
+[PRESENT — AUTHOR VERIFICATION] AI Disclosure
+[PRESENT — AUTHOR VERIFICATION] Ethics
+[PRESENT — AUTHOR VERIFICATION] CRediT
+[REVIEW] DATA AVAILABILITY CONTENT
+    Detected terms: ['dataset', 'code availability', 'repository', 'github']
+[REVIEW] AI DISCLOSURE CONTENT
+    Detected terms: ['artificial intelligence']
+[REVIEW] ETHICS CONTENT
+    Detected terms: ['ethics approval']
+[REVIEW] CRediT CONTENT
+    Detected terms: ['CRediT', 'Author Contributions', 'Conceptualization', 'Methodology']
+[PASS] MARKDOWN RESIDUE
+    []
+[PASS] MAIN SECTION STRUCTURE
+    Configured main sections detected.
+[PASS] RESEARCH QUESTIONS
+    Detected: ['RQ1', 'RQ2', 'RQ3', 'RQ4', 'RQ5', 'RQ6']
+[PASS] EMPIRICAL VALUE PRESENCE
+    Configured manuscript values detected.
+
+================================================================================
+AUDIT SUMMARY
+================================================================================
+PASS   : 16
+REVIEW : 11
+FAIL   : 0
+
+No configured hard-fail items detected.
+
+================================================================================
+IMPORTANT
+================================================================================
+This Python audit checks document structure and configured requirements. It does NOT certify journal acceptance.
+APA 7 matching, figure placement, ethical compliance, AI disclosure accuracy, funding, conflict of interest, and data availability still require author verification.

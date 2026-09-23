@@ -139,7 +139,7 @@ elif page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
             paper_bgcolor="#0f172a",
             font=dict(family="Outfit, sans-serif", color="white", size=13)
         )
-        st.plotly_chart(fig_hier, use_container_width=True)
+        st.plotly_chart(fig_hier, width='stretch')
     else:
         fig_hier = px.treemap(
             df_hierarchy,
@@ -156,7 +156,7 @@ elif page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
             paper_bgcolor="#0f172a",
             font=dict(family="Outfit, sans-serif", color="white", size=13)
         )
-        st.plotly_chart(fig_hier, use_container_width=True)
+        st.plotly_chart(fig_hier, width='stretch')
 
     st.markdown("---")
 
@@ -458,7 +458,7 @@ elif page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
                 "Bukti Data Riil": "56,24% cuitan didominasi emosi Jijik (Disgust), sentimen negatif terpusat pada isu logistik makanan basi dan anggaran."
             }
         ]
-        st.dataframe(pd.DataFrame(prop_data), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(prop_data), width='stretch', hide_index=True)
 
         st.markdown("---")
         st.subheader("⚖️ §2.11 Etika Komputasional & Validitas Data (Halaman 83–84)")

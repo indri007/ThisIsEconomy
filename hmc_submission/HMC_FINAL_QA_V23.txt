@@ -1,0 +1,37 @@
+HMC FINAL SUBMISSION QA — V23
+====================================================================================================
+FILE: HMC_REVIEW_MANUSCRIPT_V22.docx
+
+[PASS] FILE EXISTS
+       HMC_REVIEW_MANUSCRIPT_V22.docx
+[PASS] PARAGRAPH COUNT
+       221 paragraphs
+[PASS] DOUBLE-BLIND IDENTITY
+       No author/affiliation/ORCID/contact identity found
+[PASS] HIGH-RISK LANGUAGE
+       All targeted high-risk wording removed
+[PASS] SPACING / CONCATENATION
+       No targeted concatenation errors
+[PASS] FONT
+       Times New Roman
+[PASS] FONT SIZE
+       12 pt
+[PASS] DOUBLE SPACING
+       No explicit non-double spacing detected
+[PASS] ONE-INCH MARGINS
+       All margins approximately 1 inch
+[REVIEW] MANUSCRIPT STRUCTURE
+       Missing: Method
+[PASS] ALGORITHMIC ORACLE REMOVED
+       Occurrences: 0
+[PASS] CRITICAL RESULTS PRESERVED
+       Key reported values detected
+[PASS] TABLE FORMAT REVIEW
+       43 pipe-style table rows detected; review before submission because HMC prefers tables at manuscript end.
+[PASS] WORD METADATA ANONYMIZED
+       No author identity detected in core metadata
+
+====================================================================================================
+FINAL STATUS: REVIEW REQUIRED
+====================================================================================================
+- MANUSCRIPT STRUCTURE: Missing: Method

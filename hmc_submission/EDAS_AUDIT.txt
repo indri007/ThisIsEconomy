@@ -1,0 +1,53 @@
+================================================================================
+EDAS / CONFERENCE MANUSCRIPT AUDIT
+================================================================================
+
+SOURCE : /Users/jevin/Documents/tesis_mbg/hmc_submission/HMC_REVIEW_MANUSCRIPT.docx
+PASS   : 14
+REVIEW : 1
+
+[PASS] DOUBLE-BLIND IDENTIFICATION
+    Tidak ditemukan identitas penulis.
+
+[PASS] ABSTRACT 150-250 WORDS
+    198 words
+
+[PASS] KEYWORDS 4-6
+    5: ['Makan Bergizi Gratis', 'Platform X', 'IndoBERT', 'Social Network Analysis', 'Phygital Gap']
+
+[REVIEW] MAIN SECTION STRUCTURE
+    Missing: ['INTRODUCTION', 'THEORETICAL FRAMEWORK AND LITERATURE REVIEW', 'METHODOLOGY AND RESEARCH DESIGN', 'EMPIRICAL RESULTS', 'DISCUSSION', 'THEORETICAL AND PRACTICAL CONTRIBUTIONS', 'RESEARCH LIMITATIONS AND FUTURE RESEARCH AGENDA', 'CONCLUSION']
+
+[PASS] RESEARCH QUESTIONS RQ1-RQ6
+    Detected: ['RQ1', 'RQ2', 'RQ3', 'RQ4', 'RQ5', 'RQ6']
+
+[PASS] DATASET CORE VALUES
+    All configured dataset values detected.
+
+[PASS] MODEL / EVALUATION VALUES
+    Configured model values detected.
+
+[PASS] SNA EMPIRICAL VALUES
+    Configured SNA values detected.
+
+[PASS] ABSA EMPIRICAL VALUES
+    Configured ABSA values detected.
+
+[PASS] NINE EMOTION CLASSES
+    All 9 emotion classes detected.
+
+[PASS] SARCASM ANALYSIS
+    Sarcasm methodology and corpus indicators detected.
+
+[PASS] REFERENCES SECTION
+    REFERENCES section detected.
+
+[PASS] MARKDOWN RESIDUE
+    No obvious Markdown residue.
+
+[PASS] EVIDENCE-BOUNDED LANGUAGE
+    Configured strong-claim expressions not detected.
+
+[PASS] HMC COMMUNICATIVE RELEVANCE
+    HMC-relevant elements detected.
+

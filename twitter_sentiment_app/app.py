@@ -145,7 +145,7 @@ with st.sidebar:
     keyword = st.text_input("Keyword pencarian", value='MBG OR "Makan Bergizi Gratis"')
     limit = st.number_input("Jumlah tweet", min_value=10, max_value=1000, value=50, step=10)
     product = st.selectbox("Tipe hasil", ["Latest", "Top"])
-    scrape_btn = st.button("🔍 Scrape Tweet Baru", use_container_width=True)
+    scrape_btn = st.button("🔍 Scrape Tweet Baru", width='stretch')
 
     st.divider()
     st.subheader("2. Analisis AI (Gemini)")
@@ -158,7 +158,7 @@ with st.sidebar:
     batch_size = st.slider("Batch size (tweet/request)", 5, 20, 10)
     analyze_btn = st.button(
         "🤖 Analisis Sentimen & Sarkasme",
-        use_container_width=True,
+        width='stretch',
         disabled=st.session_state.df is None
     )
 
@@ -168,7 +168,7 @@ with st.sidebar:
     # Tombol quick load sample dataset
     sample_csv_path = os.path.join(CURRENT_DIR, "sample_tweets.csv")
     if os.path.exists(sample_csv_path):
-        if st.button("📂 Muat Contoh Data (50 Tweet MBG)", use_container_width=True):
+        if st.button("📂 Muat Contoh Data (50 Tweet MBG)", width='stretch'):
             sample_df = pd.read_csv(sample_csv_path)
             if "sindiran" in sample_df.columns and "is_sarcasm" not in sample_df.columns:
                 sample_df["is_sarcasm"] = sample_df["sindiran"].astype(bool)
@@ -263,7 +263,7 @@ else:
     # SECTION: TABEL DATA
     # ==============================================================================
     st.subheader("📄 Dataset Tweet MBG")
-    st.dataframe(df, use_container_width=True, height=260)
+    st.dataframe(df, width='stretch', height=260)
 
     st.download_button(
         "⬇️ Unduh CSV Hasil",
@@ -306,7 +306,7 @@ else:
                     "netral": "#94a3b8"
                 },
             )
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
 
         with c2:
             if "topic_aspect" in df.columns:
@@ -319,7 +319,7 @@ else:
                     title="Frekuensi Percakapan per Aspek Topik",
                     color="aspek"
                 )
-                st.plotly_chart(fig2, use_container_width=True)
+                st.plotly_chart(fig2, width='stretch')
 
         if "created_at" in df.columns:
             st.subheader("📈 Tren Sentimen dari Waktu ke Waktu")
@@ -338,7 +338,7 @@ else:
                         "netral": "#94a3b8"
                     }
                 )
-                st.plotly_chart(fig3, use_container_width=True)
+                st.plotly_chart(fig3, width='stretch')
             except Exception:
                 pass
 
@@ -365,4 +365,4 @@ else:
             st.subheader("😏 Tweet Terdeteksi Sarkasme / Sindiran")
             cols_to_show = [c for c in ["username", "text", "sentiment", "sentiment_if_sarcasm_removed", "reason"] if c in df.columns]
             sarcasm_df = df[sarc_mask][cols_to_show]
-            st.dataframe(sarcasm_df, use_container_width=True)
+            st.dataframe(sarcasm_df, width='stretch')

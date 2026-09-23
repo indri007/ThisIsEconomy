@@ -1,0 +1,34 @@
+HMC FINAL QA V24
+====================================================================================================
+FILE: HMC_REVIEW_MANUSCRIPT_V23.docx
+
+[PASS] FILE EXISTS
+       HMC_REVIEW_MANUSCRIPT_V23.docx
+[PASS] DOUBLE-BLIND IDENTITY
+       No author/affiliation/ORCID/contact identity found
+[PASS] HIGH-RISK LANGUAGE
+       All targeted high-risk wording removed
+[PASS] SPACING / CONCATENATION
+       No targeted concatenation errors
+[PASS] FONT
+       Times New Roman
+[PASS] FONT SIZE
+       12 pt
+[PASS] DOUBLE SPACING
+       No explicit non-double spacing detected
+[PASS] ONE-INCH MARGINS
+       All margins approximately 1 inch
+[PASS] MANUSCRIPT STRUCTURE
+       All core manuscript sections detected
+[PASS] ALGORITHMIC ORACLE REMOVED
+       Occurrences: 0
+[PASS] CRITICAL RESULTS PRESERVED
+       Key reported values detected
+[PASS] TABLE FORMAT REVIEW
+       43 pipe-style table rows detected; HMC table placement/format requires final visual review.
+[PASS] WORD METADATA ANONYMIZED
+       No author identity detected in core metadata
+
+====================================================================================================
+FINAL STATUS: PASS
+V23 PASSED ALL AUTOMATED HMC SUBMISSION CHECKS.

@@ -1,0 +1,46 @@
+HMC MANUSCRIPT V2 AUDIT
+======================================================================
+
+OUTPUT: /Users/jevin/Documents/tesis_mbg/hmc_submission/HMC_REVIEW_MANUSCRIPT_V2.docx
+
+ABSTRACT
+----------------------------------------------------------------------
+Word count: 176
+STATUS: PASS
+
+KEYWORDS
+----------------------------------------------------------------------
+Count: 5
+Keywords: ['Makan Bergizi Gratis', 'Platform X', 'Social Network Analysis', 'IndoBERT', 'Phygital Gap']
+STATUS: PASS
+
+STRONG CLAIM AUDIT
+----------------------------------------------------------------------
+No targeted strong-claim phrases remain.
+STATUS: PASS
+
+ANONYMIZATION AUDIT
+----------------------------------------------------------------------
+No configured author-identifying terms found.
+STATUS: PASS
+
+REQUIRED HMC STATEMENTS
+----------------------------------------------------------------------
+Funding: PRESENT — AUTHOR VERIFICATION REQUIRED
+Conflict of Interest: PRESENT — AUTHOR VERIFICATION REQUIRED
+Data Availability: PRESENT — AUTHOR VERIFICATION REQUIRED
+AI / Tool Disclosure: PRESENT — AUTHOR VERIFICATION REQUIRED
+
+FIGURE/TABLE AUDIT
+----------------------------------------------------------------------
+Figure call-outs detected: 0
+Table call-outs detected: 0
+NOTE: This audit checks textual call-outs only; it does not verify that embedded figures/tables exist or that they are placed according to journal production requirements.
+
+FORMAT
+----------------------------------------------------------------------
+Target font: Times New Roman 12 pt
+Target spacing: double
+Target margins: 1 inch
+Page numbers: inserted
+Line numbering: continuous XML setting inserted

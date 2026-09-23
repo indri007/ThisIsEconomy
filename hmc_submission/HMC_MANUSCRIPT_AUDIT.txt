@@ -1,0 +1,91 @@
+======================================================================
+HMC MANUSCRIPT SUBMISSION AUDIT
+======================================================================
+
+SOURCE:
+/Users/jevin/jurnal/output/MANUSCRIPT_SCOPUS_Q1_FINAL.docx
+
+OUTPUT:
+/Users/jevin/Documents/tesis_mbg/hmc_submission/HMC_REVIEW_MANUSCRIPT.docx
+
+======================================================================
+FORMATTING
+======================================================================
+Font: Times New Roman 12 pt
+Line spacing: DOUBLE
+Margins: 1 inch
+Page numbers: ENABLED
+Continuous line numbers: ENABLED
+
+======================================================================
+ABSTRACT
+======================================================================
+Word count: 404
+STATUS: NEEDS REVISION
+
+======================================================================
+KEYWORDS
+======================================================================
+Keyword count: 9
+STATUS: NEEDS REVISION
+
+======================================================================
+ANONYMIZATION
+======================================================================
+No identifying terms detected.
+
+======================================================================
+UNDERLINE AUDIT
+======================================================================
+No underlined text detected.
+STATUS: PASS
+
+======================================================================
+SECTION AUDIT
+======================================================================
+ABSTRACT: PASS
+INTRODUCTION: PASS
+METHODOLOGY: PASS
+RESULTS: PASS
+DISCUSSION: PASS
+CONCLUSION: PASS
+REFERENCES: PASS
+
+======================================================================
+REFERENCES
+======================================================================
+References section detected: YES
+Full APA 7 bibliographic verification requires manual/source-level checking.
+
+======================================================================
+STRONG CLAIM AUDIT
+======================================================================
+Paragraph 125: absolute breakdown
+Paragraph 158: empirical proof
+Paragraph 162: destroys democratic legitimacy
+Paragraph 162: textbook manifestation
+Paragraph 163: sociologically profound
+Paragraph 166: functionally dead
+Paragraph 169: historic paradigm shift
+Paragraph 179: cannot cure
+Paragraph 180: must abandon
+Paragraph 181: obsolete
+
+STATUS: NEEDS AUTHOR REVIEW
+
+======================================================================
+REQUIRED HMC STATEMENTS
+======================================================================
+Funding: AUTHOR VERIFICATION REQUIRED
+Conflict of Interest: AUTHOR VERIFICATION REQUIRED
+Data Availability: AUTHOR VERIFICATION REQUIRED
+Ethics: AUTHOR VERIFICATION REQUIRED
+CRediT: AUTHOR VERIFICATION REQUIRED
+AI / Tool Disclosure: AUTHOR VERIFICATION REQUIRED
+Acknowledgments: AUTHOR VERIFICATION REQUIRED
+
+======================================================================
+IMPORTANT
+======================================================================
+This audit does not invent missing bibliographic, ethics,
+funding, authorship, or data-availability information.

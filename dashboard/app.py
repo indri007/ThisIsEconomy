@@ -31,6 +31,15 @@ try:
 except ImportError:
     BRAND24_AVAILABLE = False
 
+# Twitter / X AI Monitor modules
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'twitter_sentiment_app'))
+try:
+    from scraper import scrape_tweets_sync
+    from analyzer import analyze_dataframe
+    TWITTER_MODULES_AVAILABLE = True
+except ImportError:
+    TWITTER_MODULES_AVAILABLE = False
+
 try:
     import matplotlib
     matplotlib.use('Agg')
@@ -444,7 +453,7 @@ def render_submission_checklist_70_points():
         else:
             df_display = df_check
         
-        st.dataframe(df_display, use_container_width=True, hide_index=True)
+        st.dataframe(df_display, width='stretch', hide_index=True)
 
     def render_category_items(kategori_name, icon):
         sub_df = df_check[df_check["Kategori"].str.contains(kategori_name)]
@@ -498,24 +507,24 @@ def render_submission_checklist_70_points():
 
     c_dl1, c_dl2, c_dl3 = st.columns(3)
     with c_dl1:
-        st.link_button("📄 1. Manuskrip Lengkap Q1 (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
-        st.link_button("🕶️ 2. Naskah Anonim (Blind Review)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx", use_container_width=True)
-        st.link_button("📑 7. Manuskrip Mediator SINTA 2", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
-        st.link_button("📜 LoA IPSSJ Tesis MBG (#2009)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_mbg_2009.pdf", use_container_width=True)
-        st.link_button("📊 10. Buku Kerja NodeXL Pro (.xlsx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/NodeXL_MBG_Tesis_Indri_Anjar.xlsx", use_container_width=True)
+        st.link_button("📄 1. Manuskrip Lengkap Q1 (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx", width='stretch')
+        st.link_button("🕶️ 2. Naskah Anonim (Blind Review)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx", width='stretch')
+        st.link_button("📑 7. Manuskrip Mediator SINTA 2", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx", width='stretch')
+        st.link_button("📜 LoA IPSSJ Tesis MBG (#2009)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_mbg_2009.pdf", width='stretch')
+        st.link_button("📊 10. Buku Kerja NodeXL Pro (.xlsx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/NodeXL_MBG_Tesis_Indri_Anjar.xlsx", width='stretch')
     with c_dl2:
-        st.link_button("🏷️ 3. Title Page Terpisah (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
-        st.link_button("✉️ 4. Cover Letter Springer (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Cover_Letter_Springer_SNAM.docx", use_container_width=True)
-        st.link_button("🎓 8. Naskah Lengkap Tesis (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/Tesis_Indri_Anjar_Kartika_Sari.docx", use_container_width=True)
-        st.link_button("📜 LoA IPSSJ JobsMatchAI (#2024)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_jobsmatchai_2024.pdf", use_container_width=True)
-        st.link_button("☁️ Sesi NodeXL Pro Cloud Streaming", "https://www.nodexlgraphgallery.org/Pages/Cloud.aspx?token=c1d8d71236e1cae9628f0b5c7a55b581", use_container_width=True)
+        st.link_button("🏷️ 3. Title Page Terpisah (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx", width='stretch')
+        st.link_button("✉️ 4. Cover Letter Springer (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Cover_Letter_Springer_SNAM.docx", width='stretch')
+        st.link_button("🎓 8. Naskah Lengkap Tesis (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/Tesis_Indri_Anjar_Kartika_Sari.docx", width='stretch')
+        st.link_button("📜 LoA IPSSJ JobsMatchAI (#2024)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_jobsmatchai_2024.pdf", width='stretch')
+        st.link_button("☁️ Sesi NodeXL Pro Cloud Streaming", "https://www.nodexlgraphgallery.org/Pages/Cloud.aspx?token=c1d8d71236e1cae9628f0b5c7a55b581", width='stretch')
     with c_dl3:
-        st.link_button("👨‍🏫 5. Suggested Reviewers (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Suggested_Reviewers.docx", use_container_width=True)
-        st.link_button("📝 6. Draf Manuskrip IMRaD (.md)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/manuscript/manuscript_jurnal.md", use_container_width=True)
-        st.link_button("📜 9. Transkrip Teks Tesis (.txt)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/tesis_text.txt", use_container_width=True)
-        st.link_button("📄 PDF JobsMatchAI IPSSJ", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf", use_container_width=True)
-        st.link_button("📜 LoA INOVASI IndoBERT TikTok (#88)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_inovasi_indobert_tiktok_2026.pdf", use_container_width=True)
-    st.link_button("📦 Unduh Seluruh Repositori, Kode & Data Riset Sekaligus (.ZIP)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip", use_container_width=True)
+        st.link_button("👨‍🏫 5. Suggested Reviewers (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Suggested_Reviewers.docx", width='stretch')
+        st.link_button("📝 6. Draf Manuskrip IMRaD (.md)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/manuscript/manuscript_jurnal.md", width='stretch')
+        st.link_button("📜 9. Transkrip Teks Tesis (.txt)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/tesis_text.txt", width='stretch')
+        st.link_button("📄 PDF JobsMatchAI IPSSJ", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf", width='stretch')
+        st.link_button("📜 LoA INOVASI IndoBERT TikTok (#88)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_inovasi_indobert_tiktok_2026.pdf", width='stretch')
+    st.link_button("📦 Unduh Seluruh Repositori, Kode & Data Riset Sekaligus (.ZIP)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip", width='stretch')
 
 
 # Function to render author biography in Streamlit
@@ -555,7 +564,7 @@ def render_author_biography():
         if os.path.exists(avatar_path):
             st.image(avatar_path, width=160, caption="Indri Anjar Kartikasari")
         elif os.path.exists(cv_img_path):
-            st.image(cv_img_path, use_container_width=True)
+            st.image(cv_img_path, width='stretch')
 
         st.markdown("### 📇 Kontak & Portofolio Resmi")
         st.markdown("""
@@ -579,7 +588,7 @@ def render_author_biography():
                     data=f.read(),
                     file_name="Indri_Anjar_Kartikasari_CV.png",
                     mime="image/png",
-                    use_container_width=True
+                    width='stretch'
                 )
 
     with c_right:
@@ -672,7 +681,7 @@ def render_author_biography():
         with loa_ino_col1:
             loa_ino_img = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_inovasi_indobert_tiktok_2026.png")
             if os.path.exists(loa_ino_img):
-                st.image(loa_ino_img, caption="Surat Penerimaan Naskah Publikasi Jurnal No. 88 / Nus-INN/LOA/V.12/N.3/12-2026 (INOVASI)", use_container_width=True)
+                st.image(loa_ino_img, caption="Surat Penerimaan Naskah Publikasi Jurnal No. 88 / Nus-INN/LOA/V.12/N.3/12-2026 (INOVASI)", width='stretch')
         with loa_ino_col2:
             st.markdown("#### 📥 Akses Berkas LoA Resmi:")
             loa_ino_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_inovasi_indobert_tiktok_2026.pdf")
@@ -684,9 +693,9 @@ def render_author_biography():
                         file_name="LoA_INOVASI_88_IndoBERT_TikTok_Indri_Anjar.pdf",
                         mime="application/pdf",
                         key="dl_loa_inovasi_profile",
-                        use_container_width=True
+                        width='stretch'
                     )
-            st.link_button("🌐 Buka Portal Resmi INOVASI", "https://journal.nuspublications.or.id/innovasi", use_container_width=True)
+            st.link_button("🌐 Buka Portal Resmi INOVASI", "https://journal.nuspublications.or.id/innovasi", width='stretch')
             st.info("💡 Berkas fisik PDF ini juga telah tersimpan secara permanen pada direktori repositori: `docs/assets/loa_inovasi_indobert_tiktok_2026.pdf`.")
 
 
@@ -715,7 +724,7 @@ def render_author_biography():
         with loa_mbg_col1:
             loa_mbg_img = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_mbg_2009.png")
             if os.path.exists(loa_mbg_img):
-                st.image(loa_mbg_img, caption="Surat Penerimaan Naskah Publikasi Jurnal No. 2009/IPSSJ/I/2026 (IPSSJ)", use_container_width=True)
+                st.image(loa_mbg_img, caption="Surat Penerimaan Naskah Publikasi Jurnal No. 2009/IPSSJ/I/2026 (IPSSJ)", width='stretch')
         with loa_mbg_col2:
             st.markdown("#### 📥 Akses Berkas LoA Resmi:")
             loa_mbg_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_mbg_2009.pdf")
@@ -726,9 +735,9 @@ def render_author_biography():
                         data=f.read(),
                         file_name="LoA_IPSSJ_2009_MBG_Indri_Anjar.pdf",
                         mime="application/pdf",
-                        use_container_width=True
+                        width='stretch'
                     )
-            st.link_button("🌐 Buka Portal Resmi OJS IPSSJ", "http://ipssj.com/index.php/ojs", use_container_width=True)
+            st.link_button("🌐 Buka Portal Resmi OJS IPSSJ", "http://ipssj.com/index.php/ojs", width='stretch')
             st.info("💡 Berkas fisik PDF ini juga telah tersimpan secara permanen pada direktori repositori: `docs/assets/loa_ipssj_mbg_2009.pdf`.")
 
     with pub_tab3:
@@ -755,11 +764,11 @@ def render_author_biography():
         with loa_job_col1:
             loa_job_img = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_jobsmatchai_2024.png")
             if os.path.exists(loa_job_img):
-                st.image(loa_job_img, caption="Surat Penerimaan Naskah Publikasi Jurnal No. 2024/IPSSJ/I/2026 (JobsMatchAI)", use_container_width=True)
+                st.image(loa_job_img, caption="Surat Penerimaan Naskah Publikasi Jurnal No. 2024/IPSSJ/I/2026 (JobsMatchAI)", width='stretch')
         with loa_job_col2:
             st.markdown("#### 📥 Akses Artikel & LoA Resmi:")
-            st.link_button("🌐 Buka Laman Artikel Resmi di OJS IPSSJ", "https://ipssj.com/index.php/ojs/article/view/2024", use_container_width=True)
-            st.link_button("📥 Unduh Naskah Lengkap PDF Jurnal (333–340)", "https://ipssj.com/index.php/ojs/article/download/2024/1868", use_container_width=True)
+            st.link_button("🌐 Buka Laman Artikel Resmi di OJS IPSSJ", "https://ipssj.com/index.php/ojs/article/view/2024", width='stretch')
+            st.link_button("📥 Unduh Naskah Lengkap PDF Jurnal (333–340)", "https://ipssj.com/index.php/ojs/article/download/2024/1868", width='stretch')
             
             loa_job_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_jobsmatchai_2024.pdf")
             if os.path.exists(loa_job_pdf):
@@ -769,7 +778,7 @@ def render_author_biography():
                         data=f.read(),
                         file_name="LoA_IPSSJ_2024_JobsMatchAI_Indri_Anjar.pdf",
                         mime="application/pdf",
-                        use_container_width=True
+                        width='stretch'
                     )
             st.caption("💡 Salinan digital naskah jurnal juga telah diarsipkan secara lokal di `references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf`.")
 
@@ -799,11 +808,11 @@ def render_author_biography():
 
         c_li_btn1, c_li_btn2, c_li_btn3 = st.columns(3)
         with c_li_btn1:
-            st.link_button("🔗 Buka Postingan Asli LinkedIn", "https://lnkd.in/p/g9-VgRjH", use_container_width=True)
+            st.link_button("🔗 Buka Postingan Asli LinkedIn", "https://lnkd.in/p/g9-VgRjH", width='stretch')
         with c_li_btn2:
-            st.link_button("📰 Liputan Portal JTV (Artikel 1)", "https://lnkd.in/g-2Tgsha", use_container_width=True)
+            st.link_button("📰 Liputan Portal JTV (Artikel 1)", "https://lnkd.in/g-2Tgsha", width='stretch')
         with c_li_btn3:
-            st.link_button("📺 Liputan Portal JTV (Artikel 2)", "https://lnkd.in/gaZc9Y_J", use_container_width=True)
+            st.link_button("📺 Liputan Portal JTV (Artikel 2)", "https://lnkd.in/gaZc9Y_J", width='stretch')
 
     # Lower Grid: Certifications, GitHub Repos, and Capstone Projects
     st.subheader("🎓 Pelatihan Profesional — Purwadhika Digital Technology School")
@@ -891,28 +900,28 @@ def render_author_biography():
     """)
     cert_full_path = os.path.join(PROJECT_ROOT, "docs", "assets", "purwadhika_ai_engineering_certificate.png")
     if os.path.exists(cert_full_path):
-        st.image(cert_full_path, caption="Certificate of Graduation: Job Connector Bootcamp AI Engineering (No. 202602009256) | Purwadhika", use_container_width=True)
+        st.image(cert_full_path, caption="Certificate of Graduation: Job Connector Bootcamp AI Engineering (No. 202602009256) | Purwadhika", width='stretch')
         with open(cert_full_path, "rb") as f:
             st.download_button(
                 label="📥 Unduh Sertifikat AI Engineering Resmi (.PNG)",
                 data=f.read(),
                 file_name="Purwadhika_AI_Engineering_Certificate_Indri_Anjar.png",
                 mime="image/png",
-                use_container_width=True
+                width='stretch'
             )
 
     st.markdown("---")
     st.subheader("📄 Berkas Dokumen Resume / Curriculum Vitae Resmi")
     cv_full_path = os.path.join(PROJECT_ROOT, "docs", "assets", "indri_anjar_kartikasari_cv.png")
     if os.path.exists(cv_full_path):
-        st.image(cv_full_path, caption="Resume / CV Resmi: Indri Anjar Kartikasari (AI Engineer)", use_container_width=True)
+        st.image(cv_full_path, caption="Resume / CV Resmi: Indri Anjar Kartikasari (AI Engineer)", width='stretch')
         with open(cv_full_path, "rb") as f:
             st.download_button(
                 label="📥 Unduh Curriculum Vitae Resmi (.PNG)",
                 data=f.read(),
                 file_name="Indri_Anjar_Kartikasari_CV.png",
                 mime="image/png",
-                use_container_width=True
+                width='stretch'
             )
 
 
@@ -953,10 +962,10 @@ def render_international_journal_page():
                     data=f_d.read(),
                     file_name="Journal_Paper_Indri_Anjar_MBG_SNA.docx",
                     mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                    use_container_width=True
+                    width='stretch'
                 )
         else:
-            st.button("📑 File Word belum siap", disabled=True, use_container_width=True)
+            st.button("📑 File Word belum siap", disabled=True, width='stretch')
 
     with d2:
         if os.path.exists(p_md):
@@ -966,10 +975,10 @@ def render_international_journal_page():
                     data=f_m.read(),
                     file_name="journal_paper_mbg_sna.md",
                     mime="text/markdown",
-                    use_container_width=True
+                    width='stretch'
                 )
         else:
-            st.button("📄 File Markdown belum siap", disabled=True, use_container_width=True)
+            st.button("📄 File Markdown belum siap", disabled=True, width='stretch')
 
     with d3:
         if os.path.exists(p_gexf):
@@ -979,16 +988,16 @@ def render_international_journal_page():
                     data=f_g.read(),
                     file_name="mbg_network_official.gexf",
                     mime="application/xml",
-                    use_container_width=True
+                    width='stretch'
                 )
         else:
-            st.button("🌐 File Gephi belum siap", disabled=True, use_container_width=True)
+            st.button("🌐 File Gephi belum siap", disabled=True, width='stretch')
 
     with d4:
         st.link_button(
             "📦 Repositori GitHub Publik",
             "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA",
-            use_container_width=True
+            width='stretch'
         )
 
     st.markdown("---")
@@ -1045,7 +1054,7 @@ def render_international_journal_page():
                 "Solusi Tata Kelola": "Section 6.4: Kemitraan grounding algoritmik dengan xAI/OpenAI & peluncuran bot verifikasi resmi BGN (@BGN_VerifikasiBot)."
             }
         ]
-        st.dataframe(pd.DataFrame(matrix_data), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(matrix_data), width='stretch', hide_index=True)
 
     with jtab2:
         st.subheader("Fenomena Algorithmic Epistemic Displacement: Posisi Sentral Akun @grok")
@@ -1104,6 +1113,339 @@ def render_international_journal_page():
             st.warning("Berkas journal_paper_mbg_sna.md belum ditemukan di repositori.")
 
 
+# ==============================================================================
+# 🍱 HELPER & RENDERER: TWITTER AI & EARLY WARNING SYSTEM (EWS)
+# ==============================================================================
+CRISIS_TIERS = {
+    "tier1": ["keracunan", "dirawat", "pingsan", "masuk rs", "mati", "meninggal", "ambulans", "rumah sakit"],
+    "tier2": ["basi", "busuk", "belatung", "ulat", "korupsi", "sppg", "dihentikan", "ditutup", "dibekukan"],
+    "tier3": ["kecewa", "malu", "gagal", "bohong", "janji", "tidak sesuai", "kurang", "tidak layak", "tidak enak"]
+}
+SARCASM_EMOJIS = ["🤡", "🙃", "🤮", "🤢", "😒", "💀", "😤", "🤬", "🤦", "😅", "🙄"]
+FAKE_POS_EMOJIS = ["✨", "❤️", "🥰", "😍", "👍", "🎉", "🌟"]
+
+def compute_ews_local(df: pd.DataFrame) -> dict:
+    if df is None or df.empty:
+        return {"score": 0, "status": "⚪ TIDAK ADA DATA", "color": "#94a3b8", "action": "-", "details": {}}
+
+    text_col = "text" if "text" in df.columns else ("full_text" if "full_text" in df.columns else None)
+    if text_col is None:
+        return {"score": 0, "status": "⚪ KOLOM TEKS TIDAK DITEMUKAN", "color": "#94a3b8", "action": "-", "details": {}}
+
+    text_series = df[text_col].fillna("").astype(str).str.lower()
+    combined_text = " ".join(text_series.tolist())
+    N = max(len(df), 1)
+
+    t1_hits = sum(combined_text.count(kw) for kw in CRISIS_TIERS["tier1"])
+    t2_hits = sum(combined_text.count(kw) for kw in CRISIS_TIERS["tier2"])
+    t3_hits = sum(combined_text.count(kw) for kw in CRISIS_TIERS["tier3"])
+    kw_weighted = (t1_hits * 3) + (t2_hits * 2) + (t3_hits * 1)
+    score_kw = min((kw_weighted / N * 100) / 15 * 30, 30)
+
+    raw_text = " ".join(df[text_col].fillna("").astype(str).tolist())
+    sarcasm_em_hits = sum(raw_text.count(em) for em in SARCASM_EMOJIS)
+    fake_pos_hits = sum(raw_text.count(em) for em in FAKE_POS_EMOJIS)
+    emoji_total = (sarcasm_em_hits * 2) + fake_pos_hits
+    score_emoji = min((emoji_total / N * 100) / 20 * 20, 20)
+
+    sent_col = "sentiment" if "sentiment" in df.columns else ("sentimen" if "sentimen" in df.columns else None)
+    if sent_col:
+        neg_ratio = (df[sent_col].astype(str).str.lower() == "negatif").sum() / N
+        score_neg = min(neg_ratio * 30, 30)
+    else:
+        score_neg = 10.0
+
+    sarc_col = "is_sarcasm" if "is_sarcasm" in df.columns else ("sindiran" if "sindiran" in df.columns else None)
+    if sarc_col:
+        sarc_mask = (
+            (df[sarc_col] == True) | 
+            (df[sarc_col] == 1) | 
+            (df[sarc_col].astype(str).str.lower().isin(["true", "1", "ya", "sindiran", "sarcasm"]))
+        )
+        sarc_ratio = sarc_mask.sum() / N
+        score_sarc = min(sarc_ratio * 20, 20)
+    else:
+        score_sarc = 0.0
+
+    total_score = round(score_kw + score_emoji + score_neg + score_sarc, 1)
+
+    if total_score >= 75:
+        status = "🔴 KRITIS — TINDAKAN SEGERA"
+        color = "#ef4444"
+        action = "Aktifkan protokol mitigasi krisis darurat. Koordinasikan Humas BGN & Kemenkes < 24 jam."
+    elif total_score >= 50:
+        status = "🟠 BAHAYA — RESPONS CEPAT"
+        color = "#f97316"
+        action = "Siapkan rilis pers dan tanggapan resmi. Pantau eskalasi isu setiap 6 jam."
+    elif total_score >= 25:
+        status = "🟡 WASPADA — PEMANTAUAN INTENSIF"
+        color = "#eab308"
+        action = "Pantau perkembangan isu secara intensif dan siapkan draf klarifikasi jika memburuk."
+    else:
+        status = "🟢 AMAN — SITUASI TERKENDALI"
+        color = "#22c55e"
+        action = "Situasi publik kondusif. Pemantauan rutin harian sudah memadai."
+
+    return {
+        "score": total_score, "status": status, "color": color, "action": action,
+        "details": {
+            "t1": t1_hits, "t2": t2_hits, "t3": t3_hits,
+            "emoji_hits": sarcasm_em_hits + fake_pos_hits,
+            "score_kw": round(score_kw, 1), "score_emoji": round(score_emoji, 1),
+            "score_neg": round(score_neg, 1), "score_sarc": round(score_sarc, 1)
+        }
+    }
+
+def render_twitter_ai_ews_module():
+    st.markdown("# 🍱 Monitor Twitter/X AI & Early Warning System (EWS)")
+    st.markdown("""
+    > **Sistem Peringatan Dini Mandiri & Pemantauan Opini Publik MBG**  
+    > Mengintegrasikan scraping Twitter/X (Twikit), inferensi sentimen mendalam + deteksi sarkasme (Google Gemini 2.5 Flash), 
+    > serta komputasi skor risiko krisis otomatis (*Zero API Cost/Latency*).
+    """)
+
+    if "twitter_live_df" not in st.session_state or st.session_state.twitter_live_df is None:
+        sample_path = os.path.join(PROJECT_ROOT, "twitter_sentiment_app", "sample_tweets.csv")
+        if os.path.exists(sample_path):
+            try:
+                init_df = pd.read_csv(sample_path)
+                if "sindiran" in init_df.columns and "is_sarcasm" not in init_df.columns:
+                    init_df["is_sarcasm"] = init_df["sindiran"].astype(bool)
+                st.session_state.twitter_live_df = init_df
+            except Exception:
+                st.session_state.twitter_live_df = None
+        else:
+            st.session_state.twitter_live_df = None
+
+    df = st.session_state.twitter_live_df
+
+    default_gemini_key = ""
+    try:
+        if "GEMINI_API_KEY" in st.secrets:
+            default_gemini_key = str(st.secrets["GEMINI_API_KEY"]).strip()
+    except Exception:
+        pass
+    if not default_gemini_key:
+        default_gemini_key = os.getenv("GEMINI_API_KEY", "")
+
+    with st.expander("⚙️ Panel Pengaturan & Kredensial AI", expanded=False):
+        c_cfg1, c_cfg2 = st.columns(2)
+        with c_cfg1:
+            st.markdown("##### 🔑 Kredensial Gemini AI")
+            user_gemini_key = st.text_input(
+                "Gemini API Key:",
+                value=default_gemini_key,
+                type="password",
+                help="Dapatkan gratis di aistudio.google.com. Kunci tersamarkan dengan aman.",
+                key="twitter_user_gemini_key"
+            )
+            st.caption(f"Status Kredensial: {'🟢 Terkonfigurasi' if (user_gemini_key or default_gemini_key) else '⚪ Kosong'}")
+
+        with c_cfg2:
+            st.markdown("##### 📂 Muat atau Unggah Dataset")
+            c_btn1, c_btn2 = st.columns(2)
+            with c_btn1:
+                if st.button("📂 Muat Contoh Data (50 MBG)", width='stretch', key="load_sample_inside_btn"):
+                    sample_path = os.path.join(PROJECT_ROOT, "twitter_sentiment_app", "sample_tweets.csv")
+                    if os.path.exists(sample_path):
+                        sample_df = pd.read_csv(sample_path)
+                        if "sindiran" in sample_df.columns and "is_sarcasm" not in sample_df.columns:
+                            sample_df["is_sarcasm"] = sample_df["sindiran"].astype(bool)
+                        st.session_state.twitter_live_df = sample_df
+                        st.rerun()
+
+            up_file = st.file_uploader("Upload CSV Tweet:", type=["csv"], key="dash_uploader")
+            if up_file is not None:
+                try:
+                    up_df = pd.read_csv(up_file)
+                    if "full_text" in up_df.columns and "text" not in up_df.columns:
+                        up_df["text"] = up_df["full_text"]
+                    if "sindiran" in up_df.columns and "is_sarcasm" not in up_df.columns:
+                        up_df["is_sarcasm"] = up_df["sindiran"].astype(bool)
+                    if "sentimen" in up_df.columns and "sentiment" not in up_df.columns:
+                        up_df["sentiment"] = up_df["sentimen"]
+                    st.session_state.twitter_live_df = up_df
+                    st.toast(f"Berhasil memuat {len(up_df)} tweet!")
+                except Exception as e:
+                    st.error(f"Gagal memuat file: {e}")
+
+    tab_ews, tab_scrape, tab_ai = st.tabs([
+        "🚨 Early Warning System (EWS)",
+        "🔍 Scrape Tweet Baru (Twikit)",
+        "🤖 Analisis Sentimen AI (Gemini)"
+    ])
+
+    with tab_scrape:
+        st.markdown("### 🔍 Scraping Data Tweet MBG Terbaru")
+        sc1, sc2, sc3 = st.columns([2, 1, 1])
+        with sc1:
+            kw = st.text_input("Keyword pencarian:", value='MBG OR "Makan Bergizi Gratis"', key="kw_dash")
+        with sc2:
+            lim = st.number_input("Jumlah tweet:", min_value=10, max_value=500, value=30, step=10, key="lim_dash")
+        with sc3:
+            prod = st.selectbox("Tipe hasil:", ["Latest", "Top"], index=0, key="prod_dash")
+
+        if st.button("🚀 Mulai Scraping Tweet", width='stretch'):
+            if not TWITTER_MODULES_AVAILABLE:
+                st.error("Modul scraper belum tersedia. Pastikan twitter_sentiment_app/ ada.")
+            else:
+                with st.spinner(f"Mengambil {lim} tweet tentang '{kw}' via Twikit..."):
+                    try:
+                        scraped = scrape_tweets_sync(keyword=kw, limit=lim, product=prod)
+                        st.session_state.twitter_live_df = scraped
+                        st.success(f"Berhasil mengunduh {len(scraped)} tweet!")
+                        st.rerun()
+                    except Exception as e:
+                        st.error(f"Gagal scraping: {e}")
+
+    with tab_ai:
+        st.markdown("### 🤖 Inferensi Sentimen & Sarkasme via Gemini AI")
+        if df is None or df.empty:
+            st.info("Muat data terlebih dahulu di tab EWS atau panel atas.")
+        else:
+            c_ai1, c_ai2 = st.columns([3, 1])
+            with c_ai1:
+                st.write(f"Dataset saat ini memiliki **{len(df)}** baris data tweet yang siap dianalisis.")
+            with c_ai2:
+                b_size = st.slider("Batch size:", 5, 20, 10, key="bsize_dash_ai", help="Tweet per API call")
+
+            if st.button("⚡ Jalankan Analisis AI Sekarang", width='stretch', key="run_ai_dash"):
+                active_key = user_gemini_key.strip() if user_gemini_key else None
+                prog = st.progress(0.0, text="Menghubungi Gemini AI...")
+                def _cb(pct):
+                    prog.progress(pct, text=f"Proses analisis AI: {int(pct * 100)}%")
+
+                with st.spinner("Menganalisis tweet via Gemini..."):
+                    try:
+                        analyzed = analyze_dataframe(df, batch_size=b_size, progress_callback=_cb, api_key=active_key)
+                        st.session_state.twitter_live_df = analyzed
+                        st.success("✅ Analisis sentimen, sarkasme, dan topik aspek sukses!")
+                        st.rerun()
+                    except Exception as e:
+                        st.error(f"Gagal analisis AI: {e}")
+
+    with tab_ews:
+        if df is None or df.empty:
+            st.warning("⚠️ Belum ada dataset tweet yang dimuat. Klik tombol '📂 Muat Contoh Data (50 MBG)' di atas untuk melihat demonstrasi.")
+            return
+
+        ews_res = compute_ews_local(df)
+        det = ews_res["details"]
+
+        st.markdown("### 🚨 Indikator Risiko Publik & Peringatan Dini (EWS)")
+        ews_col1, ews_col2 = st.columns([1, 2])
+
+        with ews_col1:
+            fig_gauge = go.Figure(go.Indicator(
+                mode="gauge+number",
+                value=ews_res["score"],
+                title={"text": f"Skor Risiko EWS<br><span style='font-size:12px; color:{ews_res['color']}'>{ews_res['status']}</span>", "font": {"size": 16}},
+                gauge={
+                    "axis": {"range": [0, 100], "tickwidth": 1},
+                    "bar": {"color": ews_res["color"]},
+                    "steps": [
+                        {"range": [0, 25], "color": "#dcfce7"},
+                        {"range": [25, 50], "color": "#fef9c3"},
+                        {"range": [50, 75], "color": "#ffedd5"},
+                        {"range": [75, 100], "color": "#fee2e2"},
+                    ],
+                    "threshold": {"line": {"color": "red", "width": 3}, "value": 75},
+                }
+            ))
+            fig_gauge.update_layout(height=260, margin={"t": 30, "b": 10})
+            st.plotly_chart(fig_gauge, width='stretch')
+
+        with ews_col2:
+            st.markdown(
+                f"""
+                <div style="background-color: #1e293b; padding: 20px; border-radius: 12px; border-left: 6px solid {ews_res['color']}; margin-top: 10px;">
+                    <h4 style="margin: 0 0 8px 0; color: {ews_res['color']};">{ews_res['status']}</h4>
+                    <p style="margin: 0; color: #f1f5f9; font-size: 14.5px; line-height: 1.6;">
+                        <b>📌 Rekomendasi Tindakan BGN / Humas:</b><br>{ews_res['action']}
+                    </p>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            st.markdown("<br>", unsafe_allow_html=True)
+            m1, m2, m3, m4 = st.columns(4)
+            m1.metric("🚨 Kata Tier-1 (Berat)", f"{det.get('t1', 0)}×")
+            m2.metric("⚠️ Kata Tier-2 (Sedang)", f"{det.get('t2', 0)}×")
+            m3.metric("😏 Emoji Sarkasme", f"{det.get('emoji_hits', 0)}×")
+            m4.metric("📄 Total Tweet", f"{len(df):,}")
+
+        st.markdown("---")
+
+        st.markdown("### 📄 Data Tweet MBG")
+        st.dataframe(df, width='stretch', height=260)
+        st.download_button(
+            "⬇️ Unduh Dataset Ini (CSV)",
+            df.to_csv(index=False).encode("utf-8"),
+            "dataset_mbg_monitor.csv",
+            "text/csv"
+        )
+
+        if "sentiment" in df.columns:
+            st.markdown("---")
+            st.markdown("### 📊 Distribusi Sentimen Publik & Analisis Aspek")
+            c_vis1, c_vis2 = st.columns(2)
+            with c_vis1:
+                sent_counts = df["sentiment"].value_counts().reset_index()
+                sent_counts.columns = ["sentiment", "jumlah"]
+                fig_p = px.pie(
+                    sent_counts, names="sentiment", values="jumlah",
+                    title="Distribusi Sentimen",
+                    color="sentiment",
+                    color_discrete_map={"positif": "#22c55e", "negatif": "#ef4444", "netral": "#94a3b8"}
+                )
+                st.plotly_chart(fig_p, width='stretch')
+
+            with c_vis2:
+                if "topic_aspect" in df.columns:
+                    asp_counts = df["topic_aspect"].value_counts().reset_index()
+                    asp_counts.columns = ["aspek", "jumlah"]
+                    fig_b = px.bar(asp_counts, x="aspek", y="jumlah", title="Topik Aspek Kebijakan", color="aspek")
+                    st.plotly_chart(fig_b, width='stretch')
+
+            if WORDCLOUD_AVAILABLE:
+                st.markdown("### ☁️ Word Cloud Opini Warganet")
+                wc1, wc2 = st.columns(2)
+                pos_txt = " ".join(df[df["sentiment"].astype(str).str.lower() == "positif"]["text"].astype(str))
+                neg_txt = " ".join(df[df["sentiment"].astype(str).str.lower() == "negatif"]["text"].astype(str))
+
+                with wc1:
+                    st.caption("🟢 **Kata Kunci Sentimen Positif**")
+                    if pos_txt.strip():
+                        wc_pos = WordCloud(width=450, height=250, background_color="white").generate(pos_txt)
+                        fig_w1, ax1 = plt.subplots()
+                        ax1.imshow(wc_pos, interpolation="bilinear")
+                        ax1.axis("off")
+                        st.pyplot(fig_w1)
+                    else:
+                        st.caption("Tidak cukup data positif.")
+
+                with wc2:
+                    st.caption("🔴 **Kata Kunci Sentimen Negatif**")
+                    if neg_txt.strip():
+                        wc_neg = WordCloud(width=450, height=250, background_color="white").generate(neg_txt)
+                        fig_w2, ax2 = plt.subplots()
+                        ax2.imshow(wc_neg, interpolation="bilinear")
+                        ax2.axis("off")
+                        st.pyplot(fig_w2)
+                    else:
+                        st.caption("Tidak cukup data negatif.")
+
+        sarc_col = "is_sarcasm" if "is_sarcasm" in df.columns else ("sindiran" if "sindiran" in df.columns else None)
+        if sarc_col:
+            s_mask = df[sarc_col].astype(str).str.lower().isin(["true", "1", "ya", "sindiran"])
+            if s_mask.any():
+                st.markdown("### 😏 Cuitan Mengandung Sindiran / Sarkasme")
+                cols_show = [c for c in ["username", "text", "sentiment", "sentiment_if_sarcasm_removed", "reason"] if c in df.columns]
+                if not cols_show:
+                    cols_show = ["text", sarc_col]
+                st.dataframe(df[s_mask][cols_show], width='stretch')
+
+
 # Sidebar Navigation
 st.sidebar.title("🧭 Navigasi Manuskrip Tesis")
 st.sidebar.markdown("**Alur Pembacaan Berurutan (Bab I – Bab V):**")
@@ -1114,6 +1456,7 @@ menu_options = [
     "3️⃣ Bab III: Metodologi & Pipeline Komputasional",
     "4️⃣ Bab IV: Hasil & Pembahasan (Empiris Terintegrasi)",
     "5️⃣ Bab V: Kesimpulan & Rekomendasi Kebijakan BGN",
+    "🍱 Twitter AI & Early Warning System (EWS)",
     "📡 Brand24 Real-Time Monitor (EWS)",
     "📑 Naskah Jurnal Internasional (Scopus Q1 Ready)",
     "🖼️ Galeri Visual Storytelling (10 Master Plot Tesis)",
@@ -1143,7 +1486,7 @@ if os.path.exists(p_docx_side):
             data=f_side_docx.read(),
             file_name="Journal_Paper_Indri_Anjar_MBG_SNA.docx",
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            use_container_width=True
+            width='stretch'
         )
 
 p_gexf_side = os.path.join(PROJECT_ROOT, "results", "mbg_network_official.gexf")
@@ -1154,7 +1497,7 @@ if os.path.exists(p_gexf_side):
             data=f_side_gexf.read(),
             file_name="mbg_network_official.gexf",
             mime="application/xml",
-            use_container_width=True
+            width='stretch'
         )
 
 st.sidebar.markdown("📦 [Repositori GitHub Publik](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)")
@@ -1317,7 +1660,7 @@ if "Bab I" in page or page == "🏠 Beranda":
     
     # Define image path dynamically
     master_visual_path = get_result_path("integrated_sna_nlp.png")
-    st.image(master_visual_path, use_container_width=True)
+    st.image(master_visual_path, width='stretch')
     
     st.markdown("---")
     st.subheader("☁️ Peta Leksikal Wacana MBG: Word Cloud & Top 10 Kata Paling Sering Muncul")
@@ -1327,7 +1670,7 @@ if "Bab I" in page or page == "🏠 Beranda":
     with b_wc1:
         wc_main_img = get_result_path("wordcloud_mbg.png")
         if os.path.exists(wc_main_img):
-            st.image(wc_main_img, use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan pada Korpus MBG")
+            st.image(wc_main_img, width='stretch', caption="Visual Word Cloud: 120 Kata Paling Signifikan pada Korpus MBG")
         else:
             st.info("Visual Word Cloud sedang dimuat...")
     with b_wc2:
@@ -1339,7 +1682,7 @@ if "Bab I" in page or page == "🏠 Beranda":
             ("#10 indonesia", 297, "5,6%")
         ]
         df_top_home = pd.DataFrame(top10_home, columns=["Kata", "Frekuensi", "Estimasi Kemunculan"])
-        st.dataframe(df_top_home, use_container_width=True, hide_index=True)
+        st.dataframe(df_top_home, width='stretch', hide_index=True)
         st.caption("💡 *Buka menu **😊 Analisis Emosi (NLP)** untuk filter leksikal per emosi dan analisis kata tematik lapangan (sekolah, anak, dapur, anggaran).*")
     
     st.markdown("---")
@@ -1360,29 +1703,29 @@ if "Bab I" in page or page == "🏠 Beranda":
             st.markdown("##### 📄 LoA INOVASI IndoBERT (#88)")
             loa0_p = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_inovasi_indobert_tiktok_2026.png")
             if os.path.exists(loa0_p):
-                st.image(loa0_p, caption="LoA IndoBERT TikTok (21 September 2026)", use_container_width=True)
+                st.image(loa0_p, caption="LoA IndoBERT TikTok (21 September 2026)", width='stretch')
             loa0_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_inovasi_indobert_tiktok_2026.pdf")
             if os.path.exists(loa0_pdf):
                 with open(loa0_pdf, "rb") as f:
-                    st.download_button("📥 Unduh LoA INOVASI (.PDF)", f.read(), "LoA_INOVASI_88_IndoBERT_TikTok.pdf", "application/pdf", key="dl_loa_inovasi_home", use_container_width=True)
+                    st.download_button("📥 Unduh LoA INOVASI (.PDF)", f.read(), "LoA_INOVASI_88_IndoBERT_TikTok.pdf", "application/pdf", key="dl_loa_inovasi_home", width='stretch')
         with exp_col2:
             st.markdown("##### 📄 LoA Tesis MBG (#2009)")
             loa1_p = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_mbg_2009.png")
             if os.path.exists(loa1_p):
-                st.image(loa1_p, caption="LoA Riset MBG X (15 September 2026)", use_container_width=True)
+                st.image(loa1_p, caption="LoA Riset MBG X (15 September 2026)", width='stretch')
             loa1_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_mbg_2009.pdf")
             if os.path.exists(loa1_pdf):
                 with open(loa1_pdf, "rb") as f:
-                    st.download_button("📥 Unduh LoA MBG (.PDF)", f.read(), "LoA_IPSSJ_2009_MBG.pdf", "application/pdf", key="dl_loa_mbg_home", use_container_width=True)
+                    st.download_button("📥 Unduh LoA MBG (.PDF)", f.read(), "LoA_IPSSJ_2009_MBG.pdf", "application/pdf", key="dl_loa_mbg_home", width='stretch')
         with exp_col3:
             st.markdown("##### 🤖 LoA JobsMatchAI (#2024)")
             loa2_p = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_jobsmatchai_2024.png")
             if os.path.exists(loa2_p):
-                st.image(loa2_p, caption="LoA JobsMatchAI (17 September 2026)", use_container_width=True)
+                st.image(loa2_p, caption="LoA JobsMatchAI (17 September 2026)", width='stretch')
             loa2_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_jobsmatchai_2024.pdf")
             if os.path.exists(loa2_pdf):
                 with open(loa2_pdf, "rb") as f:
-                    st.download_button("📥 Unduh LoA JobsMatchAI (.PDF)", f.read(), "LoA_IPSSJ_2024_JobsMatchAI.pdf", "application/pdf", key="dl_loa_job_home", use_container_width=True)
+                    st.download_button("📥 Unduh LoA JobsMatchAI (.PDF)", f.read(), "LoA_IPSSJ_2024_JobsMatchAI.pdf", "application/pdf", key="dl_loa_job_home", width='stretch')
 
     
     st.info("""
@@ -1494,7 +1837,7 @@ if "Bab I" in page or page == "🏠 Beranda":
         height=520,
         margin=dict(l=10, r=10, t=40, b=20)
     )
-    st.plotly_chart(fig_sankey, use_container_width=True)
+    st.plotly_chart(fig_sankey, width='stretch')
 
     # 6 Tab Interaktif Berpasangan
     st.markdown("---")
@@ -1684,7 +2027,7 @@ if "Bab I" in page or page == "🏠 Beranda":
         }
     ]
 
-    st.dataframe(pd.DataFrame(matriks_data), use_container_width=True, hide_index=True)
+    st.dataframe(pd.DataFrame(matriks_data), width='stretch', hide_index=True)
 
     st.markdown("---")
     st.subheader("🎯 Grand Research Question (Sintesis Utama)")
@@ -1700,7 +2043,7 @@ if "Bab I" in page or page == "🏠 Beranda":
         "Indikator Struktural": ["@prabowo In=15", "@grok Out=42 merupakan aktor dengan out-degree tertinggi dalam graf", "342 komunitas dengan keterpisahan struktural; hubungan lintas komunitas yang teridentifikasi sangat terbatas", "Distribusi emosi memerlukan rekonsiliasi dataset sebelum digunakan sebagai temuan substantif", "315 cuitan (9,28%) sindiran tervalidasi", "Disparitas alokasi fiskal vs kualitas menu di lapangan"],
         "Bukti Data": ["Reciprocity 1,20%", "Out-degree #1", "Modularity Q=0.9837", "IndoBERT: audit distribusi emosi berjalan", "Lexical N=3.395", "Kompilasi Kasus Operasional SPPG"],
     }
-    st.dataframe(pd.DataFrame(grq_data), use_container_width=True, hide_index=True)
+    st.dataframe(pd.DataFrame(grq_data), width='stretch', hide_index=True)
 
     st.markdown("---")
     st.header("🔬 Visualisasi Verifikasi Integritas Data Empiris (Bab IV Hasil & Pembahasan)")
@@ -1756,7 +2099,7 @@ if "Bab I" in page or page == "🏠 Beranda":
             )
             fig_live_emo.update_traces(textinfo="label+percent", textfont_size=11)
             fig_live_emo.update_layout(height=380, margin=dict(l=10, r=10, t=40, b=20), showlegend=False)
-            st.plotly_chart(fig_live_emo, use_container_width=True)
+            st.plotly_chart(fig_live_emo, width='stretch')
             st.caption("✅ **Data Sumber:** `data/results/indobert_9_emosi_fixed.csv` | **Posisi:** Bab 4.1 & Bab 4.5.1")
 
         with vrow1_c2:
@@ -1778,7 +2121,7 @@ if "Bab I" in page or page == "🏠 Beranda":
                 )
                 fig_live_sin.update_traces(textinfo="label+percent", textfont_size=11)
                 fig_live_sin.update_layout(height=380, margin=dict(l=10, r=10, t=40, b=20), showlegend=False)
-                st.plotly_chart(fig_live_sin, use_container_width=True)
+                st.plotly_chart(fig_live_sin, width='stretch')
             st.caption("✅ **Data Sumber:** `data/sarcasm/dataset_sindiran_valid.csv` | **Posisi:** Bab 4.5.2")
 
         # Row 2 of Verification Charts
@@ -1805,7 +2148,7 @@ if "Bab I" in page or page == "🏠 Beranda":
                     xaxis_title="Degree Centrality Score",
                     yaxis_title="Aktor warganet"
                 )
-                st.plotly_chart(fig_live_deg, use_container_width=True)
+                st.plotly_chart(fig_live_deg, width='stretch')
             st.caption("✅ **Data Sumber:** `data/results/sna_degree.csv` | **Posisi:** Bab 4.4")
 
         with vrow2_c2:
@@ -1835,7 +2178,7 @@ if "Bab I" in page or page == "🏠 Beranda":
                     yaxis_title="Persentase Sentimen (%)",
                     legend=dict(orientation="h", yanchor="bottom", y=-0.25)
                 )
-                st.plotly_chart(fig_live_absa, use_container_width=True)
+                st.plotly_chart(fig_live_absa, width='stretch')
             st.caption("✅ **Data Sumber:** `results/absa_results.csv` | **Posisi:** Bab 4.6.1 & 4.6.2")
 
     except Exception as e:
@@ -1884,7 +2227,7 @@ if "Bab I" in page or page == "🏠 Beranda":
         ],
     }
     df_prior = pd.DataFrame(prior_research)
-    st.dataframe(df_prior, use_container_width=True, hide_index=True)
+    st.dataframe(df_prior, width='stretch', hide_index=True)
 
     st.markdown("---")
     st.subheader("🔍 Research Gap: Yang Belum Pernah Dilakukan")
@@ -1956,7 +2299,7 @@ if "Bab I" in page or page == "🏠 Beranda":
         "⭐ PENELITIAN INI":["✅","✅","✅","✅","✅","✅","✅","✅"],
     }
     df_matrix = pd.DataFrame(matrix_data)
-    st.dataframe(df_matrix, use_container_width=True, hide_index=True)
+    st.dataframe(df_matrix, width='stretch', hide_index=True)
 
     st.success("""
     **📌 Novelty Statement (siap masuk manuskrip):**
@@ -2102,7 +2445,7 @@ elif "Bab II" in page or page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
             paper_bgcolor="#0f172a",
             font=dict(family="Outfit, sans-serif", color="white", size=13)
         )
-        st.plotly_chart(fig_hier, use_container_width=True)
+        st.plotly_chart(fig_hier, width='stretch')
     else:
         fig_hier = px.treemap(
             df_hierarchy,
@@ -2120,7 +2463,7 @@ elif "Bab II" in page or page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
             paper_bgcolor="#0f172a",
             font=dict(family="Outfit, sans-serif", color="white", size=13)
         )
-        st.plotly_chart(fig_hier, use_container_width=True)
+        st.plotly_chart(fig_hier, width='stretch')
 
     st.markdown("---")
 
@@ -2422,7 +2765,7 @@ elif "Bab II" in page or page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
                 "Bukti Data Riil": "Distribusi label emosi dan keterkaitannya dengan aspek substantif memerlukan rekonsiliasi sebelum digunakan sebagai temuan final."
             }
         ]
-        st.dataframe(pd.DataFrame(prop_data), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(prop_data), width='stretch', hide_index=True)
 
         st.markdown("---")
         st.subheader("⚖️ §2.11 Etika Komputasional & Validitas Data (Halaman 83–84)")
@@ -2515,7 +2858,7 @@ elif "Bab III" in page:
         ],
     }
     df_op = pd.DataFrame(op_var_data)
-    st.dataframe(df_op, use_container_width=True, hide_index=True)
+    st.dataframe(df_op, width='stretch', hide_index=True)
 
     st.markdown("---")
 
@@ -2652,7 +2995,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                     "Maret – Mei 2026",
                 ]
             }
-            st.dataframe(pd.DataFrame(tabel_4_1), use_container_width=True, hide_index=True)
+            st.dataframe(pd.DataFrame(tabel_4_1), width='stretch', hide_index=True)
 
         with col_meta2:
             st.subheader("⚖️ Komparasi Data Korpus vs Data Pilot")
@@ -2721,7 +3064,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 )
                 fig_live_emo.update_traces(textinfo="label+percent", textfont_size=11)
                 fig_live_emo.update_layout(height=380, margin=dict(l=10, r=10, t=40, b=20), showlegend=False)
-                st.plotly_chart(fig_live_emo, use_container_width=True)
+                st.plotly_chart(fig_live_emo, width='stretch')
                 st.caption("✅ **Data Sumber:** `data/results/indobert_9_emosi_fixed.csv` | **Posisi:** Bab 4.1 & Bab 4.5.1")
 
             with vrow1_c2:
@@ -2743,7 +3086,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                     )
                     fig_live_sin.update_traces(textinfo="label+percent", textfont_size=11)
                     fig_live_sin.update_layout(height=380, margin=dict(l=10, r=10, t=40, b=20), showlegend=False)
-                    st.plotly_chart(fig_live_sin, use_container_width=True)
+                    st.plotly_chart(fig_live_sin, width='stretch')
                 st.caption("✅ **Data Sumber:** `data/sarcasm/dataset_sindiran_valid.csv` | **Posisi:** Bab 4.5.2")
 
             # Row 2 of Verification Charts
@@ -2770,7 +3113,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                         xaxis_title="Degree Centrality Score",
                         yaxis_title="Aktor warganet"
                     )
-                    st.plotly_chart(fig_live_deg, use_container_width=True)
+                    st.plotly_chart(fig_live_deg, width='stretch')
                 st.caption("✅ **Data Sumber:** `data/results/sna_degree.csv` | **Posisi:** Bab 4.4")
 
             with vrow2_c2:
@@ -2800,7 +3143,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                         yaxis_title="Persentase Sentimen (%)",
                         legend=dict(orientation="h", yanchor="bottom", y=-0.25)
                     )
-                    st.plotly_chart(fig_live_absa, use_container_width=True)
+                    st.plotly_chart(fig_live_absa, width='stretch')
                 st.caption("✅ **Data Sumber:** `results/absa_results.csv` | **Posisi:** Bab 4.6.1 & 4.6.2")
 
         except Exception as e:
@@ -2854,7 +3197,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 }
             ))
             fig_q_gauge.update_layout(height=320, margin=dict(t=50, b=20, l=20, r=20))
-            st.plotly_chart(fig_q_gauge, use_container_width=True)
+            st.plotly_chart(fig_q_gauge, width='stretch')
 
         with col_mbar:
             df_mod_comp = pd.DataFrame({
@@ -2873,7 +3216,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
             )
             fig_q_bar.update_traces(texttemplate='%{text:.4f}', textposition='outside')
             fig_q_bar.update_layout(height=320, margin=dict(t=50, b=20, l=10, r=10), yaxis_range=[0, 1.15], coloraxis_showscale=False)
-            st.plotly_chart(fig_q_bar, use_container_width=True)
+            st.plotly_chart(fig_q_bar, width='stretch')
 
         # ── Load Network Data Real ──
         edges, nodes_data = load_network_data()
@@ -2909,7 +3252,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 "Persentase (%)": f"{pct:.2f}%{tag}",
                 "Karakteristik & Dinamika Diskursus": char_list[i] if i < len(char_list) else "Klaster mikro terisolasi"
             })
-        st.dataframe(pd.DataFrame(comp_rows), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(comp_rows), width='stretch', hide_index=True)
 
         isolated_small = sum(1 for c in components if len(c) <= 2)
         st.info(f"💡 **Catatan Metodologis:** Sebanyak **{isolated_small} komponen ({(isolated_small/len(components))*100:.1f}%)** beranggotakan <= 2 aktor (dyad/isolated pair), menganalisis tidak adanya arena sentral percakapan publik nasional.")
@@ -2922,7 +3265,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
         )
         macro_img_p = os.path.join(project_root, "results", "17_macro_topology_metrics.png")
         if os.path.exists(macro_img_p):
-            st.image(macro_img_p, use_container_width=True, caption="Gambar 4.2B: Struktur Makro Topologi Jaringan Komunikasi MBG (Buku Kerja NodeXL Pro & NetworkX, 300 DPI)")
+            st.image(macro_img_p, width='stretch', caption="Gambar 4.2B: Struktur Makro Topologi Jaringan Komunikasi MBG (Buku Kerja NodeXL Pro & NetworkX, 300 DPI)")
 
         macro_json_p = os.path.join(project_root, "results", "macro_topology_metrics.json")
         if os.path.exists(macro_json_p):
@@ -2933,7 +3276,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 for k, v in m_data.items()
             ])
             with st.expander("📑 Lihat Tabel Lengkap Parameter Topologi Makro Graf (15+ Metrik Resmi)", expanded=False):
-                st.dataframe(df_macro_table, use_container_width=True, hide_index=True)
+                st.dataframe(df_macro_table, width='stretch', hide_index=True)
 
         st.markdown("---")
 
@@ -3068,7 +3411,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                     height=560
                 )
             )
-            st.plotly_chart(fig_net_plotly, use_container_width=True)
+            st.plotly_chart(fig_net_plotly, width='stretch')
 
         with graph_tab2:
             st.info("💡 **Tips Interaktif:** Anda dapat melakukan *scroll* untuk Zoom In/Out, men-drag node, atau mengklik node untuk melihat relasi terhubung secara dinamis.")
@@ -3163,13 +3506,13 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
         actors_path = os.path.join(project_root, "results", "top_actors.png")
         
         # 6_global_network
-        st.image(global_path, use_container_width=True, caption="Figure: Global Topological Structure")
+        st.image(global_path, width='stretch', caption="Figure: Global Topological Structure")
         
         colA, colB = st.columns(2)
         with colA:
-            st.image(louvain_path, use_container_width=True, caption="Figure: Fragmented Community (Louvain)")
+            st.image(louvain_path, width='stretch', caption="Figure: Fragmented Community (Louvain)")
         with colB:
-            st.image(actors_path, use_container_width=True, caption="Figure: Top 10 Influential Actors (AI Supremacy)")
+            st.image(actors_path, width='stretch', caption="Figure: Top 10 Influential Actors (AI Supremacy)")
 
         
     with tab_iv_3:
@@ -3211,7 +3554,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 })
             col_comm1, col_comm2 = st.columns([1.4, 1])
             with col_comm1:
-                st.dataframe(pd.DataFrame(comm_dyn_rows), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame(comm_dyn_rows), width='stretch', hide_index=True)
             with col_comm2:
                 df_comm_pie = pd.DataFrame({
                     'Klaster': [f"Klaster #{cid}" for cid in top_comms.index] + ['Klaster Lainnya (328 Klaster)'],
@@ -3227,7 +3570,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 )
                 fig_comm_donut.update_traces(textposition='inside', textinfo='percent+label')
                 fig_comm_donut.update_layout(showlegend=False, margin=dict(t=30, b=10, l=10, r=10), height=280)
-                st.plotly_chart(fig_comm_donut, use_container_width=True)
+                st.plotly_chart(fig_comm_donut, width='stretch')
 
             # ── Visualisasi Distribusi Emosi per Komunitas Louvain ──
             st.subheader("📊 Distribusi Emosi Dominan per Komunitas Louvain")
@@ -3263,7 +3606,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 }
             )
             fig_comm_emo.update_layout(height=340, margin=dict(t=40, b=20, l=10, r=10))
-            st.plotly_chart(fig_comm_emo, use_container_width=True)
+            st.plotly_chart(fig_comm_emo, width='stretch')
 
             # ── Interactive Community Member Explorer ──
             with st.expander("🔎 Eksplorasi Anggota & Aktor per Komunitas Louvain", expanded=False):
@@ -3276,7 +3619,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 df_sel_members.columns = ['Akun Pengguna', 'Degree Centrality', 'Betweenness Centrality', 'Emosi Dominan']
                 df_sel_members['Akun Pengguna'] = df_sel_members['Akun Pengguna'].apply(lambda x: f"@{x}")
                 df_sel_members['Emosi Dominan'] = df_sel_members['Emosi Dominan'].map(emo_id_labels).fillna(df_sel_members['Emosi Dominan'])
-                st.dataframe(df_sel_members.sort_values(by='Degree Centrality', ascending=False), use_container_width=True, hide_index=True)
+                st.dataframe(df_sel_members.sort_values(by='Degree Centrality', ascending=False), width='stretch', hide_index=True)
 
         echo_img_p = os.path.join(project_root, "results", "19_community_echo_chambers.png")
         if os.path.exists(echo_img_p):
@@ -3289,7 +3632,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
             )
             st.image(
                 echo_img_p,
-                use_container_width=True,
+                width='stretch',
                 caption="Gambar 4.7C: Partisi Komunitas Louvain & Diagnostik Struktur Internal Komunitas (300 DPI)"
             )
 
@@ -3303,14 +3646,14 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
             )
             st.image(
                 nodexl_viz_path,
-                use_container_width=True,
+                width='stretch',
                 caption="Gambar 4.7B: Visualisasi Jaringan Komunikasi NodeXL Pro Group-in-a-Box Layout (|V|=971, |E|=666, 300 DPI)"
             )
             col_nx_dl1, col_nx_dl2 = st.columns(2)
             with col_nx_dl1:
-                st.link_button("📊 Unduh Buku Kerja NodeXL Pro (.xlsx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/NodeXL_MBG_Tesis_Indri_Anjar.xlsx", use_container_width=True)
+                st.link_button("📊 Unduh Buku Kerja NodeXL Pro (.xlsx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/NodeXL_MBG_Tesis_Indri_Anjar.xlsx", width='stretch')
             with col_nx_dl2:
-                st.link_button("☁️ Buka Sesi NodeXL Cloud Streaming", "https://www.nodexlgraphgallery.org/Pages/Cloud.aspx?token=c1d8d71236e1cae9628f0b5c7a55b581", use_container_width=True)
+                st.link_button("☁️ Buka Sesi NodeXL Cloud Streaming", "https://www.nodexlgraphgallery.org/Pages/Cloud.aspx?token=c1d8d71236e1cae9628f0b5c7a55b581", width='stretch')
 
         st.markdown("---")
 
@@ -3366,7 +3709,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 "Out-Degree": out_deg,
                 "Peran Struktural": peran_map.get(node, "🗣️ Partisipan Wacana")
             })
-        st.dataframe(pd.DataFrame(dyn_top15), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(dyn_top15), width='stretch', hide_index=True)
 
         # ── Interactive Plotly Chart: In-Degree vs Out-Degree ──
         top_10_names = [n for n, _ in top_15_nodes[:10]]
@@ -3391,7 +3734,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
             height=380,
             margin=dict(t=40, b=20, l=10, r=10)
         )
-        st.plotly_chart(fig_act_bars, use_container_width=True)
+        st.plotly_chart(fig_act_bars, width='stretch')
 
         # ── §4.4b VISUALISASI KOMPREHENSIF SENTRALITAS AKTOR: DEGREE, BETWEENNESS, & EIGENVECTOR ──
         st.markdown("---")
@@ -3444,7 +3787,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
             )
             fig_deg_bar.update_traces(textposition='outside')
             fig_deg_bar.update_layout(height=400, margin=dict(t=40, b=20, l=10, r=20), xaxis_title="Skor Degree Centrality", yaxis_title="Akun Pengguna")
-            st.plotly_chart(fig_deg_bar, use_container_width=True)
+            st.plotly_chart(fig_deg_bar, width='stretch')
             st.info("💡 **Insight Temuan:** Agen AI **@grok** menduduki sentralitas derajat tertinggi (**0,0433 / 42 relasi**), menganalisis fenomena *perbedaan posisi centrality*, di mana warganet memiliki pola konektivitas out-degree yang lebih tinggi dibandingkan akun yang dibandingkan dalam graf.")
 
         with cent_tab2:
@@ -3464,7 +3807,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
             )
             fig_bet_bar.update_traces(textposition='outside')
             fig_bet_bar.update_layout(height=400, margin=dict(t=40, b=20, l=10, r=30), xaxis_title="Skor Betweenness Centrality", yaxis_title="Akun Pengguna")
-            st.plotly_chart(fig_bet_bar, use_container_width=True)
+            st.plotly_chart(fig_bet_bar, width='stretch')
             st.success("🔗 **Insight Temuan:** **@grok** memiliki skor Betweenness tertinggi (**0,005940868**), Posisi tersebut menunjukkan centrality struktural yang tinggi pada graf yang dianalisis di tengah jaringan yang menunjukkan keterpisahan struktural ($Q = 0.9837$).")
 
         with cent_tab3:
@@ -3484,7 +3827,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
             )
             fig_eig_bar.update_traces(textposition='outside')
             fig_eig_bar.update_layout(height=400, margin=dict(t=40, b=20, l=10, r=20), xaxis_title="Skor Eigenvector Centrality", yaxis_title="Akun Pengguna")
-            st.plotly_chart(fig_eig_bar, use_container_width=True)
+            st.plotly_chart(fig_eig_bar, width='stretch')
             st.info("💎 **Insight Temuan:** Eigenvector Centrality tertinggi diraih oleh aktor seperti **@4Y4NKZ** dan **@newIding30** (skor **0,1166**), menganalisis bahwa relasi mereka terkonsentrasi pada simpul-simpul penggerak utama perdebatan publik.")
 
         with cent_tab4:
@@ -3512,7 +3855,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 yaxis_title="Betweenness Centrality (Kekuatan Brokerage)",
                 legend_title="Peran Struktural Aktor"
             )
-            st.plotly_chart(fig_cent_scatter, use_container_width=True)
+            st.plotly_chart(fig_cent_scatter, width='stretch')
             st.caption("📌 **Keterangan Tipologi:** Aktor di kuadran kanan bawah (**@grok**) memiliki popularitas masif namun bukan perantara antarkelompok. Sebaliknya, aktor di bagian atas (**@4Y4NKZ**) memiliki peran kontrol informasi (*gatekeeping*) tertinggi.")
 
         actor_typ_img_p = os.path.join(project_root, "results", "18_actor_centrality_typology.png")
@@ -3526,7 +3869,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
             )
             st.image(
                 actor_typ_img_p,
-                use_container_width=True,
+                width='stretch',
                 caption="Gambar 4.8B: Matriks Sentralitas Aktor & Tipologi Peran Komunikasi Platform X (300 DPI)"
             )
 
@@ -3693,7 +4036,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                 margin=dict(t=50, b=20, l=10, r=10)
             )
-            st.plotly_chart(fig_media_bar, use_container_width=True)
+            st.plotly_chart(fig_media_bar, width='stretch')
 
         with m_col2:
             # Donut Chart Proporsi Tipologi Media Penghubung
@@ -3713,7 +4056,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
                 height=430,
                 margin=dict(t=50, b=20, l=10, r=10)
             )
-            st.plotly_chart(fig_media_pie, use_container_width=True)
+            st.plotly_chart(fig_media_pie, width='stretch')
 
         # Tabel Rinci 10 Top Media Penghubung
         st.subheader("📋 Matriks Profil 10 Top Media Penghubung (Selain CNN Indonesia)")
@@ -3721,7 +4064,7 @@ elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️
         
         st.dataframe(
             df_top10_media[['Rank', 'Akun Media / Kanal', 'Tipologi Media', 'Total Degree', 'In-Degree (Aduan Masuk)', 'PageRank Centrality', 'Peran Penghubung', 'Fokus Wacana']],
-            use_container_width=True,
+            width='stretch',
             hide_index=True
         )
 
@@ -3817,7 +4160,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 "Paling disebut tapi tidak hadir dalam dialog"
             ]
         }
-        st.dataframe(pd.DataFrame(actor_data), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(actor_data), width='stretch', hide_index=True)
 
         st.success("""
         **📌 Sintesis Akademis (untuk manuskrip):**
@@ -3920,7 +4263,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 xaxis_title="Jumlah akun yang mengarahkan koneksi ke node ini",
                 yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
             )
-            st.plotly_chart(fig_in, use_container_width=True)
+            st.plotly_chart(fig_in, width='stretch')
 
             st.error("""
             **🔴 Temuan Kritis: @prabowo (In-Degree = 15)**
@@ -3963,7 +4306,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 xaxis_title="Jumlah koneksi yang diinisiasi dari node ini",
                 yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
             )
-            st.plotly_chart(fig_out, use_container_width=True)
+            st.plotly_chart(fig_out, width='stretch')
 
             st.warning("""
             **🟣 Temuan Anomali: @grok (Out-Degree = 42) — Out-Degree Tertinggi**
@@ -4009,7 +4352,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 xaxis_title="Betweenness × 10⁻⁶ (semakin tinggi = semakin penting sebagai jembatan)",
                 yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
             )
-            st.plotly_chart(fig_betw, use_container_width=True)
+            st.plotly_chart(fig_betw, width='stretch')
 
             st.info("""
             **🟠 Temuan: @grok (Betweenness = 0.005940868 — TERTINGGI)**
@@ -4055,7 +4398,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 xaxis_title="Eigenvector Score (semakin tinggi = terhubung ke node berpengaruh)",
                 yaxis=dict(categoryorder='total ascending'), plot_bgcolor='rgba(0,0,0,0)'
             )
-            st.plotly_chart(fig_eig, use_container_width=True)
+            st.plotly_chart(fig_eig, width='stretch')
 
             st.warning("""
             **🟡 Temuan: Skor Eigenvector Identik (0.2332) untuk 10+ Akun**
@@ -4215,7 +4558,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 st.subheader("☁️ Visual Word Cloud Diskursus MBG")
                 wc_resolved = get_result_path("wordcloud_mbg.png")
                 if "Semua" in lex_emo_choice and os.path.exists(wc_resolved):
-                    st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan")
+                    st.image(wc_resolved, width='stretch', caption="Visual Word Cloud: 120 Kata Paling Signifikan")
                 elif WORDCLOUD_AVAILABLE and MATPLOTLIB_AVAILABLE:
                     try:
                         wc_dyn = WordCloud(
@@ -4225,15 +4568,15 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                         fig_wc, ax_wc = plt.subplots(figsize=(8, 4.5), facecolor='#0f172a')
                         ax_wc.imshow(wc_dyn, interpolation='bilinear')
                         ax_wc.axis('off')
-                        st.pyplot(fig_wc, use_container_width=True)
+                        st.pyplot(fig_wc, width='stretch')
                         plt.close(fig_wc)
                     except Exception as e:
                         if os.path.exists(wc_resolved):
-                            st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud (Fallback Resolusi Tinggi)")
+                            st.image(wc_resolved, width='stretch', caption="Visual Word Cloud (Fallback Resolusi Tinggi)")
                         else:
                             st.warning(f"Gagal menghasilkan word cloud dinamis: {e}")
                 elif os.path.exists(wc_resolved):
-                    st.image(wc_resolved, use_container_width=True, caption="Visual Word Cloud: 120 Kata Paling Signifikan")
+                    st.image(wc_resolved, width='stretch', caption="Visual Word Cloud: 120 Kata Paling Signifikan")
                 else:
                     st.info("Visual Word Cloud dimuat dari aset kanonik riset.")
 
@@ -4256,7 +4599,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 )
                 fig_bar10.update_traces(textposition='outside')
                 fig_bar10.update_layout(height=450, margin=dict(t=30, b=10, l=10, r=10), showlegend=False)
-                st.plotly_chart(fig_bar10, use_container_width=True)
+                st.plotly_chart(fig_bar10, width='stretch')
 
             st.subheader("🏷️ Kartu Ringkasan 10 Kata Teratas")
             b_cols = st.columns(5)
@@ -4293,7 +4636,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 )
                 fig_thm.update_traces(textposition='outside')
                 fig_thm.update_layout(height=420, margin=dict(t=30, b=10, l=10, r=10), showlegend=False)
-                st.plotly_chart(fig_thm, use_container_width=True)
+                st.plotly_chart(fig_thm, width='stretch')
 
             with thm_col2:
                 st.info("""
@@ -4338,12 +4681,12 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
         ecol1, ecol2 = st.columns(2)
         with ecol1:
             if os.path.exists(f1_path):
-                st.image(f1_path, use_container_width=True, caption="Gambar 4: IndoBERT Classification Performance (F1-Scores)")
+                st.image(f1_path, width='stretch', caption="Gambar 4: IndoBERT Classification Performance (F1-Scores)")
             else:
                 st.warning("File f1_scores.png belum dibuat.")
         with ecol2:
             if os.path.exists(cm_path):
-                st.image(cm_path, use_container_width=True, caption="Gambar 5: Confusion Matrix IndoBERT (Data Riil)")
+                st.image(cm_path, width='stretch', caption="Gambar 5: Confusion Matrix IndoBERT (Data Riil)")
             else:
                 st.warning("File confusion_matrix.png belum dibuat.")
 
@@ -4372,7 +4715,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
             "F1-Score": ["audit ★", "0,2932", "0,0000", "0,0000", "0,0000", "0,0000", "0,0000", "—", "—", "0,5745", "0,1444", "0,4563"],
             "Support (Cuitan)": [584, 209, 121, 116, 19, 3, 1, 0, 0, 1053, 1053, 1053]
         }
-        st.dataframe(pd.DataFrame(tabel_4_4_real), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(tabel_4_4_real), width='stretch', hide_index=True)
 
         # ── TABEL 4.6 EVALUASI DETEKSI SINDIRAN ──
         st.subheader("📋 Tabel 4.6 Distribusi & Karakteristik Deteksi Sindiran (Data Riil)")
@@ -4408,7 +4751,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 "Inkongruensi afektif terhadap janji kebijakan (Phygital Gap)"
             ]
         }
-        st.dataframe(pd.DataFrame(tabel_4_6_real), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(tabel_4_6_real), width='stretch', hide_index=True)
 
         st.markdown("---")
         st.subheader("🔬 §4.5.3 Interpretasi Metodologis & Integritas Riset")
@@ -4609,7 +4952,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 height=450,
                 margin=dict(l=20, r=20, t=60, b=30)
             )
-            st.plotly_chart(fig_absa_bar, use_container_width=True)
+            st.plotly_chart(fig_absa_bar, width='stretch')
             st.info("💡 **Temuan Utama:** Emosi **Jijik (Disgust)** konsisten melampaui **70%** di seluruh aspek fisik, dengan puncaknya pada **Logistik & Distribusi (78,91%)** dan **Anggaran & Vendor (77,01%)**. Hal ini mengonfirmasi bahwa penolakan publik berakar pada kegagalan operasional fisik di lapangan.")
 
         with absa_tab2:
@@ -4667,7 +5010,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 height=480,
                 margin=dict(l=40, r=40, t=30, b=80)
             )
-            st.plotly_chart(fig_radar, use_container_width=True)
+            st.plotly_chart(fig_radar, width='stretch')
 
         with absa_tab3:
             st.markdown("#### 🔬 Eksplorasi Leksikon & Sampel Cuitan Riil per Aspek")
@@ -4707,7 +5050,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                     
                     sample_display = df_aspect_tweets[['text', 'predicted_emotion', 'confidence_score']].head(8)
                     sample_display.columns = ['Teks Cuitan Netizen', 'Emosi Terdeteksi', 'Skor Keyakinan']
-                    st.dataframe(sample_display, use_container_width=True, hide_index=True)
+                    st.dataframe(sample_display, width='stretch', hide_index=True)
                 except Exception as e:
                     st.warning(f"Memuat sampel cuitan: {e}")
 
@@ -4715,7 +5058,7 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
             st.markdown("#### 🖼️ Gambar 10 Naskah Tesis: Analisis Sentimen 3 Aspek Kunci Program MBG")
             img_absa_path = get_result_path("10_absa_thematic.png")
             if os.path.exists(img_absa_path):
-                st.image(img_absa_path, use_container_width=True, caption="Gambar 10: Analisis Sentimen 3 Aspek Kunci Program MBG (Data Riil)")
+                st.image(img_absa_path, width='stretch', caption="Gambar 10: Analisis Sentimen 3 Aspek Kunci Program MBG (Data Riil)")
                 st.info("""
                 **Keterangan Akademik Naskah Tesis (Halaman 106):**  
                 Grafik di atas menganalisis bahwa penolakan masyarakat di ranah digital tidak tertuju pada urgensi pemenuhan gizi anak sekolah, 
@@ -4793,12 +5136,12 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
                 "Kontribusi Interpretasi Phygital Gap": "Menemukan akar luka kebijakan: kegagalan terletak pada titik sentuh fisik (makanan basi dan pemotongan anggaran katering)."
             }
         ]
-        st.dataframe(pd.DataFrame(triangulation_matrix), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(triangulation_matrix), width='stretch', hide_index=True)
 
         # Masterpiece Visual Triangulasi
         img_tri_path = get_result_path("integrated_sna_nlp.png")
         if os.path.exists(img_tri_path):
-            st.image(img_tri_path, use_container_width=True, caption="Masterpiece Visual: Triangulasi Terintegrasi SNA x NLP (Data Riil Naskah Tesis)")
+            st.image(img_tri_path, width='stretch', caption="Masterpiece Visual: Triangulasi Terintegrasi SNA x NLP (Data Riil Naskah Tesis)")
 
         # 5. "ARTINYA" — SINTESIS MAKNA TEORETIS, KRISIS, & KEBIJAKAN
         st.markdown("---")
@@ -5062,7 +5405,7 @@ elif "Bab V" in page:
                     font=dict(color='#F8FAFC', size=10)
                 )
             )
-            st.plotly_chart(fig_radar_lim, use_container_width=True)
+            st.plotly_chart(fig_radar_lim, width='stretch')
 
         with col_mat:
             st.markdown("##### 📊 B. Skor Keterbatasan Metodologis & Potensi Risiko Bias")
@@ -5100,7 +5443,7 @@ elif "Bab V" in page:
                 xaxis=dict(range=[0, 100], gridcolor='#334155', title="Skor Derajat Keterbatasan (0 = Bebas Bias, 100 = Sangat Dibatasi)"),
                 yaxis=dict(autorange="reversed", title="")
             )
-            st.plotly_chart(fig_bar_lim, use_container_width=True)
+            st.plotly_chart(fig_bar_lim, width='stretch')
 
         # Detailed 5 Limitations Tabs
         st.markdown("##### 🔍 C. Eksplorasi 5 Pilar Keterbatasan, Mitigasi & Riset Lanjutan")
@@ -5167,13 +5510,13 @@ elif "Bab V" in page:
             {"No": 4, "Pilar Keterbatasan": "Satir Vernakular Lokal", "Batas Ruang Lingkup": "Metafora & idiom daerah", "Mitigasi Riset Tesis": "Dataset sindiran N=3.395, metrik evaluasi model", "Agenda Riset Masa Depan": "Reasoning pragmatik kultural berbasis LLM"},
             {"No": 5, "Pilar Keterbatasan": "Representasi Rural 3T", "Batas Ruang Lingkup": "Urban-skewed pengguna Twitter", "Mitigasi Riset Tesis": "Fokus pada tata kelola makro & transparansi", "Agenda Riset Masa Depan": "Mixed-methods hibrida survei tatap muka"}
         ]
-        st.dataframe(pd.DataFrame(lim_matrix_data), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(lim_matrix_data), width='stretch', hide_index=True)
 
         # Display High-Resolution Thesis Plot
         p_lim_img = get_result_path("keterbatasan_penelitian.png")
         if os.path.exists(p_lim_img):
             st.markdown("##### 🖼️ E. Gambar Masterpiece Keterbatasan Penelitian (Publikasi Naskah Tesis)")
-            st.image(p_lim_img, use_container_width=True, caption="Gambar 5.1. Peta Multidimensi Keterbatasan Penelitian, Mitigasi Empiris, dan Agenda Riset Masa Depan (300 DPI)")
+            st.image(p_lim_img, width='stretch', caption="Gambar 5.1. Peta Multidimensi Keterbatasan Penelitian, Mitigasi Empiris, dan Agenda Riset Masa Depan (300 DPI)")
             with open(p_lim_img, "rb") as f_img:
                 st.download_button(
                     label="⬇️ Unduh Gambar Keterbatasan Penelitian (PNG 300 DPI)",
@@ -5197,7 +5540,7 @@ elif "Bab V" in page:
         {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.6 Sintesis Marketing 6.0", "Fokus Kajian": "Interpretasi Phygital Gap kebijakan publik", "Metode / Instrumen": "ABSA & Triangulasi SNA-NLP", "Data Empiris": "Logistik & anggaran sebagai aspek yang teridentifikasi", "Halaman": "105 – 109"},
         {"Bab Tesis": "Bab V: Penutup", "Sub-Bab": "5.1 s.d 5.4 Simpulan & Solusi", "Fokus Kajian": "Rekomendasi BGN & Implikasi Kebijakan", "Metode / Instrumen": "Matriks Intervensi Kebijakan", "Data Empiris": "5 Aksi Strategis Mitigasi Krisis", "Halaman": "110 – 113"}
     ]
-    st.dataframe(pd.DataFrame(thesis_master_map), use_container_width=True, hide_index=True)
+    st.dataframe(pd.DataFrame(thesis_master_map), width='stretch', hide_index=True)
 
 
 
@@ -5250,19 +5593,19 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         st.subheader("1. Dataset & Data Collection Overview")
         col1, col2 = st.columns(2)
         with col1:
-            st.image(get_image_path("1_pipeline.png"), use_container_width=True, caption="Gambar 1A. Pipeline Komputasional Riset")
+            st.image(get_image_path("1_pipeline.png"), width='stretch', caption="Gambar 1A. Pipeline Komputasional Riset")
         with col2:
-            st.image(get_image_path("2_dataset_characteristics.png"), use_container_width=True, caption="Gambar 1B. Tahapan Penyaringan Data")
+            st.image(get_image_path("2_dataset_characteristics.png"), width='stretch', caption="Gambar 1B. Tahapan Penyaringan Data")
         st.info("**Caption Akademik:** Figure 1 illustrates the end-to-end data processing pipeline and cleaning process from raw Twitter API scrapes (N=5,310) to the final annotated corpus (N=3,395).\n\n**Pesan/Temuan:** Ketegasan dan ketelitian arsitektur riset yang terukur secara komputasional.\n\n**Posisi Manuskrip:** Bab III Metodologi (§3.5)")
         st.markdown("---")
         
         st.subheader("2. Distribusi 9 Kategori Emosi")
-        st.image(get_image_path("emotion_distribution.png"), use_container_width=True)
+        st.image(get_image_path("emotion_distribution.png"), width='stretch')
         st.info("**Caption Akademik:** Figure 2 displays the distribution of predicted emotion labels; the distribution is subject to dataset reconciliation before substantive interpretation.\n\n**Pesan/Temuan:** Distribusi emosi digunakan sebagai data analitik dan tidak diinterpretasikan secara substantif sebelum rekonsiliasi dataset.\n\n**Posisi Manuskrip:** Bab IV Hasil NLP (§4.5)")
         st.markdown("---")
         
         st.subheader("3. Karakteristik Sarkasme")
-        st.image(get_image_path("3_sarcasm.png"), use_container_width=True)
+        st.image(get_image_path("3_sarcasm.png"), width='stretch')
         st.info("**Caption Akademik:** Figure 3 highlights the prevalence of sarcasm and irony in public reactions, functioning as a primary coping mechanism toward logistical failures.\n\n**Pesan/Temuan:** Dataset menunjukkan adanya cuitan yang terklasifikasi sebagai sindiran; temuan ini dilaporkan sebagai karakteristik data tanpa menyimpulkan motif komunikasi publik.\n\n**Posisi Manuskrip:** Bab IV Hasil NLP (§4.5)")
         st.markdown("---")
         
@@ -5270,12 +5613,12 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         st.success("**Mendokumentasikan evaluasi arsitektur IndoBERT mendeteksi emosi penolakan (evaluasi klasifikasi model).**")
         
         st.subheader("4. Kinerja IndoBERT (F1-Scores)")
-        st.image(get_image_path("f1_scores.png"), use_container_width=True)
+        st.image(get_image_path("f1_scores.png"), width='stretch')
         st.info("**Caption Akademik:** Figure 4 presents the model's evaluation on real validation data (dataset evaluasi terdokumentasi), achieving metrik evaluasi model and a robust metrik F1 for the kelas emosi tertentu (metrik evaluasi model), alongside precision model for Trust.\n\n**Pesan/Temuan:** Metrik evaluasi model ditampilkan sebagai materi audit dan belum digunakan untuk menarik kesimpulan substantif sebelum rekonsiliasi dataset selesai.\n\n**Posisi Manuskrip:** Bab IV Evaluasi Model (§4.5)")
         st.markdown("---")
         
         st.subheader("5. Confusion Matrix Klasifikasi Emosi (Data Riil)")
-        st.image(get_image_path("confusion_matrix.png"), use_container_width=True)
+        st.image(get_image_path("confusion_matrix.png"), width='stretch')
         st.info("**Caption Akademik:** Figure 5 details the classification confusion matrix on actual data, revealing high sensitivity on Disgust and high precision on Trust.\n\n**Pesan/Temuan:** Integritas dan transparansi komputasional dalam mengevaluasi kekuatan serta keterbatasan representasi korpus imbalanced.\n\n**Posisi Manuskrip:** Bab IV Evaluasi Model (§4.5)")
         st.markdown("---")
         
@@ -5283,17 +5626,17 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         st.success("**Menunjukkan struktur jaringan yang terfragmentasi, dan AI (@grok) menduduki posisi sentral aktor dengan out-degree tinggi.**")
         
         st.subheader("6. Struktur Jaringan Global (SNA Topology)")
-        st.image(get_image_path("6_global_network.png"), use_container_width=True)
+        st.image(get_image_path("6_global_network.png"), width='stretch')
         st.info("**Caption Akademik:** Figure 6 visualizes the unclustered global network (971 nodes, 666 edges), showing sparse connectivity and lack of a central dialogue hub.\n\n**Pesan/Temuan:** Graf jaringan terdiri atas 341 weakly connected components; temuan ini digunakan untuk mendeskripsikan struktur keterhubungan jaringan, bukan untuk mengukur polarisasi ideologis.\n\n**Posisi Manuskrip:** Bab IV Hasil CNA (§4.2)")
         st.markdown("---")
         
         st.subheader("7. Struktur Komunitas Louvain (Modularity 0.9837)")
-        st.image(get_image_path("network_graph.png"), use_container_width=True)
+        st.image(get_image_path("network_graph.png"), width='stretch')
         st.info("**Caption Akademik:** Figure 7 demonstrates the strong community structure of the network into 342 detected communities. Colors represent the detected community structure in the network.\n\n**Pesan/Temuan:** Struktur komunitas yang kuat (Modularity 0.9837) menunjukkan keterpisahan struktural antarkomunitas.\n\n**Posisi Manuskrip:** Bab IV Hasil CNA (§4.3)")
         st.markdown("---")
         
         st.subheader("8. 15 Aktor Sentral Tertinggi (Perbandingan Centrality Aktor)")
-        st.image(get_image_path("top_actors.png"), use_container_width=True)
+        st.image(get_image_path("top_actors.png"), width='stretch')
         st.info("**Caption Akademik:** Figure 8 ranks the discourse leaders. The @grok dominates the network's out-degree influence (42), memiliki out-degree 42, sedangkan @prabowo memiliki in-degree 15; metrik tersebut hanya digunakan untuk mendeskripsikan posisi struktural dalam graf.\n\n**Pesan/Temuan:** Perbedaan posisi structural centrality. Perbedaan out-degree menggambarkan pola keterhubungan yang berbeda antaraktor; data jaringan tidak digunakan untuk menyimpulkan pergeseran otoritas kebenaran.\n\n**Posisi Manuskrip:** Bab IV Hasil CNA (§4.4)")
         st.markdown("---")
 
@@ -5305,11 +5648,11 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         )
         c_m3_1, c_m3_2 = st.columns([11, 7])
         with c_m3_1:
-            st.image(get_image_path("15_material3_network_interaction.png"), use_container_width=True, caption="Visualisasi Empiris M3: Topologi Relasi Antar-Akun Platform X (Data Riil |V|=971, |E|=666, 300 DPI)")
+            st.image(get_image_path("15_material3_network_interaction.png"), width='stretch', caption="Visualisasi Empiris M3: Topologi Relasi Antar-Akun Platform X (Data Riil |V|=971, |E|=666, 300 DPI)")
         with c_m3_2:
             m3_mock_path = os.path.join(project_root, "docs", "assets", "m3_twitter_network_ui.png")
             if os.path.exists(m3_mock_path):
-                st.image(m3_mock_path, use_container_width=True, caption="Konsep Material Design 3 UI: Hubungan Interaksi Twitter X")
+                st.image(m3_mock_path, width='stretch', caption="Konsep Material Design 3 UI: Hubungan Interaksi Twitter X")
         st.info("**Pesan Kunci Material 3:** Hubungan komunikasi bersifat *asimetris* — akun dengan in-degree tinggi menjadi target mention yang menerima gelombang mention sepihak dengan reciprocity yang rendah, sementara *High-Betweenness Actor* oposisi memiliki posisi struktural dalam jaringan dan AI (*Grok*) dijadikan *akun dengan out-degree tinggi* aktor dengan out-degree tinggi.")
         st.markdown("---")
 
@@ -5321,7 +5664,7 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         )
         st.image(
             get_image_path("16_nodexl_graph_visualization.png"),
-            use_container_width=True,
+            width='stretch',
             caption="Visualisasi Empiris NodeXL Pro: Group-in-a-Box Network Topology & Graph Pane Metrics (|V|=971, |E|=666, 300 DPI)"
         )
         st.info("**Pesan Kunci NodeXL Pro:** Tata letak Group-in-a-Box (GIB) menampilkan struktur kelompok yang teridentifikasi dalam partisi jaringan sembari menampilkan interkoneksi lintas batas (*inter-group bridge edges*) dan parameter global jaringan (*Graph Density = 0.00071, Modularity Q = 0.9837*).")
@@ -5331,17 +5674,17 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         st.info("**Interpretasi dalam kerangka Phygital Gap:** Temuan afektif dan aspek logistik/gizi dianalisis sebagai bagian dari hubungan antara wacana digital dan konteks implementasi fisik program.")
         
         st.subheader("9. Emotion × Network (Phygital Overlay)")
-        st.image(get_image_path("9_emotion_network.png"), use_container_width=True)
+        st.image(get_image_path("9_emotion_network.png"), width='stretch')
         st.info("**Caption Akademik:** Figure 9 correlates emotions with structural communities. Disgust permeates almost all fragmented clusters, acting as a unifying sentiment against logistical failures.\n\n**Pesan/Temuan:** Emosi jijik (Disgust) bukan sekadar opini acak, melainkan sentimen sistemik yang merata di seluruh klaster komunitas.\n\n**Posisi Manuskrip:** Bab V Pembahasan (§5.2)")
         st.markdown("---")
         
         st.subheader("10. ABSA / Thematic Network (3 Aspek Kebijakan)")
-        st.image(get_image_path("10_absa_thematic.png"), use_container_width=True)
+        st.image(get_image_path("10_absa_thematic.png"), width='stretch')
         st.info("**Caption Akademik:** Figure 10 highlights that public dissatisfaction is heavily directed toward logistical and budget aspects rather than the policy's conceptual merit, providing evidence relevant to the Phygital Gap framework.\n\n**Pesan/Temuan:** Temuan ini dibahas melalui kerangka Phygital Gap untuk menghubungkan wacana digital dengan aspek implementasi fisik yang muncul dalam data.\n\n**Posisi Manuskrip:** Bab V Pembahasan (§5.3)")
         st.markdown("---")
         
         st.subheader("🌟 Visual Masterpiece: Integrated Phygital Gap Analysis")
-        st.image(get_image_path("integrated_sna_nlp.png"), use_container_width=True)
+        st.image(get_image_path("integrated_sna_nlp.png"), width='stretch')
         st.success("**Master Visual ini merangkai 3 panel (Global Topology → Louvain Community → Integrasi Klaster × Emosi Riil) yang menjawab rumusan masalah secara holistik.**")
 
     # ── TAB 2: TAHAP 1 ──
@@ -5350,10 +5693,10 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         st.markdown("Tahapan praproses data dari kueri scraping hingga korpus bersih teranotasi:")
         col_t1, col_t2 = st.columns(2)
         with col_t1:
-            st.image(get_image_path("1_pipeline.png"), use_container_width=True, caption="Gambar 1A: End-to-End Computational Pipeline")
+            st.image(get_image_path("1_pipeline.png"), width='stretch', caption="Gambar 1A: End-to-End Computational Pipeline")
         with col_t2:
-            st.image(get_image_path("2_dataset_characteristics.png"), use_container_width=True, caption="Gambar 1B: Data Preprocessing & Cleaning Funnel")
-        st.image(get_image_path("emotion_distribution.png"), use_container_width=True, caption="Gambar 2: Distribusi 9 Emosi Plutchik — Audit Rekonsiliasi Dataset")
+            st.image(get_image_path("2_dataset_characteristics.png"), width='stretch', caption="Gambar 1B: Data Preprocessing & Cleaning Funnel")
+        st.image(get_image_path("emotion_distribution.png"), width='stretch', caption="Gambar 2: Distribusi 9 Emosi Plutchik — Audit Rekonsiliasi Dataset")
 
     # ── TAB 3: TAHAP 2 ──
     with v_tabs[2]:
@@ -5361,41 +5704,41 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         st.markdown("Evaluasi klasifikasi emosi multi-kelas dan deteksi sindiran linguistik:")
         col_t3_a, col_t3_b = st.columns(2)
         with col_t3_a:
-            st.image(get_image_path("3_sarcasm.png"), use_container_width=True, caption="Gambar 3: Distribusi Sarkasme & Penanda Linguistik")
+            st.image(get_image_path("3_sarcasm.png"), width='stretch', caption="Gambar 3: Distribusi Sarkasme & Penanda Linguistik")
         with col_t3_b:
-            st.image(get_image_path("f1_scores.png"), use_container_width=True, caption="Gambar 4: F1-Scores IndoBERT per Kategori Emosi")
-        st.image(get_image_path("confusion_matrix.png"), use_container_width=True, caption="Gambar 5: Confusion Matrix Evaluasi Validasi Riil (dataset evaluasi — audit rekonsiliasi)")
+            st.image(get_image_path("f1_scores.png"), width='stretch', caption="Gambar 4: F1-Scores IndoBERT per Kategori Emosi")
+        st.image(get_image_path("confusion_matrix.png"), width='stretch', caption="Gambar 5: Confusion Matrix Evaluasi Validasi Riil (dataset evaluasi — audit rekonsiliasi)")
 
     # ── TAB 4: TAHAP 3 ──
     with v_tabs[3]:
         st.subheader("🕸️ Tahap 3: Communication Network Analysis (CNA)")
         st.markdown("Topologi makro, fragmentasi komunitas, dan hierarki sentralitas aktor:")
-        st.image(get_image_path("6_global_network.png"), use_container_width=True, caption="Gambar 6: Struktur Graf Jaringan Global (971 Nodes, 666 Edges)")
+        st.image(get_image_path("6_global_network.png"), width='stretch', caption="Gambar 6: Struktur Graf Jaringan Global (971 Nodes, 666 Edges)")
         col_t4_a, col_t4_b = st.columns(2)
         with col_t4_a:
-            st.image(get_image_path("network_graph.png"), use_container_width=True, caption="Gambar 7: Partisi Komunitas Louvain (Modularity 0.9837)")
+            st.image(get_image_path("network_graph.png"), width='stretch', caption="Gambar 7: Partisi Komunitas Louvain (Modularity 0.9837)")
         with col_t4_b:
-            st.image(get_image_path("top_actors.png"), use_container_width=True, caption="Gambar 8: Sentralitas Aktor Utama (@grok vs @prabowo)")
+            st.image(get_image_path("top_actors.png"), width='stretch', caption="Gambar 8: Sentralitas Aktor Utama (@grok vs @prabowo)")
         
         st.markdown("---")
         st.subheader("🎨 Visualisasi Material Design 3: Topologi Relasi Komunikasi Antar-Akun")
-        st.image(get_image_path("15_material3_network_interaction.png"), use_container_width=True, caption="Gambar 8B: Pemetaan Interaksi Antar-Akun Platform X dalam Estetika Google Material 3 (300 DPI)")
+        st.image(get_image_path("15_material3_network_interaction.png"), width='stretch', caption="Gambar 8B: Pemetaan Interaksi Antar-Akun Platform X dalam Estetika Google Material 3 (300 DPI)")
 
         st.markdown("---")
         st.subheader("📊 Visualisasi Standar Industri: NodeXL Pro Group-in-a-Box (GIB) Layout")
-        st.image(get_image_path("16_nodexl_graph_visualization.png"), use_container_width=True, caption="Gambar 8C: Pemetaan Jaringan Komunikasi Versi NodeXL Pro Group-in-a-Box Layout (300 DPI)")
+        st.image(get_image_path("16_nodexl_graph_visualization.png"), width='stretch', caption="Gambar 8C: Pemetaan Jaringan Komunikasi Versi NodeXL Pro Group-in-a-Box Layout (300 DPI)")
 
         st.markdown("---")
         st.subheader("📊 Visualisasi Parameter Makro Topologi: NodeXL & NetworkX")
-        st.image(get_image_path("17_macro_topology_metrics.png"), use_container_width=True, caption="Gambar 8D: Analisis Empiris Struktur Makro Topologi Jaringan Komunikasi MBG (300 DPI)")
+        st.image(get_image_path("17_macro_topology_metrics.png"), width='stretch', caption="Gambar 8D: Analisis Empiris Struktur Makro Topologi Jaringan Komunikasi MBG (300 DPI)")
 
         st.markdown("---")
         st.subheader("📊 Visualisasi Sentralitas Aktor & Tipologi Peran Komunikasi: Dimensi 2")
-        st.image(get_image_path("18_actor_centrality_typology.png"), use_container_width=True, caption="Gambar 8E: Pemetaan Sentralitas Aktor & Tipologi Peran Komunikasi (High In-Degree Target, Oracle, Broker, 300 DPI)")
+        st.image(get_image_path("18_actor_centrality_typology.png"), width='stretch', caption="Gambar 8E: Pemetaan Sentralitas Aktor & Tipologi Peran Komunikasi (High In-Degree Target, Oracle, Broker, 300 DPI)")
 
         st.markdown("---")
         st.subheader("📊 Visualisasi Partisi Komunitas & Deteksi Struktur Komunitas: Dimensi 3")
-        st.image(get_image_path("19_community_echo_chambers.png"), use_container_width=True, caption="Gambar 8F: Analisis Empiris Partisi Komunitas Louvain & Struktur Internal Komunitas (300 DPI)")
+        st.image(get_image_path("19_community_echo_chambers.png"), width='stretch', caption="Gambar 8F: Analisis Empiris Partisi Komunitas Louvain & Struktur Internal Komunitas (300 DPI)")
 
     # ── TAB 5: TAHAP 4 ──
     with v_tabs[4]:
@@ -5403,10 +5746,10 @@ elif "Visual Storytelling" in page or "Galeri" in page:
         st.markdown("Integrasi temuan afektif dan struktural untuk menginterpretasikan wacana melalui kerangka Phygital Gap:")
         col_t5_a, col_t5_b = st.columns(2)
         with col_t5_a:
-            st.image(get_image_path("9_emotion_network.png"), use_container_width=True, caption="Gambar 9: Overlay Emosi Dominan pada Komunitas Jaringan")
+            st.image(get_image_path("9_emotion_network.png"), width='stretch', caption="Gambar 9: Overlay Emosi Dominan pada Komunitas Jaringan")
         with col_t5_b:
-            st.image(get_image_path("10_absa_thematic.png"), use_container_width=True, caption="Gambar 10: Analisis Sentimen 3 Aspek (Logistik, Anggaran, Gizi)")
-        st.image(get_image_path("integrated_sna_nlp.png"), use_container_width=True, caption="Masterpiece Visual: Triangulasi Terintegrasi SNA x NLP (Data Riil)")
+            st.image(get_image_path("10_absa_thematic.png"), width='stretch', caption="Gambar 10: Analisis Sentimen 3 Aspek (Logistik, Anggaran, Gizi)")
+        st.image(get_image_path("integrated_sna_nlp.png"), width='stretch', caption="Masterpiece Visual: Triangulasi Terintegrasi SNA x NLP (Data Riil)")
 
     # ── TAB 6: BAB IV & BAB V ──
 
@@ -5806,7 +6149,7 @@ elif "Audit Integritas Data" in page:
     # Interactive Table
     st.dataframe(
         df_show[["No", "Klaster", "Pilar", "Penulis", "Judul & Jurnal", "Indeksasi", "Peran di Manuskrip"]],
-        use_container_width=True,
+        width='stretch',
         hide_index=True
     )
 
@@ -5841,7 +6184,7 @@ elif "Audit Integritas Data" in page:
             height=390,
             legend=dict(orientation="h", yanchor="bottom", y=-0.35)
         )
-        st.plotly_chart(fig_donut, use_container_width=True)
+        st.plotly_chart(fig_donut, width='stretch')
 
     with vcol2:
         # Bar Chart: Distribusi Indeksasi
@@ -5871,7 +6214,7 @@ elif "Audit Integritas Data" in page:
             xaxis_title="Jumlah Publikasi",
             yaxis=dict(categoryorder="total ascending")
         )
-        st.plotly_chart(fig_bar, use_container_width=True)
+        st.plotly_chart(fig_bar, width='stretch')
 
     st.markdown("---")
     st.success("""
@@ -5903,7 +6246,7 @@ elif "Audit Integritas Data" in page:
                     data=f.read(),
                     file_name="indobert_9_emosi_fixed.csv",
                     mime="text/csv",
-                    use_container_width=True
+                    width='stretch'
                 )
     with dcol2:
         p_sin = get_data_path("dataset_sindiran_valid.csv")
@@ -5914,7 +6257,7 @@ elif "Audit Integritas Data" in page:
                     data=f.read(),
                     file_name="dataset_sindiran_valid.csv",
                     mime="text/csv",
-                    use_container_width=True
+                    width='stretch'
                 )
     with dcol3:
         p_raw = get_data_path("mbg_tweets_indobert_ready.xlsx")
@@ -5925,7 +6268,7 @@ elif "Audit Integritas Data" in page:
                     data=f.read(),
                     file_name="mbg_tweets_indobert_ready.xlsx",
                     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                    use_container_width=True
+                    width='stretch'
                 )
     with dcol4:
         p_absa = get_result_path("absa_results.csv")
@@ -5936,7 +6279,7 @@ elif "Audit Integritas Data" in page:
                     data=f.read(),
                     file_name="absa_results.csv",
                     mime="text/csv",
-                    use_container_width=True
+                    width='stretch'
                 )
 
     dcol5, dcol6, dcol7, dcol8 = st.columns(4)
@@ -5949,7 +6292,7 @@ elif "Audit Integritas Data" in page:
                     data=f.read(),
                     file_name="network_edges.csv",
                     mime="text/csv",
-                    use_container_width=True
+                    width='stretch'
                 )
     with dcol6:
         p_nodes = get_result_path("mbg_network_nodes_final.csv")
@@ -5960,7 +6303,7 @@ elif "Audit Integritas Data" in page:
                     data=f.read(),
                     file_name="mbg_network_nodes_final.csv",
                     mime="text/csv",
-                    use_container_width=True
+                    width='stretch'
                 )
     with dcol7:
         p_deg = get_result_path("sna_degree.csv")
@@ -5971,7 +6314,7 @@ elif "Audit Integritas Data" in page:
                     data=f.read(),
                     file_name="sna_degree.csv",
                     mime="text/csv",
-                    use_container_width=True
+                    width='stretch'
                 )
     with dcol8:
         p_rep = get_result_path("classification_report.csv")
@@ -5982,7 +6325,7 @@ elif "Audit Integritas Data" in page:
                     data=f.read(),
                     file_name="classification_report.csv",
                     mime="text/csv",
-                    use_container_width=True
+                    width='stretch'
                 )
 
     st.markdown("---")
@@ -6004,7 +6347,7 @@ elif "Audit Integritas Data" in page:
         {"No": 8, "Nama Dataset": "Laporan Klasifikasi & Evaluasi", "Format": "CSV", "Ukuran / Baris": "Precision, Recall, F1", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/results/classification_report.csv"},
         {"No": 9, "Nama Dataset": "Visual Keterbatasan Riset", "Format": "PNG 300 DPI", "Ukuran / Baris": "1.1 MB", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/results/keterbatasan_penelitian.png"},
     ]
-    st.dataframe(pd.DataFrame(public_links_data), use_container_width=True, hide_index=True)
+    st.dataframe(pd.DataFrame(public_links_data), width='stretch', hide_index=True)
 
     # Repository links card
     st.info("""
@@ -6022,6 +6365,9 @@ elif "Checklist Submit" in page:
 
 elif "Profil Peneliti" in page:
     render_author_biography()
+
+elif "Twitter AI" in page or ("EWS" in page and "Brand24" not in page):
+    render_twitter_ai_ews_module()
 
 elif "Brand24" in page:
     # ─────────────────────────────────────────────────────────────
@@ -6128,7 +6474,7 @@ elif "Brand24" in page:
         delta = {"reference": 50, "increasing": {"color": "red"}, "decreasing": {"color": "green"}},
     ))
     fig_gauge.update_layout(height=280, margin={"t": 40, "b": 10})
-    st.plotly_chart(fig_gauge, use_container_width=True)
+    st.plotly_chart(fig_gauge, width='stretch')
 
     st.markdown("---")
 
@@ -6147,7 +6493,7 @@ elif "Brand24" in page:
     )
     fig_sent.update_traces(textposition="outside")
     fig_sent.update_layout(showlegend=False, height=340)
-    st.plotly_chart(fig_sent, use_container_width=True)
+    st.plotly_chart(fig_sent, width='stretch')
 
     st.markdown("---")
 
@@ -6163,7 +6509,7 @@ elif "Brand24" in page:
                     title="Distribusi Sumber Media",
                     color_discrete_sequence=px.colors.qualitative.Bold,
                 )
-                st.plotly_chart(fig_src, use_container_width=True)
+                st.plotly_chart(fig_src, width='stretch')
 
     # ── Mentions Table ─────────────────────────────────────────────
     st.markdown("### 💬 Mention Terbaru")
@@ -6182,7 +6528,7 @@ elif "Brand24" in page:
                 "URL"      : m.get("url", "-"),
             })
         mention_df = pd.DataFrame(rows)
-        st.dataframe(mention_df, use_container_width=True, hide_index=True,
+        st.dataframe(mention_df, width='stretch', hide_index=True,
                      column_config={"URL": st.column_config.LinkColumn("🔗 Link")})
 
         # Download
@@ -6190,7 +6536,7 @@ elif "Brand24" in page:
         st.download_button(
             "⬇️ Unduh Mention (CSV)", csv_mentions,
             f"brand24_mentions_{project_id}_{since_days}d.csv", "text/csv",
-            use_container_width=True,
+            width='stretch',
         )
     else:
         st.info("Tidak ada mention yang ditemukan untuk periode ini.")
@@ -6204,7 +6550,7 @@ elif "Brand24" in page:
             st.markdown("### 👥 Akun Paling Aktif (Top Authors)")
             auth_df = pd.DataFrame(auth_list)
             disp_cols = [c for c in ["name","username","mentions_count","reach","influence","url"] if c in auth_df.columns]
-            st.dataframe(auth_df[disp_cols].head(20), use_container_width=True, hide_index=True)
+            st.dataframe(auth_df[disp_cols].head(20), width='stretch', hide_index=True)
 
     st.markdown("---")
     st.caption(
