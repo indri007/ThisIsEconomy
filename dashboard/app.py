@@ -949,7 +949,21 @@ def render_international_journal_page():
     st.markdown("---")
 
     # Action / Download Bar
-    st.markdown("### 📥 Unduh Naskah Lengkap & Berkas Graf Penelitian")
+    st.markdown("### 🎓 Presentasi Tesis")
+
+st.link_button(
+    "🎓 Download Presentasi Tesis — PPTX",
+    "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/old-version/presentation/Presentasi_Tesis_MBG_Indri_Anjar_Kartika_Sari.pptx",
+    width="stretch"
+)
+
+st.caption(
+    "Presentasi tesis: Social Network Analysis Sarkasme Cuitan Twitter "
+    "di Balik Pertaruhan Triliunan Rupiah pada Kebijakan Makan Bergizi Gratis "
+    "Berdasarkan Konsep Marketing 6.0."
+)
+
+st.markdown("### 📥 Unduh Naskah Lengkap & Berkas Graf Penelitian")
     d1, d2, d3, d4 = st.columns(4)
     p_docx = os.path.join(PROJECT_ROOT, "Journal_Paper_Indri_Anjar_MBG_SNA.docx")
     p_md = os.path.join(PROJECT_ROOT, "journal_paper_mbg_sna.md")
