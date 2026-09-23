@@ -758,7 +758,7 @@ The graph metrics referenced throughout this manuscript are formally specified a
 3. **Clustering Coefficient of Node $i$ ($C_i$)**:
    $$C_i = \frac{|\{e_{jk}: j,k \in N_i, e_{jk} \in E\}|}{k_i(k_i - 1)}$$
    where $N_i$ denotes the neighborhood of node $i$.
-4. **Maximum Likelihood Power-Law Exponent Estimation**:
+4. **Descriptive Degree-Distribution Scaling Exponent**:
    $$\hat{\alpha} = 1 + n \left[ \sum_{i=1}^n \ln \left( \frac{k_i}{k_{\min} - \frac{1}{2}} \right) \right]^{-1}$$
    yielding an estimated degree-distribution scaling exponent of $\hat{\alpha} = 2.168 \pm 0.08$ with fixed lower threshold $x_{\min} = 1.0$.
 

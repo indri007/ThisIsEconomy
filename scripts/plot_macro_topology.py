@@ -48,7 +48,7 @@ c_slate = '#334155'
 c_card = '#F8FAFC'
 
 # ─────────────────────────────────────────────────────────────
-# PANEL 1: Degree Distribution (Power-Law Scale-Free Plot)
+# PANEL 1: Degree Distribution (Descriptive Heavy-Tailed Structure)
 # ─────────────────────────────────────────────────────────────
 ax1 = fig.add_subplot(gs[0, 0])
 from collections import Counter
@@ -58,16 +58,16 @@ y_vals = [deg_counts[x] for x in x_vals]
 
 ax1.scatter(x_vals, y_vals, color=c_blue, s=65, alpha=0.85, edgecolors='black', linewidth=0.8, label='Empirical Distribution P(k)')
 
-# Power law fit line
+# Descriptive scaling fit line
 x_arr = np.linspace(min(x_vals), max(x_vals), 100)
 # alpha = 2.168, P(k) ~ C * k^(-alpha)
 C = y_vals[0] * (x_vals[0] ** 2.168)
 y_fit = C * (x_arr ** (-2.168))
-ax1.plot(x_arr, y_fit, color=c_red, linestyle='--', linewidth=2.0, label=r'Power-Law Fit: $P(k) \propto k^{-2.17}$')
+ax1.plot(x_arr, y_fit, color=c_red, linestyle='--', linewidth=2.0, label=r'Descriptive Scaling Fit: $P(k) \propto k^{-2.17}$')
 
 ax1.set_xscale('log')
 ax1.set_yscale('log')
-ax1.set_title('A. Distribusi Derajat Simpul (Scale-Free Power-Law Distribution)', fontsize=13, fontweight='bold', pad=10, color=c_slate)
+ax1.set_title('A. Distribusi Derajat Simpul (Heavy-Tailed Degree Distribution)', fontsize=13, fontweight='bold', pad=10, color=c_slate)
 ax1.set_xlabel('Derajat Koneksi / Degree (k) [Log Scale]', fontsize=11, fontweight='semibold')
 ax1.set_ylabel('Frekuensi Akun P(k) [Log Scale]', fontsize=11, fontweight='semibold')
 ax1.legend(loc='upper right', frameon=True, facecolor='white', framealpha=0.9)
@@ -156,7 +156,7 @@ scorecard_text = """
 • Rerata Koefisien Klaster   : 0.0171 (Fragmentasi Segitiga Lemah)
 • Modularitas Louvain (Q)    : 0.9837 (Polarisasi & Segregasi Ekstrem)
 • Asortativitas Derajat (r)  : -0.0847 (Disassortative: Warga -> Elit)
-• Eksponen Bebas-Skala       : Alpha = 2.17 (Scale-Free Power-Law)
+• Eksponen Struktur Derajat : Alpha = 2.168
 ===================================================================
 KESIMPULAN METODOLOGIS:
 Struktur jaringan membuktikan wacana MBG bukan komunitas sosial organik,
