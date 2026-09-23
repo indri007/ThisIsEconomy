@@ -26,3 +26,6 @@ results/indobert_finetuned*/
 html_files/
 lib/
 mbg-sna-github/
+
+*.BACKUP_*
+*.backup.txt
