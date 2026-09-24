@@ -16,6 +16,34 @@ if True:
     import sys
     import re
     from collections import Counter
+    import time
+    import requests
+
+    @st.cache_resource
+    def _telegram_sent_log():
+        return {}
+
+    def send_telegram_alert(message, cooldown=600):
+        """Kirim alert ke Telegram; pesan yang sama maks. 1x per `cooldown` detik."""
+        try:
+            token = st.secrets["TELEGRAM_BOT_TOKEN"]
+            chat_id = st.secrets["TELEGRAM_CHAT_ID"]
+        except Exception:
+            return
+        log = _telegram_sent_log()
+        now = time.time()
+        if now - log.get(message, 0) < cooldown:
+            return
+        log[message] = now
+        try:
+            requests.post(
+                f"https://api.telegram.org/bot{token}/sendMessage",
+                json={"chat_id": chat_id, "text": f"🚨 tesis_mbg dashboard\n{message}"},
+                timeout=5,
+            )
+        except Exception:
+            pass
+
     try:
         from wordcloud import WordCloud
         WORDCLOUD_AVAILABLE = True
@@ -6685,6 +6713,7 @@ if True:
             st.warning(
                 f"File tidak tersedia: {file_name}"
             )
+            send_telegram_alert(f"File tidak tersedia: {file_name}")
     
     st.caption(
         f"{available_downloads} file tersedia untuk diunduh."
