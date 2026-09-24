@@ -1,0 +1,61 @@
+{
+  "emotion": {
+    "path": "data/results/indobert_9_emosi_fixed.csv",
+    "rows": 5263,
+    "columns": [
+      "id",
+      "text",
+      "created_at",
+      "author_username",
+      "author_name",
+      "like_count",
+      "retweet_count",
+      "reply_count",
+      "quote_count",
+      "view_count",
+      "clean_text",
+      "processed_text",
+      "predicted_emotion"
+    ]
+  },
+  "emotion_dedup": {
+    "path": "data/results/indobert_9_emosi_fixed_dedup.csv",
+    "rows": 3496,
+    "columns": [
+      "id",
+      "text",
+      "created_at",
+      "author_username",
+      "author_name",
+      "like_count",
+      "retweet_count",
+      "reply_count",
+      "quote_count",
+      "view_count",
+      "clean_text",
+      "processed_text",
+      "predicted_emotion"
+    ]
+  },
+  "sarcasm": {
+    "path": "data/sarcasm/dataset_sindiran_valid.csv",
+    "rows": 3395,
+    "columns": [
+      "id",
+      "text",
+      "sindiran"
+    ]
+  },
+  "sna": {
+    "path": "data/results/mbg_network_nodes_final.csv",
+    "rows": 971,
+    "columns": [
+      "Id",
+      "Label",
+      "Degree",
+      "Betweenness",
+      "Community",
+      "Dominant_Emotion"
+    ]
+  }
+}

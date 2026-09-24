@@ -1,0 +1,156 @@
+{
+  "timestamp": "2026-09-24T16:31:00.519371",
+  "project": "/Users/jevin/Documents/tesis_mbg",
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+  "total_checks": 29,
+  "passed": 26,
+  "failed": 3,
+  "status": "NOT READY",
+  "results": [
+    {
+      "name": "Python 3.12",
+      "status": "FAIL",
+      "detail": "Running: 3.13.11"
+    },
+    {
+      "name": "Git branch",
+      "status": "PASS",
+      "detail": "main"
+    },
+    {
+      "name": "Git HEAD",
+      "status": "PASS",
+      "detail": "2b5e406859cc423ba7fd763d90fc322a8bdd486e"
+    },
+    {
+      "name": "Origin/main",
+      "status": "PASS",
+      "detail": "2b5e406859cc423ba7fd763d90fc322a8bdd486e"
+    },
+    {
+      "name": "Git synchronized",
+      "status": "PASS",
+      "detail": "LOCAL=2b5e406859cc REMOTE=2b5e406859cc"
+    },
+    {
+      "name": "File: dashboard/app.py",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "File: requirements.txt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "File: dashboard/requirements.txt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "File: runtime.txt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "File: .streamlit/config.toml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "File: ews/__init__.py",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "File: ews/fallback.py",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "File: ews/custom_dashboard.py",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "File: ews/explainable_score.py",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "File: scripts/early_warning_system.py",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "File: scripts/final_ews_audit.py",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Dataset: emotion",
+      "status": "PASS",
+      "detail": "/Users/jevin/Documents/tesis_mbg/data/results/indobert_9_emosi_fixed.csv"
+    },
+    {
+      "name": "Dataset: emotion_dedup",
+      "status": "PASS",
+      "detail": "/Users/jevin/Documents/tesis_mbg/data/results/indobert_9_emosi_fixed_dedup.csv"
+    },
+    {
+      "name": "Dataset: sarcasm",
+      "status": "PASS",
+      "detail": "/Users/jevin/Documents/tesis_mbg/data/sarcasm/dataset_sindiran_valid.csv"
+    },
+    {
+      "name": "Dataset: sna",
+      "status": "PASS",
+      "detail": "/Users/jevin/Documents/tesis_mbg/data/results/mbg_network_nodes_final.csv"
+    },
+    {
+      "name": "Emotion validation",
+      "status": "PASS",
+      "detail": "7 actual labels"
+    },
+    {
+      "name": "Sarcasm validation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "SNA validation",
+      "status": "PASS",
+      "detail": "971 nodes / 342 communities"
+    },
+    {
+      "name": "NodeXL comparison",
+      "status": "PASS",
+      "detail": "12 local NodeXL file(s) found"
+    },
+    {
+      "name": "Anomaly detection",
+      "status": "PASS",
+      "detail": "4 spike(s), threshold z >= 2"
+    },
+    {
+      "name": "Explainable EWS",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "Evidence Pack",
+      "status": "FAIL",
+      "detail": "/Users/jevin/Documents/tesis_mbg/reports/thesis_evidence"
+    },
+    {
+      "name": "Python compilation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Git diff check",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

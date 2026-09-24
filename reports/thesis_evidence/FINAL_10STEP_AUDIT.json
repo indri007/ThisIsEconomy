@@ -1,0 +1,190 @@
+{
+  "timestamp": "2026-09-24T17:00:02.468815",
+  "project": "/Users/jevin/Documents/tesis_mbg",
+  "steps": [
+    {
+      "step": 1,
+      "name": "Production Check",
+      "status": "PASS",
+      "detail": "branch=main; HEAD=2b5e4068; working tree has changes"
+    },
+    {
+      "step": 2,
+      "name": "Dashboard Functional Check",
+      "status": "PASS",
+      "detail": "dashboard/app.py syntax OK"
+    },
+    {
+      "step": 3,
+      "name": "EWS Scenario Test",
+      "status": "PASS",
+      "detail": "All scenarios executed"
+    },
+    {
+      "step": 4,
+      "name": "Explainable EWS",
+      "status": "PASS",
+      "detail": "Evaluated successfully"
+    },
+    {
+      "step": 5,
+      "name": "Cross Analysis",
+      "status": "PASS",
+      "detail": "emotion=5263 rows, sarcasm=3395 rows"
+    },
+    {
+      "step": 6,
+      "name": "Network Intelligence",
+      "status": "PASS",
+      "detail": "971 nodes, 342 communities"
+    },
+    {
+      "step": 7,
+      "name": "Historical Timeline + Anomaly",
+      "status": "PASS",
+      "detail": "83 days, 4 anomalies"
+    },
+    {
+      "step": 8,
+      "name": "Thesis Evidence Pack",
+      "status": "PASS",
+      "detail": "created reports/thesis_evidence/EWS_EVIDENCE_SUMMARY.json"
+    },
+    {
+      "step": 9,
+      "name": "Reproducibility",
+      "status": "PASS",
+      "detail": "pip check OK"
+    },
+    {
+      "step": 10,
+      "name": "Final Release Audit",
+      "status": "PASS",
+      "detail": "STATUS=READY_WITH_LOCAL_CHANGES; FAIL=0; WARN=0; branch=main; HEAD=2b5e406859cc423ba7fd763d90fc322a8bdd486e"
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "ews_scenarios": {
+    "SAFE": "ERROR: compute_ews_score() missing 1 required positional argument: 'sarcasm'",
+    "WARNING": "ERROR: compute_ews_score() missing 1 required positional argument: 'sarcasm'",
+    "DANGER": "ERROR: compute_ews_score() missing 1 required positional argument: 'sarcasm'",
+    "CRITICAL": "ERROR: compute_ews_score() missing 1 required positional argument: 'sarcasm'"
+  },
+  "explainable_ews": {
+    "context": "{'tweets': 5263, 'emotion': {'Jijik': 2960, 'Percaya': 1073, 'Netral': 649, 'Tertarik': 505, 'Marah': 55, 'Sedih': 19, 'Takut': 2}, 'sarcasm': {'': 4641, 'False': 557, 'True': 65}, 'nodes': 0, 'communities': 0}",
+    "score": "EWSResult(score=30.25, status='WARNING', contributors=[{'component': 'Emotion', 'score': 30, 'reason': '57.69% tweet berada pada kelompok emotion yang digunakan sebagai risk signal.'}, {'component': 'Sarcasm', 'score': 0.25, 'reason': 'sarcasm signal 1.24% berdasarkan label dataset.'}], text='EWS SCORE: 30.25\\nSTATUS: WARNING\\n\\nCONTRIBUTORS:\\n- Emotion: 30.00\\n  57.69% tweet berada pada kelompok emotion yang digunakan sebagai risk signal.\\n- Sarcasm: 0.25\\n  sarcasm signal 1.24% berdasarkan label dataset.\\n')"
+  },
+  "cross_analysis": {
+    "emotion_rows": 5263,
+    "sarcasm_rows": 3395,
+    "emotion_distribution": {
+      "Jijik": 2960,
+      "Percaya": 1073,
+      "Netral": 649,
+      "Tertarik": 505,
+      "Marah": 55,
+      "Sedih": 19,
+      "Takut": 2
+    },
+    "sarcasm_distribution": {
+      "false": 3080,
+      "true": 315
+    }
+  },
+  "network_intelligence": {
+    "nodes": 971,
+    "columns": [
+      "Id",
+      "Label",
+      "Degree",
+      "Betweenness",
+      "Community",
+      "Dominant_Emotion"
+    ],
+    "communities": 342,
+    "top_degree": [
+      {
+        "Id": "grok",
+        "Label": "grok",
+        "Degree": 0.0432989690721649,
+        "Community": 61
+      },
+      {
+        "Id": "4Y4NKZ",
+        "Label": "4Y4NKZ",
+        "Degree": 0.0164948453608247,
+        "Community": 16
+      },
+      {
+        "Id": "newIding30",
+        "Label": "newIding30",
+        "Degree": 0.0154639175257731,
+        "Community": 16
+      },
+      {
+        "Id": "prabowo",
+        "Label": "prabowo",
+        "Degree": 0.0154639175257731,
+        "Community": 15
+      },
+      {
+        "Id": "dbdbidip",
+        "Label": "dbdbidip",
+        "Degree": 0.0134020618556701,
+        "Community": 259
+      },
+      {
+        "Id": "Casagrande10939",
+        "Label": "Casagrande10939",
+        "Degree": 0.0103092783505154,
+        "Community": 8
+      },
+      {
+        "Id": "luvdysh_",
+        "Label": "luvdysh_",
+        "Degree": 0.0092783505154639,
+        "Community": 264
+      },
+      {
+        "Id": "mBg_JK",
+        "Label": "mBg_JK",
+        "Degree": 0.0082474226804123,
+        "Community": 313
+      },
+      {
+        "Id": "regar_op0sisi",
+        "Label": "regar_op0sisi",
+        "Degree": 0.0072164948453608,
+        "Community": 15
+      },
+      {
+        "Id": "punishe98373138",
+        "Label": "punishe98373138",
+        "Degree": 0.0072164948453608,
+        "Community": 15
+      }
+    ]
+  },
+  "historical_timeline": {
+    "active_days": 83,
+    "mean_mentions_per_day": 63.40963855421687,
+    "std_mentions_per_day": 170.25827125386763,
+    "anomaly_count_z2": 4,
+    "anomalies": {
+      "2026-05-10": 471,
+      "2026-05-13": 975,
+      "2026-05-23": 513,
+      "2026-05-24": 1022
+    }
+  },
+  "final": {
+    "status": "READY_WITH_LOCAL_CHANGES",
+    "branch": "main",
+    "head": "2b5e406859cc423ba7fd763d90fc322a8bdd486e",
+    "working_tree_clean": false,
+    "fail_count": 0,
+    "warning_count": 0,
+    "push_command": "git push origin main"
+  }
+}

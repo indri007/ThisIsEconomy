@@ -1,0 +1,14 @@
+{
+  "actual_label_count": 7,
+  "actual_labels": [
+    "Jijik",
+    "Marah",
+    "Netral",
+    "Percaya",
+    "Sedih",
+    "Takut",
+    "Tertarik"
+  ],
+  "total_labeled_rows": 5263,
+  "note": "Dataset is reported as-is. No forced conversion to nine emotion classes."
+}

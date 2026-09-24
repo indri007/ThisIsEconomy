@@ -1,0 +1,8 @@
+{
+  "nodes": 971,
+  "communities": 342,
+  "degree_mean": 0.0014057141643750734,
+  "degree_max": 0.0432989690721649,
+  "betweenness_mean": 2.44030706189153e-05,
+  "betweenness_max": 0.005940867936974
+}
