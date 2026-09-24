@@ -1,0 +1,7 @@
+{
+  "total_labeled_rows": 3395,
+  "distribution": {
+    "False": 3080,
+    "True": 315
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "python": "3.12.7 (main, Jul 17 2026, 01:41:11) [Clang 17.0.0 (clang-1700.0.13.5)]",
+  "python_executable": "/Users/jevin/.pyenv/versions/3.12.7/bin/python3",
+  "required_files": [
+    ".python-version",
+    "requirements.txt",
+    "runtime.txt",
+    "dashboard/requirements.txt",
+    ".streamlit/config.toml",
+    "final_10step_audit.py",
+    "scripts/final_production_audit.py"
+  ],
+  "missing_files": [],
+  "status": "PASS"
+}

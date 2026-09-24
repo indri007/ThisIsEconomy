@@ -1,0 +1,29 @@
+{
+  "sna": {
+    "nodes": 971,
+    "communities": 342,
+    "columns": [
+      "Id",
+      "Label",
+      "Degree",
+      "Betweenness",
+      "Community",
+      "Dominant_Emotion"
+    ]
+  },
+  "nodexl_files": [
+    "NodeXL_MBG_Tesis_Indri_Anjar.xlsx",
+    "NodeXL_Scraped_Tweets_MBG.xlsx",
+    "docs/assets/NodeXL_MBG_Tesis_Indri_Anjar.xlsx",
+    "docs/assets/NodeXL_Scraped_Tweets_MBG.xlsx",
+    "mbg-sna-github/NodeXL_MBG_Tesis_Indri_Anjar.xlsx",
+    "mbg-sna-github/NodeXL_Scraped_Tweets_MBG.xlsx",
+    "mbg-sna-github/docs/assets/NodeXL_MBG_Tesis_Indri_Anjar.xlsx",
+    "mbg-sna-github/docs/assets/NodeXL_Scraped_Tweets_MBG.xlsx",
+    "mbg-sna-github/results/NodeXL_MBG_Tesis_Indri_Anjar.xlsx",
+    "mbg-sna-github/results/NodeXL_Scraped_Tweets_MBG.xlsx",
+    "results/NodeXL_MBG_Tesis_Indri_Anjar.xlsx",
+    "results/NodeXL_Scraped_Tweets_MBG.xlsx"
+  ],
+  "comparison_status": "available"
+}

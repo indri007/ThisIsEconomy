@@ -30,3 +30,5 @@ mbg-sna-github/
 *.BACKUP_*
 *.backup.txt
 *.log
+# Local backup files
+*.bak
