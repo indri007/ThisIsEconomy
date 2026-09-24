@@ -32,6 +32,13 @@ try:
 except ImportError:
     BRAND24_AVAILABLE = False
 
+try:
+    from ews.custom_dashboard import render_custom_ews
+    CUSTOM_EWS_AVAILABLE = True
+except Exception:
+    render_custom_ews = None
+    CUSTOM_EWS_AVAILABLE = False
+
 # Twitter / X AI Monitor modules
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'twitter_sentiment_app'))
 try:
@@ -1457,7 +1464,8 @@ menu_options = [
     "3️⃣ Bab III: Metodologi & Pipeline Komputasional",
     "4️⃣ Bab IV: Hasil & Pembahasan (Empiris Terintegrasi)",
     "5️⃣ Bab V: Kesimpulan & Rekomendasi Kebijakan BGN",
-    "🍱 Twitter AI & Early Warning System (EWS)",
+    "🚨 Custom Early Warning System (EWS) v2",
+    "🍱 Twitter AI & Scraper Monitor",
     "📡 Brand24 Real-Time Monitor (EWS)",
     "📑 Naskah Jurnal Internasional (Scopus Q1 Ready)",
     "🖼️ Galeri Visual Storytelling (10 Master Plot Tesis)",
@@ -6385,7 +6393,13 @@ elif "Checklist Submit" in page:
 elif "Profil Peneliti" in page:
     render_author_biography()
 
-elif "Twitter AI" in page or ("EWS" in page and "Brand24" not in page):
+elif "Custom Early Warning System" in page or "Custom EWS" in page:
+    if CUSTOM_EWS_AVAILABLE and render_custom_ews:
+        render_custom_ews()
+    else:
+        st.error("❌ Modul Custom EWS v2 tidak dapat dimuat.")
+
+elif "Twitter AI" in page:
     render_twitter_ai_ews_module()
 
 elif "Brand24" in page:
@@ -6400,7 +6414,11 @@ elif "Brand24" in page:
     """)
 
     if not BRAND24_AVAILABLE:
-        st.error("Modul `brand24_client` tidak ditemukan. Pastikan `scripts/brand24_client.py` ada di repositori.")
+        st.warning("🟡 **Brand24 tidak tersedia — otomatis beralih ke Custom EWS.**")
+        if CUSTOM_EWS_AVAILABLE:
+            render_custom_ews(7)
+        else:
+            st.error("❌ Modul Custom EWS juga tidak tersedia.")
         st.stop()
 
     # ── Konfigurasi API Key ──────────────────────────────────────
@@ -6420,17 +6438,12 @@ elif "Brand24" in page:
     api_key = manual_key.strip() if manual_key.strip() else get_api_key()
 
     if not api_key:
-        st.warning("""
-        ⚠️ **API Key belum dikonfigurasi.**
-        Masukkan key di kotak di atas, atau simpan di file `.env`:
-        ```
-        BRAND24_API_KEY=your_brand24_api_key_here
-        ```
-        """)
-        st.info("""
-        🔗 Dapatkan API Key Anda di:
-        [app.brand24.com/account/integrations-api-data](https://app.brand24.com/account/integrations-api-data?tab=apiKey)
-        """)
+        st.warning("🟡 **Brand24 API Key belum tersedia — otomatis beralih ke Custom EWS.**")
+        st.info("Custom EWS menggunakan engine `early_warning_system.py` dan dataset MBG lokal.")
+        if CUSTOM_EWS_AVAILABLE:
+            render_custom_ews(since_days)
+        else:
+            st.error("❌ Modul Custom EWS tidak tersedia.")
         st.stop()
 
     # ── Ambil daftar proyek ──────────────────────────────────────
@@ -6438,12 +6451,21 @@ elif "Brand24" in page:
         projects_data = list_projects(api_key)
 
     if not projects_data:
-        st.error("❌ Gagal terhubung ke Brand24 API. Periksa API Key dan koneksi internet.")
+        st.warning("🟡 **Brand24 tidak dapat dihubungi — otomatis beralih ke Custom EWS.**")
+        st.caption("Fallback aktif: Custom EWS → dataset MBG lokal.")
+        if CUSTOM_EWS_AVAILABLE:
+            render_custom_ews(since_days)
+        else:
+            st.error("❌ Modul Custom EWS tidak tersedia.")
         st.stop()
 
     project_list = projects_data.get("results", projects_data if isinstance(projects_data, list) else [])
     if not project_list:
-        st.warning("Tidak ada proyek monitoring yang ditemukan di akun ini.")
+        st.warning("🟡 **Tidak ada proyek Brand24 — otomatis beralih ke Custom EWS.**")
+        if CUSTOM_EWS_AVAILABLE:
+            render_custom_ews(since_days)
+        else:
+            st.error("❌ Modul Custom EWS tidak tersedia.")
         st.stop()
 
     # ── Pilih Proyek ─────────────────────────────────────────────
@@ -6455,12 +6477,21 @@ elif "Brand24" in page:
     st.markdown("---")
 
     # ── Ambil data paralel ────────────────────────────────────────
-    with st.spinner("⏳ Mengambil data dari Brand24..."):
-        stats    = get_project_stats(api_key, project_id, since_days=since_days)
-        sents    = get_sentiment_breakdown(api_key, project_id, since_days=since_days)
-        mentions = get_mentions(api_key, project_id, since_days=since_days, max_results=200)
-        sources  = get_top_sources(api_key, project_id, since_days=since_days)
-        authors  = get_authors(api_key, project_id, since_days=since_days)
+    try:
+        with st.spinner("⏳ Mengambil data dari Brand24..."):
+            stats    = get_project_stats(api_key, project_id, since_days=since_days)
+            sents    = get_sentiment_breakdown(api_key, project_id, since_days=since_days)
+            mentions = get_mentions(api_key, project_id, since_days=since_days, max_results=200)
+            sources  = get_top_sources(api_key, project_id, since_days=since_days)
+            authors  = get_authors(api_key, project_id, since_days=since_days)
+    except Exception as brand24_error:
+        st.warning("🟡 **Brand24 mengalami error — otomatis beralih ke Custom EWS.**")
+        st.caption(f"Fallback aktif. Detail: {brand24_error}")
+        if CUSTOM_EWS_AVAILABLE:
+            render_custom_ews(since_days)
+        else:
+            st.error("❌ Modul Custom EWS tidak tersedia.")
+        st.stop()
 
     # ── Early Warning Score ───────────────────────────────────────
     ews = compute_early_warning_score(stats, sents)

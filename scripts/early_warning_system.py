@@ -85,6 +85,7 @@ def find_csv(custom_path: Optional[str] = None) -> Optional[str]:
 
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     candidates = [
+        os.path.join(project_root, "data", "results", "indobert_9_emosi_fixed.csv"),
         os.path.join(project_root, "data", "sarcasm", "dataset_sindiran_valid.csv"),
         os.path.join(project_root, "data", "indobert_9_emosi_fixed.csv"),
         os.path.join(project_root, "data", "emotion", "mbg_tweets_indobert_ready.csv"),
@@ -246,8 +247,16 @@ def compute_ews_score(
     emoji_rate  = emoji_total / N * 100
     score_b = min(emoji_rate / 20 * 20, 20)
 
-    # Komponen C: Sentimen negatif
-    neg_pct = sentiment.get("neg_pct", 0) if sentiment.get("available") else 50.0
+    # Komponen C: Sentimen negatif (berbasis emosi negatif aktual IndoBERT)
+    if sentiment.get("available"):
+        neg_pct = sentiment.get("neg_pct", 0.0)
+    else:
+        try:
+            from ews.emotion_analyzer import load_emotion_data, get_emotion_risk
+            emo_df = load_emotion_data()
+            neg_pct = get_emotion_risk(emo_df)["negative_pct"]
+        except Exception:
+            neg_pct = 0.0
     score_c = min(neg_pct / 100 * 30, 30)
 
     # Komponen D: Sarkasme

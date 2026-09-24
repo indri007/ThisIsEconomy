@@ -1,0 +1,10 @@
+{
+  "total_checks": 20,
+  "passed": 20,
+  "failed": 0,
+  "status": "READY",
+  "emotion_rows": 5263,
+  "sarcasm_rows": 3395,
+  "sna_nodes": 971,
+  "anomaly_events": 4
+}
