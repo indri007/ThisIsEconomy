@@ -26,8 +26,8 @@ mapping = {
     'joy': 'Bahagia/Senang',
     'neutral': 'Netral',
     'surprise': 'Kaget',
-    'love': 'Percaya',      
-    'shame': 'Tertarik'     
+    'love': 'Percaya',
+    'shame': 'Tertarik'
 }
 
 if 'predicted_emotion' in df.columns:

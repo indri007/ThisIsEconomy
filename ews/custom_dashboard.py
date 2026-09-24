@@ -39,8 +39,8 @@ def render_custom_ews(since_days: int = 7) -> None:
             🚨 MBG Early Warning System — Custom EWS v2
         </h2>
         <p style="color: #94A3B8; margin: 0; font-size: 14px; line-height: 1.5;">
-            Sistem Peringatan Dini Risiko Wacana Kebijakan Makan Bergizi Gratis (MBG) berbasis triangulasi 
-            <b>NLP IndoBERT (7 Emosi Aktual)</b>, <b>Social Network Analysis (971 Aktor, 342 Komunitas)</b>, 
+            Sistem Peringatan Dini Risiko Wacana Kebijakan Makan Bergizi Gratis (MBG) berbasis triangulasi
+            <b>NLP IndoBERT (7 Emosi Aktual)</b>, <b>Social Network Analysis (971 Aktor, 342 Komunitas)</b>,
             dan <b>Deteksi Anomali Statistik Runtut Waktu</b>.
         </p>
     </div>
@@ -171,7 +171,7 @@ def render_custom_ews(since_days: int = 7) -> None:
     with col_mid1:
         st.markdown("### 🧠 Sebaran 7 Emosi Aktual IndoBERT")
         st.caption("Distribusi emosi dari 5.263 cuitan (Model IndoBERT fine-tuned 7 kelas aktual).")
-        
+
         emo_dist = components["emotion_risk"]["details"]["distribution"]
         palette = INDOBERT_MODEL_METADATA["label_color_palette"]
 
@@ -277,7 +277,7 @@ def render_custom_ews(since_days: int = 7) -> None:
 
     # ── 5. TRANSPARANSI SKOR (EXPLAINABILITY BOX) ─────────────────
     st.markdown("### 🚨 Mengapa Skor EWS Berada pada Tingkat Ini? (Explainability)")
-    
+
     # Rincian Matriks Komponen Bobot
     st.markdown("""
     Skor EWS v2 dihitung secara transparan dari 5 dimensi risiko terbobot (Total: 100 Poin):
@@ -296,6 +296,6 @@ def render_custom_ews(since_days: int = 7) -> None:
 
         st.markdown(f"""
         ---
-        **💡 Rekomendasi Tindakan Strategis Humas & Kebijakan:**  
+        **💡 Rekomendasi Tindakan Strategis Humas & Kebijakan:**
         {ews['action_recommendation']}
         """)
