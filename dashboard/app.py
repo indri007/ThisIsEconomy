@@ -59,6 +59,36 @@ except ImportError:
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
 
+
+def download_file_button(label, file_path, file_name, mime, key=None, **kwargs):
+    """Safe wrapper for st.download_button that reads from disk.
+
+    If the file exists, renders a normal download button.
+    If the file is missing, renders a disabled button with a tooltip
+    so the app never crashes on a missing asset.
+    """
+    if os.path.exists(file_path):
+        mode = "r" if mime and mime.startswith("text") else "rb"
+        encoding = "utf-8" if mode == "r" else None
+        with open(file_path, mode, **(dict(encoding=encoding) if encoding else {})) as _f:
+            data = _f.read()
+        st.download_button(
+            label=label,
+            data=data,
+            file_name=file_name,
+            mime=mime,
+            key=key,
+            **kwargs,
+        )
+    else:
+        st.button(
+            f"{label} — (file tidak tersedia)",
+            disabled=True,
+            key=key,
+            **kwargs,
+        )
+
+
 def get_result_path(filename):
     candidates = [
         os.path.join(PROJECT_ROOT, "results", filename),
@@ -589,15 +619,13 @@ def render_author_biography():
         - 🆔 **ORCID iD:** [0009-0002-8419-7231](https://orcid.org/0009-0002-8419-7231)
         """)
 
-        if os.path.exists(cv_img_path):
-            with open(cv_img_path, "rb") as f:
-                st.download_button(
-                    label="📥 Unduh Resume / CV Asli (.PNG)",
-                    data=f.read(),
-                    file_name="Indri_Anjar_Kartikasari_CV.png",
-                    mime="image/png",
-                    width='stretch'
-                )
+        download_file_button(
+            label="📥 Unduh Resume / CV Asli (.PNG)",
+            file_path=cv_img_path,
+            file_name="Indri_Anjar_Kartikasari_CV.png",
+            mime="image/png",
+            width='stretch',
+        )
 
     with c_right:
         st.markdown("### 💼 Profil Profesional")
@@ -693,16 +721,14 @@ def render_author_biography():
         with loa_ino_col2:
             st.markdown("#### 📥 Akses Berkas LoA Resmi:")
             loa_ino_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_inovasi_indobert_tiktok_2026.pdf")
-            if os.path.exists(loa_ino_pdf):
-                with open(loa_ino_pdf, "rb") as f:
-                    st.download_button(
-                        label="📥 Unduh Berkas PDF LoA INOVASI (#88)",
-                        data=f.read(),
-                        file_name="LoA_INOVASI_88_IndoBERT_TikTok_Indri_Anjar.pdf",
-                        mime="application/pdf",
-                        key="dl_loa_inovasi_profile",
-                        width='stretch'
-                    )
+            download_file_button(
+                label="📥 Unduh Berkas PDF LoA INOVASI (#88)",
+                file_path=loa_ino_pdf,
+                file_name="LoA_INOVASI_88_IndoBERT_TikTok_Indri_Anjar.pdf",
+                mime="application/pdf",
+                key="dl_loa_inovasi_profile",
+                width='stretch',
+            )
             st.link_button("🌐 Buka Portal Resmi INOVASI", "https://journal.nuspublications.or.id/innovasi", width='stretch')
             st.info("💡 Berkas fisik PDF ini juga telah tersimpan secara permanen pada direktori repositori: `docs/assets/loa_inovasi_indobert_tiktok_2026.pdf`.")
 
@@ -736,15 +762,13 @@ def render_author_biography():
         with loa_mbg_col2:
             st.markdown("#### 📥 Akses Berkas LoA Resmi:")
             loa_mbg_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_mbg_2009.pdf")
-            if os.path.exists(loa_mbg_pdf):
-                with open(loa_mbg_pdf, "rb") as f:
-                    st.download_button(
-                        label="📥 Unduh Berkas PDF LoA Tesis MBG (#2009)",
-                        data=f.read(),
-                        file_name="LoA_IPSSJ_2009_MBG_Indri_Anjar.pdf",
-                        mime="application/pdf",
-                        width='stretch'
-                    )
+            download_file_button(
+                label="📥 Unduh Berkas PDF LoA Tesis MBG (#2009)",
+                file_path=loa_mbg_pdf,
+                file_name="LoA_IPSSJ_2009_MBG_Indri_Anjar.pdf",
+                mime="application/pdf",
+                width='stretch',
+            )
             st.link_button("🌐 Buka Portal Resmi OJS IPSSJ", "http://ipssj.com/index.php/ojs", width='stretch')
             st.info("💡 Berkas fisik PDF ini juga telah tersimpan secara permanen pada direktori repositori: `docs/assets/loa_ipssj_mbg_2009.pdf`.")
 
@@ -779,15 +803,13 @@ def render_author_biography():
             st.link_button("📥 Unduh Naskah Lengkap PDF Jurnal (333–340)", "https://ipssj.com/index.php/ojs/article/download/2024/1868", width='stretch')
 
             loa_job_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_jobsmatchai_2024.pdf")
-            if os.path.exists(loa_job_pdf):
-                with open(loa_job_pdf, "rb") as f:
-                    st.download_button(
-                        label="📥 Unduh Berkas PDF LoA JobsMatchAI (#2024)",
-                        data=f.read(),
-                        file_name="LoA_IPSSJ_2024_JobsMatchAI_Indri_Anjar.pdf",
-                        mime="application/pdf",
-                        width='stretch'
-                    )
+            download_file_button(
+                label="📥 Unduh Berkas PDF LoA JobsMatchAI (#2024)",
+                file_path=loa_job_pdf,
+                file_name="LoA_IPSSJ_2024_JobsMatchAI_Indri_Anjar.pdf",
+                mime="application/pdf",
+                width='stretch',
+            )
             st.caption("💡 Salinan digital naskah jurnal juga telah diarsipkan secara lokal di `references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf`.")
 
     with pub_tab4:
@@ -909,28 +931,26 @@ def render_author_biography():
     cert_full_path = os.path.join(PROJECT_ROOT, "docs", "assets", "purwadhika_ai_engineering_certificate.png")
     if os.path.exists(cert_full_path):
         st.image(cert_full_path, caption="Certificate of Graduation: Job Connector Bootcamp AI Engineering (No. 202602009256) | Purwadhika", width='stretch')
-        with open(cert_full_path, "rb") as f:
-            st.download_button(
-                label="📥 Unduh Sertifikat AI Engineering Resmi (.PNG)",
-                data=f.read(),
-                file_name="Purwadhika_AI_Engineering_Certificate_Indri_Anjar.png",
-                mime="image/png",
-                width='stretch'
-            )
+    download_file_button(
+        label="📥 Unduh Sertifikat AI Engineering Resmi (.PNG)",
+        file_path=cert_full_path,
+        file_name="Purwadhika_AI_Engineering_Certificate_Indri_Anjar.png",
+        mime="image/png",
+        width='stretch',
+    )
 
     st.markdown("---")
     st.subheader("📄 Berkas Dokumen Resume / Curriculum Vitae Resmi")
     cv_full_path = os.path.join(PROJECT_ROOT, "docs", "assets", "indri_anjar_kartikasari_cv.png")
     if os.path.exists(cv_full_path):
         st.image(cv_full_path, caption="Resume / CV Resmi: Indri Anjar Kartikasari (AI Engineer)", width='stretch')
-        with open(cv_full_path, "rb") as f:
-            st.download_button(
-                label="📥 Unduh Curriculum Vitae Resmi (.PNG)",
-                data=f.read(),
-                file_name="Indri_Anjar_Kartikasari_CV.png",
-                mime="image/png",
-                width='stretch'
-            )
+    download_file_button(
+        label="📥 Unduh Curriculum Vitae Resmi (.PNG)",
+        file_path=cv_full_path,
+        file_name="Indri_Anjar_Kartikasari_CV.png",
+        mime="image/png",
+        width='stretch',
+    )
 
 
 def render_international_journal_page():
@@ -963,43 +983,31 @@ def render_international_journal_page():
     p_gexf = os.path.join(PROJECT_ROOT, "results", "mbg_network_official.gexf")
 
     with d1:
-        if os.path.exists(p_docx):
-            with open(p_docx, "rb") as f_d:
-                st.download_button(
-                    "📑 Unduh Word (.docx, 8.9 MB)",
-                    data=f_d.read(),
-                    file_name="Journal_Paper_Indri_Anjar_MBG_SNA.docx",
-                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                    width='stretch'
-                )
-        else:
-            st.button("📑 File Word belum siap", disabled=True, width='stretch')
+        download_file_button(
+            label="📑 Unduh Word (.docx, 8.9 MB)",
+            file_path=p_docx,
+            file_name="Journal_Paper_Indri_Anjar_MBG_SNA.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            width='stretch',
+        )
 
     with d2:
-        if os.path.exists(p_md):
-            with open(p_md, "r", encoding="utf-8") as f_m:
-                st.download_button(
-                    "📄 Unduh Markdown (.md)",
-                    data=f_m.read(),
-                    file_name="journal_paper_mbg_sna.md",
-                    mime="text/markdown",
-                    width='stretch'
-                )
-        else:
-            st.button("📄 File Markdown belum siap", disabled=True, width='stretch')
+        download_file_button(
+            label="📄 Unduh Markdown (.md)",
+            file_path=p_md,
+            file_name="journal_paper_mbg_sna.md",
+            mime="text/markdown",
+            width='stretch',
+        )
 
     with d3:
-        if os.path.exists(p_gexf):
-            with open(p_gexf, "rb") as f_g:
-                st.download_button(
-                    "🌐 Unduh Graf Gephi (.gexf)",
-                    data=f_g.read(),
-                    file_name="mbg_network_official.gexf",
-                    mime="application/xml",
-                    width='stretch'
-                )
-        else:
-            st.button("🌐 File Gephi belum siap", disabled=True, width='stretch')
+        download_file_button(
+            label="🌐 Unduh Graf Gephi (.gexf)",
+            file_path=p_gexf,
+            file_name="mbg_network_official.gexf",
+            mime="application/xml",
+            width='stretch',
+        )
 
     with d4:
         st.link_button(
@@ -1488,26 +1496,24 @@ st.sidebar.markdown("### 🌐 Akses Publik & Unduhan")
 
 # Direct journal download buttons in sidebar
 p_docx_side = os.path.join(PROJECT_ROOT, "Journal_Paper_Indri_Anjar_MBG_SNA.docx")
-if os.path.exists(p_docx_side):
-    with open(p_docx_side, "rb") as f_side_docx:
-        st.sidebar.download_button(
-            "📑 Unduh Naskah Jurnal (.docx)",
-            data=f_side_docx.read(),
-            file_name="Journal_Paper_Indri_Anjar_MBG_SNA.docx",
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            width='stretch'
-        )
+with st.sidebar:
+    download_file_button(
+        label="📑 Unduh Naskah Jurnal (.docx)",
+        file_path=p_docx_side,
+        file_name="Journal_Paper_Indri_Anjar_MBG_SNA.docx",
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        width='stretch',
+    )
 
 p_gexf_side = os.path.join(PROJECT_ROOT, "results", "mbg_network_official.gexf")
-if os.path.exists(p_gexf_side):
-    with open(p_gexf_side, "rb") as f_side_gexf:
-        st.sidebar.download_button(
-            "🌐 Unduh Graf Gephi (.gexf)",
-            data=f_side_gexf.read(),
-            file_name="mbg_network_official.gexf",
-            mime="application/xml",
-            width='stretch'
-        )
+with st.sidebar:
+    download_file_button(
+        label="🌐 Unduh Graf Gephi (.gexf)",
+        file_path=p_gexf_side,
+        file_name="mbg_network_official.gexf",
+        mime="application/xml",
+        width='stretch',
+    )
 
 st.sidebar.markdown("📦 [Repositori GitHub Publik](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)")
 st.sidebar.markdown("⚡ [Unduh Semua Kode & Data (.ZIP)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)")
@@ -1714,27 +1720,21 @@ if "Bab I" in page or page == "🏠 Beranda":
             if os.path.exists(loa0_p):
                 st.image(loa0_p, caption="LoA IndoBERT TikTok (21 September 2026)", width='stretch')
             loa0_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_inovasi_indobert_tiktok_2026.pdf")
-            if os.path.exists(loa0_pdf):
-                with open(loa0_pdf, "rb") as f:
-                    st.download_button("📥 Unduh LoA INOVASI (.PDF)", f.read(), "LoA_INOVASI_88_IndoBERT_TikTok.pdf", "application/pdf", key="dl_loa_inovasi_home", width='stretch')
+            download_file_button("📥 Unduh LoA INOVASI (.PDF)", loa0_pdf, "LoA_INOVASI_88_IndoBERT_TikTok.pdf", "application/pdf", key="dl_loa_inovasi_home", width='stretch')
         with exp_col2:
             st.markdown("##### 📄 LoA Tesis MBG (#2009)")
             loa1_p = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_mbg_2009.png")
             if os.path.exists(loa1_p):
                 st.image(loa1_p, caption="LoA Riset MBG X (15 September 2026)", width='stretch')
             loa1_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_mbg_2009.pdf")
-            if os.path.exists(loa1_pdf):
-                with open(loa1_pdf, "rb") as f:
-                    st.download_button("📥 Unduh LoA MBG (.PDF)", f.read(), "LoA_IPSSJ_2009_MBG.pdf", "application/pdf", key="dl_loa_mbg_home", width='stretch')
+            download_file_button("📥 Unduh LoA MBG (.PDF)", loa1_pdf, "LoA_IPSSJ_2009_MBG.pdf", "application/pdf", key="dl_loa_mbg_home", width='stretch')
         with exp_col3:
             st.markdown("##### 🤖 LoA JobsMatchAI (#2024)")
             loa2_p = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_jobsmatchai_2024.png")
             if os.path.exists(loa2_p):
                 st.image(loa2_p, caption="LoA JobsMatchAI (17 September 2026)", width='stretch')
             loa2_pdf = os.path.join(PROJECT_ROOT, "docs", "assets", "loa_ipssj_jobsmatchai_2024.pdf")
-            if os.path.exists(loa2_pdf):
-                with open(loa2_pdf, "rb") as f:
-                    st.download_button("📥 Unduh LoA JobsMatchAI (.PDF)", f.read(), "LoA_IPSSJ_2024_JobsMatchAI.pdf", "application/pdf", key="dl_loa_job_home", width='stretch')
+            download_file_button("📥 Unduh LoA JobsMatchAI (.PDF)", loa2_pdf, "LoA_IPSSJ_2024_JobsMatchAI.pdf", "application/pdf", key="dl_loa_job_home", width='stretch')
 
 
     st.info("""
@@ -5526,13 +5526,12 @@ elif "Bab V" in page:
         if os.path.exists(p_lim_img):
             st.markdown("##### 🖼️ E. Gambar Masterpiece Keterbatasan Penelitian (Publikasi Naskah Tesis)")
             st.image(p_lim_img, width='stretch', caption="Gambar 5.1. Peta Multidimensi Keterbatasan Penelitian, Mitigasi Empiris, dan Agenda Riset Masa Depan (300 DPI)")
-            with open(p_lim_img, "rb") as f_img:
-                st.download_button(
-                    label="⬇️ Unduh Gambar Keterbatasan Penelitian (PNG 300 DPI)",
-                    data=f_img.read(),
-                    file_name="keterbatasan_penelitian_mbg.png",
-                    mime="image/png"
-                )
+            download_file_button(
+                label="⬇️ Unduh Gambar Keterbatasan Penelitian (PNG 300 DPI)",
+                file_path=p_lim_img,
+                file_name="keterbatasan_penelitian_mbg.png",
+                mime="image/png",
+            )
 
     # Comprehensive Summary Table
     st.markdown("---")
@@ -6248,94 +6247,78 @@ elif "Audit Integritas Data" in page:
     dcol1, dcol2, dcol3, dcol4 = st.columns(4)
     with dcol1:
         p_emo = get_data_path("indobert_9_emosi_fixed.csv")
-        if os.path.exists(p_emo):
-            with open(p_emo, "rb") as f:
-                st.download_button(
-                    label="📊 Dataset Emosi — Audit Rekonsiliasi",
-                    data=f.read(),
-                    file_name="indobert_9_emosi_fixed.csv",
-                    mime="text/csv",
-                    width='stretch'
-                )
+        download_file_button(
+            label="📊 Dataset Emosi — Audit Rekonsiliasi",
+            file_path=p_emo,
+            file_name="indobert_9_emosi_fixed.csv",
+            mime="text/csv",
+            width='stretch',
+        )
     with dcol2:
         p_sin = get_data_path("dataset_sindiran_valid.csv")
-        if os.path.exists(p_sin):
-            with open(p_sin, "rb") as f:
-                st.download_button(
-                    label="🎭 Data Sindiran (N=3.395)",
-                    data=f.read(),
-                    file_name="dataset_sindiran_valid.csv",
-                    mime="text/csv",
-                    width='stretch'
-                )
+        download_file_button(
+            label="🎭 Data Sindiran (N=3.395)",
+            file_path=p_sin,
+            file_name="dataset_sindiran_valid.csv",
+            mime="text/csv",
+            width='stretch',
+        )
     with dcol3:
         p_raw = get_data_path("mbg_tweets_indobert_ready.xlsx")
-        if os.path.exists(p_raw):
-            with open(p_raw, "rb") as f:
-                st.download_button(
-                    label="📗 Data Mentah (Excel N=3.395)",
-                    data=f.read(),
-                    file_name="mbg_tweets_indobert_ready.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                    width='stretch'
-                )
+        download_file_button(
+            label="📗 Data Mentah (Excel N=3.395)",
+            file_path=p_raw,
+            file_name="mbg_tweets_indobert_ready.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            width='stretch',
+        )
     with dcol4:
         p_absa = get_result_path("absa_results.csv")
-        if os.path.exists(p_absa):
-            with open(p_absa, "rb") as f:
-                st.download_button(
-                    label="🎯 Data Tematik ABSA",
-                    data=f.read(),
-                    file_name="absa_results.csv",
-                    mime="text/csv",
-                    width='stretch'
-                )
+        download_file_button(
+            label="🎯 Data Tematik ABSA",
+            file_path=p_absa,
+            file_name="absa_results.csv",
+            mime="text/csv",
+            width='stretch',
+        )
 
     dcol5, dcol6, dcol7, dcol8 = st.columns(4)
     with dcol5:
         p_edges = get_data_path("network_edges.csv")
-        if os.path.exists(p_edges):
-            with open(p_edges, "rb") as f:
-                st.download_button(
-                    label="🕸️ Jaringan SNA (692 Edges)",
-                    data=f.read(),
-                    file_name="network_edges.csv",
-                    mime="text/csv",
-                    width='stretch'
-                )
+        download_file_button(
+            label="🕸️ Jaringan SNA (692 Edges)",
+            file_path=p_edges,
+            file_name="network_edges.csv",
+            mime="text/csv",
+            width='stretch',
+        )
     with dcol6:
         p_nodes = get_result_path("mbg_network_nodes_final.csv")
-        if os.path.exists(p_nodes):
-            with open(p_nodes, "rb") as f:
-                st.download_button(
-                    label="👥 Komunitas Louvain (971 Nodes)",
-                    data=f.read(),
-                    file_name="mbg_network_nodes_final.csv",
-                    mime="text/csv",
-                    width='stretch'
-                )
+        download_file_button(
+            label="👥 Komunitas Louvain (971 Nodes)",
+            file_path=p_nodes,
+            file_name="mbg_network_nodes_final.csv",
+            mime="text/csv",
+            width='stretch',
+        )
     with dcol7:
         p_deg = get_result_path("sna_degree.csv")
-        if os.path.exists(p_deg):
-            with open(p_deg, "rb") as f:
-                st.download_button(
-                    label="🏆 Sentralitas Aktor (986 Aktor)",
-                    data=f.read(),
-                    file_name="sna_degree.csv",
-                    mime="text/csv",
-                    width='stretch'
-                )
+        download_file_button(
+            label="🏆 Sentralitas Aktor (986 Aktor)",
+            file_path=p_deg,
+            file_name="sna_degree.csv",
+            mime="text/csv",
+            width='stretch',
+        )
     with dcol8:
         p_rep = get_result_path("classification_report.csv")
-        if os.path.exists(p_rep):
-            with open(p_rep, "rb") as f:
-                st.download_button(
-                    label="📈 Metrik Evaluasi Model",
-                    data=f.read(),
-                    file_name="classification_report.csv",
-                    mime="text/csv",
-                    width='stretch'
-                )
+        download_file_button(
+            label="📈 Metrik Evaluasi Model",
+            file_path=p_rep,
+            file_name="classification_report.csv",
+            mime="text/csv",
+            width='stretch',
+        )
 
     st.markdown("---")
     # Public Direct Raw Links Table
@@ -6366,15 +6349,13 @@ elif "Audit Integritas Data" in page:
         "Presentasi_Tesis_MBG_Indri_Anjar_Kartika_Sari.pptx"
     )
 
-    if os.path.exists(ppt_path):
-        with open(ppt_path, "rb") as ppt_file:
-            st.download_button(
-                label="📽️ Unduh Presentasi Tesis (.PPTX)",
-                data=ppt_file.read(),
-                file_name="Presentasi_Tesis_MBG_Indri_Anjar_Kartika_Sari.pptx",
-                mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
-                width='stretch'
-            )
+    download_file_button(
+        label="📽️ Unduh Presentasi Tesis (.PPTX)",
+        file_path=ppt_path,
+        file_name="Presentasi_Tesis_MBG_Indri_Anjar_Kartika_Sari.pptx",
+        mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        width='stretch',
+    )
 
     # Repository links card
     st.info("""
