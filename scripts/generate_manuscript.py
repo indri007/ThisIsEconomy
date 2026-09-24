@@ -95,8 +95,8 @@ We adapted Robert Plutchik's psycho-evolutionary emotion taxonomy into 9 operati
 - **Base Architecture:** `indobenchmark/indobert-base-p2` (12 transformer layers, 768 hidden dimensions, 12 self-attention heads, 124.5 million parameters).
 - **Dataset Partitioning:** Stratified splitting of annotated data into 80% training set ($N = 4,210$) and 20% independent holdout test set ($n = 1,053$).
 - **Hyperparameter Specifications:**
-  - Optimizer: AdamW with weight decay $\lambda = 0.01$.
-  - Learning Rate: $\eta = 2 \times 10^{-5}$ with linear learning rate warmup.
+  - Optimizer: AdamW with weight decay $\\lambda = 0.01$.
+  - Learning Rate: $\\eta = 2 \\times 10^{-5}$ with linear learning rate warmup.
   - Batch Size: 16 per device.
   - Epochs: 3 epochs (following Devlin et al., 2018 and Wilie et al., 2020 to prevent catastrophic forgetting and overfitting).
   - Maximum Sequence Length: 128 tokens.
