@@ -1,0 +1,55 @@
+17:## Abstract
+23:## 1. Introduction
+25:### 1.1 Background and Problem Statement
+38:### 1.2 Digital Sarcasm as a Methodological and Communicative Problem
+46:### 1.3 Research Objectives and Theoretical Focus
+58:## 2. Literature Review and Theoretical Framework
+60:### 2.1 Public Trust, Risk Communication, and Symbolic Politics
+68:### 2.2 Networked Framing and the Ecology of Digital Dissent
+76:### 2.3 Pragmatic Incongruence, Paralinguistics, and Sarcasm Theory
+82:### 2.4 Deep Learning, IndoBERT, and Emotion Classification
+88:### 2.5 Social Network Analysis, Scale-Free Networks, and Echo Chambers
+97:### 2.6 The Marketing 6.0 Phygital Gap Framework in Public Administration
+111:## 3. Methodology
+113:### 3.1 Research Design and Methodological Architecture
+123:### 3.2 Data Collection and Ethical Considerations
+139:### 3.3 Corpus Composition and Text Preprocessing
+155:### 3.4 Deep Learning Architecture: Multi-Task IndoBERT Fine-Tuning
+167:### 3.5 Aspect-Based Sentiment Analysis (ABSA) Formulation
+176:### 3.6 Social Network Analysis Formalism
+198:## 4. Empirical Results
+200:### 4.1 Macro-Topological Network Profile
+233:### 4.2 Structural Fragmentation and Component Distribution
+246:### 4.3 Community Echo Chambers and Interaction Routing
+275:### 4.4 Actor Centrality and Communicative Role Typologies
+320:### 4.5 Aspect-Based Sentiment Analysis (ABSA) across Policy Dimensions
+345:### 4.6 Lexical Prominence and Morphological Saturation
+359:### 4.7 Deep Learning Model Performance and Methodological Audit
+375:### 4.8 Case Studies of Representative Sarcastic Interactions
+391:### 4.9 Correlation Between Network Metrics and Policy Outcomes
+411:### 4.10 Extended Early Warning System Dashboard Evaluation
+427:### 4.11 Summary of Empirical Findings
+437:## 5. Discussion
+439:### 5.1 The Anatomy of Digital Sarcasm: Decoding Linguistic Incongruence
+464:### 5.2 Network Fragmentation vs. Ideological Bipolarization: Reconceptualizing Modularity
+476:### 5.3 Algorithmic Epistemic Displacement: The Rise, Impact, and Institutional Solutions of the Machine Arbiter
+497:### 5.4 The Marketing 6.0 Phygital Gap as the Root of State Trust Dissolution
+538:## 6. Policy Recommendations and Governance Blueprint
+540:### 6.1 Closed-Loop Alignment: Connecting Root Causes to Strategic Governance Solutions
+554:### 6.2 Transition from Broadcast Propaganda to Decentralized Network Dialogue
+557:### 6.3 Prioritize Physical Touchpoint Rectification over Digital PR Spending
+560:### 6.4 Strategic Engagement with Algorithmic Epistemic Infrastructure
+563:### 6.5 Treat Sarcasm as a Diagnostic Early-Warning Metric, Not Noise
+566:### 6.6 Institutionalize Participatory Phygital Co-Monitoring
+571:## 7. Conclusion
+573:### 7.1 Summary of Contributions
+581:### 7.2 Five-Point Future Research Agenda
+604:### 7.3 Research Implementation Roadmap (2026–2029)
+658:### 7.4 Theoretical Contributions and Knowledge Advancement
+679:## Funding and Conflicts of Interest
+682:## Data and Code Availability Statement
+687:## References
+748:## Appendix A: Formal Mathematical Notations and Centrality Formulas
+765:## Appendix B: Representative Corpus of Pragmatic Sarcasm Instances
+779:## Appendix C: Codebook for Aspect-Based Sentiment Analysis (ABSA)
+791:## Appendix D: Algorithmic Verification Trace Analysis of `@grok`
