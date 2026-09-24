@@ -104,7 +104,7 @@ We adapted Robert Plutchik's psycho-evolutionary emotion taxonomy into 9 operati
 
 ### 3.4 Pragmatic Sarcasm Validation Algorithm
 Sarcasm detection was operationalized on a dedicated corpus of $N = 3,395$ tweets. An algorithmic rule-based matcher evaluated tweets based on two formal linguistic criteria:
-Tweets matching combinations of praise adjectives with complaint context, or positive polarity text with derisive emojis, were flagged and subjected to manual inter-annotator verification, yielding 315 validated sarcastic tweets ($9.28\%$).
+Tweets matching combinations of praise adjectives with complaint context, or positive polarity text with derisive emojis, were flagged and subjected to manual inter-annotator verification, yielding 315 validated sarcastic tweets ($9.28\\%$).
 
 ### 3.5 Social Network Modeling and Community Partitions
 The interaction network was modeled as a directed, weighted graph $G = (V, E)$, where $V$ represents unique X user accounts ($|V| = 971$) and $E$ represents directed communication ties ($|E| = 666$ unique edges, originating from 692 raw interaction instances including mentions, replies, and quotes).
@@ -140,7 +140,7 @@ Inference across the complete corpus ($N = 5,263$) established an overwhelming c
 | **Fear** | Takut | **2** | **0.04%** | Apprehension over long-term fiscal debt |
 | **Total Corpus** | — | **5,263** | **100.00%** | Full Inference Dataset (`indobert_9_emosi_fixed.csv`) |
 
-The distribution demonstrates that public opposition to the MBG program is not driven by generalized ideological *Anger* ($1.05\%$), but by visceral physical *Disgust* ($56.24\%$).
+The distribution demonstrates that public opposition to the MBG program is not driven by generalized ideological *Anger* ($1.05\\%$), but by visceral physical *Disgust* ($56.24\\%$).
 
 ### 4.2 Sarcasm and Pragmatic Semiotic Subversion
 Analysis of the validated sarcasm corpus ($N = 3,395$) verified that **315 tweets (9.28%)** operated as explicit sarcasm, while 3,080 tweets (90.72%) operated as literal communication. Within the sarcastic corpus, 181 tweets exhibited acute binary lexical oppositions.
@@ -163,7 +163,7 @@ Mathematical graph modeling of the 971 participating X users generated the follo
 | **Isolated Components** | **332 clusters** | Hyper-fragmented discourse architecture |
 | **Louvain Modularity ($Q$)** | **0.9837** | Extreme structural division approaching theoretical max (1.0) |
 
-The network density of $0.0011$ and reciprocity of $1.21\%$ indicate an absolute breakdown of conversational exchange. Citizens were not talking to one another, nor were institutions conversing with citizens. Instead, discourse manifested as outward broadcasting into an echo chamber void.
+The network density of $0.0011$ and reciprocity of $1.21\\%$ indicate an absolute breakdown of conversational exchange. Citizens were not talking to one another, nor were institutions conversing with citizens. Instead, discourse manifested as outward broadcasting into an echo chamber void.
 
 ### 4.4 Structural Power Asymmetry: The Algorithmic Oracle vs. Institutional Silence
 Centrality calculations exposed an acute disparity between formal political power and digital communicative authority:
@@ -195,7 +195,7 @@ Evaluating IndoBERT (`checkpoint-792`) on the independent test set ($n = 1,053$)
 | **Macro Average** | 0.1791 | 0.1190 | **0.1444** | 1,053 |
 | **Weighted Average** | 0.4738 | 0.5745 | **0.4563** | 1,053 |
 
-On the balanced binary benchmark for sarcasm detection, the pipeline achieved an overall accuracy of **83.00%** and a **Macro F1 of 0.8122**. In 9-class modeling, the model prioritized sensitivity to the primary crisis driver, capturing **$96.92\%$ of all empirical Disgust instances**. Confusion matrix analysis revealed that misclassifications primarily stemmed from linguistic overlap: sarcastic Trust texts were remapped into Disgust due to the model detecting embedded physical complaint lemmas.
+On the balanced binary benchmark for sarcasm detection, the pipeline achieved an overall accuracy of **83.00%** and a **Macro F1 of 0.8122**. In 9-class modeling, the model prioritized sensitivity to the primary crisis driver, capturing **$96.92\\%$ of all empirical Disgust instances**. Confusion matrix analysis revealed that misclassifications primarily stemmed from linguistic overlap: sarcastic Trust texts were remapped into Disgust due to the model detecting embedded physical complaint lemmas.
 
 ### 4.6 Empirical Validation of the Phygital Gap (ABSA Results)
 Thematic aspect-based affective distribution across the three physical dimensions of the MBG program confirmed that public disgust was anchored in physical execution failures:
@@ -206,7 +206,7 @@ Thematic aspect-based affective distribution across the three physical dimension
 | **Budget Allocation & Vendors**| 535 | 412 | **77.01%** | 23 | 4.30% | 18.69% |
 | **Food Nutritional Quality** | 1,344 | 956 | **71.13%** | 119 | 8.85% | 20.01% |
 
-Across all three operational aspects, Disgust exceeded $70\%$, peaking at $78.91\%$ in Logistics and $77.01\%$ in Budget Allocation. This provides empirical proof of the *Phygital Gap*: negative affect was not an abstract political grievance, but an intense rejection of operational failures in delivery timing, budget misappropriation, and inadequate dietary portion sizes.
+Across all three operational aspects, Disgust exceeded $70\\%$, peaking at $78.91\\%$ in Logistics and $77.01\\%$ in Budget Allocation. This provides empirical proof of the *Phygital Gap*: negative affect was not an abstract political grievance, but an intense rejection of operational failures in delivery timing, budget misappropriation, and inadequate dietary portion sizes.
 
 ---
 
@@ -220,7 +220,7 @@ The dominance of **Disgust (56.24%)** over **Anger (1.05%)** is sociologically p
 ### 5.2 Hyper-Fragmentation and the Death of Deliberative Space
 Habermas (2006) cautioned that internet-mediated public spheres risk communicative anarchism without institutional mediating structures. The topological network metrics of the MBG discourse provide startling empirical support for this warning. A modularity score of **$Q = 0.9837$** is extraordinarily high in political communication networks, where modularity typically ranges between $0.40$ and $0.65$ (Newman, 2006). Rather than dividing into a classic bi-polar structure (e.g., government supporters vs. opposition partisans), the discourse disintegrated into **332 isolated communicative islands**.
 
-Coupled with a reciprocity rate of only **1.21%**, this reveals that the digital discourse was functionally dead as a deliberative space. Citizens broadcasted their frustration into localized micro-clusters, while government actors failed to engage in reciprocal dialogue. The giant component captured only $9.17\%$ of nodes, proving that no single narrative could bridge the fragmented silos.
+Coupled with a reciprocity rate of only **1.21%**, this reveals that the digital discourse was functionally dead as a deliberative space. Citizens broadcasted their frustration into localized micro-clusters, while government actors failed to engage in reciprocal dialogue. The giant component captured only $9.17\\%$ of nodes, proving that no single narrative could bridge the fragmented silos.
 
 ### 5.3 The Emergence of the 'Algorithmic Oracle'
 Perhaps the most transformative empirical finding is the communicative role assumed by artificial intelligence. In classical crisis communication models (Coombs, 2007), epistemic authority rests with institutional leaders, official spokespersons, or verified investigative journalists. In this network, however, `@grok` achieved an Out-Degree of 42, dominating the graph's broadcasting capability, while `@prabowo` remained silent ($C_{\text{out}} = 0$).
@@ -228,7 +228,7 @@ Perhaps the most transformative empirical finding is the communicative role assu
 When state actors create a **Power Vacuum** by failing to respond to legitimate operational queries, digital citizens do not abandon inquiry; instead, they pivot to synthetic authority. Netizens tagged `@grok` to verify contract values, calculate vendor margins, and cross-reference nutritional standards. The AI agent operated as an impartial *Algorithmic Oracle*, synthesizing facts in real time. This signals a historic paradigm shift in digital public relations: future state communication strategies will not merely interact with human journalists or influencers, but must contend with autonomous algorithms operating as primary epistemic gatekeepers in the network.
 
 ### 5.4 Sarcasm as Rhetorical Counter-Surveillance
-The identification of 315 validated sarcastic tweets ($9.28\%$) and 181 sharp binary contradictions reflects the tactical adaptation of Indonesian digital rhetoric. Facing potential legal consequences under defamation and electronic information laws (UU ITE), citizens weaponized *Pretense Theory* (Clark & Gerrig, 1984). Netizens praised the program's 'luxury' while attaching emojis indicating nausea (🤮) or foolishness (🤡). This semiotic incongruity served as an effective cloaking mechanism against automated sentiment tracking systems that rely on superficial keyword dictionaries, preserving critical dissent within algorithmic public spheres.
+The identification of 315 validated sarcastic tweets ($9.28\\%$) and 181 sharp binary contradictions reflects the tactical adaptation of Indonesian digital rhetoric. Facing potential legal consequences under defamation and electronic information laws (UU ITE), citizens weaponized *Pretense Theory* (Clark & Gerrig, 1984). Netizens praised the program's 'luxury' while attaching emojis indicating nausea (🤮) or foolishness (🤡). This semiotic incongruity served as an effective cloaking mechanism against automated sentiment tracking systems that rely on superficial keyword dictionaries, preserving critical dissent within algorithmic public spheres.
 
 ---
 
@@ -250,7 +250,7 @@ The identification of 315 validated sarcastic tweets ($9.28\%$) and 181 sharp bi
 
 In compliance with academic rigor, this study identifies five methodological boundaries:
 1. **Demographic Platform Bias:** Data is derived solely from Platform X, which disproportionately represents urban, educated, and politically active demographics; findings cannot be generalized to the entire offline Indonesian populace.
-2. **Class Imbalance in Granular Modeling:** Natural class imbalance in crisis data resulted in low Macro F1 scores for minority emotion classes (Fear, Sadness, Joy), despite high Recall on the dominant Disgust class ($96.92\%$).
+2. **Class Imbalance in Granular Modeling:** Natural class imbalance in crisis data resulted in low Macro F1 scores for minority emotion classes (Fear, Sadness, Joy), despite high Recall on the dominant Disgust class ($96.92\\%$).
 3. **Lexical Aspect Extraction:** Aspect extraction in ABSA utilized curated domain lexicons rather than an end-to-end supervised dependency parser.
 4. **Cross-Platform Omission:** Visual and video-based platforms (TikTok, Instagram) where the physical food was visually documented were not included in this computational pipeline.
 5. **Temporal Horizon:** The study captures the initial rollout phase (January–March 2026); long-term longitudinal shifts in network topology remain unobserved.
@@ -259,7 +259,7 @@ In compliance with academic rigor, this study identifies five methodological bou
 
 ## 8. CONCLUSION
 
-This study mapped the digital crisis of Indonesia's Free Nutritious Meal (MBG) program through an integrated tri-layer computational communication architecture. The empirical findings validate that public resistance was fundamentally driven by a **Phygital Gap**—an irreconcilable discrepancy between the state's polished digital narrative and the substandard physical reality of food delivery. IndoBERT modeling revealed an overwhelming predominance of **Disgust (56.24%)**, while sarcasm detection identified sophisticated linguistic pretense weaponizing incongruous emojis against automated surveillance. Topologically, discourse was paralyzed by near-zero reciprocity ($1.21\%$) and severe hyper-fragmentation ($Q = 0.9837$) across 332 isolated clusters. In the face of an institutional **Power Vacuum**, an artificial intelligence bot (`@grok`) emerged as an **Algorithmic Oracle**, signaling a historic evolution in digital communication where algorithms adjudicate policy truths when physical delivery fails.
+This study mapped the digital crisis of Indonesia's Free Nutritious Meal (MBG) program through an integrated tri-layer computational communication architecture. The empirical findings validate that public resistance was fundamentally driven by a **Phygital Gap**—an irreconcilable discrepancy between the state's polished digital narrative and the substandard physical reality of food delivery. IndoBERT modeling revealed an overwhelming predominance of **Disgust (56.24%)**, while sarcasm detection identified sophisticated linguistic pretense weaponizing incongruous emojis against automated surveillance. Topologically, discourse was paralyzed by near-zero reciprocity ($1.21\\%$) and severe hyper-fragmentation ($Q = 0.9837$) across 332 isolated clusters. In the face of an institutional **Power Vacuum**, an artificial intelligence bot (`@grok`) emerged as an **Algorithmic Oracle**, signaling a historic evolution in digital communication where algorithms adjudicate policy truths when physical delivery fails.
 
 ---
 
