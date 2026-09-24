@@ -1,5 +1,5 @@
 import traceback
-try:
+if True:
     import streamlit as st
     from pathlib import Path
     import pandas as pd
@@ -6689,8 +6689,3 @@ try:
     st.caption(
         f"{available_downloads} file tersedia untuk diunduh."
     )
-
-except Exception as e:
-    import streamlit as st
-    st.error("🚨 **CRITICAL ERROR DETECTED**")
-    st.code(traceback.format_exc())
