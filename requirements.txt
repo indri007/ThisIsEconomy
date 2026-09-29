@@ -13,3 +13,12 @@ openpyxl>=3.1.0
 python-dotenv>=1.0.1
 requests
 
+# === NLP / IndoBERT / HuggingFace ===
+transformers>=4.40.0
+torch>=2.0.0
+datasets>=2.18.0
+evaluate>=0.4.0
+accelerate>=0.29.0
+huggingface_hub>=0.22.0
+sentencepiece>=0.1.99
+
