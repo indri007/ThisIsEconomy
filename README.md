@@ -36,6 +36,7 @@
 [![ABSA](https://img.shields.io/badge/ABSA-Thematic_Analysis-EAB308?style=for-the-badge)](notebooks/)
 [![License: Dual](https://img.shields.io/badge/License-MIT_%26_CC--BY_4.0-10B981?style=for-the-badge)](LICENSE)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0002--8419--7231-A6CE39?style=for-the-badge&logo=orcid&logoColor=white)](https://orcid.org)
+[![Figshare](https://img.shields.io/badge/Figshare-Author_25113948-3489EB?style=for-the-badge&logo=figshare&logoColor=white)](https://figshare.com/authors/Indri_Anjar_Kartika_Sari/25113948)
 [![Open Access](https://img.shields.io/badge/Open_Access-Gold_OA-F68212?style=for-the-badge&logo=openaccess&logoColor=white)](https://github.com/indri007/ThisIsEconomy)
 [![Cite](https://img.shields.io/badge/Cite-CITATION.cff-6366F1?style=for-the-badge&logo=github)](CITATION.cff)
 
@@ -1397,7 +1398,7 @@ Profesional yang *hasil-oriented*, bertransisi ke bidang **AI Engineering** sete
 ---
 
 ### 📑 Rekam Jejak Publikasi Jurnal Ilmiah & Bukti Penerimaan (Letter of Acceptance / LoA)
-Selain naskah publikasi Tesis MBG (*Social Network Analysis and Mining* Springer Indonesia Emas & *Mediator* SINTA 2), peneliti telah menerima **2 Letter of Acceptance (LoA)** dari jurnal ilmiah bereputasi:
+Selain naskah publikasi Tesis MBG (*Social Network Analysis and Mining* Springer Indonesia Emas & *Mediator* SINTA 2), peneliti memiliki **4 publikasi jurnal ilmiah terindeks** serta **Letter of Acceptance (LoA)** resmi:
 
 1. **Analisis Jaringan Sosial Triliunan Rupiah Makan Bergizi Gratis Di Media Sosial X**  
    - **Tim Penulis:** Indri Anjar Kartika Sari¹*, Dr. Catur Suratnoaji, M.Si.², Dr. Agus Widiyarta, S.Sos., M.Si.³  
@@ -1416,14 +1417,45 @@ Selain naskah publikasi Tesis MBG (*Social Network Analysis and Mining* Springer
    - **Sitasi Baku (APA 7th):**  
      *Sari, I. A. K. (2026). JobsMatchAI: Platform Generative AI End-to-End untuk Pencocokan Kerja Semantik dan Dukungan Karier di Pasar Tenaga Kerja Indonesia. Integrative Perspectives of Social and Science Journal, 3(09 September), 333–340. https://ipssj.com/index.php/ojs/article/view/2024*
 
+3. **Keamanan dan Privasi Sistem Absensi Siswa Berbasis Biometrik dan Geolokasi: Tinjauan Sistematis Prisma 2020 dan Studi Kasus Audit Sistem Open-Source**  
+   - **Tim Penulis:** Indri Anjar Kartika Sari¹*, Onno W. Purbo², Eldiana Tri Narulita³, Ni Ketut Pande Sarjani⁴, Ni Ketut Rini Astuti⁵  
+   - **Afiliasi:** S1 Cyber Security IDS Digital College STMIK Indo Daya Suvana, Institut Teknologi Tangerang Selatan (ITTS), dan Desain Komunikasi Visual FSRD ISI Bali  
+   - **Jurnal:** *Integrative Perspectives of Social and Science Journal* (IPSSJ) | **E-ISSN:** `3064-4011`  
+   - **Edisi & Halaman:** Vol. 3 No. 09 September (2026), Halaman 768–775 | **Terbit:** 28 September 2026  
+   - **Akses Berkas Publikasi:** [🌐 Laman OJS](https://ipssj.com/index.php/ojs/article/view/2060) \| [📥 Unduh PDF OJS](https://ipssj.com/index.php/ojs/article/download/2060/1909) \| [📄 PDF Repositori](docs/references/IPSSJ_2060_Keamanan_Privasi_Absensi_Biometrik.pdf)  
+   - **Sitasi Baku (APA 7th):**  
+     *Sari, I. A. K., Purbo, O. W., Narulita, E. T., Sarjani, N. K. P., & Astuti, N. K. R. (2026). Keamanan dan Privasi Sistem Absensi Siswa Berbasis Biometrik dan Geolokasi: Tinjauan Sistematis Prisma 2020 dan Studi Kasus Audit Sistem Open-Source. Integrative Perspectives of Social and Science Journal, 3(09 September), 768–775. https://ipssj.com/index.php/ojs/article/view/2060*
+
+4. **Silent Authority dan Paradigma Branding Iceberg: Analisis Strategi Komunikasi Digital NVIDIA di Platform TikTok dalam Era Marketing 5.0**  
+   - **Tim Penulis:** Indri Anjar Kartika Sari¹*, Agung Budi Prasetio², Waspodo Tjipto Subroto³  
+   - **Afiliasi:** Magister Ilmu Komunikasi UPN "Veteran" Jawa Timur, Institut Teknologi Tangerang Selatan (ITTS), dan FEB Universitas Negeri Surabaya (UNESA)  
+   - **Jurnal:** *Integrative Perspectives of Social and Science Journal* (IPSSJ) | **E-ISSN:** `3064-4011`  
+   - **Edisi & Halaman:** Vol. 3 No. 09 September (2026), Halaman 788–799 | **Terbit:** 28 September 2026  
+   - **Akses Berkas Publikasi:** [🌐 Laman OJS](https://ipssj.com/index.php/ojs/article/view/2074) \| [📥 Unduh PDF OJS](https://ipssj.com/index.php/ojs/article/download/2074/1911) \| [📄 PDF Repositori](docs/references/IPSSJ_2074_Silent_Authority_NVIDIA_TikTok.pdf)  
+   - **Sitasi Baku (APA 7th):**  
+     *Sari, I. A. K., Prasetio, A. B., & Subroto, W. T. (2026). Silent Authority dan Paradigma Branding Iceberg: Analisis Strategi Komunikasi Digital NVIDIA di Platform TikTok dalam Era Marketing 5.0. Integrative Perspectives of Social and Science Journal, 3(09 September), 788–799. https://ipssj.com/index.php/ojs/article/view/2074*
+
 ---
 
-### 📢 Diseminasi Publik Resmi di LinkedIn & Liputan Media Massa (Portal JTV)
-Riset tesis MBG ini telah diseminasi secara resmi oleh peneliti ke jejaring akademik dan publik melalui LinkedIn, serta diliput secara luas oleh media massa:
-- 🔗 **Post Diseminasi Resmi LinkedIn:** [37% of MBG Conversations on X Carry a Tone of Sarcasm — What Are People Really Saying?](https://lnkd.in/p/g9-VgRjH)
-- 📰 **Liputan Berita Media (Portal JTV):**
-  - Artikel 1: [Riset Komputasional Sentimen MBG di Media Sosial X](https://lnkd.in/g-2Tgsha)
-  - Artikel 2: [Analisis IndoBERT & Social Network Analysis Wacana Publik](https://lnkd.in/gaZc9Y_J)
+### 📢 Diseminasi Publik Resmi, Repositori Terbuka & Liputan Media Nasional
+
+Riset tesis MBG ini telah diseminasi secara resmi oleh peneliti ke jejaring akademik global dan publik, serta diliput secara luas oleh media massa nasional:
+
+- 📰 **Liputan Media Massa Nasional — Jawa Pos (21 September 2026):**  
+  👉 **[Verifikasi Informasi MBG di Media Sosial Kini Didominasi Akun AI](https://www.jawapos.com/teknologi/2609210065/verifikasi-informasi-mbg-di-media-sosial-kini-didominasi-akun-ai)**  
+  *Liputan komprehensif Jawa Pos atas hasil riset tesis UPN Veteran Jatim oleh Indri Anjar Kartika Sari dkk., menyoroti fenomena **Algorithmic Trust** di mana agen AI @grok menjadi simpul verifikator sentral informasi MBG di platform X di tengah fragmentasi tinggi (modularity 0,9837).*
+
+- 🔬 **Profil Peneliti & Repositori Terbuka Figshare:**  
+  👉 **[Indri Anjar Kartika Sari — Figshare Author Profile (ID: 25113948)](https://figshare.com/authors/Indri_Anjar_Kartika_Sari/25113948)**  
+  *Repositori data penelitian terbuka, preprint, dan dataset komputasional terverifikasi.*
+
+- 🔗 **Post Diseminasi Resmi LinkedIn:**  
+  [37% of MBG Conversations on X Carry a Tone of Sarcasm — What Are People Really Saying?](https://lnkd.in/p/g9-VgRjH)
+
+- 📰 **Liputan Berita Media Daerah (Portal JTV):**  
+  - Artikel 1: [Riset Komputasional Sentimen MBG di Media Sosial X](https://lnkd.in/g-2Tgsha)  
+  - Artikel 2: [Analisis IndoBERT & Social Network Analysis Wacana Publik](https://lnkd.in/gaZc9Y_J)  
+
 > *"Our research found that more than 37% of MBG-related conversations on X contained a sarcastic or satirical tone—a finding that raises an important question: What lies behind these digital expressions? ... Sometimes, the most interesting story is not what people say—but how they say it."* — **Indri Anjar Kartika Sari**
 
 ---
