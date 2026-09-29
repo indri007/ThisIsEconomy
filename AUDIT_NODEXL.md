@@ -2,7 +2,7 @@
 ## Indri Anjar Kartika Sari — MBG (Makan Bergizi Gratis) Social Network Analysis
 
 > **Tanggal Audit:** 22 September 2026  
-> **Repository:** [INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)  
+> **Repository:** [ThisIsEconomy](https://github.com/indri007/ThisIsEconomy)  
 > **Paradigma Riset:** Computational Social Science (CNA × IndoBERT 9 Emosi)  
 > **Teori Utama:** Situational Crisis Communication Theory & Phygital Gap (Kotler)
 

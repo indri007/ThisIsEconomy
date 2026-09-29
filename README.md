@@ -11,14 +11,14 @@
 <!-- MULTI-LANGUAGE TRANSLATION SWITCHER -->
 <p align="center">
   <b>🌐 Select Language / Pilih Bahasa:</b><br/>
-  <a href="https://translate.google.com/translate?sl=id&tl=en&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/English-🇬🇧_Translate-1d4ed8?style=flat-square" alt="Translate to English"/></a> &nbsp;
-  <a href="https://translate.google.com/translate?sl=id&tl=ja&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/日本語-🇯🇵_翻訳-b91c1c?style=flat-square" alt="Translate to Japanese"/></a> &nbsp;
-  <a href="https://translate.google.com/translate?sl=id&tl=zh-CN&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/中文-🇨🇳_翻译-ca8a04?style=flat-square" alt="Translate to Chinese"/></a> &nbsp;
-  <a href="https://translate.google.com/translate?sl=id&tl=ar&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/العربية-🇸🇦_ترجمة-15803d?style=flat-square" alt="Translate to Arabic"/></a> &nbsp;
-  <a href="https://translate.google.com/translate?sl=id&tl=es&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/Español-🇪🇸_Traducir-c2410c?style=flat-square" alt="Translate to Spanish"/></a> &nbsp;
-  <a href="https://translate.google.com/translate?sl=id&tl=de&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/Deutsch-🇩🇪_Übersetzen-374151?style=flat-square" alt="Translate to German"/></a> &nbsp;
-  <a href="https://translate.google.com/translate?sl=id&tl=fr&u=https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/Français-🇫🇷_Traduire-6b21a8?style=flat-square" alt="Translate to French"/></a> &nbsp;
-  <a href="https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA"><img src="https://img.shields.io/badge/Bahasa_Indonesia-🇮🇩_Asli-047857?style=flat-square" alt="Bahasa Indonesia Asli"/></a>
+  <a href="https://translate.google.com/translate?sl=id&tl=en&u=https://github.com/indri007/ThisIsEconomy"><img src="https://img.shields.io/badge/English-🇬🇧_Translate-1d4ed8?style=flat-square" alt="Translate to English"/></a> &nbsp;
+  <a href="https://translate.google.com/translate?sl=id&tl=ja&u=https://github.com/indri007/ThisIsEconomy"><img src="https://img.shields.io/badge/日本語-🇯🇵_翻訳-b91c1c?style=flat-square" alt="Translate to Japanese"/></a> &nbsp;
+  <a href="https://translate.google.com/translate?sl=id&tl=zh-CN&u=https://github.com/indri007/ThisIsEconomy"><img src="https://img.shields.io/badge/中文-🇨🇳_翻译-ca8a04?style=flat-square" alt="Translate to Chinese"/></a> &nbsp;
+  <a href="https://translate.google.com/translate?sl=id&tl=ar&u=https://github.com/indri007/ThisIsEconomy"><img src="https://img.shields.io/badge/العربية-🇸🇦_ترجمة-15803d?style=flat-square" alt="Translate to Arabic"/></a> &nbsp;
+  <a href="https://translate.google.com/translate?sl=id&tl=es&u=https://github.com/indri007/ThisIsEconomy"><img src="https://img.shields.io/badge/Español-🇪🇸_Traducir-c2410c?style=flat-square" alt="Translate to Spanish"/></a> &nbsp;
+  <a href="https://translate.google.com/translate?sl=id&tl=de&u=https://github.com/indri007/ThisIsEconomy"><img src="https://img.shields.io/badge/Deutsch-🇩🇪_Übersetzen-374151?style=flat-square" alt="Translate to German"/></a> &nbsp;
+  <a href="https://translate.google.com/translate?sl=id&tl=fr&u=https://github.com/indri007/ThisIsEconomy"><img src="https://img.shields.io/badge/Français-🇫🇷_Traduire-6b21a8?style=flat-square" alt="Translate to French"/></a> &nbsp;
+  <a href="https://github.com/indri007/ThisIsEconomy"><img src="https://img.shields.io/badge/Bahasa_Indonesia-🇮🇩_Asli-047857?style=flat-square" alt="Bahasa Indonesia Asli"/></a>
   <br/>
   <sub><i>💡 Click any badge above to automatically translate this entire repository into your language.</i></sub>
 </p>
@@ -36,7 +36,7 @@
 [![ABSA](https://img.shields.io/badge/ABSA-Thematic_Analysis-EAB308?style=for-the-badge)](notebooks/)
 [![License: Dual](https://img.shields.io/badge/License-MIT_%26_CC--BY_4.0-10B981?style=for-the-badge)](LICENSE)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0002--8419--7231-A6CE39?style=for-the-badge&logo=orcid&logoColor=white)](https://orcid.org)
-[![Open Access](https://img.shields.io/badge/Open_Access-Gold_OA-F68212?style=for-the-badge&logo=openaccess&logoColor=white)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)
+[![Open Access](https://img.shields.io/badge/Open_Access-Gold_OA-F68212?style=for-the-badge&logo=openaccess&logoColor=white)](https://github.com/indri007/ThisIsEconomy)
 [![Cite](https://img.shields.io/badge/Cite-CITATION.cff-6366F1?style=for-the-badge&logo=github)](CITATION.cff)
 
 <br/>
@@ -184,8 +184,8 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
 * **Temuan Kunci:** Emosi **Disgust (Jijik)** mendominasi secara absolut dengan **56,24% (2.960 cuitan)**, mencerminkan resistensi viseral terhadap menu fisik MBG.
 * **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
 <div align="center">
-  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png" width="85%" alt="Distribusi 9 Emosi IndoBERT"/>
+  <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/emotion_distribution.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/emotion_distribution.png" width="85%" alt="Distribusi 9 Emosi IndoBERT"/>
   </a>
   <br/>
   <sub><b>Gambar D1:</b> Visualisasi Distribusi 9 Emosi Hasil Inferensi IndoBERT (Disgust 56,24%, Trust 20,39%, Neutral 12,33%, Anticipation 9,60%). Klik gambar untuk membuka resolusi penuh.</sub>
@@ -204,8 +204,8 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
 * **Temuan Kunci:** Teridentifikasi 181 cuitan dengan pola oposisi biner tajam (misal leksikon pujian semu *"mewah/bergizi"* yang dipadukan dengan konteks keluhan porsi minim atau emoji ejekan 🤡, 🤮, 🗿).
 * **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
 <div align="center">
-  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png" width="85%" alt="Karakteristik Majas Sindiran"/>
+  <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/3_sarcasm.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/3_sarcasm.png" width="85%" alt="Karakteristik Majas Sindiran"/>
   </a>
   <br/>
   <sub><b>Gambar D2:</b> Visualisasi Validasi Majas Sindiran & Kontradiksi Semantik Teks-Emoji (N=3.395, 315 Sindiran Valid 9,28%). Klik gambar untuk membuka resolusi penuh.</sub>
@@ -218,8 +218,8 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
 * **Kamus Variabel (*Data Dictionary*):** Memuat seluruh metadata keterlibatan warganet (`like_count`, `retweet_count`, `reply_count`, `quote_count`, `view_count`), teks asli (`text`), teks terfilter (`clean_text`), dan teks ternormalisasi (`processed_text`).
 * **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
 <div align="center">
-  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/2_dataset_characteristics.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/2_dataset_characteristics.png" width="85%" alt="Karakteristik Dataset & Tahap Preprocessing"/>
+  <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/2_dataset_characteristics.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/2_dataset_characteristics.png" width="85%" alt="Karakteristik Dataset & Tahap Preprocessing"/>
   </a>
   <br/>
   <sub><b>Gambar D3:</b> Karakteristik Korpus Data dari Mentah Scraped (N=5.310) hingga Korpus Bersih Preprocessing (N=5.309). Klik gambar untuk membuka resolusi penuh.</sub>
@@ -232,8 +232,8 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
 * **Kamus Variabel (*Data Dictionary*):** Memuat teks mentah, teks bersih, label anotasi emosi manusia (*ground truth*), metadata waktu, metrik keterlibatan, dan skor agregat interaksi (*engagement score*).
 * **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
 <div align="center">
-  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png" width="80%" alt="Wordcloud Leksikon MBG"/>
+  <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/wordcloud_mbg.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/wordcloud_mbg.png" width="80%" alt="Wordcloud Leksikon MBG"/>
   </a>
   <br/>
   <sub><b>Gambar D4:</b> Wordcloud 120 Leksikon Paling Signifikan dalam Korpus Teranotasi MBG. Klik gambar untuk membuka resolusi penuh.</sub>
@@ -249,8 +249,8 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
 * **Temuan Kunci:** Kepadatan jaringan sangat renggang (*Density = 0.0011*) dengan tingkat timbal-balik (*Reciprocity*) hanya **1,21%**, membuktikan pola komunikasi yang terjadi bersifat searah (*one-way broadcast*).
 * **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
 <div align="center">
-  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png" width="85%" alt="Graf Global Jaringan Komunikasi CNA"/>
+  <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/6_global_network.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/6_global_network.png" width="85%" alt="Graf Global Jaringan Komunikasi CNA"/>
   </a>
   <br/>
   <sub><b>Gambar D5:</b> Topologi Graf Global Jaringan Komunikasi MBG (971 Nodes, 666 Directed Edges, Kepadatan 0.0011, Resiprositas 1,21%). Klik gambar untuk membuka resolusi penuh.</sub>
@@ -270,8 +270,8 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
 * **Temuan Kunci:** Skor modularitas graf mencapai **$Q = 0.9837$** (mendekati batas teoritis 1.0), membuktikan fragmentasi wacana ke dalam **332 komunitas terisolasi**.
 * **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
 <div align="center">
-  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png" width="85%" alt="Graf Komunitas Louvain & Emosi"/>
+  <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/9_emotion_network.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/9_emotion_network.png" width="85%" alt="Graf Komunitas Louvain & Emosi"/>
   </a>
   <br/>
   <sub><b>Gambar D6:</b> Partisi Komunitas Louvain (Q = 0.9837, 332 Klaster) yang Ditumpangkan dengan Sebaran Emosi Dominan. Klik gambar untuk membuka resolusi penuh.</sub>
@@ -287,8 +287,8 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
 * **Temuan Kunci:** Membuktikan fenomena *Algorithmic Oracle* (`@grok`, Out-degree = 42) yang menggantikan peran lembaga pemerintah di tengah kekosongan komunikasi (*Power Vacuum* `@prabowo`, In-degree = 15, Out-degree = 0).
 * **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
 <div align="center">
-  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png" width="85%" alt="Peringkat Sentralitas Derajat Aktor"/>
+  <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/top_actors.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/top_actors.png" width="85%" alt="Peringkat Sentralitas Derajat Aktor"/>
   </a>
   <br/>
   <sub><b>Gambar D7:</b> Peringkat Sentralitas Derajat Aktor Membuktikan Asimetri Kekuasaan (@grok Out=42 vs @prabowo In=15, Out=0). Klik gambar untuk membuka resolusi penuh.</sub>
@@ -307,8 +307,8 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
 * **Temuan Kunci:** Sentimen penolakan terbukti berkonsentrasi pada aspek operasional fisik: Logistik (**78,91% Disgust**), Anggaran (**77,01% Disgust**), dan Kualitas Gizi (**71,13% Disgust**).
 * **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
 <div align="center">
-  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png" width="85%" alt="Visualisasi Sentimen Berbasis Aspek"/>
+  <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/10_absa_thematic.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/10_absa_thematic.png" width="85%" alt="Visualisasi Sentimen Berbasis Aspek"/>
   </a>
   <br/>
   <sub><b>Gambar D8:</b> Pembuktian Empiris Phygital Gap pada 3 Aspek Fisik (Logistik 78,91% Disgust, Anggaran 77,01% Disgust, Mutu Gizi 71,13% Disgust). Klik gambar untuk membuka resolusi penuh.</sub>
@@ -326,8 +326,8 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
   - `support` (*int64*): Jumlah data uji aktual per-kelas pada populasi $n=1.053$.
 * **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
 <div align="center">
-  <a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png" width="85%" alt="Confusion Matrix IndoBERT"/>
+  <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/confusion_matrix.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/confusion_matrix.png" width="85%" alt="Confusion Matrix IndoBERT"/>
   </a>
   <br/>
   <sub><b>Gambar D9:</b> Confusion Matrix Klasifikasi Emosi IndoBERT pada Data Uji Riil (n=1.053). Klik gambar untuk membuka resolusi penuh.</sub>
@@ -343,12 +343,12 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
 import pandas as pd
 
 # 1. Membaca korpus hasil inferensi 9 emosi IndoBERT (5.263 baris)
-url_emosi = "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/indobert_9_emosi_fixed.csv"
+url_emosi = "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/results/indobert_9_emosi_fixed.csv"
 df_emosi = pd.read_csv(url_emosi)
 print("Distribusi Emosi Teratas:\n", df_emosi['predicted_emotion'].value_counts(normalize=True) * 100)
 
 # 2. Membaca matriks relasi interaksi SNA untuk pembuatan graf NetworkX
-url_edges = "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sna/network_edges.csv"
+url_edges = "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/sna/network_edges.csv"
 df_edges = pd.read_csv(url_edges)
 print(f"\nTotal Directed Edges: {len(df_edges):,} relasi interaksi.")
 ```
@@ -359,7 +359,7 @@ library(readr)
 library(dplyr)
 
 # Membaca dataset sindiran langsung dari GitHub
-url_sindiran <- "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sarcasm/dataset_sindiran_valid.csv"
+url_sindiran <- "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/sarcasm/dataset_sindiran_valid.csv"
 df_sindiran <- read_csv(url_sindiran)
 table(df_sindiran$sindiran)
 ```
@@ -367,7 +367,7 @@ table(df_sindiran$sindiran)
 #### C. Menggunakan Terminal / CLI (cURL / Wget):
 ```bash
 # Unduh korpus emosi secara instan ke direktori lokal
-curl -O https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/indobert_9_emosi_fixed.csv
+curl -O https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/results/indobert_9_emosi_fixed.csv
 ```
 
 ---
@@ -437,16 +437,17 @@ DIGITAL PROMISE (Government)      vs      PHYSICAL REALITY (Public)
 ### 🌐 Tabel Tautan Langsung Unduh Data (*GitHub Raw API*):
 | No | Nama Dataset / File | Format | Volume Data | Status Missing Value | Unduh Dataset Publik | Visualisasi Bukti Grafis (*Resolusi Tinggi 300 DPI*) |
 | :---: | :--- | :---: | :---: | :---: | :--- | :--- |
-| **1** | **Dataset 9 Emosi IndoBERT (Fixed)** | CSV | 5.263 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/indobert_9_emosi_fixed.csv) | [🖼️ Lihat Plot Distribusi Emosi](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png) |
-| **2** | **Dataset Deteksi Sindiran & Sarkasme** | CSV | 3.395 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sarcasm/dataset_sindiran_valid.csv) | [🖼️ Lihat Plot Validasi Sindiran](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png) |
-| **3** | **Dataset Bersih Pasca-Preprocessing** | CSV | 5.309 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/processed/data_clean.csv) | [🖼️ Lihat Plot Alur Preprocessing](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/2_dataset_characteristics.png) |
-| **4** | **Dataset Benchmark Anotasi Emosi MBG** | Excel (`.xlsx`) | 3.395 baris | 0 Anomali Kritis | [`📥 Unduh Excel`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/emotion/mbg_tweets_indobert_ready.xlsx) | [🖼️ Lihat Wordcloud Leksikon MBG](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png) |
-| **5** | **Relasi Jaringan Komunikasi (Edges - CNA/SNA)** | CSV | 692 interaksi (666 unik) | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/sna/network_edges.csv) | [🖼️ Lihat Graf Global Jaringan CNA](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png) |
-| **6** | **Partisi Node & Komunitas Louvain** | CSV | 971 node terklaster | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/mbg_network_nodes_final.csv) | [🖼️ Lihat Graf Komunitas & Emosi](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png) |
-| **7** | **Peringkat Sentralitas Derajat Aktor** | CSV | 986 aktor terindeks | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/data/results/sna_degree.csv) | [🖼️ Lihat Plot Asimetri Aktor](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png) |
-| **8** | **Sentimen Berbasis Aspek (ABSA 3 Tema)** | CSV | 3 pilar tematik fisik | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/absa_results.csv) | [🖼️ Lihat Plot 3 Pilar Phygital Gap](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png) |
-| **9** | **Laporan Metrik Evaluasi Model IndoBERT** | CSV | 10 baris metrik resmi | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/classification_report.csv) | [🖼️ Lihat Confusion Matrix Model](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png) |
-| **10** | **Visual Keterbatasan Penelitian (Bab V)** | PNG 300 DPI | Resolusi Ultra-HD | Gambar Orisinal 1.1 MB | [`📥 Unduh PNG HD`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png) | [🖼️ Lihat Radar Chart 5 Keterbatasan](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png) |
+| **1** | **Master Dataset MBG Bersih (Unified Corpus)** | CSV / Parquet | 9.310 cuitan unik | 100% Bebas Duplikat & Lengkap | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/processed/mbg_tweets_master_clean.csv) \| [`📥 Parquet`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/processed/mbg_tweets_master_clean.parquet) | [🖼️ Lihat Visualisasi NodeXL](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/figures/16_nodexl_graph_visualization.png) |
+| **2** | **Dataset 9 Emosi IndoBERT (Fixed)** | CSV | 5.263 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/results/indobert_9_emosi_fixed.csv) | [🖼️ Lihat Plot Distribusi Emosi](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/emotion_distribution.png) |
+| **3** | **Dataset Deteksi Sindiran & Sarkasme** | CSV | 3.395 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/sarcasm/dataset_sindiran_valid.csv) | [🖼️ Lihat Plot Validasi Sindiran](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/3_sarcasm.png) |
+| **4** | **Dataset Bersih Pasca-Preprocessing** | CSV | 5.309 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/processed/data_clean.csv) | [🖼️ Lihat Plot Alur Preprocessing](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/2_dataset_characteristics.png) |
+| **5** | **Dataset Benchmark Anotasi Emosi MBG** | Excel (`.xlsx`) | 3.395 baris | 0 Anomali Kritis | [`📥 Unduh Excel`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/emotion/mbg_tweets_indobert_ready.xlsx) | [🖼️ Lihat Wordcloud Leksikon MBG](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/wordcloud_mbg.png) |
+| **6** | **Relasi Jaringan Komunikasi (Edges - CNA/SNA)** | CSV | 692 interaksi (666 unik) | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/sna/network_edges.csv) | [🖼️ Lihat Graf Global Jaringan CNA](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/6_global_network.png) |
+| **7** | **Partisi Node & Komunitas Louvain** | CSV | 971 node terklaster | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/mbg_network_nodes_final.csv) | [🖼️ Lihat Graf Komunitas & Emosi](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/9_emotion_network.png) |
+| **8** | **Peringkat Sentralitas Derajat Aktor** | CSV | 986 aktor terindeks | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/results/sna_degree.csv) | [🖼️ Lihat Plot Asimetri Aktor](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/top_actors.png) |
+| **9** | **Sentimen Berbasis Aspek (ABSA 3 Tema)** | CSV | 3 pilar tematik fisik | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/absa_results.csv) | [🖼️ Lihat Plot 3 Pilar Phygital Gap](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/10_absa_thematic.png) |
+| **10** | **Laporan Metrik Evaluasi Model IndoBERT** | CSV | 10 baris metrik resmi | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/classification_report.csv) | [🖼️ Lihat Confusion Matrix Model](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/confusion_matrix.png) |
+| **11** | **Visual Keterbatasan Penelitian (Bab V)** | PNG 300 DPI | Resolusi Ultra-HD | Gambar Orisinal 1.1 MB | [`📥 Unduh PNG HD`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/keterbatasan_penelitian.png) | [🖼️ Lihat Radar Chart 5 Keterbatasan](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/keterbatasan_penelitian.png) |
 
 ---
 
@@ -456,19 +457,24 @@ DIGITAL PROMISE (Government)      vs      PHYSICAL REALITY (Public)
 
 | No | Dokumen Akademik | Format | Target Publikasi / Kategori Standar | Akses Berkas Langsung (*Direct Download*) |
 | :---: | :--- | :---: | :--- | :--- |
-| **1** | **Manuskrip Lengkap Indonesia Emas (Full Authors)** | Word (`.docx`) | *Social Network Analysis and Mining* (Springer Q1) | [`📥 Unduh DOCX Manuskrip Q1`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
-| **2** | **Naskah Anonim Indonesia Emas (*Blind Review*)** | Word (`.docx`) | Standar *Double-Blind Peer Review* (Bebas Identitas Penulis) | [`📥 Unduh DOCX Naskah Anonim`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx) |
-| **3** | **Halaman Judul Terpisah (*Title Page*)** | Word (`.docx`) | Berkas Terpisah: Nama, Afiliasi, ORCID & Kontak Editor | [`📥 Unduh DOCX Title Page`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx) |
-| **4** | **Surat Pengantar Editor (*Cover Letter*)** | Word (`.docx`) | Surat Resmi ke Editor-in-Chief Springer SNAM (Prof. Reda Alhajj) | [`📥 Unduh DOCX Cover Letter`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Cover_Letter_Springer_SNAM.docx) |
-| **5** | **Rekomendasi Reviewer (*Suggested Reviewers*)** | Word (`.docx`) | 4 Pakar Internasional Bebas Konflik Kepentingan (Springer Portal) | [`📥 Unduh DOCX Reviewers`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Suggested_Reviewers.docx) |
-| **6** | **Draf Manuskrip IMRaD Indonesia Emas** | Markdown (`.md`) | Open Science Computational Communication Standard | [`📥 Unduh RAW Markdown`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/manuscript_jurnal.md) \| [`👁️ Baca Online`](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/manuscript/manuscript_jurnal.md) |
-| **7** | **Manuskrip Jurnal SINTA 2 (*Mediator*)** | Word (`.docx`) | *Mediator: Jurnal Komunikasi* (SINTA 2, Terakreditasi Nasional) | [`📥 Unduh DOCX Mediator SINTA 2`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
-| **8** | **Naskah Lengkap Tesis Magister (Bab I–V)** | Word (`.docx`) | Magister Ilmu Komunikasi UPN Veteran Jatim (Format Sidang) | [`📥 Unduh DOCX Tesis Lengkap`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/Tesis_Indri_Anjar_Kartika_Sari.docx) |
-| **9** | **Transkrip Teks Lengkap Tesis** | Teks (`.txt`) | Transparansi Teks Penuh & Audit Sitasi Mandiri | [`📥 Unduh TXT Tesis`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/tesis_text.txt) \| [`👁️ Baca Online`](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/tesis_text.txt) |
-| **10** | **Buku Kerja Resmi NodeXL Pro** | Excel (`.xlsx`) | Format Baku NodeXL Pro (Edges, Vertices, Groups, Overall Metrics) | [`📥 Unduh XLSX NodeXL`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/NodeXL_MBG_Tesis_Indri_Anjar.xlsx) \| [`☁️ Sesi Cloud Streaming`](https://www.nodexlgraphgallery.org/Pages/Cloud.aspx?token=c1d8d71236e1cae9628f0b5c7a55b581) |
+| **1** | **Manuskrip Lengkap Indonesia Emas (Full Authors)** | Word (`.docx`) | *Social Network Analysis and Mining* (Springer Q1) | [`📥 Unduh DOCX Manuskrip Q1`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
+| **2** | **Naskah Anonim Indonesia Emas (*Blind Review*)** | Word (`.docx`) | Standar *Double-Blind Peer Review* (Bebas Identitas Penulis) | [`📥 Unduh DOCX Naskah Anonim`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx) |
+| **3** | **Halaman Judul Terpisah (*Title Page*)** | Word (`.docx`) | Berkas Terpisah: Nama, Afiliasi, ORCID & Kontak Editor | [`📥 Unduh DOCX Title Page`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx) |
+| **4** | **Surat Pengantar Editor (*Cover Letter*)** | Word (`.docx`) | Surat Resmi ke Editor-in-Chief Springer SNAM (Prof. Reda Alhajj) | [`📥 Unduh DOCX Cover Letter`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/Cover_Letter_Springer_SNAM.docx) |
+| **5** | **Rekomendasi Reviewer (*Suggested Reviewers*)** | Word (`.docx`) | 4 Pakar Internasional Bebas Konflik Kepentingan (Springer Portal) | [`📥 Unduh DOCX Reviewers`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/Suggested_Reviewers.docx) |
+| **6** | **Draf Manuskrip IMRaD Indonesia Emas** | Markdown (`.md`) | Open Science Computational Communication Standard | [`📥 Unduh RAW Markdown`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/manuscript_jurnal.md) \| [`👁️ Baca Online`](https://github.com/indri007/ThisIsEconomy/blob/main/manuscript/manuscript_jurnal.md) |
+| **7** | **Manuskrip Jurnal SINTA 2 (*Mediator*)** | Word (`.docx`) | *Mediator: Jurnal Komunikasi* (SINTA 2, Terakreditasi Nasional) | [`📥 Unduh DOCX Mediator SINTA 2`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
+| **8** | **Naskah Lengkap Tesis Magister (Bab I–V)** | Word (`.docx`) | Magister Ilmu Komunikasi UPN Veteran Jatim (Format Sidang) | [`📥 Unduh DOCX Tesis Lengkap`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/Tesis_Indri_Anjar_Kartika_Sari.docx) |
+| **9** | **Transkrip Teks Lengkap Tesis** | Teks (`.txt`) | Transparansi Teks Penuh & Audit Sitasi Mandiri | [`📥 Unduh TXT Tesis`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/tesis_text.txt) \| [`👁️ Baca Online`](https://github.com/indri007/ThisIsEconomy/blob/main/tesis_text.txt) |
+| **10** | **Buku Kerja Resmi NodeXL Pro** | Excel (`.xlsx`) | Format Baku NodeXL Pro (Edges, Vertices, Groups, Overall Metrics) | [`📥 Unduh XLSX NodeXL`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/NodeXL_MBG_Tesis_Indri_Anjar.xlsx) \| [`☁️ Sesi Cloud Streaming`](https://www.nodexlgraphgallery.org/Pages/Cloud.aspx?token=c1d8d71236e1cae9628f0b5c7a55b581) |
+| **11** | **Draft Bab IV Hasil & Pembahasan Tesis** | Word (`.docx`) | Naskah Pembahasan & Analisis Data Empiris Lengkap | [`📥 Unduh DOCX Bab IV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/drafts/BAB_IV_HASIL_DAN_PEMBAHASAN_DRAFT.docx) |
+| **12** | **Draft Bab III Metode Penelitian Rapi** | Word (`.docx`) | Metodologi CNA, IndoBERT & Sarcasm Detection | [`📥 Unduh DOCX Bab III`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/drafts/BAB_III_METODE_PENELITIAN_RAPI.docx) |
+| **13** | **Slide Presentasi Sidang Tesis** | PDF (`.pdf`) | Materi Slide Ujian / Sidang Tesis Magister | [`📥 Unduh PDF Slide Sidang`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/docs/presentation/presentasi_tesis_indri_sidang.pdf) |
+| **14** | **Pedoman Penulisan Tesis MIKOM 2025** | PDF (`.pdf`) | Buku Pedoman Resmi Penulisan Tesis MIKOM UPN | [`📥 Unduh PDF Pedoman`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/docs/pedoman/PEDOMAN_PENULISAN_TESIS_MIKOM_2025.pdf) |
+| **15** | **Modul Early Warning System & Telegram Bot** | Python (`.py`) | Sistem Deteksi Anomali & Bot Notifikasi Telegram | [`📂 Buka Folder Scripts`](https://github.com/indri007/ThisIsEconomy/tree/main/scripts/paket_mbg) |
 
 ⚡ **Download Seluruh Kode, Data, Naskah & Literatur Sekaligus (.ZIP Langsung):**  
-👉 **[Unduh Arsip Lengkap ZIP Repository (Klik di Sini)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)**
+👉 **[Unduh Arsip Lengkap ZIP Repository (Klik di Sini)](https://github.com/indri007/ThisIsEconomy/archive/refs/heads/main.zip)**
 
 ---
 
@@ -851,123 +857,123 @@ Selain klasifikasi emosi kalimat penuh dengan IndoBERT, riset ini melakukan **an
 
 ### `Figure 01` — Dataset & Pipeline Overview
 📍 *Metodologi §3.5*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/1_pipeline.png" target="_blank">
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/1_pipeline.png" target="_blank">
 <img src="results/1_pipeline.png" width="100%" alt="Figure 01: Dataset & Pipeline Overview"/>
 </a>
 End-to-end pipeline: raw collection ($N=5.310$) → cleaning → validated sarcasm corpus ($N=3.395$) → full inference corpus ($N=5.263$).  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/1_pipeline.png)**
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/1_pipeline.png)**
 
 ---
 
 ### `Figure 02` — Nine Emotion Distribution
 📍 *Hasil NLP §4.5*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png" target="_blank">
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/emotion_distribution.png" target="_blank">
 <img src="results/emotion_distribution.png" width="100%" alt="Figure 02: Nine Emotion Distribution"/>
 </a>
 Diagram batang 9 kelas emosi pada 5.263 cuitan riil. **Jijik mendominasi secara mutlak sebesar 56,24%**, diikuti Percaya (20,39%) dan Netral (12,33%).  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/emotion_distribution.png)**
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/emotion_distribution.png)**
 
 ---
 
 ### `Figure 03` — Sarcasm Distribution
 📍 *Hasil NLP §4.5*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png" target="_blank">
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/3_sarcasm.png" target="_blank">
 <img src="results/3_sarcasm.png" width="100%" alt="Figure 03: Sarcasm Distribution"/>
 </a>
 Pada korpus validasi ($N=3.395$), **9,28% (315 cuitan)** terverifikasi memuat sindiran. Publik merespons kegagalan implementasi fisik dengan bahasa sindiran implisit.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/3_sarcasm.png)**
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/3_sarcasm.png)**
 
 ---
 
 ### `Figure 04` — F1-Score per Kelas Emosi
 📍 *Evaluasi Model §4.5*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/f1_scores.png" target="_blank">
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/f1_scores.png" target="_blank">
 <img src="results/f1_scores.png" width="100%" alt="Figure 04: F1-Scores"/>
 </a>
 Evaluasi performa model IndoBERT pada testing set riil ($n=1.053$, checkpoint-792). Kelas dominan Jijik mencapai Recall **96,92%** (F1 0,7178).  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/f1_scores.png)**
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/f1_scores.png)**
 
 ---
 
 ### `Figure 05` — Confusion Matrix IndoBERT
 📍 *Evaluasi Model §4.5*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png" target="_blank">
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/confusion_matrix.png" target="_blank">
 <img src="results/confusion_matrix.png" width="100%" alt="Figure 05: Confusion Matrix"/>
 </a>
 Matriks konfusi 9×9 mengonfirmasi 566 dari 584 cuitan berlabel aktual Jijik berhasil diprediksi tepat oleh model (96,92% recall).  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/confusion_matrix.png)**
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/confusion_matrix.png)**
 
 ---
 
 ### `Figure 06` — Masterpiece Integrasi SNA × NLP (Phygital Gap)
 📍 *Sintesis Diskusi §4.6 & §5.1*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/integrated_sna_nlp.png" target="_blank">
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/integrated_sna_nlp.png" target="_blank">
 <img src="results/integrated_sna_nlp.png" width="100%" alt="Figure 06: Integrated SNA NLP"/>
 </a>
 Peta sintesis puncak: menghubungkan simpul sentralitas aktor (@grok, @prabowo) dengan klaster komunitas Louvain dan spektrum emosi Jijik/Percaya.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/integrated_sna_nlp.png)**
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/integrated_sna_nlp.png)**
 
 </td>
 <td width="50%" valign="top">
 
 ### `Figure 07` — Global Social Network Topology
 📍 *Hasil SNA §4.2*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png" target="_blank">
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/6_global_network.png" target="_blank">
 <img src="results/6_global_network.png" width="100%" alt="Figure 07: Global Social Network"/>
 </a>
 971 node · 666 directed edges (692 raw interactions). Membuktikan kondisi **hyper-fragmentation**, bukan polarisasi dua kubu linear.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/6_global_network.png)**  
-*(Versi visual jaringan penuh: [network_graph.png](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/network_graph.png))*
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/6_global_network.png)**  
+*(Versi visual jaringan penuh: [network_graph.png](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/network_graph.png))*
 
 ---
 
 ### `Figure 08` — Top Central Actors (Degree Centrality)
 📍 *Struktur Kekuasaan §4.4*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png" target="_blank">
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/top_actors.png" target="_blank">
 <img src="results/top_actors.png" width="100%" alt="Figure 08: Top Central Actors"/>
 </a>
 **@grok (AI agent) memegang Out-degree tertinggi (#1 = 42)** sebagai rujukan verifikasi (*Algorithmic Oracle*), sementara **@prabowo memiliki In-degree tertinggi (15)**.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/top_actors.png)**
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/top_actors.png)**
 
 ---
 
 ### `Figure 09` — Emotion × Louvain Community Pattern
 📍 *Dinamika Komunitas §4.3*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png" target="_blank">
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/9_emotion_network.png" target="_blank">
 <img src="results/9_emotion_network.png" width="100%" alt="Figure 09: Emotion Network"/>
 </a>
 Analisis silang: Emosi Jijik meresap ke hampir seluruh klaster komunitas independen — menjadi sentimen perekat struktural di balik fragmentasi wacana.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/9_emotion_network.png)**
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/9_emotion_network.png)**
 
 ---
 
 ### `Figure 10` — ABSA / Thematic Analysis
 📍 *Sintesis Tematik §4.6*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png" target="_blank">
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/10_absa_thematic.png" target="_blank">
 <img src="results/10_absa_thematic.png" width="100%" alt="Figure 10: ABSA Thematic"/>
 </a>
 Sentimen berbasis aspek: Kekecewaan publik terkonsentrasi pada **eksekusi logistik (78,91%) & anggaran (77,01%)**, bukan pada gagasan gizi nasional itu sendiri.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/10_absa_thematic.png)**
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/10_absa_thematic.png)**
 
 ---
 
 ### `Figure 11` — Word Cloud Percakapan MBG (N=5.263)
 📍 *Karakteristik Korpus §4.1*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png" target="_blank">
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/wordcloud_mbg.png" target="_blank">
 <img src="results/wordcloud_mbg.png" width="100%" alt="Figure 11: Wordcloud MBG"/>
 </a>
 Visualisasi 120 leksikon paling sering diucapkan warganet, menyoroti kata kunci *mbg, makanan, gratis, gizi, sekolah, dapur,* dan *enak*.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/wordcloud_mbg.png)**
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/wordcloud_mbg.png)**
 
 ---
 
 ### `Figure 12` — Radar Keterbatasan Penelitian & Arah Riset
 📍 *Keterbatasan Riset §5.4*  
-<a href="https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png" target="_blank">
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/keterbatasan_penelitian.png" target="_blank">
 <img src="results/keterbatasan_penelitian.png" width="100%" alt="Figure 12: Keterbatasan Penelitian"/>
 </a>
 Pemetaan 7 dimensi kapabilitas metodologis vs batas horizon riset, mitigasi empiris bias, dan rekomendasi arah penelitian lanjutan.  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/results/keterbatasan_penelitian.png)**
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/keterbatasan_penelitian.png)**
 
 </td>
 </tr>
@@ -1132,8 +1138,8 @@ Dashboard telah terpasang dan aktif 24/7 di Streamlit Community Cloud:
 
 2. **Langkah 1 — Kloning Repositori:**
    ```bash
-   git clone https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA.git
-   cd INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA
+   git clone https://github.com/indri007/ThisIsEconomy.git
+   cd ThisIsEconomy
    ```
 
 3. **Langkah 2 — Menyiapkan Python Virtual Environment:**

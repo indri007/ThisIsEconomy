@@ -575,24 +575,24 @@ if True:
     
         c_dl1, c_dl2, c_dl3 = st.columns(3)
         with c_dl1:
-            st.link_button("📄 1. Manuskrip Lengkap Q1 (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx", width='stretch')
-            st.link_button("🕶️ 2. Naskah Anonim (Blind Review)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx", width='stretch')
-            st.link_button("📑 7. Manuskrip Mediator SINTA 2", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx", width='stretch')
-            st.link_button("📜 LoA IPSSJ Tesis MBG (#2009)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_mbg_2009.pdf", width='stretch')
-            st.link_button("📊 10. Buku Kerja NodeXL Pro (.xlsx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/NodeXL_MBG_Tesis_Indri_Anjar.xlsx", width='stretch')
+            st.link_button("📄 1. Manuskrip Lengkap Q1 (.docx)", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx", width='stretch')
+            st.link_button("🕶️ 2. Naskah Anonim (Blind Review)", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx", width='stretch')
+            st.link_button("📑 7. Manuskrip Mediator SINTA 2", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx", width='stretch')
+            st.link_button("📜 LoA IPSSJ Tesis MBG (#2009)", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/docs/assets/loa_ipssj_mbg_2009.pdf", width='stretch')
+            st.link_button("📊 10. Buku Kerja NodeXL Pro (.xlsx)", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/NodeXL_MBG_Tesis_Indri_Anjar.xlsx", width='stretch')
         with c_dl2:
-            st.link_button("🏷️ 3. Title Page Terpisah (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx", width='stretch')
-            st.link_button("✉️ 4. Cover Letter Springer (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Cover_Letter_Springer_SNAM.docx", width='stretch')
-            st.link_button("🎓 8. Naskah Lengkap Tesis (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/Tesis_Indri_Anjar_Kartika_Sari.docx", width='stretch')
-            st.link_button("📜 LoA IPSSJ JobsMatchAI (#2024)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_jobsmatchai_2024.pdf", width='stretch')
+            st.link_button("🏷️ 3. Title Page Terpisah (.docx)", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx", width='stretch')
+            st.link_button("✉️ 4. Cover Letter Springer (.docx)", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/Cover_Letter_Springer_SNAM.docx", width='stretch')
+            st.link_button("🎓 8. Naskah Lengkap Tesis (.docx)", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/Tesis_Indri_Anjar_Kartika_Sari.docx", width='stretch')
+            st.link_button("📜 LoA IPSSJ JobsMatchAI (#2024)", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/docs/assets/loa_ipssj_jobsmatchai_2024.pdf", width='stretch')
             st.link_button("☁️ Sesi NodeXL Pro Cloud Streaming", "https://www.nodexlgraphgallery.org/Pages/Cloud.aspx?token=c1d8d71236e1cae9628f0b5c7a55b581", width='stretch')
         with c_dl3:
-            st.link_button("👨‍🏫 5. Suggested Reviewers (.docx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Suggested_Reviewers.docx", width='stretch')
-            st.link_button("📝 6. Draf Manuskrip IMRaD (.md)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/manuscript/manuscript_jurnal.md", width='stretch')
-            st.link_button("📜 9. Transkrip Teks Tesis (.txt)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/tesis_text.txt", width='stretch')
-            st.link_button("📄 PDF JobsMatchAI IPSSJ", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf", width='stretch')
-            st.link_button("📜 LoA INOVASI IndoBERT TikTok (#88)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_inovasi_indobert_tiktok_2026.pdf", width='stretch')
-        st.link_button("📦 Unduh Seluruh Repositori, Kode & Data Riset Sekaligus (.ZIP)", "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/old-version.zip", width='stretch')
+            st.link_button("👨‍🏫 5. Suggested Reviewers (.docx)", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/manuscript/Suggested_Reviewers.docx", width='stretch')
+            st.link_button("📝 6. Draf Manuskrip IMRaD (.md)", "https://github.com/indri007/ThisIsEconomy/blob/main/manuscript/manuscript_jurnal.md", width='stretch')
+            st.link_button("📜 9. Transkrip Teks Tesis (.txt)", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/tesis_text.txt", width='stretch')
+            st.link_button("📄 PDF JobsMatchAI IPSSJ", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/references/JobsMatchAI_IPSSJ_Indri_Anjar_Kartika_Sari.pdf", width='stretch')
+            st.link_button("📜 LoA INOVASI IndoBERT TikTok (#88)", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/docs/assets/loa_inovasi_indobert_tiktok_2026.pdf", width='stretch')
+        st.link_button("📦 Unduh Seluruh Repositori, Kode & Data Riset Sekaligus (.ZIP)", "https://github.com/indri007/ThisIsEconomy/archive/refs/heads/old-version.zip", width='stretch')
     
     
     # Function to render author biography in Streamlit
@@ -945,7 +945,7 @@ if True:
             - [`cvatsjob`](https://github.com/indri007/cvatsjob): Proyek Python sistem ATS CV & pencocokan lowongan kerja cerdas.
             - [`todo-list-nextjs`](https://github.com/indri007/todo-list-nextjs): Aplikasi to-do list modern berbasis Next.js/JavaScript.
             - [`to-do-app`](https://github.com/indri007/to-do-app): Aplikasi to-do list berbasis TypeScript.
-            - [`INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA`](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA): Repositori Tesis Magister & Manuskrip Indonesia Emas.
+            - [`ThisIsEconomy`](https://github.com/indri007/ThisIsEconomy): Repositori Tesis Magister & Manuskrip Indonesia Emas.
             """)
     
         st.markdown("---")
@@ -1042,7 +1042,7 @@ if True:
         with d4:
             st.link_button(
                 "📦 Repositori GitHub Publik",
-                "https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA",
+                "https://github.com/indri007/ThisIsEconomy",
                 width='stretch'
             )
     
@@ -1545,11 +1545,11 @@ if True:
             width='stretch',
         )
     
-    st.sidebar.markdown("📦 [Repositori GitHub Publik](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)")
-    st.sidebar.markdown("⚡ [Unduh Semua Kode & Data (.ZIP)](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)")
-    st.sidebar.markdown("📜 [LoA INOVASI IndoBERT TikTok (#88)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_inovasi_indobert_tiktok_2026.pdf)")
-    st.sidebar.markdown("📜 [LoA IPSSJ Tesis MBG (#2009)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_mbg_2009.pdf)")
-    st.sidebar.markdown("📜 [LoA IPSSJ JobsMatchAI (#2024)](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/docs/assets/loa_ipssj_jobsmatchai_2024.pdf)")
+    st.sidebar.markdown("📦 [Repositori GitHub Publik](https://github.com/indri007/ThisIsEconomy)")
+    st.sidebar.markdown("⚡ [Unduh Semua Kode & Data (.ZIP)](https://github.com/indri007/ThisIsEconomy/archive/refs/heads/main.zip)")
+    st.sidebar.markdown("📜 [LoA INOVASI IndoBERT TikTok (#88)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/docs/assets/loa_inovasi_indobert_tiktok_2026.pdf)")
+    st.sidebar.markdown("📜 [LoA IPSSJ Tesis MBG (#2009)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/docs/assets/loa_ipssj_mbg_2009.pdf)")
+    st.sidebar.markdown("📜 [LoA IPSSJ JobsMatchAI (#2024)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/docs/assets/loa_ipssj_jobsmatchai_2024.pdf)")
     
     
     if "Bab I" in page or page == "🏠 Beranda":
@@ -3690,7 +3690,7 @@ if True:
                 )
                 col_nx_dl1, col_nx_dl2 = st.columns(2)
                 with col_nx_dl1:
-                    st.link_button("📊 Unduh Buku Kerja NodeXL Pro (.xlsx)", "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/NodeXL_MBG_Tesis_Indri_Anjar.xlsx", width='stretch')
+                    st.link_button("📊 Unduh Buku Kerja NodeXL Pro (.xlsx)", "https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/NodeXL_MBG_Tesis_Indri_Anjar.xlsx", width='stretch')
                 with col_nx_dl2:
                     st.link_button("☁️ Buka Sesi NodeXL Cloud Streaming", "https://www.nodexlgraphgallery.org/Pages/Cloud.aspx?token=c1d8d71236e1cae9628f0b5c7a55b581", width='stretch')
     
@@ -6357,7 +6357,7 @@ if True:
         Siapa pun di internet dapat mengunduh seluruh data secara programmatic (*Python/R/curl*) atau via browser melalui tautan publik resmi di bawah ini:
         """)
     
-        repo_raw_base = "https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/old-version"
+        repo_raw_base = "https://raw.githubusercontent.com/indri007/ThisIsEconomy/old-version"
         public_links_data = [
             {"No": 1, "Nama Dataset": "IndoBERT 9 Emosi — Audit Rekonsiliasi", "Format": "CSV", "Ukuran / Baris": "dataset hasil inferensi — audit rekonsiliasi", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/indobert_9_emosi_fixed.csv"},
             {"No": 2, "Nama Dataset": "Deteksi Sindiran & Sarkasme", "Format": "CSV", "Ukuran / Baris": "3.395 baris", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/sarcasm/dataset_sindiran_valid.csv"},
@@ -6390,8 +6390,8 @@ if True:
         # Repository links card
         st.info("""
         🚀 **Pusat Repositori & Arsip Kode Sumber Terbuka:**
-        - 📦 **Repositori GitHub Publik:** [github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA)
-        - ⚡ **Download Seluruh Kode & Data Sekaligus (.ZIP):** [Unduh Arsip Lengkap ZIP](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/archive/refs/heads/main.zip)
+        - 📦 **Repositori GitHub Publik:** [github.com/indri007/ThisIsEconomy](https://github.com/indri007/ThisIsEconomy)
+        - ⚡ **Download Seluruh Kode & Data Sekaligus (.ZIP):** [Unduh Arsip Lengkap ZIP](https://github.com/indri007/ThisIsEconomy/archive/refs/heads/main.zip)
         - 🌐 **Deploy Publik Dashboard (24/7 Gratis):** Hubungkan repositori GitHub ini ke [share.streamlit.io](https://share.streamlit.io/) dengan path `dashboard/app.py` agar dosen penguji dan masyarakat umum dapat mengakses dashboard interaktif secara online.
         """)
     

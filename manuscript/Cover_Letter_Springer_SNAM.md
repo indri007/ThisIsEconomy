@@ -31,7 +31,7 @@ Crucially, our study bridges Philip Kotler’s Marketing 6.0 concept of the **Ph
 We confirm the following ethical and professional standards:
 - **Originality:** This manuscript is an original work that has not been published previously and is not under consideration for publication elsewhere (*no simultaneous submission*).
 - **Compliance with Double-Blind Review:** In addition to this Title Page and Cover Letter, we have uploaded an Anonymized Manuscript that fully redacts all author and institutional identifiers.
-- **Open Science & Reproducibility:** All datasets, edge lists, evaluation reports, and Python replication codes are publicly available in our open-access GitHub repository: `https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA`.
+- **Open Science & Reproducibility:** All datasets, edge lists, evaluation reports, and Python replication codes are publicly available in our open-access GitHub repository: `https://github.com/indri007/ThisIsEconomy`.
 - **Ethical Integrity:** Research was conducted strictly adhering to Platform X Developer Policies and academic data mining ethics; only public aggregate data were analyzed.
 - **Approval:** All authors have actively contributed to the conceptualization, execution, and writing of this study, and all have reviewed and approved the manuscript for submission.
 

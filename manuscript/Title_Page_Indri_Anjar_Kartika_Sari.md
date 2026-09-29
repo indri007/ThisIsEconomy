@@ -67,7 +67,7 @@ The authors have no financial, political, or personal conflicts of interest that
 
 ### Data and Code Availability
 All replication scripts, trained transformer models, edge matrices, and verified datasets are openly accessible via GitHub under CC-BY 4.0 & MIT licenses at:  
-https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA
+https://github.com/indri007/ThisIsEconomy
 
 ### Acknowledgements
 The authors express their sincere gratitude to the Department of Communication Science and the Faculty of Social and Political Sciences at Universitas Pembangunan Nasional 'Veteran' Jawa Timur for academic and institutional facilities provided during this master's thesis research.
