@@ -355,11 +355,11 @@ if True:
     def render_submission_checklist_70_points():
         st.markdown("""
         <div class="hero-banner">
-            <div class="hero-badge">🎯 Standar Publikasi Internasional Bereputasi — Scopus Q1 / SINTA 1</div>
-            <div class="hero-title">Checklist Persiapan Submit Scopus Q1 / Sinta 1 (70 Poin Audit Lengkap)</div>
+            <div class="hero-badge">🎯 Standar Publikasi Internasional Bereputasi — Indonesia Emas / SINTA 1</div>
+            <div class="hero-title">Checklist Persiapan Submit Indonesia Emas / Sinta 1 (70 Poin Audit Lengkap)</div>
             <div class="hero-desc">
                 Audit komprehensif 70 parameter kesiapan publikasi untuk jurnal target utama:
-                <b>Social Network Analysis and Mining (SNAM) – Springer Nature Switzerland (Scopus Q1, SJR 0.76, Persentil 82%)</b>,
+                <b>Social Network Analysis and Mining (SNAM) – Springer Nature Switzerland (Indonesia Emas, SJR 0.76, Persentil 82%)</b>,
                 target nasional SINTA 2 (<i>Mediator: Jurnal Komunikasi</i>), serta verifikasi naskah publikasi terbit <i>IPSSJ</i> (E-ISSN: 3064-4011).
             </div>
             <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px;">
@@ -415,8 +415,8 @@ if True:
         # 70 Items Dataset
         checklist_data = [
             # A. Kelayakan Jurnal (1-9)
-            {"No": 1, "Kategori": "A. Kelayakan Jurnal", "Poin Audit": "Jurnal terverifikasi Q1 di scimagojr.com sesuai bidang (Communication/Social Sciences/Computer Science-NLP)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Social Network Analysis and Mining (SNAM) – Springer Nature terverifikasi Scopus Q1 (Persentil 82%, SJR 0.76, CiteScore 5.8, Source ID: 21100204705)."},
-            {"No": 2, "Kategori": "A. Kelayakan Jurnal", "Poin Audit": "Cek indeks ganda (Scopus + Sinta 1/2 sekaligus)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Dua naskah disiapkan terpisah: Target Utama Scopus Q1 (SNAM) & Target Nasional SINTA 2 (Mediator: Jurnal Komunikasi, SK No. 158/E/KPT/2021)."},
+            {"No": 1, "Kategori": "A. Kelayakan Jurnal", "Poin Audit": "Jurnal terverifikasi Q1 di scimagojr.com sesuai bidang (Communication/Social Sciences/Computer Science-NLP)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Social Network Analysis and Mining (SNAM) – Springer Nature terverifikasi Indonesia Emas (Persentil 82%, SJR 0.76, CiteScore 5.8, Source ID: 21100204705)."},
+            {"No": 2, "Kategori": "A. Kelayakan Jurnal", "Poin Audit": "Cek indeks ganda (Scopus + Sinta 1/2 sekaligus)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Dua naskah disiapkan terpisah: Target Utama Indonesia Emas (SNAM) & Target Nasional SINTA 2 (Mediator: Jurnal Komunikasi, SK No. 158/E/KPT/2021)."},
             {"No": 3, "Kategori": "A. Kelayakan Jurnal", "Poin Audit": "Cek predatory journal checklist (Beall's list / Think.Check.Submit.)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Springer Nature adalah anggota resmi COPE, OASPA, STM, terbebas 100% dari Beall's List & predator screening Dikti."},
             {"No": 4, "Kategori": "A. Kelayakan Jurnal", "Poin Audit": "Scope & aims jurnal cocok dengan topik sarkasme digital/Marketing 6.0/kebijakan publik", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Aims & Scope SNAM mencakup social computing, data mining, network science, dan NLP terpadu. Dijustifikasi kuat pada Paragraf 1 Cover Letter."},
             {"No": 5, "Kategori": "A. Kelayakan Jurnal", "Poin Audit": "Cek APC dan skema pendanaan (kampus/mandiri/hibah)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Jalur Subscription / Traditional Publishing di SNAM adalah GRATIS ($0 / Rp 0 APC), tanpa membebani biaya penulis/kampus."},
@@ -479,7 +479,7 @@ if True:
             {"No": 50, "Kategori": "G. Setelah Submit", "Poin Audit": "LOA untuk syarat kelulusan + cek ulang syarat prodi (submitted vs accepted vs published)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Tersedia 2 bukti LoA resmi IPSSJ (No. 2009 & No. 2024) serta tanda terima submission konfirmasi untuk diserahkan ke Sekretariat Magister Komunikasi UPN Jatim."},
     
             # H. Integritas Indeksasi & Identitas Peneliti (51-56)
-            {"No": 51, "Kategori": "H. Integritas Indeksasi & Identitas", "Poin Audit": "Cek DOI aktif jurnal (bukti jurnal masih terindeks aktif, bukan delisted)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Target Utama Scopus Q1 (Springer SNAM) memiliki prefix DOI aktif 10.1007/s13278 (terbit rutin 2026). Jurnal IPSSJ memiliki OJS aktif (E-ISSN 3064-4011) dengan artikel terbit No. 2024."},
+            {"No": 51, "Kategori": "H. Integritas Indeksasi & Identitas", "Poin Audit": "Cek DOI aktif jurnal (bukti jurnal masih terindeks aktif, bukan delisted)", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Target Utama Indonesia Emas (Springer SNAM) memiliki prefix DOI aktif 10.1007/s13278 (terbit rutin 2026). Jurnal IPSSJ memiliki OJS aktif (E-ISSN 3064-4011) dengan artikel terbit No. 2024."},
             {"No": 52, "Kategori": "H. Integritas Indeksasi & Identitas", "Poin Audit": "Cek riwayat jurnal di Scopus — apakah pernah kena 'discontinued' atau masuk daftar coverage tercabut", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "SNAM Springer memiliki Source Record ID 21100204705, terindeks aktif 2011–sekarang (coverage aktif, tanpa catatan discontinued atau on-hold)."},
             {"No": 53, "Kategori": "H. Integritas Indeksasi & Identitas", "Poin Audit": "Cek nomor ISSN cetak & elektronik terdaftar valid di portal.issn.org", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "SNAM: e-ISSN 1869-5469 & p-ISSN 1869-5450 terdaftar resmi di portal.issn.org. Target SINTA 2 (Mediator): eISSN 2581-0758 & pISSN 1411-5883. IPSSJ: e-ISSN 3064-4011."},
             {"No": 54, "Kategori": "H. Integritas Indeksasi & Identitas", "Poin Audit": "Daftar akun ORCID (kalau belum punya) — wajib untuk hampir semua jurnal Q1", "Status": "✅ SUDAH", "Bukti & Realisasi pada Riset": "Ketiga penulis memiliki akun ORCID tervalidasi di Title Page: Indri (0009-0002-8419-7231), Pembimbing I (0000-0002-8596-3914), Pembimbing II (0000-0002-7104-5820)."},
@@ -711,7 +711,7 @@ if True:
         # Rekam Jejak Publikasi Jurnal, LoA & Diseminasi Media
         st.subheader("📑 Rekam Jejak Publikasi Ilmiah, LoA Resmi & Liputan Media")
         st.markdown("""
-        *Selain penulisan manuskrip jurnal internasional bereputasi Scopus Q1 (Springer Nature SNAM) dan SINTA 2 (Mediator), peneliti telah resmi memperoleh tiga **Letter of Acceptance (LoA)** dari jurnal ilmiah **INOVASI** (P-ISSN: 2442-5923 / E-ISSN: 3090-3300) dan **IPSSJ** (E-ISSN: 3064-4011), mempublikasikan diseminasi resmi di **LinkedIn**, serta diliput oleh **Portal JTV**:*
+        *Selain penulisan manuskrip jurnal internasional bereputasi Indonesia Emas (Springer Nature SNAM) dan SINTA 2 (Mediator), peneliti telah resmi memperoleh tiga **Letter of Acceptance (LoA)** dari jurnal ilmiah **INOVASI** (P-ISSN: 2442-5923 / E-ISSN: 3090-3300) dan **IPSSJ** (E-ISSN: 3064-4011), mempublikasikan diseminasi resmi di **LinkedIn**, serta diliput oleh **Portal JTV**:*
         """)
     
         # Grid 4 Publikasi, LoA & Diseminasi
@@ -945,7 +945,7 @@ if True:
             - [`cvatsjob`](https://github.com/indri007/cvatsjob): Proyek Python sistem ATS CV & pencocokan lowongan kerja cerdas.
             - [`todo-list-nextjs`](https://github.com/indri007/todo-list-nextjs): Aplikasi to-do list modern berbasis Next.js/JavaScript.
             - [`to-do-app`](https://github.com/indri007/to-do-app): Aplikasi to-do list berbasis TypeScript.
-            - [`INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA`](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA): Repositori Tesis Magister & Manuskrip Scopus Q1.
+            - [`INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA`](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA): Repositori Tesis Magister & Manuskrip Indonesia Emas.
             """)
     
         st.markdown("---")
@@ -986,7 +986,7 @@ if True:
     def render_international_journal_page():
         st.markdown("""
         <div class="hero-banner">
-            <div class="hero-badge">📑 International Journal Article — Scopus Q1 Submission Ready</div>
+            <div class="hero-badge">📑 International Journal Article — Indonesia Emas Submission Ready</div>
             <div class="hero-title">Digital Sarcasm as a Signal of Policy Distrust: Social Network Analysis and Emotion Classification of Indonesia's Free Nutritious Meal Program Discourse on X (Twitter)</div>
             <div class="hero-subtitle">Penulis: <b>Indri Anjar Kartika Sari</b> | Magister Ilmu Komunikasi UPN 'Veteran' Jawa Timur | Target: <i>Telematics and Informatics</i> (Elsevier, Q1) / <i>New Media & Society</i> (SAGE, Q1)</div>
         </div>
@@ -1150,7 +1150,7 @@ if True:
                 st.write("Eksperimen audit empiris pada LLM komersial (Grok, ChatGPT, Claude, Gemini) untuk mengukur tingkat halusinasi, bias ideologis, dan ketergantungan warga terhadap AI.")
     
         with jtab4:
-            st.subheader("Teks Lengkap Manuskrip Jurnal Internasional (Scopus Q1)")
+            st.subheader("Teks Lengkap Manuskrip Jurnal Internasional (Indonesia Emas)")
             if os.path.exists(p_md):
                 with open(p_md, "r", encoding="utf-8") as f_full:
                     full_text = f_full.read()
@@ -1505,10 +1505,10 @@ if True:
         "🚨 Custom Early Warning System (EWS) v2",
         "🍱 Twitter AI & Scraper Monitor",
         "📡 Brand24 Real-Time Monitor (EWS)",
-        "📑 Naskah Jurnal Internasional (Scopus Q1 Ready)",
+        "📑 Naskah Jurnal Internasional (Indonesia Emas Ready)",
         "🖼️ Galeri Visual Storytelling (10 Master Plot Tesis)",
         "📚 Audit Integritas Data & Referensi Scopus",
-        "🎯 Checklist Submit Scopus Q1 (70 Poin)",
+        "🎯 Checklist Submit Indonesia Emas (70 Poin)",
         "👤 Profil Peneliti & AI Engineer"
     ]
     
@@ -5796,9 +5796,9 @@ if True:
     elif "Audit Integritas Data" in page:
         st.title("📚 Audit Kelayakan Referensi untuk Scopus / Sinta 1")
         st.markdown("---")
-        st.subheader("📑 Master Taksonomi & Klasifikasi Referensi Scopus Q1 / Sinta 1 (33 Rujukan)")
+        st.subheader("📑 Master Taksonomi & Klasifikasi Referensi Indonesia Emas / Sinta 1 (33 Rujukan)")
         st.markdown("""
-        Seluruh **33 rujukan ilmiah** (11 rujukan inti tesis + 20 rujukan baru Scopus Q1/Sinta 1 + 2 rujukan dasar NLP/SNA) dikelompokkan secara ketat ke dalam **5 Klaster Keilmuan** untuk memastikan setiap klaim empiris dan metodologis memiliki rujukan bereputasi tinggi.
+        Seluruh **33 rujukan ilmiah** (11 rujukan inti tesis + 20 rujukan baru Indonesia Emas/Sinta 1 + 2 rujukan dasar NLP/SNA) dikelompokkan secara ketat ke dalam **5 Klaster Keilmuan** untuk memastikan setiap klaim empiris dan metodologis memiliki rujukan bereputasi tinggi.
         """)
     
         # Metrics Summary Row
@@ -5806,7 +5806,7 @@ if True:
         with m_col1:
             st.metric("📚 Total Rujukan", "33 Referensi", "Kombinasi Seminal & Mutakhir")
         with m_col2:
-            st.metric("🏆 Scopus Q1 / Q2", "26 Artikel", "Elsevier, Springer, PNAS, Wiley")
+            st.metric("🏆 Indonesia Emas / Q2", "26 Artikel", "Elsevier, Springer, PNAS, Wiley")
         with m_col3:
             st.metric("🇮🇩 Sinta 1 / Nasional", "3 Jurnal", "ITB, JSK, IPSSJ")
         with m_col4:
@@ -5821,7 +5821,7 @@ if True:
                 "Pilar": "Pilar 2.1: Risiko Fiskal",
                 "Penulis": "Gelders & Ihlen (2010)",
                 "Judul & Jurnal": "Minding the gap: Applying a service marketing model into government policy communications. Gov. Inf. Q.",
-                "Indeksasi": "Scopus Q1 (Elsevier)",
+                "Indeksasi": "Indonesia Emas (Elsevier)",
                 "Peran di Manuskrip": "Analogi service gap ke policy communication gap — landasan brand-state gap di §2.5.",
                 "APA": "Gelders, D., & Ihlen, Ø. (2010). Minding the gap: Applying a service marketing model into government policy communications. Government Information Quarterly, 27(1), 34–40. https://doi.org/10.1016/j.giq.2009.05.005"
             },
@@ -5831,7 +5831,7 @@ if True:
                 "Pilar": "Pilar 2.1: Definisi Phygital",
                 "Penulis": "Johnson & Barlow (2021)",
                 "Judul & Jurnal": "Defining the phygital marketing advantage. J. Theor. Appl. Electron. Commer. Res.",
-                "Indeksasi": "Scopus Q1 (MDPI)",
+                "Indeksasi": "Indonesia Emas (MDPI)",
                 "Peran di Manuskrip": "Definisi konseptual formal istilah 'Phygital' dari jurnal Scopus untuk novelty tesis.",
                 "APA": "Johnson, M., & Barlow, R. (2021). Defining the phygital marketing advantage. Journal of Theoretical and Applied Electronic Commerce Research, 16(6), 2365–2385. https://doi.org/10.3390/jtaer16060130"
             },
@@ -5841,7 +5841,7 @@ if True:
                 "Pilar": "Pilar 2.3: Ruang Publik X",
                 "Penulis": "Tsai, Chen & Lu (2026)",
                 "Judul & Jurnal": "Marketing public policy in digital age: Govt strategies for new media under marketing 4.0. Socio-Econ. Plan. Sci.",
-                "Indeksasi": "Scopus Q1 (Elsevier)",
+                "Indeksasi": "Indonesia Emas (Elsevier)",
                 "Peran di Manuskrip": "Justifikasi akademis penerapan paradigma Marketing Kotler ke komunikasi kebijakan publik digital.",
                 "APA": "Tsai, P.-H., Chen, C.-J., & Lu, Y.-S. (2026). Marketing public policy in the digital age: Government strategies for effective new media engagement under marketing 4.0. Socio-Economic Planning Sciences, 105, 102468. https://doi.org/10.1016/j.seps.2026.102468"
             },
@@ -5851,7 +5851,7 @@ if True:
                 "Pilar": "Pilar 2.2: Krisis Berjejaring",
                 "Penulis": "Coombs & Holladay (2022)",
                 "Judul & Jurnal": "Social media and the transformative nature of crisis communication: Revisiting the SCCT. J. Commun. Manage.",
-                "Indeksasi": "Scopus Q1 (Emerald)",
+                "Indeksasi": "Indonesia Emas (Emerald)",
                 "Peran di Manuskrip": "Pembaruan teori SCCT Coombs di era media sosial terdesentralisasi.",
                 "APA": "Coombs, W. T., & Holladay, S. J. (2022). Social media and the transformative nature of crisis communication: Revisiting the SCCT. Journal of Communication Management, 26(1), 1–15. https://doi.org/10.1108/JCM-09-2021-0493"
             },
@@ -5861,7 +5861,7 @@ if True:
                 "Pilar": "Pilar 2.3: Ruang Publik X",
                 "Penulis": "Ihlen & van Ruler (2021)",
                 "Judul & Jurnal": "How public relations builds society: Social theory and public relations. Public Relat. Inq.",
-                "Indeksasi": "Scopus Q1 (SAGE)",
+                "Indeksasi": "Indonesia Emas (SAGE)",
                 "Peran di Manuskrip": "Komunikasi publik deliberatif & relasi kekuasaan antara pemerintah dan warganet.",
                 "APA": "Ihlen, Ø., & van Ruler, B. (2021). How public relations builds society: Social theory and public relations. Public Relations Inquiry, 10(2), 119–134. https://doi.org/10.1177/2046147X211012356"
             },
@@ -5881,7 +5881,7 @@ if True:
                 "Pilar": "Pilar 2.1: Risiko Fiskal",
                 "Penulis": "Flyvbjerg, B. (2009)",
                 "Judul & Jurnal": "Survival of the unfittest: Why the worst infrastructure gets built. Oxf. Rev. Econ. Policy.",
-                "Indeksasi": "Scopus Q1 (Oxford)",
+                "Indeksasi": "Indonesia Emas (Oxford)",
                 "Peran di Manuskrip": "Optimism bias & strategic misrepresentation — alokasi pagu anggaran awal vs realitas.",
                 "APA": "Flyvbjerg, B. (2009). Survival of the unfittest: Why the worst infrastructure gets built. Oxford Review of Economic Policy, 25(3), 344–367. https://doi.org/10.1093/oxrep/grp024"
             },
@@ -5901,7 +5901,7 @@ if True:
                 "Pilar": "Pilar 2.3: Ruang Publik X",
                 "Penulis": "Bennett & Segerberg (2012)",
                 "Judul & Jurnal": "The logic of connective action. Information, Communication & Society.",
-                "Indeksasi": "Scopus Q1 (Taylor & Francis)",
+                "Indeksasi": "Indonesia Emas (Taylor & Francis)",
                 "Peran di Manuskrip": "Logic of connective action — aksi warganet terdesentralisasi tanpa organisasi komando.",
                 "APA": "Bennett, W. L., & Segerberg, A. (2012). The logic of connective action. Information, Communication & Society, 15(5), 739–768. https://doi.org/10.1080/1369118X.2012.670661"
             },
@@ -5953,7 +5953,7 @@ if True:
                 "Pilar": "Pilar 2.5: IndoBERT NLP",
                 "Penulis": "Shaw, LaCasse & Champagne (2025)",
                 "Judul & Jurnal": "Exploring emotion classification of Indonesian tweets using large scale transfer learning via IndoBERT. SNAM.",
-                "Indeksasi": "Scopus Q1 (Springer)",
+                "Indeksasi": "Indonesia Emas (Springer)",
                 "Peran di Manuskrip": "Studi pembanding langsung (peer comparison): klasifikasi emosi tweet Indonesia dengan IndoBERT.",
                 "APA": "Shaw, C., LaCasse, P., & Champagne, L. (2025). Exploring emotion classification of Indonesian tweets using large scale transfer learning via IndoBERT. Social Network Analysis and Mining, 15(1), Article 22. https://doi.org/10.1007/s13278-025-01439-6"
             },
@@ -5983,7 +5983,7 @@ if True:
                 "Pilar": "Pilar 2.5: IndoBERT NLP",
                 "Penulis": "Plaza-del-Arco et al. (2020)",
                 "Judul & Jurnal": "Comparing pre-trained language models for Spanish emotion classification. Inf. Process. Manage.",
-                "Indeksasi": "Scopus Q1 (Elsevier)",
+                "Indeksasi": "Indonesia Emas (Elsevier)",
                 "Peran di Manuskrip": "Keunggulan mekanisme self-attention Transformer dalam mendeteksi kelas emosi minoritas.",
                 "APA": "Plaza-del-Arco, F. M., Strapparava, C., Lopez, L. A., & Martín-Valdivia, M. T. (2020). Comparing pre-trained language models for Spanish emotion classification. Information Processing & Management, 57(6), 102301. https://doi.org/10.1016/j.ipm.2020.102301"
             },
@@ -5995,7 +5995,7 @@ if True:
                 "Pilar": "Pilar 2.4: Sindiran & Pragmatik",
                 "Penulis": "Camp, E. (2012)",
                 "Judul & Jurnal": "Sarcasm, pretense, and the semantics/pragmatics distinction. Noûs.",
-                "Indeksasi": "Scopus Q1 (Wiley)",
+                "Indeksasi": "Indonesia Emas (Wiley)",
                 "Peran di Manuskrip": "Pretense theory of sarcasm — pura-pura memuji padahal mengecam menu MBG di media sosial.",
                 "APA": "Camp, E. (2012). Sarcasm, pretense, and the semantics/pragmatics distinction. Noûs, 46(4), 587–634. https://doi.org/10.1111/j.1468-0068.2010.00822.x"
             },
@@ -6005,7 +6005,7 @@ if True:
                 "Pilar": "Pilar 2.4: Sindiran & Pragmatik",
                 "Penulis": "Joshi, Bhattacharyya & Carman (2017)",
                 "Judul & Jurnal": "Investigations in sarcasm detection: An exhaustive review. ACM Comput. Surv.",
-                "Indeksasi": "Scopus Q1 (ACM)",
+                "Indeksasi": "Indonesia Emas (ACM)",
                 "Peran di Manuskrip": "Survei komprehensif state-of-the-art tantangan NLP komputasional dalam mendeteksi sarkasme.",
                 "APA": "Joshi, A., Bhattacharyya, P., & Carman, M. J. (2017). Investigations in sarcasm detection: An exhaustive review. ACM Computing Surveys, 49(5), 1–36. https://doi.org/10.1145/2992720"
             },
@@ -6057,7 +6057,7 @@ if True:
                 "Pilar": "Pilar 2.6: Sentralitas Graf",
                 "Penulis": "Freeman, L. C. (1979)",
                 "Judul & Jurnal": "Centrality in social networks: Conceptual clarification. Social Networks.",
-                "Indeksasi": "Scopus Q1 (Elsevier — 26k+ sitasi)",
+                "Indeksasi": "Indonesia Emas (Elsevier — 26k+ sitasi)",
                 "Peran di Manuskrip": "Formulasi matematika formal Degree, Betweenness, dan Closeness Centrality.",
                 "APA": "Freeman, L. C. (1979). Centrality in social networks: Conceptual clarification. Social Networks, 1(3), 215–239. https://doi.org/10.1016/0378-8733(78)90021-7"
             },
@@ -6067,7 +6067,7 @@ if True:
                 "Pilar": "Pilar 2.6: Louvain Community",
                 "Penulis": "Blondel, Guillaume, Lambiotte & Lefebvre (2008)",
                 "Judul & Jurnal": "Fast unfolding of communities in large networks. J. Stat. Mech.",
-                "Indeksasi": "Scopus Q1 (IOP — 22k+ sitasi)",
+                "Indeksasi": "Indonesia Emas (IOP — 22k+ sitasi)",
                 "Peran di Manuskrip": "Algoritma Louvain optimasi modularitas Q partisi 342 komunitas graf MBG.",
                 "APA": "Blondel, V. D., Guillaume, J.-L., Lambiotte, R., & Lefebvre, E. (2008). Fast unfolding of communities in large networks. Journal of Statistical Mechanics: Theory and Experiment, 2008(10), P10008. https://doi.org/10.1088/1742-5468/2008/10/P10008"
             },
@@ -6077,7 +6077,7 @@ if True:
                 "Pilar": "Pilar 2.6: Modularity dan Struktur Komunitas",
                 "Penulis": "Newman, M. E. J. (2006)",
                 "Judul & Jurnal": "Modularity and community structure in networks. Proc. Natl. Acad. Sci.",
-                "Indeksasi": "Scopus Q1 (PNAS)",
+                "Indeksasi": "Indonesia Emas (PNAS)",
                 "Peran di Manuskrip": "Definisi skor modularitas Q sebagai ringkasan kuantitatif struktur komunitas jaringan.",
                 "APA": "Newman, M. E. J. (2006). Modularity and community structure in networks. Proceedings of the National Academy of Sciences, 103(23), 8577–8582. https://doi.org/10.1073/pnas.0601602103"
             },
@@ -6107,7 +6107,7 @@ if True:
                 "Pilar": "Pilar 2.6: Struktur Komunitas",
                 "Penulis": "Bail, Argyle, Brown et al. (2018)",
                 "Judul & Jurnal": "Exposure to opposing views on social media can increase political polarization. Proc. Natl. Acad. Sci.",
-                "Indeksasi": "Scopus Q1 (PNAS)",
+                "Indeksasi": "Indonesia Emas (PNAS)",
                 "Peran di Manuskrip": "Membahas bagaimana skor modularitas tinggi Q=0.9837 menunjukkan keterpisahan struktural antarkomunitas.",
                 "APA": "Bail, C. A., Argyle, L. P., Brown, T. W., et al. (2018). Exposure to opposing views on social media can increase political polarization. Proceedings of the National Academy of Sciences, 115(37), 9216–9221. https://doi.org/10.1073/pnas.1804840115"
             },
@@ -6117,7 +6117,7 @@ if True:
                 "Pilar": "Pilar 2.6: Asimetri Aktor",
                 "Penulis": "Bastos & Mercea (2019)",
                 "Judul & Jurnal": "The public sphere 2.0: The networked topology of political dialogue. Social Networks.",
-                "Indeksasi": "Scopus Q1 (Elsevier)",
+                "Indeksasi": "Indonesia Emas (Elsevier)",
                 "Peran di Manuskrip": "Perbedaan posisi centrality antaraktor (@grok out-degree=42).",
                 "APA": "Bastos, M. T., & Mercea, D. (2019). The public sphere 2.0: The networked topology of political dialogue. Social Networks, 59, 14–25. https://doi.org/10.1016/j.socnet.2019.05.003"
             },
@@ -6139,7 +6139,7 @@ if True:
                 "Pilar": "Pilar 2.11: Etika Big Data",
                 "Penulis": "Boyd & Crawford (2012)",
                 "Judul & Jurnal": "Critical questions for big data. Information, Communication & Society.",
-                "Indeksasi": "Scopus Q1 (12k+ sitasi)",
+                "Indeksasi": "Indonesia Emas (12k+ sitasi)",
                 "Peran di Manuskrip": "Justifikasi etika scraping data publik X, anonimisasi identitas, dan mitigasi bias representasi.",
                 "APA": "Boyd, D., & Crawford, K. (2012). Critical questions for big data. Information, Communication & Society, 15(5), 662–679. https://doi.org/10.1080/1369118X.2012.678878"
             },
@@ -6149,7 +6149,7 @@ if True:
                 "Pilar": "Pilar 2.11: Filtrasi Bot",
                 "Penulis": "Ferrara, Varol, Davis, Menczer & Flammini (2016)",
                 "Judul & Jurnal": "The rise of social bots. Communications of the ACM.",
-                "Indeksasi": "Scopus Q1 / ACM",
+                "Indeksasi": "Indonesia Emas / ACM",
                 "Peran di Manuskrip": "Identifikasi bot dan akun terkoordinasi merupakan keterbatasan penelitian; penelitian ini tidak melakukan klasifikasi bot secara khusus.",
                 "APA": "Ferrara, E., Varol, O., Davis, C., Menczer, F., & Flammini, A. (2016). The rise of social bots. Communications of the ACM, 59(7), 96–104. https://doi.org/10.1145/2818717"
             }
@@ -6199,7 +6199,7 @@ if True:
     
         # ===== VISUALISASI GRAFIS PORTFOLIO REFERENSI =====
         st.markdown("---")
-        st.subheader("📊 Visualisasi Distribusi Portfolio Referensi (Scopus Q1 / Sinta 1)")
+        st.subheader("📊 Visualisasi Distribusi Portfolio Referensi (Indonesia Emas / Sinta 1)")
     
         vcol1, vcol2 = st.columns(2)
     
@@ -6227,7 +6227,7 @@ if True:
         with vcol2:
             # Bar Chart: Distribusi Indeksasi
             idx_summary = {
-                "Tingkat Reputasi": ["Scopus Q1 (Elsevier/Springer/Wiley/PNAS)", "Scopus Q2 / Internasional", "Sinta 1 / Akreditasi Nasional (Kemenristek)", "Buku Fundamental / Prosiding ACM-IEEE"],
+                "Tingkat Reputasi": ["Indonesia Emas (Elsevier/Springer/Wiley/PNAS)", "Scopus Q2 / Internasional", "Sinta 1 / Akreditasi Nasional (Kemenristek)", "Buku Fundamental / Prosiding ACM-IEEE"],
                 "Jumlah": [21, 5, 3, 4],
                 "Status": ["🏆 Wajib Publikasi", "✅ Sangat Layak", "🇮🇩 Validasi Konteks", "📖 Landasan Teori"]
             }

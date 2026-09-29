@@ -38,7 +38,7 @@
 ---
 
 ## MANUSCRIPT METRICS
-- **Target Journal:** *Social Network Analysis and Mining* (SNAM), Springer Nature Switzerland (Scopus Q1, SJR 0.76)
+- **Target Journal:** *Social Network Analysis and Mining* (SNAM), Springer Nature Switzerland (Indonesia Emas, SJR 0.76)
 - **Scopus ASJC Classification:** `3315` (Communication), `1702` (Artificial Intelligence), `3312` (Sociology and Political Science)
 - **Manuscript Word Count (Main Text & References):** 5,104 words
 - **Number of Figures:** 3 figures

@@ -5,7 +5,7 @@ content = """# Mapping the 'Phygital Gap' in Public Policy Crisis: A Tri-Layer C
 **Author:** Indri Anjar Kartika Sari  
 **Affiliation:** Master of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional 'Veteran' Jawa Timur, Surabaya, Indonesia  
 **Correspondence:** `indrianjar@gmail.com`  
-**Target Publication:** *Social Network Analysis and Mining* (Springer, Scopus Q1) / *Jurnal Komunikasi: Malaysian Journal of Communication* (Scopus Q2 / SINTA 1)  
+**Target Publication:** *Social Network Analysis and Mining* (Springer, Indonesia Emas) / *Jurnal Komunikasi: Malaysian Journal of Communication* (Scopus Q2 / SINTA 1)  
 
 ---
 

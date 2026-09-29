@@ -1,0 +1,274 @@
+import requests
+import pandas as pd
+import time
+from urllib.parse import quote
+
+INPUT = "telegram_papers_2024_2026.csv"
+OUTPUT = "telegram_papers_enriched.csv"
+
+df = pd.read_csv(INPUT)
+
+# ---------------------------------------------------------
+# 1. CLEANING
+# ---------------------------------------------------------
+
+df["title"] = df["title"].fillna("").astype(str).str.strip()
+df["doi"] = df["doi"].fillna("").astype(str).str.strip()
+
+# Hapus DOI placeholder yang jelas mencurigakan
+placeholder_patterns = [
+    "00123",
+    "00124",
+    "00125",
+    "00126",
+    "00127",
+    "00128",
+    "00129",
+    "00130",
+    "00131",
+    "00132",
+    "00133",
+    "00134",
+    "00135",
+    "00136",
+    "00137",
+    "00138",
+    "00139",
+    "00140",
+    "00141",
+    "00142",
+    "00143",
+    "00144",
+    "00145",
+    "00146",
+    "00147",
+    "00148",
+    "00149",
+    "00150",
+    "00151",
+    "00152",
+    "00153",
+    "00154",
+]
+
+def is_suspicious_doi(doi):
+    doi_lower = doi.lower()
+
+    if not doi_lower:
+        return True
+
+    return any(x in doi_lower for x in placeholder_patterns)
+
+
+df["doi_suspicious"] = df["doi"].apply(is_suspicious_doi)
+
+# ---------------------------------------------------------
+# 2. TELEGRAM RELEVANCE
+# ---------------------------------------------------------
+
+def telegram_relevance(title):
+    text = title.lower()
+
+    score = 0
+
+    keywords = {
+        "telegram": 5,
+        "telegram bot": 10,
+        "telegram bots": 10,
+        "bot": 3,
+        "chatbot": 3,
+        "social network": 4,
+        "network analysis": 4,
+        "disinformation": 4,
+        "misinformation": 4,
+        "artificial intelligence": 3,
+        "nlp": 3,
+        "large language model": 4,
+        "llm": 3,
+    }
+
+    for keyword, weight in keywords.items():
+        if keyword in text:
+            score += weight
+
+    return score
+
+
+df["telegram_relevance"] = df["title"].apply(
+    telegram_relevance
+)
+
+# ---------------------------------------------------------
+# 3. OPENALEX METADATA
+# ---------------------------------------------------------
+
+def search_openalex(title):
+
+    url = "https://api.openalex.org/works"
+
+    params = {
+        "search": title,
+        "per-page": 3,
+    }
+
+    try:
+        r = requests.get(
+            url,
+            params=params,
+            timeout=30
+        )
+
+        r.raise_for_status()
+
+        data = r.json()
+
+        results = data.get("results", [])
+
+        if not results:
+            return {}
+
+        best = results[0]
+
+        source = (
+            best.get("primary_location", {})
+            .get("source")
+        )
+
+        journal = None
+
+        if source:
+            journal = source.get("display_name")
+
+        authors = []
+
+        for author in best.get("authorships", []):
+            name = (
+                author.get("author", {})
+                .get("display_name")
+            )
+
+            if name:
+                authors.append(name)
+
+        return {
+            "openalex_id": best.get("id"),
+            "openalex_title": best.get("title"),
+            "authors_openalex": "; ".join(authors),
+            "publication_year_openalex":
+                best.get("publication_year"),
+            "journal_openalex": journal,
+            "doi_openalex": best.get("doi"),
+            "cited_by_openalex":
+                best.get("cited_by_count"),
+            "type_openalex":
+                best.get("type"),
+        }
+
+    except Exception as e:
+
+        print("OpenAlex error:", e)
+
+        return {}
+
+
+# ---------------------------------------------------------
+# 4. FETCH METADATA
+# ---------------------------------------------------------
+
+metadata = []
+
+for index, row in df.iterrows():
+
+    print(
+        f"[{index + 1}/{len(df)}] "
+        f"{row['title'][:80]}"
+    )
+
+    result = search_openalex(
+        row["title"]
+    )
+
+    metadata.append(result)
+
+    time.sleep(0.2)
+
+
+metadata_df = pd.DataFrame(metadata)
+
+df = pd.concat(
+    [
+        df.reset_index(drop=True),
+        metadata_df.reset_index(drop=True)
+    ],
+    axis=1
+)
+
+# ---------------------------------------------------------
+# 5. SCOPUS / Q1 STATUS
+# ---------------------------------------------------------
+
+df["scopus_status"] = "UNVERIFIED"
+df["quartile"] = "UNVERIFIED"
+
+# Jangan mengklaim Q1 hanya dari OpenAlex.
+# Q1 harus diverifikasi dari Scopus/SJR/JCR sesuai
+# tahun dan subject category.
+
+# ---------------------------------------------------------
+# 6. RESEARCH FIELDS
+# ---------------------------------------------------------
+
+df["telegram_role"] = "UNVERIFIED"
+df["bot_type"] = "UNVERIFIED"
+df["dataset_size"] = "UNVERIFIED"
+df["method"] = "UNVERIFIED"
+df["NLP_model"] = "UNVERIFIED"
+df["network_method"] = "UNVERIFIED"
+df["research_gap"] = "NEEDS_ABSTRACT_REVIEW"
+df["relevance_to_your_research"] = "NEEDS_FULL_TEXT_REVIEW"
+
+# ---------------------------------------------------------
+# 7. REMOVE DUPLICATES
+# ---------------------------------------------------------
+
+df = df.drop_duplicates(
+    subset=["title"],
+    keep="first"
+)
+
+# ---------------------------------------------------------
+# 8. SORT
+# ---------------------------------------------------------
+
+df = df.sort_values(
+    by=[
+        "telegram_relevance",
+        "publication_year_openalex",
+        "cited_by_openalex"
+    ],
+    ascending=[
+        False,
+        False,
+        False
+    ]
+)
+
+# ---------------------------------------------------------
+# 9. SAVE
+# ---------------------------------------------------------
+
+df.to_csv(
+    OUTPUT,
+    index=False
+)
+
+print()
+print("=" * 70)
+print("SELESAI")
+print("=" * 70)
+print("Input :", INPUT)
+print("Output:", OUTPUT)
+print("Rows  :", len(df))
+print()
+print("Kolom:")
+print(df.columns.tolist())

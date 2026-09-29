@@ -9,7 +9,7 @@
 ¹ Department of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional 'Veteran' Jawa Timur, Surabaya, 60294, Indonesia  
 
 ***Corresponding Author:** `indrianjar@gmail.com`  
-**Target Publication:** *Social Network Analysis and Mining* (Springer Nature Switzerland, Scopus Q1, SJR 0.76)  
+**Target Publication:** *Social Network Analysis and Mining* (Springer Nature Switzerland, Indonesia Emas, SJR 0.76)  
 **Scopus ASJC Classification:** `3315` (Communication), `1702` (Artificial Intelligence), `3312` (Sociology and Political Science)  
 
 ---
@@ -30,7 +30,7 @@ A prime empirical manifestation of this dynamic occurred during the rollout of t
 
 Social media platforms—most notably Platform X (formerly Twitter)—served as the primary arena for this discourse. In Indonesia, Platform X functions as an elite-public hybrid forum where political agenda-setting, journalistic investigation, and organic civic dissent converge. However, analyzing public sentiment on X presents profound linguistic challenges. Indonesian netizens frequently circumvent direct censorship or social stigma by masking dissent behind layers of humor, dark irony, and sarcasm (Camp, 2012). Superficial praise (e.g., *'Menunya sangat mewah dan bergizi'*) is routinely subverted through contextual contradictions and derisive emojis (🤡, 🤮, 🗿). Traditional sentiment analysis models that classify text merely as 'positive' or 'negative' inevitably misinterpret such sarcastic praise as genuine government support, severely misleading public policy assessments.
 
-### 1.1 The Epistemological Problem and Scopus Q1 Research Gaps
+### 1.1 The Epistemological Problem and Indonesia Emas Research Gaps
 While digital policy evaluation has proliferated across computational social science, contemporary scholarship remains constrained by four fundamental theoretical, methodological, and empirical limitations:
 
 1. **The Theoretical Domain Gap (From Commercial Marketing to State Legitimacy Crisis):**

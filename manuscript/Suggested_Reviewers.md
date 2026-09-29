@@ -8,7 +8,7 @@ Indri Anjar Kartika Sari (`indrianjar@gmail.com`)
 Universitas Pembangunan Nasional 'Veteran' Jawa Timur, Indonesia  
 
 **Target Journal:**  
-*Social Network Analysis and Mining* (SNAM) – Springer Nature Switzerland (Scopus Q1, SJR 0.76)  
+*Social Network Analysis and Mining* (SNAM) – Springer Nature Switzerland (Indonesia Emas, SJR 0.76)  
 
 ---
 

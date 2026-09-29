@@ -1,0 +1,29 @@
+
+========================================
+FINAL TELEGRAM BOT LITERATURE AUDIT
+========================================
+
+Discovered:
+322
+
+Direct:
+43
+
+Related:
+134
+
+Scopus Verified:
+0
+
+Q1 Verified:
+0
+
+Unverified:
+322
+
+Output:
+/Users/jevin/Documents/tesis_mbg/backend/telegram_literature_output
+
+========================================
+PIPELINE COMPLETED
+========================================

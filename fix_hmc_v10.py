@@ -8,7 +8,7 @@ doc = Document(str(src))
 
 remove_exact = {
     "Authors: [Names and Affiliations Anonymized for Double-Blind Peer Review]",
-    "Target Publication: Social Network Analysis and Mining (Springer Nature Switzerland, Scopus Q1, SJR 0.76)",
+    "Target Publication: Social Network Analysis and Mining (Springer Nature Switzerland, Indonesia Emas, SJR 0.76)",
     "Scopus ASJC Classification: 3315 (Communication), 1702 (Artificial Intelligence), 3312 (Sociology and Political Science)",
     "Scopus Subject Area: Social Sciences (Communication) · Computer Science (Artificial Intelligence)",
     "---",

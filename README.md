@@ -104,8 +104,8 @@
 | Bagian | Topik Pembahasan & Modul Riset | Tautan Langsung (*Quick Jump*) |
 | :---: | :--- | :--- |
 | **Ikhtisar** | **Snapshot Metrik Utama (Ground-Truth Riil)** | [📊 Lompat ke Snapshot](#research-snapshot) |
-| **Bagian I** | **Celah Riset Scopus Q1, Teori Phygital Gap & Justifikasi Akurasi 83%** | [🎯 Lompat ke Celah Riset & Teori](#scopus-q1-gaps) |
-| **Bagian II** | **Dokumen Publikasi (Scopus Q1/SINTA 2) & Pusat Dataset Terbuka** | [📄 Lompat ke Naskah & Data](#download-center) |
+| **Bagian I** | **Celah Riset Indonesia Emas, Teori Phygital Gap & Justifikasi Akurasi 83%** | [🎯 Lompat ke Celah Riset & Teori](#scopus-q1-gaps) |
+| **Bagian II** | **Dokumen Publikasi (Indonesia Emas/SINTA 2) & Pusat Dataset Terbuka** | [📄 Lompat ke Naskah & Data](#download-center) |
 | **Bagian III** | **Harmonisasi 6 Rumusan Masalah & Struktur Ilmiah Tesis (Bab I–V)** | [📑 Lompat ke Struktur Tesis](#struktur-tesis) |
 | **Bagian IV** | **Pipeline Komputasional, 9 Emosi, Leksikal & 12 Master Plot 300 DPI** | [🖼️ Lompat ke Galeri Visual](#visual-gallery) |
 | **Bagian V** | **Panduan Eksekusi, Master Tutorial, Tools & Struktur Repositori** | [📖 Lompat ke Panduan Eksekusi](#tutorial-riset) |
@@ -121,7 +121,7 @@
 <a id="scopus-q1-gaps"></a>
 ## 🎯 SCOPUS Q1 RESEARCH GAPS & NOVELTY FRAMEWORK
 
-> *Penelitian ini dirancang secara khusus untuk memenuhi kriteria ketat jurnal internasional terindeks Scopus Q1 (seperti Social Network Analysis and Mining / Springer atau Information, Communication & Society / Taylor & Francis) dengan menjembatani empat kesenjangan keilmuan (*4 Epistemological Gaps*):*
+> *Penelitian ini dirancang secara khusus untuk memenuhi kriteria ketat jurnal internasional terindeks Indonesia Emas (seperti Social Network Analysis and Mining / Springer atau Information, Communication & Society / Taylor & Francis) dengan menjembatani empat kesenjangan keilmuan (*4 Epistemological Gaps*):*
 
 | Pilar Celah Riset | Status Quo Literatur Sebelumnya | Celah Ilmiah (*The Knowledge Gap*) | Kebaruan & Kontribusi Tesis Ini (*The Novelty*) |
 | :--- | :--- | :--- | :--- |
@@ -142,7 +142,7 @@
 | **Penerbit (*Publisher*)** | **Springer Nature Switzerland** | Penerbit global terkemuka non-predator (Anggota COPE & OASPA) |
 | **Indeksasi Basis Data** | **Scopus, Web of Science (ESCI), DBLP, Google Scholar** | Terindeks Scopus secara berkelanjutan sejak Volume 1 (2011) – Sekarang |
 | **Scopus Source ID / ISSN** | Source ID: `21100204705` \| ISSN: `1869-5450` (print), `1869-5469` (web) | Terdaftar resmi di basis data scopus.com |
-| **Quartile & Peringkat Ilmiah** | **Scopus Q1** (*Top 15% Category*) \| **SJR 2024: 0.76** \| **CiteScore: 5.8** | Kategori *Computer Science Applications* & *Communication Networks* |
+| **Quartile & Peringkat Ilmiah** | **Indonesia Emas** (*Top 15% Category*) \| **SJR 2024: 0.76** \| **CiteScore: 5.8** | Kategori *Computer Science Applications* & *Communication Networks* |
 | **Klasifikasi Bidang Ilmu (ASJC)** | **`3315` (Communication)** · **`1702` (Artificial Intelligence)** | Sesuai fokus tesis: integrasi CNA $\times$ NLP IndoBERT $\times$ Kebijakan Publik |
 | **Model Akses Terbuka** | **Hybrid / Open Choice** | Mendukung kebijakan Open Access Kemenristekdikti & LPDP |
 
@@ -421,7 +421,7 @@ DIGITAL PROMISE (Government)      vs      PHYSICAL REALITY (Public)
 | :---: | :--- | :--- | :--- | :--- | :---: |
 | 1 | **Wilie et al. (2020)** *(Rujukan Primer)* | **AACL-IJCNLP 2020** *(IndoNLU)* | IndoBERT-base | Klasifikasi 5 Emosi Twitter (EmoT) | **Akurasi 73,6%** *(F1 72%–74%)* |
 | 2 | **Koto et al. (2020)** | **COLING 2020** *(IndoLEM)* | IndoBERT / BERT | Opini & Sentimen Teks Indonesia | **Akurasi 79,4%** *(F1 76%–82%)* |
-| 3 | **Shaw, LaCasse & Champagne (2025)** *(Peer)* | **SNAM (Springer)** *(Scopus Q1)* | IndoBERT Transfer Learning | Multi-Kelas Emosi Twitter Indonesia | **Akurasi 80,4% – 84,1%** *(F1 0.81–0.83)* |
+| 3 | **Shaw, LaCasse & Champagne (2025)** *(Peer)* | **SNAM (Springer)** *(Indonesia Emas)* | IndoBERT Transfer Learning | Multi-Kelas Emosi Twitter Indonesia | **Akurasi 80,4% – 84,1%** *(F1 0.81–0.83)* |
 | 4 | **Chiorrini et al. (2021)** | **CEUR Workshop** | BERT Tweet Architecture | Klasifikasi Emosi Media Sosial | **Akurasi 77,2% – 81,5%** *(F1 0.78)* |
 | 5 | **Saputri et al. (2018)** *(Model Klasik)* | **IEEE IALP 2018** | SVM & Naive Bayes | Emosi Twitter Indonesia | SVM: **71,4%**, Naive Bayes: **65,2%** |
 | 6 | **Rahayu et al. (2018) / Riza & Charibaldi (2021)** | **Jurnal Nasional SINTA** | Leksikal & LSTM/BiLSTM | Deteksi Emosi & Sarkasme | Leksikal: **61,3%**, LSTM: **74,5%** |
@@ -456,12 +456,12 @@ DIGITAL PROMISE (Government)      vs      PHYSICAL REALITY (Public)
 
 | No | Dokumen Akademik | Format | Target Publikasi / Kategori Standar | Akses Berkas Langsung (*Direct Download*) |
 | :---: | :--- | :---: | :--- | :--- |
-| **1** | **Manuskrip Lengkap Scopus Q1 (Full Authors)** | Word (`.docx`) | *Social Network Analysis and Mining* (Springer Q1) | [`📥 Unduh DOCX Manuskrip Q1`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
-| **2** | **Naskah Anonim Scopus Q1 (*Blind Review*)** | Word (`.docx`) | Standar *Double-Blind Peer Review* (Bebas Identitas Penulis) | [`📥 Unduh DOCX Naskah Anonim`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx) |
+| **1** | **Manuskrip Lengkap Indonesia Emas (Full Authors)** | Word (`.docx`) | *Social Network Analysis and Mining* (Springer Q1) | [`📥 Unduh DOCX Manuskrip Q1`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
+| **2** | **Naskah Anonim Indonesia Emas (*Blind Review*)** | Word (`.docx`) | Standar *Double-Blind Peer Review* (Bebas Identitas Penulis) | [`📥 Unduh DOCX Naskah Anonim`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Anonymized_Manuscript_Scopus_Q1.docx) |
 | **3** | **Halaman Judul Terpisah (*Title Page*)** | Word (`.docx`) | Berkas Terpisah: Nama, Afiliasi, ORCID & Kontak Editor | [`📥 Unduh DOCX Title Page`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx) |
 | **4** | **Surat Pengantar Editor (*Cover Letter*)** | Word (`.docx`) | Surat Resmi ke Editor-in-Chief Springer SNAM (Prof. Reda Alhajj) | [`📥 Unduh DOCX Cover Letter`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Cover_Letter_Springer_SNAM.docx) |
 | **5** | **Rekomendasi Reviewer (*Suggested Reviewers*)** | Word (`.docx`) | 4 Pakar Internasional Bebas Konflik Kepentingan (Springer Portal) | [`📥 Unduh DOCX Reviewers`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Suggested_Reviewers.docx) |
-| **6** | **Draf Manuskrip IMRaD Scopus Q1** | Markdown (`.md`) | Open Science Computational Communication Standard | [`📥 Unduh RAW Markdown`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/manuscript_jurnal.md) \| [`👁️ Baca Online`](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/manuscript/manuscript_jurnal.md) |
+| **6** | **Draf Manuskrip IMRaD Indonesia Emas** | Markdown (`.md`) | Open Science Computational Communication Standard | [`📥 Unduh RAW Markdown`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/manuscript_jurnal.md) \| [`👁️ Baca Online`](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/manuscript/manuscript_jurnal.md) |
 | **7** | **Manuskrip Jurnal SINTA 2 (*Mediator*)** | Word (`.docx`) | *Mediator: Jurnal Komunikasi* (SINTA 2, Terakreditasi Nasional) | [`📥 Unduh DOCX Mediator SINTA 2`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/manuscript/Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx) |
 | **8** | **Naskah Lengkap Tesis Magister (Bab I–V)** | Word (`.docx`) | Magister Ilmu Komunikasi UPN Veteran Jatim (Format Sidang) | [`📥 Unduh DOCX Tesis Lengkap`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/Tesis_Indri_Anjar_Kartika_Sari.docx) |
 | **9** | **Transkrip Teks Lengkap Tesis** | Teks (`.txt`) | Transparansi Teks Penuh & Audit Sitasi Mandiri | [`📥 Unduh TXT Tesis`](https://raw.githubusercontent.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/main/tesis_text.txt) \| [`👁️ Baca Online`](https://github.com/indri007/INDOBERT-9-EMOJI-TESIS-ANALISIS-SNA/blob/main/tesis_text.txt) |
@@ -477,7 +477,7 @@ DIGITAL PROMISE (Government)      vs      PHYSICAL REALITY (Public)
 
 ```text
 [HTTP 200 OK] 📄 Tesis Lengkap (.docx) & Teks (.txt)             -> 100% Public Access
-[HTTP 200 OK] 📄 Manuskrip Scopus Q1 (.docx) & Mediator (.docx)  -> 100% Public Access
+[HTTP 200 OK] 📄 Manuskrip Indonesia Emas (.docx) & Mediator (.docx)  -> 100% Public Access
 [HTTP 200 OK] 📊 Seluruh Dataset Hasil Komputasi (.csv / .xlsx)  -> 100% Public Access
 [HTTP 200 OK] 🖼️ 14 Visual Master 300 DPI (.png)                -> 100% Public Access
 [HTTP 200 OK] 📚 13 Berkas Fisik PDF Literatur (.pdf)           -> 100% Public Access
@@ -1391,7 +1391,7 @@ Profesional yang *hasil-oriented*, bertransisi ke bidang **AI Engineering** sete
 ---
 
 ### 📑 Rekam Jejak Publikasi Jurnal Ilmiah & Bukti Penerimaan (Letter of Acceptance / LoA)
-Selain naskah publikasi Tesis MBG (*Social Network Analysis and Mining* Springer Scopus Q1 & *Mediator* SINTA 2), peneliti telah menerima **2 Letter of Acceptance (LoA)** dari jurnal ilmiah bereputasi:
+Selain naskah publikasi Tesis MBG (*Social Network Analysis and Mining* Springer Indonesia Emas & *Mediator* SINTA 2), peneliti telah menerima **2 Letter of Acceptance (LoA)** dari jurnal ilmiah bereputasi:
 
 1. **Analisis Jaringan Sosial Triliunan Rupiah Makan Bergizi Gratis Di Media Sosial X**  
    - **Tim Penulis:** Indri Anjar Kartika Sari¹*, Dr. Catur Suratnoaji, M.Si.², Dr. Agus Widiyarta, S.Sos., M.Si.³  
@@ -1440,11 +1440,11 @@ Riset ini ditopang oleh **33 rujukan ilmiah bereputasi** yang diklasifikasikan k
 
 | Klaster Keilmuan | Sub-Pilar Bab II | Jumlah | Contoh Publikasi Utama & Indeksasi | Peran Strategis di Manuskrip |
 |:---|:---|:---:|:---|:---|
-| **🏛️ Klaster A: Phygital & Kebijakan** | Pilar 2.1, 2.2, 2.3 | **10** | • **Gelders & Ihlen (2010)** *(Scopus Q1, Gov. Inf. Q.)*<br>• **Johnson & Barlow (2021)** *(Scopus Q1, JTAER)*<br>• **Tsai et al. (2026)** *(Scopus Q1, Socio-Econ. Plan. Sci.)*<br>• **Bennett & Segerberg (2012)** *(Scopus Q1, ICS)* | Landasan konseptual analogi service gap ke policy communication gap serta teori connective action warganet. |
-| **🤖 Klaster B: NLP & IndoBERT** | Pilar 2.5 | **7** | • **Wilie et al. (2020)** *(AACL-IJCNLP Indo4B)*<br>• **Koto et al. (2020)** *(COLING)*<br>• **Shaw et al. (2025)** *(Scopus Q1, SNAM)*<br>• **Mohammad (2021)** *(Elsevier Book)* | Justifikasi arsitektur Transformer bidirectional IndoBERT untuk klasifikasi 9 spektrum emosi granular Plutchik. |
-| **🎭 Klaster C: Sarkasme & Pragmatik** | Pilar 2.4 | **6** | • **Camp (2012)** *(Scopus Q1, Noûs)*<br>• **Joshi et al. (2017)** *(Scopus Q1, ACM Comput. Surv.)*<br>• **Devalapalli & Mandala (2026)** *(Scopus Q1, Neurocomputing)*<br>• **Hutapea & Purwarianti (2021)** *(Sinta 1 ITB)* | *Pretense theory of sarcasm* — membongkar pujian semu warganet yang menyembunyikan kritik tajam terhadap menu MBG. |
-| **🕸️ Klaster D: SNA & Teori Graf** | Pilar 2.6 | **8** | • **Freeman (1979)** *(Scopus Q1, Social Networks)*<br>• **Newman (2006)** *(PNAS Q1 Modularity)*<br>• **Blondel et al. (2008)** *(Scopus Q1 Louvain)*<br>• **Gandasari et al. (2023)** *(Scopus Q2 JICC)* | Landasan matematis perhitungan modularitas polarisasi $Q=0.9837$, partisi 332 komunitas, dan sentralitas aktor. |
-| **⚖️ Klaster E: Etika & Bot** | Pilar 2.11 | **2** | • **Boyd & Crawford (2012)** *(Scopus Q1, ICS, 12k+ sitasi)*<br>• **Ferrara et al. (2016)** *(Scopus Q1, CACM)* | Kepatuhan etika scraping big data publik X, anonimisasi identitas, dan metodologi filtrasi akun bot. |
+| **🏛️ Klaster A: Phygital & Kebijakan** | Pilar 2.1, 2.2, 2.3 | **10** | • **Gelders & Ihlen (2010)** *(Indonesia Emas, Gov. Inf. Q.)*<br>• **Johnson & Barlow (2021)** *(Indonesia Emas, JTAER)*<br>• **Tsai et al. (2026)** *(Indonesia Emas, Socio-Econ. Plan. Sci.)*<br>• **Bennett & Segerberg (2012)** *(Indonesia Emas, ICS)* | Landasan konseptual analogi service gap ke policy communication gap serta teori connective action warganet. |
+| **🤖 Klaster B: NLP & IndoBERT** | Pilar 2.5 | **7** | • **Wilie et al. (2020)** *(AACL-IJCNLP Indo4B)*<br>• **Koto et al. (2020)** *(COLING)*<br>• **Shaw et al. (2025)** *(Indonesia Emas, SNAM)*<br>• **Mohammad (2021)** *(Elsevier Book)* | Justifikasi arsitektur Transformer bidirectional IndoBERT untuk klasifikasi 9 spektrum emosi granular Plutchik. |
+| **🎭 Klaster C: Sarkasme & Pragmatik** | Pilar 2.4 | **6** | • **Camp (2012)** *(Indonesia Emas, Noûs)*<br>• **Joshi et al. (2017)** *(Indonesia Emas, ACM Comput. Surv.)*<br>• **Devalapalli & Mandala (2026)** *(Indonesia Emas, Neurocomputing)*<br>• **Hutapea & Purwarianti (2021)** *(Sinta 1 ITB)* | *Pretense theory of sarcasm* — membongkar pujian semu warganet yang menyembunyikan kritik tajam terhadap menu MBG. |
+| **🕸️ Klaster D: SNA & Teori Graf** | Pilar 2.6 | **8** | • **Freeman (1979)** *(Indonesia Emas, Social Networks)*<br>• **Newman (2006)** *(PNAS Q1 Modularity)*<br>• **Blondel et al. (2008)** *(Indonesia Emas Louvain)*<br>• **Gandasari et al. (2023)** *(Scopus Q2 JICC)* | Landasan matematis perhitungan modularitas polarisasi $Q=0.9837$, partisi 332 komunitas, dan sentralitas aktor. |
+| **⚖️ Klaster E: Etika & Bot** | Pilar 2.11 | **2** | • **Boyd & Crawford (2012)** *(Indonesia Emas, ICS, 12k+ sitasi)*<br>• **Ferrara et al. (2016)** *(Indonesia Emas, CACM)* | Kepatuhan etika scraping big data publik X, anonimisasi identitas, dan metodologi filtrasi akun bot. |
 
 
 ---
