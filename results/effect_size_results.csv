@@ -1,0 +1,5 @@
+comparison,metric,indobert_value,baseline_value,delta,cohens_d,effect_interpretation,note
+IndoBERT vs TF-IDF + Logistic Regression,accuracy,0.794,0.6947,0.09930000000000005,0.23300997485703454,small,Baseline per-sample array approximated from aggregate accuracy
+IndoBERT vs TF-IDF + Logistic Regression,macro_f1,0.516,0.3429,0.17310000000000003,N/A (no per-sample F1),see delta,Per-sample F1 not available for baselines; delta only
+IndoBERT vs TF-IDF + Linear SVM,accuracy,0.794,0.672,0.122,0.27201022323313334,small,Baseline per-sample array approximated from aggregate accuracy
+IndoBERT vs TF-IDF + Linear SVM,macro_f1,0.516,0.4095,0.10650000000000004,N/A (no per-sample F1),see delta,Per-sample F1 not available for baselines; delta only

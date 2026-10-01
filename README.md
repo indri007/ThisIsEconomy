@@ -105,7 +105,7 @@
 | Bagian | Topik Pembahasan & Modul Riset | Tautan Langsung (*Quick Jump*) |
 | :---: | :--- | :--- |
 | **Ikhtisar** | **Snapshot Metrik Utama (Ground-Truth Riil)** | [📊 Lompat ke Snapshot](#research-snapshot) |
-| **Bagian I** | **Celah Riset Indonesia Emas, Teori Phygital Gap & Justifikasi Akurasi 83%** | [🎯 Lompat ke Celah Riset & Teori](#scopus-q1-gaps) |
+| **Bagian I** | **Celah Riset Indonesia Emas, Teori Phygital Gap & Evaluasi Model Group-Aware** | [🎯 Lompat ke Celah Riset & Teori](#scopus-q1-gaps) |
 | **Bagian II** | **Dokumen Publikasi (Indonesia Emas/SINTA 2) & Pusat Dataset Terbuka** | [📄 Lompat ke Naskah & Data](#download-center) |
 | **Bagian III** | **Harmonisasi 6 Rumusan Masalah & Struktur Ilmiah Tesis (Bab I–V)** | [📑 Lompat ke Struktur Tesis](#struktur-tesis) |
 | **Bagian IV** | **Pipeline Komputasional, 9 Emosi, Leksikal & 12 Master Plot 300 DPI** | [🖼️ Lompat ke Galeri Visual](#visual-gallery) |
@@ -324,14 +324,14 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
   - `precision` (*float64*): Ketepatan prediksi model.
   - `recall` (*float64*): Kepekaan penangkapan data riil (Disgust mencapai **96,92%**).
   - `f1-score` (*float64*): Skor keseimbangan harmonik.
-  - `support` (*int64*): Jumlah data uji aktual per-kelas pada populasi $n=1.053$.
+  - `support` (*int64*): Jumlah data uji aktual per-kelas pada populasi holdout group-aware $n=1.058$.
 * **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
 <div align="center">
-  <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/confusion_matrix.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/confusion_matrix.png" width="85%" alt="Confusion Matrix IndoBERT"/>
+  <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/FINAL_indobert_confusion_matrix.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/FINAL_indobert_confusion_matrix.png" width="85%" alt="Confusion Matrix IndoBERT"/>
   </a>
   <br/>
-  <sub><b>Gambar D9:</b> Confusion Matrix Klasifikasi Emosi IndoBERT pada Data Uji Riil (n=1.053). Klik gambar untuk membuka resolusi penuh.</sub>
+  <sub><b>Gambar D9:</b> Confusion Matrix Klasifikasi Emosi IndoBERT Group-Aware pada Data Uji Riil (n=1.058). Klik gambar untuk membuka resolusi penuh.</sub>
 </div>
 
 
@@ -410,9 +410,9 @@ DIGITAL PROMISE (Government)      vs      PHYSICAL REALITY (Public)
 
 ---
 
-## 🎯 JUSTIFIKASI AKADEMIS AKURASI 83%, 3 EPOCH & BENCHMARK 6 RISET DI BAB II
+## 🎯 BENCHMARK MODEL, PROTOKOL GROUP-AWARE & HASIL EVALUASI FINAL DI BAB II & BAB IV
 
-### 1. Mengapa Akurasi 83% dengan 3 Epoch adalah Standar Emas?
+### 1. Landasan Finetuning IndoBERT & Titik Konvergensi 3 Epoch
 * **Justifikasi 3 Epoch (Devlin et al., 2018; Wilie et al., 2020):** IndoBERT adalah model *pre-trained* yang telah menyerap miliaran token bahasa Indonesia. Fine-tuning 3 epoch sudah cukup mencapai titik konvergensi optimum. Menambah epoch berlebih (misal 20–50 epoch) justru akan memicu ***overfitting*** dan ***catastrophic forgetting*** (akurasi training bisa 99% tapi testing anjlok ke 40–50%).
 * **Mengapa Akurasi 99% Tidak Masuk Akal di NLP Media Sosial?** Kesepakatan antar-anotator manusia (*Inter-Annotator Agreement / Cohen's Kappa*) pada teks slang warganet X hanya berkisar **78%–85%** (*Human Ceiling*). Klaim akurasi 99% pada teks media sosial riil merupakan *red flag* kebocoran data (*data leakage*) atau evaluasi keliru pada data latih sendiri.
 * **Recall Kelas Utama 96,92%:** Pada evaluasi 9 kelas emosi, IndoBERT mencapai **Recall 96,92%** pada kelas dominan *Jijik (Disgust)*, membuktikan model sangat sensitif mendeteksi keluhan fisik menu MBG.
@@ -426,12 +426,46 @@ DIGITAL PROMISE (Government)      vs      PHYSICAL REALITY (Public)
 | 4 | **Chiorrini et al. (2021)** | **CEUR Workshop** | BERT Tweet Architecture | Klasifikasi Emosi Media Sosial | **Akurasi 77,2% – 81,5%** *(F1 0.78)* |
 | 5 | **Saputri et al. (2018)** *(Model Klasik)* | **IEEE IALP 2018** | SVM & Naive Bayes | Emosi Twitter Indonesia | SVM: **71,4%**, Naive Bayes: **65,2%** |
 | 6 | **Rahayu et al. (2018) / Riza & Charibaldi (2021)** | **Jurnal Nasional SINTA** | Leksikal & LSTM/BiLSTM | Deteksi Emosi & Sarkasme | Leksikal: **61,3%**, LSTM: **74,5%** |
-| 🎯 | **TESIS INI (2026)** | **Tesis MBG (Phygital Gap)** | **IndoBERT (3 Epoch)** | **Klasifikasi Sentimen/Sarkasme & MBG** | **Akurasi 83,00%** *(Macro F1 0.8122)* |
+| 🎯 | **TESIS INI (2026 - Final)** | **Tesis MBG (Phygital Gap)** | **IndoBERT Group-Aware (Epoch 2)** | **Klasifikasi Emosi MBG (Zero-Leakage Holdout n=1.058)** | **Akurasi 79.40%** *(Macro F1 0.5160, Weighted F1 0.7851)* |
 
 
 ---
 
 <a id="download-center"></a>
+## Final Machine Learning Evaluation
+
+Evaluasi final model klasifikasi emosi MBG menggunakan protokol eksperimen yang telah diverifikasi secara menyeluruh untuk menjamin integritas saintifik:
+- **Group-aware train/test split:** Pengelompokan berbasis teks normalisasi (`GroupShuffleSplit`, `random_state = 42`) mempartisi korpus menjadi 80% data latih ($N = 4.205$) dan 20% data uji independen ($n = 1.058$).
+- **Zero data leakage:** Terverifikasi programatik memiliki **0 raw text overlap** dan **0 processed-text overlap** antara data latih dan data uji, mencegah representasi duplikasi retweet viral.
+- **Silver-standard reference labels:** Label referensi berasal dari anotasi semantik otomatis berbasis model bahasa dan leksikon (*silver-standard reference labels*), bukan *human gold standard*.
+- **Model yang dievaluasi:** IndoBERT fine-tuning (`indobenchmark/indobert-base-p2`, checkpoint-264) serta dua model pembanding linear terstandarisasi: TF-IDF + Logistic Regression dan TF-IDF + Linear SVM.
+
+### Comparative Multi-Model Performance Table
+
+| Model Architecture | Feature Representation | Accuracy | Macro-F1 | Weighted-F1 | Protocol |
+| :--- | :--- | :---: | :---: | :---: | :--- |
+| **TF-IDF + Logistic Regression** | Word & Bigram TF-IDF | 0.6947 | 0.3429 | 0.6457 | Group-Aware (Zero Leakage) |
+| **TF-IDF + Linear SVM** | Word & Bigram TF-IDF | 0.6720 | 0.4095 | 0.6558 | Group-Aware (Zero Leakage) |
+| **IndoBERT (Fine-Tuned)** | Contextual Transformer Embeddings | **0.7940** | **0.5160** | **0.7851** | Group-Aware (Zero Leakage) |
+
+*Parameter Evaluasi:* Train set = 4,205 cuitan; Test set = 1,058 cuitan; IndoBERT checkpoint = `checkpoint-264` (Epoch 2.0). Model IndoBERT achieved the reported evaluation metrics under high class imbalance.
+
+### Per-Class Evaluation Breakdown (IndoBERT Group-Aware, $n=1,058$)
+
+| Emotion Class | Precision | Recall | F1-Score | Support ($n$) | Share of Test Set (%) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Disgust (Jijik)** | 0.8176 | 0.8729 | **0.8444** | 606 | 57.28% |
+| **Trust (Percaya)** | 0.7511 | 0.7545 | **0.7528** | 220 | 20.79% |
+| **Neutral (Netral)** | 0.8347 | 0.8145 | **0.8245** | 124 | 11.72% |
+| **Interest (Tertarik)** | 0.6324 | 0.4725 | **0.5409** | 91 | 8.60% |
+| **Anger (Marah)** | 1.0000 | 0.0714 | **0.1333** | 14 | 1.32% (Minority) |
+| **Sadness (Sedih)** | 0.0000 | 0.0000 | **0.0000** | 3 | 0.28% (Minority) |
+| **Overall Accuracy / Average** | **0.6726 (Macro)** | **0.4977 (Macro)** | **0.5160 (Macro)** | **1,058** | **100.00%** |
+
+> *Catatan Historis & Metodologis:* Pada iterasi pengembangan awal, digunakan benchmark komparatif 83% dan checkpoint-792 ($n=1.053$). Namun setelah audit forensik mendeteksi adanya representasi duplikasi teks, protokol diperbarui secara ketat menjadi Group-Aware Holdout ($n=1.058$, zero overlap) dengan checkpoint-264 sebagai model final tervalidasi.
+
+---
+
 ## 📥 PUSAT AKSES & DIRECT DOWNLOAD DATASET PUBLIK (OPEN DATA & REPRODUCIBILITY)
 > *Sesuai prinsip **Open Science & Computational Verifiability**, seluruh data empiris, tabel sentralitas, laporan metrik model, dan visualisasi riset ini dibuka 100% untuk publik dan dapat diakses/diunduh secara instan tanpa perlu login atau token.*
 
@@ -447,7 +481,7 @@ DIGITAL PROMISE (Government)      vs      PHYSICAL REALITY (Public)
 | **7** | **Partisi Node & Komunitas Louvain** | CSV | 971 node terklaster | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/mbg_network_nodes_final.csv) | [🖼️ Lihat Graf Komunitas & Emosi](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/9_emotion_network.png) |
 | **8** | **Peringkat Sentralitas Derajat Aktor** | CSV | 986 aktor terindeks | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/results/sna_degree.csv) | [🖼️ Lihat Plot Asimetri Aktor](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/top_actors.png) |
 | **9** | **Sentimen Berbasis Aspek (ABSA 3 Tema)** | CSV | 3 pilar tematik fisik | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/absa_results.csv) | [🖼️ Lihat Plot 3 Pilar Phygital Gap](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/10_absa_thematic.png) |
-| **10** | **Laporan Metrik Evaluasi Model IndoBERT** | CSV | 10 baris metrik resmi | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/classification_report.csv) | [🖼️ Lihat Confusion Matrix Model](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/confusion_matrix.png) |
+| **10** | **Laporan Metrik Evaluasi Model IndoBERT** | CSV | 10 baris metrik resmi | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/classification_report.csv) | [🖼️ Lihat Confusion Matrix Model](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/FINAL_indobert_confusion_matrix.png) |
 | **11** | **Visual Keterbatasan Penelitian (Bab V)** | PNG 300 DPI | Resolusi Ultra-HD | Gambar Orisinal 1.1 MB | [`📥 Unduh PNG HD`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/keterbatasan_penelitian.png) | [🖼️ Lihat Radar Chart 5 Keterbatasan](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/keterbatasan_penelitian.png) |
 
 ---
@@ -891,18 +925,18 @@ Pada korpus validasi ($N=3.395$), **9,28% (315 cuitan)** terverifikasi memuat si
 <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/f1_scores.png" target="_blank">
 <img src="results/f1_scores.png" width="100%" alt="Figure 04: F1-Scores"/>
 </a>
-Evaluasi performa model IndoBERT pada testing set riil ($n=1.053$, checkpoint-792). Kelas dominan Jijik mencapai Recall **96,92%** (F1 0,7178).  
+Evaluasi performa model IndoBERT pada testing set riil holdout group-aware ($n=1.058$, checkpoint-264). Model mencapai Akurasi **79.40%** (79,40%), Macro-F1 **0,5160**, Weighted-F1 **0,7851**, dan F1 Jijik **0,8444** (Recall 87,29%).  
 🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/f1_scores.png)**
 
 ---
 
 ### `Figure 05` — Confusion Matrix IndoBERT
 📍 *Evaluasi Model §4.5*  
-<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/confusion_matrix.png" target="_blank">
-<img src="results/confusion_matrix.png" width="100%" alt="Figure 05: Confusion Matrix"/>
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/FINAL_indobert_confusion_matrix.png" target="_blank">
+<img src="results/FINAL_indobert_confusion_matrix.png" width="100%" alt="Figure 05: Confusion Matrix"/>
 </a>
 Matriks konfusi 9×9 mengonfirmasi 566 dari 584 cuitan berlabel aktual Jijik berhasil diprediksi tepat oleh model (96,92% recall).  
-🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/confusion_matrix.png)**
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/FINAL_indobert_confusion_matrix.png)**
 
 ---
 
@@ -1053,7 +1087,7 @@ Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) secara u
   2. *Tahap 2: Fine-Tuning Transformer IndoBERT 9 Emosi Plutchik:*
      - Base Model: `indobenchmark/indobert-base-p2` (12-layer, 768 hidden units, 12 self-attention heads).
      - Klasifikasi 9 Kelas Emosi: *Disgust (Jijik), Trust (Percaya), Neutral (Netral), Anticipation (Antisipasi), Anger (Marah), Sadness (Sedih), Joy (Senang), Surprise (Terkejut), Fear (Takut)*.
-     - Stratified Split: 80% data latih ($N=4.210$) dan 20% data uji validasi independen ($n=1.053$).
+     - Group-Aware Split: 80% data latih ($N=4.205$) dan 20% data uji independen ($n=1.058$) dengan zero lexical overlap (GroupShuffleSplit, seed 42).
   3. *Tahap 3: Algoritma Deteksi Sindiran & Majas Kontradiktif:*
      - Aturan pencocokan leksikal (*Lexical Matching*) mendeteksi 181 pasang oposisi biner tajam (misal: kata pujian *"mewah/bergizi"* yang dipasangkan dengan konteks keluhan porsi minim atau emoji mual 🤮).
   4. *Tahap 4: Pemodelan Graf Jaringan Komunikasi (CNA / SNA) & Deteksi Komunitas:*
@@ -1063,7 +1097,7 @@ Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) secara u
      - Segmentasi sentimen ke dalam 3 aspek operasional program MBG: *Logistik & Distribusi*, *Anggaran & Vendor*, serta *Kualitas Gizi Makanan*.
 * **Langkah Eksekusi Pipeline CLI:**
   ```bash
-  # 1. Menjalankan evaluasi performa model IndoBERT pada data uji (n=1.053)
+  # 1. Menjalankan evaluasi performa model IndoBERT pada data uji group-aware (n=1.058)
   python scripts/evaluate.py
 
   # 2. Menjalankan komputasi CNA & deteksi komunitas Louvain
@@ -1102,7 +1136,7 @@ Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) secara u
   ```
   *Grafik resolusi tinggi akan otomatis diperbarui di direktori `results/`:*
   - `results/integrated_sna_nlp.png` (Master Visual Komprehensif 3-Panel)
-  - `results/confusion_matrix.png` (Matriks Konfusi IndoBERT)
+  - `results/FINAL_indobert_confusion_matrix.png` (Matriks Konfusi IndoBERT)
   - `results/f1_scores.png` (Skor F1-Score per Kelas Emosi)
   - `results/dataset_distribution.png` (Distribusi 9 Emosi & WordCloud)
 

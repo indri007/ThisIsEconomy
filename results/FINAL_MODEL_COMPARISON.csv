@@ -1,0 +1,4 @@
+Model,Protocol,Train_N,Test_N,Accuracy,Macro_Precision,Macro_Recall,Macro_F1,Weighted_Precision,Weighted_Recall,Weighted_F1,Reference_Label,Text_Leakage,Valid_For_Comparison
+TF-IDF + Logistic Regression,GROUP-AWARE,4205,1058,0.6947,0.3814,0.3402,0.3429,0.6476,0.6947,0.6457,SILVER-STANDARD,NO,YES
+TF-IDF + Linear SVM,GROUP-AWARE,4205,1058,0.672,0.5433,0.3882,0.4095,0.6535,0.672,0.6558,SILVER-STANDARD,NO,YES
+IndoBERT Group-Aware,GROUP-AWARE,4205,1058,0.794,0.6726,0.4977,0.516,0.79,0.794,0.7851,SILVER-STANDARD,NO,YES

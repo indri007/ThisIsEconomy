@@ -1,0 +1,2 @@
+Model,Checkpoint,Accuracy,Precision_Macro,Recall_Macro,F1_Macro,Precision_Weighted,Recall_Weighted,F1_Weighted
+IndoBERT Group-Aware,checkpoint-264,0.794,0.6726,0.4977,0.516,0.79,0.794,0.7851

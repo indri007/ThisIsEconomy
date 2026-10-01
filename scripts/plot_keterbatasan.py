@@ -102,7 +102,7 @@ limitations = [
         "num": "04",
         "title": "Sarkasme Vernakular & Nuansa Budaya",
         "desc": "Gaya bertutur warganet Indonesia sarat satir halus dan metafora lokal yang menantang pemisahan absolut antara Disgust, Anger, dan Sarcasm.",
-        "mitigation": "Mitigasi: Integrasi kamus sindiran 3.395 entri & validasi confusion matrix Macro F1 0.8122.",
+        "mitigation": "Mitigasi: Integrasi kamus sindiran 3.395 entri & validasi holdout group-aware (Weighted F1 0.7851, Macro F1 0.5160).",
         "future": "Riset Lanjut: Model pragmatik berbasis culturally-aware LLM reasoning."
     },
     {

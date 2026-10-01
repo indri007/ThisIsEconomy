@@ -1,0 +1,25 @@
+model,class,precision,recall,f1,f1_ci_lo,f1_ci_hi,support
+MajorityClass,Jijik,0.5728,1.0,0.7284,0.7034,0.7509,606
+MajorityClass,Marah,0.0,0.0,0.0,0.0,0.0,14
+MajorityClass,Netral,0.0,0.0,0.0,0.0,0.0,124
+MajorityClass,Percaya,0.0,0.0,0.0,0.0,0.0,220
+MajorityClass,Sedih,0.0,0.0,0.0,0.0,0.0,3
+MajorityClass,Tertarik,0.0,0.0,0.0,0.0,0.0,91
+TF-IDF + LogReg,Jijik,0.6667,0.9439,0.7814,0.7579,0.8034,606
+TF-IDF + LogReg,Marah,0.0,0.0,0.0,0.0,0.0,14
+TF-IDF + LogReg,Netral,0.7857,0.7097,0.7458,0.6804,0.8048,124
+TF-IDF + LogReg,Percaya,0.6622,0.2227,0.3333,0.2621,0.4026,220
+TF-IDF + LogReg,Sedih,0.0,0.0,0.0,0.0,0.0,3
+TF-IDF + LogReg,Tertarik,0.0714,0.011,0.019,0.0,0.0632,91
+TF-IDF + LinearSVM,Jijik,0.6985,0.8944,0.7844,0.7604,0.8068,606
+TF-IDF + LinearSVM,Marah,1.0,0.0714,0.1333,0.0,0.375,14
+TF-IDF + LinearSVM,Netral,0.7398,0.7339,0.7368,0.6742,0.7951,124
+TF-IDF + LinearSVM,Percaya,0.5954,0.3545,0.4444,0.3821,0.5076,220
+TF-IDF + LinearSVM,Sedih,0.0,0.0,0.0,0.0,0.0,3
+TF-IDF + LinearSVM,Tertarik,0.2963,0.0879,0.1356,0.0526,0.2256,91
+IndoBERT Group-Aware,Jijik,0.8176,0.8729,0.8444,0.8215,0.8646,606
+IndoBERT Group-Aware,Marah,1.0,0.0714,0.1333,0.0,0.381,14
+IndoBERT Group-Aware,Netral,0.8347,0.8145,0.8245,0.77,0.8722,124
+IndoBERT Group-Aware,Percaya,0.7511,0.7545,0.7528,0.7065,0.7955,220
+IndoBERT Group-Aware,Sedih,0.0,0.0,0.0,0.0,0.0,3
+IndoBERT Group-Aware,Tertarik,0.6324,0.4725,0.5409,0.439,0.6303,91

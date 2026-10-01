@@ -1,0 +1,4 @@
+Model,Task,N_Test,Accuracy,Macro_Precision,Macro_Recall,Macro_F1,Weighted_Precision,Weighted_Recall,Weighted_F1
+IndoBERT (Proposed),Emotion (9-Class),1053,0.5745,0.1792,0.1651,0.1444,0.4519,0.5745,0.4563
+TF-IDF + Logistic Regression (Baseline 1),Emotion (9-Class),1053,0.7569,0.4548,0.3558,0.3705,0.7532,0.7569,0.7203
+TF-IDF + Linear SVM (Baseline 2),Emotion (9-Class),1053,0.8367,0.7613,0.5891,0.6446,0.8383,0.8367,0.83

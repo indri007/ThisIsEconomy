@@ -1,0 +1,17 @@
+RESEARCHER ANNOTATION INSTRUCTIONS
+===================================
+File: researcher_batch_100.csv
+Task: Verify 100 MBG tweet emotion labels
+
+1. Read each tweet in the 'text' column.
+2. Fill 'researcher_label' with ONE of:
+   Jijik | Marah | Netral | Percaya | Sedih | Takut | Tertarik
+3. Fill 'confidence_1to5' with: 1 (unsure) to 5 (certain)
+4. Optionally add notes.
+5. Save as: researcher_batch_100_FILLED.csv
+
+After filling, run:
+  python scripts/score_100_pipeline.py --compute-researcher-kappa
+
+This computes Cohen's κ between your labels and the model's labels.
+Target: κ ≥ 0.60 (Substantial agreement)

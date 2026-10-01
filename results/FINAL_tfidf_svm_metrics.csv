@@ -1,0 +1,2 @@
+Model,Protocol,Accuracy,Precision_Macro,Recall_Macro,F1_Macro,Precision_Weighted,Recall_Weighted,F1_Weighted
+TF-IDF + Linear SVM,GROUP-AWARE,0.672,0.5433,0.3882,0.4095,0.6535,0.672,0.6558

@@ -1,0 +1,10 @@
+metric,value
+total_rows,5263
+total_columns,13
+duplicate_rows_full,1349
+duplicate_raw_text,1794
+duplicate_processed_text,1870
+unique_raw_text,3469
+unique_processed_text,3393
+num_unique_labels_present,7
+missing_theoretical_labels,"Bahagia, Kaget"

@@ -1,0 +1,50 @@
+{
+  "external_dataset": "IndoNLU EmoT (Koto et al. 2020)",
+  "external_ground_truth": "HUMAN_ANNOTATED",
+  "n_external_test": 440,
+  "label_mapping": {
+    "anger": "Marah",
+    "fear": "Takut",
+    "happy": "Percaya",
+    "love": "Tertarik",
+    "sadness": "Sedih"
+  },
+  "cross_domain_results": [
+    {
+      "model": "TF-IDF + LogReg",
+      "domain": "MBG (in-domain)",
+      "accuracy": 0.6711,
+      "macro_f1": 1.0,
+      "test_set": "MBG silver-standard",
+      "n_test": 1058
+    },
+    {
+      "model": "TF-IDF + LogReg",
+      "domain": "EmoT (external)",
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "test_set": "IndoNLU EmoT (GROUND_TRUTH)",
+      "n_test": 440
+    },
+    {
+      "model": "TF-IDF + LinearSVM",
+      "domain": "MBG (in-domain)",
+      "accuracy": 0.6805,
+      "macro_f1": 1.0,
+      "test_set": "MBG silver-standard",
+      "n_test": 1058
+    },
+    {
+      "model": "TF-IDF + LinearSVM",
+      "domain": "EmoT (external)",
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "test_set": "IndoNLU EmoT (GROUND_TRUTH)",
+      "n_test": 440
+    }
+  ],
+  "jensen_shannon_divergence": 0.4705,
+  "domain_shift_interpretation": "Significant domain shift expected: MBG is policy-specific, EmoT is general Indonesian Twitter. JS divergence quantifies this shift objectively.",
+  "evidence_type_external": "GROUND_TRUTH",
+  "evidence_type_mbg": "SILVER-STANDARD"
+}

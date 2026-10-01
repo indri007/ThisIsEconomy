@@ -1,0 +1,14 @@
+split,label,count,percentage
+TRAIN,Jijik,2354,55.98
+TRAIN,Percaya,853,20.29
+TRAIN,Netral,525,12.49
+TRAIN,Tertarik,414,9.85
+TRAIN,Marah,41,0.98
+TRAIN,Sedih,16,0.38
+TRAIN,Takut,2,0.05
+TEST,Jijik,606,57.28
+TEST,Percaya,220,20.79
+TEST,Netral,124,11.72
+TEST,Tertarik,91,8.6
+TEST,Marah,14,1.32
+TEST,Sedih,3,0.28

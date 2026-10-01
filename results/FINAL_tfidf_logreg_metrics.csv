@@ -1,0 +1,2 @@
+Model,Protocol,Accuracy,Precision_Macro,Recall_Macro,F1_Macro,Precision_Weighted,Recall_Weighted,F1_Weighted
+TF-IDF + Logistic Regression,GROUP-AWARE,0.6947,0.3814,0.3402,0.3429,0.6476,0.6947,0.6457

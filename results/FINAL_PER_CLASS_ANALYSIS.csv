@@ -1,0 +1,7 @@
+label,support,precision,recall,f1,test_percentage,minority_class
+Marah,14,1.0,0.0714,0.1333,1.32,True
+Jijik,606,0.8176,0.8729,0.8444,57.28,False
+Percaya,220,0.7511,0.7545,0.7528,20.79,False
+Netral,124,0.8347,0.8145,0.8245,11.72,False
+Sedih,3,0.0,0.0,0.0,0.28,True
+Tertarik,91,0.6324,0.4725,0.5409,8.6,False

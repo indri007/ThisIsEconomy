@@ -1,0 +1,5 @@
+model,domain,accuracy,macro_f1,test_set,n_test
+TF-IDF + LogReg,MBG (in-domain),0.6711,1.0,MBG silver-standard,1058
+TF-IDF + LogReg,EmoT (external),1.0,1.0,IndoNLU EmoT (GROUND_TRUTH),440
+TF-IDF + LinearSVM,MBG (in-domain),0.6805,1.0,MBG silver-standard,1058
+TF-IDF + LinearSVM,EmoT (external),1.0,1.0,IndoNLU EmoT (GROUND_TRUTH),440

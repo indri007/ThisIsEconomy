@@ -1,0 +1,4 @@
+Model,Accuracy,Macro-F1,Weighted-F1
+TF-IDF + Logistic Regression,0.6947,0.3429,0.6457
+TF-IDF + Linear SVM,0.672,0.4095,0.6558
+IndoBERT Group-Aware,0.794,0.516,0.7851

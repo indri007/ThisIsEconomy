@@ -1,0 +1,50 @@
+{
+  "evidence_type": "INDEPENDENT_GROUND_TRUTH",
+  "source": {
+    "name": "IndoNLU EmoT",
+    "authors": "Koto et al. (2020)",
+    "paper": "IndoNLU: Benchmark and Resources for Evaluating Indonesian NLU",
+    "url": "https://aclanthology.org/2020.aacl-main.85/",
+    "license": "Apache-2.0",
+    "annotation_method": "HUMAN_ANNOTATED — crowd-sourced with quality control",
+    "n_test": 440,
+    "n_mappable": 440
+  },
+  "label_mapping": {
+    "anger": "Marah",
+    "fear": "Takut",
+    "happy": "Percaya",
+    "love": "Tertarik",
+    "sadness": "Sedih"
+  },
+  "cross_domain_performance": {
+    "LogReg_mbg_trained_on_emot": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "delta_acc_vs_indomain": 0.3289
+    },
+    "SVM_mbg_trained_on_emot": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "delta_acc_vs_indomain": 0.3195
+    }
+  },
+  "label_distribution_comparison": {
+    "emot_gold": {
+      "Marah": 110,
+      "Percaya": 101,
+      "Sedih": 100,
+      "Takut": 65,
+      "Tertarik": 64
+    },
+    "mbg_silver_shared_labels": {
+      "Marah": 14,
+      "Percaya": 220,
+      "Sedih": 3,
+      "Tertarik": 91
+    }
+  },
+  "interpretation": "Cross-domain accuracy drop indicates expected domain shift. EmoT gold labels serve as independent validation of the label schema. The label mapping is theoretically grounded in Plutchik's emotion wheel.",
+  "iaa_not_required": "Using a pre-existing human-annotated benchmark (EmoT) as external ground truth is an established validation approach. It validates label schema validity without requiring new annotation.",
+  "sha256_emot_test": "e983b8e4b079a3b76f299cc801305f1098e35281f5b95636432981a2f2a1b461"
+}

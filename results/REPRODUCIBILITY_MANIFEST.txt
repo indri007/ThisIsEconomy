@@ -1,0 +1,35 @@
+REPRODUCIBILITY MANIFEST
+============================================================
+Dataset path: data/results/indobert_9_emosi_fixed.csv
+Model: IndoBERT Sequence Classification (Fine-Tuned)
+Base model: indobenchmark/indobert-base-p2
+Checkpoint: results/indobert_group_aware_final/checkpoint-264
+Seed: 42
+Train size: 4205
+Test size: 1058
+Split method: GroupShuffleSplit (test_size=0.2, random_state=42)
+Group column: processed_text
+Number of classes: 9 theoretical (7 empirical present)
+Reference label type: Silver-standard (Gemini API + keyword rules)
+Training script: scripts/train_indobert_group_aware.py
+Evaluation script: scripts/finalize_final_evaluation.py
+
+Key Outputs:
+- results/final_split_verification.csv
+- results/final_label_audit.csv
+- results/FINAL_indobert_metrics.csv
+- results/FINAL_indobert_classification_report.csv
+- results/FINAL_indobert_predictions.csv
+- results/FINAL_indobert_confusion_matrix.png
+- results/FINAL_indobert_confusion_matrix_normalized.png
+- results/FINAL_tfidf_logreg_metrics.csv
+- results/FINAL_tfidf_svm_metrics.csv
+- results/FINAL_MODEL_COMPARISON.csv
+- results/FINAL_PER_CLASS_ANALYSIS.csv
+- results/FINAL_CLASS_DISTRIBUTION.csv
+- results/LEGACY_CHECKPOINT_AUDIT.md
+- results/TABLE_FINAL_RESULTS.csv
+- results/PAPER_RESULTS_DRAFT.md
+- results/REVIEWER_EVIDENCE_TABLE.md
+- results/FINAL_EVALUATION_REPORT.md
+============================================================

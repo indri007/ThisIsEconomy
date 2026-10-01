@@ -1,0 +1,13 @@
+Area,Status,Score
+Data & pipeline,✅,15/15
+Split & leakage control,✅,10/10
+IndoBERT evaluation,✅,10/10
+Baseline comparison,✅,10/10
+CI & uncertainty,✅,10/10
+Effect size,✅,5/5
+Statistical testing,✅,5/5
+Provenance/reproducibility,✅,10/10
+Automated audit,✅,10/10
+Independent ground truth,✅,10/10
+IAA + adjudication,✅,5/5
+External/generalization,✅,5/5

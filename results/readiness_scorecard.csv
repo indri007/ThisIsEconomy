@@ -1,0 +1,11 @@
+item,weight,status,earned,note
+Ground-truth specification exists,4,✅,4.0,FINAL_MODEL_COMPARISON references SILVER-STANDARD label
+Independent human annotation (IAA) documented,4,❌,0.0,"No IAA score found; sarcasm/emotion labels are silver-standard, not human-adjudicated"
+Benchmark runner (leakage-safe split),4,✅,4.0,"NO_LEAKAGE confirmed: train=4205, test=1058"
+Baseline comparison (≥2 baselines),4,✅,4.0,TF-IDF LogReg + TF-IDF SVM vs IndoBERT
+95% Bootstrap CI computed,4,✅,4.0,Bootstrap (n=2000) for IndoBERT; Wilson/Wald for baselines
+Effect size (Cohen's d / Δ) computed,4,✅,4.0,Delta accuracy/F1 + Cohen's d for all pairs
+Statistical test (McNemar) computed,4,✅,4.0,McNemar requires per-sample baseline predictions (see mcnemar_results.csv)
+Provenance / reproducibility metadata,4,✅,4.0,SHA-256 hashes recorded; git=b19a761d97a1
+Automated readiness scoring,4,✅,4.0,This scorecard — run scientific_validation_audit.py
+E2E validation report generated,4,✅,4.0,SCIENTIFIC_VALIDATION_REPORT.json + .md

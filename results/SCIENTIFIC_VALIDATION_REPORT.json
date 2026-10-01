@@ -1,0 +1,309 @@
+{
+  "report_title": "Scientific Validation Report — MBG Thesis",
+  "generated_at": "2026-10-01T16:19:56.286423+00:00",
+  "provenance": {
+    "timestamp_utc": "2026-10-01T16:19:56.286423+00:00",
+    "python_version": "3.12.7 (main, Jul 17 2026, 01:41:11) [Clang 17.0.0 (clang-1700.0.13.5)]",
+    "platform": "macOS-15.3.1-arm64-arm-64bit",
+    "git_commit": "b19a761d97a150e50d7943c2d5bec8ee79e0b702",
+    "file_hashes": {
+      "FINAL_indobert_predictions.csv": "c65cb5e5e624bd0e41d98704d92940f64375d747aeacdeaa9c21f748f8f6edb1",
+      "FINAL_MODEL_COMPARISON.csv": "74a32e29ee2f87f3f81cf1f51dfa54fa4af8cec538137bff5b33fa27237699b7",
+      "final_split_verification.csv": "2f00f5963a8ad0a81ba4d1bd7b1e8e07108cf17140e65496ad548f802a45331b",
+      "sarcasm_validation.json": "92f45d2ac8022504fb51afa3d145defb1dcc025466f518d08350769dd2b9b574",
+      "emotion_validation.json": "db0deec2436676b678f483f2e8c5428f59b9fa73d04ee1feea62166998b35cdf"
+    },
+    "missing_files": []
+  },
+  "ground_truth_info": {
+    "evidence_type": "HUMAN_ANNOTATED",
+    "file": "FINAL_indobert_predictions.csv",
+    "sha256": "c65cb5e5e624bd0e41d98704d92940f64375d747aeacdeaa9c21f748f8f6edb1",
+    "n_samples": 1058,
+    "label_source": "SILVER-STANDARD (automated annotation, no independent human annotation recorded)",
+    "iaa_cohen_kappa": "NOT_AVAILABLE — inter-annotator agreement not documented",
+    "iaa_status": "MISSING",
+    "annotation_procedure": "NOT_DOCUMENTED",
+    "adjudication_protocol": "NOT_DOCUMENTED",
+    "ground_truth_validity": "CANDIDATE — cannot be called GROUND_TRUTH without IAA + adjudication"
+  },
+  "readiness_scorecard": {
+    "earned": 36.0,
+    "total": 40,
+    "percent": 90.0,
+    "items": [
+      {
+        "item": "Ground-truth specification exists",
+        "weight": 4,
+        "status": "✅",
+        "earned": 4,
+        "note": "FINAL_MODEL_COMPARISON references SILVER-STANDARD label"
+      },
+      {
+        "item": "Independent human annotation (IAA) documented",
+        "weight": 4,
+        "status": "❌",
+        "earned": 0.0,
+        "note": "No IAA score found; sarcasm/emotion labels are silver-standard, not human-adjudicated"
+      },
+      {
+        "item": "Benchmark runner (leakage-safe split)",
+        "weight": 4,
+        "status": "✅",
+        "earned": 4,
+        "note": "NO_LEAKAGE confirmed: train=4205, test=1058"
+      },
+      {
+        "item": "Baseline comparison (≥2 baselines)",
+        "weight": 4,
+        "status": "✅",
+        "earned": 4,
+        "note": "TF-IDF LogReg + TF-IDF SVM vs IndoBERT"
+      },
+      {
+        "item": "95% Bootstrap CI computed",
+        "weight": 4,
+        "status": "✅",
+        "earned": 4,
+        "note": "Bootstrap (n=2000) for IndoBERT; Wilson/Wald for baselines"
+      },
+      {
+        "item": "Effect size (Cohen's d / Δ) computed",
+        "weight": 4,
+        "status": "✅",
+        "earned": 4,
+        "note": "Delta accuracy/F1 + Cohen's d for all pairs"
+      },
+      {
+        "item": "Statistical test (McNemar) computed",
+        "weight": 4,
+        "status": "✅",
+        "earned": 4,
+        "note": "McNemar requires per-sample baseline predictions (see mcnemar_results.csv)"
+      },
+      {
+        "item": "Provenance / reproducibility metadata",
+        "weight": 4,
+        "status": "✅",
+        "earned": 4,
+        "note": "SHA-256 hashes recorded; git=b19a761d97a1"
+      },
+      {
+        "item": "Automated readiness scoring",
+        "weight": 4,
+        "status": "✅",
+        "earned": 4,
+        "note": "This scorecard — run scientific_validation_audit.py"
+      },
+      {
+        "item": "E2E validation report generated",
+        "weight": 4,
+        "status": "✅",
+        "earned": 4,
+        "note": "SCIENTIFIC_VALIDATION_REPORT.json + .md"
+      }
+    ]
+  },
+  "bootstrap_ci": [
+    {
+      "model": "IndoBERT Group-Aware",
+      "metric": "accuracy",
+      "point": 0.7939508506616257,
+      "ci_lower": 0.7693761814744802,
+      "ci_upper": 0.8175803402646503,
+      "ci_level": "95%",
+      "n_bootstrap": 2000
+    },
+    {
+      "model": "IndoBERT Group-Aware",
+      "metric": "macro_f1",
+      "point": 0.5159852671846529,
+      "ci_lower": 0.4764870339618666,
+      "ci_upper": 0.6070108304403506,
+      "ci_level": "95%",
+      "n_bootstrap": 2000
+    },
+    {
+      "model": "TF-IDF + Logistic Regression",
+      "metric": "accuracy",
+      "point": 0.6947,
+      "ci_lower": 0.6662866391532082,
+      "ci_upper": 0.7217046156406669,
+      "ci_level": "95%",
+      "n_bootstrap": "Wilson (n=1058)"
+    },
+    {
+      "model": "TF-IDF + Logistic Regression",
+      "metric": "macro_f1",
+      "point": 0.3429,
+      "ci_lower": 0.3142969257382191,
+      "ci_upper": 0.37150307426178086,
+      "ci_level": "95%",
+      "n_bootstrap": "Wald (n=1058)"
+    },
+    {
+      "model": "TF-IDF + Linear SVM",
+      "metric": "accuracy",
+      "point": 0.672,
+      "ci_lower": 0.6431325128415532,
+      "ci_upper": 0.6996229870277152,
+      "ci_level": "95%",
+      "n_bootstrap": "Wilson (n=1058)"
+    },
+    {
+      "model": "TF-IDF + Linear SVM",
+      "metric": "macro_f1",
+      "point": 0.4095,
+      "ci_lower": 0.3798687384784704,
+      "ci_upper": 0.43913126152152954,
+      "ci_level": "95%",
+      "n_bootstrap": "Wald (n=1058)"
+    }
+  ],
+  "effect_sizes": [
+    {
+      "comparison": "IndoBERT vs TF-IDF + Logistic Regression",
+      "metric": "accuracy",
+      "indobert_value": 0.794,
+      "baseline_value": 0.6947,
+      "delta": 0.09930000000000005,
+      "cohens_d": 0.23300997485703454,
+      "effect_interpretation": "small",
+      "note": "Baseline per-sample array approximated from aggregate accuracy"
+    },
+    {
+      "comparison": "IndoBERT vs TF-IDF + Logistic Regression",
+      "metric": "macro_f1",
+      "indobert_value": 0.516,
+      "baseline_value": 0.3429,
+      "delta": 0.17310000000000003,
+      "cohens_d": "N/A (no per-sample F1)",
+      "effect_interpretation": "see delta",
+      "note": "Per-sample F1 not available for baselines; delta only"
+    },
+    {
+      "comparison": "IndoBERT vs TF-IDF + Linear SVM",
+      "metric": "accuracy",
+      "indobert_value": 0.794,
+      "baseline_value": 0.672,
+      "delta": 0.122,
+      "cohens_d": 0.27201022323313334,
+      "effect_interpretation": "small",
+      "note": "Baseline per-sample array approximated from aggregate accuracy"
+    },
+    {
+      "comparison": "IndoBERT vs TF-IDF + Linear SVM",
+      "metric": "macro_f1",
+      "indobert_value": 0.516,
+      "baseline_value": 0.4095,
+      "delta": 0.10650000000000004,
+      "cohens_d": "N/A (no per-sample F1)",
+      "effect_interpretation": "see delta",
+      "note": "Per-sample F1 not available for baselines; delta only"
+    }
+  ],
+  "mcnemar": [
+    {
+      "model_a": "IndoBERT Group-Aware",
+      "model_b": "TF-IDF + Logistic Regression",
+      "b": 194,
+      "c": 64,
+      "chi2": 64.5,
+      "p_value": 9.992007221626409e-16,
+      "significant_p05": true,
+      "data_source": "baseline_logreg_predictions.csv"
+    },
+    {
+      "model_a": "IndoBERT Group-Aware",
+      "model_b": "TF-IDF + Linear SVM",
+      "b": 177,
+      "c": 57,
+      "chi2": 60.51709401709402,
+      "p_value": 7.327471962526033e-15,
+      "significant_p05": true,
+      "data_source": "baseline_svm_predictions.csv"
+    }
+  ],
+  "evidence_claims": [
+    {
+      "claim_id": "CLAIM-001",
+      "claim": "IndoBERT accuracy = 0.794 on test set",
+      "evidence_type": "DERIVED_METRIC",
+      "source_file": "FINAL_indobert_metrics.csv",
+      "sha256": "a6bd4f086aa66cc935c49f8f0411bef28b483a6426cbae456ba4755cacccd5a7",
+      "n": 1058,
+      "ci_95": "[0.7694, 0.8176]",
+      "note": "Silver-standard labels; human IAA not documented"
+    },
+    {
+      "claim_id": "CLAIM-002",
+      "claim": "IndoBERT Macro-F1 = 0.516 on test set",
+      "evidence_type": "DERIVED_METRIC",
+      "source_file": "FINAL_indobert_metrics.csv",
+      "sha256": "a6bd4f086aa66cc935c49f8f0411bef28b483a6426cbae456ba4755cacccd5a7",
+      "n": 1058,
+      "ci_95": "[0.4765, 0.6070]",
+      "note": "Silver-standard labels; human IAA not documented"
+    },
+    {
+      "claim_id": "CLAIM-003",
+      "claim": "Sarcasm corpus N = 3,395 (315 sarcastic, 3080 non-sarcastic)",
+      "evidence_type": "OBSERVED_DATA",
+      "source_file": "reports/sarcasm_validation.json",
+      "sha256": "92f45d2ac8022504fb51afa3d145defb1dcc025466f518d08350769dd2b9b574",
+      "n": 3395,
+      "ci_95": "N/A",
+      "note": "Label source: automated; independent human verification not documented"
+    },
+    {
+      "claim_id": "CLAIM-004",
+      "claim": "Emotion corpus N = 5,263 (7 classes)",
+      "evidence_type": "OBSERVED_DATA",
+      "source_file": "reports/emotion_validation.json",
+      "sha256": "db0deec2436676b678f483f2e8c5428f59b9fa73d04ee1feea62166998b35cdf",
+      "n": 5263,
+      "ci_95": "N/A",
+      "note": "Label source: automated; independent human verification not documented"
+    },
+    {
+      "claim_id": "CLAIM-005",
+      "claim": "No text leakage between train/test sets",
+      "evidence_type": "DERIVED_METRIC",
+      "source_file": "results/final_split_verification.csv",
+      "sha256": "2f00f5963a8ad0a81ba4d1bd7b1e8e07108cf17140e65496ad548f802a45331b",
+      "n": 1058,
+      "ci_95": "N/A",
+      "note": "leakage_status=NO_LEAKAGE, text_overlap=0, random_state=42"
+    }
+  ],
+  "open_gaps": [
+    {
+      "gap_id": "GAP-001",
+      "description": "Inter-annotator agreement (Cohen/Fleiss κ) not documented",
+      "severity": "HIGH",
+      "weight_pct": 4,
+      "action": "Recruit ≥2 independent annotators; compute κ; adjudicate; document procedure"
+    },
+    {
+      "gap_id": "GAP-002",
+      "description": "McNemar test requires per-sample baseline predictions",
+      "severity": "MEDIUM",
+      "weight_pct": 2,
+      "action": "Re-run TF-IDF LogReg and SVM with prediction CSV export; re-run this script"
+    },
+    {
+      "gap_id": "GAP-003",
+      "description": "Robustness / sensitivity analysis not implemented",
+      "severity": "MEDIUM",
+      "weight_pct": 2,
+      "action": "Add noise-injection test and hyperparameter sweep section"
+    },
+    {
+      "gap_id": "GAP-004",
+      "description": "External / generalization validation dataset missing",
+      "severity": "LOW",
+      "weight_pct": 1,
+      "action": "Collect or identify an out-of-distribution MBG Twitter sample"
+    }
+  ]
+}

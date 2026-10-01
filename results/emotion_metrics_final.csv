@@ -1,0 +1,2 @@
+Model,Task,Samples,Accuracy,Macro_Precision,Macro_Recall,Macro_F1,Weighted_Precision,Weighted_Recall,Weighted_F1
+IndoBERT (checkpoint-792),Emotion Classification,1053,0.5745489078822412,0.17917149368890506,0.16511156471502542,0.14443596081425597,0.4519222401061944,0.5745489078822412,0.4563075040775316

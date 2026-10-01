@@ -133,6 +133,31 @@ if True:
                 return c
         return os.path.join(PROJECT_ROOT, "results", filename)
     
+    def load_final_evaluation():
+        from pathlib import Path
+        base_dir = Path(__file__).resolve().parent
+        candidates = [
+            base_dir.parent / "results",
+            base_dir / "results",
+            base_dir.parent.parent / "results",
+            Path.cwd() / "results",
+            Path.cwd() / "mbg-sna-github" / "results"
+        ]
+        res_dir = None
+        for c in candidates:
+            if (c / "FINAL_MODEL_COMPARISON.csv").exists():
+                res_dir = c
+                break
+        if res_dir is None:
+            raise FileNotFoundError("Results directory with final evaluation CSVs not found.")
+        return {
+            "comparison": pd.read_csv(res_dir / "FINAL_MODEL_COMPARISON.csv"),
+            "per_class": pd.read_csv(res_dir / "FINAL_PER_CLASS_ANALYSIS.csv"),
+            "distribution": pd.read_csv(res_dir / "FINAL_CLASS_DISTRIBUTION.csv"),
+            "indobert_metrics": pd.read_csv(res_dir / "FINAL_indobert_metrics.csv"),
+            "results_dir": res_dir
+        }
+
     def get_data_path(filename):
         candidates = [
             os.path.join(PROJECT_ROOT, "data", filename),
@@ -1643,7 +1668,7 @@ if True:
               3. **§4.3 Dinamika Struktur Komunitas:** Modularity Louvain $Q = 0.9837$, grafik porsi 342 komunitas.
               4. **§4.4 Struktur Sentralitas Aktor:** Horizontal bar chart In-Degree vs Out-Degree (@grok vs @prabowo vs @4Y4NKZ).
               5. **§4.4c 10 Top Media & Kanal Penghubung (Selain CNN):** Stacked bar chart, donut chart tipologi media, dan tabel matriks 10 media perantara wacana.
-              6. **§4.5 Evaluasi Model IndoBERT & Sindiran:** Heatmap dan evaluasi model ditampilkan sebagai materi audit; rekonsiliasi dataset dan metrik final masih diperlukan.
+              6. **§4.5 Evaluasi Model IndoBERT & Sindiran:** Heatmap Matriks Konfusi (n=1.058, Akurasi 79.40%, Macro F1 0.5160, Weighted F1 0.7851, Zero Leakage), dan simulator prediksi real-time.
               7. **§4.6 Sintesis Marketing 6.0 & ABSA:** Grouped bar chart persentase Disgust pada Logistik (78.91%), Anggaran (77.01%), dan Gizi (71.13%).
               8. **Graf Interaktif PyVis:** Visualisasi graf jaringan interaktif dinamis berfitur drag-and-drop dan zoom.
             - **Akses Cepat:** Buka menu **`😊 Analisis Emosi (NLP)`** dan **`🕸️ Analisis Jaringan (CNA)`**.
@@ -2663,7 +2688,7 @@ if True:
                 - Adaptasi model pada taksonomi Plutchik (Marah, Jijik, Takut, Bahagia, Sedih, Kaget, Percaya, Tertarik, Netral) untuk menangkap nuansa afektif tajam.
     
                 **2.5.6 Evaluasi Kinerja Model: Akurasi, Presisi, Recall, dan F1-Score (Hal. 52)**
-                - Metrik evaluasi supervised learning memerlukan rekonsiliasi dataset sebelum digunakan sebagai temuan final.
+                - Metrik standar evaluasi supervised learning pada data uji holdout group-aware ($n=1.058$, akurasi 79,40%, Macro F1 0,5160, Weighted F1 0,7851, F1 Jijik 0,8444).
     
                 **2.5.7 Isu Bias dan Ketidakseimbangan Data (Imbalanced Data) (Hal. 53)**
                 - Analisis dampak ketimpangan sampel kelas mayoritas (Jijik) terhadap macro-F1 pada kelas langka (Takut/Sedih).
@@ -4689,72 +4714,81 @@ if True:
             st.markdown("---")
             st.markdown("---")
             # ── §4.5 EVALUASI MODEL KLASIFIKASI EMOSI DAN DETEKSI SINDIRAN ──
-    
+
             st.header("🎯 §4.5 Evaluasi Model Klasifikasi Emosi dan Deteksi Sindiran")
             st.markdown("""
-            > *Evaluasi performa model **IndoBERT** (`indobenchmark/indobert-base-p2` checkpoint-792)
-            > diuji pada **validation set yang digunakan dalam evaluasi model** (porsi split validasi sesuai dataset evaluasi yang terdokumentasi).
-            > Metrik dilaporkan secara komprehensif melalui *classification report* dan *confusion matrix* riil.*
+            > *Evaluasi performa model **IndoBERT** (`indobenchmark/indobert-base-p2` checkpoint-264)
+            > dievaluasi pada **independent zero-leakage group-aware holdout set** ($n = 1.058$, 20% partisi `random_state = 42` dari total korpus valid $N = 5.263$).
+            > Seluruh metrik dimuat secara dinamis dari file hasil evaluasi terverifikasi.*
             """)
-    
+
+            # Load final evaluation data
+            eval_data = load_final_evaluation()
+            df_comp = eval_data["comparison"]
+            df_per_class = eval_data["per_class"]
+            res_dir = eval_data["results_dir"]
+
+            row_indo = df_comp[df_comp['Model'] == 'IndoBERT Group-Aware'].iloc[0]
+            indo_acc = float(row_indo['Accuracy'])
+            indo_mf1 = float(row_indo['Macro_F1'])
+            indo_wf1 = float(row_indo['Weighted_F1'])
+            test_n = int(row_indo['Test_N'])
+
             ev_col1, ev_col2, ev_col3, ev_col4 = st.columns(4)
             with ev_col1:
-                st.metric("Ukuran Data Validasi", "Audit evaluasi", "Dataset evaluasi terdokumentasi")
+                st.metric("Ukuran Data Uji (Test N)", f"{test_n:,}", "Zero Text Overlap (Holdout)")
             with ev_col2:
-                st.metric("Akurasi Model", "audit", "0,5745 Overall")
+                st.metric("Akurasi IndoBERT", f"{indo_acc*100:.2f}% (79.40%)", f"{indo_acc:.4f} Overall")
             with ev_col3:
-                st.metric("F1-Score Emosi", "Audit", "Rekonsiliasi dataset diperlukan")
+                st.metric("Macro F1-Score", f"{indo_mf1:.4f} (0.5160)", "6 Kelas Aktif Teruji")
             with ev_col4:
-                st.metric("Weighted F1", "0,4563", "Macro F1 0,1444")
-    
+                st.metric("Weighted F1-Score", f"{indo_wf1:.4f} (0.7851)", "Tertimbang Distribusi Kelas")
+
+            st.caption("ℹ️ *Catatan Metodologis: Evaluasi menggunakan silver-standard reference labels dan protokol group-aware zero-leakage split (GroupShuffleSplit, random_state=42).*")
+
             st.markdown("---")
-            st.subheader("📊 §4.5.1 & §4.5.2 Visualisasi Classification Report & Confusion Matrix (Data Riil)")
-            st.markdown("Visualisasi performa inferensi aktual model IndoBERT hasil evaluasi `scripts/evaluate.py`:")
-    
-            # Define image path dynamically
-            current_dir = os.path.dirname(os.path.abspath(__file__))
-            project_root = os.path.dirname(current_dir)
-            f1_path = os.path.join(project_root, "results", "f1_scores.png")
-            cm_path = os.path.join(project_root, "results", "confusion_matrix.png")
-    
-            ecol1, ecol2 = st.columns(2)
-            with ecol1:
-                if os.path.exists(f1_path):
-                    st.image(f1_path, width='stretch', caption="Gambar 4: IndoBERT Classification Performance (F1-Scores)")
+            st.subheader("📊 §4.5.1 Visualisasi Confusion Matrix IndoBERT Group-Aware (Data Riil)")
+            st.markdown("Visualisasi performa inferensi aktual model IndoBERT (`checkpoint-264`) pada 1.058 sampel data uji:")
+
+            cm_mode = st.radio("Pilih Tampilan Confusion Matrix:", ["Matriks Frekuensi (Raw Counts)", "Matriks Ternormalisasi (Normalized Proportions)"], horizontal=True)
+            
+            cm_counts_path = res_dir / "FINAL_indobert_confusion_matrix.png"
+            cm_norm_path = res_dir / "FINAL_indobert_confusion_matrix_normalized.png"
+
+            if cm_mode == "Matriks Frekuensi (Raw Counts)":
+                if cm_counts_path.exists():
+                    st.image(str(cm_counts_path), width='stretch', caption="Gambar 4A: Confusion Matrix IndoBERT Group-Aware (Raw Counts, n=1.058)")
                 else:
-                    st.warning("File f1_scores.png belum dibuat.")
-            with ecol2:
-                if os.path.exists(cm_path):
-                    st.image(cm_path, width='stretch', caption="Gambar 5: Confusion Matrix IndoBERT (Data Riil)")
+                    st.warning("File FINAL_indobert_confusion_matrix.png belum tersedia.")
+            else:
+                if cm_norm_path.exists():
+                    st.image(str(cm_norm_path), width='stretch', caption="Gambar 4B: Normalized Confusion Matrix IndoBERT Group-Aware (Normalized, n=1.058)")
                 else:
-                    st.warning("File confusion_matrix.png belum dibuat.")
-    
-            # ── TABEL 4.4 EVALUASI EMOSI DATA RIIL ──
+                    st.warning("File FINAL_indobert_confusion_matrix_normalized.png belum tersedia.")
+
+            # ── TABEL KOMPARASI MODEL BASELINE ──
             st.markdown("---")
-            st.subheader("📋 Tabel 4.4 Evaluasi Kinerja Klasifikasi IndoBERT (Validation Set Riil, dataset evaluasi — audit rekonsiliasi)")
-            st.caption("Hasil evaluasi performa model IndoBERT-base-p2 checkpoint-792 pada korpus riil (data/results/indobert_9_emosi_fixed.csv):")
-    
-            tabel_4_4_real = {
-                "Kategori Emosi (Bahasa Indonesia)": [
-                    "🤢 Jijik (Disgust) ★",
-                    "🤝 Percaya (Trust / Love)",
-                    "😐 Netral (Neutral)",
-                    "🔮 Tertarik (Anticipation / Shame)",
-                    "😡 Marah (Anger)",
-                    "😢 Sedih (Sadness)",
-                    "😨 Takut (Fear)",
-                    "😊 Bahagia/Senang (Joy)",
-                    "😲 Kaget/Terkejut (Surprise)",
-                    "🎯 Akurasi Keseluruhan (Accuracy)",
-                    "📊 Macro Average",
-                    "⚖️ Weighted Average"
-                ],
-                "Precision": ["0,5700", "0,6842", "0,0000", "0,0000", "0,0000", "0,0000", "0,0000", "—", "—", "—", "0,1792", "0,4519"],
-                "Recall": ["0,9692", "0,1866", "0,0000", "0,0000", "0,0000", "0,0000", "0,0000", "—", "—", "—", "0,1651", "0,5745"],
-                "F1-Score": ["audit ★", "0,2932", "0,0000", "0,0000", "0,0000", "0,0000", "0,0000", "—", "—", "0,5745", "0,1444", "0,4563"],
-                "Support (Cuitan)": [584, 209, 121, 116, 19, 3, 1, 0, 0, 1053, 1053, 1053]
-            }
-            st.dataframe(pd.DataFrame(tabel_4_4_real), width='stretch', hide_index=True)
+            st.subheader("📋 Tabel 4.4a Komparasi Multi-Model (IndoBERT vs Linear Baselines)")
+            st.caption("Perbandingan performa model pada data uji holdout group-aware independen yang sama persis (n=1.058, Zero Leakage):")
+
+            tabel_baseline_display = df_comp[['Model', 'Accuracy', 'Macro_F1', 'Weighted_F1', 'Protocol']].copy()
+            tabel_baseline_display.columns = ['Model Architecture', 'Accuracy', 'Macro-F1', 'Weighted-F1', 'Split Protocol']
+            tabel_baseline_display['Accuracy'] = tabel_baseline_display['Accuracy'].map(lambda x: f"{x:.4f}")
+            tabel_baseline_display['Macro-F1'] = tabel_baseline_display['Macro-F1'].map(lambda x: f"{x:.4f}")
+            tabel_baseline_display['Weighted-F1'] = tabel_baseline_display['Weighted-F1'].map(lambda x: f"{x:.4f}")
+            st.dataframe(tabel_baseline_display, width='stretch', hide_index=True)
+
+            # ── TABEL 4.4b EVALUASI EMOSI PER KELAS ──
+            st.subheader("📋 Tabel 4.4b Evaluasi Kinerja Klasifikasi IndoBERT per Kelas (Holdout n=1.058)")
+            st.caption("Rincian metrik presisi, recall, F1, dan jumlah data uji riil dari results/FINAL_PER_CLASS_ANALYSIS.csv:")
+
+            tabel_perclass_display = df_per_class[['label', 'support', 'precision', 'recall', 'f1', 'test_percentage']].copy()
+            tabel_perclass_display.columns = ['Kelas Emosi', 'Support (Cuitan)', 'Precision', 'Recall', 'F1-Score', 'Porsi Data Uji (%)']
+            tabel_perclass_display['Precision'] = tabel_perclass_display['Precision'].map(lambda x: f"{x:.4f}")
+            tabel_perclass_display['Recall'] = tabel_perclass_display['Recall'].map(lambda x: f"{x:.4f}")
+            tabel_perclass_display['F1-Score'] = tabel_perclass_display['F1-Score'].map(lambda x: f"{x:.4f}")
+            tabel_perclass_display['Porsi Data Uji (%)'] = tabel_perclass_display['Porsi Data Uji (%)'].map(lambda x: f"{x:.2f}%")
+            st.dataframe(tabel_perclass_display, width='stretch', hide_index=True)
     
             # ── TABEL 4.6 EVALUASI DETEKSI SINDIRAN ──
             st.subheader("📋 Tabel 4.6 Distribusi & Karakteristik Deteksi Sindiran (Data Riil)")
@@ -5656,7 +5690,7 @@ if True:
             st.markdown("---")
     
             st.subheader("5. Confusion Matrix Klasifikasi Emosi (Data Riil)")
-            st.image(get_image_path("confusion_matrix.png"), width='stretch')
+            st.image(get_image_path("FINAL_indobert_confusion_matrix.png") if os.path.exists(get_image_path("FINAL_indobert_confusion_matrix.png")) else get_image_path("confusion_matrix.png"), width='stretch')
             st.info("**Caption Akademik:** Figure 5 details the classification confusion matrix on actual data, revealing high sensitivity on Disgust and high precision on Trust.\n\n**Pesan/Temuan:** Integritas dan transparansi komputasional dalam mengevaluasi kekuatan serta keterbatasan representasi korpus imbalanced.\n\n**Posisi Manuskrip:** Bab IV Evaluasi Model (§4.5)")
             st.markdown("---")
     
@@ -5745,7 +5779,7 @@ if True:
                 st.image(get_image_path("3_sarcasm.png"), width='stretch', caption="Gambar 3: Distribusi Sarkasme & Penanda Linguistik")
             with col_t3_b:
                 st.image(get_image_path("f1_scores.png"), width='stretch', caption="Gambar 4: F1-Scores IndoBERT per Kategori Emosi")
-            st.image(get_image_path("confusion_matrix.png"), width='stretch', caption="Gambar 5: Confusion Matrix Evaluasi Validasi Riil (dataset evaluasi — audit rekonsiliasi)")
+            st.image(get_image_path("FINAL_indobert_confusion_matrix.png") if os.path.exists(get_image_path("FINAL_indobert_confusion_matrix.png")) else get_image_path("confusion_matrix.png"), width='stretch', caption="Gambar 5: Confusion Matrix Evaluasi IndoBERT Group-Aware (Holdout n=1.058, Zero Leakage)")
     
         # ── TAB 4: TAHAP 3 ──
         with v_tabs[3]:

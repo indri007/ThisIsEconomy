@@ -32,3 +32,11 @@ mbg-sna-github/
 *.log
 # Local backup files
 *.bak
+
+# Model fine-tuned (disimpan di HuggingFace)
+results/indobert_finetuned/
+results/indobert_finetuned_9_labels/
+results/indobert_group_aware_final/
+.cache/
+node_modules/
+.env*
