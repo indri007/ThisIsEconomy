@@ -31,10 +31,10 @@ jobs:
 
       - name: Run Auto Scraper & Telegram EWS Alert
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8962247703:AAEOSHlsMCwmvyHtkGqotQ2DnnPVcD59mxo' }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '6608181417' }}
-          TWITTER_AUTH_TOKEN: ${{ secrets.TWITTER_AUTH_TOKEN || '26cf1a40cbfabdb3ee1f5f5298fba872776f2249' }}
-          TWITTER_CT0: ${{ secrets.TWITTER_CT0 || '95e5ad8a69d4f1297aedee473d61c3bb6e9a1e1a7fe05823b88528a3a75f680c64edfa57e6cd6fe47b1bbea1c74124864775071bfed1161cbd0764cbd648905887c2d85ad752a110de7c08f975d742de' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TWITTER_AUTH_TOKEN: ${{ secrets.TWITTER_AUTH_TOKEN }}
+          TWITTER_CT0: ${{ secrets.TWITTER_CT0 }}
         run: |
           python scripts/auto_scrape_job.py
 
@@ -46,6 +46,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "Tidak ada data baru untuk di-commit."
           else
-            git commit -m "Auto-update MBG tweets data via GitHub Actions [skip ci]"
+            git commit -m "Auto-update MBG tweets data [skip ci]"
             git push
           fi
