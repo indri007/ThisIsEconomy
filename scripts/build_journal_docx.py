@@ -135,21 +135,29 @@ def build_docx(md_path, docx_path):
             img_path = img_match.group(2)
             if img_path.startswith('file://'):
                 img_path = img_path[7:]
+            if not os.path.isabs(img_path):
+                project_root = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+                candidate = os.path.join(project_root, img_path)
+                if os.path.exists(candidate):
+                    img_path = candidate
             if os.path.exists(img_path):
-                p_img = doc.add_paragraph()
-                p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                p_img.paragraph_format.space_before = Pt(10)
-                p_img.paragraph_format.space_after = Pt(4)
-                p_img.add_run().add_picture(img_path, width=Inches(5.8))
-                
-                # Add Caption
-                p_cap = doc.add_paragraph()
-                p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                p_cap.paragraph_format.space_after = Pt(12)
-                cap_run = p_cap.add_run(caption)
-                cap_run.italic = True
-                cap_run.font.size = Pt(10)
-                cap_run.font.color.rgb = RGBColor(60, 60, 60)
+                try:
+                    p_img = doc.add_paragraph()
+                    p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    p_img.paragraph_format.space_before = Pt(10)
+                    p_img.paragraph_format.space_after = Pt(4)
+                    p_img.add_run().add_picture(img_path, width=Inches(5.8))
+                    
+                    # Add Caption
+                    p_cap = doc.add_paragraph()
+                    p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    p_cap.paragraph_format.space_after = Pt(12)
+                    cap_run = p_cap.add_run(caption)
+                    cap_run.italic = True
+                    cap_run.font.size = Pt(10)
+                    cap_run.font.color.rgb = RGBColor(60, 60, 60)
+                except Exception as img_err:
+                    print(f"Warning: could not add image {img_path}: {img_err}")
             i += 1
             continue
 
@@ -269,6 +277,7 @@ def build_docx(md_path, docx_path):
     print(f"Successfully generated formal manuscript: {docx_path}")
 
 if __name__ == '__main__':
-    md_file = '/Users/jevin/Documents/tesis_mbg/journal_paper_mbg_sna.md'
-    docx_file = '/Users/jevin/Documents/tesis_mbg/Journal_Paper_Indri_Anjar_MBG_SNA.docx'
+    project_root = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+    md_file = os.path.join(project_root, 'journal', 'journal_paper_mbg_sna_v2.md')
+    docx_file = os.path.join(project_root, 'Journal_Paper_Indri_Anjar_MBG_SNA_30_Pages.docx')
     build_docx(md_file, docx_file)
