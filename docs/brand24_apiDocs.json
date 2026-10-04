@@ -1,0 +1,3727 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Brand24 API Data",
+    "description": "Brand24 is a media monitoring and analytics platform that helps organizations understand, measure, and act on online conversations about their brand, products, competitors, and industry.\n\nThis API provides access to Brand24's statistics and insights.\n\n## Server-Side Only API\n\nThis API must be called from your backend server only. Do not call it from a browser, frontend JavaScript, or mobile app — your API key is a secret and must never be exposed in client-side code.\n\n## Projects Data Structure\n\nBrand24 collects and processes data within projects created in a user's account.\n\nProjects allow you to organize and manage the data about a particular brand, product, competitor, or industry you monitor in Brand24.\n\nMost API endpoints operate within the context of a specific project, so you will typically need to provide a project ID when making requests.\n\n## Base URL\n\n`https://api-data.brand24.com`\n\n## Authentication\n\nAll requests must include an `X-Api-Key` HTTP header. Your API key is available at [app.brand24.com/account/integrations-api-data](https://app.brand24.com/account/integrations-api-data).\n\n**Important:** Use the API key only in server-side (backend) code. Never embed it in frontend JavaScript, HTML, or mobile apps. Browser requests will be blocked by CORS.\n\n## Response Format\n\nAll endpoints return JSON with a consistent envelope:\n\n- **Success:** `{ \"status\": \"success\", \"data\": { ... } }`\n- **Client error (4xx):** `{ \"status\": \"fail\", \"message\": \"...\", \"code\": 400 }`\n- **Server error (5xx):** `{ \"status\": \"error\", \"message\": \"...\", \"code\": 500 }`\n\n## HTTP Status Codes\n\n| Code | Meaning |\n|---|---|\n| 200 | Success |\n| 400 | Bad request — invalid or missing parameters |\n| 401 | Unauthorized — missing or invalid API key |\n| 404 | Not found — invalid endpoint URL |\n| 500 | Internal server error |",
+    "version": "1.0.0",
+    "x-logo": {
+      "url": "https://app.brand24.com/static/img/logo.svg",
+      "altText": "Brand24"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api-data.brand24.com"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Project Statistics",
+      "description": "Quantitative metrics and numerical data about mentions collected for a project."
+    },
+    {
+      "name": "Project Insights",
+      "description": "Higher-level analysis and patterns derived from collected mentions."
+    },
+    {
+      "name": "Project Configuration",
+      "description": "Project lifecycle management within your account."
+    },
+    {
+      "name": "Project Sources",
+      "description": "Domain-level breakdown of mention sources for a project."
+    },
+    {
+      "name": "Reference",
+      "description": "Static reference data — supported languages and other lookups."
+    },
+    {
+      "name": "Account",
+      "description": "Account-level metrics for the calling API key — billing usage forecasts and quotas."
+    }
+  ],
+  "security": [
+    {
+      "X-Api-Key": []
+    }
+  ],
+  "paths": {
+    "/api-data/v1/project/{project_id}/mentions/count": {
+      "get": {
+        "tags": [
+          "Project Statistics"
+        ],
+        "summary": "Get mentions count",
+        "description": "Returns the number of mentions per day for a given project within a date range. Use this endpoint to build daily mention volume trend charts. The maximum allowed range between `date_from` and `date_to` is 31 days.",
+        "operationId": "getProjectMentionsCount",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from`.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-31"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MentionsCountResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "data": {
+                    "mentions_count": {
+                      "2024-01-01": 37,
+                      "2024-01-02": 12,
+                      "2024-01-03": 53,
+                      "2024-01-04": 7,
+                      "2024-01-05": 109,
+                      "2024-01-06": 19,
+                      "2024-01-07": 78
+                    },
+                    "total": 315
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/mentions/sentiment": {
+      "get": {
+        "tags": [
+          "Project Statistics"
+        ],
+        "summary": "Get mentions sentiment",
+        "description": "Returns daily mention counts broken down by sentiment (positive and negative) for a given project within a date range. Use this endpoint to analyze how discussion sentiment changes over time. The maximum allowed range between `date_from` and `date_to` is 31 days.",
+        "operationId": "getProjectMentionsSentiment",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-06-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from`.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-06-30"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MentionsSentimentResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "data": {
+                    "mentions": {
+                      "2024-06-01": 3451,
+                      "2024-06-02": 1456,
+                      "2024-06-03": 6743
+                    },
+                    "total_mentions": 11650,
+                    "positive_mentions": {
+                      "2024-06-01": 467,
+                      "2024-06-02": 241,
+                      "2024-06-03": 1890
+                    },
+                    "total_positive_mentions": 2598,
+                    "negative_mentions": {
+                      "2024-06-01": 756,
+                      "2024-06-02": 436,
+                      "2024-06-03": 1100
+                    },
+                    "total_negative_results": 2292
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/mentions": {
+      "get": {
+        "tags": [
+          "Project Insights"
+        ],
+        "summary": "Project mentions",
+        "description": "Returns project mentions within a selected date range using cursor pagination.\n\nEach result row contains 9 fields:\n\n`date, time, title, content, source, host, category, sentiment, tags`\n\nFor ToS-restricted sources (Facebook, Instagram, X/Twitter), text fields are limited:\n- Facebook, Instagram: `title`, `content`, `source` are `null`\n- X/Twitter: `title` and `content` are `null`, while `source` is `\"Tweet-ID: <id>\"`\n\nAll other sources return full values.\n\n`date_from` and `date_to` are required and inclusive; maximum range depends on the plan.",
+        "operationId": "getProjectMentions",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-06-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from`.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-06-30"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Page size. Default 500, maximum 500.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500
+            },
+            "example": 500
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Opaque pagination cursor from the previous response. Treat as a black-box string.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sentiment",
+            "in": "query",
+            "description": "Filter by sentiment. Comma-separated values: `positive`, `negative`, `neutral`.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "positive,neutral"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Filter by source category tokens. Comma-separated values.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "facebook,instagram,tiktok"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectMentionsListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/account/{account_id}/create_project": {
+      "post": {
+        "tags": [
+          "Project Configuration"
+        ],
+        "summary": "Create project",
+        "description": "Creates a new monitoring project that collects mentions containing the given keywords.\n\nUse this endpoint to set up a new Brand24 monitoring scope for a brand, product, competitor, or topic.\n\nYou can create a project with one or more keywords. For every keyword you can optionally provide `required` words (all must appear alongside the keyword) or `excluded` words (mentions containing these are filtered out).\n\nIf you provide a `language` parameter, only mentions in that language are collected. If omitted, mentions in any language are collected.",
+        "operationId": "createAccountProject",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID that will own the new project.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "project_name",
+            "in": "query",
+            "description": "Human-readable name of the project to create.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Logitech"
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Language filter for collected mentions. If omitted, mentions in any language are collected. Only one language can be provided.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "english",
+                "spanish",
+                "arabic",
+                "croatian",
+                "czech",
+                "danish",
+                "dutch",
+                "finnish",
+                "french",
+                "german",
+                "hungarian",
+                "indonesian",
+                "italian",
+                "korean",
+                "norwegian",
+                "polish",
+                "portuguese",
+                "romanian",
+                "russian",
+                "slovak",
+                "swedish",
+                "thai",
+                "turkish",
+                "vietnamese"
+              ]
+            },
+            "example": "english"
+          }
+        ],
+        "requestBody": {
+          "description": "Project keywords configuration",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProjectKeywords"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectCreateResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "data": {
+                    "projectId": 123456734
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/mentions/reach": {
+      "get": {
+        "tags": [
+          "Project Statistics"
+        ],
+        "summary": "Get mentions reach",
+        "description": "Returns daily reach statistics split by social media and non-social media sources for a given project within a date range. Use this endpoint to estimate audience exposure over time. The maximum allowed range between `date_from` and `date_to` is 31 days.",
+        "operationId": "getProjectMentionsReach",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-06-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from`.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-06-30"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MentionsReachResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "data": {
+                    "social_media_reach": {
+                      "2024-06-01": 12,
+                      "2024-06-02": 26,
+                      "2024-06-03": 9
+                    },
+                    "social_media_reach_total": 47,
+                    "non_social_media_reach": {
+                      "2024-06-01": 37,
+                      "2024-06-02": 39,
+                      "2024-06-03": 24
+                    },
+                    "non_social_media_reach_total": 100
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/project_events": {
+      "get": {
+        "tags": [
+          "Project Insights"
+        ],
+        "summary": "Get project events",
+        "description": "Returns anomaly events detected for a given project and date range. Events represent significant spikes or unusual patterns in mention activity, enriched with context such as peak mentions, peak reach, and an AI-generated description. Use this endpoint to explain sudden surges in attention.",
+        "operationId": "getProjectEvents",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD. Optional — if omitted, defaults to 31 days before `date_to` (or 31 days ago when both are omitted).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from` when both are provided. Optional — if omitted, defaults to today.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-31"
+          },
+          {
+            "name": "sort_order",
+            "in": "query",
+            "description": "Sort order for returned events by anomaly date.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "asc"
+            },
+            "example": "desc"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of events to return.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectEventsResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "data": {
+                    "project_id": "123456789",
+                    "project_name": "My Brand",
+                    "anomalies": [
+                      {
+                        "anomaly_date": "2024-01-15",
+                        "project_id": 123456789,
+                        "description": "Spike in mentions related to product launch coverage across news sites.",
+                        "peak_mentions": 1540,
+                        "peak_reach": 9800000
+                      }
+                    ],
+                    "total": 1
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/topics": {
+      "get": {
+        "tags": [
+          "Project Insights"
+        ],
+        "summary": "Get project topics",
+        "description": "Returns AI-detected topics for a given project and date range. Topics represent recurring themes found across mentions, enriched with metrics such as mention count, reach, sentiment breakdown, and share of voice. Use this endpoint to summarize the main themes in the conversation. The `status` field indicates the state of topic analysis: `ok` (data available) or `unavailable` (analysis not ready or not enabled).",
+        "operationId": "getProjectTopics",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD. Optional — if omitted, defaults to 30 days before `date_to` (or 30 days ago when both are omitted).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from` when both are provided. Optional — if omitted, defaults to today.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-31"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTopicsResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "data": {
+                    "project_id": 123456789,
+                    "status": "ok",
+                    "topics": [
+                      {
+                        "topic_id": 1,
+                        "topic_name": "Product Launch",
+                        "description": "Discussions about new product releases and announcements",
+                        "mentions": 542,
+                        "reach": 1250000.5,
+                        "sentiment": {
+                          "positive": 45.2,
+                          "negative": 12.8,
+                          "neutral": 42.0
+                        },
+                        "share_of_voice": 35.67
+                      },
+                      {
+                        "topic_id": 2,
+                        "topic_name": "Customer Support",
+                        "description": "Mentions related to customer service experiences",
+                        "mentions": 318,
+                        "reach": 870000.0,
+                        "sentiment": {
+                          "positive": 28.5,
+                          "negative": 38.1,
+                          "neutral": 33.4
+                        },
+                        "share_of_voice": 22.15
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/daily-metrics": {
+      "get": {
+        "tags": [
+          "Project Insights"
+        ],
+        "summary": "Get project daily metrics",
+        "description": "Returns daily project metrics for the selected date range, including mentions count, reach, sentiment ratio and engagement. Both dates are optional — the missing date is inferred from the other (±31 days). When neither date is provided, defaults to the last 31 days. Returns 400 if both dates are provided and the range exceeds 31 days. Optionally, metrics can be filtered by source and include a per-source daily breakdown.",
+        "operationId": "getProjectDailyMetrics",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD. Optional — if omitted and `to` is provided, defaults to `to` minus 31 days. If both dates are omitted, defaults to 31 days ago.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2025-11-01"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Optional — if omitted and `from` is provided, defaults to `from` plus 31 days. If both dates are omitted, defaults to today. Returns 400 if both dates are provided and the range exceeds 31 days.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2025-11-07"
+          },
+          {
+            "name": "source",
+            "in": "query",
+            "description": "Optional source filter. If omitted, totals include all sources.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["twitter", "facebook", "instagram", "reddit", "youtube", "tiktok", "news"]
+            },
+            "example": "twitter"
+          },
+          {
+            "name": "includeBySource",
+            "in": "query",
+            "description": "If true, includes source breakdown in `by_source` for each day. Allowed values: true, false, 1, 0.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "example": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDailyMetricsResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "data": {
+                    "project_id": 12345,
+                    "from": "2025-11-01",
+                    "to": "2025-11-07",
+                    "days": [
+                      {
+                        "date": "2025-11-01",
+                        "mentions_count": 320,
+                        "reach_total": 540000,
+                        "sentiment": {
+                          "positive": 0.35,
+                          "neutral": 0.45,
+                          "negative": 0.2
+                        },
+                        "engagement": {
+                          "likes": 2100,
+                          "comments": 340,
+                          "shares": 95
+                        },
+                        "by_source": [
+                          {
+                            "source": "twitter",
+                            "mentions_count": 180,
+                            "reach": 380000
+                          },
+                          {
+                            "source": "news",
+                            "mentions_count": 40,
+                            "reach": 120000
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/ai-summary": {
+      "get": {
+        "tags": [
+          "Project Insights"
+        ],
+        "summary": "Get AI summary",
+        "description": "Returns an automatically generated textual summary for the selected project and time range. Both dates are optional — the missing date is inferred from the other (±31 days). When neither date is provided, defaults to the last 31 days. Returns 400 if both dates are provided and the range exceeds 31 days.",
+        "operationId": "getProjectAiSummary",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD. Optional — if omitted and `date_to` is provided, defaults to `date_to` minus 31 days. If both dates are omitted, defaults to 31 days ago.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Optional — if omitted and `date_from` is provided, defaults to `date_from` plus 31 days. If both dates are omitted, defaults to today. Returns 400 if both dates are provided and the range exceeds 31 days.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-31"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectAiSummaryResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "message": {
+                    "project_id": 123456789,
+                    "date_from": "2024-01-01",
+                    "date_to": "2024-01-31",
+                    "summary": "Most mentions come from social media, with Instagram as the leading source. Sentiment is mostly positive, while Facebook contributes the highest negative reach."
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/ai-insights": {
+      "get": {
+        "tags": [
+          "Project Insights"
+        ],
+        "summary": "Get AI insights",
+        "description": "Returns AI-generated insights for the selected project and time range. Both dates are optional — the missing date is inferred from the other (±31 days). When neither date is provided, defaults to the last 31 days. Returns 400 if both dates are provided and the range exceeds 31 days.",
+        "operationId": "getProjectAiInsights",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD. Optional — if omitted and `date_to` is provided, defaults to `date_to` minus 31 days. If both dates are omitted, defaults to 31 days ago.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Optional — if omitted and `date_from` is provided, defaults to `date_from` plus 31 days. If both dates are omitted, defaults to today. Returns 400 if both dates are provided and the range exceeds 31 days.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-31"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectAiInsightsResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "message": {
+                    "project_id": 123456789,
+                    "date_from": "2024-01-01",
+                    "date_to": "2024-01-31",
+                    "insights": [
+                      {
+                        "insightType": "sociality",
+                        "chartType": "donut",
+                        "headline": "Social media dominance",
+                        "text": "Most of the mentions come from social media, specifically Instagram",
+                        "chart": [
+                          {
+                            "name": "sociality",
+                            "data": [
+                              {
+                                "name": "Instagram",
+                                "value": 0.89
+                              },
+                              {
+                                "name": "Facebook",
+                                "value": 0.10
+                              }
+                            ]
+                          }
+                        ],
+                        "link": ""
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/account/{account_id}/projects_list/": {
+      "get": {
+        "tags": [
+          "Project Configuration"
+        ],
+        "summary": "List account projects",
+        "description": "Returns a list of all projects in the account, including their IDs and names. Use this endpoint to discover available project identifiers before calling project-scoped endpoints.",
+        "operationId": "listAccountProjects",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "ID of your account",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectsListResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "data": {
+                    "projects_list": {
+                      "123456789": "Brand Monitoring",
+                      "234567891": "Competitor Analysis",
+                      "345678912": "Industry Trends"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/domains/": {
+      "get": {
+        "tags": [
+          "Project Sources"
+        ],
+        "summary": "Popular domains",
+        "description": "Returns the most popular domains (sources) that mention a given project within a date range, ranked by mention count. Each domain includes its mention count, estimated reach, monthly traffic visits, and an influence score (0–10). Up to 50 domains are returned. When `date_from` is omitted it defaults to 30 days before `date_to`; when `date_to` is omitted it defaults to today.",
+        "operationId": "getProjectDomains",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD. Optional — if omitted, defaults to 30 days before `date_to` (or 30 days ago when both are omitted).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from` when both are provided. Optional — if omitted, defaults to today.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-31"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDomainsResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "data": {
+                    "project_id": 123456789,
+                    "date_from": "2024-01-01",
+                    "date_to": "2024-01-31",
+                    "domains": [
+                      {
+                        "domain": "x.com",
+                        "mentions_count": 51,
+                        "reach": 77000,
+                        "visits": 76000000,
+                        "influence_score": 10
+                      },
+                      {
+                        "domain": "marketingmonk.so",
+                        "mentions_count": 47,
+                        "reach": 70000,
+                        "visits": 95000,
+                        "influence_score": 3
+                      },
+                      {
+                        "domain": "linkedin.com",
+                        "mentions_count": 29,
+                        "reach": 0,
+                        "visits": 2000000000,
+                        "influence_score": 10
+                      },
+                      {
+                        "domain": "reddit.com",
+                        "mentions_count": 18,
+                        "reach": 270000,
+                        "visits": 4600000000,
+                        "influence_score": 10
+                      }
+                    ],
+                    "total_domains": 42
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/trending-links": {
+      "get": {
+        "tags": [
+          "Project Sources"
+        ],
+        "summary": "Trending links",
+        "description": "Returns the most popular URLs (links) found in mentions for a given project within a date range, ranked by mention count descending. Up to 50 links are returned. When `date_from` is omitted it defaults to 30 days before `date_to`; when `date_to` is omitted it defaults to today.",
+        "operationId": "getProjectTrendingLinks",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD. Optional — if omitted, defaults to 30 days before `date_to` (or 30 days ago when both are omitted).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from` when both are provided. Optional — if omitted, defaults to today.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-31"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrendingLinksResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "data": {
+                    "project_id": 123456789,
+                    "date_from": "2024-01-01",
+                    "date_to": "2024-01-31",
+                    "trending_links": [
+                      {
+                        "url": "https://example.com/article/trending-topic",
+                        "mentions_count": 45
+                      },
+                      {
+                        "url": "https://blog.example.com/post/12345",
+                        "mentions_count": 32
+                      },
+                      {
+                        "url": "https://news.example.com/story/67890",
+                        "mentions_count": 18
+                      }
+                    ],
+                    "total_links": 3
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/trending-hashtags": {
+      "get": {
+        "tags": [
+          "Project Insights"
+        ],
+        "summary": "Trending hashtags",
+        "description": "Returns the most frequently used hashtags for a given project within a date range. Up to 50 hashtags are returned.",
+        "operationId": "getProjectTrendingHashtags",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD. Optional — if omitted, defaults to 30 days before `date_to` (or 30 days ago when both are omitted).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from` when both are provided. Optional — if omitted, defaults to today.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-31"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrendingHashtagsResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "message": {
+                    "project_id": 123456789,
+                    "date_from": "2024-01-01",
+                    "date_to": "2024-01-31",
+                    "hashtags": [
+                      {
+                        "hashtag": "#brand24",
+                        "mentions_count": 72,
+                        "social_media_reach": 23400,
+                        "sentiment_score": 0.31
+                      }
+                    ],
+                    "total_hashtags": 1
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/demographics": {
+      "get": {
+        "tags": [
+          "Project Insights"
+        ],
+        "summary": "Demographics",
+        "description": "Returns aggregated audience characteristics inferred from available domain metadata for mentions in the selected date range.",
+        "operationId": "getProjectDemographics",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD. Optional — if omitted, defaults to 30 days before `date_to` (or 30 days ago when both are omitted).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from` when both are provided. Optional — if omitted, defaults to today.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-31"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemographicsResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "message": {
+                    "project_id": 123456789,
+                    "date_from": "2024-01-01",
+                    "date_to": "2024-01-31",
+                    "demographics": {
+                      "ages": {
+                        "female": [],
+                        "male": []
+                      },
+                      "educations": [],
+                      "countries": [],
+                      "incomes": [],
+                      "interests": [],
+                      "occupations": [],
+                      "sex": [],
+                      "social_media_presence": []
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/most-active-sites": {
+      "get": {
+        "tags": [
+          "Project Sources"
+        ],
+        "summary": "Most active sites",
+        "description": "Returns domains that generated the highest number of mentions in the selected date range.",
+        "operationId": "getProjectMostActiveSites",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD. Optional — if omitted, defaults to 30 days before `date_to` (or 30 days ago when both are omitted).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from` when both are provided. Optional — if omitted, defaults to today.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-31"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MostActiveSitesResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "message": {
+                    "project_id": 123456789,
+                    "date_from": "2024-01-01",
+                    "date_to": "2024-01-31",
+                    "sites": [
+                      {
+                        "domain": "facebook.com",
+                        "mentions_count": 44,
+                        "reach": 50230
+                      }
+                    ],
+                    "total_sites": 1
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/hot-hours": {
+      "get": {
+        "tags": [
+          "Project Statistics"
+        ],
+        "summary": "Hot hours",
+        "description": "Returns time intervals with the highest average concentration of mentions in the selected date range.",
+        "operationId": "getProjectHotHours",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD. Optional — if omitted, defaults to 30 days before `date_to` (or 30 days ago when both are omitted).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from` when both are provided. Optional — if omitted, defaults to today.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-31"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HotHoursResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "message": {
+                    "project_id": 123456789,
+                    "date_from": "2024-01-01",
+                    "date_to": "2024-01-31",
+                    "hot_hours": [
+                      {
+                        "day_of_week": 1,
+                        "hour": 14,
+                        "mentions_count": 18.5
+                      }
+                    ],
+                    "total_hot_hours": 168,
+                    "returned_hot_hours": 24
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/most-followers": {
+      "get": {
+        "tags": [
+          "Project Statistics"
+        ],
+        "summary": "Most followers",
+        "description": "Returns authors ranked by the highest declared follower count associated with their social media profiles in the selected date range.",
+        "operationId": "getProjectMostFollowers",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "ID of your project",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 123456789
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Start of date range. Allowed format: YYYY-MM-DD. Optional — if omitted, defaults to 30 days before `date_to` (or 30 days ago when both are omitted).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "End of date range. Allowed format: YYYY-MM-DD. Must be equal to or after `date_from` when both are provided. Optional — if omitted, defaults to today.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-31"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "description": "Sort authors in descending order. Allowed values: `followers_count` (default), `mentions_count`.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "followers_count",
+                "mentions_count"
+              ]
+            },
+            "example": "mentions_count"
+          },
+          {
+            "name": "min_influencer_score",
+            "in": "query",
+            "description": "Minimum influencer score (0–10). When provided, only authors with at least this score are returned.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "example": 5
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MostFollowersResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "message": {
+                    "project_id": 123456789,
+                    "date_from": "2024-01-01",
+                    "date_to": "2024-01-31",
+                    "authors": [
+                      {
+                        "name": "John Doe",
+                        "url": "https://x.com/johndoe",
+                        "followers_count": 125000,
+                        "mentions_count": 3,
+                        "reach": 375000
+                      }
+                    ],
+                    "total_authors": 1
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api-data/v1/project/{project_id}/keywords": {
+      "get": {
+        "tags": ["Project Configuration"],
+        "summary": "Project Keywords",
+        "description": "Returns the keyword sets (relevant / required / excluded) configured for the project.",
+        "operationId": "getProjectKeywords",
+        "parameters": [
+          {"name": "project_id", "in": "path", "description": "ID of your project", "required": true, "schema": {"type": "integer"}, "example": 123456789}
+        ],
+        "responses": {
+          "200": {"description": "Successful operation", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ProjectKeywordsResponse"}}}},
+          "400": {"$ref": "#/components/responses/BadRequestError"},
+          "401": {"$ref": "#/components/responses/UnauthorizedError"},
+          "404": {"$ref": "#/components/responses/NotFoundError"},
+          "500": {"$ref": "#/components/responses/InternalError"}
+        }
+      }
+    },
+    "/api-data/v1/languages": {
+      "get": {
+        "tags": ["Reference"],
+        "summary": "Supported languages",
+        "description": "Returns the list of language names supported when creating projects.",
+        "operationId": "getLanguages",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/LanguagesResponse"},
+                "example": {
+                  "status": "success",
+                  "message": {
+                    "languages": ["english", "spanish", "arabic", "croatian", "czech", "danish", "dutch", "finnish", "french", "german", "hungarian", "indonesian", "italian", "korean", "norwegian", "polish", "portuguese", "romanian", "russian", "slovak", "swedish", "thai", "turkish", "vietnamese"]
+                  }
+                }
+              }
+            }
+          },
+          "401": {"$ref": "#/components/responses/UnauthorizedError"},
+          "500": {"$ref": "#/components/responses/InternalError"}
+        }
+      }
+    },
+    "/api-data/v1/mentions/categories": {
+      "get": {
+        "tags": ["Reference"],
+        "summary": "Mentions categories",
+        "description": "Returns the list of supported source category tokens used to identify mention sources.",
+        "operationId": "getMentionsCategories",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/MentionsCategoriesResponse"},
+                "example": {
+                  "status": "success",
+                  "message": {
+                    "categories": ["facebook", "instagram", "x", "tiktok", "videos", "news", "podcasts", "other_socials", "blogs", "web"]
+                  }
+                }
+              }
+            }
+          },
+          "401": {"$ref": "#/components/responses/UnauthorizedError"},
+          "500": {"$ref": "#/components/responses/InternalError"}
+        }
+      }
+    },
+    "/api-data/v1/account/mentions-usage-estimation": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Projected mentions usage",
+        "description": "Returns the projected end-of-billing-period mentions usage for the calling account, based on usage so far in the current period.\n\nUseful for monitoring whether the account is on track to exceed its plan limit, and for surfacing forecast metrics in dashboards or alerting integrations.",
+        "operationId": "getAccountMentionsUsageEstimation",
+        "responses": {
+          "200": {"description": "Successful operation", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AccountMentionsUsageEstimationResponse"}}}},
+          "401": {"$ref": "#/components/responses/UnauthorizedError"},
+          "500": {"$ref": "#/components/responses/InternalError"}
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "X-Api-Key": {
+        "type": "apiKey",
+        "name": "X-Api-Key",
+        "in": "header",
+        "description": "Pass your API key as the `X-Api-Key` HTTP header.\n\nYour API key is available at: https://app.brand24.com/account/integrations-api-data\n\n**Security:** Use it only in server-side (backend) code. Never embed it in frontend JavaScript, HTML, or mobile apps. Requests made directly from a browser will be blocked by CORS and expose your key."
+      }
+    },
+    "responses": {
+      "BadRequestError": {
+        "description": "Bad request — invalid or missing parameters",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "status": "fail",
+              "message": "Invalid value provided.",
+              "code": 400
+            }
+          }
+        }
+      },
+      "UnauthorizedError": {
+        "description": "Unauthorized — missing or invalid API key",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "status": "fail",
+              "message": "Unauthorized",
+              "code": 401
+            }
+          }
+        }
+      },
+      "NotFoundError": {
+        "description": "Not found — invalid endpoint URL",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "status": "fail",
+              "message": "Endpoint not found.",
+              "code": 404
+            }
+          }
+        }
+      },
+      "InternalError": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "status": "error",
+              "message": "Unexpected error occurred",
+              "code": 500
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "description": "Standard error response envelope",
+        "required": [
+          "status",
+          "message"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Error status: 'fail' for client errors (4xx), 'error' for server errors (5xx)",
+            "example": "fail",
+            "enum": [
+              "fail",
+              "error"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable error description",
+            "example": "Invalid value provided."
+          },
+          "code": {
+            "type": "integer",
+            "description": "HTTP status code",
+            "example": 400
+          }
+        },
+        "additionalProperties": false
+      },
+      "MentionsCountResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "mentions_count": {
+                "type": "object",
+                "description": "Map of calendar date (`YYYY-MM-DD`) to mention count for that day. Only dates within the requested range are returned.",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "total": {
+                "type": "integer",
+                "description": "Total mentions across the date range",
+                "example": 315
+              }
+            },
+            "description": "Mention count time series for the requested date range.",
+            "required": [
+              "mentions_count",
+              "total"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "MentionsSentimentResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "mentions": {
+                "type": "object",
+                "description": "Map of calendar date (`YYYY-MM-DD`) to total mention count for that day. Only dates within the requested range are returned.",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "total_mentions": {
+                "type": "integer",
+                "description": "Sum of all mentions in the date range",
+                "example": 11650
+              },
+              "positive_mentions": {
+                "type": "object",
+                "description": "Map of calendar date (`YYYY-MM-DD`) to positive mention count for that day. Only dates within the requested range are returned.",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "total_positive_mentions": {
+                "type": "integer",
+                "description": "Sum of positive mentions in the date range",
+                "example": 2598
+              },
+              "negative_mentions": {
+                "type": "object",
+                "description": "Map of calendar date (`YYYY-MM-DD`) to negative mention count for that day. Only dates within the requested range are returned.",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "total_negative_results": {
+                "type": "integer",
+                "description": "Legacy field name representing the sum of negative mentions in the requested date range.",
+                "example": 2292
+              }
+            },
+            "description": "Sentiment time series for the requested date range.",
+            "required": [
+              "mentions",
+              "total_mentions",
+              "positive_mentions",
+              "total_positive_mentions",
+              "negative_mentions",
+              "total_negative_results"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "MentionsReachResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "social_media_reach": {
+                "type": "object",
+                "description": "Map of calendar date (`YYYY-MM-DD`) to social media reach for that day. Only dates within the requested range are returned.",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "social_media_reach_total": {
+                "type": "integer",
+                "description": "Sum of social media reach in the date range",
+                "example": 47
+              },
+              "non_social_media_reach": {
+                "type": "object",
+                "description": "Map of calendar date (`YYYY-MM-DD`) to non-social media reach for that day. Only dates within the requested range are returned.",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "non_social_media_reach_total": {
+                "type": "integer",
+                "description": "Sum of non-social media reach in the date range",
+                "example": 100
+              }
+            },
+            "description": "Reach time series for the requested date range.",
+            "required": [
+              "social_media_reach",
+              "social_media_reach_total",
+              "non_social_media_reach",
+              "non_social_media_reach_total"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "ProjectEventsResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "string",
+                "description": "ID of the requested project",
+                "example": "123456789"
+              },
+              "project_name": {
+                "type": "string",
+                "description": "Name of the requested project",
+                "example": "My Brand"
+              },
+              "anomalies": {
+                "type": "array",
+                "description": "List of detected events (anomalies) in the requested date range",
+                "items": {
+                  "$ref": "#/components/schemas/ProjectEvent"
+                }
+              },
+              "total": {
+                "type": "integer",
+                "description": "Total number of events returned",
+                "example": 3
+              }
+            },
+            "description": "Project-level anomaly summary for the requested date range.",
+            "required": [
+              "project_id",
+              "project_name",
+              "anomalies",
+              "total"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data"
+        ]
+      },
+      "ProjectEvent": {
+        "type": "object",
+        "properties": {
+          "anomaly_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Date of the detected event (YYYY-MM-DD)",
+            "example": "2024-01-15"
+          },
+          "project_id": {
+            "type": "integer",
+            "description": "ID of the project the event belongs to",
+            "example": 123456789
+          },
+          "description": {
+            "type": "string",
+            "description": "AI-generated English description explaining why this event was detected",
+            "example": "Spike in mentions related to product launch coverage across news sites."
+          },
+          "peak_mentions": {
+            "type": "integer",
+            "description": "Total number of mentions at the peak of the event",
+            "example": 1540
+          },
+          "peak_reach": {
+            "type": "integer",
+            "description": "Total estimated reach at the peak of the event",
+            "example": 9800000
+          }
+        },
+        "required": [
+          "anomaly_date",
+          "project_id",
+          "description",
+          "peak_mentions",
+          "peak_reach"
+        ],
+        "additionalProperties": false
+      },
+      "ProjectTopicsResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "integer",
+                "description": "ID of the requested project",
+                "example": 123456789
+              },
+              "status": {
+                "type": "string",
+                "description": "Status of topic analysis: 'ok' (data available) or 'unavailable' (analysis not ready or not enabled)",
+                "example": "ok",
+                "enum": [
+                  "ok",
+                  "unavailable"
+                ]
+              },
+              "topics": {
+                "type": "array",
+                "description": "List of detected topics for the requested date range. Empty when analysis status is `unavailable`. Topics are returned as provided by the API.",
+                "items": {
+                  "$ref": "#/components/schemas/ProjectTopic"
+                }
+              }
+            },
+            "description": "Topic analysis result for the requested date range.",
+            "required": [
+              "project_id",
+              "status",
+              "topics"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data"
+        ]
+      },
+      "ProjectTopic": {
+        "type": "object",
+        "properties": {
+          "topic_id": {
+            "type": "integer",
+            "description": "Internal identifier of the topic",
+            "example": 1
+          },
+          "topic_name": {
+            "type": "string",
+            "description": "AI-generated name of the topic",
+            "example": "Product Launch"
+          },
+          "description": {
+            "type": "string",
+            "description": "AI-generated description of the topic",
+            "example": "Discussions about new product releases and announcements"
+          },
+          "mentions": {
+            "type": "integer",
+            "description": "Total number of mentions assigned to this topic in the date range",
+            "example": 542
+          },
+          "reach": {
+            "type": "number",
+            "format": "float",
+            "description": "Total estimated reach of mentions in this topic",
+            "example": 1250000.5
+          },
+          "sentiment": {
+            "type": "object",
+            "description": "Sentiment breakdown as percentages (summing to 100)",
+            "properties": {
+              "positive": {
+                "type": "number",
+                "format": "float",
+                "description": "Percentage of positive mentions",
+                "example": 45.2
+              },
+              "negative": {
+                "type": "number",
+                "format": "float",
+                "description": "Percentage of negative mentions",
+                "example": 12.8
+              },
+              "neutral": {
+                "type": "number",
+                "format": "float",
+                "description": "Percentage of neutral mentions",
+                "example": 42.0
+              }
+            },
+            "required": [
+              "positive",
+              "negative",
+              "neutral"
+            ],
+            "additionalProperties": false
+          },
+          "share_of_voice": {
+            "type": "number",
+            "format": "float",
+            "description": "Share of voice as a percentage of total reach across all topics",
+            "example": 35.67
+          }
+        },
+        "required": [
+          "topic_id",
+          "topic_name",
+          "description",
+          "mentions",
+          "reach",
+          "sentiment",
+          "share_of_voice"
+        ],
+        "additionalProperties": false
+      },
+      "ProjectDailyMetricsResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "integer",
+                "description": "ID of the requested project",
+                "example": 12345
+              },
+              "from": {
+                "type": "string",
+                "format": "date",
+                "description": "Start date of returned data",
+                "example": "2025-11-01"
+              },
+              "to": {
+                "type": "string",
+                "format": "date",
+                "description": "End date of returned data",
+                "example": "2025-11-07"
+              },
+              "days": {
+                "type": "array",
+                "description": "Daily metrics for each day in the returned range.",
+                "items": {
+                  "$ref": "#/components/schemas/ProjectDailyMetricDay"
+                }
+              }
+            },
+            "required": [
+              "project_id",
+              "from",
+              "to",
+              "days"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data"
+        ]
+      },
+      "ProjectDailyMetricDay": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "Metric day (YYYY-MM-DD).",
+            "example": "2025-11-01"
+          },
+          "mentions_count": {
+            "type": "integer",
+            "description": "Total mentions count for the day.",
+            "example": 320
+          },
+          "reach_total": {
+            "type": "integer",
+            "description": "Total estimated reach for the day.",
+            "example": 540000
+          },
+          "sentiment": {
+            "$ref": "#/components/schemas/ProjectDailyMetricSentiment"
+          },
+          "engagement": {
+            "$ref": "#/components/schemas/ProjectDailyMetricEngagement"
+          },
+          "likes_count": {
+            "type": "integer",
+            "description": "Sum of likes for the day. Same value as `engagement.likes`.",
+            "example": 2100
+          },
+          "comments_count": {
+            "type": "integer",
+            "description": "Sum of comments for the day. Same value as `engagement.comments`.",
+            "example": 340
+          },
+          "shares_count": {
+            "type": "integer",
+            "description": "Sum of shares for the day. Same value as `engagement.shares`.",
+            "example": 95
+          },
+          "ave": {
+            "type": "number",
+            "format": "float",
+            "description": "Advertising / media value (AVE) for the day. Sum of stored per-mention AVE.",
+            "example": 12345.6
+          },
+          "positive_mentions": {
+            "type": "integer",
+            "description": "Mentions with positive sentiment that day.",
+            "example": 112
+          },
+          "negative_mentions": {
+            "type": "integer",
+            "description": "Mentions with negative sentiment that day.",
+            "example": 64
+          },
+          "neutral_mentions": {
+            "type": "integer",
+            "description": "Mentions with neutral sentiment that day. Derived as mentions_count - positive_mentions - negative_mentions (clamped at 0).",
+            "example": 144
+          },
+          "positive_reach": {
+            "type": "integer",
+            "description": "Reach of positive mentions that day.",
+            "example": 300000
+          },
+          "negative_reach": {
+            "type": "integer",
+            "description": "Reach of negative mentions that day.",
+            "example": 90000
+          },
+          "neutral_reach": {
+            "type": "integer",
+            "description": "Reach of neutral mentions that day.",
+            "example": 150000
+          },
+          "by_source": {
+            "type": "array",
+            "description": "Per-source breakdown for the day. Empty when `includeBySource` is false or no source data is available.",
+            "items": {
+              "$ref": "#/components/schemas/ProjectDailyMetricBySource"
+            }
+          }
+        },
+        "required": [
+          "date",
+          "mentions_count",
+          "reach_total",
+          "sentiment",
+          "engagement",
+          "likes_count",
+          "comments_count",
+          "shares_count",
+          "ave",
+          "positive_mentions",
+          "negative_mentions",
+          "neutral_mentions",
+          "positive_reach",
+          "negative_reach",
+          "neutral_reach",
+          "by_source"
+        ],
+        "additionalProperties": false
+      },
+      "ProjectDailyMetricSentiment": {
+        "type": "object",
+        "properties": {
+          "positive": {
+            "type": "number",
+            "format": "float",
+            "example": 0.35
+          },
+          "neutral": {
+            "type": "number",
+            "format": "float",
+            "example": 0.45
+          },
+          "negative": {
+            "type": "number",
+            "format": "float",
+            "example": 0.2
+          }
+        },
+        "required": [
+          "positive",
+          "neutral",
+          "negative"
+        ],
+        "additionalProperties": false
+      },
+      "ProjectDailyMetricEngagement": {
+        "type": "object",
+        "properties": {
+          "likes": {
+            "type": "integer",
+            "example": 2100
+          },
+          "comments": {
+            "type": "integer",
+            "example": 340
+          },
+          "shares": {
+            "type": "integer",
+            "example": 95
+          }
+        },
+        "required": [
+          "likes",
+          "comments",
+          "shares"
+        ],
+        "additionalProperties": false
+      },
+      "ProjectDailyMetricBySource": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "example": "twitter"
+          },
+          "mentions_count": {
+            "type": "integer",
+            "example": 180
+          },
+          "reach": {
+            "type": "integer",
+            "example": 380000
+          },
+          "likes_count": {
+            "type": "integer",
+            "example": 10
+          },
+          "comments_count": {
+            "type": "integer",
+            "example": 4
+          },
+          "shares_count": {
+            "type": "integer",
+            "example": 2
+          },
+          "ave": {
+            "type": "number",
+            "format": "float",
+            "description": "Advertising / media value (AVE) for this source on this day.",
+            "example": 1234.5
+          },
+          "positive_mentions": {
+            "type": "integer",
+            "example": 80
+          },
+          "negative_mentions": {
+            "type": "integer",
+            "example": 20
+          },
+          "neutral_mentions": {
+            "type": "integer",
+            "example": 20
+          },
+          "positive_reach": {
+            "type": "integer",
+            "example": 400000
+          },
+          "negative_reach": {
+            "type": "integer",
+            "example": 50000
+          },
+          "neutral_reach": {
+            "type": "integer",
+            "example": 50000
+          }
+        },
+        "required": [
+          "source",
+          "mentions_count",
+          "reach",
+          "likes_count",
+          "comments_count",
+          "shares_count",
+          "ave",
+          "positive_mentions",
+          "negative_mentions",
+          "neutral_mentions",
+          "positive_reach",
+          "negative_reach",
+          "neutral_reach"
+        ],
+        "additionalProperties": false
+      },
+      "ProjectAiSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "integer",
+                "example": 123456789
+              },
+              "date_from": {
+                "type": "string",
+                "format": "date",
+                "example": "2024-01-01"
+              },
+              "date_to": {
+                "type": "string",
+                "format": "date",
+                "example": "2024-01-31"
+              },
+              "summary": {
+                "type": "string",
+                "example": "Conversation stayed mostly neutral, with one visible growth period around a product update announcement."
+              }
+            },
+            "required": [
+              "project_id",
+              "date_from",
+              "date_to",
+              "summary"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "ProjectAiInsightsResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "integer",
+                "example": 123456789
+              },
+              "date_from": {
+                "type": "string",
+                "format": "date",
+                "example": "2024-01-01"
+              },
+              "date_to": {
+                "type": "string",
+                "format": "date",
+                "example": "2024-01-31"
+              },
+              "insights": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                },
+                "example": [
+                  {
+                    "title": "Strong growth on Instagram",
+                    "description": "Mentions and engagement increased by 34% week over week.",
+                    "severity": "info"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "project_id",
+              "date_from",
+              "date_to",
+              "insights"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "ProjectShareOfVoiceAuthorsResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "integer",
+                "example": 123456789
+              },
+              "date_from": {
+                "type": "string",
+                "format": "date",
+                "example": "2024-01-01"
+              },
+              "date_to": {
+                "type": "string",
+                "format": "date",
+                "example": "2024-01-31"
+              },
+              "authors": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "john_doe"
+                    },
+                    "percent": {
+                      "type": "number",
+                      "format": "float",
+                      "example": 24.531
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "https://x.com/john_doe"
+                    },
+                    "type": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "percent",
+                    "url",
+                    "type"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "project_id",
+              "date_from",
+              "date_to",
+              "authors"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "ProjectsListResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "projects_list": {
+                "type": "object",
+                "description": "Map of project ID to project name for projects available in the account.",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Projects available in the requested account.",
+            "required": [
+              "projects_list"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data"
+        ]
+      },
+      "ProjectCreateResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "projectId": {
+                "type": "integer",
+                "description": "ID of the newly created project",
+                "example": 123456734
+              }
+            },
+            "description": "Identifier of the newly created project.",
+            "required": [
+              "projectId"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data"
+        ]
+      },
+      "CreateProjectKeywords": {
+        "type": "object",
+        "properties": {
+          "keywords": {
+            "type": "array",
+            "description": "List of keywords to monitor. Each keyword can have optional required and excluded words.",
+            "items": {
+              "$ref": "#/components/schemas/Keyword"
+            },
+            "example": [
+              {
+                "keyword": "asus"
+              },
+              {
+                "keyword": "sony",
+                "excluded": [
+                  "headphones",
+                  "tv",
+                  "playstation"
+                ]
+              },
+              {
+                "keyword": "logitech",
+                "required": [
+                  "keyboard"
+                ],
+                "excluded": [
+                  "mouse"
+                ]
+              }
+            ]
+          }
+        },
+        "required": [
+          "keywords"
+        ],
+        "additionalProperties": false
+      },
+      "Keyword": {
+        "type": "object",
+        "required": [
+          "keyword"
+        ],
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "The main keyword to monitor",
+            "example": "logitech"
+          },
+          "required": {
+            "type": "array",
+            "description": "Words that must appear alongside the keyword for a mention to be collected",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "keyboard"
+            ]
+          },
+          "excluded": {
+            "type": "array",
+            "description": "Words that exclude a mention from being collected when they appear alongside the keyword",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "mouse"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectDomainsResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "integer",
+                "description": "ID of the project",
+                "example": 123456789
+              },
+              "date_from": {
+                "type": "string",
+                "format": "date",
+                "description": "Start of the requested date range",
+                "example": "2024-01-01"
+              },
+              "date_to": {
+                "type": "string",
+                "format": "date",
+                "description": "End of the requested date range",
+                "example": "2024-01-31"
+              },
+              "domains": {
+                "type": "array",
+                "description": "List of domains ranked by mention count (descending). Up to 50 domains are returned.",
+                "items": {
+                  "$ref": "#/components/schemas/DomainSource"
+                }
+              },
+              "total_domains": {
+                "type": "integer",
+                "description": "Total number of distinct domains found in the date range (may exceed the number of items in `domains`)",
+                "example": 42
+              }
+            },
+            "description": "Domain-level source breakdown for the requested project and date range.",
+            "required": [
+              "project_id",
+              "date_from",
+              "date_to",
+              "domains",
+              "total_domains"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data"
+        ]
+      },
+      "TrendingLinksResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success"
+            ],
+            "description": "Always `success` for a successful response."
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "integer",
+                "description": "ID of the project",
+                "example": 123456789
+              },
+              "date_from": {
+                "type": "string",
+                "format": "date",
+                "description": "Start of the requested date range",
+                "example": "2024-01-01"
+              },
+              "date_to": {
+                "type": "string",
+                "format": "date",
+                "description": "End of the requested date range",
+                "example": "2024-01-31"
+              },
+              "trending_links": {
+                "type": "array",
+                "description": "List of URLs ranked by mention count (descending). Up to 50 links are returned.",
+                "items": {
+                  "$ref": "#/components/schemas/TrendingLink"
+                }
+              },
+              "total_links": {
+                "type": "integer",
+                "description": "Total number of distinct links returned",
+                "example": 3
+              }
+            },
+            "description": "Trending links for the requested project and date range.",
+            "required": [
+              "project_id",
+              "date_from",
+              "date_to",
+              "trending_links",
+              "total_links"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data"
+        ]
+      },
+      "TrendingLink": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The full URL found in mentions",
+            "example": "https://example.com/article/trending-topic"
+          },
+          "mentions_count": {
+            "type": "integer",
+            "description": "Number of mentions containing this URL in the date range",
+            "example": 45
+          }
+        },
+        "required": [
+          "url",
+          "mentions_count"
+        ],
+        "additionalProperties": false
+      },
+      "TrendingHashtagItem": {
+        "type": "object",
+        "properties": {
+          "hashtag": {
+            "type": "string",
+            "example": "#brand24"
+          },
+          "mentions_count": {
+            "type": "integer",
+            "example": 72
+          },
+          "social_media_reach": {
+            "type": "integer",
+            "example": 23400
+          },
+          "sentiment_score": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "format": "float",
+            "example": 0.31
+          }
+        },
+        "required": [
+          "hashtag",
+          "mentions_count",
+          "social_media_reach",
+          "sentiment_score"
+        ],
+        "additionalProperties": false
+      },
+      "TrendingHashtagsResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "success"
+            ]
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "integer"
+              },
+              "date_from": {
+                "type": "string",
+                "format": "date"
+              },
+              "date_to": {
+                "type": "string",
+                "format": "date"
+              },
+              "hashtags": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TrendingHashtagItem"
+                }
+              },
+              "total_hashtags": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "project_id",
+              "date_from",
+              "date_to",
+              "hashtags",
+              "total_hashtags"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "DemographicsPayload": {
+        "type": "object",
+        "properties": {
+          "ages": {
+            "type": "object",
+            "properties": {
+              "female": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "male": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            },
+            "required": [
+              "female",
+              "male"
+            ]
+          },
+          "educations": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "countries": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "incomes": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "interests": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "occupations": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "sex": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "social_media_presence": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "ages",
+          "educations",
+          "countries",
+          "incomes",
+          "interests",
+          "occupations",
+          "sex",
+          "social_media_presence"
+        ]
+      },
+      "DemographicsResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "success"
+            ]
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "integer"
+              },
+              "date_from": {
+                "type": "string",
+                "format": "date"
+              },
+              "date_to": {
+                "type": "string",
+                "format": "date"
+              },
+              "demographics": {
+                "$ref": "#/components/schemas/DemographicsPayload"
+              }
+            },
+            "required": [
+              "project_id",
+              "date_from",
+              "date_to",
+              "demographics"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "MostActiveSiteItem": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string"
+          },
+          "mentions_count": {
+            "type": "integer"
+          },
+          "reach": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "domain",
+          "mentions_count",
+          "reach"
+        ],
+        "additionalProperties": false
+      },
+      "MostActiveSitesResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "success"
+            ]
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "integer"
+              },
+              "date_from": {
+                "type": "string",
+                "format": "date"
+              },
+              "date_to": {
+                "type": "string",
+                "format": "date"
+              },
+              "sites": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MostActiveSiteItem"
+                }
+              },
+              "total_sites": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "project_id",
+              "date_from",
+              "date_to",
+              "sites",
+              "total_sites"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "HotHourItem": {
+        "type": "object",
+        "properties": {
+          "day_of_week": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 7
+          },
+          "hour": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 23
+          },
+          "mentions_count": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "required": [
+          "day_of_week",
+          "hour",
+          "mentions_count"
+        ],
+        "additionalProperties": false
+      },
+      "HotHoursResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "success"
+            ]
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "integer"
+              },
+              "date_from": {
+                "type": "string",
+                "format": "date"
+              },
+              "date_to": {
+                "type": "string",
+                "format": "date"
+              },
+              "hot_hours": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/HotHourItem"
+                }
+              },
+              "total_hot_hours": {
+                "type": "integer"
+              },
+              "returned_hot_hours": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "project_id",
+              "date_from",
+              "date_to",
+              "hot_hours",
+              "total_hot_hours",
+              "returned_hot_hours"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "DomainSource": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Normalized domain name (e.g. `x.com`, `reddit.com`)",
+            "example": "x.com"
+          },
+          "mentions_count": {
+            "type": "integer",
+            "description": "Number of mentions from this domain in the date range",
+            "example": 51
+          },
+          "reach": {
+            "type": "number",
+            "format": "float",
+            "description": "Total estimated reach of mentions from this domain (social + non-social)",
+            "example": 77000
+          },
+          "visits": {
+            "type": "integer",
+            "description": "Estimated monthly traffic visits for this domain",
+            "example": 76000000
+          },
+          "influence_score": {
+            "type": "integer",
+            "description": "Influence score from 0 (lowest) to 10 (highest), derived from monthly traffic visits",
+            "minimum": 0,
+            "maximum": 10,
+            "example": 10
+          }
+        },
+        "required": [
+          "domain",
+          "mentions_count",
+          "reach",
+          "visits",
+          "influence_score"
+        ],
+        "additionalProperties": false
+      },
+      "MostFollowersAuthorItem": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Display name of the author",
+            "example": "John Doe"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL of the author's profile",
+            "example": "https://x.com/johndoe"
+          },
+          "followers_count": {
+            "type": "integer",
+            "description": "Declared follower count of the author's social media profile",
+            "example": 125000
+          },
+          "mentions_count": {
+            "type": "integer",
+            "description": "Number of mentions by this author in the date range",
+            "example": 3
+          },
+          "reach": {
+            "type": "integer",
+            "description": "Total estimated reach of mentions by this author",
+            "example": 375000
+          }
+        },
+        "required": [
+          "name",
+          "url",
+          "followers_count",
+          "mentions_count",
+          "reach"
+        ],
+        "additionalProperties": false
+      },
+      "MostFollowersResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "success"
+            ]
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "integer"
+              },
+              "date_from": {
+                "type": "string",
+                "format": "date"
+              },
+              "date_to": {
+                "type": "string",
+                "format": "date"
+              },
+              "authors": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MostFollowersAuthorItem"
+                }
+              },
+              "total_authors": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "project_id",
+              "date_from",
+              "date_to",
+              "authors",
+              "total_authors"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "MentionSentimentResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "success"
+            ]
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "mention_id": {
+                "type": "integer",
+                "description": "ID of the requested mention",
+                "example": 9876543210
+              },
+              "sentiment": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "Classified emotional polarity. `null` when sentiment has not been analyzed yet.",
+                "enum": [
+                  "positive",
+                  "neutral",
+                  "negative",
+                  null
+                ],
+                "example": "positive"
+              },
+              "sentiment_score": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "format": "float",
+                "description": "Numeric sentiment score. `null` when sentiment has not been analyzed yet.",
+                "example": 0.85
+              }
+            },
+            "required": [
+              "mention_id",
+              "sentiment",
+              "sentiment_score"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "MentionInteractionsResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "success"
+            ]
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "likes": {
+                "type": "integer",
+                "description": "Number of likes on the mention",
+                "example": 42
+              },
+              "dislikes": {
+                "type": "integer",
+                "description": "Deprecated field kept for compatibility. Always returns 0.",
+                "example": 0
+              },
+              "comments": {
+                "type": "integer",
+                "description": "Number of comments on the mention",
+                "example": 7
+              },
+              "shares": {
+                "type": "integer",
+                "description": "Number of shares of the mention",
+                "example": 15
+              }
+            },
+            "required": [
+              "likes",
+              "dislikes",
+              "comments",
+              "shares"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "ProjectMentionsListResponse": {
+        "type": "object",
+        "description": "Each mention contains public fields without the internal mention id. For ToS-restricted sources the `title`, `content` and `source` fields are blanked:\n\n- **Facebook, Instagram** — `title`, `content`, `source` all `null`\n- **Twitter / X** — `title` and `content` are `null`; `source` is `\"Tweet-ID: <id>\"`\n- **All other sources** (TikTok, news, blogs, YouTube, Reddit, LinkedIn, …) — full data exposed",
+        "properties": {
+          "status": {"type": "string", "enum": ["success"]},
+          "message": {
+            "type": "object",
+            "properties": {
+              "results": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "description": "9-field row for the project mentions response.",
+                  "properties": {
+                    "date":      {"type": "string", "format": "date", "example": "2026-04-27", "description": "Calendar date the mention was published (Excel column: Date)."},
+                    "time":      {"type": "string", "example": "14:32", "description": "Time of day, HH:MM (Excel column: Hrs)."},
+                    "title":     {"type": ["string", "null"], "description": "Mention title — usually present for News/Blogs/Web/Podcasts; empty for social media (Excel column: Title)."},
+                    "content":   {"type": ["string", "null"], "description": "Mention body, HTML stripped, truncated to 250 characters. Empty for social media (Excel column: Content)."},
+                    "source":    {"type": ["string", "null"], "description": "Source identifier — usually the mention URL, or `Tweet-ID: ...` for X/Twitter (Excel column: Source)."},
+                    "host":      {"type": ["string", "null"], "example": "instagram.com", "description": "Host the mention was found on (Excel column: Domain)."},
+                    "category":  {"type": ["string", "null"], "example": "instagram", "description": "Lowercase display name of the mention category, e.g. `news`, `instagram`, `x (twitter)` (Excel column: Category)."},
+                    "sentiment": {"type": ["integer", "null"], "enum": [-1, 0, 1, null], "description": "Sentiment: `-1` negative, `0` neutral, `1` positive (Excel column: Sentiment)."},
+                    "tags":      {"type": ["array", "null"], "items": {"type": "string"}, "description": "User-defined tag names (Excel column: Tags)."}
+                  },
+                  "required": ["date", "time", "title", "content", "source", "host", "category", "sentiment", "tags"]
+                }
+              },
+              "has_more_mentions": {"type": "boolean", "description": "True when more results are available beyond this page."},
+              "cursor":            {"type": ["string", "null"], "description": "Opaque cursor for the next page. Pass it back as the `cursor` query parameter to fetch the next page; `null` when there are no more pages.", "example": "djE6MzA3NTA0Mzk4MjIyMDczODU2"}
+            },
+            "required": ["results", "has_more_mentions"]
+          }
+        },
+        "required": ["status", "message"]
+      },
+      "ProjectKeywordsResponse": {
+        "type": "object",
+        "properties": {
+          "status": {"type": "string", "enum": ["success"]},
+          "message": {
+            "type": "object",
+            "properties": {
+              "keywords": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "relevant": {"type": "array", "items": {"type": "string"}, "description": "Keywords that trigger a mention."},
+                    "required": {"type": "array", "items": {"type": "string"}, "description": "Keywords that must also appear for the mention to be kept."},
+                    "excluded": {"type": "array", "items": {"type": "string"}, "description": "Keywords whose presence drops the mention."}
+                  },
+                  "required": ["relevant", "required", "excluded"]
+                }
+              }
+            },
+            "required": ["keywords"]
+          }
+        },
+        "required": ["status", "message"]
+      },
+      "LanguagesResponse": {
+        "type": "object",
+        "properties": {
+          "status": {"type": "string", "enum": ["success"]},
+          "message": {
+            "type": "object",
+            "properties": {
+              "languages": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "english"
+                }
+              }
+            },
+            "required": ["languages"]
+          }
+        },
+        "required": ["status", "message"]
+      },
+      "MentionsCategoriesResponse": {
+        "type": "object",
+        "properties": {
+          "status": {"type": "string", "enum": ["success"]},
+          "message": {
+            "type": "object",
+            "properties": {
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "Source token used to identify a mention source category.",
+                  "example": "x"
+                }
+              }
+            },
+            "required": ["categories"]
+          }
+        },
+        "required": ["status", "message"]
+      },
+      "AccountMentionsUsageEstimationResponse": {
+        "type": "object",
+        "properties": {
+          "status": {"type": "string", "enum": ["success"]},
+          "message": {
+            "type": "object",
+            "properties": {
+              "mentions_usage_estimation_at_the_end": {
+                "type": "number",
+                "description": "Projected total mentions the account will have consumed by the end of the current billing period, extrapolated from usage so far. Whole number; expressed as a decimal because the projection is computed from a daily rate.",
+                "example": 14820
+              }
+            },
+            "required": ["mentions_usage_estimation_at_the_end"]
+          }
+        },
+        "required": ["status", "message"]
+      }
+    }
+  }
+}
