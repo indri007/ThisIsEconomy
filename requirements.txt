@@ -21,4 +21,6 @@ evaluate>=0.4.0
 accelerate>=0.29.0
 huggingface_hub>=0.22.0
 sentencepiece>=0.1.99
-
+# === Twitter Scraping ===
+twifork>=2.4.0
+nest_asyncio>=1.6.0
