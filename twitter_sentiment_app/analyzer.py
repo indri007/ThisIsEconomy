@@ -3,17 +3,28 @@ Analisis sentimen + deteksi sarkasme tweet MBG menggunakan Google Gemini API.
 Mendukung Streamlit Secrets (Cloud) dan .env (Lokal), dilengkapi retry tahan 429/503.
 """
 
+from __future__ import annotations
 import os
 import time
 import json
 import logging
+from typing import Any
 import pandas as pd
-from google import genai
-from google.genai import types
-from google.genai.errors import APIError
-from dotenv import load_dotenv
-
-load_dotenv()
+try:
+    from google import genai
+    from google.genai import types
+    from google.genai.errors import APIError
+    GENAI_AVAILABLE = True
+except (ImportError, AttributeError):
+    genai = None
+    types = None
+    APIError = Exception
+    GENAI_AVAILABLE = False
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 logger = logging.getLogger(__name__)
 
 
@@ -91,7 +102,7 @@ def parse_llm_json(raw_text: str) -> list[dict]:
     return []
 
 
-def analyze_batch(client: genai.Client, texts: list[str], max_retries: int = 3) -> list[dict]:
+def analyze_batch(client: Any, texts: list[str], max_retries: int = 3) -> list[dict]:
     """
     Analisis sekumpulan tweet (batch) dengan proteksi Exponential Backoff Retry.
     """

@@ -9,17 +9,17 @@ import json
 import logging
 from datetime import datetime
 import pandas as pd
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
-# Tangani event loop jika berjalan dalam konteks Streamlit
 try:
     import nest_asyncio
     nest_asyncio.apply()
 except Exception:
-    # uvloop pada Python 3.14/uvicorn tidak perlu / tidak kompatibel dengan nest_asyncio
     pass
-
-load_dotenv()
 logger = logging.getLogger(__name__)
 
 COOKIES_FILE = "cookies.json"
