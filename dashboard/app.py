@@ -15,6 +15,7 @@ if True:
     import os
     import sys
     import re
+    import json
     from collections import Counter
     import time
     import requests
@@ -1612,8 +1613,11 @@ if True:
             
             state_json_path = os.path.join(PROJECT_ROOT, "data", "processed", "progres_1juta_bit.json")
             if os.path.exists(state_json_path):
-                with open(state_json_path, "r", encoding="utf-8") as f_st:
-                    st.json(json.load(f_st))
+                try:
+                    with open(state_json_path, "r", encoding="utf-8") as f_st:
+                        st.json(json.load(f_st))
+                except Exception as e:
+                    st.warning(f"State JSON tidak dapat dimuat: {e}")
         
         with tab_download:
             st.markdown("#### 🌐 Akses Publik & Panduan Peneliti")
