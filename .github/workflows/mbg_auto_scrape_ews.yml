@@ -1,0 +1,51 @@
+name: MBG Auto Scraper & Telegram EWS
+
+on:
+  schedule:
+    # 00:00 UTC = 07:00 WIB (Pagi)
+    # 12:00 UTC = 19:00 WIB (Malam)
+    - cron: '0 0,12 * * *'
+  workflow_dispatch: # Tombol "Run workflow" manual di tab Actions GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas requests twifork nest_asyncio
+
+      - name: Run Auto Scraper & Telegram EWS Alert
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8962247703:AAEOSHlsMCwmvyHtkGqotQ2DnnPVcD59mxo' }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '6608181417' }}
+          TWITTER_AUTH_TOKEN: ${{ secrets.TWITTER_AUTH_TOKEN || '26cf1a40cbfabdb3ee1f5f5298fba872776f2249' }}
+          TWITTER_CT0: ${{ secrets.TWITTER_CT0 || '95e5ad8a69d4f1297aedee473d61c3bb6e9a1e1a7fe05823b88528a3a75f680c64edfa57e6cd6fe47b1bbea1c74124864775071bfed1161cbd0764cbd648905887c2d85ad752a110de7c08f975d742de' }}
+        run: |
+          python scripts/auto_scrape_job.py
+
+      - name: Commit and Push Updated Data
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/processed/live_tweets_mbg_accumulated.csv
+          if git diff --staged --quiet; then
+            echo "Tidak ada data baru untuk di-commit."
+          else
+            git commit -m "Auto-update MBG tweets data via GitHub Actions [skip ci]"
+            git push
+          fi
