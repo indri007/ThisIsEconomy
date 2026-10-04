@@ -51,8 +51,15 @@ if True:
     except ImportError:
         WORDCLOUD_AVAILABLE = False
     
+    # Add Project Root and scripts directory to sys.path
+    ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+    if ROOT_DIR not in sys.path:
+        sys.path.insert(0, ROOT_DIR)
+    SCRIPTS_DIR = os.path.join(ROOT_DIR, 'scripts')
+    if SCRIPTS_DIR not in sys.path:
+        sys.path.insert(0, SCRIPTS_DIR)
+
     # Brand24 client (server-side only)
-    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'scripts'))
     try:
         from brand24_client import (
             get_api_key, list_projects, get_mentions,
@@ -63,12 +70,14 @@ if True:
     except ImportError:
         BRAND24_AVAILABLE = False
     
+    CUSTOM_EWS_IMPORT_ERROR = None
     try:
         from ews.custom_dashboard import render_custom_ews
         CUSTOM_EWS_AVAILABLE = True
-    except Exception:
+    except Exception as e:
         render_custom_ews = None
         CUSTOM_EWS_AVAILABLE = False
+        CUSTOM_EWS_IMPORT_ERROR = str(e)
     
     # Twitter / X AI Monitor modules
     sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'twitter_sentiment_app'))
@@ -6561,6 +6570,8 @@ python3 scripts/ambil_1juta_mbg_bit.py
             render_custom_ews()
         else:
             st.error("❌ Modul Custom EWS v2 tidak dapat dimuat.")
+            if CUSTOM_EWS_IMPORT_ERROR:
+                st.caption(f"Detail kendala: `{CUSTOM_EWS_IMPORT_ERROR}`")
     
     elif "Big Data MBG 30 Juta" in page:
         render_big_data_30m_module()

@@ -20,16 +20,35 @@ from pathlib import Path
 # Jalur Basis Proyek
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
+# Helper resolusi jalur data dengan fallback resilien
+def _find_valid_path(*candidates: Path) -> Path:
+    for c in candidates:
+        if c.exists():
+            return c
+    return candidates[0]
+
 # Jalur Dataset Terpusat
 DATA_PATHS = {
     # 1. Dataset Emosi IndoBERT (5.263 tweet)
-    "emotion": PROJECT_ROOT / "data" / "results" / "indobert_9_emosi_fixed.csv",
+    "emotion": _find_valid_path(
+        PROJECT_ROOT / "data" / "results" / "indobert_9_emosi_fixed.csv",
+        PROJECT_ROOT / "results" / "indobert_9_emosi_fixed.csv"
+    ),
     # 2. Dataset SNA Simpul Jaringan (971 nodes, 342 komunitas)
-    "sna_nodes": PROJECT_ROOT / "data" / "results" / "mbg_network_nodes_final.csv",
+    "sna_nodes": _find_valid_path(
+        PROJECT_ROOT / "results" / "mbg_network_nodes_final.csv",
+        PROJECT_ROOT / "data" / "results" / "mbg_network_nodes_final.csv"
+    ),
     # 3. Dataset SNA Sisi Jaringan (666 edges)
-    "sna_edges": PROJECT_ROOT / "data" / "results" / "mbg_network_edges_final.csv",
+    "sna_edges": _find_valid_path(
+        PROJECT_ROOT / "results" / "mbg_network_edges_final.csv",
+        PROJECT_ROOT / "data" / "results" / "mbg_network_edges_final.csv"
+    ),
     # 4. Dataset Sarkasme / Sindiran Valid (3.395 baris)
-    "sarcasm": PROJECT_ROOT / "data" / "sarcasm" / "dataset_sindiran_valid.csv",
+    "sarcasm": _find_valid_path(
+        PROJECT_ROOT / "data" / "sarcasm" / "dataset_sindiran_valid.csv",
+        PROJECT_ROOT / "data" / "dataset_sindiran_valid.csv"
+    ),
 }
 
 # Metadata Model IndoBERT Fine-Tuned (7 Kelas Aktual)
