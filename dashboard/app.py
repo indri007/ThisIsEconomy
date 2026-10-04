@@ -89,6 +89,7 @@ if True:
     
     CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
     PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+    project_root = PROJECT_ROOT
     
     
     def download_file_button(label, file_path, file_name, mime, key=None, **kwargs):
