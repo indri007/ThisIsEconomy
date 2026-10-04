@@ -21,7 +21,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "twitter_sentiment_app"))
 
 from twitter_sentiment_app.scraper import scrape_tweets_sync
 
-OUTPUT_DIR = PROJECT_ROOT / "data" / "processed"
+OUTPUT_DIR = PROJECT_ROOT / "data" / "raw"
 OUTPUT_FILE = OUTPUT_DIR / "live_tweets_mbg_accumulated.csv"
 
 
