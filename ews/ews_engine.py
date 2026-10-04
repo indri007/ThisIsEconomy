@@ -107,11 +107,15 @@ def compute_custom_ews_v2(
     ----------------------------------------------------------
     TOTAL             : 0 - 100 Poin
     """
-    # 1. Muat dataset jika belum disediakan
-    if emotion_df is None:
+    # 1. Muat dataset jika belum disediakan atau jika argumen adalah nilai float/threshold
+    if emotion_df is None or not isinstance(emotion_df, pd.DataFrame):
+        if isinstance(emotion_df, (int, float)):
+            anomaly_threshold = float(emotion_df)
         emotion_df = load_emotion_data()
-    if sna_df is None:
+    if sna_df is None or not isinstance(sna_df, pd.DataFrame):
         sna_df = load_sna_data()
+    if sarcasm_df is not None and not isinstance(sarcasm_df, pd.DataFrame):
+        sarcasm_df = None
 
     # 2. Eksekusi Analisis Sub-Modul
     emotion_res = get_emotion_risk(emotion_df)
