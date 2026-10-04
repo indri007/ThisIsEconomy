@@ -1,0 +1,98 @@
+[
+  {
+    "Dimensi Metrik Jaringan": "Rentang Tanggal",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": "2026-03-02 s.d. 2026-04-30",
+    "Periode 2: Puncak Krisis (Mei 2026)": "2026-05-01 s.d. 2026-05-24",
+    "Delta / Interpretasi Dinamika": "Fase Inisiasi vs. Puncak Krisis"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Total Vertices (|V|)",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": 109,
+    "Periode 2: Puncak Krisis (Mei 2026)": 871,
+    "Delta / Interpretasi Dinamika": "+762 akun (Ledakan partisipasi publik +699%)"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Total Directed Edges (|E|)",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": 65,
+    "Periode 2: Puncak Krisis (Mei 2026)": 601,
+    "Delta / Interpretasi Dinamika": "+536 relasi (Intensifikasi mention +825%)"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Graph Density",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": "0.005522",
+    "Periode 2: Puncak Krisis (Mei 2026)": "0.000793",
+    "Delta / Interpretasi Dinamika": "Penurunan kepadatan (jaringan makin sparse)"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Weakly Connected Components (WCC)",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": 46,
+    "Periode 2: Puncak Krisis (Mei 2026)": 304,
+    "Delta / Interpretasi Dinamika": "+258 komponen (Fragmentasi ekstrem)"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Giant Component Size",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": "8 akun (7.34%)",
+    "Periode 2: Puncak Krisis (Mei 2026)": "38 akun (4.36%)",
+    "Delta / Interpretasi Dinamika": "Dominasi sub-komponen terisolasi"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Network Diameter (Giant)",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": 4,
+    "Periode 2: Puncak Krisis (Mei 2026)": 2,
+    "Delta / Interpretasi Dinamika": "Penyusutan diameter (pola sentral hub-and-spoke)"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Average Geodesic Distance",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": "2.2143",
+    "Periode 2: Puncak Krisis (Mei 2026)": "1.9474",
+    "Delta / Interpretasi Dinamika": "Jarak tempuh informasi makin pendek"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Louvain Modularity (Q)",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": "0.9455",
+    "Periode 2: Puncak Krisis (Mei 2026)": "0.9851",
+    "Delta / Interpretasi Dinamika": "+0.0396 (Polarisasi opini mengkristal kuat)"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Jumlah Klaster Komunitas",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": 46,
+    "Periode 2: Puncak Krisis (Mei 2026)": 304,
+    "Delta / Interpretasi Dinamika": "Multiplikasi kelompok wacana terpisah"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Reciprocity Ratio",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": "0.0000 (0%)",
+    "Periode 2: Puncak Krisis (Mei 2026)": "0.0133 (1.33%)",
+    "Delta / Interpretasi Dinamika": "Munculnya komunikasi timbal-balik/debat"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Top In-Degree Hub",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": "@prabowo (3)",
+    "Periode 2: Puncak Krisis (Mei 2026)": "@prabowo (12)",
+    "Delta / Interpretasi Dinamika": "Target kebijakan konsisten (@prabowo)"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Secondary In-Degree Hub",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": "@dosenkesmas (2)",
+    "Periode 2: Puncak Krisis (Mei 2026)": "@tanyakanrl (5), @regar_op0sisi (4)",
+    "Delta / Interpretasi Dinamika": "Pergeseran dari akun edukasi ke akun viral"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Top Out-Degree Broadcaster",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": "@grok (5)",
+    "Periode 2: Puncak Krisis (Mei 2026)": "@grok (37)",
+    "Delta / Interpretasi Dinamika": "Eskalasi verifikasi bot AI (@grok)"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Top Betweenness Broker",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": "Nihil / 0.0000",
+    "Periode 2: Puncak Krisis (Mei 2026)": "@4Y4NKZ, @regar_op0sisi",
+    "Delta / Interpretasi Dinamika": "Munculnya opinion leader & broker opini"
+  },
+  {
+    "Dimensi Metrik Jaringan": "Emosi Dominan (IndoBERT)",
+    "Periode 1: Pra-Eskalasi (Maret–April 2026)": "Neutral & Disgust",
+    "Periode 2: Puncak Krisis (Mei 2026)": "Disgust (56.24%) & Sarcasm",
+    "Delta / Interpretasi Dinamika": "Eskalasi afektif ketidakpuasan warganet"
+  }
+]

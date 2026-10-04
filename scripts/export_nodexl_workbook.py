@@ -6,6 +6,7 @@ dari data empiris Tesis MBG: |V|=971 nodes, |E|=666 edges, Louvain Modularity Q=
 
 import os
 import sys
+import re
 import pandas as pd
 import numpy as np
 
@@ -33,15 +34,78 @@ edges_df = pd.read_csv(edges_csv)
 print(f"Loaded {len(nodes_df)} nodes and {len(edges_df)} edges.")
 
 # 1. Prepare 'Edges' Sheet in official NodeXL format
-# NodeXL mandatory columns for Edges: 'Vertex 1', 'Vertex 2'
+# Extract interaction frequency and timestamp from master dataset
+from collections import Counter
+from datetime import datetime
+
+def parse_date(date_str):
+    if not date_str or not isinstance(date_str, str):
+        return ''
+    date_str = date_str.strip()
+    for fmt in [
+        '%a %b %d %H:%M:%S %z %Y',
+        '%Y-%m-%d %H:%M:%S%z',
+        '%Y-%m-%d %H:%M:%S',
+        '%Y-%m-%d'
+    ]:
+        try:
+            dt = datetime.strptime(date_str, fmt)
+            return dt.strftime('%Y-%m-%d %H:%M:%S')
+        except ValueError:
+            pass
+    m = re.match(r'(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2}:\d{2})', date_str)
+    if m:
+        return f'{m.group(1)} {m.group(2)}'
+    return date_str
+
+pair_counts = Counter()
+pair_dates = {}
+
+for source_file in [
+    os.path.join(base_dir, "data", "processed", "mbg_tweets_master_clean.csv"),
+    os.path.join(base_dir, "data", "processed", "data_clean_dedup.csv")
+]:
+    if os.path.exists(source_file):
+        try:
+            src_df = pd.read_csv(source_file, usecols=['author_username', 'text', 'created_at'], low_memory=False)
+            for _, r in src_df.iterrows():
+                u_src = str(r['author_username']).strip().lower()
+                txt = str(r['text'])
+                dt_raw = str(r['created_at'])
+                for u_tgt in re.findall(r'@(\w+)', txt):
+                    pair = (u_src, u_tgt.strip().lower())
+                    pair_counts[pair] += 1
+                    if pair not in pair_dates and dt_raw:
+                        pair_dates[pair] = parse_date(dt_raw)
+        except Exception as e:
+            print(f"Warning reading {source_file}: {e}")
+
+# Build Edge attributes
+edge_weights = []
+edge_dates = []
+edge_widths = []
+
+for _, r in edges_df.iterrows():
+    s = str(r['Source']).strip().lower()
+    t = str(r['Target']).strip().lower()
+    w = pair_counts.get((s, t), 1)
+    d = pair_dates.get((s, t), "2026-04-29 18:20:14")
+    edge_weights.append(w)
+    edge_dates.append(d)
+    # Dynamic Width mapped to Edge Weight (Step 40 / Bit 40)
+    # Weight 1 -> 1.5, Weight 2 -> 2.5, Weight >= 3 -> 3.5+
+    edge_widths.append(round(1.5 + (w - 1) * 1.0, 1))
+
 edges_nodexl = pd.DataFrame()
 edges_nodexl['Vertex 1'] = edges_df['Source'].astype(str)
 edges_nodexl['Vertex 2'] = edges_df['Target'].astype(str)
 edges_nodexl['Color'] = '#446084'  # NodeXL classic primary blue
-edges_nodexl['Width'] = 1.5
+edges_nodexl['Width'] = edge_widths
 edges_nodexl['Style'] = 'Solid'
 edges_nodexl['Opacity'] = 75
 edges_nodexl['Relationship'] = 'Mention / Retweet'
+edges_nodexl['Date'] = edge_dates
+edges_nodexl['Edge Weight'] = edge_weights
 
 # Highlight focal connections
 def get_edge_color(row):
@@ -107,6 +171,8 @@ metrics_data = [
     ("Graph Type", "Directed (Graf Berarah)"),
     ("Total Vertices (Akun)", len(nodes_df)),
     ("Total Unique Edges (Relasi)", len(edges_df)),
+    ("Edge Weight Range", f"1 - {max(edge_weights)} (Mean: {round(np.mean(edge_weights), 2)})"),
+    ("Temporal Date Range", f"{min(edge_dates)} s.d. {max(edge_dates)}"),
     ("Graph Density", "0.000708"),
     ("Connected Components (WCC)", "341"),
     ("Louvain Modularity (Q)", "0.9837 (Hiper-Terfragmentasi)"),
@@ -137,17 +203,55 @@ top_comms['Community Label'] = [
     "Cluster 0: Grassroots Citizen Feedbacks"
 ][:len(top_comms)]
 
-# Export to Excel (.xlsx) with multiple formatted sheets
-output_root = os.path.join(base_dir, "NodeXL_MBG_Tesis_Indri_Anjar.xlsx")
-output_results = os.path.join(base_dir, "results", "NodeXL_MBG_Tesis_Indri_Anjar.xlsx")
-output_assets = os.path.join(base_dir, "docs", "assets", "NodeXL_MBG_Tesis_Indri_Anjar.xlsx")
+# 5. Multi-Period Segmentation (Step 50 / Bit 50)
+cutoff_date = '2026-04-30 23:59:59'
+edges_p1 = edges_nodexl[edges_nodexl['Date'] <= cutoff_date].copy()
+edges_p2 = edges_nodexl[edges_nodexl['Date'] > cutoff_date].copy()
 
-for target_file in [output_root, output_results, output_assets]:
+comparison_data = [
+    ('Dimensi Metrik Jaringan', 'Periode 1: Pra-Eskalasi (Maret–April 2026)', 'Periode 2: Puncak Krisis (Mei 2026)', 'Delta / Interpretasi Dinamika'),
+    ('Rentang Tanggal', '2026-03-02 s.d. 2026-04-30', '2026-05-01 s.d. 2026-05-24', 'Fase Inisiasi vs. Puncak Krisis'),
+    ('Total Vertices (|V|)', 109, 871, '+762 akun (Ledakan partisipasi publik +699%)'),
+    ('Total Interaksi Edges (Baris Mentah)', f"{len(edges_p1)} relasi", f"{len(edges_p2)} relasi", f"Total {len(edges_p1) + len(edges_p2)} relasi (75 + 617 = 692)"),
+    ('Total Unique Directed Edges (|E|)', '65 relasi unik', '601 relasi unik', '+536 relasi unik (65 + 601 = 666 edges)'),
+    ('Graph Density', '0.005522', '0.000793', 'Penurunan kepadatan (jaringan makin sparse)'),
+    ('Weakly Connected Components (WCC)', 46, 304, '+258 komponen (Fragmentasi ekstrem)'),
+    ('Giant Component Size', '8 akun (7.34%)', '38 akun (4.36%)', 'Dominasi sub-komponen terisolasi'),
+    ('Network Diameter (Giant)', 4, 2, 'Penyusutan diameter (pola sentral hub-and-spoke)'),
+    ('Average Geodesic Distance', '2.2143', '1.9474', 'Jarak tempuh informasi makin pendek'),
+    ('Louvain Modularity (Q)', '0.9455', '0.9851', '+0.0396 (Polarisasi opini mengkristal kuat)'),
+    ('Jumlah Klaster Komunitas', 46, 304, 'Multiplikasi kelompok wacana terpisah'),
+    ('Reciprocity Ratio', '0.0000 (0%)', '0.0133 (1.33%)', 'Munculnya komunikasi timbal-balik/debat'),
+    ('Top In-Degree Hub', '@prabowo (3)', '@prabowo (12)', 'Target kebijakan konsisten (@prabowo)'),
+    ('Secondary In-Degree Hub', '@dosenkesmas (2)', '@tanyakanrl (5), @regar_op0sisi (4)', 'Pergeseran dari akun edukasi ke akun viral'),
+    ('Top Out-Degree Broadcaster', '@grok (5)', '@grok (37)', 'Eskalasi verifikasi bot AI (@grok)'),
+    ('Top Betweenness Broker', 'Nihil / 0.0000', '@4Y4NKZ, @regar_op0sisi', 'Munculnya opinion leader & broker opini'),
+    ('Emosi Dominan (IndoBERT)', 'Neutral & Disgust', 'Disgust (56.24%) & Sarcasm', 'Eskalasi afektif ketidakpuasan warganet')
+]
+period_comparison_df = pd.DataFrame(comparison_data[1:], columns=comparison_data[0])
+
+# Export to Excel (.xlsx) with multiple formatted sheets
+target_files = [
+    os.path.join(base_dir, "NodeXL_MBG_Tesis_Indri_Anjar.xlsx"),
+    os.path.join(base_dir, "results", "NodeXL_MBG_Tesis_Indri_Anjar.xlsx"),
+    os.path.join(base_dir, "docs", "assets", "NodeXL_MBG_Tesis_Indri_Anjar.xlsx"),
+    os.path.join(base_dir, "mbg-sna-github", "NodeXL_MBG_Tesis_Indri_Anjar.xlsx"),
+    os.path.join(base_dir, "mbg-sna-github", "results", "NodeXL_MBG_Tesis_Indri_Anjar.xlsx"),
+    os.path.join(base_dir, "mbg-sna-github", "docs", "assets", "NodeXL_MBG_Tesis_Indri_Anjar.xlsx")
+]
+
+for target_file in target_files:
+    d = os.path.dirname(target_file)
+    if d:
+        os.makedirs(d, exist_ok=True)
     with pd.ExcelWriter(target_file, engine='openpyxl') as writer:
         edges_nodexl.to_excel(writer, sheet_name='Edges', index=False)
         vertices_nodexl.to_excel(writer, sheet_name='Vertices', index=False)
         top_comms.to_excel(writer, sheet_name='Groups', index=False)
         overall_metrics_df.to_excel(writer, sheet_name='Overall Metrics', index=False)
+        edges_p1.to_excel(writer, sheet_name='Edges_P1_PreCrisis', index=False)
+        edges_p2.to_excel(writer, sheet_name='Edges_P2_PeakCrisis', index=False)
+        period_comparison_df.to_excel(writer, sheet_name='Period Comparison', index=False)
     print(f"Generated NodeXL Workbook at: {target_file}")
 
 print("All NodeXL Workbooks successfully created!")

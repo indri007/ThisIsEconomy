@@ -39,6 +39,10 @@ results/indobert_finetuned_9_labels/
 results/indobert_group_aware_final/
 .cache/
 node_modules/
-.env*
 cloned_repos/
 MiroFish/
+chrome-devtools-mcp/
+
+# Big Data Raw Files (> 100 MB - exceeds GitHub single file hard limit)
+data/processed/tweet_mbg_1juta.csv
+ambil_tweet_mbg.py

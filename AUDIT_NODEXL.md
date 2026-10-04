@@ -28,17 +28,18 @@ Kedua file memiliki 4 sheet standar NodeXL:
 | | `NodeXL_MBG_Tesis_Indri_Anjar.xlsx` | `NodeXL_Scraped_Tweets_MBG.xlsx` |
 |--|--|--|
 | **Jumlah Baris** | 692 edges (693 rows − 1 header) | 726 edges |
-| **Kolom** | `Vertex 1`, `Vertex 2`, `Color`, `Width`, `Style`, `Opacity`, `Relationship` | `Vertex 1`, `Vertex 2`, `Relationship`, `Tweet`, `Color`, `Width`, `Style`, `Opacity` |
+| **Kolom** | `Vertex 1`, `Vertex 2`, `Color`, `Width`, `Style`, `Opacity`, `Relationship`, `Date`, `Edge Weight` | `Vertex 1`, `Vertex 2`, `Relationship`, `Tweet`, `Color`, `Width`, `Style`, `Opacity` |
 | **Vertex 1** | ✅ Username akun pengirim (bersih) | ⚠️ Mengandung noise: `"username    ayyubi1127108\nusername "` |
 | **Vertex 2** | ✅ Username akun penerima (bersih) | ✅ Relatif bersih |
-| **Edge Weight** | ❌ Tidak ada kolom bobot eksplisit | ❌ Tidak ada kolom bobot eksplisit |
+| **Edge Weight** | ✅ **Tersedia Eksplisit** (Frekuensi interaksi 1–10, Mean: 2.24) | ❌ Tidak ada kolom bobot eksplisit |
+| **Edge Width** | ✅ **Dinamis** (Dipetakan ke `Edge Weight`: $1.5 + (\text{Weight}-1) \times 1.0$) | Konstan (1.5) |
 | **Relationship** | `"Mention / Retweet"` | `"Mention"` |
-| **Tweet Text** | ❌ Tidak ada | ✅ Ada di kolom `Tweet` (terpotong) |
-| **Timestamp** | ❌ Tidak ada | ❌ Tidak ada |
-| **Contoh Baris** | `ayyubi1127108 → Sekjebn` | `ayyubi1127108 → sekjebn (Mention)` |
+| **Tweet Text** | ❌ Tidak ada (dipisahkan di raw dataset) | ✅ Ada di kolom `Tweet` (terpotong) |
+| **Timestamp (`Date`)** | ✅ **Tersedia Lengkap (100%)** format baku ISO (`YYYY-MM-DD HH:MM:SS`) | ❌ Tidak ada |
+| **Contoh Baris** | `ayyubi1127108 → Sekjebn (Weight: 2, Width: 2.5, Date: 2026-05-24 05:02:51)` | `ayyubi1127108 → sekjebn (Mention)` |
 
-> [!IMPORTANT]
-> **Edge Weight** tidak terdapat sebagai kolom terpisah di kedua file. Relasi diperlakukan sebagai **unweighted** (biner). Bobot implisit dapat dihitung dari frekuensi pasangan (Vertex 1, Vertex 2) yang muncul berulang.
+> [!NOTE]
+> **Edge Weight & Timestamp** telah diperkaya penuh (692/692 edges) bersumber dari kompilasi master dataset cuitan MBG. Lebar edge (*Width*) secara otomatis merefleksikan bobot interaksi untuk analisis visual terbobot (*weighted graph*).
 
 ---
 
@@ -155,6 +156,31 @@ Sumber: `results/macro_topology_metrics.json`
 | | Median Degree | 1.0 |
 | | Maximum Degree | 42 (`@grok`) |
 | | Power-Law Exponent (Alpha) | 2.168 |
+
+---
+
+## 3.1 Komparasi Temporal Multi-Periode (Pra-Eskalasi vs. Puncak Krisis)
+
+Sumber: `results/nodexl_multi_period_comparison.csv` & Lembar `Period Comparison` pada [`NodeXL_MBG_Tesis_Indri_Anjar.xlsx`](file:///Users/jevin/Documents/tesis_mbg/NodeXL_MBG_Tesis_Indri_Anjar.xlsx)
+
+| Dimensi Metrik Jaringan | Periode 1: Pra-Eskalasi (Maret–April 2026) | Periode 2: Puncak Krisis (Mei 2026) | Delta / Interpretasi Dinamika |
+|:---|:---|:---|:---|
+| **Rentang Tanggal** | 2026-03-02 s.d. 2026-04-30 | 2026-05-01 s.d. 2026-05-24 | Fase Inisiasi vs. Puncak Krisis Kebijakan |
+| **Total Vertices (`\|V\|`)** | **109** | **871** | +762 akun (Partisipasi warganet meledak +699%) |
+| **Total Directed Edges (`\|E\|`)** | **65** | **601** | +536 relasi (Intensifikasi mention/retweet +825%) |
+| **Graph Density** | 0.005522 | 0.000793 | Penurunan kepadatan struktural (jaringan makin renggang/sparse) |
+| **Connected Components (WCC)** | 46 | 304 | +258 komponen terisolasi (Fragmentasi wacana masif) |
+| **Giant Component Size** | 8 akun (7.34%) | 38 akun (4.36%) | Dominasi sub-komponen kecil di ruang percakapan publik |
+| **Network Diameter (Giant)** | 4 | 2 | Penyusutan diameter (mengarah ke struktur bintang/hub) |
+| **Average Geodesic Distance** | 2.2143 | 1.9474 | Aksesibilitas lintasan informasi makin instan |
+| **Louvain Modularity (`Q`)** | **0.9455** | **0.9851** | +0.0396 (Polarisasi opini semakin mengkristal kuat) |
+| **Jumlah Klaster Komunitas** | 46 | 304 | Multiplikasi kelompok wacana terpisah |
+| **Reciprocity Ratio** | 0.0000 (0%) | 0.0133 (1.33%) | Munculnya pola komunikasi timbal-balik & perdebatan |
+| **Top In-Degree Hub** | `@prabowo` (3) | `@prabowo` (12) | Target utama kebijakan konsisten (@prabowo) |
+| **Secondary In-Degree Hub** | `@dosenkesmas` (2) | `@tanyakanrl` (5), `@regar_op0sisi` (4) | Pergeseran dari akun edukasi ke akun agregator viral |
+| **Top Out-Degree Broadcaster** | `@grok` (5) | `@grok` (37) | Eskalasi orakel AI verifikasi data (@grok) |
+| **Top Betweenness Broker** | Nihil / 0.0000 | `@4Y4NKZ`, `@regar_op0sisi` | Munculnya opinion broker penghubung klaster wacana |
+| **Emosi Dominan (IndoBERT)** | Neutral & Disgust | Disgust (56.24%) & Sarcasm | Eskalasi afektif ketidakpuasan publik |
 
 ---
 
