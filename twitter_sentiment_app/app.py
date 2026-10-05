@@ -14,7 +14,7 @@ if CURRENT_DIR not in sys.path:
     sys.path.insert(0, CURRENT_DIR)
 
 from scraper import scrape_tweets_sync, get_secret
-from analyzer import analyze_dataframe
+from analyzer import analyze_dataframe, parse_api_keys
 
 st.set_page_config(
     page_title="Sentimen MBG — Twitter/X AI Monitor",
@@ -29,10 +29,12 @@ st.caption("Monitoring Twitter/X: Scraping (Twikit) + Analisis AI (Gemini) + Ear
 if "df" not in st.session_state:
     st.session_state.df = None
 
-# Cek status API Keys & Secrets default
-gemini_key_default = get_secret("GEMINI_API_KEY", "")
+# Cek status API Keys & Secrets default (Mendukung Multi-Key Pool)
+gemini_keys_list = parse_api_keys()
+gemini_key_default = ", ".join(gemini_keys_list) if gemini_keys_list else ""
 tw_auth = get_secret("TWITTER_AUTH_TOKEN")
 tw_ct0 = get_secret("TWITTER_CT0")
+
 
 # ==============================================================================
 # HELPER: EARLY WARNING SYSTEM (EWS) LOKAL
@@ -131,8 +133,8 @@ with st.sidebar:
     st.header("⚙️ Pengaturan")
 
     with st.expander("🔑 Status Kredensial", expanded=False):
-        if gemini_key_default:
-            st.success("🟢 Gemini API Terkonfigurasi")
+        if gemini_keys_list:
+            st.success(f"🟢 Gemini API ({len(gemini_keys_list)} Key di Pool)")
         else:
             st.caption("⚪ Gemini API belum ada di Secrets/.env")
 
@@ -150,11 +152,12 @@ with st.sidebar:
     st.divider()
     st.subheader("2. Analisis AI (Gemini)")
     user_api_key = st.text_input(
-        "Gemini API Key (Opsional)",
+        "Gemini API Key(s) (Opsional)",
         value=gemini_key_default,
         type="password",
-        help="Dapatkan gratis di aistudio.google.com. Kunci tersamarkan dengan aman."
+        help="Multi-key pool: Masukkan 1 key atau beberapa dipisah koma. Otomatis failover jika kuota habis."
     )
+
     batch_size = st.slider("Batch size (tweet/request)", 5, 20, 10)
     analyze_btn = st.button(
         "🤖 Analisis Sentimen & Sarkasme",

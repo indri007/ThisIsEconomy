@@ -1312,25 +1312,34 @@ if True:
     
         default_gemini_key = ""
         try:
-            if "GEMINI_API_KEY" in st.secrets:
-                default_gemini_key = str(st.secrets["GEMINI_API_KEY"]).strip()
+            if "GEMINI_API_KEYS" in st.secrets:
+                val = st.secrets["GEMINI_API_KEYS"]
+                default_gemini_key = ", ".join(val) if isinstance(val, (list, tuple)) else str(val).strip()
+            elif "GEMINI_API_KEY" in st.secrets:
+                val = st.secrets["GEMINI_API_KEY"]
+                default_gemini_key = ", ".join(val) if isinstance(val, (list, tuple)) else str(val).strip()
         except Exception:
             pass
         if not default_gemini_key:
-            default_gemini_key = os.getenv("GEMINI_API_KEY", "")
+            default_gemini_key = os.getenv("GEMINI_API_KEYS") or os.getenv("GEMINI_API_KEY", "")
     
         with st.expander("⚙️ Panel Pengaturan & Kredensial AI", expanded=False):
             c_cfg1, c_cfg2 = st.columns(2)
             with c_cfg1:
                 st.markdown("##### 🔑 Kredensial Gemini AI")
                 user_gemini_key = st.text_input(
-                    "Gemini API Key:",
+                    "Gemini API Key(s):",
                     value=default_gemini_key,
                     type="password",
-                    help="Dapatkan gratis di aistudio.google.com. Kunci tersamarkan dengan aman.",
+                    help="Multi-key pool: Masukkan 1 key atau beberapa key dipisah koma. Otomatis rotasi dan failover jika kuota habis.",
                     key="twitter_user_gemini_key"
                 )
-                st.caption(f"Status Kredensial: {'🟢 Terkonfigurasi' if (user_gemini_key or default_gemini_key) else '⚪ Kosong'}")
+                from analyzer import parse_api_keys
+                configured_keys = parse_api_keys(user_gemini_key or default_gemini_key)
+                if configured_keys:
+                    st.caption(f"Status Kredensial: 🟢 Terkonfigurasi ({len(configured_keys)} API Key dalam pool)")
+                else:
+                    st.caption("Status Kredensial: ⚪ Kosong (masukkan API key atau atur di Secrets)")
     
             with c_cfg2:
                 st.markdown("##### 📂 Muat atau Unggah Dataset")
