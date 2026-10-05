@@ -51,3 +51,4 @@ ambil_tweet_mbg.py
 .gitignore.bitbak_*
 ~$*
 annotation/_key_silver.csv
+annotation/lembar_anotator_*.csv
