@@ -58,3 +58,4 @@ results/corpus_flagged_relevance.csv
 annotation/_key_*.csv
 annotation/lembar_*.csv
 annotation/adjudicated*.csv
+annotation/_arsip/
