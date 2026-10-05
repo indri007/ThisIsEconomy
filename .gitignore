@@ -50,3 +50,4 @@ ambil_tweet_mbg.py
 *.bitbak_*
 .gitignore.bitbak_*
 ~$*
+annotation/_key_silver.csv
