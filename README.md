@@ -507,7 +507,7 @@ Evaluasi final model klasifikasi emosi MBG menggunakan protokol eksperimen yang 
 | **13** | **Slide Presentasi Sidang Tesis** | PDF (`.pdf`) | Materi Slide Ujian / Sidang Tesis Magister | [`📥 Unduh PDF Slide Sidang`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/docs/presentation/presentasi_tesis_indri_sidang.pdf) |
 | **14** | **Pedoman Penulisan Tesis MIKOM 2025** | PDF (`.pdf`) | Buku Pedoman Resmi Penulisan Tesis MIKOM UPN | [`📥 Unduh PDF Pedoman`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/docs/pedoman/PEDOMAN_PENULISAN_TESIS_MIKOM_2025.pdf) |
 | **15** | **Modul Early Warning System & Telegram Bot** | Python (`.py`) | Sistem Deteksi Anomali & Bot Notifikasi Telegram | [`📂 Buka Folder Scripts`](https://github.com/indri007/ThisIsEconomy/tree/main/scripts/paket_mbg) |
-| **16** | **Korpus Terbuka Big Data MBG (30 Juta Akun)** | CSV (`.csv`) / JSON | 30.000.000 Akun Unik Indonesia (06 Jan 2025 – 2026, Bit Telemetry 25-bit) | [`📥 Unduh Sampel Publik (25k)`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/processed/tweet_mbg_sample_public.csv) \| [`📡 Metadata Bit JSON`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/processed/progres_1juta_bit.json) |
+| **16** | **Tabel Dataset MBG** | CSV (`.csv`) | Dataset Publik Terverifikasi (Sampel Tweet MBG) | [`📥 Unduh Sampel CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/processed/tweet_mbg_sample_public.csv) |
 
 ⚡ **Download Seluruh Kode, Data, Naskah & Literatur Sekaligus (.ZIP Langsung):**  
 👉 **[Unduh Arsip Lengkap ZIP Repository (Klik di Sini)](https://github.com/indri007/ThisIsEconomy/archive/refs/heads/main.zip)**
