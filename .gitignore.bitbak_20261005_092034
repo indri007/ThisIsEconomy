@@ -1,0 +1,48 @@
+# Environment & Secrets (CRITICAL: DO NOT COMMIT TO GITHUB)
+.env
+.env.*
+*.env
+*.pem
+*.key
+cookies.json
+secrets.toml
+.streamlit/secrets.toml
+
+# Logs & Temporary
+*.log
+/tmp/
+
+# Cache & Models
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+tmp_trainer/
+results/indobert_finetuned*/
+*.safetensors
+*.bin
+*.pt
+*.pth
+.venv/
+html_files/
+lib/
+mbg-sna-github/
+
+*.BACKUP_*
+*.backup.txt
+*.log
+# Local backup files
+*.bak
+
+# Model fine-tuned (disimpan di HuggingFace)
+results/indobert_finetuned/
+results/indobert_finetuned_9_labels/
+results/indobert_group_aware_final/
+.cache/
+node_modules/
+cloned_repos/
+MiroFish/
+chrome-devtools-mcp/
+
+# Big Data Raw Files (> 100 MB - exceeds GitHub single file hard limit)
+data/processed/tweet_mbg_1juta.csv
+ambil_tweet_mbg.py

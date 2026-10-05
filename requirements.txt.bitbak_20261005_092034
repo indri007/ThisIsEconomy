@@ -1,0 +1,26 @@
+streamlit>=1.35.0
+pandas>=2.0.0
+numpy>=1.24.0
+plotly>=5.18.0
+networkx>=3.0
+python-louvain>=0.16
+pyvis>=0.3.2
+matplotlib>=3.7.0
+seaborn>=0.12.0
+wordcloud>=1.9.0
+scikit-learn>=1.3.0
+openpyxl>=3.1.0
+python-dotenv>=1.0.1
+requests
+
+# === NLP / IndoBERT / HuggingFace ===
+transformers>=4.40.0
+torch>=2.0.0
+datasets>=2.18.0
+evaluate>=0.4.0
+accelerate>=0.29.0
+huggingface_hub>=0.22.0
+sentencepiece>=0.1.99
+# === Twitter Scraping ===
+twifork>=2.4.0
+nest_asyncio>=1.6.0
