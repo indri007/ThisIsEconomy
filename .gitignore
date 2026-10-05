@@ -52,3 +52,9 @@ ambil_tweet_mbg.py
 ~$*
 annotation/_key_silver.csv
 annotation/lembar_anotator_*.csv
+annotation/_key_silver_v2.csv
+annotation/lembar_v2_*.csv
+results/corpus_flagged_relevance.csv
+annotation/_key_*.csv
+annotation/lembar_*.csv
+annotation/adjudicated*.csv
