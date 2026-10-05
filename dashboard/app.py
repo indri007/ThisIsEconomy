@@ -1,3 +1,12 @@
+# BIT_CANONICAL_EWS_PATH
+import sys
+from pathlib import Path
+
+_BIT_ROOT = Path(__file__).resolve().parents[1]
+if str(_BIT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_BIT_ROOT))
+# END BIT_CANONICAL_EWS_PATH
+
 import traceback
 if True:
     import streamlit as st

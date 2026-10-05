@@ -41,7 +41,10 @@ from ews.ews_engine import (
     calculate_sarcasm_risk,
     compute_custom_ews_v2,
 )
-from ews.custom_dashboard import render_custom_ews
+try:
+    from ews.custom_dashboard import render_custom_ews
+except Exception:
+    render_custom_ews = None
 
 __all__ = [
     "DATA_PATHS",

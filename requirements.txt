@@ -24,3 +24,5 @@ sentencepiece>=0.1.99
 # === Twitter Scraping ===
 twifork>=2.4.0
 nest_asyncio>=1.6.0
+tweepy>=4.14,<5
+python-telegram-bot>=20,<23
