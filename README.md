@@ -442,27 +442,43 @@ Evaluasi final model klasifikasi emosi MBG menggunakan protokol eksperimen yang 
 
 ### Comparative Multi-Model Performance Table
 
-| Model Architecture | Feature Representation | Accuracy | Macro-F1 | Weighted-F1 | Protocol |
+| Model Architecture | Feature Representation | Accuracy | Macro-F1 | Weighted-F1 | Protocol / Status |
 | :--- | :--- | :---: | :---: | :---: | :--- |
-| **TF-IDF + Logistic Regression** | Word & Bigram TF-IDF | 0.6947 | 0.3429 | 0.6457 | Group-Aware (Zero Leakage) |
-| **TF-IDF + Linear SVM** | Word & Bigram TF-IDF | 0.6720 | 0.4095 | 0.6558 | Group-Aware (Zero Leakage) |
-| **IndoBERT (Fine-Tuned)** | Contextual Transformer Embeddings | **0.7940** | **0.5160** | **0.7851** | Group-Aware (Zero Leakage) |
+| **TF-IDF + Logistic Regression** | Word & Bigram TF-IDF | 0.6947 | 0.3429 | 0.6457 | Group-Aware (Baseline v1) |
+| **TF-IDF + Linear SVM** | Word & Bigram TF-IDF | 0.6720 | 0.4095 | 0.6558 | Group-Aware (Baseline v1) |
+| **IndoBERT Group-Aware (v1)** | Contextual Transformer Embeddings | **79.40%** (0.7940) | **0.5160** | **0.7851** | *Test-Selected (superseded)* |
+| **IndoBERT Group-Aware (v2)** | Contextual Transformer Embeddings | **75.99%** (0.7599) | **0.4535** | **0.7434** | **Val-Selected (Protocol v2 Resmi)** |
 
-*Parameter Evaluasi:* Train set = 4,205 cuitan; Test set = 1,058 cuitan; IndoBERT checkpoint = `checkpoint-264` (Epoch 2.0). Model IndoBERT achieved the reported evaluation metrics under high class imbalance.
+*Parameter Evaluasi:* Train set = 4,205 cuitan; Test set = 1,058 cuitan; IndoBERT v1 checkpoint = `checkpoint-264` (Epoch 2.0, test-selected superseded). Model IndoBERT achieved the reported evaluation metrics under high class imbalance.
 
-### Per-Class Evaluation Breakdown (IndoBERT Group-Aware, $n=1,058$)
+### Evaluation Protocol v2 (Group-Aware Validation Split)
+
+Untuk menegakkan standar metodologis machine learning yang murni tanpa bias pemilihan checkpoint pada testing set (*test-leakage prevention*), diimplementasikan **Protocol v2**:
+1. **Partisi Dataset:**
+   - **Reduced Train Pool ($N = 3.785$):** 90% dari pool data latih, 2.442 *unique processed texts*.
+   - **Validation Set ($n = 420$):** 10% dari pool data latih via `GroupShuffleSplit(test_size=0.1, random_state=42)`, 272 *unique processed texts*.
+   - **Test Set ($n = 1.058$):** Tetap utuh sebagai holdout murni (*untouched*, tidak pernah dimasukkan ke Trainer).
+2. **Audit Zero-Overlap:** Terverifikasi programatik memiliki **0 raw text overlap** dan **0 processed-text overlap** antara pasangan Train↔Val, Val↔Test, dan Train↔Test.
+3. **Epoch Terpilih:** Pelatihan 3 epoch pada basis `indobenchmark/indobert-base-p2` dengan pemilihan otomatis `load_best_model_at_end=True` berbasis `eval_loss` terendah pada Validation Set murni. Checkpoint terpilih adalah **Epoch 1.0 (`checkpoint-119`)** dengan validation loss **0.5068**.
+4. **Metrik Uji Akhir (Dievaluasi 1x pada Test Set $n = 1.058$):**
+   - **Akurasi:** **75.99%** (`0.7599`)
+   - **Macro-F1:** **0.4535** (Macro Precision: 0.4840, Macro Recall: 0.4424)
+   - **Weighted-F1:** **0.7434** (Weighted Precision: 0.7396, Weighted Recall: 0.7599)
+   - Seluruh artefak tersimpan di direktori `results/indobert_group_aware_v2/`.
+
+### Per-Class Evaluation Breakdown (IndoBERT Group-Aware v2, $n=1,058$)
 
 | Emotion Class | Precision | Recall | F1-Score | Support ($n$) | Share of Test Set (%) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Disgust (Jijik)** | 0.8176 | 0.8729 | **0.8444** | 606 | 57.28% |
-| **Trust (Percaya)** | 0.7511 | 0.7545 | **0.7528** | 220 | 20.79% |
-| **Neutral (Netral)** | 0.8347 | 0.8145 | **0.8245** | 124 | 11.72% |
-| **Interest (Tertarik)** | 0.6324 | 0.4725 | **0.5409** | 91 | 8.60% |
-| **Anger (Marah)** | 1.0000 | 0.0714 | **0.1333** | 14 | 1.32% (Minority) |
+| **Disgust (Jijik)** | 0.7761 | 0.8696 | **0.8202** | 606 | 57.28% |
+| **Trust (Percaya)** | 0.7143 | 0.6818 | **0.6977** | 220 | 20.79% |
+| **Neutral (Netral)** | 0.8000 | 0.8065 | **0.8032** | 124 | 11.72% |
+| **Interest (Tertarik)** | 0.6136 | 0.2967 | **0.4000** | 91 | 8.60% |
+| **Anger (Marah)** | 0.0000 | 0.0000 | **0.0000** | 14 | 1.32% (Minority) |
 | **Sadness (Sedih)** | 0.0000 | 0.0000 | **0.0000** | 3 | 0.28% (Minority) |
-| **Overall Accuracy / Average** | **0.6726 (Macro)** | **0.4977 (Macro)** | **0.5160 (Macro)** | **1,058** | **100.00%** |
+| **Overall Accuracy / Average** | **0.4840 (Macro)** | **0.4424 (Macro)** | **0.4535 (Macro)** | **1,058** | **100.00%** |
 
-> *Catatan Historis & Metodologis:* Pada iterasi pengembangan awal, digunakan benchmark komparatif 83% dan checkpoint-792 ($n=1.053$). Namun setelah audit forensik mendeteksi adanya representasi duplikasi teks, protokol diperbarui secara ketat menjadi Group-Aware Holdout ($n=1.058$, zero overlap) dengan checkpoint-264 sebagai model final tervalidasi.
+> *Catatan Historis & Metodologis:* Pada iterasi pengembangan awal, digunakan benchmark komparatif 83% dan checkpoint-792 ($n=1.053$). Pada audit lanjutan, checkpoint-264 menghasilkan akurasi 79,40% namun dipilih berdasarkan loss test set (*test-selected superseded*). Pada Protocol v2 terkini, checkpoint dipilih secara objektif dari Validation Set murni (Epoch 1.0) dengan akurasi uji final 75,99% dan Macro-F1 0,4535 tanpa bias pemilihan data uji.
 
 ---
 

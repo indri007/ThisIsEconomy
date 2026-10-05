@@ -1,0 +1,2 @@
+Model,Train_N,Test_N,Accuracy,Macro_Precision,Macro_Recall,Macro_F1,Weighted_Precision,Weighted_Recall,Weighted_F1
+TF-IDF + Logistic Regression (v2),3785,1058,0.6862,0.5422,0.3472,0.3624,0.6458,0.6862,0.6396
