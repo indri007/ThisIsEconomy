@@ -170,12 +170,41 @@ if True:
                 break
         if res_dir is None:
             raise FileNotFoundError("Results directory with final evaluation CSVs not found.")
+        v2 = res_dir / "indobert_group_aware_v2"
+        if (v2 / "metrics_v2.csv").exists() and (v2 / "classification_report_v2.csv").exists():
+            # Protokol v2: seleksi checkpoint di validation split; test set (n=1.058) hanya dipakai sekali
+            m = pd.read_csv(v2 / "metrics_v2.csv").iloc[0]
+            rows = []
+            for fname, name in [("tfidf_logreg_metrics.csv", "TF-IDF + Logistic Regression"), ("tfidf_svm_metrics.csv", "TF-IDF + Linear SVM")]:
+                if (v2 / fname).exists():
+                    b = pd.read_csv(v2 / fname).iloc[0]
+                    rows.append({"Model": name, "Protocol": "Group-aware train/val/test (v2)", "Train_N": int(b["Train_N"]), "Test_N": int(b["Test_N"]),
+                                 "Accuracy": b["Accuracy"], "Macro_F1": b["Macro_F1"], "Weighted_F1": b["Weighted_F1"]})
+            rows.append({"Model": "IndoBERT Group-Aware", "Protocol": "Group-aware train/val/test (v2)", "Train_N": 3785, "Test_N": int(m["Test_N"]),
+                         "Accuracy": m["Accuracy"], "Macro_F1": m["Macro_F1"], "Weighted_F1": m["Weighted_F1"]})
+            cr = pd.read_csv(v2 / "classification_report_v2.csv")
+            cr = cr[~cr["Emotion"].isin(["accuracy", "macro avg", "weighted avg"])].copy()
+            tot = cr["support"].sum()
+            per_class = pd.DataFrame({"label": cr["Emotion"], "support": cr["support"].astype(int), "precision": cr["precision"],
+                                      "recall": cr["recall"], "f1": cr["f1-score"], "test_percentage": cr["support"] / tot * 100})
+            per_class = per_class.sort_values("support", ascending=False)
+            return {
+                "comparison": pd.DataFrame(rows),
+                "per_class": per_class,
+                "distribution": pd.read_csv(res_dir / "FINAL_CLASS_DISTRIBUTION.csv"),
+                "indobert_metrics": pd.read_csv(v2 / "metrics_v2.csv"),
+                "results_dir": res_dir,
+                "cm_dir": v2,
+                "protocol": "v2",
+            }
         return {
             "comparison": pd.read_csv(res_dir / "FINAL_MODEL_COMPARISON.csv"),
             "per_class": pd.read_csv(res_dir / "FINAL_PER_CLASS_ANALYSIS.csv"),
             "distribution": pd.read_csv(res_dir / "FINAL_CLASS_DISTRIBUTION.csv"),
             "indobert_metrics": pd.read_csv(res_dir / "FINAL_indobert_metrics.csv"),
-            "results_dir": res_dir
+            "results_dir": res_dir,
+            "cm_dir": res_dir,
+            "protocol": "v1",
         }
 
     def get_data_path(filename):
@@ -1140,7 +1169,7 @@ if True:
                 {
                     "No": "5",
                     "Akar Masalah Awal (Teori)": "Vakum Epistemik Otoritas Kebenaran\nKeterlambatan verifikasi resmi membuat warga kehilangan kepercayaan pada rujukan fakta.",
-                    "Bukti Komputasional (Data)": "SNA Centrality: Akun AI @grok menduduki Peringkat 1 In-Degree (k=42); @prabowo menjadi target keluhan (k=15).",
+                    "Bukti Komputasional (Data)": "SNA Centrality: Akun AI @grok menduduki Peringkat 1 Out-Degree (k=42, balasan otomatis) dan betweenness tertinggi (0,0059); @prabowo menjadi target keluhan (In-Degree 15).",
                     "Dampak Institusional": "Warga menggusur jurnalis dan humas negara, mendelegasikan otoritas kebenaran pada bot AI swasta asing.",
                     "Solusi Tata Kelola": "Section 6.4: Kemitraan grounding algoritmik dengan xAI/OpenAI & peluncuran bot verifikasi resmi BGN (@BGN_VerifikasiBot)."
                 }
@@ -1150,7 +1179,7 @@ if True:
         with jtab2:
             st.subheader("Fenomena Algorithmic Epistemic Displacement: Posisi Sentral Akun @grok")
             st.info("""
-            Dalam jaringan komunikasi MBG, akun **`@grok` (AI asisten bawaan platform X milik xAI)** meraih **In-Degree = 42** (Tertinggi di seluruh jaringan, mengalahkan akun Presiden `@prabowo` yang meraih In-Degree = 15).
+            Dalam jaringan komunikasi MBG, akun **`@grok` (AI asisten bawaan platform X milik xAI)** memiliki **Out-Degree = 42**: 42 balasan otomatis kepada warganet berbeda yang memanggilnya (tertinggi di seluruh jaringan), dengan betweenness tertinggi (0,0059). Sebaliknya, akun Presiden `@prabowo` memiliki **In-Degree = 15** tanpa satu pun balasan.
             Ini membuktikan terjadinya fenomena pergeseran otoritas kebenaran (*Algorithmic Epistemic Displacement*).
             """)
     
@@ -1654,7 +1683,7 @@ if True:
     st.sidebar.markdown("📜 [LoA IPSSJ JobsMatchAI (#2024)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/docs/assets/loa_ipssj_jobsmatchai_2024.pdf)")
     
     
-    if "Bab I" in page or page == "🏠 Beranda":
+    if page.startswith("1️⃣") or page == "🏠 Beranda":
         render_thesis_stepper(1)
         st.markdown("""
         <div class="hero-banner">
@@ -1682,7 +1711,7 @@ if True:
         with kpi_col3:
             st.metric("🏘️ Modularity Louvain", "0,9837", "342 Komunitas")
         with kpi_col4:
-            st.metric("😊 Analisis Emosi", "Audit Berjalan", "IndoBERT 9-Emotion")
+            st.metric("😊 Emosi Dominan", "Jijik 56,24%", "2.960 dari 5.263 cuitan")
     
         st.markdown("---")
     
@@ -1709,7 +1738,7 @@ if True:
               1. **Diagram Alir Sankey Interaktif (Plotly):** Menghubungkan secara matematis *6 Rumusan Masalah (Bab 1.2)* ➔ *3 Lapisan Metode Komputasional* ➔ *6 Tujuan Penelitian (Bab 1.4)* ➔ *6 Bukti Empiris Terverifikasi*.
               2. **Tabulasi Harmonisasi Simetris 6x6:** 6 Tab berpasangan (RM-1 ↔ TP-1 hingga RM-6 ↔ TP-6) lengkap dengan target operasional.
               3. **Kartu Sintesis Grand Research Question:** Pemetaan 6 dimensi struktural *Phygital Gap*.
-              4. **4 Kartu Metrik Utama (Ground-Truth):** 971 node, 666 edge, Q = 0.9837, Distribusi emosi memerlukan rekonsiliasi.
+              4. **4 Kartu Metrik Utama (Ground-Truth):** 971 node, 666 edge, Q = 0.9837, emosi dominan Jijik 56,24%.
             - **Akses Cepat:** Berada langsung di menu halaman ini (**`🏠 Beranda`**).
             """)
     
@@ -1745,7 +1774,7 @@ if True:
               3. **§4.3 Dinamika Struktur Komunitas:** Modularity Louvain $Q = 0.9837$, grafik porsi 342 komunitas.
               4. **§4.4 Struktur Sentralitas Aktor:** Horizontal bar chart In-Degree vs Out-Degree (@grok vs @prabowo vs @4Y4NKZ).
               5. **§4.4c 10 Top Media & Kanal Penghubung (Selain CNN):** Stacked bar chart, donut chart tipologi media, dan tabel matriks 10 media perantara wacana.
-              6. **§4.5 Evaluasi Model IndoBERT & Sindiran:** Heatmap Matriks Konfusi (n=1.058, Akurasi 79.40%, Macro F1 0.5160, Weighted F1 0.7851, Zero Leakage), dan simulator prediksi real-time.
+              6. **§4.5 Evaluasi Model IndoBERT & Sindiran:** Heatmap Matriks Konfusi (test n=1.058, Akurasi 75,99%, Macro F1 0,4535, Weighted F1 0,7434; seleksi model via validation split), dan simulator prediksi real-time.
               7. **§4.6 Sintesis Marketing 6.0 & ABSA:** Grouped bar chart persentase Disgust pada Logistik (78.91%), Anggaran (77.01%), dan Gizi (71.13%).
               8. **Graf Interaktif PyVis:** Visualisasi graf jaringan interaktif dinamis berfitur drag-and-drop dan zoom.
             - **Akses Cepat:** Buka menu **`😊 Analisis Emosi (NLP)`** dan **`🕸️ Analisis Jaringan (CNA)`**.
@@ -1877,7 +1906,7 @@ if True:
         | Instrumen | Metrik | Definisi Operasional | Dataset |
         |---|---|---|---|
         | **Leksikon Anotasi Valid** *(Dataset Validasi)* | **9,28%** (315 cuitan sindiran terverifikasi) | Deteksi ironi dan kontradiksi semantik | N = 3.395 (dataset_sindiran_valid.csv) |
-        | **Model Transformer & Proksi** *(IndoBERT Fine-tuned)* | Distribusi emosi memerlukan rekonsiliasi sebelum digunakan sebagai temuan final | Inferensi emosi holistik berbasis konteks — mencakup spektrum penolakan fisik dan sindiran terselubung | Dataset emosi — rekonsiliasi diperlukan |
+        | **Model Transformer & Proksi** *(IndoBERT Fine-tuned)* | Jijik 56,24%, Percaya 20,39%, Netral 12,33%, Tertarik 9,60% (N=5.263) | Inferensi emosi holistik berbasis konteks — mencakup spektrum penolakan fisik dan sindiran terselubung | Dataset emosi — rekonsiliasi diperlukan |
     
         **Implikasi Metodologis:** Penggunaan dua pendekatan secara bersamaan *(triangulasi metode)* memperkuat validitas temuan — sindiran merupakan **sub-dimensi linguistik** dari emosi Jijik, sehingga kedua instrumen saling **mengonfirmasi** dan **melengkapi** satu sama lain.
         """)
@@ -2047,7 +2076,7 @@ if True:
                 *"Mengklasifikasikan respons afektif warganet ke dalam 9 kategori emosi Plutchik menggunakan fine-tuned IndoBERT untuk mengukur intensitas penolakan maupun dukungan publik."*
     
                 - **Target Operasional:** Menghasilkan inferensi klasifikasi multi-kelas dengan evaluasi Macro F1-score.
-                - **Bukti Empiris:** Distribusi label emosi IndoBERT memerlukan rekonsiliasi sebelum digunakan sebagai temuan final.
+                - **Bukti Empiris:** Distribusi label emosi: Jijik 56,24%, Percaya 20,39%, Netral 12,33%, Tertarik 9,60% (N=5.263).
                 """)
     
         with pair_tabs[3]:
@@ -2136,7 +2165,7 @@ if True:
                 "Rumusan Masalah (RM Bab 1.2)": "Pola emosi apa yang mendominasi reaksi afektif publik dalam skema 9 emosi IndoBERT?",
                 "Tujuan Penelitian (TP Bab 1.4)": "Mengklasifikasikan respons afektif ke 9 emosi Plutchik menggunakan IndoBERT.",
                 "Metode Komputasional": "Fine-tuned IndoBERT Multi-class",
-                "Bukti Empiris Tesis": "Hasil distribusi emosi memerlukan rekonsiliasi sebelum digunakan sebagai temuan final",
+                "Bukti Empiris Tesis": "Distribusi label emosi: Jijik 56,24%, Percaya 20,39%, Netral 12,33%, Tertarik 9,60% (N=5.263)",
                 "Status": "✅ Terjawab"
             },
             {
@@ -2163,7 +2192,7 @@ if True:
                 "Rumusan Masalah (RM Bab 1.2)": "Sejauh mana resistensi digital mencerminkan Phygital Gap, dan bagaimana strategi mitigasi krisisnya?",
                 "Tujuan Penelitian (TP Bab 1.4)": "Mengevaluasi besaran Phygital Gap dan merumuskan mitigasi krisis komunikasi bagi BGN.",
                 "Metode Komputasional": "Triangulasi Komputasional & Crisis Matrix",
-                "Bukti Empiris Tesis": "Konvergensi Distribusi emosi memerlukan rekonsiliasi + Q=0.9837 + 5 Rekomendasi Taktis BGN",
+                "Bukti Empiris Tesis": "Dominasi Jijik 56,24% + Q=0.9837 + 5 Rekomendasi Taktis BGN",
                 "Status": "✅ Terjawab"
             }
         ]
@@ -2195,7 +2224,7 @@ if True:
     
         # Load live data for audit charts
         try:
-            # 1. Emotion Data — Audit Rekonsiliasi
+            # 1. Emotion Data
             df_audit_emo = load_emotion_data()
             emo_counts = df_audit_emo['predicted_emotion'].value_counts().reset_index()
             emo_counts.columns = ['Emosi', 'Jumlah']
@@ -2220,7 +2249,7 @@ if True:
             vrow1_c1, vrow1_c2 = st.columns(2)
     
             with vrow1_c1:
-                st.subheader("📊 1. Distribusi 9 Emosi IndoBERT (Audit Rekonsiliasi)")
+                st.subheader("📊 1. Distribusi Label Emosi (N=5.263)")
                 fig_live_emo = px.pie(
                     emo_counts,
                     names='Emosi',
@@ -2236,7 +2265,7 @@ if True:
                         'Takut': '#7C3AED'
                     },
                     hole=0.45,
-                    title="Distribusi Emosi IndoBERT — Audit Rekonsiliasi Berjalan"
+                    title="Distribusi Label Emosi (N=5.263, silver-standard)"
                 )
                 fig_live_emo.update_traces(textinfo="label+percent", textfont_size=11)
                 fig_live_emo.update_layout(height=380, margin=dict(l=10, r=10, t=40, b=20), showlegend=False)
@@ -2460,7 +2489,7 @@ if True:
     
     
     
-    elif "Bab II" in page or page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
+    elif page.startswith("2️⃣") or page == "🏛️ Landasan Teori & Pemikiran (Bab II)":
         render_thesis_stepper(2)
         st.markdown("""
         <div class="hero-banner">
@@ -2765,7 +2794,7 @@ if True:
                 - Adaptasi model pada taksonomi Plutchik (Marah, Jijik, Takut, Bahagia, Sedih, Kaget, Percaya, Tertarik, Netral) untuk menangkap nuansa afektif tajam.
     
                 **2.5.6 Evaluasi Kinerja Model: Akurasi, Presisi, Recall, dan F1-Score (Hal. 52)**
-                - Metrik standar evaluasi supervised learning pada data uji holdout group-aware ($n=1.058$, akurasi 79,40%, Macro F1 0,5160, Weighted F1 0,7851, F1 Jijik 0,8444).
+                - Metrik standar evaluasi supervised learning pada data uji holdout group-aware ($n=1.058$, akurasi 75,99%, Macro F1 0,4535, Weighted F1 0,7434, F1 Jijik 0,8202; checkpoint dipilih via validation split).
     
                 **2.5.7 Isu Bias dan Ketidakseimbangan Data (Imbalanced Data) (Hal. 53)**
                 - Analisis dampak ketimpangan sampel kelas mayoritas (Jijik) terhadap macro-F1 pada kelas langka (Takut/Sedih).
@@ -2885,7 +2914,7 @@ if True:
                     "Proposisi": "P2: Keunggulan IndoBERT pada Bahasa Slang",
                     "Klaim Teoretis (Hal. 81)": "Arsitektur transformer bidirectional mampu membaca inkongruensi makna pada bahasa gaul/campur kode warganet.",
                     "Status Empiris": "✅ Terkonfirmasi",
-                    "Bukti Data Riil": "Evaluasi model IndoBERT masih dalam tahap rekonsiliasi dataset dan metrik."
+                    "Bukti Data Riil": "IndoBERT (test n=1.058): akurasi 75,99%, Macro-F1 0,4535, Weighted-F1 0,7434."
                 },
                 {
                     "Proposisi": "P3: Strong Community Structure Jaringan Komunikasi",
@@ -2903,7 +2932,7 @@ if True:
                     "Proposisi": "P5: Eksistensi Phygital Gap Kebijakan Publik",
                     "Klaim Teoretis (Hal. 82)": "Dominasi emosi jijik dan fragmentasi jaringan menganalisis keberadaan jurang tajam antara janji digital dan realitas fisik.",
                     "Status Empiris": "✅ Terkonfirmasi",
-                    "Bukti Data Riil": "Distribusi label emosi dan keterkaitannya dengan aspek substantif memerlukan rekonsiliasi sebelum digunakan sebagai temuan final."
+                    "Bukti Data Riil": "ABSA: Jijik mendominasi ketiga aspek (71,13%–78,91%); Kualitas Gizi paling banyak dibicarakan (1.344 cuitan)."
                 }
             ]
             st.dataframe(pd.DataFrame(prop_data), width='stretch', hide_index=True)
@@ -2926,7 +2955,7 @@ if True:
     
     
     
-    elif "Bab III" in page:
+    elif page.startswith("3️⃣"):
         render_thesis_stepper(3)
         st.markdown("""
         <div class="hero-banner">
@@ -2991,7 +3020,7 @@ if True:
             ],
             "Indikator / Alat Ukur": [
                 "9 kelas keluaran model IndoBERT-base-p2",
-                "Kelas biner model IndoBERT multi-task & leksikon",
+                "Kelas emosi IndoBERT (single-task, 9 kelas) & leksikon sindiran",
                 "Degree, betweenness, & eigenvector centrality (NetworkX)",
                 "Modularity Louvain dan struktur komunitas",
                 "Aspect-Based Sentiment Analysis (ABSA) 3 dimensi",
@@ -3048,7 +3077,7 @@ if True:
         with lap1:
             st.markdown("""
             #### 🔤 Lapisan 1: Tekstual-Linguistik
-            - **Instrumen**: IndoBERT-base-p2 multi-task
+            - **Instrumen**: IndoBERT-base-p2 (single-task, 9 kelas emosi)
             - **Fokus**: Granularitas 9 emosi Plutchik & deteksi sindiran berbasis inkongruensi teks-emoji.
             - **Output**: Distribusi afektif netizen & rasio resistensi linguistik warganet.
             """)
@@ -3075,7 +3104,7 @@ if True:
     
     
     
-    elif "Bab IV" in page or page == "😊 Analisis Emosi (NLP)" or page == "🕸️ Analisis Jaringan (CNA)":
+    elif page.startswith("4️⃣") or page == "😊 Analisis Emosi (NLP)" or page == "🕸️ Analisis Jaringan (CNA)":
         render_thesis_stepper(4)
         st.markdown("""
         <div class="hero-banner">
@@ -3088,7 +3117,7 @@ if True:
             </div>
             <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px;">
                 <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">📁 <b>Korpus:</b> 3.395 Cuitan Valid untuk Analisis Leksikal</span>
-                <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">🤢 <b>Distribusi Emosi:</b> Audit Rekonsiliasi</span>
+                <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">🤢 <b>Emosi Dominan:</b> Jijik 56,24%</span>
                 <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">🕸️ <b>Modularity:</b> Q = 0,9837 (342 Komunitas)</span>
                 <span style="background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 8px; font-size: 0.85rem;">🎯 <b>ABSA:</b> Logistik 78,91% Disgust</span>
             </div>
@@ -3160,7 +3189,7 @@ if True:
             st.subheader('🔍 Verifikasi Integritas Data Korpus Riil')
             # Load live data for audit charts
             try:
-                # 1. Emotion Data — Audit Rekonsiliasi
+                # 1. Emotion Data
                 df_audit_emo = load_emotion_data()
                 emo_counts = df_audit_emo['predicted_emotion'].value_counts().reset_index()
                 emo_counts.columns = ['Emosi', 'Jumlah']
@@ -3185,7 +3214,7 @@ if True:
                 vrow1_c1, vrow1_c2 = st.columns(2)
     
                 with vrow1_c1:
-                    st.subheader("📊 1. Distribusi 9 Emosi IndoBERT (Audit Rekonsiliasi)")
+                    st.subheader("📊 1. Distribusi Label Emosi (N=5.263)")
                     fig_live_emo = px.pie(
                         emo_counts,
                         names='Emosi',
@@ -3201,7 +3230,7 @@ if True:
                             'Takut': '#7C3AED'
                         },
                         hole=0.45,
-                        title="Distribusi Emosi IndoBERT — Audit Rekonsiliasi Berjalan"
+                        title="Distribusi Label Emosi (N=5.263, silver-standard)"
                     )
                     fig_live_emo.update_traces(textinfo="label+percent", textfont_size=11)
                     fig_live_emo.update_layout(height=380, margin=dict(l=10, r=10, t=40, b=20), showlegend=False)
@@ -3362,12 +3391,12 @@ if True:
             # ── Load Network Data Real ──
             edges, nodes_data = load_network_data()
             G_undir = nx.from_pandas_edgelist(edges, 'Source', 'Target')
-            components = sorted(nx.connected_components(G_undir), key=len, reverse=True)
+            wcc_list = sorted(nx.connected_components(G_undir), key=len, reverse=True)
             total_nodes_graph = G_undir.number_of_nodes()
     
             # ── Tabel 4.2 Ukuran 10 Komponen Terbesar (Dihitung Dinamis dari Data Riil) ──
             st.subheader("📋 Tabel 4.2 Ukuran Sepuluh Komponen Jaringan Terbesar (Korpus Resmi)")
-            st.caption(f"Distribusi fragmentasi struktural wacana MBG (Total {len(components)} weakly connected components dari {total_nodes_graph} aktor riil):")
+            st.caption(f"Distribusi fragmentasi struktural wacana MBG (Total {len(wcc_list)} weakly connected wcc_list dari {total_nodes_graph} aktor riil):")
     
             char_list = [
                 "Ruang diskusi heterogen (dukungan, bantahan resmi, & kritik sindiran)",
@@ -3383,8 +3412,8 @@ if True:
             ]
     
             comp_rows = []
-            for i in range(min(10, len(components))):
-                c_size = len(components[i])
+            for i in range(min(10, len(wcc_list))):
+                c_size = len(wcc_list[i])
                 pct = (c_size / total_nodes_graph) * 100 if total_nodes_graph > 0 else 0
                 tag = " (Giant Component)" if i == 0 else ""
                 comp_rows.append({
@@ -3395,8 +3424,8 @@ if True:
                 })
             st.dataframe(pd.DataFrame(comp_rows), width='stretch', hide_index=True)
     
-            isolated_small = sum(1 for c in components if len(c) <= 2)
-            st.info(f"💡 **Catatan Metodologis:** Sebanyak **{isolated_small} komponen ({(isolated_small/len(components))*100:.1f}%)** beranggotakan <= 2 aktor (dyad/isolated pair), menganalisis tidak adanya arena sentral percakapan publik nasional.")
+            isolated_small = sum(1 for c in wcc_list if len(c) <= 2)
+            st.info(f"💡 **Catatan Metodologis:** Sebanyak **{isolated_small} komponen ({(isolated_small/len(wcc_list))*100:.1f}%)** beranggotakan <= 2 aktor (dyad/isolated pair), menganalisis tidak adanya arena sentral percakapan publik nasional.")
     
             st.markdown("---")
             st.subheader("📊 Analisis Dimensi 1: Struktur Makro Topologi Jaringan (Standar NodeXL Pro & NetworkX)")
@@ -3562,7 +3591,7 @@ if True:
                 else:
                     try:
                         # Generate PyVis graph
-                        net = Network(height="600px", width="100%", bgcolor="#1e293b", font_color="white")
+                        net = Network(height="600px", width="100%", bgcolor="#1e293b", font_color="white", notebook=False, cdn_resources="remote")
                         net.force_atlas_2based()
     
                         if nodes_data is not None and 'Degree' in nodes_data.columns:
@@ -3628,10 +3657,7 @@ if True:
                         path = 'html_files'
                         if not os.path.exists(path):
                             os.makedirs(path)
-                        net.save_graph(f'{path}/network.html')
-    
-                        HtmlFile = open(f'{path}/network.html', 'r', encoding='utf-8')
-                        source_code = HtmlFile.read()
+                        source_code = net.generate_html(notebook=False)
                         components.html(source_code, height=650, scrolling=True)
                     except Exception as e:
                         st.error(f"Gagal memuat visualisasi PyVis: {e}")
@@ -3999,7 +4025,7 @@ if True:
                 st.plotly_chart(fig_cent_scatter, width='stretch')
                 st.caption("📌 **Keterangan Tipologi:** Aktor di kuadran kanan bawah (**@grok**) memiliki popularitas masif namun bukan perantara antarkelompok. Sebaliknya, aktor di bagian atas (**@4Y4NKZ**) memiliki peran kontrol informasi (*gatekeeping*) tertinggi.")
     
-            actor_typ_img_p = os.path.join(project_root, "results", "18_actor_centrality_typology.png")
+            actor_typ_img_p = os.path.join(project_root, "results", "actor_centrality_typology_en.png")
             if os.path.exists(actor_typ_img_p):
                 st.markdown("---")
                 st.subheader("📊 Analisis Dimensi 2: Sentralitas Aktor & Tipologi Peran Komunikasi (SNA Standar NodeXL)")
@@ -4658,10 +4684,11 @@ if True:
     
             lex_emo_choice = st.radio(
                 "Pilih Subset Emosi untuk Analisis Leksikal:",
-                ["Korpus Valid (N=3.395)", "🤢 Distribusi Emosi", "🤝 Distribusi Emosi", "😐 Distribusi Emosi", "🔮 Distribusi Emosi"],
+                ["Seluruh Korpus (N=5.263)", "🤢 Jijik (Disgust)", "🤝 Percaya (Trust)", "😐 Netral", "🔮 Tertarik"],
                 horizontal=True
             )
     
+            df_emotion = load_emotion_data()
             if "Jijik" in lex_emo_choice:
                 sub_lex_df = df_emotion[df_emotion['predicted_emotion'] == 'Jijik']
                 wc_color = 'Reds_r'
@@ -4794,8 +4821,8 @@ if True:
 
             st.header("🎯 §4.5 Evaluasi Model Klasifikasi Emosi dan Deteksi Sindiran")
             st.markdown("""
-            > *Evaluasi performa model **IndoBERT** (`indobenchmark/indobert-base-p2` checkpoint-264)
-            > dievaluasi pada **independent zero-leakage group-aware holdout set** ($n = 1.058$, 20% partisi `random_state = 42` dari total korpus valid $N = 5.263$).
+            > *Model **IndoBERT** (`indobenchmark/indobert-base-p2`) dilatih pada 3.785 cuitan; checkpoint dipilih dengan **validation split group-aware** (n = 420, epoch 1, val loss 0,5068),
+            > lalu dievaluasi **satu kali** pada test set group-aware ($n = 1.058$) yang tidak pernah dipakai saat pelatihan maupun seleksi model. Tidak ada teks yang tumpang tindih antar-partisi.
             > Seluruh metrik dimuat secara dinamis dari file hasil evaluasi terverifikasi.*
             """)
 
@@ -4813,24 +4840,29 @@ if True:
 
             ev_col1, ev_col2, ev_col3, ev_col4 = st.columns(4)
             with ev_col1:
-                st.metric("Ukuran Data Uji (Test N)", f"{test_n:,}", "Zero Text Overlap (Holdout)")
+                st.metric("Ukuran Data Uji (Test N)", f"{test_n:,}", "Test set terisolasi")
             with ev_col2:
-                st.metric("Akurasi IndoBERT", f"{indo_acc*100:.2f}% (79.40%)", f"{indo_acc:.4f} Overall")
+                st.metric("Akurasi IndoBERT", f"{indo_acc*100:.2f}%", f"{indo_acc:.4f} Overall")
             with ev_col3:
-                st.metric("Macro F1-Score", f"{indo_mf1:.4f} (0.5160)", "6 Kelas Aktif Teruji")
+                st.metric("Macro F1-Score", f"{indo_mf1:.4f}", "6 Kelas Aktif Teruji")
             with ev_col4:
-                st.metric("Weighted F1-Score", f"{indo_wf1:.4f} (0.7851)", "Tertimbang Distribusi Kelas")
+                st.metric("Weighted F1-Score", f"{indo_wf1:.4f}", "Tertimbang Distribusi Kelas")
 
-            st.caption("ℹ️ *Catatan Metodologis: Evaluasi menggunakan silver-standard reference labels dan protokol group-aware zero-leakage split (GroupShuffleSplit, random_state=42).*")
+            st.caption("ℹ️ *Catatan Metodologis: Evaluasi menggunakan silver-standard reference labels dan protokol group-aware train/validation/test (GroupShuffleSplit, random_state=42) tanpa tumpang tindih teks.*")
 
             st.markdown("---")
             st.subheader("📊 §4.5.1 Visualisasi Confusion Matrix IndoBERT Group-Aware (Data Riil)")
-            st.markdown("Visualisasi performa inferensi aktual model IndoBERT (`checkpoint-264`) pada 1.058 sampel data uji:")
+            st.markdown("Visualisasi performa inferensi aktual model IndoBERT (checkpoint terpilih dari validation split) pada 1.058 sampel data uji:")
 
             cm_mode = st.radio("Pilih Tampilan Confusion Matrix:", ["Matriks Frekuensi (Raw Counts)", "Matriks Ternormalisasi (Normalized Proportions)"], horizontal=True)
             
-            cm_counts_path = res_dir / "FINAL_indobert_confusion_matrix.png"
-            cm_norm_path = res_dir / "FINAL_indobert_confusion_matrix_normalized.png"
+            cm_dir = eval_data.get("cm_dir", res_dir)
+            if eval_data.get("protocol") == "v2":
+                cm_counts_path = cm_dir / "confusion_matrix.png"
+                cm_norm_path = cm_dir / "confusion_matrix_normalized.png"
+            else:
+                cm_counts_path = res_dir / "FINAL_indobert_confusion_matrix.png"
+                cm_norm_path = res_dir / "FINAL_indobert_confusion_matrix_normalized.png"
 
             if cm_mode == "Matriks Frekuensi (Raw Counts)":
                 if cm_counts_path.exists():
@@ -4846,7 +4878,7 @@ if True:
             # ── TABEL KOMPARASI MODEL BASELINE ──
             st.markdown("---")
             st.subheader("📋 Tabel 4.4a Komparasi Multi-Model (IndoBERT vs Linear Baselines)")
-            st.caption("Perbandingan performa model pada data uji holdout group-aware independen yang sama persis (n=1.058, Zero Leakage):")
+            st.caption("Perbandingan performa model pada test set group-aware yang sama (n=1.058); semua model dilatih pada sub-train yang sama (n=3.785):")
 
             tabel_baseline_display = df_comp[['Model', 'Accuracy', 'Macro_F1', 'Weighted_F1', 'Protocol']].copy()
             tabel_baseline_display.columns = ['Model Architecture', 'Accuracy', 'Macro-F1', 'Weighted-F1', 'Split Protocol']
@@ -4857,7 +4889,7 @@ if True:
 
             # ── TABEL 4.4b EVALUASI EMOSI PER KELAS ──
             st.subheader("📋 Tabel 4.4b Evaluasi Kinerja Klasifikasi IndoBERT per Kelas (Holdout n=1.058)")
-            st.caption("Rincian metrik presisi, recall, F1, dan jumlah data uji riil dari results/FINAL_PER_CLASS_ANALYSIS.csv:")
+            st.caption("Rincian metrik presisi, recall, F1, dan jumlah data uji riil (results/indobert_group_aware_v2/classification_report_v2.csv):")
 
             tabel_perclass_display = df_per_class[['label', 'support', 'precision', 'recall', 'f1', 'test_percentage']].copy()
             tabel_perclass_display.columns = ['Kelas Emosi', 'Support (Cuitan)', 'Precision', 'Recall', 'F1-Score', 'Porsi Data Uji (%)']
@@ -4907,12 +4939,11 @@ if True:
             st.subheader("🔬 §4.5.3 Interpretasi Metodologis & Integritas Riset")
             st.info("""
             **💡 Catatan Metodologis & Transparansi Sains:**
-            1. **Kekuatan Deteksi Emosi Kunci (Jijik F1 = audit):**
-               Evaluasi IndoBERT dicatat sebagai bagian dari audit model. Distribusi dan performa per kelas tidak digunakan sebagai temuan substantif sebelum rekonsiliasi dataset evaluasi selesai.
-            2. **Presisi Tinggi Emosi Percaya (Precision = 68,42%):**
-               Ketika model memprediksi emosi **Percaya (*Trust*)**, 68,42% benar sesuai label aktual, mengonfirmasi narasi apresiasi kebijakan.
+            1. **Kelas dominan terdeteksi baik:** Jijik F1 = 0,8202 (Precision 0,7761, Recall 0,8696) dan Netral F1 = 0,8032.
+            2. **Percaya (*Trust*) cukup stabil:** F1 = 0,6977 (Precision 0,7143); sebagian Percaya masih tertukar dengan Jijik (31%).
+            4. **Label rujukan silver-standard:** Label dibuat oleh pipeline otomatis (Gemini API + aturan kata kunci), sehingga metrik menunjukkan kesesuaian dengan label tersebut, bukan dengan anotasi manusia.
             3. **Tantangan Evaluasi Model:**
-               Sesuai literatur NLP kontemporer (Sokolova & Lapalme, 2009; Wilie dkk., 2020), distribusi korpus media sosial yang sangat timpang (*highly imbalanced*) menyebabkan kelas minoritas (Marah 19, Sedih 3, Takut 1) sulit terprediksi tanpa teknik oversampling/SMOTE, yang dicatat sebagai ruang pengembangan penelitian lanjutan (§5.3.2).
+               Sesuai literatur NLP kontemporer (Sokolova & Lapalme, 2009; Wilie dkk., 2020), distribusi korpus media sosial yang sangat timpang (*highly imbalanced*) menyebabkan kelas minoritas (Marah n=14, Sedih n=3 di test set) tidak terprediksi (F1 = 0) tanpa teknik oversampling/SMOTE, yang dicatat sebagai ruang pengembangan penelitian lanjutan (§5.3.2).
             """)
     
             st.markdown("---")
@@ -5232,7 +5263,7 @@ if True:
                 #### 🧠 Lapis 1: NLP IndoBERT
                 **Dimensi Afektif & Bahasa**
                 *Apa yang dirasakan publik?*
-                - **Distribusi emosi: audit rekonsiliasi** (audit berjalan tweet)
+                - **Distribusi emosi:** Jijik 56,24%, Percaya 20,39%, Netral 12,33%, Tertarik 9,60% (N=5.263)
                 - **Sindiran Valid:** 9,28% (315 tweet)
                 - **Proksi Inkongruensi:** 56,60% (2.979 tweet)
     
@@ -5270,7 +5301,7 @@ if True:
                 {
                     "Lapisan Analisis": "Lapis 1: Afektif (NLP IndoBERT)",
                     "Instrumen / Algoritma": "IndoBERT Base-p2 Fine-Tuned (9 Emosi Plutchik) + Ekstraksi Leksikon Sarkasme",
-                    "Data Empiris Riil": "Distribusi emosi memerlukan rekonsiliasi (Disgust), 9,28% Sindiran Eksplisit (n=315), 56,60% Proksi Afektif Inkongruen",
+                    "Data Empiris Riil": "Jijik 56,24% (Disgust), 9,28% Sindiran Tervalidasi (n=315 dari 3.395), 56,60% Proksi Afektif Inkongruen",
                     "Kontribusi Interpretasi Phygital Gap": "Menganalisis distribusi emosi dan sindiran mendalam warganet yang disamarkan dalam bentuk ironi dan sarkasme."
                 },
                 {
@@ -5355,7 +5386,7 @@ if True:
     
     
     
-    elif "Bab V" in page:
+    elif page.startswith("5️⃣"):
         render_thesis_stepper(5)
         st.markdown("""
         <div class="hero-banner">
@@ -5385,7 +5416,7 @@ if True:
         with kpi1:
             st.metric("📊 Korpus Data Bab IV", "3.395 Cuitan Valid", "Analisis Leksikal")
         with kpi2:
-            st.metric("😊 Analisis Emosi (§4.5)", "Audit Berjalan", "IndoBERT 9-Emotion")
+            st.metric("😊 Emosi Dominan (§4.5)", "Jijik 56,24%", "2.960 dari 5.263 cuitan")
         with kpi3:
             st.metric("🕸️ Struktur Komunitas Jaringan (§4.3)", "Q = 0.9837", "342 Komunitas Louvain")
         with kpi4:
@@ -5404,7 +5435,7 @@ if True:
                 - **Populasi & Sampel:** 3.395 cuitan valid yang digunakan dalam analisis leksikal di platform X (periode krisis Maret–Mei 2026).
                 - **Pembersihan Data:** Mendokumentasikan keterbatasan identifikasi bot, akun promosi, dan duplikasi teks.
                 - **Korpus Leksikal:** 3.395 cuitan dianalisis secara mendalam untuk ekstraksi majas dan penanda emoji.
-                - **Distribusi Emosi:** Distribusi emosi memerlukan rekonsiliasi sebelum digunakan sebagai temuan final.
+                - **Distribusi Emosi:** Jijik 56,24%, Percaya 20,39%, Netral 12,33%, Tertarik 9,60% (N=5.263).
                 """)
     
             with st.expander("📌 4.2 Analisis Sistem: Topologi Jaringan & Struktur Komunitas (Hal. 95)"):
@@ -5432,7 +5463,7 @@ if True:
     
             with st.expander("📌 4.5 Evaluasi Model Emosi & Deteksi Sindiran (Hal. 101)"):
                 st.markdown("""
-                - **4.5.1 Evaluasi IndoBERT:** Evaluasi klasifikasi model masih memerlukan rekonsiliasi dataset dan metrik sebelum digunakan sebagai temuan final.
+                - **4.5.1 Evaluasi IndoBERT:** Akurasi 75,99%, Macro-F1 0,4535, Weighted-F1 0,7434 pada test set terisolasi (n=1.058).
                 - **4.5.2 Evaluasi Deteksi Sindiran:** 315 cuitan (9,28%) memuat majas sindiran tervalidasi leksikal, sementara proksi afektif menangkap 56,60%.
                 - **4.5.3 Interpretasi Triangulasi:** Sindiran merupakan sub-dimensi leksikal dari emosi Jijik (*Disgust*) — kedua metode konvergen dan saling mengonfirmasi.
                 """)
@@ -5450,7 +5481,7 @@ if True:
                 st.markdown("""
                 1. **Anatomi Bahasa (RM 1):** Kritik MBG diekspresikan lewat sindiran halus dan oposisi biner (315 cuitan valid).
                 2. **Inkongruensi Semiotik (RM 2):** Disparitas tajam antara teks pujian semu dengan emoji sinis (🤡, 🤮).
-                3. **Respons Afektif (RM 3):** Distribusi label emosi dalam korpus dianalisis setelah rekonsiliasi dataset.
+                3. **Respons Afektif (RM 3):** Distribusi label emosi dalam korpus: Jijik 56,24%, Percaya 20,39%, Netral 12,33%, Tertarik 9,60% (N=5.263).
                 4. **Topologi Jaringan (RM 4):** Struktur komunitas (Q=0.9837) yang terdiri atas 342 komunitas.
                 5. **Sentralitas Aktor (RM 5):** Dominasi AI (@grok Out=42) dan nilai in-degree @prabowo sebesar 15 dalam graf mention.
                 6. **Phygital Gap (RM 6):** Kesenjangan absolut antara janji digital pemerintah dan eksekusi fisik SPPG di lapangan.
@@ -5609,7 +5640,7 @@ if True:
             with tab_lim1:
                 st.markdown("""
                 **Pilar 1: Single-Platform Boundary Bias (Platform X / Twitter)**
-                * **Batas Metodologi:** Korpus data diambil khusus dari platform X (dataset emosi — audit rekonsiliasi). Percakapan di TikTok, Facebook Group, dan Instagram yang memiliki penetrasi tinggi di kalangan ibu rumah tangga dan wali murid belum tertangkap.
+                * **Batas Metodologi:** Korpus data diambil khusus dari platform X (dataset emosi N=5.263). Percakapan di TikTok, Facebook Group, dan Instagram yang memiliki penetrasi tinggi di kalangan ibu rumah tangga dan wali murid belum tertangkap.
                 * **Risiko Bias:** Kecenderungan pengguna X yang lebih politis, kritis, dan berpendidikan tinggi dapat melebih-lebihkan sentimen *Disgust* dibanding populasi umum.
                 * **Mitigasi dalam Tesis:** Dokumentasi keterbatasan identifikasi bot; metrik SNA digunakan untuk analisis jaringan, verifikasi rasio edge/node (692 relasi aktif), serta normalisasi leksikon ragam santai Twitter.
                 * **Agenda Riset Masa Depan:** Mengembangkan agregator *cross-platform social listening* terintegrasi (X + TikTok + YouTube Comments + Facebook).
@@ -5685,7 +5716,7 @@ if True:
             {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.2 Topologi Jaringan Global", "Fokus Kajian": "Analisis kerapatan & resiprositas graf", "Metode / Instrumen": "Directed Graph SNA", "Data Empiris": "971 node, Reciprocity 1,20%", "Halaman": "95"},
             {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.3 Dinamika Komunitas Louvain", "Fokus Kajian": "Fragmentasi struktural & struktur komunitas warganet", "Metode / Instrumen": "Algoritma Louvain Community", "Data Empiris": "Modularity Q=0.9837, 342 komunitas", "Halaman": "97"},
             {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.4 Struktur Sentralitas Aktor", "Fokus Kajian": "Perbedaan posisi struktural berdasarkan Degree dan Betweenness", "Metode / Instrumen": "Centrality (Degree, Betweenness)", "Data Empiris": "@grok Out=42, @prabowo In=15", "Halaman": "98"},
-            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.5 Evaluasi Model & Sindiran", "Fokus Kajian": "Performa IndoBERT & majas sindiran", "Metode / Instrumen": "Fine-tuned Transformer IndoBERT", "Data Empiris": "Evaluasi model: rekonsiliasi metrik masih berjalan", "Halaman": "101 – 104"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.5 Evaluasi Model & Sindiran", "Fokus Kajian": "Performa IndoBERT & majas sindiran", "Metode / Instrumen": "Fine-tuned Transformer IndoBERT", "Data Empiris": "Akurasi 75,99%, Macro-F1 0,4535 (test n=1.058); sindiran 9,28% (315/3.395)", "Halaman": "101 – 104"},
             {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.6 Sintesis Marketing 6.0", "Fokus Kajian": "Interpretasi Phygital Gap kebijakan publik", "Metode / Instrumen": "ABSA & Triangulasi SNA-NLP", "Data Empiris": "Logistik & anggaran sebagai aspek yang teridentifikasi", "Halaman": "105 – 109"},
             {"Bab Tesis": "Bab V: Penutup", "Sub-Bab": "5.1 s.d 5.4 Simpulan & Solusi", "Fokus Kajian": "Rekomendasi BGN & Implikasi Kebijakan", "Metode / Instrumen": "Matriks Intervensi Kebijakan", "Data Empiris": "5 Aksi Strategis Mitigasi Krisis", "Halaman": "110 – 113"}
         ]
@@ -5750,7 +5781,7 @@ if True:
     
             st.subheader("2. Distribusi 9 Kategori Emosi")
             st.image(get_image_path("emotion_distribution.png"), width='stretch')
-            st.info("**Caption Akademik:** Figure 2 displays the distribution of predicted emotion labels; the distribution is subject to dataset reconciliation before substantive interpretation.\n\n**Pesan/Temuan:** Distribusi emosi digunakan sebagai data analitik dan tidak diinterpretasikan secara substantif sebelum rekonsiliasi dataset.\n\n**Posisi Manuskrip:** Bab IV Hasil NLP (§4.5)")
+            st.info("**Caption Akademik:** Figure 2 displays the distribution of predicted emotion labels; Disgust dominates (56.24%), followed by Trust (20.39%), Neutral (12.33%), and Interest (9.60%); labels are silver-standard.\n\n**Pesan/Temuan:** Distribusi emosi digunakan sebagai data analitik dan tidak diinterpretasikan secara substantif sebelum rekonsiliasi dataset.\n\n**Posisi Manuskrip:** Bab IV Hasil NLP (§4.5)")
             st.markdown("---")
     
             st.subheader("3. Karakteristik Sarkasme")
@@ -5763,11 +5794,11 @@ if True:
     
             st.subheader("4. Kinerja IndoBERT (F1-Scores)")
             st.image(get_image_path("f1_scores.png"), width='stretch')
-            st.info("**Caption Akademik:** Figure 4 presents the model's evaluation on real validation data (dataset evaluasi terdokumentasi), achieving metrik evaluasi model and a robust metrik F1 for the kelas emosi tertentu (metrik evaluasi model), alongside precision model for Trust.\n\n**Pesan/Temuan:** Metrik evaluasi model ditampilkan sebagai materi audit dan belum digunakan untuk menarik kesimpulan substantif sebelum rekonsiliasi dataset selesai.\n\n**Posisi Manuskrip:** Bab IV Evaluasi Model (§4.5)")
+            st.info("**Caption Akademik:** Figure 4 presents the normalized confusion matrix of the fine-tuned IndoBERT classifier on the group-aware test set (n = 1,058), which was never used for training or checkpoint selection: accuracy 75.99%, Macro-F1 0.4535, Weighted-F1 0.7434.\n\n**Pesan/Temuan:** Kelas dominan terdeteksi baik (Jijik F1 0,82; Netral 0,80; Percaya 0,70), sedangkan Tertarik kurang terdeteksi (recall 0,30) dan kelas minoritas Marah/Sedih tidak terprediksi.\n\n**Posisi Manuskrip:** Bab IV Evaluasi Model (§4.5)")
             st.markdown("---")
     
             st.subheader("5. Confusion Matrix Klasifikasi Emosi (Data Riil)")
-            st.image(get_image_path("FINAL_indobert_confusion_matrix.png") if os.path.exists(get_image_path("FINAL_indobert_confusion_matrix.png")) else get_image_path("confusion_matrix.png"), width='stretch')
+            st.image(os.path.join(PROJECT_ROOT, "results", "indobert_group_aware_v2", "confusion_matrix_v2.png") if os.path.exists(os.path.join(PROJECT_ROOT, "results", "indobert_group_aware_v2", "confusion_matrix_v2.png")) else get_image_path("confusion_matrix.png"), width='stretch')
             st.info("**Caption Akademik:** Figure 5 details the classification confusion matrix on actual data, revealing high sensitivity on Disgust and high precision on Trust.\n\n**Pesan/Temuan:** Integritas dan transparansi komputasional dalam mengevaluasi kekuatan serta keterbatasan representasi korpus imbalanced.\n\n**Posisi Manuskrip:** Bab IV Evaluasi Model (§4.5)")
             st.markdown("---")
     
@@ -5845,7 +5876,7 @@ if True:
                 st.image(get_image_path("1_pipeline.png"), width='stretch', caption="Gambar 1A: End-to-End Computational Pipeline")
             with col_t2:
                 st.image(get_image_path("2_dataset_characteristics.png"), width='stretch', caption="Gambar 1B: Data Preprocessing & Cleaning Funnel")
-            st.image(get_image_path("emotion_distribution.png"), width='stretch', caption="Gambar 2: Distribusi 9 Emosi Plutchik — Audit Rekonsiliasi Dataset")
+            st.image(get_image_path("emotion_distribution.png"), width='stretch', caption="Gambar 2: Distribusi Label Emosi (N=5.263; Jijik 56,24%)")
     
         # ── TAB 3: TAHAP 2 ──
         with v_tabs[2]:
@@ -5856,7 +5887,7 @@ if True:
                 st.image(get_image_path("3_sarcasm.png"), width='stretch', caption="Gambar 3: Distribusi Sarkasme & Penanda Linguistik")
             with col_t3_b:
                 st.image(get_image_path("f1_scores.png"), width='stretch', caption="Gambar 4: F1-Scores IndoBERT per Kategori Emosi")
-            st.image(get_image_path("FINAL_indobert_confusion_matrix.png") if os.path.exists(get_image_path("FINAL_indobert_confusion_matrix.png")) else get_image_path("confusion_matrix.png"), width='stretch', caption="Gambar 5: Confusion Matrix Evaluasi IndoBERT Group-Aware (Holdout n=1.058, Zero Leakage)")
+            st.image(os.path.join(PROJECT_ROOT, "results", "indobert_group_aware_v2", "confusion_matrix_v2.png") if os.path.exists(os.path.join(PROJECT_ROOT, "results", "indobert_group_aware_v2", "confusion_matrix_v2.png")) else get_image_path("confusion_matrix.png"), width='stretch', caption="Gambar 5: Confusion Matrix Evaluasi IndoBERT Group-Aware (test set n=1.058)")
     
         # ── TAB 4: TAHAP 3 ──
         with v_tabs[3]:
@@ -6389,7 +6420,7 @@ if True:
         with dcol1:
             p_emo = get_data_path("indobert_9_emosi_fixed.csv")
             download_file_button(
-                label="📊 Dataset Emosi — Audit Rekonsiliasi",
+                label="📊 Dataset Emosi (N=5.263)",
                 file_path=p_emo,
                 file_name="indobert_9_emosi_fixed.csv",
                 mime="text/csv",
@@ -6470,7 +6501,7 @@ if True:
     
         repo_raw_base = "https://raw.githubusercontent.com/indri007/ThisIsEconomy/old-version"
         public_links_data = [
-            {"No": 1, "Nama Dataset": "IndoBERT 9 Emosi — Audit Rekonsiliasi", "Format": "CSV", "Ukuran / Baris": "dataset hasil inferensi — audit rekonsiliasi", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/indobert_9_emosi_fixed.csv"},
+            {"No": 1, "Nama Dataset": "IndoBERT 9 Emosi (label silver-standard)", "Format": "CSV", "Ukuran / Baris": "5.263 baris", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/indobert_9_emosi_fixed.csv"},
             {"No": 2, "Nama Dataset": "Deteksi Sindiran & Sarkasme", "Format": "CSV", "Ukuran / Baris": "3.395 baris", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/sarcasm/dataset_sindiran_valid.csv"},
             {"No": 3, "Nama Dataset": "Cuitan MBG Mentah Siap Olah", "Format": "Excel (.xlsx)", "Ukuran / Baris": "3.395 baris", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/emotion/mbg_tweets_indobert_ready.xlsx"},
             {"No": 4, "Nama Dataset": "Relasi Jaringan Komunikasi SNA", "Format": "CSV", "Ukuran / Baris": "692 edges", "URL Unduh Langsung (Klik Kanan / Buka)": f"{repo_raw_base}/data/sna/network_edges.csv"},
