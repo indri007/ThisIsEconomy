@@ -1,0 +1,4 @@
+Model,Old_Train_N,New_Train_N,Old_Acc,New_Acc,Old_Macro_F1,New_Macro_F1,Old_Weighted_F1,New_Weighted_F1,Selection_Criterion
+TF-IDF + Logistic Regression,4205,3785,0.6947,0.6862,0.3429,0.3624,0.6457,0.6396,N/A (Standard Fit)
+TF-IDF + Linear SVM,4205,3785,0.6720,0.6767,0.4095,0.3998,0.6558,0.6561,N/A (Standard Fit)
+IndoBERT Group-Aware,4205,3785,0.7940,0.7599,0.5160,0.4535,0.7851,0.7434,Old: Test ckpt-264 | New: Val Epoch 1.0

@@ -60,3 +60,11 @@ annotation/lembar_*.csv
 annotation/adjudicated*.csv
 annotation/_arsip/
 results/network_rebuild_*.csv
+
+data/raw/
+*.env
+.streamlit/secrets.toml
+
+data/raw/
+*.env
+.streamlit/secrets.toml

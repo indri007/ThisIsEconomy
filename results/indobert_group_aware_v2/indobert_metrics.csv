@@ -1,0 +1,2 @@
+Model,Validation_Protocol,Selected_Epoch,Best_Checkpoint,Best_Val_Loss,Test_N,Accuracy,Macro_Precision,Macro_Recall,Macro_F1,Weighted_Precision,Weighted_Recall,Weighted_F1
+IndoBERT Group-Aware (v2 Val-Selected),Group-Aware Val (10%),1.0,checkpoint-119,0.5068,1058,0.7599,0.484,0.4424,0.4535,0.7396,0.7599,0.7434

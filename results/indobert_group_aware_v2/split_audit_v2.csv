@@ -1,0 +1,6 @@
+Split,N_Rows,Unique_Processed_Text,Unique_Raw_Text,Overlap_With_Test_Proc,Overlap_With_Test_Raw
+Full Train (Original),4205,2714,2775,0,0
+Sub-Train (90%),3785,2442,2502,0,0
+Validation (10%),420,272,273,0,0
+Test (Untouched),1058,679,694,0,0
+Sub-Train vs Val Overlap,0,0,0,0,0

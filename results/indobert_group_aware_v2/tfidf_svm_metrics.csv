@@ -1,0 +1,2 @@
+Model,Train_N,Test_N,Accuracy,Macro_Precision,Macro_Recall,Macro_F1,Weighted_Precision,Weighted_Recall,Weighted_F1
+TF-IDF + Linear SVM (v2),3785,1058,0.6767,0.4579,0.3828,0.3998,0.6457,0.6767,0.6561
