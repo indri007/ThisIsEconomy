@@ -46,3 +46,7 @@ chrome-devtools-mcp/
 # Big Data Raw Files (> 100 MB - exceeds GitHub single file hard limit)
 data/processed/tweet_mbg_1juta.csv
 ambil_tweet_mbg.py
+.DS_Store
+*.bitbak_*
+.gitignore.bitbak_*
+~$*
