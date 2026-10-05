@@ -227,10 +227,10 @@ Seluruh dataset yang dipublikasikan dalam repositori ini telah melalui proses ku
 </div>
 
 
-#### 4. Dataset Benchmark Anotasi Emosi MBG (`data/emotion/mbg_tweets_indobert_ready.xlsx`)
-* **Peran Akademis:** Korpus teranotasi acuan (*ground-truth benchmark*) untuk pelatihan dan evaluasi model IndoBERT pada bab metodologi.
+#### 4. Dataset Siap-Anotasi Emosi MBG (belum dilabeli manusia) (`data/emotion/mbg_tweets_indobert_ready.xlsx`)
+* **Peran Akademis:** Korpus terformat untuk pelatihan (kolom `label` kosong; BELUM ada anotasi manusia, validasi manusia sedang dikerjakan pada 273 cuitan relevan) untuk pelatihan dan evaluasi model IndoBERT pada bab metodologi.
 * **Format & Dimensi:** Microsoft Excel (`.xlsx`) | $3.395$ baris $\times$ $13$ kolom | Terverifikasi integritas sel.
-* **Kamus Variabel (*Data Dictionary*):** Memuat teks mentah, teks bersih, label anotasi emosi manusia (*ground truth*), metadata waktu, metrik keterlibatan, dan skor agregat interaksi (*engagement score*).
+* **Kamus Variabel (*Data Dictionary*):** Memuat teks mentah, teks bersih, kolom `label` (saat ini kosong; belum ada anotasi manusia), metadata waktu, metrik keterlibatan, dan skor agregat interaksi (*engagement score*).
 * **Bukti Visualisasi Publik (Resolusi Tinggi 300 DPI):**
 <div align="center">
   <a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/wordcloud_mbg.png" target="_blank">
@@ -476,7 +476,7 @@ Evaluasi final model klasifikasi emosi MBG menggunakan protokol eksperimen yang 
 | **2** | **Dataset 9 Emosi IndoBERT (Fixed)** | CSV | 5.263 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/results/indobert_9_emosi_fixed.csv) | [🖼️ Lihat Plot Distribusi Emosi](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/emotion_distribution.png) |
 | **3** | **Dataset Deteksi Sindiran & Sarkasme** | CSV | 3.395 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/sarcasm/dataset_sindiran_valid.csv) | [🖼️ Lihat Plot Validasi Sindiran](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/3_sarcasm.png) |
 | **4** | **Dataset Bersih Pasca-Preprocessing** | CSV | 5.309 cuitan | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/processed/data_clean.csv) | [🖼️ Lihat Plot Alur Preprocessing](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/2_dataset_characteristics.png) |
-| **5** | **Dataset Benchmark Anotasi Emosi MBG** | Excel (`.xlsx`) | 3.395 baris | 0 Anomali Kritis | [`📥 Unduh Excel`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/emotion/mbg_tweets_indobert_ready.xlsx) | [🖼️ Lihat Wordcloud Leksikon MBG](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/wordcloud_mbg.png) |
+| **5** | **Dataset Siap-Anotasi Emosi MBG (belum dilabeli manusia)** | Excel (`.xlsx`) | 3.395 baris | 0 Anomali Kritis | [`📥 Unduh Excel`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/emotion/mbg_tweets_indobert_ready.xlsx) | [🖼️ Lihat Wordcloud Leksikon MBG](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/wordcloud_mbg.png) |
 | **6** | **Relasi Jaringan Komunikasi (Edges - CNA/SNA)** | CSV | 692 interaksi (666 unik) | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/sna/network_edges.csv) | [🖼️ Lihat Graf Global Jaringan CNA](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/6_global_network.png) |
 | **7** | **Partisi Node & Komunitas Louvain** | CSV | 971 node terklaster | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/mbg_network_nodes_final.csv) | [🖼️ Lihat Graf Komunitas & Emosi](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/9_emotion_network.png) |
 | **8** | **Peringkat Sentralitas Derajat Aktor** | CSV | 986 aktor terindeks | 0 Null (100% Bersih) | [`📥 Unduh CSV`](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/data/results/sna_degree.csv) | [🖼️ Lihat Plot Asimetri Aktor](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/top_actors.png) |

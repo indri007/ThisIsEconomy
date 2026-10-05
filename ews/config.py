@@ -9,7 +9,9 @@ ATURAN METODOLOGIS TESIS:
   ('Marah', 'Jijik', 'Takut', 'Percaya', 'Netral', 'Sedih', 'Tertarik').
 - Label 'Tertarik' berasal dari kelas 'shame' pada model asli dan TIDAK BOLEH
   diubah menjadi emosi lain tanpa bukti pelatihan ulang.
-- SNA mencakup 971 simpul aktor dan 342 komunitas (Modularity Q=0.9837).
+- SNA (rebuild, regex @mention): korpus penuh 975 node, 662 edge, 335 komponen, giant 89 (9,1%);
+  Q seluruh jaringan 0.9835 (336 komunitas) HANYA mencerminkan fragmentasi; Q giant component 0.6415.
+  Sumber angka: results/FINAL_NUMBERS.json. Label emosi = keluaran otomatis, belum divalidasi manusia.
 - Seluruh metrik berbasis dataset historis empiris (bukan prediksi kausal real-time).
 """
 

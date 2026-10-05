@@ -1,3 +1,4 @@
+raise SystemExit('DITAHAN: klaim asal label (Gemini/silver-standard) belum terbukti. Perbaiki teks dulu, lalu hapus baris ini.')  # HOLD
 import os
 import docx
 from docx.shared import Inches, Pt, RGBColor
