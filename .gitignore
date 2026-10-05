@@ -59,3 +59,4 @@ annotation/_key_*.csv
 annotation/lembar_*.csv
 annotation/adjudicated*.csv
 annotation/_arsip/
+results/network_rebuild_*.csv
