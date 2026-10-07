@@ -39,6 +39,7 @@
 [![Figshare](https://img.shields.io/badge/Figshare-Author_25113948-3489EB?style=for-the-badge&logo=figshare&logoColor=white)](https://figshare.com/authors/Indri_Anjar_Kartika_Sari/25113948)
 [![Open Access](https://img.shields.io/badge/Open_Access-Gold_OA-F68212?style=for-the-badge&logo=openaccess&logoColor=white)](https://github.com/indri007/ThisIsEconomy)
 [![Cite](https://img.shields.io/badge/Cite-CITATION.cff-6366F1?style=for-the-badge&logo=github)](CITATION.cff)
+[![Architecture: Monorepo](https://img.shields.io/badge/Architecture-Polyglot_Monorepo-0ea5e9?style=for-the-badge)](ARCHITECTURE.md)
 
 <br/>
 
@@ -1172,6 +1173,19 @@ Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) secara u
   - Buka menu **`🖼️ Visual Storytelling` ➔ Tab ke-6 `🏛️ Bab IV & Bab V: Peta Temuan Empiris & Rekomendasi`**.
   - Gunakan visual interaktif sebagai instrumen *executive briefing* dalam perumusan kebijakan mitigasi krisis reputasi.
   - Buka menu **`📚 Audit Referensi Scopus`** untuk mengunduh sitasi format APA 7th lengkap dengan tautan DOI untuk publikasi manuskrip jurnal internasional.
+
+---
+
+### 🏛️ ARSITEKTUR MONOREPO & PEMBAGIAN SUBSISTEM (MULTI-TIER PLATFORM)
+
+Repositori ini mengadopsi pola **Polyglot Research Monorepo** yang terbagi ke dalam 4 tier operasional terstruktur. Selengkapnya dapat dibaca pada dokumen arsitektur teknis: [`ARCHITECTURE.md`](ARCHITECTURE.md).
+
+| Tier | Subsistem | Direktori | Stack Teknologi | Port | Perintah Eksekusi |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| **Tier 1** | **Primary Research Dashboard** | [`dashboard/`](dashboard/) | Streamlit, Plotly, PyVis, NetworkX | `8501` | `streamlit run dashboard/app.py` |
+| **Tier 2** | **Headless REST API Gateway** | [`backend/`](backend/) | FastAPI, Uvicorn, Pandas | `8000` | `uvicorn backend.main:app --port 8000` |
+| **Tier 3** | **Interactive Graph Web Client** | [`frontend/`](frontend/) | Next.js 16, React 19, Cytoscape.js | `3000` | `cd frontend && npm run dev` |
+| **Tier 4** | **Scraping Engine & Telegram EWS** | [`twitter_sentiment_app/`](twitter_sentiment_app/) | Twikit, Gemini 2.5 Flash, Cron | CLI | `python scripts/auto_scrape_job.py` |
 
 ---
 
