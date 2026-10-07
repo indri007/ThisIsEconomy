@@ -1,6 +1,7 @@
 # Environment & Secrets (CRITICAL: DO NOT COMMIT TO GITHUB)
 .env
 .env.*
+!.env.example
 *.env
 *.pem
 *.key
