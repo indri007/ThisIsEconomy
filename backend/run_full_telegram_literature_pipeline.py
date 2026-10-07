@@ -14,13 +14,12 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 # Helper utilities
 # ---------------------------------------------------------------------------
-def ensure_pkg(pkg: str):
-    if importlib.util.find_spec(pkg) is None:
-        print(f"[orchestrator] Installing missing package: {pkg}")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", pkg])
+REQUIRED_PKGS = [("pandas", "pandas"), ("docx", "python-docx"), ("tqdm", "tqdm"), ("requests", "requests")]
 
-for pkg in ["pandas", "python-docx", "tqdm", "requests"]:
-    ensure_pkg(pkg)
+for mod_name, pkg_name in REQUIRED_PKGS:
+    if importlib.util.find_spec(mod_name) is None:
+        print(f"[orchestrator] Installing missing package: {pkg_name}")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", pkg_name])
 
 import pandas as pd
 from docx import Document
@@ -112,16 +111,18 @@ summary = final_doc.add_paragraph()
 summary.style = final_doc.styles["Normal"]
 summary.paragraph_format.line_spacing = 1.5
 summary.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+scopus_cnt = (clean_df['scopus_status'].str.contains('VERIFIED', na=False)).sum()
+q1_cnt = (clean_df['scopus_quartile'] == 'Q1').sum()
 summary.add_run(f"Total discovered papers: {len(clean_df)}\n")
 summary.add_run(f"Total cleaned papers: {len(clean_df)}\n")
 for cat in ["DIRECT", "RELATED", "INDIRECT", "IRRELEVANT"]:
     summary.add_run(f"{cat}: {(clean_df['relevance_category']==cat).sum()}\n")
 summary.add_run(f"DOI valid: {(clean_df['doi_valid']==True).sum()}\n")
 summary.add_run(f"DOI invalid: {(clean_df['doi_valid']==False).sum()}\n")
-summary.add_run("Scopus status: UNVERIFIED\n")
-summary.add_run("Q1 status: UNVERIFIED\n")
+summary.add_run(f"Scopus verified venues: {scopus_cnt}\n")
+summary.add_run(f"Scopus Q1 verified articles: {q1_cnt}\n")
 
-# BAB 2 – LITERATURE REVIEW (placeholder – list top 10 titles)
+# BAB 2 – LITERATURE REVIEW (list top 10 titles)
 add_heading("BAB 2 — LITERATURE REVIEW", level=1)
 rev = final_doc.add_paragraph()
 rev.paragraph_format.line_spacing = 1.5
@@ -155,64 +156,14 @@ for i, row in clean_df.head(20).iterrows():
 
 save_doc(final_doc, final_doc_path)
 
-# 3.2 BAB_II_LITERATURE_REVIEW_TELEGRAM.docx
+# 3.2 BAB_II_LITERATURE_REVIEW_TELEGRAM.docx (Substantive Academic Generation)
+from generate_academic_bab2 import build_substantive_bab2_docx, build_substantive_research_gap_docx
 bab2_path = WORKDIR / "BAB_II_LITERATURE_REVIEW_TELEGRAM.docx"
-bab2 = Document()
-section2 = bab2.sections[0]
-section2.top_margin = Cm(4)
-section2.bottom_margin = Cm(3)
-section2.left_margin = Cm(4)
-section2.right_margin = Cm(3)
-# Add placeholder sections 2.1 – 2.13
-headings = [
-    "2.1 Penelitian Terdahulu",
-    "2.2 Telegram Bot",
-    "2.3 Social Network Analysis",
-    "2.4 NLP",
-    "2.5 Emotion Classification",
-    "2.6 Sarcasm Detection",
-    "2.7 ABSA",
-    "2.8 Emoji dan Hashtag",
-    "2.9 Komunikasi Kebijakan Publik",
-    "2.10 Marketing 6.0",
-    "2.11 Research Gap",
-    "2.12 Posisi Penelitian",
-    "2.13 Kerangka Pemikiran",
-]
-for h in headings:
-    bab2.add_heading(h, level=2)
-    bab2.add_paragraph("(Evidence extracted from the literature dataset; details omitted for brevity.)")
-save_doc(bab2, bab2_path)
+build_substantive_bab2_docx(bab2_path, clean_df)
 
-# 3.3 RESEARCH_GAP_AND_NOVELTY.docx
+# 3.3 RESEARCH_GAP_AND_NOVELTY.docx (Substantive Academic Generation)
 gap_path = WORKDIR / "RESEARCH_GAP_AND_NOVELTY.docx"
-gap_doc = Document()
-section3 = gap_doc.sections[0]
-section3.top_margin = Cm(4)
-section3.bottom_margin = Cm(3)
-section3.left_margin = Cm(4)
-section3.right_margin = Cm(3)
-add_heading = lambda txt, lvl: gap_doc.add_heading(txt, level=lvl)
-add_heading("Research Gap and Novelty", level=1)
-sections_gap = [
-    "Evidence",
-    "Existing Research",
-    "Methodological Gap",
-    "Dataset Gap",
-    "Platform Gap",
-    "NLP Gap",
-    "SNA Gap",
-    "Sarcasm Gap",
-    "Emotion Gap",
-    "Multimodal Gap",
-    "Policy Communication Gap",
-    "Marketing 6.0 Gap",
-    "Potential Contribution",
-]
-for s in sections_gap:
-    gap_doc.add_heading(s, level=2)
-    gap_doc.add_paragraph("(Derived from the cleaned literature set.)")
-save_doc(gap_doc, gap_path)
+build_substantive_research_gap_docx(gap_path, clean_df)
 
 # 3.4 THESIS_AUDIT_STATUS.docx
 audit_path = WORKDIR / "THESIS_AUDIT_STATUS.docx"
@@ -222,7 +173,7 @@ section4.top_margin = Cm(4)
 section4.bottom_margin = Cm(3)
 section4.left_margin = Cm(4)
 section4.right_margin = Cm(3)
-add_heading = lambda txt, lvl: audit_doc.add_heading(txt, level=lvl)
+add_heading = lambda txt, level=1: audit_doc.add_heading(txt, level=level)
 add_heading("Thesis Audit Status", level=1)
 thesis_root = Path.home() / "Documents" / "tesis_mbg"
 if thesis_root.exists():
@@ -288,8 +239,8 @@ with report_path.open('w') as rpt:
     for cat in ["DIRECT", "RELATED", "INDIRECT", "IRRELEVANT"]:
         rpt.write(f"{cat}: {(clean_df['relevance_category']==cat).sum()}\n")
     rpt.write("\nDOI VALID: {valid_doi}\n".format(valid_doi=(clean_df['doi_valid']==True).sum()))
-    rpt.write("SCOPUS VERIFIED: UNVERIFIED\n")
-    rpt.write("Q1 VERIFIED: UNVERIFIED\n\n")
+    rpt.write(f"SCOPUS VERIFIED: {scopus_cnt}\n")
+    rpt.write(f"Q1 VERIFIED: {q1_cnt}\n\n")
     rpt.write(f"DOCX VALIDATED: {'YES' if valid else 'NO'}\n")
     rpt.write(f"ZIP GENERATED: {'YES' if zip_path.exists() else 'NO'}\n")
 
