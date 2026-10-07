@@ -1,7 +1,7 @@
 import os
 import sys
 
-PROJECT_ROOT = "/Users/jevin/Documents/tesis_mbg"
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 def get_data_path(filename):
     candidates = [
