@@ -157,7 +157,7 @@ save_doc(final_doc, final_doc_path)
 
 # 3.2 BAB_II_LITERATURE_REVIEW_TELEGRAM.docx
 bab2_path = WORKDIR / "BAB_II_LITERATURE_REVIEW_TELEGRAM.docx"
- bab2 = Document()
+bab2 = Document()
 section2 = bab2.sections[0]
 section2.top_margin = Cm(4)
 section2.bottom_margin = Cm(3)
@@ -186,7 +186,7 @@ save_doc(bab2, bab2_path)
 
 # 3.3 RESEARCH_GAP_AND_NOVELTY.docx
 gap_path = WORKDIR / "RESEARCH_GAP_AND_NOVELTY.docx"
- gap_doc = Document()
+gap_doc = Document()
 section3 = gap_doc.sections[0]
 section3.top_margin = Cm(4)
 section3.bottom_margin = Cm(3)
@@ -216,7 +216,7 @@ save_doc(gap_doc, gap_path)
 
 # 3.4 THESIS_AUDIT_STATUS.docx
 audit_path = WORKDIR / "THESIS_AUDIT_STATUS.docx"
- audit_doc = Document()
+audit_doc = Document()
 section4 = audit_doc.sections[0]
 section4.top_margin = Cm(4)
 section4.bottom_margin = Cm(3)
