@@ -10,6 +10,7 @@ Dilengkapi pengiriman laporan EWS otomatis via Bot Telegram.
 import os
 import sys
 import re
+import time
 from datetime import datetime
 from pathlib import Path
 import pandas as pd
@@ -97,17 +98,27 @@ def send_telegram_ews_report(summary: dict) -> bool:
         "parse_mode": "HTML"
     }
 
-    try:
-        resp = requests.post(url, json=payload, timeout=10)
-        if resp.status_code == 200:
-            print("[TELEGRAM] ✅ Notifikasi laporan EWS berhasil dikirim ke Telegram!")
-            return True
-        else:
-            print(f"[TELEGRAM] ❌ Gagal mengirim: {resp.status_code} {resp.text}")
-            return False
-    except Exception as e:
-        print(f"[TELEGRAM] ⚠️ Error koneksi: {e}")
-        return False
+    max_retries = 3
+    for attempt in range(1, max_retries + 1):
+        try:
+            resp = requests.post(url, json=payload, timeout=10)
+            if resp.status_code == 200:
+                print(f"[TELEGRAM] ✅ Notifikasi laporan EWS berhasil dikirim ke Telegram! (percobaan {attempt})")
+                return True
+            elif resp.status_code == 429:
+                retry_after = int(resp.headers.get("Retry-After", 2 ** attempt))
+                print(f"[TELEGRAM] ⏳ Rate limited (HTTP 429). Menunggu {retry_after}s sebelum coba lagi...")
+                time.sleep(retry_after)
+            else:
+                print(f"[TELEGRAM] ❌ Gagal mengirim (HTTP {resp.status_code}): {resp.text}")
+                if attempt < max_retries:
+                    time.sleep(2 ** attempt)
+        except Exception as e:
+            print(f"[TELEGRAM] ⚠️ Error koneksi pada percobaan {attempt}/{max_retries}: {e}")
+            if attempt < max_retries:
+                time.sleep(2 ** attempt)
+
+    return False
 
 
 def analyze_new_batch(df: pd.DataFrame) -> dict:
