@@ -10,7 +10,7 @@ from urllib.parse import quote
 # CONFIGURATION
 # ============================================================
 
-BASE_DIR = Path("/Users/jevin/Documents/tesis_mbg/backend")
+BASE_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = BASE_DIR / "telegram_literature_output"
 
 INPUT_FILE = BASE_DIR / "telegram_papers_latest.csv"

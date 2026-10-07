@@ -5,7 +5,7 @@ import re
 import os
 import sys
 
-BASE = Path("/Users/jevin/Documents/tesis_mbg/backend")
+BASE = Path(__file__).resolve().parent
 OUT = BASE / "telegram_literature_output"
 DESKTOP = Path("/Users/jevin/Desktop/TELEGRAM_LITERATURE_FINAL")
 

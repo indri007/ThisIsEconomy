@@ -57,6 +57,8 @@ def get_secret(key_name: str, default: str = None) -> str:
     return default
 
 
+import html
+
 def send_telegram_ews_report(summary: dict) -> bool:
     """Mengirim ringkasan laporan EWS otomatis ke Telegram."""
     token = get_secret("TELEGRAM_BOT_TOKEN")
@@ -66,25 +68,33 @@ def send_telegram_ews_report(summary: dict) -> bool:
         print("[TELEGRAM] Token atau Chat ID belum disetel, lewati pengiriman.")
         return False
 
+    time_str = html.escape(str(summary.get("timestamp", "-")))
+    added_str = html.escape(str(summary.get("added_count", 0)))
+    total_str = f"{summary.get('total_records', 0):,}"
+    risk_str = html.escape(str(summary.get("risk_level", "-")))
+    keywords_str = html.escape(str(summary.get("top_keywords", "-")))
+    sample_str = html.escape(str(summary.get("sample_tweet", "-")))
+    action_str = html.escape(str(summary.get("action", "-")))
+
     message_text = (
-        f"🚨 *LAPORAN EWS MBG TERBARU*\n"
-        f"⏰ *Waktu*: {summary['timestamp']} WIB\n"
-        f"───────────────────────────────\n"
-        f"📥 *Status Tarikan* : {summary['added_count']} Cuitan Baru\n"
-        f"📊 *Total Database* : {summary['total_records']:,} Cuitan Akumulasi\n"
-        f"⚠️ *Level Risiko EWS*: {summary['risk_level']}\n"
-        f"🔥 *Kata Kunci Top* : {summary['top_keywords']}\n"
-        f"───────────────────────────────\n"
-        f"💬 *Contoh Isu Warganet*:\n_{summary['sample_tweet']}_\n"
-        f"───────────────────────────────\n"
-        f"💡 *Rekomendasi*: {summary['action']}"
+        "🚨 <b>LAPORAN EWS MBG TERBARU</b>\n"
+        f"⏰ <b>Waktu</b>: {time_str} WIB\n"
+        "───────────────────────────────\n"
+        f"📥 <b>Status Tarikan</b> : {added_str} Cuitan Baru\n"
+        f"📊 <b>Total Database</b> : {total_str} Cuitan Akumulasi\n"
+        f"⚠️ <b>Level Risiko EWS</b>: {risk_str}\n"
+        f"🔥 <b>Kata Kunci Top</b> : {keywords_str}\n"
+        "───────────────────────────────\n"
+        f"💬 <b>Contoh Isu Warganet</b>:\n<i>{sample_str}</i>\n"
+        "───────────────────────────────\n"
+        f"💡 <b>Rekomendasi</b>: {action_str}"
     )
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {
         "chat_id": chat_id,
         "text": message_text,
-        "parse_mode": "Markdown"
+        "parse_mode": "HTML"
     }
 
     try:
