@@ -42,7 +42,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/raw/live_tweets_mbg_accumulated.csv
+          git add -f data/raw/live_tweets_mbg_accumulated.csv
           if git diff --staged --quiet; then
             echo "Tidak ada data baru untuk di-commit."
           else
