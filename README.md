@@ -1212,6 +1212,12 @@ Dashboard telah terpasang dan aktif 24/7 di Streamlit Community Cloud:
    ```
    Aplikasi otomatis terbuka di peramban web pada alamat [`http://localhost:8501`](http://localhost:8501).
 
+6. **Langkah 5 — Menjalankan Automated Test Suite:**
+   ```bash
+   python3 -m unittest discover -s tests -p "test_*.py" -v
+   ```
+   Seluruh 10 pengujian otomatis (integritas korpus, import modular dashboard, dan engine risiko EWS) akan berjalan dan terverifikasi.
+
 ---
 
 ### 🧭 PANDUAN NAVIGASI & FITUR 6 MENU DASHBOARD STREAMLIT
@@ -1396,12 +1402,32 @@ tesis_mbg/
 │   ├── Easley_Kleinberg_2010_Networks_Book.pdf # Networks, Crowds & Markets (19 MB)
 │   └── ...                                 # PNAS, ACM, SemEval, ACL, Cornell
 │
-├── 📝 manuscript/                          # Journal Submission Documents
+├── 📝 manuscript/                          # Naskah Lengkap Tesis & Jurnal Ilmiah
+│   ├── Scopus_Q1_Manuskrip_Indri_Anjar_Kartika_Sari.docx # Target Springer SNAM (Q1)
+│   ├── Anonymized_Manuscript_Scopus_Q1.docx # Naskah Blind Review
 │   ├── Mediator_Manuskrip_Indri_Anjar_Kartika_Sari.docx # Target SINTA 2 (Mediator)
+│   ├── Tesis_Indri_Anjar_Kartika_Sari.docx  # Naskah Lengkap Tesis Magister
 │   └── manuscript_jurnal.md                # International IMRaD Draft
 │
-└── 🌐 dashboard/
-    └── app.py                              # Streamlit dashboard (5 pages)
+├── 🧪 tests/                               # Automated Test Suite (Pytest / Unittest)
+│   ├── test_data_integrity.py              # Verifikasi integritas file korpus & hasil
+│   ├── test_dashboard_imports.py           # Validasi import modul dashboard
+│   └── test_ews_engine.py                  # Pengujian komputasi metrik risiko EWS
+│
+└── 🌐 dashboard/                           # Production Streamlit Dashboard
+    ├── app.py                              # Entrypoint ringan (<100 baris)
+    └── modules/                            # Arsitektur modular per bab & fungsi
+        ├── config.py                       # Konfigurasi global & path resolver
+        ├── data_loader.py                  # Cache loader dataset & evaluasi
+        ├── ui_components.py                # Stepper, checklist 70 poin & profil
+        ├── views_bab1.py                   # Bab I: Pendahuluan & RM 1-6
+        ├── views_bab2.py                   # Bab II: Landasan Teori
+        ├── views_bab3.py                   # Bab III: Metodologi Komputasional
+        ├── views_bab4.py                   # Bab IV: Temuan Empiris & PyVis Graph
+        ├── views_bab5.py                   # Bab V: Rekomendasi Kebijakan BGN
+        ├── views_ews.py                    # EWS v2, Brand24 & Twitter AI
+        ├── views_storytelling.py           # Galeri 10 Master Plot Visual
+        └── views_audit.py                  # Audit Integritas Data & Scopus
 ```
 
 
