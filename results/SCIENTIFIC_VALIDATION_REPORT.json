@@ -1,11 +1,11 @@
 {
   "report_title": "Scientific Validation Report — MBG Thesis",
-  "generated_at": "2026-10-01T16:19:56.286423+00:00",
+  "generated_at": "2026-10-06T06:29:24.464748+00:00",
   "provenance": {
-    "timestamp_utc": "2026-10-01T16:19:56.286423+00:00",
+    "timestamp_utc": "2026-10-06T06:29:24.464748+00:00",
     "python_version": "3.12.7 (main, Jul 17 2026, 01:41:11) [Clang 17.0.0 (clang-1700.0.13.5)]",
     "platform": "macOS-15.3.1-arm64-arm-64bit",
-    "git_commit": "b19a761d97a150e50d7943c2d5bec8ee79e0b702",
+    "git_commit": "8d8863a83c48eb48878a34bbad88afc9184f00de",
     "file_hashes": {
       "FINAL_indobert_predictions.csv": "c65cb5e5e624bd0e41d98704d92940f64375d747aeacdeaa9c21f748f8f6edb1",
       "FINAL_MODEL_COMPARISON.csv": "74a32e29ee2f87f3f81cf1f51dfa54fa4af8cec538137bff5b33fa27237699b7",
@@ -86,7 +86,7 @@
         "weight": 4,
         "status": "✅",
         "earned": 4,
-        "note": "SHA-256 hashes recorded; git=b19a761d97a1"
+        "note": "SHA-256 hashes recorded; git=8d8863a83c48"
       },
       {
         "item": "Automated readiness scoring",

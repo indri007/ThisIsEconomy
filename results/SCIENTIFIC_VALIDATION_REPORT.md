@@ -1,6 +1,6 @@
 # 🔬 Scientific Validation Report — MBG Thesis
 
-> Generated: 2026-10-01T16:19:56.286423+00:00
+> Generated: 2026-10-06T06:29:24.464748+00:00
 
 ---
 
@@ -17,7 +17,7 @@
 | 95% Bootstrap CI computed | 4% | ✅ | Bootstrap (n=2000) for IndoBERT; Wilson/Wald for baselines |
 | Effect size (Cohen's d / Δ) computed | 4% | ✅ | Delta accuracy/F1 + Cohen's d for all pairs |
 | Statistical test (McNemar) computed | 4% | ✅ | McNemar requires per-sample baseline predictions (see mcnemar_results.csv) |
-| Provenance / reproducibility metadata | 4% | ✅ | SHA-256 hashes recorded; git=b19a761d97a1 |
+| Provenance / reproducibility metadata | 4% | ✅ | SHA-256 hashes recorded; git=8d8863a83c48 |
 | Automated readiness scoring | 4% | ✅ | This scorecard — run scientific_validation_audit.py |
 | E2E validation report generated | 4% | ✅ | SCIENTIFIC_VALIDATION_REPORT.json + .md |
 
@@ -83,9 +83,9 @@
 
 | Key | Value |
 |-----|-------|
-| Timestamp UTC | `2026-10-01T16:19:56.286423+00:00` |
+| Timestamp UTC | `2026-10-06T06:29:24.464748+00:00` |
 | Python | `3.12.7` |
-| Git commit | `b19a761d97a1` |
+| Git commit | `8d8863a83c48` |
 | SHA-256 `FINAL_indobert_predictions.csv` | `c65cb5e5e624bd0e…` |
 | SHA-256 `FINAL_MODEL_COMPARISON.csv` | `74a32e29ee2f87f3…` |
 | SHA-256 `final_split_verification.csv` | `2f00f5963a8ad0a8…` |

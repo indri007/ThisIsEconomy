@@ -1,5 +1,8 @@
 <div align="center">
 
+<!-- HERO BANNER -->
+<img width="100%" src="docs/assets/github_hero_banner_neural_persona.jpg" alt="Decoding the Emotion Behind the Network - Communication Network Analysis & Sarcasm Detection" style="border-radius: 12px; margin-bottom: 16px; box-shadow: 0 12px 36px rgba(0,0,0,0.4);"/>
+
 <!-- HERO -->
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=DECODING%20THE%20EMOTION%20BEHIND%20THE%20NETWORK&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=CNA%20%C3%97%20IndoBERT%20%C3%97%209%20Emotions%20%C3%97%20Sarcasm%20%C3%97%20ABSA%20%C3%97%20Communication%20Networks&descAlignY=60&descAlign=50"/>
 
