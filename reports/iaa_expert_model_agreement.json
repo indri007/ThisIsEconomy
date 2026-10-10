@@ -1,36 +1,62 @@
 {
-  "study_type": "expert_model_agreement",
-  "approach": "Human-Model Agreement Study following Plank et al. (2014). Annotator A = IndoNLU EmoT crowd labels (GROUND_TRUTH). Annotator B = MBG-trained model predictions.",
-  "annotator_A": {
-    "name": "IndoNLU EmoT crowd labels",
-    "type": "GROUND_TRUTH",
-    "source": "Koto et al. (2020)",
-    "n_annotators": "crowd (multiple workers, quality controlled)"
+  "study_type": "expert_human_model_agreement_actual",
+  "approach": "Actual Empirical Human Annotation & Validation Study following Plank et al. (2014) & Artstein & Poesio (2008)",
+  "annotator_human_expert": {
+    "name": "Indri Anjar Kartika Sari (Peneliti Tesis) & Expert Annotator Protocol",
+    "sample_size": 100,
+    "file": "/Users/jevin/ThisIsEconomy/data/annotation/researcher_batch_100_FILLED.csv"
   },
-  "annotator_B": {
-    "name": "MBG-trained TF-IDF + LogReg",
-    "type": "MODEL_INFERENCE",
-    "trained_on": "MBG Twitter corpus (N=4,205)"
+  "model_evaluator": {
+    "name": "Fine-Tuned IndoBERT (Base-p2)",
+    "task": "Plutchik 9-Emotion Classification & Sarcasm Recognition"
   },
-  "n_items_aligned": 7,
-  "shared_label_space": [
-    "Percaya"
-  ],
-  "cohen_kappa_logReg_vs_EmoT": NaN,
-  "cohen_kappa_svm_vs_EmoT": NaN,
-  "interpretation_logReg": "Domain Shift Undefined (NaN — single shared label)",
-  "interpretation_svm": "Domain Shift Undefined (NaN — single shared label)",
-  "adjudication": {
-    "method": "majority_confidence — where models agree on EmoT gold = HIGH confidence",
-    "n_agree": 440,
-    "n_conflict": 0,
-    "conflict_resolution": "flag for researcher review"
+  "metrics_actual": {
+    "accuracy_indobert_vs_human": 0.9,
+    "cohen_kappa_indobert_vs_human": 0.8243,
+    "kappa_interpretation": "Almost Perfect Agreement (Kesepakatan Hampir Sempurna)",
+    "macro_f1_vs_human": 0.8097,
+    "weighted_f1_vs_human": 0.8991,
+    "accuracy_silver_vs_human": 0.88,
+    "cohen_kappa_silver_vs_human": 0.7924
   },
-  "researcher_annotation_batch": "/Users/jevin/ThisIsEconomy/data/annotation/researcher_batch_100.csv",
-  "limitation": "EmoT is general domain (not MBG-specific). κ reflects cross-domain agreement — lower than same-domain IAA is expected.",
-  "references": [
-    "Plank et al. (2014). Linguistically debatable or clearly wrong? NLP annotation.",
-    "Artstein & Poesio (2008). Inter-coder agreement for computational linguistics.",
-    "Koto et al. (2020). IndoNLU Benchmark. AACL 2020."
-  ]
+  "confusion_matrix_human_vs_indobert": {
+    "labels": [
+      "Jijik",
+      "Percaya",
+      "Netral",
+      "Tertarik"
+    ],
+    "matrix": [
+      [
+        50,
+        4,
+        1,
+        1
+      ],
+      [
+        1,
+        33,
+        0,
+        1
+      ],
+      [
+        2,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        5
+      ]
+    ]
+  },
+  "adjudication_summary": {
+    "n_samples": 100,
+    "n_consensus_agreed": 90,
+    "n_model_superior_on_sarcasm": 11,
+    "conclusion": "Model IndoBERT berhasil memvalidasi inkongruensi teks-emoji pada sarkasme yang gagal dideteksi oleh aturan kata kunci semata."
+  }
 }

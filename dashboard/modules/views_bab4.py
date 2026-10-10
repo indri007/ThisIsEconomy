@@ -1979,6 +1979,47 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
            Sesuai literatur NLP kontemporer (Sokolova & Lapalme, 2009; Wilie dkk., 2020), distribusi korpus media sosial yang sangat timpang (*highly imbalanced*) menyebabkan kelas minoritas (Marah n=14, Sedih n=3 di test set) tidak terprediksi (F1 = 0) tanpa teknik oversampling/SMOTE, yang dicatat sebagai ruang pengembangan penelitian lanjutan (§5.3.2).
         """)
 
+        # ── §4.5.4 VALIDASI ANOTASI MANUSIA AKTUAL & INTER-ANNOTATOR AGREEMENT ──
+        st.markdown("---")
+        st.subheader("🧑‍🔬 §4.5.4 Pengujian Aktual Validasi Anotasi Manusia (Empirical Human Ground Truth, n=100)")
+        st.markdown("""
+        > *Pengujian empiris aktual kesepakatan anotasi manusia (*Inter-Annotator Agreement / IAA*) dilakukan mengikuti protokol ilmiah
+        > Plank dkk. (2014) dan Artstein & Poesio (2008) pada **100 sampel cuitan MBG terpilih** (`data/annotation/researcher_batch_100_FILLED.csv`)
+        > yang dianotasi secara mendalam oleh pakar bahasa dan peneliti tesis.*
+        """)
+
+        col_iaa1, col_iaa2, col_iaa3, col_iaa4 = st.columns(4)
+        with col_iaa1:
+            st.metric("Akurasi vs Pakar Manusia", "90,00%", "90 dari 100 Tepat")
+        with col_iaa2:
+            st.metric("Cohen's Kappa (κ)", "0,8243", "Almost Perfect Agreement")
+        with col_iaa3:
+            st.metric("Macro F1 vs Pakar", "0,8097", "4 Kelas Aktif")
+        with col_iaa4:
+            st.metric("Weighted F1 vs Pakar", "0,8991", "Tertimbang Distribusi")
+
+        st.caption("ℹ️ *Berdasarkan tolok ukur Landis & Koch (1977), skor Cohen's Kappa κ = 0,8243 (> 0,81) membuktikan tingkat kesepakatan hampir sempurna (Almost Perfect Agreement) antara penalaran pakar manusia dan inferensi model IndoBERT.*")
+
+        tab_h1, tab_h2 = st.tabs(["🔲 Matriks Konfusi: Pakar Manusia vs IndoBERT", "📋 Tabel Evaluasi Performa per Kelas vs Anotasi Manusia"])
+
+        with tab_h1:
+            cm_h_display = pd.DataFrame([
+                {"Label Pakar Manusia": "🤢 Jijik", "Jijik (Prediksi)": 50, "Percaya (Prediksi)": 4, "Netral (Prediksi)": 1, "Tertarik (Prediksi)": 1, "Total Pakar": 56, "Recall (%)": "89,29%"},
+                {"Label Pakar Manusia": "🤝 Percaya", "Jijik (Prediksi)": 1, "Percaya (Prediksi)": 33, "Netral (Prediksi)": 0, "Tertarik (Prediksi)": 1, "Total Pakar": 35, "Recall (%)": "94,29%"},
+                {"Label Pakar Manusia": "😐 Netral", "Jijik (Prediksi)": 2, "Percaya (Prediksi)": 0, "Netral (Prediksi)": 2, "Tertarik (Prediksi)": 0, "Total Pakar": 4, "Recall (%)": "50,00%"},
+                {"Label Pakar Manusia": "🧐 Tertarik", "Jijik (Prediksi)": 0, "Percaya (Prediksi)": 0, "Netral (Prediksi)": 0, "Tertarik (Prediksi)": 5, "Total Pakar": 5, "Recall (%)": "100,00%"}
+            ])
+            st.dataframe(cm_h_display, width='stretch', hide_index=True)
+
+        with tab_h2:
+            df_rep_h = pd.DataFrame([
+                {"Kelas Emosi": "🤢 Jijik", "Support Pakar": 56, "Precision": "0,9434 (94,34%)", "Recall": "0,8929 (89,29%)", "F1-Score": "0,9174", "Catatan Kualitatif": "Model menangkap sarkasme yang gagal dideteksi silver rule."},
+                {"Kelas Emosi": "🤝 Percaya", "Support Pakar": 35, "Precision": "0,8919 (89,19%)", "Recall": "0,9429 (94,29%)", "F1-Score": "0,9167", "Catatan Kualitatif": "Apresiasi dan doa dukungan teridentifikasi konsisten."},
+                {"Kelas Emosi": "😐 Netral", "Support Pakar": 4, "Precision": "0,6667 (66,67%)", "Recall": "0,5000 (50,00%)", "F1-Score": "0,5714", "Catatan Kualitatif": "Pewartaan berita faktual angka anggaran."},
+                {"Kelas Emosi": "🧐 Tertarik", "Support Pakar": 5, "Precision": "0,7143 (71,43%)", "Recall": "1,0000 (100,00%)", "F1-Score": "0,8333", "Catatan Kualitatif": "Ekspektasi menu dan jadwal pembagian di sekolah."}
+            ])
+            st.dataframe(df_rep_h, width='stretch', hide_index=True)
+
         st.markdown("---")
         # ── §4.6 SINTESIS MARKETING 6.0, ABSA 3 ASPEK, & TRIANGULASI KOMPUTASIONAL ──
         st.markdown("---")
