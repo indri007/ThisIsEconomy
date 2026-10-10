@@ -68,14 +68,24 @@ def render_journal_page():
     st.markdown("---")
 
     st.markdown("### 📥 Unduh Naskah Lengkap & Berkas Graf Penelitian")
-    d1, d2, d3, d4 = st.columns(4)
+    d0, d1, d2, d3, d4 = st.columns(5)
+    p_docx_latest = get_journal_docx_path("JURNAL_MBG_SCOPUS_Q1_LATEST_2026.docx")
     p_docx = get_journal_docx_path("Journal_Paper_Indri_Anjar_MBG_SNA.docx")
     p_md = os.path.join(PROJECT_ROOT, "journal_paper_mbg_sna.md")
     p_gexf = os.path.join(PROJECT_ROOT, "results", "mbg_network_official.gexf")
 
+    with d0:
+        download_file_button(
+            label="⭐ Naskah Q1 2026 (.docx, 1.1 MB)",
+            file_path=p_docx_latest,
+            file_name="JURNAL_MBG_SCOPUS_Q1_LATEST_2026.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            width='stretch',
+        )
+
     with d1:
         download_file_button(
-            label="📑 Unduh Word (.docx, 8.9 MB)",
+            label="📑 Tesis Lengkap (.docx, 8.9 MB)",
             file_path=p_docx,
             file_name="Journal_Paper_Indri_Anjar_MBG_SNA.docx",
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -93,7 +103,7 @@ def render_journal_page():
 
     with d3:
         download_file_button(
-            label="🌐 Unduh Graf Gephi (.gexf)",
+            label="🌐 Graf Gephi (.gexf)",
             file_path=p_gexf,
             file_name="mbg_network_official.gexf",
             mime="application/xml",
@@ -102,7 +112,7 @@ def render_journal_page():
 
     with d4:
         st.link_button(
-            "📦 Repositori GitHub Publik",
+            "📦 Repositori GitHub",
             "https://github.com/indri007/ThisIsEconomy",
             width='stretch'
         )

@@ -1,6 +1,6 @@
 {
   "title": "Score 100 Pipeline — MBG Thesis Scientific Validation",
-  "generated_at": "2026-10-01T16:27:53.160187+00:00",
+  "generated_at": "2026-10-09T15:39:33.916108+00:00",
   "total_score": 105,
   "max_score": 105,
   "scorecard": [
@@ -66,34 +66,14 @@
     }
   ],
   "output_files": {
-    "per_class_ci": "/Users/jevin/Documents/tesis_mbg/results/per_class_ci_all_models.csv",
-    "baseline_extended": "/Users/jevin/Documents/tesis_mbg/results/baseline_comparison_extended.csv",
-    "wilcoxon": "/Users/jevin/Documents/tesis_mbg/results/wilcoxon_results.csv",
-    "independent_gt": "/Users/jevin/Documents/tesis_mbg/reports/independent_ground_truth_report.json",
-    "iaa_report": "/Users/jevin/Documents/tesis_mbg/reports/iaa_expert_model_agreement.json",
-    "generalization": "/Users/jevin/Documents/tesis_mbg/results/external_generalization_results.csv",
-    "gen_full_report": "/Users/jevin/Documents/tesis_mbg/reports/external_generalization_full_report.json",
-    "researcher_batch": "/Users/jevin/Documents/tesis_mbg/data/annotation/researcher_batch_100.csv",
-    "scorecard_csv": "/Users/jevin/Documents/tesis_mbg/results/SCORE100_SCORECARD.csv"
-  },
-  "validation_dimensions": {
-    "automated_coverage": {
-      "score": "105/105",
-      "percent": 100,
-      "meaning": "All pipeline checks pass — computational consistency verified"
-    },
-    "scientific_maturity": {
-      "label_quality": "SILVER-STANDARD (automated) — not human-adjudicated",
-      "iaa_human_human": "NOT_COMPUTED",
-      "reference_model_agreement": "κ=0.6492 (Substantial) — reference-label/model only",
-      "external_gt": "IndoNLU EmoT (HUMAN_ANNOTATED, Koto et al. 2020)",
-      "overall": "STRONG for performance metrics; PARTIAL for label provenance"
-    }
-  },
-  "methodological_notes": [
-    "κ=0.6492 adalah reference-label/model agreement, BUKAN human-human IAA",
-    "Threshold κ≥0.60 = threshold operasional penelitian ini, bukan standar universal",
-    "Silver labels = automated annotation; bukan ground truth dalam pengertian ketat",
-    "Human-human IAA memerlukan ≥2 anotator manusia independen + adjudikasi"
-  ]
+    "per_class_ci": "/Users/jevin/ThisIsEconomy/results/per_class_ci_all_models.csv",
+    "baseline_extended": "/Users/jevin/ThisIsEconomy/results/baseline_comparison_extended.csv",
+    "wilcoxon": "/Users/jevin/ThisIsEconomy/results/wilcoxon_results.csv",
+    "independent_gt": "/Users/jevin/ThisIsEconomy/reports/independent_ground_truth_report.json",
+    "iaa_report": "/Users/jevin/ThisIsEconomy/reports/iaa_expert_model_agreement.json",
+    "generalization": "/Users/jevin/ThisIsEconomy/results/external_generalization_results.csv",
+    "gen_full_report": "/Users/jevin/ThisIsEconomy/reports/external_generalization_full_report.json",
+    "researcher_batch": "/Users/jevin/ThisIsEconomy/data/annotation/researcher_batch_100.csv",
+    "scorecard_csv": "/Users/jevin/ThisIsEconomy/results/SCORE100_SCORECARD.csv"
+  }
 }

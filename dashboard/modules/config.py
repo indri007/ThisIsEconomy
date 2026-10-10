@@ -338,10 +338,18 @@ def render_sidebar_downloads():
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 🌐 Akses Publik & Unduhan")
 
+    p_docx_latest_side = get_journal_docx_path("JURNAL_MBG_SCOPUS_Q1_LATEST_2026.docx")
     p_docx_side = get_journal_docx_path("Journal_Paper_Indri_Anjar_MBG_SNA.docx")
     with st.sidebar:
         download_file_button(
-            label="📑 Unduh Naskah Jurnal (.docx)",
+            label="⭐ Naskah Scopus Q1 2026 (.docx)",
+            file_path=p_docx_latest_side,
+            file_name="JURNAL_MBG_SCOPUS_Q1_LATEST_2026.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            width='stretch',
+        )
+        download_file_button(
+            label="📑 Naskah Lengkap Tesis (.docx)",
             file_path=p_docx_side,
             file_name="Journal_Paper_Indri_Anjar_MBG_SNA.docx",
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",

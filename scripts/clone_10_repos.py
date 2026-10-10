@@ -16,7 +16,8 @@ REPOS = [
     ("Information-Diffusion-Datasets", "https://github.com/fuxiaG/Information-Diffusion-Datasets.git"),
 ]
 
-TARGET_DIR = "/Users/jevin/Documents/tesis_mbg/cloned_repos"
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TARGET_DIR = os.path.join(PROJECT_ROOT, "cloned_repos")
 
 def main():
     os.makedirs(TARGET_DIR, exist_ok=True)

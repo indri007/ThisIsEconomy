@@ -1,6 +1,6 @@
 # 🏆 Score 100 — Scientific Validation Report
 
-> Generated: 2026-10-01T16:27:53.160187+00:00
+> Generated: 2026-10-09T15:39:33.916108+00:00
 
 ## Final Score: 105/105 = 100%
 
@@ -33,10 +33,10 @@
 
 | Model | Accuracy | 95% CI | Macro-F1 | 95% CI |
 |-------|----------|--------|----------|--------|
-| MajorityClass | 0.5728 | [0.5425, 0.6030] | 0.1214 | [0.1172, 0.1461] |
-| TF-IDF + LogReg | 0.6711 | [0.4622, 0.5236] | 0.3133 | [0.1375, 0.1809] |
-| TF-IDF + LinearSVM | 0.6805 | [0.4310, 0.4924] | 0.3724 | [0.1429, 0.1905] |
-| IndoBERT Group-Aware | 0.7940 | [0.3837, 0.4414] | 0.5160 | [0.1474, 0.1990] |
+| MajorityClass | 0.5728 | [0.5425, 0.6011] | 0.1214 | [0.1172, 0.1460] |
+| TF-IDF + LogReg | 0.6711 | [0.6437, 0.6995] | 0.3133 | [0.2945, 0.3746] |
+| TF-IDF + LinearSVM | 0.6805 | [0.6541, 0.7070] | 0.3724 | [0.3338, 0.4421] |
+| IndoBERT Group-Aware | 0.7940 | [0.7694, 0.8176] | 0.5160 | [0.4765, 0.6070] |
 
 ---
 
@@ -57,9 +57,9 @@
 
 ## 📐 IAA — Expert-Model Agreement Study
 
-- Cohen's κ (EmoT gold vs MBG-LogReg): **nan** → Almost Perfect
+- Cohen's κ (EmoT gold vs MBG-LogReg): **nan** → Domain Shift Undefined (NaN — single shared label)
 
-- Cohen's κ (EmoT gold vs MBG-SVM):    **nan** → Almost Perfect
+- Cohen's κ (EmoT gold vs MBG-SVM):    **nan** → Domain Shift Undefined (NaN — single shared label)
 
 - Reference: Plank et al. (2014); Artstein & Poesio (2008)
 

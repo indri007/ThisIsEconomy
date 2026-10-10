@@ -161,7 +161,7 @@ Sumber: `results/macro_topology_metrics.json`
 
 ## 3.1 Komparasi Temporal Multi-Periode (Pra-Eskalasi vs. Puncak Krisis)
 
-Sumber: `results/nodexl_multi_period_comparison.csv` & Lembar `Period Comparison` pada [`NodeXL_MBG_Tesis_Indri_Anjar.xlsx`](file:///Users/jevin/Documents/tesis_mbg/NodeXL_MBG_Tesis_Indri_Anjar.xlsx)
+Sumber: `results/nodexl_multi_period_comparison.csv` & Lembar `Period Comparison` pada [`NodeXL_MBG_Tesis_Indri_Anjar.xlsx`](NodeXL_MBG_Tesis_Indri_Anjar.xlsx)
 
 | Dimensi Metrik Jaringan | Periode 1: Pra-Eskalasi (Maret–April 2026) | Periode 2: Puncak Krisis (Mei 2026) | Delta / Interpretasi Dinamika |
 |:---|:---|:---|:---|

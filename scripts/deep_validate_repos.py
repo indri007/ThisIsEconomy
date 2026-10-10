@@ -15,7 +15,8 @@ REPOS = [
     ("Information-Diffusion-Datasets", "https://github.com/fuxiaG/Information-Diffusion-Datasets.git"),
 ]
 
-BASE = "/Users/jevin/Documents/tesis_mbg/cloned_repos"
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE = os.path.join(PROJECT_ROOT, "cloned_repos")
 
 for idx, (name, url) in enumerate(REPOS, 1):
     path = os.path.join(BASE, name)

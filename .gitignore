@@ -68,5 +68,5 @@ data/raw/
 
 data/raw/
 *.env
-.streamlit/secrets.toml
 results/FINAL_NUMBERS.json
+data/external/

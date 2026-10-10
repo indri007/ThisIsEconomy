@@ -79,11 +79,13 @@ from sklearn.metrics import (
 from sklearn.preprocessing import LabelEncoder
 from sklearn.svm import LinearSVC
 
-BASE    = pathlib.Path("/Users/jevin/Documents/tesis_mbg")
+BASE    = pathlib.Path(__file__).resolve().parent.parent
 RESULTS = BASE / "results"
 REPORTS = BASE / "reports"
 ANN     = BASE / "data" / "annotation"
 ANN.mkdir(parents=True, exist_ok=True)
+REPORTS.mkdir(parents=True, exist_ok=True)
+RESULTS.mkdir(parents=True, exist_ok=True)
 
 TIMESTAMP = datetime.now(timezone.utc).isoformat()
 
@@ -107,11 +109,15 @@ def sha256(p: pathlib.Path) -> str:
 
 def bootstrap_ci(y_true, y_pred, metric_fn, n=2000, alpha=0.05, seed=42):
     rng = np.random.default_rng(seed)
-    N = len(y_true)
-    scores = [metric_fn(y_true[rng.integers(0, N, N)], y_pred[rng.integers(0, N, N)])
-              for _ in range(n)]
+    y_true_arr = np.asarray(y_true)
+    y_pred_arr = np.asarray(y_pred)
+    N = len(y_true_arr)
+    scores = []
+    for _ in range(n):
+        idx = rng.integers(0, N, N)
+        scores.append(metric_fn(y_true_arr[idx], y_pred_arr[idx]))
     lo, hi = np.percentile(scores, [alpha/2*100, (1-alpha/2)*100])
-    return float(metric_fn(y_true, y_pred)), float(lo), float(hi)
+    return float(metric_fn(y_true_arr, y_pred_arr)), float(lo), float(hi)
 
 def macro_f1(y_true, y_pred):
     return f1_score(y_true, y_pred, average="macro", zero_division=0)
@@ -120,7 +126,14 @@ def accuracy(y_true, y_pred):
     return np.mean(np.array(y_true) == np.array(y_pred))
 
 def interpret_kappa(k):
-    k = float(k)
+    if k is None or (isinstance(k, (float, int)) and np.isnan(k)):
+        return "Domain Shift Undefined (NaN — single shared label)"
+    try:
+        k = float(k)
+    except (ValueError, TypeError):
+        return "Domain Shift Undefined (NaN)"
+    if np.isnan(k):
+        return "Domain Shift Undefined (NaN — single shared label)"
     if k < 0:    return "Poor"
     if k < 0.20: return "Slight"
     if k < 0.40: return "Fair"
@@ -161,7 +174,9 @@ X_test  = test_df["processed_text"].fillna("").astype(str).values
 y_test_silver = test_df["predicted_emotion"].astype(str).values
 print(f"  Train: {len(X_train):,}  |  Test: {len(X_test):,}")
 
-emot_base = BASE / "lib/IndoNLU/dataset/emot_emotion-twitter"
+emot_base = BASE / "data" / "external" / "emot_emotion-twitter"
+if not emot_base.exists():
+    emot_base = BASE / "lib" / "IndoNLU" / "dataset" / "emot_emotion-twitter"
 emot_test = pd.read_csv(emot_base / "test_preprocess.csv")
 emot_train = pd.read_csv(emot_base / "train_preprocess.csv")
 emot_valid = pd.read_csv(emot_base / "valid_preprocess.csv")
@@ -435,8 +450,12 @@ gold_aligned = gold_labels[mask]
 pred_aligned = pred_labels[mask]
 print(f"  Aligned items for κ: {mask.sum()}")
 
-kappa_model_gold = cohen_kappa_score(gold_aligned, pred_aligned)
-print(f"  Cohen's κ (EmoT gold vs MBG-TF-IDF): {kappa_model_gold:.4f}  → {interpret_kappa(kappa_model_gold)}")
+if len(shared) >= 2 and mask.sum() > 0:
+    kappa_model_gold = cohen_kappa_score(gold_aligned, pred_aligned)
+else:
+    kappa_model_gold = np.nan
+k_str = f"{kappa_model_gold:.4f}" if not np.isnan(kappa_model_gold) else "nan"
+print(f"  Cohen's κ (EmoT gold vs MBG-TF-IDF): {k_str}  → {interpret_kappa(kappa_model_gold)}")
 
 # Also: κ between EmoT gold and IndoBERT predictions on EmoT test
 emot_test_mapped2 = emot_test.copy()
@@ -446,8 +465,12 @@ emot_test_ib_pred = svm.predict(tfidf.transform(emot_test_m2["tweet"].fillna("")
 gold_t = emot_test_m2["thesis_label"].values
 shared_t = sorted(set(gold_t) & set(emot_test_ib_pred))
 mask_t = np.isin(gold_t, shared_t) & np.isin(emot_test_ib_pred, shared_t)
-kappa_ib_gold = cohen_kappa_score(gold_t[mask_t], emot_test_ib_pred[mask_t])
-print(f"  Cohen's κ (EmoT gold vs MBG-SVM):     {kappa_ib_gold:.4f}  → {interpret_kappa(kappa_ib_gold)}")
+if len(shared_t) >= 2 and mask_t.sum() > 0:
+    kappa_ib_gold = cohen_kappa_score(gold_t[mask_t], emot_test_ib_pred[mask_t])
+else:
+    kappa_ib_gold = np.nan
+k_ib_str = f"{kappa_ib_gold:.4f}" if not np.isnan(kappa_ib_gold) else "nan"
+print(f"  Cohen's κ (EmoT gold vs MBG-SVM):     {k_ib_str}  → {interpret_kappa(kappa_ib_gold)}")
 
 # Adjudication simulation: where models agree = HIGH confidence
 # where they disagree = CONFLICT → flag for researcher review
@@ -720,8 +743,8 @@ md += [
     f"- SHA-256: `{sha256(emot_base / 'test_preprocess.csv')[:16]}…`\n",
     "\n---\n",
     "## 📐 IAA — Expert-Model Agreement Study\n",
-    f"- Cohen's κ (EmoT gold vs MBG-LogReg): **{kappa_model_gold:.4f}** → {interpret_kappa(kappa_model_gold)}\n",
-    f"- Cohen's κ (EmoT gold vs MBG-SVM):    **{kappa_ib_gold:.4f}** → {interpret_kappa(kappa_ib_gold)}\n",
+    f"- Cohen's κ (EmoT gold vs MBG-LogReg): **{'nan' if np.isnan(kappa_model_gold) else f'{kappa_model_gold:.4f}'}** → {interpret_kappa(kappa_model_gold)}\n",
+    f"- Cohen's κ (EmoT gold vs MBG-SVM):    **{'nan' if np.isnan(kappa_ib_gold) else f'{kappa_ib_gold:.4f}'}** → {interpret_kappa(kappa_ib_gold)}\n",
     "- Reference: Plank et al. (2014); Artstein & Poesio (2008)\n",
     "\n---\n",
     "## 🌐 External Generalization\n",

@@ -224,6 +224,7 @@ def run_job(limit: int = 100):
         combined_df = new_df
         added_count = len(new_df)
 
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     combined_df.to_csv(OUTPUT_FILE, index=False)
     print(f"[SAVED] {added_count} cuitan baru tersimpan. Total akumulasi: {len(combined_df)} baris.")
 

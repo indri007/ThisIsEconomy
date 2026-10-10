@@ -455,8 +455,8 @@ def run():
     doc.save(out_path)
     print("Successfully saved revised document to:", out_path)
     
-    # Copy revised document directly to Downloads folder
-    dl_path = '/Users/jevin/Downloads/Journal_Paper_Indri_Anjar_MBG_SNA_JIKI.docx'
+    # Copy revised document to Downloads folder if accessible
+    dl_path = os.path.join(os.path.expanduser('~'), 'Downloads', 'Journal_Paper_Indri_Anjar_MBG_SNA_JIKI.docx')
     try:
         shutil.copyfile(out_path, dl_path)
         print("Successfully updated file in Downloads folder:", dl_path)
