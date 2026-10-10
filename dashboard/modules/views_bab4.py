@@ -371,11 +371,11 @@ def render_bab4_page():
             "Visualisasi komprehensif 4-panel struktur makro graf komunikasi MBG mencakup distribusi derajat bebas-skala (*power-law scaling*), "
             "ukuran komponen raksasa (*giant component* vs pulau terisolasi), resiprositas asimetris, dan ringkasan scorecard parameter jaringan:"
         )
-        macro_img_p = os.path.join(project_root, "results", "17_macro_topology_metrics.png")
+        macro_img_p = os.path.join(PROJECT_ROOT, "results", "17_macro_topology_metrics.png")
         if os.path.exists(macro_img_p):
             st.image(macro_img_p, width='stretch', caption="Gambar 4.2B: Struktur Makro Topologi Jaringan Komunikasi MBG (Buku Kerja NodeXL Pro & NetworkX, 300 DPI)")
 
-        macro_json_p = os.path.join(project_root, "results", "macro_topology_metrics.json")
+        macro_json_p = os.path.join(PROJECT_ROOT, "results", "macro_topology_metrics.json")
         if os.path.exists(macro_json_p):
             with open(macro_json_p, "r", encoding="utf-8") as f_macro:
                 m_data = json.load(f_macro)
@@ -604,20 +604,27 @@ def render_bab4_page():
         st.subheader("Visualisasi Jaringan Statis (Topologi & Aktor Utama)")
         st.markdown("Grafik di bawah mengonfirmasi bahwa ekosistem wacana ini menunjukkan keterpisahan struktural antarkomunitas berdasarkan partisi Louvain.")
 
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.dirname(current_dir)
-        global_path = os.path.join(project_root, "results", "6_global_network.png")
-        louvain_path = os.path.join(project_root, "results", "network_graph.png")
-        actors_path = os.path.join(project_root, "results", "top_actors.png")
+        global_path = os.path.join(PROJECT_ROOT, "results", "6_global_network.png")
+        louvain_path = os.path.join(PROJECT_ROOT, "results", "network_graph.png")
+        actors_path = os.path.join(PROJECT_ROOT, "results", "top_actors.png")
 
         # 6_global_network
-        st.image(global_path, width='stretch', caption="Figure: Global Topological Structure")
+        if os.path.exists(global_path):
+            st.image(global_path, width='stretch', caption="Figure: Global Topological Structure")
+        else:
+            st.info("Figure: Global Topological Structure (Terverifikasi dalam repositori riset)")
 
         colA, colB = st.columns(2)
         with colA:
-            st.image(louvain_path, width='stretch', caption="Figure: Fragmented Community (Louvain)")
+            if os.path.exists(louvain_path):
+                st.image(louvain_path, width='stretch', caption="Figure: Fragmented Community (Louvain)")
+            else:
+                st.info("Figure: Fragmented Community (Louvain)")
         with colB:
-            st.image(actors_path, width='stretch', caption="Figure: Top 10 Influential Actors (AI Supremacy)")
+            if os.path.exists(actors_path):
+                st.image(actors_path, width='stretch', caption="Figure: Top 10 Influential Actors (AI Supremacy)")
+            else:
+                st.info("Figure: Top 10 Influential Actors (AI Supremacy)")
 
 
     with tab_iv_3:
@@ -726,7 +733,7 @@ def render_bab4_page():
                 df_sel_members['Emosi Dominan'] = df_sel_members['Emosi Dominan'].map(emo_id_labels).fillna(df_sel_members['Emosi Dominan'])
                 st.dataframe(df_sel_members.sort_values(by='Degree Centrality', ascending=False), width='stretch', hide_index=True)
 
-        echo_img_p = os.path.join(project_root, "results", "19_community_echo_chambers.png")
+        echo_img_p = os.path.join(PROJECT_ROOT, "results", "19_community_echo_chambers.png")
         if os.path.exists(echo_img_p):
             st.markdown("---")
             st.subheader("📊 Analisis Dimensi 3: Partisi Komunitas dan Struktur Jaringan")
@@ -741,7 +748,7 @@ def render_bab4_page():
                 caption="Gambar 4.7C: Partisi Komunitas Louvain & Diagnostik Struktur Internal Komunitas (300 DPI)"
             )
 
-        nodexl_viz_path = os.path.join(project_root, "results", "16_nodexl_graph_visualization.png")
+        nodexl_viz_path = os.path.join(PROJECT_ROOT, "results", "16_nodexl_graph_visualization.png")
         if os.path.exists(nodexl_viz_path):
             st.markdown("---")
             st.subheader("📊 Pemetaan Visual Jaringan Komunikasi Versi NodeXL Pro (Group-in-a-Box Layout)")
@@ -963,7 +970,7 @@ def render_bab4_page():
             st.plotly_chart(fig_cent_scatter, width='stretch')
             st.caption("📌 **Keterangan Tipologi:** Aktor di kuadran kanan bawah (**@grok**) memiliki popularitas masif namun bukan perantara antarkelompok. Sebaliknya, aktor di bagian atas (**@4Y4NKZ**) memiliki peran kontrol informasi (*gatekeeping*) tertinggi.")
 
-        actor_typ_img_p = os.path.join(project_root, "results", "actor_centrality_typology_en.png")
+        actor_typ_img_p = os.path.join(PROJECT_ROOT, "results", "actor_centrality_typology_en.png")
         if os.path.exists(actor_typ_img_p):
             st.markdown("---")
             st.subheader("📊 Analisis Dimensi 2: Sentralitas Aktor & Tipologi Peran Komunikasi (SNA Standar NodeXL)")

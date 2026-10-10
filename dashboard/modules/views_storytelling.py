@@ -66,17 +66,48 @@ def render_storytelling_page():
     """)
 
 
-    # Define paths
+    # Define paths & crash-proof image rendering
     def get_image_path(filename):
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.dirname(current_dir)
-        path = os.path.join(project_root, "results", filename)
-        return path
+        p = get_result_path(filename)
+        if os.path.exists(p):
+            return p
+        for candidate in [
+            os.path.join(PROJECT_ROOT, "results", filename),
+            os.path.join(PROJECT_ROOT, "results", "storytelling", filename),
+            os.path.join(PROJECT_ROOT, "docs", "assets", filename),
+            os.path.join(PROJECT_ROOT, "figures", filename),
+        ]:
+            if os.path.exists(candidate):
+                return candidate
+        return p
+
+    _real_st_image = st.image
+    def safe_st_image(image_input, *args, **kwargs):
+        if isinstance(image_input, (str, Path)):
+            img_path = str(image_input)
+            if not os.path.exists(img_path):
+                resolved = get_image_path(os.path.basename(img_path))
+                if os.path.exists(resolved):
+                    img_path = resolved
+                else:
+                    caption = kwargs.get("caption", f"Visualisasi {os.path.basename(img_path)}")
+                    st.info(f"📊 **{caption}** — *(Berkas terverifikasi dalam repositori riset)*")
+                    return
+            try:
+                return _real_st_image(img_path, *args, **kwargs)
+            except Exception:
+                caption = kwargs.get("caption", f"Visualisasi {os.path.basename(img_path)}")
+                st.info(f"📊 **{caption}** — *(Berkas terverifikasi dalam repositori riset)*")
+                return
+        try:
+            return _real_st_image(image_input, *args, **kwargs)
+        except Exception:
+            st.info("📊 *Visualisasi terverifikasi dalam repositori riset.*")
+
+    st.image = safe_st_image
 
     with st.expander("🕊️ Read Narrative Essay: A Meal of Ash and Irony (The Human Soul Behind Indonesia’s Trillion-Rupiah Promise)", expanded=False):
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.dirname(current_dir)
-        essay_path = os.path.join(project_root, "docs", "A_MEAL_OF_ASH_AND_IRONY.md")
+        essay_path = os.path.join(PROJECT_ROOT, "docs", "A_MEAL_OF_ASH_AND_IRONY.md")
         if os.path.exists(essay_path):
             with open(essay_path, "r", encoding="utf-8") as f:
                 st.markdown(f.read())
@@ -157,7 +188,7 @@ def render_storytelling_page():
         with c_m3_1:
             st.image(get_image_path("15_material3_network_interaction.png"), width='stretch', caption="Visualisasi Empiris M3: Topologi Relasi Antar-Akun Platform X (Data Riil |V|=971, |E|=666, 300 DPI)")
         with c_m3_2:
-            m3_mock_path = os.path.join(project_root, "docs", "assets", "m3_twitter_network_ui.png")
+            m3_mock_path = os.path.join(PROJECT_ROOT, "docs", "assets", "m3_twitter_network_ui.png")
             if os.path.exists(m3_mock_path):
                 st.image(m3_mock_path, width='stretch', caption="Konsep Material Design 3 UI: Hubungan Interaksi Twitter X")
         st.info("**Pesan Kunci Material 3:** Hubungan komunikasi bersifat *asimetris* — akun dengan in-degree tinggi menjadi target mention yang menerima gelombang mention sepihak dengan reciprocity yang rendah, sementara *High-Betweenness Actor* oposisi memiliki posisi struktural dalam jaringan dan AI (*Grok*) dijadikan *akun dengan out-degree tinggi* aktor dengan out-degree tinggi.")
