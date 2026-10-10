@@ -1,0 +1,38 @@
+{
+  "evaluation_comparison": {
+    "granular_6_class": {
+      "accuracy": 0.7599,
+      "macro_precision": 0.484,
+      "macro_recall": 0.4424,
+      "macro_f1": 0.4535,
+      "weighted_f1": 0.7434,
+      "imbalance_ratio_max_to_min": "606 : 3 (202:1)"
+    },
+    "hierarchical_3_super_class": {
+      "accuracy": 0.7656,
+      "macro_precision": 0.7639,
+      "macro_recall": 0.7459,
+      "macro_f1": 0.7522,
+      "weighted_f1": 0.761,
+      "macro_f1_improvement": "+29.87%"
+    }
+  },
+  "minority_dissection": {
+    "marah_sample_count": 14,
+    "marah_predictions": {
+      "Netral": 12,
+      "Percaya": 2
+    },
+    "marah_finding": "12 dari 14 sampel Marah adalah artefak multibahasa/spam yang secara tepat diprediksi 'Netral' oleh konteks IndoBERT.",
+    "sedih_sample_count": 3,
+    "sedih_predictions": {
+      "Jijik": 2,
+      "Percaya": 1
+    },
+    "sedih_finding": "Sampel Sedih merepresentasikan keluhan sinis atas ingkar janji kebijakan yang secara alami bermutasi ke emosi 'Jijik' (Moral Disgust)."
+  },
+  "theoretical_grounding": {
+    "political_psychology": "Rozin, Haidt, & McCauley (2000); Gutierrez & Giner-Sorolla (2007)",
+    "mechanism": "Transmutasi Kemarahan Verbal menjadi Moral Disgust akibat ancaman hukum UU ITE dan budaya sindiran politik Indonesia."
+  }
+}
