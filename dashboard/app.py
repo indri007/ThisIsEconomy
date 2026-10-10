@@ -17,6 +17,35 @@ except RuntimeError:
         _current_loop = asyncio.new_event_loop()
         asyncio.set_event_loop(_current_loop)
 
+# Prevent NoEventLoopError on Python 3.14 / Starlette staticfiles in AnyIO
+try:
+    import sniffio
+    _orig_sniffio_current = sniffio.current_async_library
+
+    def _safe_sniffio_current() -> str:
+        try:
+            return _orig_sniffio_current()
+        except Exception:
+            return "asyncio"
+
+    sniffio.current_async_library = _safe_sniffio_current
+except Exception:
+    pass
+
+try:
+    import anyio._core._eventloop as _anyio_el
+    _orig_get_async_backend = _anyio_el.get_async_backend
+
+    def _safe_get_async_backend(asynclib_name=None):
+        try:
+            return _orig_get_async_backend(asynclib_name)
+        except Exception:
+            return _orig_get_async_backend("asyncio")
+
+    _anyio_el.get_async_backend = _safe_get_async_backend
+except Exception:
+    pass
+
 import streamlit as st
 
 # Import Modular Dashboard Modules
