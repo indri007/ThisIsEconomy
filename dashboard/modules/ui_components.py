@@ -528,7 +528,10 @@ def render_downloads_footer():
     BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
     DOWNLOAD_FILES = [
-        ("📄 Manuskrip Jurnal — PDF", BASE_DIR / "journal" / "rendered" / "journal_paper_mbg_sna_v2.pdf", "journal_paper_mbg_sna_v2.pdf", "application/pdf"),
+        ("👑 Manuskrip JCMC Oxford (71 Hal) — Word (.docx)", BASE_DIR / "manuscript" / "JCMC_OXFORD_MBG_COMMUNICATION_2026.docx", "JCMC_OXFORD_MBG_COMMUNICATION_2026.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"),
+        ("📘 Manuskrip ICS Taylor & Francis (23 Hal) — Word (.docx)", BASE_DIR / "manuscript" / "ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.docx", "ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"),
+        ("📄 Manuskrip JCMC Oxford (71 Hal) — PDF", BASE_DIR / "manuscript" / "JCMC_OXFORD_MBG_COMMUNICATION_2026.pdf", "JCMC_OXFORD_MBG_COMMUNICATION_2026.pdf", "application/pdf"),
+        ("📄 Manuskrip ICS Taylor & Francis (23 Hal) — PDF", BASE_DIR / "manuscript" / "ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.pdf", "ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.pdf", "application/pdf"),
         ("📊 Data Network Edges — CSV", BASE_DIR / "results" / "mbg_network_edges_final.csv", "mbg_network_edges_final.csv", "text/csv"),
         ("👥 Data Network Nodes — CSV", BASE_DIR / "results" / "mbg_network_nodes_final.csv", "mbg_network_nodes_final.csv", "text/csv"),
         ("🖼️ Macro Topology — PNG", BASE_DIR / "results" / "17_macro_topology_metrics.png", "17_macro_topology_metrics.png", "image/png"),

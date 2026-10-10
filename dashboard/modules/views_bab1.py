@@ -74,6 +74,81 @@ def render_bab1_page():
 
     st.markdown("---")
 
+    # ── UNDUHAN MANUSKRIP PUBLIKASI INTERNASIONAL (WORD & PDF) ──
+    st.subheader("📥 Unduh Naskah Jurnal Ilmiah Internasional (Format Word .docx & PDF)")
+    st.markdown("""
+    > *Naskah publikasi artikel ilmiah siap submit (Scopus Q1 & SSCI) yang dihasilkan dari riset tesis ini tersedia untuk diunduh langsung dalam format Microsoft Word (`.docx`) dan PDF:*
+    """)
+
+    down_col1, down_col2 = st.columns(2)
+    with down_col1:
+        st.markdown("""
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+            <div style="display: inline-block; background: #4338ca; color: white; padding: 3px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-bottom: 8px;">
+                PRIORITAS UTAMA • SCOPUS Q1 (CiteScore 12.8)
+            </div>
+            <h4 style="margin: 0 0 6px 0; color: #0f172a;">👑 Journal of Computer-Mediated Communication (JCMC)</h4>
+            <p style="font-size: 0.85rem; color: #475569; margin: 0 0 10px 0;">
+                <b>Penerbit:</b> Oxford University Press / ICA | <b>Format:</b> APA 7th Edition Double-Spaced<br>
+                <b>Panjang:</b> 71 Halaman (~16.200 Kata) | 5 Gambar 300 DPI | 7 Tabel Formal | 61 Referensi Q1
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        p_jcmc_docx = get_journal_docx_path("JCMC_OXFORD_MBG_COMMUNICATION_2026.docx")
+        p_jcmc_pdf = get_journal_docx_path("JCMC_OXFORD_MBG_COMMUNICATION_2026.pdf")
+        c_b1, c_b2 = st.columns(2)
+        with c_b1:
+            download_file_button(
+                label="📥 Unduh Word (.docx, 71 Hal)",
+                file_path=p_jcmc_docx,
+                file_name="JCMC_OXFORD_MBG_COMMUNICATION_2026.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                width='stretch',
+            )
+        with c_b2:
+            download_file_button(
+                label="📄 Unduh PDF (71 Hal)",
+                file_path=p_jcmc_pdf,
+                file_name="JCMC_OXFORD_MBG_COMMUNICATION_2026.pdf",
+                mime="application/pdf",
+                width='stretch',
+            )
+
+    with down_col2:
+        st.markdown("""
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+            <div style="display: inline-block; background: #0284c7; color: white; padding: 3px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-bottom: 8px;">
+                TAYLOR & FRANCIS • SCOPUS & SSCI Q1 (Zero APC)
+            </div>
+            <h4 style="margin: 0 0 6px 0; color: #0f172a;">📘 Information, Communication & Society (ICS)</h4>
+            <p style="font-size: 0.85rem; color: #475569; margin: 0 0 10px 0;">
+                <b>Penerbit:</b> Taylor & Francis | <b>Fokus:</b> Masyarakat, Platform X, Kebijakan MBG<br>
+                <b>Panjang:</b> 23 Halaman (~8.300 Kata) | 4 Gambar 300 DPI | 6 Tabel Formal | 34 Referensi Q1
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        p_ics_docx = get_journal_docx_path("ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.docx")
+        p_ics_pdf = get_journal_docx_path("ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.pdf")
+        c_b3, c_b4 = st.columns(2)
+        with c_b3:
+            download_file_button(
+                label="📥 Unduh Word (.docx, 23 Hal)",
+                file_path=p_ics_docx,
+                file_name="ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                width='stretch',
+            )
+        with c_b4:
+            download_file_button(
+                label="📄 Unduh PDF (23 Hal)",
+                file_path=p_ics_pdf,
+                file_name="ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.pdf",
+                mime="application/pdf",
+                width='stretch',
+            )
+
+    st.markdown("---")
+
     # ── PETA LENGKAP VISUALISASI TESIS: BAB I S.D. BAB V ──
     st.subheader("🗺️ Peta Lengkap Visualisasi Naskah Tesis (Bab I s.d. Bab V)")
     st.markdown("""

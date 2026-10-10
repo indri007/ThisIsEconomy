@@ -67,16 +67,72 @@ def render_journal_page():
 
     st.markdown("---")
 
-    st.markdown("### 📥 Unduh Naskah Lengkap & Berkas Graf Penelitian")
-    d0, d1, d2, d3, d4 = st.columns(5)
+    st.markdown("### 📥 Unduh Naskah Lengkap & Berkas Graf Penelitian (Format Microsoft Word .docx)")
+    j_col1, j_col2 = st.columns(2)
+    p_jcmc_doc = get_journal_docx_path("JCMC_OXFORD_MBG_COMMUNICATION_2026.docx")
+    p_jcmc_pdf = get_journal_docx_path("JCMC_OXFORD_MBG_COMMUNICATION_2026.pdf")
+    p_ics_doc = get_journal_docx_path("ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.docx")
+    p_ics_pdf = get_journal_docx_path("ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.pdf")
     p_docx_latest = get_journal_docx_path("JURNAL_MBG_SCOPUS_Q1_LATEST_2026.docx")
     p_docx = get_journal_docx_path("Journal_Paper_Indri_Anjar_MBG_SNA.docx")
     p_md = os.path.join(PROJECT_ROOT, "journal_paper_mbg_sna.md")
     p_gexf = os.path.join(PROJECT_ROOT, "results", "mbg_network_official.gexf")
 
+    with j_col1:
+        st.markdown("""
+        <div style="background: #f8fafc; border-left: 4px solid #4338ca; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+            <b>👑 Journal of Computer-Mediated Communication (JCMC)</b><br>
+            <span style="font-size: 0.85rem; color: #475569;">Oxford University Press / ICA | Scopus Q1 | <b>71 Halaman (.docx)</b></span>
+        </div>
+        """, unsafe_allow_html=True)
+        jb1, jb2 = st.columns(2)
+        with jb1:
+            download_file_button(
+                label="📥 Unduh Word (.docx, 71 Hal)",
+                file_path=p_jcmc_doc,
+                file_name="JCMC_OXFORD_MBG_COMMUNICATION_2026.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                width='stretch',
+            )
+        with jb2:
+            download_file_button(
+                label="📄 Unduh PDF (71 Hal)",
+                file_path=p_jcmc_pdf,
+                file_name="JCMC_OXFORD_MBG_COMMUNICATION_2026.pdf",
+                mime="application/pdf",
+                width='stretch',
+            )
+
+    with j_col2:
+        st.markdown("""
+        <div style="background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+            <b>📘 Information, Communication & Society (ICS)</b><br>
+            <span style="font-size: 0.85rem; color: #475569;">Taylor & Francis | Scopus/SSCI Q1 | <b>23 Halaman (.docx)</b></span>
+        </div>
+        """, unsafe_allow_html=True)
+        jb3, jb4 = st.columns(2)
+        with jb3:
+            download_file_button(
+                label="📥 Unduh Word (.docx, 23 Hal)",
+                file_path=p_ics_doc,
+                file_name="ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                width='stretch',
+            )
+        with jb4:
+            download_file_button(
+                label="📄 Unduh PDF (23 Hal)",
+                file_path=p_ics_pdf,
+                file_name="ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.pdf",
+                mime="application/pdf",
+                width='stretch',
+            )
+
+    st.markdown("#### 📂 Berkas Riset Pendukung & Repositori")
+    d0, d1, d2, d3, d4 = st.columns(5)
     with d0:
         download_file_button(
-            label="⭐ Naskah Q1 2026 (.docx, 1.1 MB)",
+            label="⭐ Naskah Q1 2026 (.docx)",
             file_path=p_docx_latest,
             file_name="JURNAL_MBG_SCOPUS_Q1_LATEST_2026.docx",
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -85,7 +141,7 @@ def render_journal_page():
 
     with d1:
         download_file_button(
-            label="📑 Tesis Lengkap (.docx, 8.9 MB)",
+            label="📑 Tesis Lengkap (.docx)",
             file_path=p_docx,
             file_name="Journal_Paper_Indri_Anjar_MBG_SNA.docx",
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",

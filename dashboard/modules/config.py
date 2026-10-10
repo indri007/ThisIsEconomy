@@ -338,9 +338,25 @@ def render_sidebar_downloads():
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 🌐 Akses Publik & Unduhan")
 
+    p_jcmc_side = get_journal_docx_path("JCMC_OXFORD_MBG_COMMUNICATION_2026.docx")
+    p_ics_side = get_journal_docx_path("ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.docx")
     p_docx_latest_side = get_journal_docx_path("JURNAL_MBG_SCOPUS_Q1_LATEST_2026.docx")
     p_docx_side = get_journal_docx_path("Journal_Paper_Indri_Anjar_MBG_SNA.docx")
     with st.sidebar:
+        download_file_button(
+            label="👑 JCMC Oxford (71 Hal .docx)",
+            file_path=p_jcmc_side,
+            file_name="JCMC_OXFORD_MBG_COMMUNICATION_2026.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            width='stretch',
+        )
+        download_file_button(
+            label="📘 ICS Taylor & Francis (23 Hal .docx)",
+            file_path=p_ics_side,
+            file_name="ICS_TAYLOR_FRANCIS_MBG_COMMUNICATION_2026.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            width='stretch',
+        )
         download_file_button(
             label="⭐ Naskah Scopus Q1 2026 (.docx)",
             file_path=p_docx_latest_side,
