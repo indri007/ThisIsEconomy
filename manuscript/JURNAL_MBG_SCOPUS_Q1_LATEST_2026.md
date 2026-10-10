@@ -131,10 +131,11 @@ AND (lang:id)
 ```
 For each captured tweet, the system extracted: (a) unique tweet ID; (b) raw string content; (c) author username handle; (d) timestamp (ISO 8601 UTC+7); (e) directed relational metadata (reply-to user, mentioned users, quote source); and (f) engagement metrics (retweet count, like count, reply count, quote count, view count).
 
-**Research Ethics and Privacy Protocol**:
-1. **Anonymization and Pseudonymization**: All non-public individual accounts were pseudonymized during qualitative quotation to safeguard citizen privacy against potential administrative or legal reprisal under the Indonesian UU ITE. Public political officials (e.g., `@prabowo`), government agency accounts (e.g., `@kemkomdigi`), and platform-integrated AI entities (e.g., `@grok`) were retained unmasked as their interactions constitute public civic record.
+**Research Ethics and AoIR Pseudonymization Protocol**:
+In accordance with the Association of Internet Researchers (AoIR) Ethical Guidelines 3.0 (Franzke et al., 2020) and internet research privacy principles (Zimmer, 2010), computational communication research must balance scientific transparency with human subject protection:
+1. **Public Accountability vs. Private Privacy**: We distinguish between *Public Institutional Entities* and *Private Citizen Accounts*. Public political officials (e.g., `@prabowo`), government ministries, verified news media, and platform-integrated AI entities (e.g., `@grok`) possess official public accountability and remain explicitly identified. Conversely, private citizens voicing political grievances under Indonesia's restrictive Electronic Information and Transactions Law (UU ITE) are systematically **pseudonymized** across all tables, narrative excerpts, and published figures using structured functional pseudonyms (e.g., `[Citizen_Satirist_16]`, `[Citizen_Parent_259]`, `[Citizen_Student_264]`).
 2. **Bot and Sybil Filtering**: To ensure corpus authenticity, algorithmic bot filtering was deployed. Accounts demonstrating superhuman posting frequencies (>120 tweets per day), mechanical circadian intervals, extreme following-to-follower anomalies (>5,000 following with zero followers), or repetitive verbatim copy-paste behavior were excised from the analytical dataset.
-3. **Institutional Compliance**: The protocol complied fully with institutional review board guidelines for internet research (Association of Internet Researchers, AoIR) and accessed only publicly accessible social media discourse.
+3. **Institutional and Legal Compliance**: The protocol complied fully with institutional review board guidelines for internet research (AoIR 3.0) and accessed only publicly accessible social media discourse without interacting with human subjects or harvesting private communications.
 
 ### 3.3 Corpus Composition and Text Preprocessing
 
@@ -264,14 +265,16 @@ This yields an **Echo Chamber Metric of 99.86%**. Public discourse regarding MBG
 
 | Community ID | Active Nodes | Proportion | Dominant Affect | Primary Discourse Theme | Key Anchoring Nodes |
 |:---:|:---:|:---:|:---:|:---|:---|
-| **#15** | 46 | $4.74\%$ | **DISGUST ($73.4\%$)** | Elite Policy Authority Accountability & Grievance | `@prabowo`, `@regar_op0sisi`, `@daffiriffi` |
-| **#61** | 43 | $4.43\%$ | Neutral ($62.1\%$) | Algorithmic Verification & Fact-Checking Requests | `@grok`, `@unmagnetism`, `@JuanJulianto2` |
-| **#16** | 18 | $1.85\%$ | Neutral / Sarcasm | Grassroots Sarcasm & Digital Satire Diffusion | `@4Y4NKZ`, `@newIding30`, `@Capitalisborju` |
-| **#259** | 14 | $1.44\%$ | Neutral / Sadness | Parent Solidarity & Food Poisoning Disclosures | `@dbdbidip`, `@greeniefloo`, `@renregalia` |
-| **#8** | 11 | $1.13\%$ | Neutral | International & Lusophone Comparative Accounts | `@Casagrande10939`, `@SauloLinsFreir1` |
-| **#264** | 10 | $1.03\%$ | Neutral / Fear | Student & Youth Peer Reaction Network | `@luvdysh_`, `@helloyosh_`, `@ayiurswoo` |
+| **#15** | 46 | $4.74\%$ | **DISGUST ($73.4\%$)** | Elite Policy Authority Accountability & Grievance | `@prabowo`, `[Citizen_Commentator_15]`, `[Citizen_Retweeter_15]` |
+| **#61** | 43 | $4.43\%$ | Neutral ($62.1\%$) | Algorithmic Verification & Fact-Checking Requests | `@grok`, `[Citizen_Inquirer_61]`, `[Citizen_Inquirer_61B]` |
+| **#16** | 18 | $1.85\%$ | Neutral / Sarcasm | Grassroots Sarcasm & Digital Satire Diffusion | `[Citizen_Satirist_16]`, `[Citizen_Discussant_16]`, `[Citizen_Critic_16]` |
+| **#259** | 14 | $1.44\%$ | Neutral / Sadness | Parent Solidarity & Food Poisoning Disclosures | `[Citizen_Parent_259]`, `[Citizen_Parent_259B]`, `[Citizen_Parent_259C]` |
+| **#8** | 11 | $1.13\%$ | Neutral | International & Lusophone Comparative Accounts | `[Citizen_Observer_08]`, `[Citizen_Observer_08B]` |
+| **#264** | 10 | $1.03\%$ | Neutral / Fear | Student & Youth Peer Reaction Network | `[Citizen_Student_264]`, `[Citizen_Student_264B]`, `[Citizen_Student_264C]` |
 
-A vital sociological pattern emerges in Table 2: **Community #15 is the only major community where DISGUST serves as the dominant modal emotion**. This is precisely the community anchored by the presidential account `@prabowo` and high-profile political opposition actors (`@regar_op0sisi`). When citizens address official power, their affective register sharpens into visceral moral condemnation. In contrast, Community #61 (the `@grok` cluster) remains clinically neutral as citizens treat the AI as an informational database.
+*\*Note. Private citizen handles are pseudonymized in accordance with AoIR Ethical Guidelines 3.0 (Franzke et al., 2020).*
+
+A vital sociological pattern emerges in Table 2: **Community #15 is the only major community where DISGUST serves as the dominant modal emotion**. This is precisely the community anchored by the presidential account `@prabowo` and political counter-commentators (`[Citizen_Commentator_15]`). When citizens address official power, their affective register sharpens into visceral moral condemnation. In contrast, Community #61 (the `@grok` cluster) remains clinically neutral as citizens treat the AI as an informational database.
 
 ### 4.4 Actor Centrality and Communicative Role Typologies
 
@@ -283,23 +286,25 @@ Table 3 enumerates the top fifteen central actors across the complete network.
 
 **Table 3: Top Fifteen Actors Ranked by Network Degree and Centrality Metrics**
 
-| Rank | User Handle | Total Degree | Degree Centrality ($C_D$) | In-Degree ($k^{in}$) | Out-Degree ($k^{out}$) | Betweenness ($C_B$) | Communicative Role Classification |
+| Rank | User Handle / AoIR Pseudonym* | Total Degree | Degree Centrality ($C_D$) | In-Degree ($k^{in}$) | Out-Degree ($k^{out}$) | Betweenness ($C_B$) | Communicative Role Classification |
 |:---:|:---|:---:|:---:|:---:|:---:|:---:|:---|
 | **1** | `@grok` | **42** | **0.0433** | **0** | **42** | **0.005941** | **Algorithmic Epistemic Oracle** |
-| **2** | `@4Y4NKZ` | 16 | 0.0165 | 2 | 15 | 0.000161 | Information Broadcaster / Satirist |
+| **2** | `[Citizen_Satirist_16]` | 16 | 0.0165 | 2 | 15 | 0.000161 | Information Broadcaster / Satirist |
 | **3** | `@prabowo` | **15** | **0.0155** | **15** | **0** | **0.005413** | **Institutional Target Sink** |
-| **4** | `@newIding30` | 15 | 0.0155 | 1 | 15 | 0.000097 | Information Broadcaster / Amplifier |
-| **5** | `@dbdbidip` | 13 | 0.0134 | 0 | 13 | 0.000166 | Information Broadcaster |
-| **6** | `@Casagrande10939` | 10 | 0.0103 | 0 | 10 | 0.000096 | Information Broadcaster |
-| **7** | `@luvdysh_` | 9 | 0.0093 | 0 | 9 | 0.000077 | Information Broadcaster |
-| **8** | `@mBg_JK` | 8 | 0.0082 | 0 | 8 | 0.000060 | Information Broadcaster |
-| **9** | `@regar_op0sisi` | 7 | 0.0072 | 5 | 2 | 0.004564 | Opinion Broker / Counter-Hub |
-| **10** | `@punishe98373138` | 7 | 0.0072 | 0 | 7 | 0.001156 | Opinion Broker |
-| **11** | `@daffiriffi` | 7 | 0.0072 | 0 | 7 | 0.000984 | Opinion Broker |
-| **12** | `@ryookaasan` | 6 | 0.0062 | 0 | 6 | 0.000032 | Secondary Influencer |
-| **13** | `@deluxe_melissa` | 6 | 0.0062 | 1 | 5 | 0.000013 | Secondary Influencer |
+| **4** | `[Citizen_Discussant_16]` | 15 | 0.0155 | 1 | 15 | 0.000097 | Information Broadcaster / Amplifier |
+| **5** | `[Citizen_Parent_259]` | 13 | 0.0134 | 0 | 13 | 0.000166 | Information Broadcaster |
+| **6** | `[Citizen_Observer_08]` | 10 | 0.0103 | 0 | 10 | 0.000096 | Information Broadcaster |
+| **7** | `[Citizen_Student_264]` | 9 | 0.0093 | 0 | 9 | 0.000077 | Information Broadcaster |
+| **8** | `[Citizen_Watchdog_314]` | 8 | 0.0082 | 0 | 8 | 0.000060 | Information Broadcaster |
+| **9** | `[Citizen_Commentator_15]` | 7 | 0.0072 | 5 | 2 | 0.004564 | Opinion Broker / Counter-Hub |
+| **10** | `[Citizen_Evaluator_15]` | 7 | 0.0072 | 0 | 7 | 0.001156 | Opinion Broker |
+| **11** | `[Citizen_Retweeter_15]` | 7 | 0.0072 | 0 | 7 | 0.000984 | Opinion Broker |
+| **12** | `[Citizen_Influencer_335]` | 6 | 0.0062 | 0 | 6 | 0.000032 | Secondary Influencer |
+| **13** | `[Citizen_Influencer_212]` | 6 | 0.0062 | 1 | 5 | 0.000013 | Secondary Influencer |
 | **14** | `@tanyakanrl` | 5 | 0.0052 | 5 | 0 | 0.000040 | Target Sink (Akun Rujukan Keluhan) |
-| **15** | `@multibank_io` | 5 | 0.0052 | 2 | 3 | 0.000038 | Secondary Influencer |
+| **15** | `[Commercial_Account_56]` | 5 | 0.0052 | 2 | 3 | 0.000038 | Secondary Influencer |
+
+*\*Note. In compliance with Association of Internet Researchers (AoIR) Ethical Guidelines 3.0 (Franzke et al., 2020), private citizen accounts are pseudonymized to safeguard individual privacy and mitigate potential legal exposure under Indonesian digital communication statutes (UU ITE). Public authorities, automated bots, and public discussion feeds remain identified.*
 
 The structural data in Table 3 uncovers two dominant behavioral archetypes that define contemporary policy discourse:
 
@@ -499,32 +504,34 @@ On the 9,862 streaming posts, the model exhibited high certainty (Panel C), yiel
 Topological graph analysis of citizen interactions ($1,760$ active user nodes, $1,323$ directed interaction edges) reveals the structural persistence of disassortative hub-and-spoke centralization. Tables 5A and 5B catalog the 10 highest-centrality actors according to Degree Centrality (hubs) and Betweenness Centrality (bridges).
 
 **Table 5A: Top 10 Actors by Degree Centrality (Discourse Hubs)**
-| Rank | Actor Handle | Normalized Degree ($k_i$) | Louvain Community ($c_i$) | Dominant Affect | Empirical Network Role |
+| Rank | Actor Handle / AoIR Pseudonym* | Normalized Degree ($k_i$) | Louvain Community ($c_i$) | Dominant Affect | Empirical Network Role |
 |:---:|:---|:---:|:---:|:---:|:---|
 | 1 | `@grok` | **0.0433** | 61 | Disgust | **AI Epistemic Oracle** — Algorithmic verifier solicited for fiscal arithmetic and poisoning news fact-checks. |
-| 2 | `@4Y4NKZ` | **0.0165** | 16 | Disgust | **Critical Amplifier** — Community node propagating viral evidence of food defects. |
-| 3 | `@newIding30` | **0.0155** | 16 | Disgust | **Active Discussant** — High-degree catalyst of policy debates. |
+| 2 | `[Citizen_Satirist_16]` | **0.0165** | 16 | Disgust | **Critical Amplifier** — Community node propagating viral evidence of food defects. |
+| 3 | `[Citizen_Discussant_16]` | **0.0155** | 16 | Disgust | **Active Discussant** — High-degree catalyst of policy debates. |
 | 4 | `@prabowo` | **0.0155** | 15 | Neutral | **Institutional Target / In-Degree Sink** — Presidential handle receiving citizen grievances. |
-| 5 | `@dbdbidip` | **0.0134** | 259 | Disgust | **Key Opinion Leader (KOL)** mobilizing localized parent discussions. |
-| 6 | `@Casagrande10939` | **0.0103** | 8 | Disgust | Regional food poisoning alert disseminator. |
-| 7 | `@luvdysh_` | **0.0093** | 264 | Disgust | Citizen observer tracking school delivery transparency. |
-| 8 | `@mBg_JK` | **0.0082** | 313 | Disgust | Dedicated MBG watchdog handle. |
-| 9 | `@regar_op0sisi` | **0.0072** | 15 | Disgust | Political counter-narrative mobilizer. |
-| 10 | `@punishe98373138` | **0.0072** | 15 | Disgust | Technical evaluator of SPPG catering deficiencies. |
+| 5 | `[Citizen_Parent_259]` | **0.0134** | 259 | Disgust | **Key Opinion Leader (KOL)** mobilizing localized parent discussions. |
+| 6 | `[Citizen_Observer_08]` | **0.0103** | 8 | Disgust | Regional food poisoning alert disseminator. |
+| 7 | `[Citizen_Student_264]` | **0.0093** | 264 | Disgust | Citizen observer tracking school delivery transparency. |
+| 8 | `[Citizen_Watchdog_314]` | **0.0082** | 313 | Disgust | Dedicated MBG watchdog handle. |
+| 9 | `[Citizen_Commentator_15]` | **0.0072** | 15 | Disgust | Political counter-narrative mobilizer. |
+| 10 | `[Citizen_Evaluator_15]` | **0.0072** | 15 | Disgust | Technical evaluator of SPPG catering deficiencies. |
 
 **Table 5B: Top 10 Actors by Betweenness Centrality (Information Brokers & Bridges)**
-| Rank | Actor Handle | Betweenness ($C_B$) | Degree ($k_i$) | Structural Brokerage Function |
+| Rank | Actor Handle / AoIR Pseudonym* | Betweenness ($C_B$) | Degree ($k_i$) | Structural Brokerage Function |
 |:---:|:---|:---:|:---:|:---|
 | 1 | `@grok` | **0.005941** | 0.0433 | Spans structural holes between pro-government, opposition, and investigative citizen clusters. |
 | 2 | `@prabowo` | **0.005413** | 0.0155 | Serves as the global apex bridge linking grassroots citizen testimonials to executive policy spheres. |
-| 3 | `@regar_op0sisi` | **0.004564** | 0.0072 | Bridges broader political critique with granular school-level operational reporting. |
+| 3 | `[Citizen_Commentator_15]` | **0.004564** | 0.0072 | Bridges broader political critique with granular school-level operational reporting. |
 | 4 | `@direktoridosen` | **0.001236** | 0.0041 | **Academic Broker** — Connects pedagogical/scholarly commentary to lay public discourse. |
-| 5 | `@punishe98373138` | **0.001156** | 0.0072 | Relays conversational chains across fragmented commentary threads. |
-| 6 | `@daffiriffi` | **0.000984** | 0.0072 | Connects general public retweets with specialized political critiques. |
-| 7 | `@bbiiyaya` | **0.000549** | 0.0041 | Channels student testimonials into wider institutional discourse. |
+| 5 | `[Citizen_Evaluator_15]` | **0.001156** | 0.0072 | Relays conversational chains across fragmented commentary threads. |
+| 6 | `[Citizen_Retweeter_15]` | **0.000984** | 0.0072 | Connects general public retweets with specialized political critiques. |
+| 7 | `[Citizen_Student_05]` | **0.000549** | 0.041 | Channels student testimonials into wider institutional discourse. |
 | 8 | `@gibran_tweet` | **0.000543** | 0.0021 | Political bridge engaging youth and first-time voter demographics. |
-| 9 | `@Rhym03` | **0.000366** | 0.0021 | Intra-community conversational bridge. |
-| 10 | `@xquitavee` | **0.000366** | 0.0021 | Information broker transmitting nutritional quality concerns. |
+| 9 | `[Citizen_Bridge_03]` | **0.000366** | 0.0021 | Intra-community conversational bridge. |
+| 10 | `[Citizen_Broker_02]` | **0.000366** | 0.0021 | Information broker transmitting nutritional quality concerns. |
+
+*\*Note. Private citizen handles are pseudonymized in accordance with AoIR Ethical Guidelines 3.0 (Franzke et al., 2020).*
 
 #### 4.8.3 Thematic Salience: Top 10 Policy Dimensions
 Semantic frequency extraction across domain-specific posts ($N = 6,969$ active MBG discussions) revealed ten distinct thematic clusters, reported in Table 6.
@@ -815,6 +822,7 @@ Anonymized network interaction edge lists, trained IndoBERT model checkpoints, A
 - Ekman, P. (1992). An argument for basic emotions. *Cognition & Emotion*, *6*(3–4), 169–200.
 - Erdős, P., & Rényi, A. (1960). On the evolution of random graphs. *Publications of the Mathematical Institute of the Hungarian Academy of Sciences*, *5*(1), 17–60.
 - Fleiss, J. L. (1971). Measuring nominal scale agreement among many raters. *Psychological Bulletin*, *76*(5), 378–382. https://doi.org/10.1037/h0031619
+- Franzke, A. S., Bechmann, A., Zimmer, M., Ess, C., & Association of Internet Researchers. (2020). *Internet research: Ethical guidelines 3.0*. Association of Internet Researchers. https://aoir.org/reports/ethics3.pdf
 - Freeman, L. C. (1979). Centrality in social networks: Conceptual clarification. *Social Networks*, *1*(3), 215–239.
 - Gibbs, R. W. (2000). Irony in talk among friends. *Metaphor and Symbol*, *15*(1–2), 5–27.
 - Giora, R. (2003). *On our mind: Salience, context, and figurative language*. Oxford University Press.
@@ -855,6 +863,7 @@ Anonymized network interaction edge lists, trained IndoBERT model checkpoints, A
 - Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... & Polosukhin, I. (2017). Attention is all you need. *Advances in Neural Information Processing Systems*, *30*, 5998–6008.
 - Wasserman, S., & Faust, K. (1994). *Social network analysis: Methods and applications*. Cambridge University Press.
 - Wilie, B., Vincentio, K., Winata, G. I., Cahyawijaya, S., Li, Z., Lim, Z. S., ... & Fung, P. (2020). IndoNLU: Benchmark and resources for evaluating Indonesian natural language understanding. *Proceedings of the 1st Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics*, 843–857.
+- Zimmer, M. (2010). "But the data is already public": On the ethics of research in Facebook and social computing. *Ethics and Information Technology*, *12*(4), 313–325. https://doi.org/10.1007/s10676-010-9227-5
 
 ---
 

@@ -1,0 +1,159 @@
+{
+  "protocol": "Association of Internet Researchers (AoIR) Ethical Guidelines 3.0",
+  "rationale": "To safeguard ordinary citizens from online harassment, doxxing, and legal retribution under restrictive speech frameworks (Indonesia's UU ITE), all private accounts are pseudonymized. Only verified institutional entities, public officials, news media, and algorithmic utilities remain explicitly identified.",
+  "total_top25_actors": 25,
+  "public_entities_count": 7,
+  "pseudonymized_citizens_count": 18,
+  "mapping_table": [
+    {
+      "Label": "@grok",
+      "AoIR_Pseudonym_Label": "@grok",
+      "Ethical_Entity_Type": "Public Authority / Media / AI",
+      "Communication_Role": "Algorithmic Oracle (AI Fact-Checker)"
+    },
+    {
+      "Label": "@4Y4NKZ",
+      "AoIR_Pseudonym_Label": "[Citizen_Satirist_16]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Information Broadcaster (Penyebar Wacana)"
+    },
+    {
+      "Label": "@prabowo",
+      "AoIR_Pseudonym_Label": "@prabowo",
+      "Ethical_Entity_Type": "Public Authority / Media / AI",
+      "Communication_Role": "Target Sink (Otoritas Kebijakan)"
+    },
+    {
+      "Label": "@newIding30",
+      "AoIR_Pseudonym_Label": "[Citizen_Discussant_16]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Information Broadcaster (Penyebar Wacana)"
+    },
+    {
+      "Label": "@dbdbidip",
+      "AoIR_Pseudonym_Label": "[Citizen_Parent_259]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Information Broadcaster (Penyebar Wacana)"
+    },
+    {
+      "Label": "@Casagrande10939",
+      "AoIR_Pseudonym_Label": "[Citizen_Observer_08]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Information Broadcaster (Penyebar Wacana)"
+    },
+    {
+      "Label": "@luvdysh_",
+      "AoIR_Pseudonym_Label": "[Citizen_Student_264]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Information Broadcaster (Penyebar Wacana)"
+    },
+    {
+      "Label": "@mBg_JK",
+      "AoIR_Pseudonym_Label": "[Citizen_Watchdog_314]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Information Broadcaster (Penyebar Wacana)"
+    },
+    {
+      "Label": "@regar_op0sisi",
+      "AoIR_Pseudonym_Label": "[Citizen_Commentator_15]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Opinion Broker (Jembatan Diskursus)"
+    },
+    {
+      "Label": "@punishe98373138",
+      "AoIR_Pseudonym_Label": "[Citizen_Evaluator_15]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Opinion Broker (Jembatan Diskursus)"
+    },
+    {
+      "Label": "@daffiriffi",
+      "AoIR_Pseudonym_Label": "[Citizen_Retweeter_15]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Opinion Broker (Jembatan Diskursus)"
+    },
+    {
+      "Label": "@ryookaasan",
+      "AoIR_Pseudonym_Label": "[Citizen_Influencer_335]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Secondary Influencer (Akun Penggerak)"
+    },
+    {
+      "Label": "@deluxe_melissa",
+      "AoIR_Pseudonym_Label": "[Citizen_Influencer_212]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Secondary Influencer (Akun Penggerak)"
+    },
+    {
+      "Label": "@tanyakanrl",
+      "AoIR_Pseudonym_Label": "@tanyakanrl",
+      "Ethical_Entity_Type": "Public Authority / Media / AI",
+      "Communication_Role": "Target Sink (Akun Rujukan Keluhan)"
+    },
+    {
+      "Label": "@multibank_io",
+      "AoIR_Pseudonym_Label": "[Commercial_Account_56]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Secondary Influencer (Akun Penggerak)"
+    },
+    {
+      "Label": "@tanyarlfes",
+      "AoIR_Pseudonym_Label": "@tanyarlfes",
+      "Ethical_Entity_Type": "Public Authority / Media / AI",
+      "Communication_Role": "Target Sink (Akun Rujukan Keluhan)"
+    },
+    {
+      "Label": "@AjuntamentVLC",
+      "AoIR_Pseudonym_Label": "@AjuntamentVLC",
+      "Ethical_Entity_Type": "Public Authority / Media / AI",
+      "Communication_Role": "Secondary Influencer (Akun Penggerak)"
+    },
+    {
+      "Label": "@Marshabeara9x2",
+      "AoIR_Pseudonym_Label": "[Citizen_Observer_261]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Secondary Influencer (Akun Penggerak)"
+    },
+    {
+      "Label": "@banten_pemprov",
+      "AoIR_Pseudonym_Label": "@banten_pemprov",
+      "Ethical_Entity_Type": "Public Authority / Media / AI",
+      "Communication_Role": "Secondary Influencer (Akun Penggerak)"
+    },
+    {
+      "Label": "@direktoridosen",
+      "AoIR_Pseudonym_Label": "@direktoridosen",
+      "Ethical_Entity_Type": "Public Authority / Media / AI",
+      "Communication_Role": "Opinion Broker (Jembatan Diskursus)"
+    },
+    {
+      "Label": "@bbiiyaya",
+      "AoIR_Pseudonym_Label": "[Citizen_Student_05]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Secondary Influencer (Akun Penggerak)"
+    },
+    {
+      "Label": "@kenzowijay46299",
+      "AoIR_Pseudonym_Label": "[Citizen_Observer_44]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Secondary Influencer (Akun Penggerak)"
+    },
+    {
+      "Label": "@eisbedog",
+      "AoIR_Pseudonym_Label": "[Citizen_Observer_185]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Secondary Influencer (Akun Penggerak)"
+    },
+    {
+      "Label": "@Giziiii21",
+      "AoIR_Pseudonym_Label": "[Citizen_Observer_03]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Secondary Influencer (Akun Penggerak)"
+    },
+    {
+      "Label": "@ctrlaltdel_77",
+      "AoIR_Pseudonym_Label": "[Citizen_Observer_37]",
+      "Ethical_Entity_Type": "Private Citizen Account",
+      "Communication_Role": "Secondary Influencer (Akun Penggerak)"
+    }
+  ]
+}

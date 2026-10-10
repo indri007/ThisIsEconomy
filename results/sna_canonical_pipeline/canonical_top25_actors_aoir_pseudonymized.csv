@@ -1,0 +1,26 @@
+Id,Label,In_Degree,Out_Degree,Total_Degree,Degree_Centrality,In_Degree_Centrality,Out_Degree_Centrality,Betweenness_Centrality,Closeness_Centrality,PageRank,Clustering_Coefficient,Community_Louvain,Communication_Role,Raw_Handle,Ethical_Entity_Type,AoIR_Pseudonym_Label
+grok,@grok,0,42,42,0.043299,0.0,0.043299,0.005941,0.038568,0.000713,0.0,61,Algorithmic Oracle (AI Fact-Checker),@grok,Public Authority / Media / AI,@grok
+4Y4NKZ,@4Y4NKZ,2,15,16,0.016495,0.002062,0.015464,0.000161,0.016552,0.00106,0.116667,16,Information Broadcaster (Penyebar Wacana),@4Y4NKZ,Private Citizen Account,[Citizen_Satirist_16]
+prabowo,@prabowo,15,0,15,0.015464,0.015464,0.0,0.005413,0.037481,0.007984,0.0,5,Target Sink (Otoritas Kebijakan),@prabowo,Public Authority / Media / AI,@prabowo
+newIding30,@newIding30,1,15,15,0.015464,0.001031,0.015464,9.7e-05,0.014897,0.000773,0.133333,16,Information Broadcaster (Penyebar Wacana),@newIding30,Private Citizen Account,[Citizen_Discussant_16]
+dbdbidip,@dbdbidip,0,13,13,0.013402,0.0,0.013402,0.000166,0.013402,0.000713,0.0,260,Information Broadcaster (Penyebar Wacana),@dbdbidip,Private Citizen Account,[Citizen_Parent_259]
+Casagrande10939,@Casagrande10939,0,10,10,0.010309,0.0,0.010309,9.6e-05,0.010309,0.000713,0.0,8,Information Broadcaster (Penyebar Wacana),@Casagrande10939,Private Citizen Account,[Citizen_Observer_08]
+luvdysh_,@luvdysh_,0,9,9,0.009278,0.0,0.009278,7.7e-05,0.009278,0.000713,0.0,265,Information Broadcaster (Penyebar Wacana),@luvdysh_,Private Citizen Account,[Citizen_Student_264]
+mBg_JK,@mBg_JK,0,8,8,0.008247,0.0,0.008247,6e-05,0.008247,0.000713,0.0,314,Information Broadcaster (Penyebar Wacana),@mBg_JK,Private Citizen Account,[Citizen_Watchdog_314]
+regar_op0sisi,@regar_op0sisi,5,2,7,0.007216,0.005155,0.002062,0.004564,0.039135,0.003152,0.0,5,Opinion Broker (Jembatan Diskursus),@regar_op0sisi,Private Citizen Account,[Citizen_Commentator_15]
+punishe98373138,@punishe98373138,0,7,7,0.007216,0.0,0.007216,0.001156,0.027914,0.000713,0.0,5,Opinion Broker (Jembatan Diskursus),@punishe98373138,Private Citizen Account,[Citizen_Evaluator_15]
+daffiriffi,@daffiriffi,0,7,7,0.007216,0.0,0.007216,0.000984,0.027721,0.000713,0.0,5,Opinion Broker (Jembatan Diskursus),@daffiriffi,Private Citizen Account,[Citizen_Retweeter_15]
+ryookaasan,@ryookaasan,0,6,6,0.006186,0.0,0.006186,3.2e-05,0.006186,0.000713,0.0,335,Secondary Influencer (Akun Penggerak),@ryookaasan,Private Citizen Account,[Citizen_Influencer_335]
+deluxe_melissa,@deluxe_melissa,1,5,6,0.006186,0.001031,0.005155,1.3e-05,0.004124,0.000859,0.0,212,Secondary Influencer (Akun Penggerak),@deluxe_melissa,Private Citizen Account,[Citizen_Influencer_212]
+tanyakanrl,@tanyakanrl,5,0,5,0.005155,0.005155,0.0,4e-05,0.005613,0.003137,0.0,9,Target Sink (Akun Rujukan Keluhan),@tanyakanrl,Public Authority / Media / AI,@tanyakanrl
+multibank_io,@multibank_io,2,3,5,0.005155,0.002062,0.003093,3.8e-05,0.005613,0.001521,0.0,56,Secondary Influencer (Akun Penggerak),@multibank_io,Private Citizen Account,[Commercial_Account_56]
+tanyarlfes,@tanyarlfes,5,0,5,0.005155,0.005155,0.0,3e-05,0.005302,0.00344,0.0,123,Target Sink (Akun Rujukan Keluhan),@tanyarlfes,Public Authority / Media / AI,@tanyarlfes
+AjuntamentVLC,@AjuntamentVLC,0,5,5,0.005155,0.0,0.005155,2.1e-05,0.005155,0.000713,0.0,254,Secondary Influencer (Akun Penggerak),@AjuntamentVLC,Public Authority / Media / AI,@AjuntamentVLC
+Marshabeara9x2,@Marshabeara9x2,0,5,5,0.005155,0.0,0.005155,2.1e-05,0.005155,0.000713,0.0,261,Secondary Influencer (Akun Penggerak),@Marshabeara9x2,Private Citizen Account,[Citizen_Observer_261]
+banten_pemprov,@banten_pemprov,1,4,5,0.005155,0.001031,0.004124,6e-06,0.003093,0.000905,0.0,94,Secondary Influencer (Akun Penggerak),@banten_pemprov,Public Authority / Media / AI,@banten_pemprov
+direktoridosen,@direktoridosen,0,4,4,0.004124,0.0,0.004124,0.001236,0.027914,0.000713,0.0,5,Opinion Broker (Jembatan Diskursus),@direktoridosen,Public Authority / Media / AI,@direktoridosen
+bbiiyaya,@bbiiyaya,0,4,4,0.004124,0.0,0.004124,0.000549,0.027155,0.000713,0.0,5,Secondary Influencer (Akun Penggerak),@bbiiyaya,Private Citizen Account,[Citizen_Student_05]
+kenzowijay46299,@kenzowijay46299,0,4,4,0.004124,0.0,0.004124,2.6e-05,0.004124,0.000713,0.0,44,Secondary Influencer (Akun Penggerak),@kenzowijay46299,Private Citizen Account,[Citizen_Observer_44]
+eisbedog,@eisbedog,0,4,4,0.004124,0.0,0.004124,1.6e-05,0.004296,0.000713,0.0,185,Secondary Influencer (Akun Penggerak),@eisbedog,Private Citizen Account,[Citizen_Observer_185]
+Giziiii21,@Giziiii21,0,4,4,0.004124,0.0,0.004124,1.3e-05,0.004124,0.000713,0.0,3,Secondary Influencer (Akun Penggerak),@Giziiii21,Private Citizen Account,[Citizen_Observer_03]
+ctrlaltdel_77,@ctrlaltdel_77,0,4,4,0.004124,0.0,0.004124,1.3e-05,0.004124,0.000713,0.0,37,Secondary Influencer (Akun Penggerak),@ctrlaltdel_77,Private Citizen Account,[Citizen_Observer_37]

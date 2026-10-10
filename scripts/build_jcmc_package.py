@@ -355,9 +355,11 @@ def build_anonymized_manuscript():
         "Data collection targeted public Indonesian-language tweets discussing the national MBG policy across an exhaustive monitoring "
         "window on Platform X. Using official academic API endpoints and verified query filters ('makan bergizi gratis', 'MBG', 'keracunan MBG', "
         "'anggaran MBG'), we harvested a comprehensive raw corpus of N = 9,862 posts. In accordance with Association of Internet Researchers (AoIR) "
-        "ethical guidelines, all private messages were excluded, personally identifiable individual handles were pseudonymized, and analysis "
-        "was conducted exclusively at aggregate topological and semantic levels. Formal Institutional Review Board (IRB) review was exempt "
-        "due to the observational, non-interventional nature of public digital discourse mining."
+        "Ethical Guidelines 3.0 (Franzke et al., 2020) and internet research privacy principles (Zimmer, 2010), we drew a strict ethical distinction "
+        "between public institutional entities (e.g., @prabowo, @grok, @gerindra, which remain identified for democratic accountability) "
+        "and private citizens voicing political grievances under Indonesia's restrictive speech laws (UU ITE), who were systematically pseudonymized "
+        "into functional identifiers (e.g., [Citizen_Satirist_16], [Citizen_Parent_259], [Citizen_Student_264]). All private messages were excluded, "
+        "and formal Institutional Review Board (IRB) review was exempt due to the non-interventional, secondary computational nature of the study."
     )
     add_sec_heading("3.2 Deep Learning: IndoBERT Multi-Task Fine-Tuning", 2)
     add_body_p(
@@ -522,6 +524,7 @@ def build_anonymized_manuscript():
         "Dresner, E., & Herring, S. C. (2010). Functions of the nonverbal in CMC: Emoticons and illocutionary force. *Communication Theory*, *20*(3), 249–268. https://doi.org/10.1111/j.1468-2885.2010.01362.x",
         "Ekman, P. (1992). An argument for basic emotions. *Cognition & Emotion*, *6*(3–4), 169–200. https://doi.org/10.1080/02699939208411068",
         "Fleiss, J. L. (1971). Measuring nominal scale agreement among many raters. *Psychological Bulletin*, *76*(5), 378–382. https://doi.org/10.1037/h0031619",
+        "Franzke, A. S., Bechmann, A., Zimmer, M., Ess, C., & Association of Internet Researchers. (2020). *Internet research: Ethical guidelines 3.0*. Association of Internet Researchers. https://aoir.org/reports/ethics3.pdf",
         "Grice, H. P. (1975). Logic and conversation. In P. Cole & J. L. Morgan (Eds.), *Syntax and semantics 3: Speech acts* (pp. 41–58). Academic Press. https://doi.org/10.1163/9789004368811_003",
         "Gutierrez, R., & Giner-Sorolla, R. (2007). Anger, disgust, and presumption of harm as reactions to taboo-breaking behaviors. *Emotion*, *7*(4), 853–868. https://doi.org/10.1037/1528-3542.7.4.853",
         "Guzman, A. L., & Lewis, S. C. (2020). Artificial intelligence and communication: A Human–Machine Communication research agenda. *New Media & Society*, *22*(1), 70–86. https://doi.org/10.1177/1461444819858691",
@@ -542,7 +545,8 @@ def build_anonymized_manuscript():
         "van Dijck, J., Poell, T., & de Waal, M. (2018). *The platform society: Public values in a connective world*. Oxford University Press. https://doi.org/10.1093/oso/9780190889760.001.0001",
         "Wilie, B., Vincentio, K., Winata, G. I., Cahyawijaya, S., Li, Z., Lim, Z. S., Soleman, S., Mahendra, R., Pascual, P., Ryandito, C., & Fung, P. (2020). IndoNLU: Benchmark and resources for evaluating Indonesian natural language understanding. *Proceedings of AACL-IJCNLP 2020*, 843–857.",
         "Wu, L., Lyu, H., & Luo, J. (2025). Conversational AI agents as dynamic arbiters in polarized online debates: Evidence from Telegram and X telemetry. *Computers in Human Behavior*, *151*, 107998. https://doi.org/10.1016/j.chb.2024.107998",
-        "Zhang, Y., & Centola, D. (2024). Algorithmic bots and the containment of misinformation cascades in complex networks. *Communications of the ACM*, *67*(4), 62–71. https://doi.org/10.1145/3639821"
+        "Zhang, Y., & Centola, D. (2024). Algorithmic bots and the containment of misinformation cascades in complex networks. *Communications of the ACM*, *67*(4), 62–71. https://doi.org/10.1145/3639821",
+        "Zimmer, M. (2010). \"But the data is already public\": On the ethics of research in Facebook and social computing. *Ethics and Information Technology*, *12*(4), 313–325. https://doi.org/10.1007/s10676-010-9227-5"
     ]
     
     for ref in apa_refs:
@@ -1074,6 +1078,8 @@ def copy_supplementary_assets():
         (os.path.join(BASE_DIR, "data/annotation/researcher_batch_100_FILLED.csv"), "researcher_batch_100_FILLED.csv"),
         (os.path.join(BASE_DIR, "results/sna_canonical_pipeline/canonical_macro_topology_metrics.csv"), "canonical_macro_topology_metrics.csv"),
         (os.path.join(BASE_DIR, "results/sna_canonical_pipeline/canonical_top25_actors.csv"), "canonical_top25_actors.csv"),
+        (os.path.join(BASE_DIR, "results/sna_canonical_pipeline/canonical_top25_actors_aoir_pseudonymized.csv"), "canonical_top25_actors_aoir_pseudonymized.csv"),
+        (os.path.join(BASE_DIR, "results/AOIR_ETHICAL_PSEUDONYMIZATION_REPORT.md"), "AOIR_ETHICAL_PSEUDONYMIZATION_REPORT.md"),
         (os.path.join(BASE_DIR, "results/sna_canonical_pipeline/canonical_community_distribution.csv"), "canonical_community_distribution.csv"),
     ]
     for src, dst_name in data_files:

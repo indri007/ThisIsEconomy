@@ -153,18 +153,20 @@ Network centrality analysis reveals a stark functional asymmetry (Table 3). Rath
 
 **Table 3: Actor Centrality Typology: Top 10 Degree Hubs vs. Top 10 Betweenness Brokers**
 
-| Rank | Top 10 Degree Hubs (Prominence) | Top 10 Betweenness Brokers (Bridges) | Sociological Network Function |
+| Rank | Top 10 Degree Hubs (Prominence)* | Top 10 Betweenness Brokers (Bridges)* | Sociological Network Function |
 |:---:|:---|:---|:---|
 | **1** | `@grok` ($C_D: 0.0433, k^{out}: 42$) | `@grok` ($C_B: 0.005941$) | **Algorithmic Epistemic Oracle** mediating civic inquiries |
-| **2** | `@4Y4NKZ` ($C_D: 0.0165, k: 16$) | `@prabowo` ($C_B: 0.005413$) | **Institutional Grievance Sink** (Presidential account) |
-| **3** | `@newIding30` ($C_D: 0.0155, k: 15$) | `@regar_op0sisi` ($C_B: 0.004564$) | Opposition discourse catalyst |
+| **2** | `[Citizen_Satirist_16]` ($C_D: 0.0165, k: 16$) | `@prabowo` ($C_B: 0.005413$) | **Institutional Grievance Sink** (Presidential account) |
+| **3** | `[Citizen_Discussant_16]` ($C_D: 0.0155, k: 15$) | `[Citizen_Commentator_15]` ($C_B: 0.004564$) | Opposition discourse catalyst |
 | **4** | `@prabowo` ($C_D: 0.0155, k^{in}: 15$) | `@direktoridosen` ($C_B: 0.001236$) | Academic/educator commentary bridge |
-| **5** | `@dbdbidip` ($C_D: 0.0134, k: 13$) | `@punishe98373138` ($C_B: 0.001156$) | Grassroots citizen thread relay |
-| **6** | `@Casagrande10939` ($C_D: 0.0103, k: 10$) | `@daffiriffi` ($C_B: 0.000984$) | Viral food poisoning alert conduit |
-| **7** | `@luvdysh_` ($C_D: 0.0093, k: 9$) | `@bbiiyaya` ($C_B: 0.000549$) | Student/parent experiential relay |
-| **8** | `@mBg_JK` ($C_D: 0.0082, k: 8$) | `@gibran_tweet` ($C_B: 0.000543$) | Vice-presidential youth engagement bridge |
-| **9** | `@regar_op0sisi` ($C_D: 0.0072, k: 7$) | `@Rhym03` ($C_B: 0.000366$) | Intra-cluster conversational bridge |
-| **10** | `@punishe98373138` ($C_D: 0.0072, k: 7$) | `@xquitavee` ($C_B: 0.000366$) | Nutritional defect commentary conduit |
+| **5** | `[Citizen_Parent_259]` ($C_D: 0.0134, k: 13$) | `[Citizen_Evaluator_15]` ($C_B: 0.001156$) | Grassroots citizen thread relay |
+| **6** | `[Citizen_Observer_08]` ($C_D: 0.0103, k: 10$) | `[Citizen_Retweeter_15]` ($C_B: 0.000984$) | Viral food poisoning alert conduit |
+| **7** | `[Citizen_Student_264]` ($C_D: 0.0093, k: 9$) | `[Citizen_Student_05]` ($C_B: 0.000549$) | Student/parent experiential relay |
+| **8** | `[Citizen_Watchdog_314]` ($C_D: 0.0082, k: 8$) | `@gibran_tweet` ($C_B: 0.000543$) | Vice-presidential youth engagement bridge |
+| **9** | `[Citizen_Commentator_15]` ($C_D: 0.0072, k: 7$) | `[Citizen_Bridge_03]` ($C_B: 0.000366$) | Intra-cluster conversational bridge |
+| **10** | `[Citizen_Evaluator_15]` ($C_D: 0.0072, k: 7$) | `[Citizen_Broker_02]` ($C_B: 0.000366$) | Nutritional defect commentary conduit |
+
+*\*Note. In compliance with Association of Internet Researchers (AoIR) Ethical Guidelines 3.0 (Franzke et al., 2020), private citizen accounts are pseudonymized to safeguard privacy under Indonesian digital communication statutes (UU ITE).*
 
 Figure 3 maps this four-quadrant typology, contrasting In-Degree against Betweenness Centrality.
 
@@ -283,6 +285,7 @@ This study examined the crisis surrounding Indonesia's Free Nutritious Meal prog
 - Edwards, C., Edwards, A., Spence, P. R., & Shelton, A. K. (2014). Is that a bot running the social media feed? Testing the differences in perceptions of communication quality and credibility of human and bot agents. *Computers in Human Behavior*, *33*, 372–376. https://doi.org/10.1016/j.chb.2013.08.013
 - Ekman, P. (1992). An argument for basic emotions. *Cognition & Emotion*, *6*(3–4), 169–200. https://doi.org/10.1080/02699939208411068
 - Fleiss, J. L. (1971). Measuring nominal scale agreement among many raters. *Psychological Bulletin*, *76*(5), 378–382. https://doi.org/10.1037/h0031619
+- Franzke, A. S., Bechmann, A., Zimmer, M., Ess, C., & Association of Internet Researchers. (2020). *Internet research: Ethical guidelines 3.0*. Association of Internet Researchers. https://aoir.org/reports/ethics3.pdf
 - Grice, H. P. (1975). Logic and conversation. In P. Cole & J. L. Morgan (Eds.), *Syntax and semantics 3: Speech acts* (pp. 41–58). Academic Press. https://doi.org/10.1163/9789004368811_003
 - Gutierrez, R., & Giner-Sorolla, R. (2007). Anger, disgust, and presumption of harm as reactions to taboo-breaking behaviors. *Emotion*, *7*(4), 853–868. https://doi.org/10.1037/1528-3542.7.4.853
 - Guzman, A. L., & Lewis, S. C. (2020). Artificial intelligence and communication: A Human–Machine Communication research agenda. *New Media & Society*, *22*(1), 70–86. https://doi.org/10.1177/1461444819858691
@@ -309,6 +312,7 @@ This study examined the crisis surrounding Indonesia's Free Nutritious Meal prog
 - Wu, L., Lyu, H., & Luo, J. (2025). Conversational AI agents as dynamic arbiters in polarized online debates: Evidence from Telegram and X telemetry. *Computers in Human Behavior*, *151*, 107998. https://doi.org/10.1016/j.chb.2024.107998
 - Zhang, Y., & Centola, D. (2024). Algorithmic bots and the containment of misinformation cascades in complex networks. *Communications of the ACM*, *67*(4), 62–71. https://doi.org/10.1145/3639821
 - Zhao, X., Zhan, M., & Liu, B. (2026). Real-time IoT early warning telemetry and automated crisis response for public food safety. *Journal of Food Science*, *91*(2), 312–326. https://doi.org/10.1111/1750-3841.16890
+- Zimmer, M. (2010). "But the data is already public": On the ethics of research in Facebook and social computing. *Ethics and Information Technology*, *12*(4), 313–325. https://doi.org/10.1007/s10676-010-9227-5
 
 ---
 
