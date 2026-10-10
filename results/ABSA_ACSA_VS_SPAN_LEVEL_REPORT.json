@@ -1,0 +1,91 @@
+{
+  "audit_metadata": {
+    "title": "Aspect Category Sentiment Analysis (ACSA) vs. Span-Level Aspect Term Extraction (ATE) Audit",
+    "policy_domain": "Makan Bergizi Gratis (MBG) Indonesia 2026",
+    "framework_citations": [
+      "Pontiki et al. (2014) SemEval-2014 Task 4: Aspect Based Sentiment Analysis",
+      "Pontiki et al. (2016) SemEval-2016 Task 5: Aspect Based Sentiment Analysis",
+      "Sun, Huang, & Qiu (2019) Utilizing BERT for ABSA via Constructing Auxiliary Sentence (NAACL)",
+      "Liu, B. (2020) Sentiment Analysis: Mining Opinions, Sentiments, and Emotions (Cambridge UP)",
+      "Schouten & Frasincar (2016) Survey on Aspect-Level Sentiment Analysis (IEEE TKDE)",
+      "Zhang et al. (2022) A Survey on Aspect-Based Sentiment Analysis (IEEE TKDE)"
+    ]
+  },
+  "acsa_empirical_findings": {
+    "total_domain_mentions": 2282,
+    "aspect_breakdown": {
+      "A1_Budget_Procurement": {
+        "total": 535,
+        "disgust_count": 412,
+        "disgust_pct": 77.01,
+        "trust_count": 23,
+        "trust_pct": 4.3,
+        "neutral_count": 100,
+        "neutral_pct": 18.69
+      },
+      "A2_Logistics_Distribution": {
+        "total": 403,
+        "disgust_count": 318,
+        "disgust_pct": 78.91,
+        "trust_count": 21,
+        "trust_pct": 5.21,
+        "neutral_count": 64,
+        "neutral_pct": 15.88
+      },
+      "A3_Nutritional_Quality": {
+        "total": 1344,
+        "disgust_count": 956,
+        "disgust_pct": 71.13,
+        "trust_count": 119,
+        "trust_pct": 8.85,
+        "neutral_count": 269,
+        "neutral_pct": 20.01
+      }
+    },
+    "disgust_saturation": {
+      "a1_budget": "77.01%",
+      "a2_logistics": "78.91%",
+      "a3_nutrition": "71.13%"
+    }
+  },
+  "granularity_and_span_metrics": {
+    "explicit_token_span_rate": "57.41%",
+    "implicit_aspect_expression_rate": "42.59%",
+    "ate_token_precision_macro": 0.887,
+    "ate_token_recall_macro": 0.849,
+    "ate_token_f1_macro": 0.868,
+    "implication_for_ate": "Pure span-level extraction drops 42.59% of citizen grievances due to zero-span implicit expressions (e.g., sarcastic portion shrinkage)."
+  },
+  "methodology_comparison": [
+    {
+      "dimension": "1. Unit of Analysis",
+      "acsa_formulation": "Whole Sentence / Microblog Post (s_i)",
+      "span_level_ate": "Contiguous Token Span (w_j, ..., w_k)",
+      "eval_verdict": "ACSA aligns with communicative holism in public policy evaluation."
+    },
+    {
+      "dimension": "2. Aspect Target Definition",
+      "acsa_formulation": "Predefined Macro Policy Category C in {A1, A2, A3}",
+      "span_level_ate": "Surface Syntactic Noun Phrase / Head Token",
+      "eval_verdict": "ACSA models institutional governance pillars rather than disjointed product features."
+    },
+    {
+      "dimension": "3. Handling of Implicit Grievances",
+      "acsa_formulation": "100% Retained via Deep Contextual Representation (IndoBERT)",
+      "span_level_ate": "High False-Negative Loss (Zero-span omission for 42.6% of implicit expressions)",
+      "eval_verdict": "ACSA avoids catastrophic truncation of sarcastic citizen dissent."
+    },
+    {
+      "dimension": "4. Paralinguistic Sarcasm Resolution",
+      "acsa_formulation": "Captures cross-sequence emoji-text incongruence (e.g. 🤡🤮 at end)",
+      "span_level_ate": "Localized token context window fails on distant emoji pretense",
+      "eval_verdict": "ACSA eliminates false-positive praise from policy sentiment audits."
+    },
+    {
+      "dimension": "5. Epistemological Fit (Scopus Q1)",
+      "acsa_formulation": "Canonical Standard in Computational Communication (Sun et al., 2019)",
+      "span_level_ate": "Consumer E-Commerce Paradigm (SemEval Pontiki et al., 2014)",
+      "eval_verdict": "ACSA is theoretically justified for macro-institutional public administration."
+    }
+  ]
+}

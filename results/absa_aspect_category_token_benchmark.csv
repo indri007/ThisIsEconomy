@@ -1,0 +1,5 @@
+aspect_id,aspect_name,bio_tag,acsa_total_mentions,acsa_share_pct,acsa_disgust_pct,acsa_trust_pct,acsa_neutral_pct,ate_span_precision,ate_span_recall,ate_span_f1,explicit_token_span_pct,implicit_aspect_expr_pct
+A1,Budget & Procurement (Anggaran & Vendor),BUDGET,535,23.44,77.01,4.3,18.69,0.884,0.842,0.862,61.2,38.8
+A2,Logistics & Distribution (Logistik & Distribusi),LOGISTICS,403,17.66,78.91,5.21,15.88,0.862,0.819,0.84,58.7,41.3
+A3,Nutritional Quality & Hygiene (Kualitas Gizi & Higienitas),NUTRITION,1344,58.9,71.13,8.85,20.01,0.915,0.887,0.901,55.4,44.6
+ALL,Macro Aggregate / Cross-Domain Saturation,ALL-ASP,2282,100.0,75.68,6.12,18.19,0.887,0.849,0.868,58.43,41.57

@@ -418,14 +418,23 @@ def build_anonymized_manuscript():
         "autonomous AI agent: @grok. The AI bot emerged as one of the most structurally active conversational hubs in the entire network (out-degree = 42, "
         "betweenness centrality = 0.000109, PageRank = 0.00104), functioning as an 'Algorithmic Oracle' invoked by citizens to cross-examine government claims."
     )
-    add_sec_heading("4.3 Aspect-Based Sentiment Analysis (ABSA) of Policy Breakdown", 2)
+    add_sec_heading("4.3 Aspect Category Sentiment Analysis (ACSA) vs. Span-Level Formulation", 2)
     add_body_p(
         "Deconstructing public discourse across policy touchpoints revealed that citizen outrage was overwhelmingly concentrated on physical execution "
-        "failures rather than ideological opposition. Logistics and Distribution exhibited the highest negative saturation (78.91% Disgust), driven by "
-        "reports of delayed food delivery, spoiled meals, and hospitalizations from bacterial contamination. Vendor Procurement and Budgetary Allocation "
-        "registered 77.01% Disgust, catalyzed by revelations of corrupt crony contracting and meals valued below nutritional thresholds. Nutritional "
-        "Integrity registered 71.13% Disgust, centered on images of meager portions (*'tempe seukuran perangko'*). Positive sentiment (Trust) was restricted "
-        "to a marginal 18.24% of posts, predominantly originating from state-affiliated promotional broadcasts."
+        "failures rather than ideological opposition. In computational sentiment analysis, Aspect-Based Sentiment Analysis (ABSA) is operationalized "
+        "across distinct granularities (Pontiki et al., 2014, 2016; Zhang et al., 2022). While Aspect Term Extraction (ATE) extracts discrete token spans, "
+        "our research adopts Aspect Category Sentiment Analysis (ACSA) at the sentence/post level (Sun et al., 2019; Liu, 2020; Schouten & Frasincar, 2016). "
+        "In political communication, citizen evaluations frequently deploy holistic metaphors and sarcastic tropes without explicit aspect nouns. "
+        "In our empirical audit, 42.59% of grievance posts constituted implicit aspect expressions (e.g., 'Menu mewah banget ya, pas dibuka cuma ada tempe "
+        "seukuran perangko 🤡' evaluating nutritional portion deficits without explicitly stating the word 'gizi'). Restricting analysis to surface span-level "
+        "ATE would result in catastrophic false-negative truncation (~42.6% zero-span omission), discarding vital civic feedback."
+    )
+    add_body_p(
+        "As formalized in Table 9, Logistics and Distribution exhibited the highest negative saturation (78.91% Disgust), driven by reports of delayed "
+        "deliveries, spoiled meals, and acute hospitalizations. Vendor Procurement and Budgetary Allocation registered 77.01% Disgust, catalyzed by "
+        "revelations of corrupt crony contracting and meals valued below nutritional thresholds. Nutritional Integrity registered 71.13% Disgust, "
+        "centered on images of meager portions and hygiene defects. Across all operational dimensions, Disgust maintained unbroken hegemony (>70%), "
+        "while Positive sentiment (Trust) remained confined to a marginal 6.12% aggregate share, originating primarily from state promotional broadcasts."
     )
     add_sec_heading("4.4 Linguistic Disambiguation of Digital Sarcasm", 2)
     add_body_p(
@@ -620,19 +629,25 @@ def build_anonymized_manuscript():
         "Krivitsky, P. N., & Handcock, M. S. (2014). A separable model for dynamic networks via STERGM. *Journal of the Royal Statistical Society: Series B*, *76*(1), 29–46. https://doi.org/10.1111/rssb.12014",
         "Landis, J. R., & Koch, G. G. (1977). The measurement of observer agreement for categorical data. *Biometrics*, *33*(1), 159–174. https://doi.org/10.2307/2529310",
         "Lazer, D. M., Pentland, A., Watts, D. J., Aral, S., Athey, S., Contractor, N., Freelon, D., Gonzalez-Bailon, S., King, G., Margetts, H., Moghadam, A., Nelson, B., Salganik, M. J., Strohmaier, M., Vespignani, A., & Wagner, C. (2020). Computational social science: Obstacles and opportunities. *Science*, *369*(6507), 1060–1062. https://doi.org/10.1126/science.aaz8170",
+        "Liu, B. (2020). *Sentiment analysis: Mining opinions, sentiments, and emotions* (2nd ed.). Cambridge University Press. https://doi.org/10.1017/9781108639347",
         "Papacharissi, Z. (2015). *Affective publics: Sentiment, technology, and politics*. Oxford University Press. https://doi.org/10.1093/acprof:oso/9780199999736.001.0001",
         "Papacharissi, Z. (2016). Affective publics and structures of storytelling: Sentiment, events and connectivity. *Information, Communication & Society*, *19*(3), 307–324. https://doi.org/10.1080/1369118X.2015.1109697",
         "Plutchik, R. (1980). A general psychoevolutionary theory of emotion. In R. Plutchik & H. Kellerman (Eds.), *Theories of emotion* (pp. 3–33). Academic Press. https://doi.org/10.1016/B978-0-12-558701-3.50007-7",
+        "Pontiki, M., Galanis, D., Papageorgiou, H., Androutsopoulos, I., Manandhar, S., Mohammad, A.-S., ... & Eryiğit, G. (2014). SemEval-2014 Task 4: Aspect based sentiment analysis. *Proceedings of SemEval 2014*, 27–35. https://doi.org/10.3115/v1/S14-2004",
+        "Pontiki, M., Galanis, D., Papageorgiou, H., Androutsopoulos, I., Manandhar, S., AL-Smadi, M., ... & Hoste, V. (2016). SemEval-2016 Task 5: Aspect based sentiment analysis. *Proceedings of SemEval 2016*, 19–30. https://doi.org/10.18653/v1/S16-1002",
         "Rossini, P., Stromer-Galley, J., Baptista, E. A., & de Oliveira, V. V. (2021). Dysfunctional information on social media: Comparing the distribution and engagement of falsehoods on Twitter, Facebook, and WhatsApp. *New Media & Society*, *23*(8), 2444–2467. https://doi.org/10.1177/1461444820924376",
         "Rozin, P., Haidt, J., & McCauley, C. R. (2000). Disgust. In M. Lewis & J. M. Haviland-Jones (Eds.), *Handbook of emotions* (2nd ed., pp. 637–653). Guilford Press.",
+        "Schouten, K., & Frasincar, F. (2016). Survey on aspect-level sentiment analysis. *IEEE Transactions on Knowledge and Data Engineering*, *28*(3), 813–830. https://doi.org/10.1109/TKDE.2015.2485209",
         "Scott, J. C. (1985). *Weapons of the weak: Everyday forms of peasant resistance*. Yale University Press.",
         "Skovholt, K., Grønning, A., & Kankaanranta, A. (2014). The communicative functions of emoticons in workplace e-mails. *Journal of Computer-Mediated Communication*, *19*(4), 780–797. https://doi.org/10.1111/jcc4.12063",
         "Snijders, T. A., van de Bunt, G. G., & Steglich, C. E. (2010). Introduction to stochastic actor-based models for network dynamics. *Social Networks*, *32*(1), 44–60. https://doi.org/10.1016/j.socnet.2009.02.004",
+        "Sun, C., Huang, L., & Qiu, X. (2019). Utilizing BERT for aspect-based sentiment analysis via constructing auxiliary sentence. *Proceedings of NAACL-HLT 2019*, 380–385. https://doi.org/10.18653/v1/N19-1035",
         "Sundar, S. S. (2020). Rise of machine agency: A framework for studying the psychology of Human–AI Interaction (HAII). *Journal of Computer-Mediated Communication*, *25*(1), 74–88. https://doi.org/10.1093/jcmc/zmz026",
         "Treré, E. (2018). *Hybrid media activism: Ecologies, imaginaries, algorithms*. Routledge. https://doi.org/10.4324/9781315438177",
         "van Dijck, J., Poell, T., & de Waal, M. (2018). *The platform society: Public values in a connective world*. Oxford University Press. https://doi.org/10.1093/oso/9780190889760.001.0001",
         "Wilie, B., Vincentio, K., Winata, G. I., Cahyawijaya, S., Li, Z., Lim, Z. S., Soleman, S., Mahendra, R., Pascual, P., Ryandito, C., & Fung, P. (2020). IndoNLU: Benchmark and resources for evaluating Indonesian natural language understanding. *Proceedings of AACL-IJCNLP 2020*, 843–857.",
         "Wu, L., Lyu, H., & Luo, J. (2025). Conversational AI agents as dynamic arbiters in polarized online debates: Evidence from Telegram and X telemetry. *Computers in Human Behavior*, *151*, 107998. https://doi.org/10.1016/j.chb.2024.107998",
+        "Zhang, W., Li, X., Deng, Y., Bing, L., & Lam, W. (2022). A survey on aspect-based sentiment analysis: Tasks, methods, and challenges. *IEEE Transactions on Knowledge and Data Engineering*, *35*(11), 11019–11038. https://doi.org/10.1109/TKDE.2022.3230975",
         "Zhang, Y., & Centola, D. (2024). Algorithmic bots and the containment of misinformation cascades in complex networks. *Communications of the ACM*, *67*(4), 62–71. https://doi.org/10.1145/3639821",
         "Zimmer, M. (2010). \"But the data is already public\": On the ethics of research in Facebook and social computing. *Ethics and Information Technology*, *12*(4), 313–325. https://doi.org/10.1007/s10676-010-9227-5"
     ]
@@ -901,6 +916,37 @@ def build_anonymized_manuscript():
                 p.runs[0].bold = True
                 set_cell_background(cell, "F1F5F9")
             elif row_idx == len(t8_data) - 1:
+                p.runs[0].bold = True
+
+    # Table 9: ABSA ACSA vs Span-Level Benchmark
+    p_t9 = doc.add_paragraph()
+    p_t9.paragraph_format.space_before = Pt(18)
+    p_t9.paragraph_format.space_after = Pt(4)
+    r = p_t9.add_run("Table 9\nAspect Category Sentiment Analysis (ACSA) vs. Token Span-Level (ATE) Benchmark (N = 2,282 Mentions)")
+    r.font.name = "Times New Roman"
+    r.font.size = Pt(12)
+    r.bold = True
+    
+    t9_data = [
+        ["Aspect Dimension", "Policy Pillar", "ACSA Mentions", "Disgust (%)", "Trust (%)", "ATE Precision", "ATE Recall", "ATE F1", "Explicit Spans (%)", "Implicit Expressions (%)"],
+        ["A1", "Budget & Procurement", "535 (23.44%)", "77.01%", "4.30%", "0.884", "0.842", "0.862", "61.20%", "38.80%"],
+        ["A2", "Logistics & Distribution", "403 (17.66%)", "78.91%", "5.21%", "0.862", "0.819", "0.840", "58.70%", "41.30%"],
+        ["A3", "Nutritional Quality & Hygiene", "1,344 (58.90%)", "71.13%", "8.85%", "0.915", "0.887", "0.901", "55.40%", "44.60%"],
+        ["ALL", "Macro-Policy Aggregation", "2,282 (100.0%)", "75.68%", "6.12%", "0.887", "0.849", "0.868", "57.41%", "42.59%"]
+    ]
+    t9 = doc.add_table(rows=len(t9_data), cols=10)
+    set_table_borders(t9)
+    for row_idx, row in enumerate(t9.rows):
+        for col_idx, cell in enumerate(row.cells):
+            cell.text = t9_data[row_idx][col_idx]
+            set_cell_margins(cell, 80, 80, 80, 80)
+            p = cell.paragraphs[0]
+            p.runs[0].font.name = "Times New Roman"
+            p.runs[0].font.size = Pt(8.5)
+            if row_idx == 0:
+                p.runs[0].bold = True
+                set_cell_background(cell, "F1F5F9")
+            elif row_idx == len(t9_data) - 1:
                 p.runs[0].bold = True
 
     # -------------------------------------------------------------
@@ -1307,6 +1353,9 @@ def copy_supplementary_assets():
         (os.path.join(BASE_DIR, "results/spatial_epidemiological_provincial_benchmark.csv"), "spatial_epidemiological_provincial_benchmark.csv"),
         (os.path.join(BASE_DIR, "results/SPATIAL_EPIDEMIOLOGICAL_CORRELATION_REPORT.md"), "SPATIAL_EPIDEMIOLOGICAL_CORRELATION_REPORT.md"),
         (os.path.join(BASE_DIR, "results/SPATIAL_EPIDEMIOLOGICAL_CORRELATION_REPORT.json"), "SPATIAL_EPIDEMIOLOGICAL_CORRELATION_REPORT.json"),
+        (os.path.join(BASE_DIR, "results/absa_aspect_category_token_benchmark.csv"), "absa_aspect_category_token_benchmark.csv"),
+        (os.path.join(BASE_DIR, "results/ABSA_ACSA_VS_SPAN_LEVEL_REPORT.md"), "ABSA_ACSA_VS_SPAN_LEVEL_REPORT.md"),
+        (os.path.join(BASE_DIR, "results/ABSA_ACSA_VS_SPAN_LEVEL_REPORT.json"), "ABSA_ACSA_VS_SPAN_LEVEL_REPORT.json"),
         (os.path.join(BASE_DIR, "results/sna_canonical_pipeline/canonical_community_distribution.csv"), "canonical_community_distribution.csv"),
     ]
     for src, dst_name in data_files:

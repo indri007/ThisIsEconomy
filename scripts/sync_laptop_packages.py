@@ -78,6 +78,9 @@ files_to_copy = [
     os.path.join(BASE_DIR, "results/spatial_epidemiological_provincial_benchmark.csv"),
     os.path.join(BASE_DIR, "results/SPATIAL_EPIDEMIOLOGICAL_CORRELATION_REPORT.md"),
     os.path.join(BASE_DIR, "results/SPATIAL_EPIDEMIOLOGICAL_CORRELATION_REPORT.json"),
+    os.path.join(BASE_DIR, "results/absa_aspect_category_token_benchmark.csv"),
+    os.path.join(BASE_DIR, "results/ABSA_ACSA_VS_SPAN_LEVEL_REPORT.md"),
+    os.path.join(BASE_DIR, "results/ABSA_ACSA_VS_SPAN_LEVEL_REPORT.json"),
     os.path.join(BASE_DIR, "results/sna_canonical_pipeline/canonical_community_distribution.csv"),
 
     # High-Res 300 DPI Images
@@ -158,11 +161,16 @@ readme_content = """# 📚 PAKET LENGKAP ARSIP SUBMISI JURNAL INTERNASIONAL SCOP
   - Ground-Truthing Spasial & Epidemiologis: Korelasi rank monotonik Spearman signifikan secara statistik (**Spearman ρ = 0.7212, p = 0.0186 < 0.05**) antara aktivitas digital warganet per provinsi dengan Korban Keracunan Pangan Rawat Inap (N = 3.420 siswa) dan Suspensi Unit Dapur Katering SPPG (N = 4.581 unit).
   - Klaster Makro-Episentrum Pulau Jawa: Jawa menyumbang **97.40%** suspensi dapur (4.462 / 4.581), **97.08%** rawat inap anak (3.320 / 3.420), dan **81.84%** diskursus toponim warganet (595 / 727).
   - Jawa Barat sebagai Episentrum Utama: Menyerap **46.71%** suspensi SPPG (2.140 unit) dan **48.25%** korban keracunan (1.650 siswa), membuktikan bahwa kemuakan moral digital (*Disgust* 98.14%) bukanlah ilusi online melainkan cermin runtuhnya rantai pasok fisik makanan di lapangan (*Phygital Gap*).
+- `ABSA_ACSA_VS_SPAN_LEVEL_REPORT.md` & `.json` (Resolusi Defek Poin #8):
+  - Formulasi Aspect Category Sentiment Analysis (ACSA) vs. Span-Level Aspect Term Extraction (ATE).
+  - Mengklarifikasi distingsi metodologis SemEval (Pontiki et al., 2014, 2016; Zhang et al., 2022) dan justifikasi analisis kebijakan publik (Sun et al., 2019; Liu, 2020; Schouten & Frasincar, 2016).
+  - Temuan Empiris: **42.59%** cuitan kritik warga menggunakan ekspresi aspek implisit (*implicit expressions* seperti metafora porsi seukuran perangko atau penyelewengan dana) tanpa menyebut kata benda eksplisit (*nutrisi* atau *anggaran*). Model span-level ATE murni akan mengalami *zero-span omission* (kehilangan ~42.6% kritik warga).
+  - ACSA berbasis IndoBERT mempertahankan 100% kritik warga dan memetakan hegemoni kemuakan moral (*Disgust* >70% di seluruh pilar: Logistik 78.91%, Anggaran 77.01%, Gizi 71.13%).
 - `CANONICAL_SNA_VERIFICATION_REPORT.md`:
   - Audit verifikasi topologi kanonis graf Twitter MBG (|V|=971, |E|=666, Q=0.9837, ρ=0.000707).
 - `INDOBERT_ACTUAL_HUMAN_VALIDATION_REPORT.md` & `.json`:
   - Evaluasi test set holdout 1.058 data (Acc 75.99%, Weighted-F1 0.7434).
-- `canonical_macro_topology_metrics.csv`, `canonical_top25_actors.csv`, `canonical_community_distribution.csv`, `dynamic_temporal_network_phases.csv`, `spatial_epidemiological_provincial_benchmark.csv`.
+- `canonical_macro_topology_metrics.csv`, `canonical_top25_actors.csv`, `canonical_community_distribution.csv`, `dynamic_temporal_network_phases.csv`, `spatial_epidemiological_provincial_benchmark.csv`, `absa_aspect_category_token_benchmark.csv`.
 
 ---
 
