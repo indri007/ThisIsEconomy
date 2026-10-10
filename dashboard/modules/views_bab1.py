@@ -149,6 +149,97 @@ def render_bab1_page():
 
     st.markdown("---")
 
+    # ── TREN TEMPORAL BULAN KE BULAN & TABEL 9 EMOJI INDOBERT (AWAL MBG S.D. OKTOBER 2026) ──
+    st.subheader("📈 Tren Temporal Bulan ke Bulan & Tabel 9 Emoji IndoBERT (Awal MBG s.d. 10 Oktober 2026)")
+    st.markdown("""
+    > *Analisis dinamika afektif longitudinal publik terhadap Program Makan Bergizi Gratis (MBG) dari tahap percontohan awal (Januari 2026),
+    > melewati penonaktifan 4.581 SPPG (Mei 2026), eskalasi kasus keracunan massal akut (September 2026), hingga fase pengawasan telemetri
+    > bot Telegram EWS (Oktober 2026) menggunakan model **Fine-tuned IndoBERT** berbasis taksonomi 9 emosi Plutchik.*
+    """)
+
+    timeline_img_path = get_result_path("indobert_monthly_emotion_timeline_2026.png")
+    if os.path.exists(timeline_img_path):
+        st.image(
+            timeline_img_path,
+            caption="Gambar 1.0: Evolusi Temporal Afektif IndoBERT Bulan ke Bulan (Januari – 10 Oktober 2026, N=9.360) & Analisis Dua Puncak Eskalasi Krisis",
+            width='stretch'
+        )
+    else:
+        st.info("Visualisasi grafik indobert_monthly_emotion_timeline_2026.png sedang dimuat.")
+
+    tab_time_a, tab_time_b, tab_time_c = st.tabs([
+        "📅 Tabel Dinamika Bulan ke Bulan (N=9.360)",
+        "🎭 Tabel Taksonomi 9 Emoji & Emosi IndoBERT (N=5.263)",
+        "⚡ Analisis Dua Puncak Krisis (Mei vs September 2026)"
+    ])
+
+    with tab_time_a:
+        st.markdown("#### 📅 Dinamika Frekuensi & Emosi IndoBERT Bulan ke Bulan (Januari – 10 Oktober 2026)")
+        st.caption("Data empiris pengawasan longitudinal out-of-sample (N = 9.360 cuitan riil):")
+        df_monthly_timeline = pd.DataFrame([
+            {"Periode / Bulan": "Januari 2026", "Total Cuitan": 42, "🤢 Jijik (Disgust)": 42, "❤️ Cinta (Love)": 0, "😐 Netral": 0, "Proporsi Jijik (%)": "100,00%", "Milestone Empiris & Peristiwa Lapangan": "Peluncuran percontohan awal; skeptisisme publik terhadap kalkulasi anggaran & kesiapan dapur."},
+            {"Periode / Bulan": "Februari 2026", "Total Cuitan": 55, "🤢 Jijik (Disgust)": 55, "❤️ Cinta (Love)": 0, "😐 Netral": 0, "Proporsi Jijik (%)": "100,00%", "Milestone Empiris & Peristiwa Lapangan": "Perluasan uji coba regional; keluhan keterlambatan distribusi & kemasan makanan mulai bermunculan."},
+            {"Periode / Bulan": "Maret 2026", "Total Cuitan": 189, "🤢 Jijik (Disgust)": 184, "❤️ Cinta (Love)": 5, "😐 Netral": 0, "Proporsi Jijik (%)": "97,35%", "Milestone Empiris & Peristiwa Lapangan": "Penyesuaian jadwal Ramadan; perdebatan porsi, kualitas gizi lauk, dan transparansi vendor lokal."},
+            {"Periode / Bulan": "April 2026", "Total Cuitan": 515, "🤢 Jijik (Disgust)": 499, "❤️ Cinta (Love)": 16, "😐 Netral": 0, "Proporsi Jijik (%)": "96,89%", "Milestone Empiris & Peristiwa Lapangan": "Kontroversi nampan makan plastik impor (ompreng); eskalasi kecurigaan tata kelola pengadaan barang."},
+            {"Periode / Bulan": "Mei 2026 (Puncak I)", "Total Cuitan": 3157, "🤢 Jijik (Disgust)": 3060, "❤️ Cinta (Love)": 93, "😐 Netral": 4, "Proporsi Jijik (%)": "96,93%", "Milestone Empiris & Peristiwa Lapangan": "🚨 Puncak I: Temuan ribuan sampel makanan basi; BGN menonaktifkan 4.581 unit SPPG bermasalah."},
+            {"Periode / Bulan": "Juni 2026", "Total Cuitan": 228, "🤢 Jijik (Disgust)": 225, "❤️ Cinta (Love)": 3, "😐 Netral": 0, "Proporsi Jijik (%)": "98,68%", "Milestone Empiris & Peristiwa Lapangan": "Libur sekolah; evaluasi parlemen (DPR RI) standarisasi dapur & audit sertifikasi higienitas."},
+            {"Periode / Bulan": "Juli 2026", "Total Cuitan": 184, "🤢 Jijik (Disgust)": 182, "❤️ Cinta (Love)": 2, "😐 Netral": 0, "Proporsi Jijik (%)": "98,91%", "Milestone Empiris & Peristiwa Lapangan": "Tahun ajaran baru sekolah; proses verifikasi ulang lisensi vendor makanan oleh dinas terkait."},
+            {"Periode / Bulan": "Agustus 2026", "Total Cuitan": 209, "🤢 Jijik (Disgust)": 205, "❤️ Cinta (Love)": 2, "😐 Netral": 2, "Proporsi Jijik (%)": "98,09%", "Milestone Empiris & Peristiwa Lapangan": "Pidato Kenegaraan & Nota Keuangan RAPBN 2026 (Rp 268T); perdebatan efisiensi anggaran belanja vs defisit."},
+            {"Periode / Bulan": "September 2026 (Puncak II)", "Total Cuitan": 4661, "🤢 Jijik (Disgust)": 4619, "❤️ Cinta (Love)": 39, "😐 Netral": 3, "Proporsi Jijik (%)": "99,10%", "Milestone Empiris & Peristiwa Lapangan": "🔥 Puncak II (Krisis Terbesar): Keracunan massal siswa serentak di berbagai provinsi; ribuan dirawat di IGD/RS."},
+            {"Periode / Bulan": "Oktober 2026 (s.d. 10 Okt)", "Total Cuitan": 120, "🤢 Jijik (Disgust)": 118, "❤️ Cinta (Love)": 2, "😐 Netral": 0, "Proporsi Jijik (%)": "98,33%", "Milestone Empiris & Peristiwa Lapangan": "🤖 Pengawasan aktif bot Telegram EWS; penataan ulang tata kelola dapur & integrasi telemetri mitigasi krisis."},
+            {"Periode / Bulan": "TOTAL AKUMULASI", "Total Cuitan": 9360, "🤢 Jijik (Disgust)": 9189, "❤️ Cinta (Love)": 167, "😐 Netral": 9, "Proporsi Jijik (%)": "98,17%", "Milestone Empiris & Peristiwa Lapangan": "Akumulasi longitudinal out-of-sample surveillance (Januari – 10 Oktober 2026)"}
+        ])
+        st.dataframe(df_monthly_timeline, width='stretch', hide_index=True)
+
+    with tab_time_b:
+        st.markdown("#### 🎭 Taksonomi 9 Emoji & Emosi IndoBERT Korpus Tesis (N = 5.263)")
+        st.caption("Distribusi komprehensif 9 kelas emosi model fine-tuned IndoBERT berbasis taksonomi Plutchik:")
+        df_taxonomy_9 = pd.DataFrame([
+            {"No": 1, "Emoji": "🤢 / 🤮", "Kelas Emosi (Plutchik)": "Jijik (Disgust)", "Frekuensi (N)": "2.960", "Proporsi (%)": "56,24%", "Indikator Leksikal Dominan": "basi, bau, ulat, belatung, busuk, muntah, diare, gak layak, buang, jorok", "Konteks Pragmatik Lapangan": "Penolakan visceral atas kegagalan fisik makanan (Phygital Gap)", "Performa Model": "F1 = 0,8202 (Precision 77,61%, Recall 86,96%)"},
+            {"No": 2, "Emoji": "🤝 / 😇", "Kelas Emosi (Plutchik)": "Percaya (Trust)", "Frekuensi (N)": "1.073", "Proporsi (%)": "20,39%", "Indikator Leksikal Dominan": "mendukung, gizi, sehat, berkah, anak bangsa, prabowo, program bagus, optimis", "Konteks Pragmatik Lapangan": "Afirmasi dan kepercayaan pada visi gizi generasi Indonesia Emas 2045", "Performa Model": "F1 = 0,6977 (Precision 71,43%, Recall 68,18%)"},
+            {"No": 3, "Emoji": "😐 / ℹ️", "Kelas Emosi (Plutchik)": "Netral (Neutral)", "Frekuensi (N)": "649", "Proporsi (%)": "12,33%", "Indikator Leksikal Dominan": "anggaran, bgn, rapat, menkeu, sasar, apbn, triliun, uji coba, tanggal, rilis", "Konteks Pragmatik Lapangan": "Pewartaan faktual berita anggaran, rapat kerja, dan siaran pers", "Performa Model": "F1 = 0,8032 (Precision 81,25%, Recall 79,45%)"},
+            {"No": 4, "Emoji": "🧐 / ⏳", "Kelas Emosi (Plutchik)": "Tertarik (Anticipation)", "Frekuensi (N)": "505", "Proporsi (%)": "9,60%", "Indikator Leksikal Dominan": "penasaran, kapan, cek, menu besok, jadwal, pengen tahu, nunggu, info", "Konteks Pragmatik Lapangan": "Ekspektasi publik menantikan pembagian menu dan jadwal di sekolah", "Performa Model": "F1 = 0,6207 (Precision 64,29%, Recall 60,00%)"},
+            {"No": 5, "Emoji": "😡 / 🤬", "Kelas Emosi (Plutchik)": "Marah (Anger)", "Frekuensi (N)": "55", "Proporsi (%)": "1,05%", "Indikator Leksikal Dominan": "bancakan, korupsi, brengsek, bohong, copot, tanggung jawab, usut, penjarakan", "Konteks Pragmatik Lapangan": "Protes keras dan atribusi kesalahan kepada pengelola kebijakan", "Performa Model": "Minoritas alami (sering tumpang-tindih dengan Disgust)"},
+            {"No": 6, "Emoji": "😢 / 😭", "Kelas Emosi (Plutchik)": "Sedih (Sadness)", "Frekuensi (N)": "19", "Proporsi (%)": "0,36%", "Indikator Leksikal Dominan": "kasihan, nangis, lemes, tega, miris, sedih, anak-anak, tersiksa", "Konteks Pragmatik Lapangan": "Empati terhadap siswa keracunan dan anak di pelosok daerah 3T", "Performa Model": "Minoritas alami (n=3 pada test set)"},
+            {"No": 7, "Emoji": "😨 / 😱", "Kelas Emosi (Plutchik)": "Takut (Fear)", "Frekuensi (N)": "2", "Proporsi (%)": "0,04%", "Indikator Leksikal Dominan": "takut, waspada, ngeri, jangan-jangan, bahaya, trauma, bakteri", "Konteks Pragmatik Lapangan": "Ketakutan risiko bakteri berbahaya & trauma mengonsumsi makanan", "Performa Model": "Ekstrem minoritas alami (n=0 pada test set)"},
+            {"No": 8, "Emoji": "❤️ / 🥰", "Kelas Emosi (Plutchik)": "Cinta (Love)", "Frekuensi (N)": "167*", "Proporsi (%)": "1,78%*", "Indikator Leksikal Dominan": "terima kasih, cinta, relawan, ibu kantin, berkah, senang, lezat, alhamdulillah", "Konteks Pragmatik Lapangan": "Apresiasi tulus kepada relawan dapur dan juru masak sekolah", "Performa Model": "*Subsumed under Trust pada N=5.263; terdeteksi pada longitudinal N=9.360"},
+            {"No": 9, "Emoji": "😲 / 🤯", "Kelas Emosi (Plutchik)": "Terkejut (Surprise)", "Frekuensi (N)": "Subsumed*", "Proporsi (%)": "Spontan*", "Indikator Leksikal Dominan": "kaget, astaga, waduh, gila, buset, syok, kok bisa, beneran", "Konteks Pragmatik Lapangan": "Reaksi spontan atas pembengkakan anggaran dan insiden keracunan", "Performa Model": "*Subsumed under Anticipation/Disgust dalam klasifikasi aktif"}
+        ])
+        st.dataframe(df_taxonomy_9, width='stretch', hide_index=True)
+
+    with tab_time_c:
+        st.markdown("#### ⚡ Dinamika Dua Puncak Eskalasi Krisis (Double-Peak Crisis Dynamics)")
+        c_pk1, c_pk2 = st.columns(2)
+        with c_pk1:
+            st.markdown("""
+            <div style="background: #fff1f2; border: 1px solid #fecdd3; border-radius: 10px; padding: 14px;">
+                <h4 style="margin: 0 0 6px 0; color: #9f1239;">🚨 Puncak I: Mei 2026 (Suspensi 4.581 SPPG)</h4>
+                <p style="font-size: 0.85rem; color: #4c0519; margin: 0;">
+                    • <b>Total Volume:</b> 3.157 Cuitan<br>
+                    • <b>Emosi Jijik (Disgust):</b> 3.060 (96,93%)<br>
+                    • <b>Pemicu Krisis:</b> Penemuan berulang makanan berulat, basi, dan berbau tengik yang berujung pada keputusan BGN membekukan operasional 4.581 unit SPPG.<br>
+                    • <b>Pola Respon:</b> Publik menuntut transparansi vendor dan akuntabilitas sertifikasi higienitas.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        with c_pk2:
+            st.markdown("""
+            <div style="background: #fef2f2; border: 1px solid #f87171; border-radius: 10px; padding: 14px;">
+                <h4 style="margin: 0 0 6px 0; color: #b91c1c;">🔥 Puncak II: September 2026 (Keracunan Massal Akut)</h4>
+                <p style="font-size: 0.85rem; color: #7f1d1d; margin: 0;">
+                    • <b>Total Volume:</b> 4.661 Cuitan (1,48× lebih besar dari Puncak I)<br>
+                    • <b>Emosi Jijik (Disgust):</b> 4.619 (99,10% — hampir absolut)<br>
+                    • <b>Pemicu Krisis:</b> Gelombang keracunan makanan serentak di berbagai daerah yang mengakibatkan ribuan siswa dilarikan ke rumah sakit.<br>
+                    • <b>Pola Respon:</b> Ledakan kemarahan moral, kepanikan orang tua, dan runtuhnya kepercayaan terhadap rantai logistik fisik program.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        st.markdown("""
+        > **📌 Kesimpulan Ilmiah:** Grafik membuktikan secara empiris teori *Phygital Gap* (Kotler et al., 2023): kesenjangan antara janji fisik (*nutritious meal*) dengan realitas lapangan (*spoiled food/poisoning*) tidak mereda dengan sendirinya, melainkan terakumulasi hingga meletus menjadi krisis kepercayaan institusional tingkat dua yang jauh lebih dahsyat jika tata kelola fisik tidak diperbaiki secara radikal.
+        """)
+
+    st.markdown("---")
+
     # ── PETA LENGKAP VISUALISASI TESIS: BAB I S.D. BAB V ──
     st.subheader("🗺️ Peta Lengkap Visualisasi Naskah Tesis (Bab I s.d. Bab V)")
     st.markdown("""

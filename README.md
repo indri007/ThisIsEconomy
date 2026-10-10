@@ -109,10 +109,11 @@
 | Bagian | Topik Pembahasan & Modul Riset | Tautan Langsung (*Quick Jump*) |
 | :---: | :--- | :--- |
 | **Ikhtisar** | **Snapshot Metrik Utama (Ground-Truth Riil)** | [📊 Lompat ke Snapshot](#research-snapshot) |
+| **Linimasa** | **Tren Temporal Bulan ke Bulan & Tabel 9 Emoji IndoBERT (Jan–Okt 2026)** | [📈 Lompat ke Tren Temporal](#indobert-monthly-timeline) |
 | **Bagian I** | **Celah Riset Indonesia Emas, Teori Phygital Gap & Evaluasi Model Group-Aware** | [🎯 Lompat ke Celah Riset & Teori](#scopus-q1-gaps) |
 | **Bagian II** | **Dokumen Publikasi (Indonesia Emas/SINTA 2) & Pusat Dataset Terbuka** | [📄 Lompat ke Naskah & Data](#download-center) |
 | **Bagian III** | **Harmonisasi 6 Rumusan Masalah & Struktur Ilmiah Tesis (Bab I–V)** | [📑 Lompat ke Struktur Tesis](#struktur-tesis) |
-| **Bagian IV** | **Pipeline Komputasional, 9 Emosi, Leksikal & 12 Master Plot 300 DPI** | [🖼️ Lompat ke Galeri Visual](#visual-gallery) |
+| **Bagian IV** | **Pipeline Komputasional, 9 Emosi, Leksikal & 13 Master Plot 300 DPI** | [🖼️ Lompat ke Galeri Visual](#visual-gallery) |
 | **Bagian V** | **Panduan Eksekusi, Master Tutorial, Tools & Struktur Repositori** | [📖 Lompat ke Panduan Eksekusi](#tutorial-riset) |
 | **Bagian VI** | **Profil Peneliti & AI Engineer (Biodata, Kompetensi & Tim)** | [👤 Lompat ke Profil Peneliti](#author-bio) |
 | **Bagian VII** | **Format Sitasi Akademik, Master 33 Referensi & Digital Library** | [📚 Lompat ke Sitasi & Pustaka](#citation-section) |
@@ -120,6 +121,63 @@
 
 </div>
 
+
+---
+
+<a id="indobert-monthly-timeline"></a>
+## 📈 TREN TEMPORAL BULAN KE BULAN & TABEL 9 EMOJI INDOBERT (AWAL MBG S.D. 10 OKTOBER 2026)
+
+> *Analisis dinamika afektif longitudinal publik terhadap Program Makan Bergizi Gratis (MBG) dari tahap percontohan awal (Januari 2026), melewati penonaktifan 4.581 SPPG (Mei 2026), eskalasi kasus keracunan massal akut (September 2026), hingga fase pengawasan telemetri bot Telegram EWS (Oktober 2026) menggunakan model **Fine-tuned IndoBERT** berbasis taksonomi 9 emosi Plutchik.*
+
+<div align="center">
+  <a href="results/indobert_monthly_emotion_timeline_2026.png" target="_blank">
+    <img width="100%" src="results/indobert_monthly_emotion_timeline_2026.png" alt="Evolusi Temporal Afektif IndoBERT Bulan ke Bulan (Januari – 10 Oktober 2026, N=9.360)" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+  </a>
+  <p><sub><b>Gambar:</b> Evolusi Temporal Afektif IndoBERT Bulan ke Bulan (Januari – 10 Oktober 2026, N=9.360) Menampilkan Dua Puncak Krisis (Mei 2026 & September 2026). <a href="results/indobert_monthly_emotion_timeline_2026.png"><b>[Buka Resolusi Penuh 300 DPI]</b></a></sub></p>
+</div>
+
+<br/>
+
+### 📅 TABEL 1: DINAMIKA TEMPORAL INDOBERT BULAN KE BULAN (JANUARI – 10 OKTOBER 2026, $N = 9.360$)
+*Tabel pelacakan longitudinal out-of-sample dari data riil pengawasan telemetri media sosial:*
+
+| Periode / Bulan | Total Cuitan | 🤢 Jijik (*Disgust*) | ❤️ Cinta (*Love*) | 😐 Netral (*Neutral*) | Proporsi Jijik (%) | Milestone Empiris & Peristiwa Lapangan MBG |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **Januari 2026** | 42 | 42 | 0 | 0 | 100,00% | Peluncuran percontohan awal; skeptisisme publik terhadap kalkulasi anggaran & kesiapan dapur. |
+| **Februari 2026** | 55 | 55 | 0 | 0 | 100,00% | Perluasan uji coba regional; keluhan keterlambatan distribusi & kemasan makanan mulai bermunculan. |
+| **Maret 2026** | 189 | 184 | 5 | 0 | 97,35% | Penyesuaian jadwal Ramadan; perdebatan porsi, kualitas gizi lauk, dan transparansi vendor lokal. |
+| **April 2026** | 515 | 499 | 16 | 0 | 96,89% | Kontroversi nampan makan plastik impor (*ompreng*); eskalasi kecurigaan tata kelola pengadaan barang. |
+| **Mei 2026 (Puncak I)** | **3.157** | **3.060** | **93** | **4** | **96,93%** | 🚨 **Puncak I:** Temuan ribuan sampel makanan basi; BGN menonaktifkan 4.581 unit SPPG bermasalah. |
+| **Juni 2026** | 228 | 225 | 3 | 0 | 98,68% | Libur sekolah; evaluasi parlemen (DPR RI) standarisasi dapur & audit sertifikasi higienitas. |
+| **Juli 2026** | 184 | 182 | 2 | 0 | 98,91% | Tahun ajaran baru sekolah; proses verifikasi ulang lisensi vendor makanan oleh dinas terkait. |
+| **Agustus 2026** | 209 | 205 | 2 | 2 | 98,09% | Pidato Kenegaraan & Nota Keuangan RAPBN 2026 (Rp 268T); perdebatan efisiensi anggaran belanja vs defisit. |
+| **September 2026 (Puncak II)** | **4.661** | **4.619** | **39** | **3** | **99,10%** | 🔥 **Puncak II (Krisis Akut Terbesar):** Gelombang keracunan massal siswa serentak; ribuan dirawat di IGD/RS. |
+| **Oktober 2026 (s.d. 10 Okt)** | 120 | 118 | 2 | 0 | 98,33% | 🤖 Pengawasan aktif bot Telegram EWS; penataan ulang tata kelola dapur & integrasi mitigasi krisis. |
+| **TOTAL AKUMULASI** | **9.360** | **9.189** | **167** | **9** | **98,17%** | **Akumulasi Longitudinal Out-of-Sample Surveillance (Januari – 10 Oktober 2026)** |
+
+<br/>
+
+### 🎭 TABEL 2: TAKSONOMI LENGKAP 9 EMOJI & EMOSI INDOBERT (KORPUS TESIS $N = 5.263$)
+*Klasifikasi inferensi model Fine-tuned IndoBERT berbasis taksonomi psikologi Plutchik:*
+
+| No | Emoji Representatif | Kelas Emosi (Plutchik) | Frekuensi ($N$) | Proporsi (%) | Indikator Leksikal Dominan | Konteks Pragmatik & Realitas Lapangan MBG | Performa Model IndoBERT |
+| :---: | :---: | :--- | :---: | :---: | :--- | :--- | :--- |
+| **1** | 🤢 / 🤮 | **Jijik (*Disgust*)** | **2.960** | **56,24%** | *basi, bau, ulat, belatung, busuk, muntah, diare, gak layak, buang, jorok, vendor nakal* | Penolakan visceral atas kegagalan atribut fisik makanan (*Phygital Gap*) | F1 = 0,8202 (Precision 77,61%, Recall 86,96%) |
+| **2** | 🤝 / 😇 | **Percaya (*Trust*)** | **1.073** | **20,39%** | *mendukung, gizi, sehat, berkah, anak bangsa, prabowo, program bagus, optimis* | Afirmasi dan kepercayaan publik pada visi pemenuhan gizi Indonesia Emas 2045 | F1 = 0,6977 (Precision 71,43%, Recall 68,18%) |
+| **3** | 😐 / ℹ️ | **Netral (*Neutral*)** | **649** | **12,33%** | *anggaran, bgn, rapat, menkeu, sasar, apbn, triliun, uji coba, tanggal, rilis* | Pewartaan faktual berita anggaran, rapat kerja, dan siaran pers birokrasi | F1 = 0,8032 (Precision 81,25%, Recall 79,45%) |
+| **4** | 🧐 / ⏳ | **Tertarik (*Anticipation*)** | **505** | **9,60%** | *penasaran, kapan, cek, menu besok, jadwal, pengen tahu, nunggu, info* | Ekspektasi publik menantikan pembagian menu dan jadwal di sekolah daerah | F1 = 0,6207 (Precision 64,29%, Recall 60,00%) |
+| **5** | 😡 / 🤬 | **Marah (*Anger*)** | **55** | **1,05%** | *bancakan, korupsi, brengsek, bohong, copot, tanggung jawab, usut, penjarakan* | Protes keras dan atribusi kesalahan kepada pengelola dan pelaksana kebijakan | Minoritas alami (sering tumpang tindih pragmatik dengan Disgust) |
+| **6** | 😢 / 😭 | **Sedih (*Sadness*)** | **19** | **0,36%** | *kasihan, nangis, lemes, tega, miris, sedih, anak-anak, tersiksa* | Empati mendalam terhadap siswa keracunan dan nasib anak di pelosok 3T | Minoritas alami ($n=3$ pada test set) |
+| **7** | 😨 / 😱 | **Takut (*Fear*)** | **2** | **0,04%** | *takut, waspada, ngeri, jangan-jangan, bahaya, trauma, bakteri* | Ketakutan risiko bakteri berbahaya dan trauma siswa mengonsumsi makanan program | Ekstrem minoritas alami ($n=0$ pada test set) |
+| **8** | ❤️ / 🥰 | **Cinta (*Love*)** | 167* | 1,78%* | *terima kasih, cinta, relawan, ibu kantin, berkah, senang, lezat, alhamdulillah* | Apresiasi tulus kepada relawan dapur, ibu kantin, dan juru masak sekolah | *Subsumed under Trust pada $N=5.263$; terdeteksi pada longitudinal $N=9.360$ |
+| **9** | 😲 / 🤯 | **Terkejut (*Surprise*)** | Subsumed* | Spontan* | *kaget, astaga, waduh, gila, buset, syok, kok bisa, beneran* | Reaksi spontan atas lonjakan pos anggaran fiskal dan insiden keracunan | *Subsumed under Anticipation/Disgust dalam klasifikasi aktif |
+
+<br/>
+
+> **⚡ Temuan Kunci Dua Puncak Krisis (*Double-Peak Crisis*):**
+> 1. **Puncak I (Mei 2026, $N = 3.157$ cuitan):** Dipicu oleh penemuan berulang makanan basi dan penutupan 4.581 SPPG oleh Badan Gizi Nasional (BGN), dengan tingkat emosi Jijik mencapai **96,93%**.
+> 2. **Puncak II (September 2026, $N = 4.661$ cuitan):** Ledakan krisis kedua berukuran **1,48× lebih besar** dibanding Puncak I dengan konsentrasi emosi Jijik mendekati mutlak (**99,10%**), dipicu oleh insiden keracunan massal serentak ratusan siswa di berbagai provinsi.
+> 3. **Konfirmasi Empiris Phygital Gap:** Inkongruensi antara kampanye digital citra program dengan kenyataan fisik makanan basi membuktikan bahwa kegagalan atribut fisik memicu krisis komunikasi risiko dan erosi legitimasi negara secara sistemik.
 
 ---
 
@@ -903,7 +961,7 @@ Selain klasifikasi emosi kalimat penuh dengan IndoBERT, riset ini melakukan **an
 ---
 
 <a id="visual-gallery"></a>
-## 🖼️ GALERI VISUALISASI RISET PUBLIK (12 MASTER PLOT 300 DPI — AKSES & UNDUH LANGSUNG)
+## 🖼️ GALERI VISUALISASI RISET PUBLIK (13 MASTER PLOT 300 DPI — AKSES & UNDUH LANGSUNG)
 > *Seluruh figur visualisasi naskah tesis di bawah ini bersifat **100% publik, beresolusi cetak tinggi (300 DPI)**, dan dapat diakses/diunduh langsung secara bebas.*
 
 <table>
@@ -1029,6 +1087,16 @@ Visualisasi 120 leksikon paling sering diucapkan warganet, menyoroti kata kunci 
 </a>
 Pemetaan 7 dimensi kapabilitas metodologis vs batas horizon riset, mitigasi empiris bias, dan rekomendasi arah penelitian lanjutan.  
 🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/keterbatasan_penelitian.png)**
+
+---
+
+### `Figure 13` — Longitudinal Monthly Emotion Evolution & Telegram EWS Telemetry
+📍 *Evolusi Temporal Longitudinal & Telemetri Krisis (Jan–Okt 2026, N=9.360)*  
+<a href="https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/indobert_monthly_emotion_timeline_2026.png" target="_blank">
+<img src="results/indobert_monthly_emotion_timeline_2026.png" width="100%" alt="Figure 13: Longitudinal Monthly Emotion Evolution"/>
+</a>
+Dinamika afektif IndoBERT bulan ke bulan dari awal implementasi MBG hingga 10 Oktober 2026 ($N=9.360$), membuktikan fenomena *Double-Peak Crisis* pada Mei 2026 (suspensi 4.581 SPPG) dan September 2026 (keracunan massal siswa nasional).  
+🔗 **[Buka Resolusi Penuh (300 DPI)](https://raw.githubusercontent.com/indri007/ThisIsEconomy/main/results/indobert_monthly_emotion_timeline_2026.png)**
 
 </td>
 </tr>
