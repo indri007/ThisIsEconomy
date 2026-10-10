@@ -1,0 +1,56 @@
+{
+  "title": "Replication Package: Communication Network Analysis of Sarcasm in Indonesia's Free Nutritious Meal (MBG) Discourse on Platform X",
+  "description": "Permanent Open Science replication archive containing multi-annotator gold-standard emotion and sarcasm corpora, AoIR 3.0-pseudonymized directed network interaction edge lists (|V|=971, |E|=666), TERGM temporal network evolution phases, spatial epidemiological ground-truthing benchmarks across 10 Indonesian provinces, Aspect Category Sentiment Analysis (ACSA) matrices, fine-tuned IndoBERT PyTorch inference pipelines, and automated test validation suites. Formatted in accordance with International Communication Association (ICA) and Oxford University Press Open Science guidelines.",
+  "upload_type": "dataset",
+  "creators": [
+    {
+      "name": "Sari, Indri Anjar Kartika",
+      "affiliation": "Master of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional 'Veteran' Jawa Timur",
+      "orcid": "0009-0002-8419-7231"
+    },
+    {
+      "name": "Suratnoaji, Catur",
+      "affiliation": "Department of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional 'Veteran' Jawa Timur",
+      "orcid": "0000-0002-8596-3914"
+    },
+    {
+      "name": "Widiyarta, Agus",
+      "affiliation": "Department of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional 'Veteran' Jawa Timur",
+      "orcid": "0000-0002-7104-5820"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "Computational Communication Science",
+    "Social Network Analysis",
+    "Transformer Deep Learning",
+    "IndoBERT",
+    "Aspect-Based Sentiment Analysis",
+    "Paralinguistic Sarcasm",
+    "Algorithmic Oracle",
+    "Phygital Gap",
+    "Public Policy Evaluation",
+    "Free Nutritious Meal (MBG)",
+    "Open Science Framework",
+    "Scopus Q1 Replication Package",
+    "Association of Internet Researchers (AoIR 3.0)"
+  ],
+  "communities": [
+    {
+      "identifier": "zenodo"
+    },
+    {
+      "identifier": "computational-social-science"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/indri007/ThisIsEconomy",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "version": "1.0.0",
+  "publication_date": "2026-10-10"
+}

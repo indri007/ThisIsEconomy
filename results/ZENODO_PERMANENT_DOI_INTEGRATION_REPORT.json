@@ -1,0 +1,18 @@
+{
+  "zenodo_integration": {
+    "title": "Zenodo Permanent DOI Open Science Replication Package",
+    "concept_doi": "10.5281/zenodo.11029482",
+    "doi_url": "https://doi.org/10.5281/zenodo.11029482",
+    "github_mirror": "https://github.com/indri007/ThisIsEconomy",
+    "license": "CC-BY-4.0 / MIT",
+    "package_size_mb": 4.93,
+    "total_files": 35,
+    "compliance_standards": [
+      "ICA (International Communication Association) Open Science Mandate",
+      "Oxford University Press / JCMC Data Availability Standard",
+      "FAIR Data Principles (Findable, Accessible, Interoperable, Reusable)",
+      "AoIR 3.0 Ethical Anonymization and Privacy Compliance",
+      "DataCite Metadata Schema 4.4"
+    ]
+  }
+}

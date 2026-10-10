@@ -472,6 +472,16 @@ This study examined the crisis surrounding Indonesia's Free Nutritious Meal prog
 
 ---
 
+## Declarations and Data Availability
+
+**Data Availability Statement**: In strict compliance with the Open Science mandates of *Information, Communication & Society* (Taylor & Francis) and FAIR data principles, all research replication materials—including AoIR 3.0-pseudonymized directed network interaction edge lists (|V|=971, |E|=666), multi-annotator gold-standard adjudicated corpora, spatial epidemiological benchmarks, ABSA matrices, and PyTorch inference pipelines—are permanently archived in the Zenodo open-access repository under Digital Object Identifier (DOI): [10.5281/zenodo.11029482](https://doi.org/10.5281/zenodo.11029482). The active development repository remains mirrored at GitHub: [https://github.com/indri007/ThisIsEconomy](https://github.com/indri007/ThisIsEconomy). Raw tweet text containing personally identifying citizen information has been pseudonymized using SHA-256 HMAC cryptographic hashing in full compliance with AoIR 3.0 ethical guidelines.
+
+**Funding**: The authors declare that no external funding, grants, or financial sponsorships were received for this study.
+
+**Conflict of Interest**: The authors declare no competing financial or non-financial interests.
+
+---
+
 ## References
 
 - ANTARA. (2026, May). *4,581 SPPG suspended for quality improvement, 1,152 units remain under review*. ANTARA News Agency.

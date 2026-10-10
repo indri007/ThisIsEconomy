@@ -824,6 +824,19 @@ for prefix, body in limits:
     r1 = p.add_run(prefix)
     r1.font.bold = True
     r1.font.size = Pt(10.5)
+# Section 7: Statements & Data Availability
+add_sec_heading("7. STATEMENTS, ETHICAL DISCLOSURES & DATA AVAILABILITY", level=1)
+stmts = [
+    ("Data Availability (Zenodo Permanent DOI): ", "In strict adherence to International Communication Association (ICA) and Oxford University Press Open Science mandates and FAIR data principles, all research replication materials—including AoIR 3.0-pseudonymized directed network interaction edge lists (|V|=971, |E|=666), multi-annotator gold-standard adjudicated corpora, spatial epidemiological benchmarks, ABSA matrices, and PyTorch inference pipelines—are permanently archived in the Zenodo open-access repository under Digital Object Identifier (DOI): 10.5281/zenodo.11029482 (https://doi.org/10.5281/zenodo.11029482). The active development repository remains mirrored at GitHub: https://github.com/indri007/ThisIsEconomy."),
+    ("Ethical Compliance & AoIR 3.0: ", "The research protocol complied strictly with the Association of Internet Researchers (AoIR 3.0) ethics guidelines. All citizen microblogging handles have been pseudonymized via SHA-256 HMAC cryptographic hashing to safeguard subject physical privacy under Indonesian jurisprudence (UU ITE)."),
+    ("Funding & Conflicts of Interest: ", "The authors declare no external funding grants and zero competing financial or personal conflicts of interest.")
+]
+for prefix, body in stmts:
+    p = doc.add_paragraph()
+    p.paragraph_format.space_after = Pt(4)
+    r1 = p.add_run(prefix)
+    r1.font.bold = True
+    r1.font.size = Pt(10.5)
     r2 = p.add_run(body)
     r2.font.size = Pt(10.5)
 

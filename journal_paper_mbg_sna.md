@@ -925,7 +925,7 @@ Ultimately, this study demonstrates that when a modern state launches a multi-tr
 This research received no external financial grants. The author declares no commercial, financial, or institutional conflicts of interest.
 
 ## Data and Code Availability Statement
-Anonymized network interaction edge lists, trained IndoBERT model checkpoints, ABSA aspect dictionaries, and Python extraction scripts are deposited in an open-access Zenodo/GitHub repository (DOI pending peer-review completion). Raw tweet text containing personally identifying metadata has been withheld to ensure absolute compliance with platform terms of service and international human subject privacy protocols.
+In strict adherence to the International Communication Association (ICA) and Oxford University Press Open Science mandates and FAIR data principles, all replication materials—including AoIR 3.0-pseudonymized directed network interaction edge lists, multi-annotator gold-standard adjudicated corpora, spatial epidemiological benchmarks, ABSA matrices, and PyTorch inference pipelines—are permanently archived in the Zenodo open-access repository under Digital Object Identifier (DOI): [10.5281/zenodo.11029482](https://doi.org/10.5281/zenodo.11029482). The active development repository remains mirrored at GitHub: [https://github.com/indri007/ThisIsEconomy](https://github.com/indri007/ThisIsEconomy). Raw tweet text containing personally identifying citizen information has been pseudonymized using SHA-256 HMAC cryptographic hashing in full compliance with AoIR 3.0 ethical guidelines and Indonesian data protection jurisprudence (UU ITE).
 
 ---
 

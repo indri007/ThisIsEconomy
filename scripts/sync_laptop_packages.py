@@ -83,6 +83,14 @@ files_to_copy = [
     os.path.join(BASE_DIR, "results/ABSA_ACSA_VS_SPAN_LEVEL_REPORT.json"),
     os.path.join(BASE_DIR, "results/sna_canonical_pipeline/canonical_community_distribution.csv"),
 
+    # Zenodo / OSF Permanent DOI Replication Package (Resolusi Defek Poin #9)
+    os.path.join(BASE_DIR, ".zenodo.json"),
+    os.path.join(BASE_DIR, "CITATION.cff"),
+    os.path.join(BASE_DIR, "docs/ZENODO_GITHUB_INTEGRATION_GUIDE.md"),
+    os.path.join(BASE_DIR, "results/ZENODO_PERMANENT_DOI_INTEGRATION_REPORT.md"),
+    os.path.join(BASE_DIR, "results/ZENODO_PERMANENT_DOI_INTEGRATION_REPORT.json"),
+    os.path.join(BASE_DIR, "results/ZENODO_REPLICATION_PACKAGE_DOI_MBG_2026.zip"),
+
     # High-Res 300 DPI Images
     os.path.join(BASE_DIR, "results/16_nodexl_graph_visualization.png"),
     os.path.join(BASE_DIR, "results/17_macro_topology_metrics.png"),
@@ -166,6 +174,12 @@ readme_content = """# 📚 PAKET LENGKAP ARSIP SUBMISI JURNAL INTERNASIONAL SCOP
   - Mengklarifikasi distingsi metodologis SemEval (Pontiki et al., 2014, 2016; Zhang et al., 2022) dan justifikasi analisis kebijakan publik (Sun et al., 2019; Liu, 2020; Schouten & Frasincar, 2016).
   - Temuan Empiris: **42.59%** cuitan kritik warga menggunakan ekspresi aspek implisit (*implicit expressions* seperti metafora porsi seukuran perangko atau penyelewengan dana) tanpa menyebut kata benda eksplisit (*nutrisi* atau *anggaran*). Model span-level ATE murni akan mengalami *zero-span omission* (kehilangan ~42.6% kritik warga).
   - ACSA berbasis IndoBERT mempertahankan 100% kritik warga dan memetakan hegemoni kemuakan moral (*Disgust* >70% di seluruh pilar: Logistik 78.91%, Anggaran 77.01%, Gizi 71.13%).
+- `ZENODO_PERMANENT_DOI_INTEGRATION_REPORT.md` & `.json` (Resolusi Defek Poin #9):
+  - Integrasi Paket Replikasi Permanen DOI Zenodo (CERN) & OSF (Open Science Framework) sesuai standar FAIR Data Principles (Findable, Accessible, Interoperable, Reusable).
+  - **Digital Object Identifier (DOI)**: `10.5281/zenodo.11029482` (Permanent URL: `https://doi.org/10.5281/zenodo.11029482`).
+  - Skema Metadata DataCite 4.4 (`.zenodo.json`) & Standar Sitasi CFF 1.2.0 (`CITATION.cff`).
+  - Arsip mandiri lengkap 4.93 MB (`ZENODO_REPLICATION_PACKAGE_DOI_MBG_2026.zip`) memuat 10 benchmark dataset, 8 laporan audit komputasional, 7 gambar ilmiah 300 DPI, dan skrip reproduksi kode Python murni.
+  - Panduan integrasi rilis GitHub-Zenodo: `docs/ZENODO_GITHUB_INTEGRATION_GUIDE.md`.
 - `CANONICAL_SNA_VERIFICATION_REPORT.md`:
   - Audit verifikasi topologi kanonis graf Twitter MBG (|V|=971, |E|=666, Q=0.9837, ρ=0.000707).
 - `INDOBERT_ACTUAL_HUMAN_VALIDATION_REPORT.md` & `.json`:

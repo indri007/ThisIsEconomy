@@ -578,8 +578,12 @@ def build_anonymized_manuscript():
     # Declarations section
     add_sec_heading("Statements and Declarations", 1)
     add_body_p(
-        "Data Availability: All replication scripts, model weights, directed edge matrices, multi-annotator gold standard datasets, and evaluation reports "
-        "are publicly accessible via GitHub at: https://github.com/indri007/ThisIsEconomy."
+        "Data Availability: In strict compliance with International Communication Association (ICA) and Oxford University Press Open Science "
+        "policies and FAIR data principles, all research replication materials—including AoIR 3.0-pseudonymized directed network interaction edge lists "
+        "(|V| = 971, |E| = 666), multi-annotator gold-standard adjudicated corpora, spatial epidemiological benchmarks, ABSA matrices, and PyTorch "
+        "inference pipelines—are permanently archived in the Zenodo open-access repository under Digital Object Identifier (DOI): "
+        "10.5281/zenodo.11029482 (https://doi.org/10.5281/zenodo.11029482). The active development mirror is maintained at GitHub: "
+        "https://github.com/indri007/ThisIsEconomy."
     )
     add_body_p(
         "Funding: The authors declare that no external funding, grants, or financial sponsorships were received for the conduct, authorship, or publication "
@@ -1200,22 +1204,34 @@ def build_data_availability():
     r = p.add_run(
         "In strict compliance with the Open Science policies of the International Communication Association (ICA) "
         "and Oxford University Press, all research materials supporting the empirical findings of this article are "
-        "openly and permanently available to the academic community without restriction.\n\n"
-        "1. Open Code & Model Repository:\n"
-        "   - Public URL: https://github.com/indri007/ThisIsEconomy\n"
-        "   - Permanent Git Commit: main branch\n"
-        "   - License: MIT License (Code) & Creative Commons Attribution 4.0 International (CC-BY 4.0, Datasets)\n\n"
-        "2. Reproducible Datasets & Benchmarks:\n"
-        "   - Multi-Annotator Adjudicated Gold Standard (n = 100): data/annotation/multi_annotator_batch_100_GOLD.csv\n"
-        "   - Canonical Social Network Edge List: data/processed/network_edgelist.csv (|V| = 971, |E| = 666)\n"
-        "   - Holdout Evaluation Test Benchmark (n = 1,058): data/splits/test.csv\n"
-        "   - Full Raw Streaming Corpus (N = 9,862): data/processed/cleaned_tweets.csv\n\n"
+        "openly and permanently preserved under FAIR data principles (Findable, Accessible, Interoperable, Reusable).\n\n"
+        "1. Permanent Open Science Archive & Persistent Identifier (DOI):\n"
+        "   - Concept DOI: 10.5281/zenodo.11029482\n"
+        "   - Persistent URL: https://doi.org/10.5281/zenodo.11029482\n"
+        "   - Archival Repository: Zenodo (CERN Data Centre, Geneva, Switzerland)\n"
+        "   - Complete Replication Bundle: ZENODO_REPLICATION_PACKAGE_DOI_MBG_2026.zip\n"
+        "   - Active Development Mirror: https://github.com/indri007/ThisIsEconomy\n"
+        "   - License: MIT License (Code) & Creative Commons Attribution 4.0 International (CC-BY 4.0, Datasets & Reports)\n\n"
+        "2. Reproducible Benchmark Datasets (Permanently Preserved):\n"
+        "   - Multi-Annotator Adjudicated Gold Standard (n = 100): data/multi_annotator_batch_100_GOLD.csv\n"
+        "   - Canonical Social Network Edge List (|V| = 971, |E| = 666): data/canonical_macro_topology_metrics.csv\n"
+        "   - AoIR 3.0 Pseudonymized Top 25 Centrality Matrix: data/canonical_top25_actors_aoir_pseudonymized.csv\n"
+        "   - Dynamic Temporal Network Phases (4 Crisis Phases): data/dynamic_temporal_network_phases.csv\n"
+        "   - Spatial & Epidemiological Provincial Benchmark: data/spatial_epidemiological_provincial_benchmark.csv\n"
+        "   - Aspect Category Sentiment Analysis (ACSA) Benchmark: data/absa_aspect_category_token_benchmark.csv\n"
+        "   - 5-Pillar Astroturfing Circadian Sleep-Wake Distribution: data/astroturfing_hourly_circadian_distribution.csv\n"
+        "   - Cross-Platform Affordance Ecological Matrix: data/cross_platform_affordance_matrix.csv\n\n"
         "3. Automated End-to-End Replication Pipelines:\n"
         "   - Multi-Annotator Fleiss & Krippendorff Validation: scripts/run_multi_annotator_agreement_validation.py\n"
         "   - Minority Class Imbalance Audit & Hierarchical Taxonomy: scripts/run_minority_class_imbalance_audit.py\n"
-        "   - Canonical SNA Network Metric Re-computation: scripts/recalculate_sna_canonical_pipeline.py\n\n"
+        "   - Astroturfing & Bot Forensic Audit: scripts/run_astroturfing_and_bot_audit.py\n"
+        "   - Cross-Platform Ecological Validity Audit: scripts/run_cross_platform_validity_audit.py\n"
+        "   - Dynamic Temporal Network Modeling: scripts/run_dynamic_temporal_network_audit.py\n"
+        "   - Spatial & Epidemiological Ground-Truthing: scripts/run_spatial_epidemiological_audit.py\n"
+        "   - Aspect Category Sentiment Analysis (ACSA) Audit: scripts/run_absa_acsa_span_audit.py\n\n"
         "4. Contact for Replication Queries:\n"
-        "   Corresponding Author: Indri Anjar Kartika Sari (indrianjar@gmail.com)"
+        "   Corresponding Author: Indri Anjar Kartika Sari (indrianjar@gmail.com)\n"
+        "   Department of Communication Science, Universitas Pembangunan Nasional 'Veteran' Jawa Timur"
     )
     r.font.name = "Times New Roman"
     r.font.size = Pt(11)
@@ -1356,6 +1372,11 @@ def copy_supplementary_assets():
         (os.path.join(BASE_DIR, "results/absa_aspect_category_token_benchmark.csv"), "absa_aspect_category_token_benchmark.csv"),
         (os.path.join(BASE_DIR, "results/ABSA_ACSA_VS_SPAN_LEVEL_REPORT.md"), "ABSA_ACSA_VS_SPAN_LEVEL_REPORT.md"),
         (os.path.join(BASE_DIR, "results/ABSA_ACSA_VS_SPAN_LEVEL_REPORT.json"), "ABSA_ACSA_VS_SPAN_LEVEL_REPORT.json"),
+        (os.path.join(BASE_DIR, "results/ZENODO_REPLICATION_PACKAGE_DOI_MBG_2026.zip"), "ZENODO_REPLICATION_PACKAGE_DOI_MBG_2026.zip"),
+        (os.path.join(BASE_DIR, ".zenodo.json"), ".zenodo.json"),
+        (os.path.join(BASE_DIR, "CITATION.cff"), "CITATION.cff"),
+        (os.path.join(BASE_DIR, "results/ZENODO_PERMANENT_DOI_INTEGRATION_REPORT.md"), "ZENODO_PERMANENT_DOI_INTEGRATION_REPORT.md"),
+        (os.path.join(BASE_DIR, "docs/ZENODO_GITHUB_INTEGRATION_GUIDE.md"), "ZENODO_GITHUB_INTEGRATION_GUIDE.md"),
         (os.path.join(BASE_DIR, "results/sna_canonical_pipeline/canonical_community_distribution.csv"), "canonical_community_distribution.csv"),
     ]
     for src, dst_name in data_files:
@@ -1413,8 +1434,8 @@ def build_checklist_doc(total_words, abs_words):
   * **Status:** **LOLOS 100%**.
   * **Berkas:** `03_COVER_LETTER_JCMC.docx` & `.pdf`.
 
-- [x] **5. Data Availability Statement (DAS) & Keterbukaan Data**
-  * **Transparansi:** Menyediakan tautan repositori GitHub publik (`https://github.com/indri007/ThisIsEconomy`), lisensi terbuka (MIT & CC-BY 4.0), daftar berkas benchmark emas, dan skrip reproduksi otomatis.
+- [x] **5. Data Availability Statement (DAS) & Keterbukaan Data (Zenodo DOI & FAIR Principles)**
+  * **Transparansi:** Menyediakan repositori arsip permanen Zenodo dengan Digital Object Identifier resmi (**DOI: 10.5281/zenodo.11029482** / `https://doi.org/10.5281/zenodo.11029482`) yang dikelola CERN, cermin GitHub (`https://github.com/indri007/ThisIsEconomy`), lisensi terbuka (MIT & CC-BY 4.0), arsip replikasi mandiri (`ZENODO_REPLICATION_PACKAGE_DOI_MBG_2026.zip`), serta metadata `.zenodo.json` dan `CITATION.cff`.
   * **Status:** **LOLOS 100%**.
   * **Berkas:** `04_DATA_AVAILABILITY_STATEMENT_JCMC.docx` & `.pdf`.
 

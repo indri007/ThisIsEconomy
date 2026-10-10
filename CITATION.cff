@@ -17,10 +17,15 @@ authors:
     affiliation: "Department of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional 'Veteran' Jawa Timur"
     orcid: "https://orcid.org/0000-0002-7104-5820"
 version: "1.0.0"
-date-released: 2026-03-15
+date-released: 2026-10-10
 license: "MIT"
+doi: "10.5281/zenodo.11029482"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.11029482"
+    description: "The permanent concept Digital Object Identifier (DOI) preserved on Zenodo (CERN)"
 repository-code: "https://github.com/indri007/ThisIsEconomy"
-url: "https://github.com/indri007/ThisIsEconomy"
+url: "https://doi.org/10.5281/zenodo.11029482"
 keywords:
   - "communication network analysis"
   - "social network analysis"

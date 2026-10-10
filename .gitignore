@@ -38,6 +38,7 @@ mbg-sna-github/
 results/indobert_finetuned/
 results/indobert_finetuned_9_labels/
 results/indobert_group_aware_final/
+results/zenodo_replication_package/
 .cache/
 node_modules/
 cloned_repos/
