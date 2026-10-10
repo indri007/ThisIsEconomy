@@ -1,0 +1,26 @@
+Kategori,Metrik,Nilai,Satuan / Keterangan
+Ukuran Graf,Total Simpul (|V|),971,Akun pengguna unik
+Ukuran Graf,Total Tepi Mentah (|E|),692,Interaksi mention/reply
+Ukuran Graf,Tepi Berarah Unik,666,Directed mention unik
+Ukuran Graf,Tepi Tak Berarah Unik,662,Undirected dyad unik
+Ukuran Graf,Self-Loops,17,Penyebutan diri sendiri
+Topologi Global,Kepadatan Graf Berarah,0.000707,Sangat longgar (sparse)
+Topologi Global,Kepadatan Graf Tak Berarah,0.001406,Sangat longgar
+Topologi Global,Resiprositas (Reciprocity),0.0120 (1.20%),Hanya 1.20% interaksi dua arah
+Struktur Komponen,Weakly Connected Components,341,Pulau komunitas terpisah
+Struktur Komponen,Strongly Connected Components,967,Komponen kuat
+Struktur Komponen,Ukuran Giant Component,89 simpul (9.17%),Klaster terbesar
+Jarak & Jalur,Diameter Jaringan (Giant),9,Langkah maksimal shortest path
+Jarak & Jalur,Average Geodesic Distance,3.6731,Rata-rata jarak tempuh info
+Kohesivitas,Average Clustering Coefficient,0.0171,Koefisien klastering lokal
+Kohesivitas,Transitivitas (Triadic Closure),0.0261,Kerapatan segitiga wacana
+Modularitas,Modularity Louvain (Q),0.9837,Struktur komunitas sangat kuat
+Modularitas,Total Komunitas Louvain,342,Klaster wacana terdeteksi
+Korelasi Derajat,Degree Assortativity (r),-0.0847,Disassortative (warga hubungi elit)
+Distribusi Derajat,Rerata Derajat (Mean),1.36,Rata-rata interaksi per aktor
+Distribusi Derajat,Median Derajat,1.0,Nilai tengah derajat
+Distribusi Derajat,Derajat Maksimal (Max),42,@grok (AI Fact-Checker)
+Distribusi Derajat,Power-Law Alpha,2.173,Heavy-tailed distribution
+Segregasi Percakapan,Tepi Internal Komunitas,691 (99.86%),Percakapan kedap di dalam klaster
+Segregasi Percakapan,Tepi Penghubung Antar-Klaster,1 (0.14%),Jembatan dialog lintas klaster
+Segregasi Percakapan,Indeks Isolasi Komunitas,99.86%,Tingkat isolasi echo chamber

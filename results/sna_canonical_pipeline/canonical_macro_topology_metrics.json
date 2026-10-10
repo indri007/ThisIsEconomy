@@ -1,0 +1,53 @@
+{
+  "network_overview": {
+    "canonical_edge_source": "network_edges.csv",
+    "graph_type": "Directed Multi-Interaction Network",
+    "total_vertices_V": 971,
+    "total_raw_edges_E": 692,
+    "unique_directed_edges": 666,
+    "unique_undirected_edges": 662,
+    "self_loops": 17,
+    "duplicate_interactions": 26
+  },
+  "density_and_reciprocity": {
+    "directed_density": 0.000707,
+    "directed_density_exact": 0.0007071039527747991,
+    "undirected_density": 0.001406,
+    "undirected_density_exact": 0.001405714164375126,
+    "reciprocity_ratio": 0.012,
+    "reciprocity_percentage": "1.20%"
+  },
+  "components_and_path": {
+    "weakly_connected_components_wcc": 341,
+    "strongly_connected_components_scc": 967,
+    "giant_component_nodes": 89,
+    "giant_component_edges": 89,
+    "giant_component_population_pct": 9.17,
+    "giant_diameter": 9,
+    "giant_radius": 5,
+    "average_geodesic_distance": 3.6731
+  },
+  "clustering_and_structure": {
+    "average_clustering_coefficient": 0.0171,
+    "transitivity_triadic_closure": 0.0261,
+    "modularity_louvain_Q": 0.9837,
+    "modularity_louvain_exact": 0.983740792800355,
+    "total_louvain_communities": 342,
+    "degree_assortativity_coefficient": -0.0847,
+    "degree_distribution": {
+      "mean_degree": 1.36,
+      "median_degree": 1.0,
+      "max_degree": 42,
+      "std_degree": 1.77,
+      "power_law_alpha_scaling": 2.173
+    }
+  },
+  "echo_chambers_and_segregation": {
+    "total_interaction_edges": 692,
+    "internal_intra_community_edges": 691,
+    "internal_edge_percentage": 99.86,
+    "external_bridge_edges": 1,
+    "external_edge_percentage": 0.14,
+    "community_isolation_index_pct": 99.86
+  }
+}
