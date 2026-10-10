@@ -66,6 +66,9 @@ files_to_copy = [
     os.path.join(BASE_DIR, "results/sna_canonical_pipeline/canonical_top25_actors_aoir_pseudonymized.csv"),
     os.path.join(BASE_DIR, "results/AOIR_ETHICAL_PSEUDONYMIZATION_REPORT.md"),
     os.path.join(BASE_DIR, "results/AOIR_ETHICAL_PSEUDONYMIZATION_REPORT.json"),
+    os.path.join(BASE_DIR, "results/ASTROTURFING_AND_BOT_AUDIT_REPORT.md"),
+    os.path.join(BASE_DIR, "results/ASTROTURFING_AND_BOT_AUDIT_REPORT.json"),
+    os.path.join(BASE_DIR, "results/astroturfing_hourly_circadian_distribution.csv"),
     os.path.join(BASE_DIR, "results/sna_canonical_pipeline/canonical_community_distribution.csv"),
 
     # High-Res 300 DPI Images

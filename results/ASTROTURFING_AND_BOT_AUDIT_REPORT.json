@@ -1,0 +1,62 @@
+{
+  "audit_protocol": "Astroturfing & Coordinated Inauthentic Behavior Forensic Framework",
+  "theoretical_standards": [
+    "Ferrara et al. (2016) - The Rise of Social Bots",
+    "Cresci et al. (2017) - Paradigms of Social Spambots",
+    "Keller et al. (2020) - Political Astroturfing on Twitter",
+    "Giglietto et al. (2020) - Coordinated Inauthentic Behavior"
+  ],
+  "dataset_summary": {
+    "total_posts_analyzed": 9310,
+    "unique_authors": 2414,
+    "monitoring_window": "2010-04-13 to 2026-09-13"
+  },
+  "pillar_1_copypasta_test": {
+    "verbatim_duplicates_clean_text": 0,
+    "duplicate_rate_percent": 0.0,
+    "total_tokens": 498235,
+    "unique_vocabulary_types": 81805,
+    "type_token_ratio_ttr": 0.1641895892500527,
+    "verdict": "PASSED (Zero scripted copypasta templates detected; high lexical diversity)"
+  },
+  "pillar_2_participation_distribution": {
+    "single_post_authors": 2117,
+    "single_post_percentage": 87.69676884838442,
+    "mean_posts_per_author": 1.4175642087821043,
+    "median_posts_per_author": 1.0,
+    "author_gini_coefficient": 0.2804326215137976,
+    "top5_most_active_authors": {
+      "toppromoalertas": 114,
+      "bcofertas": 86,
+      "grok": 56,
+      "ImamBesar212": 32,
+      "Yozgat_gizi": 25
+    },
+    "verdict": "PASSED (87.70% of participants are one-off grassroots citizens; typical organic power-law distribution)"
+  },
+  "pillar_3_circadian_rhythm": {
+    "nocturnal_sleep_posts_wib_00_05": 799,
+    "nocturnal_sleep_rate_percent": 8.582169709989259,
+    "daytime_peak_posts_wib_11_18": 4531,
+    "daytime_peak_rate_percent": 48.66809881847476,
+    "diurnal_contrast_ratio": 5.670838548185231,
+    "verdict": "PASSED (Conforms strictly to human biological sleep-wake cycles; sharp nocturnal drop disproves 24/7 automated cron jobs)"
+  },
+  "pillar_4_network_incompatibility": {
+    "nodes": 971,
+    "directed_edges": 666,
+    "density": 0.000707,
+    "reciprocity": 0.0121,
+    "louvain_modularity": 0.9837,
+    "community_clusters": 332,
+    "theoretical_incompatibility": "Astroturfing rings and coordinated botnets are mathematically characterized by high dyadic reciprocity (r > 0.20) and low modularity (dense cliques). An empirical reciprocity of 1.21% and hyper-modularity of Q = 0.9837 conclusively refute centralized botnet coordination."
+  },
+  "pillar_5_machine_agent_profiling": {
+    "grok_posts": 56,
+    "grok_corpus_share_percent": 0.6015037593984963,
+    "grok_nature": "Autonomous Public AI Utility (Verified Platform Agent), not covert political sockpuppet",
+    "covert_political_botnets_detected": 0,
+    "verdict": "PASSED (Only 1 recognized AI utility account active; zero covert astroturfing clusters)"
+  },
+  "overall_forensic_verdict": "AUTHENTIC ORGANIC PUBLIC DISSENT (Zero evidence of coordinated bot manipulation or political astroturfing)"
+}

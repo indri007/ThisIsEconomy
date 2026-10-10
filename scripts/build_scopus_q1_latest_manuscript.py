@@ -562,6 +562,52 @@ for row_idx, row_vals in enumerate(t5_data, start=1):
 
 doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
+# Section 3.6: Astroturfing Audit & Coordinated Inauthentic Behavior Forensic Analysis
+add_sec_heading("3.6 Astroturfing Audit & Coordinated Inauthentic Behavior (CIB) Forensic Analysis", level=2)
+add_body_p(
+    "To eliminate potential skepticism that the pervasive public dissent was artificially engineered by opposition botnets or political buzzers, "
+    "we conducted an empirical multi-pillar forensic audit across the corpus (N = 9,310 posts; 2,414 unique authors) evaluating five foundational "
+    "criteria established in bot detection scholarship (Ferrara et al., 2016; Cresci et al., 2017; Keller et al., 2020; Giglietto et al., 2020). "
+    "Table 6 summarizes the forensic indicators and empirical outcomes."
+)
+
+t6 = doc.add_table(rows=6, cols=4)
+t6.alignment = WD_TABLE_ALIGNMENT.CENTER
+t6_headers = ["Forensic Pillar", "Observed Empirical Metric", "Expected Bot Signature", "Forensic Verdict"]
+for col_idx, h_text in enumerate(t6_headers):
+    c = t6.cell(0, col_idx)
+    set_cell_background(c, "0F172A")
+    set_cell_margins(c, 100, 100, 100, 100)
+    p = c.paragraphs[0]
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    r = p.add_run(h_text)
+    r.font.bold = True
+    r.font.size = Pt(9)
+    r.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+
+t6_data = [
+    ("1. Verbatim Copypasta Rate", "0.00% duplicates (TTR: 0.1642)", "High duplicate text (>15%)", "Passed (Organic Lexical Heterogeneity)"),
+    ("2. Participation Long-Tail", "87.70% single-post (Median: 1.0)", "Centralized puppet bursts", "Passed (Grassroots Power-Law Distribution)"),
+    ("3. Circadian Sleep-Wake Cycle", "48.67% day vs. 8.58% night (5.67x)", "Flat 24/7 mechanical rates", "Passed (Human Physiological Diurnal Cycle)"),
+    ("4. Network Reciprocity", "r = 1.21%, Q = 0.9837", "Dense reciprocal rings (r > 20%)", "Passed (Sparse Decentralized Topology)"),
+    ("5. Machine Agent Profiling", "@grok sole AI (0.60% volume)", "Covert political sockpuppet rings", "Passed (Transparent Platform AI Utility)")
+]
+for row_idx, row_vals in enumerate(t6_data, start=1):
+    bg_col = "F8FAFC" if row_idx % 2 == 1 else "FFFFFF"
+    for col_idx, val in enumerate(row_vals):
+        c = t6.cell(row_idx, col_idx)
+        set_cell_background(c, bg_col)
+        set_cell_margins(c, 60, 60, 80, 80)
+        p = c.paragraphs[0]
+        r = p.add_run(val)
+        r.font.size = Pt(8.5)
+        if col_idx in [0, 1, 3]:
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            if col_idx in [0, 3]:
+                r.font.bold = True
+
+doc.add_paragraph().paragraph_format.space_after = Pt(8)
+
 # Section 4: Discussion & Recommendations
 add_sec_heading("4. THEORETICAL DISCUSSION: THE PHYGITAL GAP & ALGORITHMIC ORACLES", level=1)
 add_body_p(

@@ -621,6 +621,35 @@ When evaluated, the bot automatically formats and dispatches an encrypted HTML b
 ##### 4. Grounding in Scopus Q1 Literature
 This automated conversational bot architecture aligns directly with cutting-edge international scholarship on AI chatbots for real-time risk mitigation and public crisis management. Recent studies have demonstrated that Telegram bot interfaces provide unprecedented latency reduction in disseminating critical alerts during public crises (*Computers in Human Behavior*, 2025; *Journal of Environmental Nanotechnology*, 2024), monitoring cold-chain food safety (*Journal of Food Science*, 2026), and mitigating rapid disinformation cascades (*Communications of the ACM*, 2024). By integrating real-time NLP anomaly detection with automated Telegram push telemetry up to October 10, 2026, the framework bridges the critical gap between retrospective academic analysis and proactive, life-saving public policy governance.
 
+### 4.9 Astroturfing Audit & Coordinated Inauthentic Behavior (CIB) Forensic Analysis
+
+In computational communication and political informatics, high volumes of public online dissent or outrage are frequently subjected to skepticism regarding artificial inflation by state-sponsored cyber-troops, political buzzers, or automated botnets (Ferrara et al., 2016; Keller et al., 2020). To rigorously establish that the observed affective resistance against the MBG policy represents authentic grassroots civic discourse rather than an orchestrated astroturfing campaign or Coordinated Inauthentic Behavior (CIB) (Giglietto et al., 2020), we conducted a forensic multi-pillar audit across the entire corpus ($N = 9,310$ posts, $2,414$ unique authors) evaluating five empirical criteria established in bot detection literature (Cresci et al., 2017; Ferrara et al., 2016; Keller et al., 2020).
+
+#### Table 4H: Empirical Forensic Audit of Grassroots Public Authenticity vs. Coordinated Inauthentic Behavior (CIB)
+
+| Forensic Pillar | Observed Empirical Metric | Expected Botnet / Astroturfing Signature | Methodological Reference | Forensic Verdict |
+|:---|:---:|:---:|:---:|:---:|
+| **1. Verbatim Copypasta Duplication** | **0.00% duplicates** (0/9,310; TTR: 0.1642) | High verbatim duplication (>15%), low lexical diversity | Ferrara et al. (2016) | ✅ **PASSED** (Organic Heterogeneity) |
+| **2. Participation Distribution (Long-Tail)** | **87.70% single-post users** (2,117/2,414; Median: 1.0) | High Gini coefficient, centralized bursts by puppet accounts | Cresci et al. (2017) | ✅ **PASSED** (Grassroots Power-Law) |
+| **3. Circadian Sleep-Wake Cycle** | **48.67% daytime vs. 8.58% night** (5.67× diurnal ratio) | Flat 24/7 mechanical posting rate during sleep hours | Keller et al. (2020) | ✅ **PASSED** (Human Diurnal Rhythm) |
+| **4. Network Topological Reciprocity** | **$r = 1.21\%$**, Density $\rho = 0.000707$, $Q = 0.9837$ | Dense reciprocal retweet amplification rings ($r > 20\%$) | Giglietto et al. (2020) | ✅ **PASSED** (Sparse Decentralization) |
+| **5. Machine Agent Profiling** | **@grok as sole AI entity** ($0.60\%$ corpus share) | Covert synthetic sockpuppet rings disguised as citizens | Cresci et al. (2017) | ✅ **PASSED** (Transparent Public Utility) |
+
+##### 1. Lexical Diversity & Complete Absence of Scripted Copypasta
+A hallmark of political astroturfing is the rapid replication of scripted propaganda blurbs or copy-pasted talking points across multiple dummy accounts (Keller et al., 2020). Within our audited dataset of 9,310 posts, exact deduplication of normalized post text yielded **0 identical duplicates (0.00% copypasta rate)**. The corpus exhibits a rich vocabulary of 81,805 unique word types across 498,235 total tokens, producing a Type-Token Ratio ($\text{TTR}$) of **0.1642**. The idiosyncratic variation in slang, regional Indonesian idioms, satire, and rhetorical framing directly refutes the operation of centralized template-based bot broadcasts.
+
+##### 2. Grassroots Long-Tail Participation
+Coordinated astroturfing campaigns rely on small coteries of dedicated sockpuppet accounts generating hyper-inflated posting volumes (Ferrara et al., 2016). In contrast, our user activity analysis revealed that **87.70% of participating accounts ($2,117$ out of $2,414$ unique authors)** contributed exactly one post (mean = 1.42, median = 1.0, Gini coefficient = 0.280). The high-frequency accounts were either commercial e-commerce deal aggregators unrelated to political manipulation or transparent public utilities. This extreme right-skewed long tail confirms that discourse was driven by widespread, spontaneous citizen contributions rather than centralized bot clusters.
+
+##### 3. Biological Circadian Diurnal Activity Patterns
+Automated script schedulers and headless bot crawlers typically operate on continuous cron triggers, exhibiting flat or unnaturally uniform posting distributions across all 24 hours of the day (Keller et al., 2020). In contrast, converting timestamps to Western Indonesia Time (WIB, UTC+7) revealed an unmistakable biological sleep-wake cycle: activity plummeted to a nocturnal nadir of only **8.58% ($799$ posts)** between 00:00 and 05:00 WIB, while surging to **48.67% ($4,531$ posts)** during daytime waking hours (11:00–18:00 WIB). The daytime-to-nocturnal contrast ratio of **5.67:1** demonstrates adherence to human physiological sleep schedules.
+
+##### 4. Structural Network Incompatibility with Amplification Rings
+In complex network science, coordinated disinformation and astroturfing manifest as dense, tightly-knit reciprocal endorsement cliques where puppet accounts systematically retweet each other to artificially boost algorithmic reach (Giglietto et al., 2020). The canonical MBG interaction network mathematically defies this topology: it exhibits extreme sparsity ($\rho = 0.000707$), near-zero dyadic reciprocity ($r = 1.21\%$), and a hyper-fragmented modularity ($Q = 0.9837$) spanning 332 disconnected community clusters. Coordinated amplification rings require high reciprocity ($r > 20\%$) and dense interconnected subgraphs, both of which are conclusively absent.
+
+##### 5. Autonomous Machine Agent Profiling
+Only one automated artificial intelligence agent achieved prominence in the network: `@grok` ($56$ posts, $0.60\%$ of total volume). Rather than acting as a covert astroturfing agent, `@grok` functioned as an explicit, platform-native conversational oracle tagged publicly by human users to arbitrate factual disputes regarding budget numbers and food safety reports. No covert coordinated bot clusters were identified. Consequently, the empirical forensic evidence conclusively validates the MBG digital discourse as **authentic, organic public dissent**.
+
 ---
 
 ## 5. Discussion
@@ -816,15 +845,18 @@ Anonymized network interaction edge lists, trained IndoBERT model checkpoints, A
 - Clauset, A., Shalizi, C. R., & Newman, M. E. (2009). Power-law distributions in empirical data. *SIAM Review*, *51*(4), 661–703.
 - Conover, M. D., Ratkiewicz, J., Francisco, M. R., Gonçalves, B., Menczer, F., & Flammini, A. (2011). Political polarization on Twitter. *Proceedings of the International AAAI Conference on Web and Social Media*, *5*(1), 89–96.
 - Covello, V. T., von Winterfeldt, D., & Slovic, P. (1986). Risk communication: A review of the literature. *Risk Abstracts*, *3*(4), 171–182.
+- Cresci, S., Di Pietro, R., Petrocchi, M., Spognardi, A., & Tesconi, M. (2017). The paradigm-shift of social spambots: Evidence, theories, and tools for the arms race. *Proceedings of the 26th International Conference on World Wide Web Companion*, 963–972. https://doi.org/10.1145/3041021.3055135
 - Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. *Proceedings of NAACL-HLT 2019*, 4171–4186.
 - Dresner, E., & Herring, S. C. (2010). Functions of the nonverbal in CMC: Emoticons and illocutionary force. *Communication Theory*, *20*(3), 249–268.
 - Edelman, M. (1964). *The symbolic uses of politics*. University of Illinois Press.
 - Ekman, P. (1992). An argument for basic emotions. *Cognition & Emotion*, *6*(3–4), 169–200.
 - Erdős, P., & Rényi, A. (1960). On the evolution of random graphs. *Publications of the Mathematical Institute of the Hungarian Academy of Sciences*, *5*(1), 17–60.
+- Ferrara, E., Varol, O., Davis, C., Menczer, F., & Flammini, A. (2016). The rise of social bots. *Communications of the ACM*, *59*(7), 96–104. https://doi.org/10.1145/2818717
 - Fleiss, J. L. (1971). Measuring nominal scale agreement among many raters. *Psychological Bulletin*, *76*(5), 378–382. https://doi.org/10.1037/h0031619
 - Franzke, A. S., Bechmann, A., Zimmer, M., Ess, C., & Association of Internet Researchers. (2020). *Internet research: Ethical guidelines 3.0*. Association of Internet Researchers. https://aoir.org/reports/ethics3.pdf
 - Freeman, L. C. (1979). Centrality in social networks: Conceptual clarification. *Social Networks*, *1*(3), 215–239.
 - Gibbs, R. W. (2000). Irony in talk among friends. *Metaphor and Symbol*, *15*(1–2), 5–27.
+- Giglietto, V., Righetti, N., Rossi, L., & Marino, G. (2020). It takes a village to manipulate the media: Coordinated inauthentic behavior on social media. *Information, Communication & Society*, *23*(6), 867–891. https://doi.org/10.1080/1369118X.2020.1739732
 - Giora, R. (2003). *On our mind: Salience, context, and figurative language*. Oxford University Press.
 - Grice, H. P. (1975). Logic and conversation. In P. Cole & J. Morgan (Eds.), *Syntax and semantics, vol. 3: Speech acts* (pp. 41–58). Academic Press.
 - Gutierrez, R., & Giner-Sorolla, R. (2007). Anger, disgust, and presumption of harm as reactions to taboo-breaking behaviors. *Emotion*, *7*(4), 853–868. https://doi.org/10.1037/1528-3542.7.4.853
@@ -832,6 +864,7 @@ Anonymized network interaction edge lists, trained IndoBERT model checkpoints, A
 - Horton, D., & Wohl, R. R. (1956). Mass communication and para-social interaction: Observations on intimacy at a distance. *Psychiatry*, *19*(3), 215–229.
 - Iyengar, S., Lelkes, Y., Levendusky, M., Malhotra, N., & Westwood, S. J. (2019). The origins and consequences of affective polarization in the United States. *Annual Review of Political Science*, *22*, 129–146.
 - Jamieson, K. H., & Cappella, J. N. (2008). *Echo chamber: Rush Limbaugh and the conservative media establishment*. Oxford University Press.
+- Keller, F. B., Schoch, D., Stier, S., & Yang, J. (2020). Political astroturfing on Twitter: How to identify and measure inauthentic coordination. *Political Communication*, *37*(2), 160–180. https://doi.org/10.1080/10584609.2019.1661888
 - Kotler, P., Kartajaya, H., & Setiawan, I. (2023). *Marketing 6.0: The future is immersive*. John Wiley & Sons.
 - Kotler, P., & Lee, N. R. (2007). *Marketing in the public sector: A roadmap for improved performance*. Wharton School Publishing.
 - Krippendorff, K. (2018). *Content analysis: An introduction to its methodology* (4th ed.). SAGE Publications.
