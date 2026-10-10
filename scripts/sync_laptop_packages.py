@@ -34,6 +34,20 @@ files_to_copy = [
     os.path.join(BASE_DIR, "manuscript/JURNAL_MBG_SCOPUS_Q1_LATEST_2026.docx"),
     os.path.join(BASE_DIR, "manuscript/JURNAL_MBG_SCOPUS_Q1_LATEST_2026.pdf"),
     os.path.join(BASE_DIR, "manuscript/JURNAL_MBG_SCOPUS_Q1_LATEST_2026.md"),
+    # Supplementary Submission Documents (Required by Scopus Q1 Portals)
+    os.path.join(BASE_DIR, "manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx"),
+    os.path.join(BASE_DIR, "manuscript/Title_Page_Indri_Anjar_Kartika_Sari.md"),
+    os.path.join(BASE_DIR, "manuscript/Cover_Letter_JCMC_Oxford.docx"),
+    os.path.join(BASE_DIR, "manuscript/Cover_Letter_JCMC_Oxford.md"),
+    os.path.join(BASE_DIR, "manuscript/Cover_Letter_ICS_Taylor_Francis.docx"),
+    os.path.join(BASE_DIR, "manuscript/Cover_Letter_ICS_Taylor_Francis.md"),
+    os.path.join(BASE_DIR, "manuscript/Cover_Letter_Springer_SNAM.docx"),
+    os.path.join(BASE_DIR, "manuscript/Cover_Letter_Springer_SNAM.md"),
+    os.path.join(BASE_DIR, "manuscript/Suggested_Reviewers.docx"),
+    os.path.join(BASE_DIR, "manuscript/Suggested_Reviewers.md"),
+    os.path.join(BASE_DIR, "manuscript/Author_Declarations_and_Ethical_Statements.docx"),
+    os.path.join(BASE_DIR, "manuscript/Author_Declarations_and_Ethical_Statements.md"),
+    os.path.join(BASE_DIR, "manuscript/Anonymized_Manuscript_Scopus_Q1.docx"),
 
     # Datasets
     os.path.join(BASE_DIR, "data/annotation/multi_annotator_batch_100_GOLD.csv"),
