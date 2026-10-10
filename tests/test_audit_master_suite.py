@@ -170,16 +170,20 @@ class TestMasterAuditSuite(unittest.TestCase):
 
     # ── 8. Pengujian startup aplikasi Streamlit ──
     def test_08_streamlit_app_startup(self):
-        """Simulate Streamlit application load in dry-run/headless mode."""
+        """Simulate Streamlit application load and page rendering via AppTest."""
         app_path = PROJECT_ROOT / "dashboard" / "app.py"
         self.assertTrue(app_path.is_file())
-        # Run python syntax check and import check for app.py
         py_compile.compile(str(app_path), doraise=True)
         # Check requirements consistency
         req_root = (PROJECT_ROOT / "requirements.txt").read_text(encoding="utf-8")
         req_dash = (PROJECT_ROOT / "dashboard" / "requirements.txt").read_text(encoding="utf-8")
         self.assertEqual(req_root.strip(), req_dash.strip(), "dashboard/requirements.txt out of sync with root requirements.txt")
-        print("[PASS] 8. Startup simulasi Streamlit dashboard/app.py dan sinkronisasi requirements.txt valid.")
+        # Run AppTest headless execution
+        from streamlit.testing.v1 import AppTest
+        at = AppTest.from_file(str(app_path))
+        at.run(timeout=30)
+        self.assertEqual(len(list(at.exception)), 0, f"Exceptions on startup: {list(at.exception)}")
+        print("[PASS] 8. Startup simulasi Streamlit dashboard/app.py dan AppTest rendering valid (0 exception).")
 
     # ── 9. Pengujian bahwa asset opsional yang hilang tidak merusak halaman ──
     def test_09_missing_asset_robustness(self):

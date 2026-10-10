@@ -383,7 +383,7 @@ def render_bab4_page():
                 with open(macro_json_p, "r", encoding="utf-8") as f_macro:
                     m_data = json.load(f_macro)
                 df_macro_table = pd.DataFrame([
-                    {"Parameter Topologi Makro": k, "Nilai Empiris": v}
+                    {"Parameter Topologi Makro": str(k), "Nilai Empiris": str(v)}
                     for k, v in m_data.items()
                 ])
                 with st.expander("📑 Lihat Tabel Lengkap Parameter Topologi Makro Graf (15+ Metrik Resmi)", expanded=False):
@@ -1323,9 +1323,6 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
         > **Mengapa ini penting?** Analisis teks biasa hanya bisa membaca *apa* yang ditulis.
         > Pendekatan berbasis graf membaca *siapa yang berkuasa*, *siapa yang menyebarkan*, dan *siapa yang menjembatani* — pola yang **tidak tampak** dari isi cuitan semata.
         """)
-
-        import networkx as nx
-        import plotly.graph_objects as go
 
         # Load & compute metrics
         @st.cache_data
