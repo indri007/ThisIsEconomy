@@ -124,7 +124,7 @@ def render_storytelling_page():
         st.markdown("---")
 
         st.subheader("5. Confusion Matrix Klasifikasi Emosi (Data Riil)")
-        st.image(os.path.join(PROJECT_ROOT, "results", "indobert_group_aware_v2", "confusion_matrix_v2.png") if os.path.exists(os.path.join(PROJECT_ROOT, "results", "indobert_group_aware_v2", "confusion_matrix_v2.png")) else get_image_path("confusion_matrix.png"), width='stretch')
+        st.image(get_image_path("confusion_matrix_v2.png"), width='stretch')
         st.info("**Caption Akademik:** Figure 5 details the classification confusion matrix on actual data, revealing high sensitivity on Disgust and high precision on Trust.\n\n**Pesan/Temuan:** Integritas dan transparansi komputasional dalam mengevaluasi kekuatan serta keterbatasan representasi korpus imbalanced.\n\n**Posisi Manuskrip:** Bab IV Evaluasi Model (§4.5)")
         st.markdown("---")
 
@@ -213,7 +213,7 @@ def render_storytelling_page():
             st.image(get_image_path("3_sarcasm.png"), width='stretch', caption="Gambar 3: Distribusi Sarkasme & Penanda Linguistik")
         with col_t3_b:
             st.image(get_image_path("f1_scores.png"), width='stretch', caption="Gambar 4: F1-Scores IndoBERT per Kategori Emosi")
-        st.image(os.path.join(PROJECT_ROOT, "results", "indobert_group_aware_v2", "confusion_matrix_v2.png") if os.path.exists(os.path.join(PROJECT_ROOT, "results", "indobert_group_aware_v2", "confusion_matrix_v2.png")) else get_image_path("confusion_matrix.png"), width='stretch', caption="Gambar 5: Confusion Matrix Evaluasi IndoBERT Group-Aware (test set n=1.058)")
+        st.image(get_image_path("confusion_matrix_v2.png"), width='stretch', caption="Gambar 5: Confusion Matrix Evaluasi IndoBERT Group-Aware (test set n=1.058)")
 
     # ── TAB 4: TAHAP 3 ──
     with v_tabs[3]:
@@ -258,6 +258,90 @@ def render_storytelling_page():
         st.image(get_image_path("integrated_sna_nlp.png"), width='stretch', caption="Masterpiece Visual: Triangulasi Terintegrasi SNA x NLP (Data Riil)")
 
     # ── TAB 6: BAB IV & BAB V ──
+    with v_tabs[5]:
+        st.subheader("🏛️ Peta Temuan Empiris Bab IV & Rekomendasi Kebijakan Bab V (§4.1 - §5.4)")
+        st.markdown(
+            "Sintesis komprehensif yang menghubungkan seluruh temuan analitik komputasional "
+            "dengan kesimpulan akademis dan matriks rekomendasi kebijakan publik Badan Gizi Nasional (BGN)."
+        )
+        col_b4, col_b5 = st.columns(2)
+        with col_b4:
+            st.markdown("### 📊 BAB IV: HASIL & PEMBAHASAN EMPIRIS")
+            with st.expander("📌 §4.1 Karakteristik Korpus & Preprocessing", expanded=True):
+                st.markdown("""
+                - **Volume Data:** Total korpus mentah 5.310 cuitan platform X, tersaring menjadi 3.395 data bersih (N=3.395).
+                - **Penyaringan Noise:** Eliminasi bot spam, duplikasi, dan akun agregator menggunakan 5 pilar verifikasi.
+                - **Distribusi Emosi:** Didominasi oleh emosi **Disgust (56,24%)**, diikuti Trust (20,39%), Neutral (12,33%), dan Interest (9,60%).
+                """)
+            with st.expander("📌 §4.2 Topologi Makro & Kerapatan Jaringan"):
+                st.markdown("""
+                - **Parameter Jaringan:** 971 node dan 666 edge (Graph Density = 0,00071).
+                - **Resiprositas Rendah:** Reciprocity = 1,21% — mencerminkan komunikasi asimetris satu arah.
+                - **Fragmentasi Graf:** Terbagi ke dalam 341 komponen terpisah tanpa satu sentral dialog nasional.
+                """)
+            with st.expander("📌 §4.3 Struktur Komunitas Louvain (Modularity Q=0.9837)"):
+                st.markdown("""
+                - **Tingkat Polarisasi:** Modularitas Q = 0,9837 menandakan segregasi echo chamber yang sangat kuat.
+                - **Jumlah Komunitas:** Terdeteksi 342 komunitas partisi lokal yang terisolasi secara struktural.
+                """)
+            with st.expander("📌 §4.4 Sentralitas Aktor & Tipologi Peran Komunikasi"):
+                st.markdown("""
+                - **AI Oracle (@grok):** Out-degree tertinggi (42) — difungsikan publik sebagai mesin verifikasi argumen.
+                - **Target Mention Pasif (@prabowo):** In-degree 15, Out-degree 0 — target aduan publik tanpa keterlibatan langsung.
+                - **Grassroots Broker (@4Y4NKZ, @regar_op0sisi):** Sentralitas perantara penghubung klaster warganet.
+                """)
+            with st.expander("📌 §4.5 Kinerja IndoBERT & Analisis Sarkasme"):
+                st.markdown("""
+                - **Kinerja Klasifikasi:** Fine-tuned IndoBERT mencapai F1-Macro 0,7522 (Group-Aware Evaluated).
+                - **Deteksi Sarkasme:** Disgust menjadi wadah utama ekspresi satire/ironi terhadap kebijakan fisik.
+                """)
+            with st.expander("📌 §4.6 Sintesis Phygital Gap"):
+                st.markdown("""
+                - **ABSA 3 Aspek:** Sentimen penolakan terkonsentrasi pada Logistik & Anggaran fisik, bukan visi gizi.
+                - **Phygital Disconnect:** Jurang pemisah nyata antara narasi digital dan realitas eksekusi makanan di lapangan.
+                """)
 
+        with col_b5:
+            st.markdown("### 🏛️ BAB V: KESIMPULAN & REKOMENDASI KEBIJAKAN")
+            with st.expander("📌 §5.1 Kesimpulan Penelitian Terpadu", expanded=True):
+                st.markdown("""
+                1. **Anatomi Bahasa:** Kritik diartikulasikan lewat ironi dan oposisi biner di ruang digital.
+                2. **Dominasi Afektif:** Emosi Jijik (*Disgust* 56,24%) merefleksikan kecemasan higienitas dan porsi.
+                3. **Topologi Asimetris:** Polarisasi ekstrem (Q=0,9837) dengan resiprositas rendah (1,21%).
+                4. **Hegemoni AI:** Publik beralih ke agen AI (@grok) akibat minimnya dialog dua arah dari pembuat kebijakan.
+                5. **Phygital Gap:** Terkonfirmasi secara empiris kesenjangan antara narasi digital dan realitas fisik.
+                """)
+            with st.expander("📌 §5.2 Implikasi Akademis & Praktis"):
+                st.markdown("""
+                - **Implikasi Akademis:** Menetapkan metodologi komputasional terpadu (SNA x NLP) untuk sosiologi komunikasi publik Indonesia.
+                - **Implikasi Praktis:** Memberikan kerangka kerja EWS multi-dimensi untuk deteksi dini sentimen krisis kebijakan publik.
+                """)
+            with st.expander("📌 §5.3 5 Rekomendasi Aksi untuk BGN"):
+                st.markdown("""
+                1. **Buka Dialog Terbuka:** Tingkatkan resiprositas dari 1,21% dengan kanal tanggapan humas aktif.
+                2. **Rangkul Simpul Komunitas:** Kolaborasi dengan opinion leader non-formal untuk penetrasi klaster terisolasi.
+                3. **Single Source of Truth Menu:** Publikasikan foto menu fisik harian dan uji laboratorium gizi per SPPG.
+                4. **Transparansi Alokasi Anggaran:** Edukasi publik rincian biaya porsi untuk memutus narasi korupsi.
+                5. **Optimalisasi Narasi Berbasis Bukti:** Siapkan data terbuka tervalidasi mesin pencari dan agen AI.
+                """)
+            with st.expander("📌 §5.4 Keterbatasan & Agenda Riset Lanjutan"):
+                st.markdown("""
+                - **Platform:** Fokus pada data platform X (Twitter); disarankan ekspansi ke TikTok/Instagram.
+                - **Modalitas:** Analisis teks; riset lanjutan dapat mengintegrasikan computer vision pada foto menu fisik.
+                """)
 
+        st.markdown("---")
+        st.subheader("📋 Matriks Pemetaan Komprehensif: Struktur Tesis Bab I – Bab V ↔ Bukti Data Riil")
+        thesis_master_map = [
+            {"Bab Tesis": "Bab I: Pendahuluan", "Sub-Bab": "1.2 & 1.4 Rumusan & Tujuan", "Fokus Kajian": "Harmonisasi 6 Pertanyaan ↔ 6 Target Riset", "Metode / Instrumen": "Sankey Flow & Matriks Keselarasan", "Data Empiris": "Harmonisasi simetris 1-to-1", "Halaman": "15 & 19"},
+            {"Bab Tesis": "Bab II: Landasan Teori", "Sub-Bab": "2.1 s.d 2.6 Landasan Konseptual", "Fokus Kajian": "8 Pilar Teori & 37 Sub-Bab Terstruktur", "Metode / Instrumen": "Sunburst & Treemap Hierarkis", "Data Empiris": "37 Sub-bab, 5 Proposisi Kerja", "Halaman": "26 – 84"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.1 Karakteristik Data Korpus", "Fokus Kajian": "Penyaringan cuitan warganet platform X", "Metode / Instrumen": "Data Funnel & Preprocessing Pipeline", "Data Empiris": "N=5.263 korpus, 3.395 leksikal", "Halaman": "94"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.2 Topologi Jaringan Global", "Fokus Kajian": "Analisis kerapatan & resiprositas graf", "Metode / Instrumen": "Directed Graph SNA", "Data Empiris": "971 node, Reciprocity 1,21%", "Halaman": "95"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.3 Dinamika Komunitas Louvain", "Fokus Kajian": "Polarisasi ekstrem & echo chamber warganet", "Metode / Instrumen": "Algoritma Louvain Community", "Data Empiris": "Modularity Q=0.9837, 342 komunitas", "Halaman": "97"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.4 Struktur Kekuasaan Aktor", "Fokus Kajian": "Peran Oracle AI, Broker, dan Target Pasif", "Metode / Instrumen": "Centrality (Degree, Betweenness)", "Data Empiris": "@grok Out=42, @prabowo In=15 Out=0", "Halaman": "98"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.5 Evaluasi Model & Sindiran", "Fokus Kajian": "Performa IndoBERT & majas sindiran", "Metode / Instrumen": "Fine-tuned Transformer IndoBERT", "Data Empiris": "Macro F1 0.7522, Disgust 56,24%", "Halaman": "101 – 104"},
+            {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.6 Sintesis Marketing 6.0", "Fokus Kajian": "Pembuktian Phygital Gap kebijakan publik", "Metode / Instrumen": "ABSA & Triangulasi SNA-NLP", "Data Empiris": "Logistik & anggaran sebagai akar krisis", "Halaman": "105 – 109"},
+            {"Bab Tesis": "Bab V: Penutup", "Sub-Bab": "5.1 s.d 5.4 Simpulan & Solusi", "Fokus Kajian": "Rekomendasi BGN & Implikasi Kebijakan", "Metode / Instrumen": "Matriks Intervensi Kebijakan", "Data Empiris": "5 Aksi Strategis Mitigasi Krisis", "Halaman": "110 – 113"}
+        ]
+        st.dataframe(pd.DataFrame(thesis_master_map), use_container_width=True, hide_index=True)
 
