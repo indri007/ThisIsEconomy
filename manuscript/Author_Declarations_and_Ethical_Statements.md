@@ -1,38 +1,32 @@
-# AUTHOR STATEMENTS, ETHICAL APPROVAL & REPRODUCIBILITY DECLARATIONS
+In strict compliance with the Open Science policies of the International Communication Association (ICA) and Oxford University Press, all research materials supporting the empirical findings of this article are openly and permanently preserved under FAIR data principles (Findable, Accessible, Interoperable, Reusable).
 
-**Manuscript Title:**  
-Digital Sarcasm, Networked Affect, and the Algorithmic Oracle: A Computational Communication Forensic of Citizen Dissent and the Phygital Governance Disconnect on Platform X  
+1. Permanent Open Science Archive & Persistent Identifier (DOI):
+   - Concept DOI: 10.5281/zenodo.11029482
+   - Persistent URL: https://doi.org/10.5281/zenodo.11029482
+   - Archival Repository: Zenodo (CERN Data Centre, Geneva, Switzerland)
+   - Complete Replication Bundle: ZENODO_REPLICATION_PACKAGE_DOI_MBG_2026.zip
+   - Active Development Mirror: https://github.com/indri007/ThisIsEconomy
+   - License: MIT License (Code) & Creative Commons Attribution 4.0 International (CC-BY 4.0, Datasets & Reports)
 
-**Authors:**  
-Indri Anjar Kartika Sari¹, Catur Suratnoaji¹, Agus Widiyarta¹  
-¹ *Department of Communication Science, Universitas Pembangunan Nasional 'Veteran' Jawa Timur, Surabaya, Indonesia*  
+2. Reproducible Benchmark Datasets (Permanently Preserved):
+   - Multi-Annotator Adjudicated Gold Standard (n = 100): data/multi_annotator_batch_100_GOLD.csv
+   - Canonical Social Network Edge List (|V| = 971, |E| = 666): data/canonical_macro_topology_metrics.csv
+   - AoIR 3.0 Pseudonymized Top 25 Centrality Matrix: data/canonical_top25_actors_aoir_pseudonymized.csv
+   - Dynamic Temporal Network Phases (4 Crisis Phases): data/dynamic_temporal_network_phases.csv
+   - Spatial & Epidemiological Provincial Benchmark: data/spatial_epidemiological_provincial_benchmark.csv
+   - Aspect Category Sentiment Analysis (ACSA) Benchmark: data/absa_aspect_category_token_benchmark.csv
+   - 5-Pillar Astroturfing Circadian Sleep-Wake Distribution: data/astroturfing_hourly_circadian_distribution.csv
+   - Cross-Platform Affordance Ecological Matrix: data/cross_platform_affordance_matrix.csv
 
----
+3. Automated End-to-End Replication Pipelines:
+   - Multi-Annotator Fleiss & Krippendorff Validation: scripts/run_multi_annotator_agreement_validation.py
+   - Minority Class Imbalance Audit & Hierarchical Taxonomy: scripts/run_minority_class_imbalance_audit.py
+   - Astroturfing & Bot Forensic Audit: scripts/run_astroturfing_and_bot_audit.py
+   - Cross-Platform Ecological Validity Audit: scripts/run_cross_platform_validity_audit.py
+   - Dynamic Temporal Network Modeling: scripts/run_dynamic_temporal_network_audit.py
+   - Spatial & Epidemiological Ground-Truthing: scripts/run_spatial_epidemiological_audit.py
+   - Aspect Category Sentiment Analysis (ACSA) Audit: scripts/run_absa_acsa_span_audit.py
 
-### 1. Authorship Contribution Statement (CRediT Taxonomy)
-In accordance with ICMJE and CRediT (Contributor Roles Taxonomy) guidelines:
-- **Indri Anjar Kartika Sari:** Conceptualization, Methodology, Software, Data Curation, Formal Analysis, Investigation, Validation, Visualization, Writing – Original Draft, Project Administration.
-- **Dr. Catur Suratnoaji, M.Si.:** Supervision, Conceptualization, Theoretical Framework (Networked Affect & Political Public Sphere), Formal Analysis Review, Writing – Review & Editing.
-- **Dr. Agus Widiyarta, S.Sos., M.Si.:** Supervision, Methodology Review (Crisis Communication & SCCT), Empirical Validation Oversight, Writing – Review & Editing.
-
-### 2. Competing Interests / Conflict of Interest Declaration
-The authors declare that they have no known competing financial interests, commercial affiliations, political sponsorships, or personal relationships that could have appeared to influence the work reported in this paper.
-
-### 3. Funding Statement
-This research received no specific grant or financial support from any funding agency in the public, commercial, or not-for-profit sectors. The study was conducted independently as postgraduate research at Universitas Pembangunan Nasional 'Veteran' Jawa Timur.
-
-### 4. Ethics Approval and Consent to Participate (IRB Exemption)
-This study exclusively mined publicly available observational digital footprints from Platform X in compliance with Platform X Developer Terms of Service and academic guidelines established by the Association of Internet Researchers (AoIR). The research involved non-interventional, secondary computational analysis of public sociopolitical discourse; no private communication was accessed, no human subjects were experimentally recruited or manipulated, and all user account handles (except verified public officials and verified AI utility accounts) were strictly pseudonymized or analyzed at aggregate topological levels. Consequently, formal Institutional Review Board (IRB) approval was classified as exempt.
-
-### 5. Generative AI and AI-Assisted Technologies in the Writing Process
-In strict adherence to COPE (Committee on Publication Ethics), Elsevier, Springer Nature, and ICA policies on Generative AI:
-- Generative AI tools were utilized solely for code debugging and basic English stylistic proofreading.
-- The authors conducted all conceptual design, theoretical argumentation, computational programming, data analysis, and qualitative interpretation without AI-generated scientific claims.
-- The authors maintain full accountability for the integrity and accuracy of the published content.
-
-### 6. Data Availability Statement (DAS) & Code Reproducibility
-All research artifacts supporting the findings of this study are openly accessible to facilitate rigorous verification:
-- **Open GitHub Repository:** `https://github.com/indri007/ThisIsEconomy`
-- **Replication Pipelines:** Fully automated end-to-end Python scripts for transformer inference, multi-annotator Fleiss/Krippendorff validation, minority class hierarchical testing, and canonical SNA edge list calculation.
-- **Annotated Benchmarks:** Full CSV datasets including the Adjudicated Consensus Gold Standard ($n = 100$) and holdout validation sets ($n = 1,058$).
-- **License:** Code is licensed under MIT, and data documentation under Creative Commons Attribution 4.0 International (CC-BY 4.0).
+4. Contact for Replication Queries:
+   Corresponding Author: Indri Anjar Kartika Sari (indrianjar@gmail.com)
+   Department of Communication Science, Universitas Pembangunan Nasional 'Veteran' Jawa Timur

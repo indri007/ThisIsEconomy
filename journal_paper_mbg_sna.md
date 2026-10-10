@@ -1,15 +1,16 @@
 # Digital Sarcasm as a Signal of Policy Distrust: Social Network Analysis and Emotion Classification of Indonesia's Free Nutritious Meal Program Discourse on X (Twitter)
 
-**Indri Anjar Kartika Sari**  
-*Master's Program in Communication Science, Faculty of Social, Cultural and Political Sciences*  
-*Universitas Pembangunan Nasional "Veteran" Jawa Timur, Surabaya, Indonesia*  
-*Email: indri.anjar@upnvjatim.ac.id*  
+**Indri Anjar Kartika Sari¹*, Catur Suratnoaji¹**, Agus Widiyarta¹**  
+¹*Department of Communication Science, Faculty of Social and Political Sciences, Universitas Pembangunan Nasional "Veteran" Jawa Timur, Surabaya, Indonesia*  
+*\*Author Email: indrianjar@gmail.com | ORCID: [0009-0002-8419-7231](https://orcid.org/0009-0002-8419-7231)*  
+*\*\*Corresponding Author: catur_suratnoaji@upnjatim.ac.id | ORCID: [0000-0002-8596-3914](https://orcid.org/0000-0002-8596-3914)*  
+*Co-Author: agus_widiyarta@upnjatim.ac.id | ORCID: [0000-0002-7104-5820](https://orcid.org/0000-0002-7104-5820)*  
 
 ---
 
-> **Target Submission Venues**: *Telematics and Informatics* (Elsevier, Q1) / *New Media & Society* (SAGE, Q1) / *Social Networks* (Elsevier, Q1) / *Government Information Quarterly* (Elsevier, Q1)  
+> **Target Submission Venues**: *Journal of Computer-Mediated Communication* (Oxford University Press / ICA, Q1) / *Information, Communication & Society* (Taylor & Francis, Q1) / *Telematics and Informatics* (Elsevier, Q1) / *New Media & Society* (SAGE, Q1)  
 > **Manuscript Type**: Original Research Article  
-> **Total Length**: ~15,500 words (~40–42 standard academic double-spaced pages)  
+> **Permanent Replication Archive (DOI)**: [10.5281/zenodo.11029482](https://doi.org/10.5281/zenodo.11029482)  
 > **Keywords**: Social Network Analysis; IndoBERT; Emotion Classification; Digital Sarcasm; Free Nutritious Meal Program; Echo Chamber; Phygital Gap; Marketing 6.0; Algorithmic Epistemic Authority  
 
 ---

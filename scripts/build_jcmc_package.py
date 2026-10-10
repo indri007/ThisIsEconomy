@@ -1537,5 +1537,28 @@ def main():
     build_checklist_doc(total_words, abs_words)
     sync_and_zip()
 
+    # Mirror official files to repo manuscript/ directory
+    repo_manuscript_dir = os.path.join(BASE_DIR, "manuscript")
+    os.makedirs(repo_manuscript_dir, exist_ok=True)
+    shutil.copy2(os.path.join(PKG_DIR, "01_ANONYMIZED_MANUSCRIPT_JCMC.docx"), os.path.join(repo_manuscript_dir, "JCMC_OXFORD_MBG_COMMUNICATION_2026.docx"))
+    shutil.copy2(os.path.join(PKG_DIR, "01_ANONYMIZED_MANUSCRIPT_JCMC.pdf"), os.path.join(repo_manuscript_dir, "JCMC_OXFORD_MBG_COMMUNICATION_2026.pdf"))
+    shutil.copy2(os.path.join(PKG_DIR, "01_ANONYMIZED_MANUSCRIPT_JCMC.md"), os.path.join(repo_manuscript_dir, "JCMC_OXFORD_MBG_COMMUNICATION_2026.md"))
+    shutil.copy2(os.path.join(PKG_DIR, "02_TITLE_PAGE_JCMC.docx"), os.path.join(repo_manuscript_dir, "Title_Page_Indri_Anjar_Kartika_Sari.docx"))
+    shutil.copy2(os.path.join(PKG_DIR, "02_TITLE_PAGE_JCMC.md"), os.path.join(repo_manuscript_dir, "Title_Page_Indri_Anjar_Kartika_Sari.md"))
+    shutil.copy2(os.path.join(PKG_DIR, "03_COVER_LETTER_JCMC.docx"), os.path.join(repo_manuscript_dir, "Cover_Letter_JCMC_Oxford.docx"))
+    shutil.copy2(os.path.join(PKG_DIR, "03_COVER_LETTER_JCMC.md"), os.path.join(repo_manuscript_dir, "Cover_Letter_JCMC_Oxford.md"))
+    shutil.copy2(os.path.join(PKG_DIR, "04_DATA_AVAILABILITY_STATEMENT_JCMC.docx"), os.path.join(repo_manuscript_dir, "Author_Declarations_and_Ethical_Statements.docx"))
+    shutil.copy2(os.path.join(PKG_DIR, "04_DATA_AVAILABILITY_STATEMENT_JCMC.md"), os.path.join(repo_manuscript_dir, "Author_Declarations_and_Ethical_Statements.md"))
+    shutil.copy2(os.path.join(PKG_DIR, "06_SUGGESTED_REVIEWERS_JCMC.docx"), os.path.join(repo_manuscript_dir, "Suggested_Reviewers.docx"))
+    shutil.copy2(os.path.join(PKG_DIR, "06_SUGGESTED_REVIEWERS_JCMC.md"), os.path.join(repo_manuscript_dir, "Suggested_Reviewers.md"))
+    print("[OK] Mirrored all JCMC submission files to manuscript/ directory")
+
+    docs_tesis_dir = os.path.expanduser("~/Documents/tesis_mbg/manuscript")
+    if os.path.exists(docs_tesis_dir):
+        shutil.copy2(os.path.join(PKG_DIR, "01_ANONYMIZED_MANUSCRIPT_JCMC.docx"), os.path.join(docs_tesis_dir, "JCMC_OXFORD_MBG_COMMUNICATION_2026.docx"))
+        shutil.copy2(os.path.join(PKG_DIR, "01_ANONYMIZED_MANUSCRIPT_JCMC.pdf"), os.path.join(docs_tesis_dir, "JCMC_OXFORD_MBG_COMMUNICATION_2026.pdf"))
+        shutil.copy2(os.path.join(PKG_DIR, "01_ANONYMIZED_MANUSCRIPT_JCMC.md"), os.path.join(docs_tesis_dir, "JCMC_OXFORD_MBG_COMMUNICATION_2026.md"))
+        print("[OK] Mirrored JCMC manuscript to Documents/tesis_mbg/manuscript")
+
 if __name__ == "__main__":
     main()
