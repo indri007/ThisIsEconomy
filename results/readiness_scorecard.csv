@@ -6,6 +6,6 @@ Baseline comparison (≥2 baselines),4,✅,4.0,TF-IDF LogReg + TF-IDF SVM vs Ind
 95% Bootstrap CI computed,4,✅,4.0,Bootstrap (n=2000) for IndoBERT; Wilson/Wald for baselines
 Effect size (Cohen's d / Δ) computed,4,✅,4.0,Delta accuracy/F1 + Cohen's d for all pairs
 Statistical test (McNemar) computed,4,✅,4.0,McNemar requires per-sample baseline predictions (see mcnemar_results.csv)
-Provenance / reproducibility metadata,4,✅,4.0,SHA-256 hashes recorded; git=b19a761d97a1
+Provenance / reproducibility metadata,4,✅,4.0,SHA-256 hashes recorded; git=8d8863a83c48
 Automated readiness scoring,4,✅,4.0,This scorecard — run scientific_validation_audit.py
 E2E validation report generated,4,✅,4.0,SCIENTIFIC_VALIDATION_REPORT.json + .md

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T17:00:03.889916",
+  "generated_at": "2026-10-06T13:31:11.266212",
   "project": "Social Network Analysis Sarkasme Cuitan Twitter di Balik Pertaruhan Triliunan Rupiah pada Kebijakan Makan Bergizi Gratis",
   "purpose": "Research evidence / reproducibility audit",
   "note": "Evidence pack bersifat audit teknis.",
@@ -7,14 +7,14 @@
   "sarcasm_file": "/Users/jevin/Documents/tesis_mbg/data/sarcasm/dataset_sindiran_valid.csv",
   "sna_file": "/Users/jevin/Documents/tesis_mbg/data/results/mbg_network_nodes_final.csv",
   "results": {
-    "timestamp": "2026-09-24T17:00:02.468815",
+    "timestamp": "2026-10-06T13:31:09.848312",
     "project": "/Users/jevin/Documents/tesis_mbg",
     "steps": [
       {
         "step": 1,
         "name": "Production Check",
         "status": "PASS",
-        "detail": "branch=main; HEAD=2b5e4068; working tree has changes"
+        "detail": "branch=main; HEAD=8d8863a; working tree has changes"
       },
       {
         "step": 2,

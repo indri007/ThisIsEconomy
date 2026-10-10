@@ -73,6 +73,16 @@ def render_storytelling_page():
         path = os.path.join(project_root, "results", filename)
         return path
 
+    with st.expander("🕊️ Read Narrative Essay: A Meal of Ash and Irony (The Human Soul Behind Indonesia’s Trillion-Rupiah Promise)", expanded=False):
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(current_dir)
+        essay_path = os.path.join(project_root, "docs", "A_MEAL_OF_ASH_AND_IRONY.md")
+        if os.path.exists(essay_path):
+            with open(essay_path, "r", encoding="utf-8") as f:
+                st.markdown(f.read())
+        else:
+            st.info("Narrative essay file is available in docs/A_MEAL_OF_ASH_AND_IRONY.md")
+
     v_tabs = st.tabs([
         "🌟 Galeri Lengkap (10 Gambar)",
         "🔍 Tahap 1: Praproses Data",
