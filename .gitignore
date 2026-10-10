@@ -5,9 +5,28 @@
 *.env
 *.pem
 *.key
+*.token
+*.token.json
+token.json
+tokens.json
 cookies.json
+credentials.json
+client_secret*.json
+service_account*.json
+gcp_key*.json
+google_credentials*.json
+kaggle.json
+brand24_secrets.json
+*.p12
+*.pfx
+*.keystore
+id_rsa*
+*.id_rsa
+*.pub
 secrets.toml
 .streamlit/secrets.toml
+.secrets/
+secrets/
 
 # Logs & Temporary
 *.log
@@ -64,10 +83,5 @@ annotation/_arsip/
 results/network_rebuild_*.csv
 
 data/raw/
-*.env
-.streamlit/secrets.toml
-
-data/raw/
-*.env
-results/FINAL_NUMBERS.json
 data/external/
+results/FINAL_NUMBERS.json
