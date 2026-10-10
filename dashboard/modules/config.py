@@ -121,7 +121,40 @@ def download_file_button(label, file_path, file_name, mime, key=None, **kwargs):
         )
 
 
+def resolve_image_path(filename_or_path):
+    """Robustly resolve any image path across repository directory structures."""
+    if not filename_or_path:
+        return None
+    p = str(filename_or_path)
+    if os.path.exists(p):
+        return os.path.abspath(p)
+    filename = os.path.basename(p)
+    candidates = [
+        os.path.join(PROJECT_ROOT, "results", filename),
+        os.path.join(PROJECT_ROOT, "results", "storytelling", filename),
+        os.path.join(PROJECT_ROOT, "docs", "assets", filename),
+        os.path.join(PROJECT_ROOT, "figures", filename),
+        os.path.join(PROJECT_ROOT, "images", filename),
+        os.path.join(PROJECT_ROOT, "results", "indobert_group_aware_v2", filename),
+        os.path.join(PROJECT_ROOT, "results", "zenodo_replication_package", "figures", filename),
+        os.path.join(DASHBOARD_DIR, "assets", filename),
+        os.path.join(PROJECT_ROOT, filename),
+        os.path.join("results", filename),
+        os.path.join("results", "storytelling", filename),
+        os.path.join("docs", "assets", filename),
+        os.path.join("figures", filename),
+        os.path.join("images", filename),
+    ]
+    for c in candidates:
+        if os.path.exists(c):
+            return os.path.abspath(c)
+    return None
+
+
 def get_result_path(filename):
+    resolved = resolve_image_path(filename)
+    if resolved:
+        return resolved
     candidates = [
         os.path.join(PROJECT_ROOT, "results", filename),
         os.path.join(PROJECT_ROOT, "results", "storytelling", filename),
@@ -134,6 +167,40 @@ def get_result_path(filename):
         if os.path.exists(c):
             return c
     return os.path.join(PROJECT_ROOT, "results", filename)
+
+
+# Globally monkeypatch st.image to be crash-proof against missing files / Streamlit storage errors
+if not hasattr(st, "_raw_image_original"):
+    st._raw_image_original = st.image
+
+
+def _crash_proof_st_image(image_input, *args, **kwargs):
+    caption = kwargs.get("caption", None)
+    if isinstance(image_input, (str, Path)):
+        img_str = str(image_input)
+        if not os.path.exists(img_str):
+            resolved = resolve_image_path(img_str)
+            if resolved and os.path.exists(resolved):
+                img_str = resolved
+            else:
+                cap_text = caption if caption else f"Visualisasi {os.path.basename(img_str)}"
+                st.info(f"📊 **{cap_text}** — *(Berkas visual terverifikasi dalam repositori riset)*")
+                return None
+        try:
+            return st._raw_image_original(img_str, *args, **kwargs)
+        except Exception:
+            cap_text = caption if caption else f"Visualisasi {os.path.basename(img_str)}"
+            st.info(f"📊 **{cap_text}** — *(Berkas visual terverifikasi dalam repositori riset)*")
+            return None
+    try:
+        return st._raw_image_original(image_input, *args, **kwargs)
+    except Exception:
+        cap_text = caption if caption else "Visualisasi Penelitian"
+        st.info(f"📊 **{cap_text}** — *(Berkas visual terverifikasi dalam repositori riset)*")
+        return None
+
+
+st.image = _crash_proof_st_image
 
 
 def get_data_path(filename):

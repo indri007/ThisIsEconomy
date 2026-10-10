@@ -18,6 +18,7 @@ from dashboard.modules.config import (
     PROJECT_ROOT,
     get_data_path,
     get_result_path,
+    resolve_image_path,
     get_journal_docx_path,
     download_file_button,
     send_telegram_alert,
@@ -68,43 +69,10 @@ def render_storytelling_page():
 
     # Define paths & crash-proof image rendering
     def get_image_path(filename):
-        p = get_result_path(filename)
-        if os.path.exists(p):
-            return p
-        for candidate in [
-            os.path.join(PROJECT_ROOT, "results", filename),
-            os.path.join(PROJECT_ROOT, "results", "storytelling", filename),
-            os.path.join(PROJECT_ROOT, "docs", "assets", filename),
-            os.path.join(PROJECT_ROOT, "figures", filename),
-        ]:
-            if os.path.exists(candidate):
-                return candidate
-        return p
-
-    _real_st_image = st.image
-    def safe_st_image(image_input, *args, **kwargs):
-        if isinstance(image_input, (str, Path)):
-            img_path = str(image_input)
-            if not os.path.exists(img_path):
-                resolved = get_image_path(os.path.basename(img_path))
-                if os.path.exists(resolved):
-                    img_path = resolved
-                else:
-                    caption = kwargs.get("caption", f"Visualisasi {os.path.basename(img_path)}")
-                    st.info(f"📊 **{caption}** — *(Berkas terverifikasi dalam repositori riset)*")
-                    return
-            try:
-                return _real_st_image(img_path, *args, **kwargs)
-            except Exception:
-                caption = kwargs.get("caption", f"Visualisasi {os.path.basename(img_path)}")
-                st.info(f"📊 **{caption}** — *(Berkas terverifikasi dalam repositori riset)*")
-                return
-        try:
-            return _real_st_image(image_input, *args, **kwargs)
-        except Exception:
-            st.info("📊 *Visualisasi terverifikasi dalam repositori riset.*")
-
-    st.image = safe_st_image
+        resolved = resolve_image_path(filename)
+        if resolved:
+            return resolved
+        return get_result_path(filename)
 
     with st.expander("🕊️ Read Narrative Essay: A Meal of Ash and Irony (The Human Soul Behind Indonesia’s Trillion-Rupiah Promise)", expanded=False):
         essay_path = os.path.join(PROJECT_ROOT, "docs", "A_MEAL_OF_ASH_AND_IRONY.md")
