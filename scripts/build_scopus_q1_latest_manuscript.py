@@ -640,6 +640,22 @@ for prefix, body in recs:
     r2 = p.add_run(body)
     r2.font.size = Pt(10.5)
 
+# Section 6: Ecological Boundary Conditions & Limitations
+add_sec_heading("6. METHODOLOGICAL LIMITATIONS & ECOLOGICAL BOUNDARY CONDITIONS", level=1)
+limits = [
+    ("1. Demographic Vanguard Skew: ", "Our empirical corpus derives exclusively from Platform X. In Indonesia, Platform X users skew urban, educated, and politically mobilized (APJII, 2024), capturing the vanguard public (opinion leaders, journalists, academics) rather than the total passive electorate."),
+    ("2. Platform Vernacular & Cynicism Bias: ", "Platform X affordances structurally incentivize irony, satirical parody, and political confrontation (Bossetta, 2018), amplifying Disgust and Sarcasm relative to lifestyle-centric networks like Instagram where social norms favor aspirational compliance."),
+    ("3. Cross-Platform Multi-Modal Trajectory: ", "While text-based transformer architectures (IndoBERT) effectively decoded policy discourse, future research should integrate multi-modal Vision-Language Models (VLMs) to examine physical lunch tray unboxing videos on TikTok and YouTube.")
+]
+for prefix, body in limits:
+    p = doc.add_paragraph()
+    p.paragraph_format.space_after = Pt(4)
+    r1 = p.add_run(prefix)
+    r1.font.bold = True
+    r1.font.size = Pt(10.5)
+    r2 = p.add_run(body)
+    r2.font.size = Pt(10.5)
+
 # Save docx
 doc.save(DOCX_OUT_PATH)
 doc.save(DOCX_DOCUMENTS_PATH)
