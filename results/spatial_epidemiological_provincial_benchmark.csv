@@ -1,0 +1,11 @@
+province_name,island_classification,regional_posts_volume,grievance_defect_posts,disgust_emotion_posts,disgust_intensity_pct,suspended_sppg_kitchens,suspended_sppg_share_pct,hospitalized_students_count,hospitalized_share_pct,primary_epicenters,pathogens
+Jawa Barat,Java Island Core,99,44,91,91.92,2140,46.71,1650,48.25,"Sukabumi, Cianjur, Bandung Barat, Bekasi","Bacillus cereus, Staphylococcus aureus, Salmonella spp."
+Jawa Tengah,Java Island Core,153,61,118,77.12,890,19.43,680,19.88,"Boyolali, Solo, Banyumas, Brebes",Escherichia coli (unpasteurized spoiled milk)
+Jawa Timur,Java Island Core,124,76,120,96.77,710,15.5,510,14.91,"Bojonegoro, Bangkalan, Jember, Sidoarjo",Decomposed animal protein / rancid cooking oil
+Banten,Java Island Core,28,13,24,85.71,395,8.62,285,8.33,"Lebak, Tangerang, Pandeglang",Fermented side dishes; hygiene non-compliance
+DKI Jakarta,Java Island Core,144,72,137,95.14,245,5.35,140,4.09,"Jakarta Utara, Jakarta Timur",Cold-chain disruption in high-density urban wards
+DI Yogyakarta,Java Island Core,72,40,71,98.61,82,1.79,55,1.61,"Gunungkidul, Bantul",Localized bacterial spoilage during distribution delay
+Sumatera Utara,Outer Islands,61,45,61,100.0,45,0.98,35,1.02,"Deli Serdang, Medan Labuhan",Spoiled chicken broth; delivery vehicle breakdown
+Sulawesi Selatan,Outer Islands,15,5,15,100.0,38,0.83,30,0.88,"Gowa, Makassar",Staphylococcus enterotoxin in warm packaged rice
+Nusa Tenggara Timur,Outer Islands,43,15,41,95.35,21,0.46,20,0.58,"Kupang, Timor Tengah Selatan",Remote logistics breakdown; lack of clean water
+Bali,Outer Islands,18,2,17,94.44,15,0.33,15,0.44,"Denpasar, Buleleng",Packaging defect in tropical ambient temperature

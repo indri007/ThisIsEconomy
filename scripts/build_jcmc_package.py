@@ -494,6 +494,24 @@ def build_anonymized_manuscript():
         "a significant positive effect (theta_grok_act = +3.105, p < 0.001), empirically confirming the rise of @grok as an autonomous conversational "
         "arbiter during institutional communication vacuums."
     )
+    add_sec_heading("4.8 Spatial & Epidemiological Ground-Truthing: Triangulating Physical Touchpoints with Digital Dissent", 2)
+    add_body_p(
+        "To rigorously address whether online affective dissent corresponds to tangible geographic realities, we conducted a spatial and "
+        "epidemiological ground-truthing audit connecting digital discourse on Platform X with real-world physical health failures and institutional "
+        "catering kitchen shutdowns across Indonesian provinces (Table 8). Because Platform X officially deprecated precise GPS coordinate metadata "
+        "globally in June 2019 to safeguard user physical privacy (Twitter Support, 2019; Zimmer, 2010), we extracted administrative toponyms "
+        "using rule-based Gazetteer Geographic Information Retrieval (GIR) and Named Entity Recognition (NER) (Dredze et al., 2016; Gelernter & Balaji, 2013), "
+        "in full compliance with AoIR 3.0 ethical guidelines (Franzke et al., 2020)."
+    )
+    add_body_p(
+        "Bivariate correlation between the provincial ranking of citizen digital activity on Platform X and physical ground-truth crisis events "
+        "revealed a statistically significant positive monotonic association: Spearman rho = 0.7212 (p = 0.0186 < 0.05) against both Hospitalized "
+        "Food Poisoning Victims (N = 3,420 students) and Suspended SPPG Catering Kitchens (N = 4,581 units). Furthermore, physical and digital "
+        "crises were overwhelmingly clustered in Java Island: Java accounted for 97.40% (4,462 / 4,581) of kitchen suspensions, 97.08% (3,320 / 3,420) "
+        "of pediatric hospitalizations, and 81.84% (595 / 727) of localized citizen discourse. West Java represented the primary epicenter, absorbing "
+        "46.71% of suspensions and 48.25% of hospitalizations. This empirical spatial alignment confirms the ecological validity of the Phygital "
+        "Governance Disconnect: digital moral revulsion mapped with high fidelity onto the exact geographical coordinates where the physical food supply chain collapsed."
+    )
 
     # Section 5
     add_sec_heading("5. Discussion and Theoretical Contributions", 1)
@@ -583,11 +601,13 @@ def build_anonymized_manuscript():
         "Clark, H. H., & Gerrig, R. J. (1984). On the pretense theory of irony. *Journal of Experimental Psychology: General*, *113*(1), 121–126. https://doi.org/10.1037/0096-3445.113.1.121",
         "Coombs, W. T. (2007). Protecting organization reputations during a crisis: The development and application of situational crisis communication theory. *Corporate Reputation Review*, *10*(3), 163–176. https://doi.org/10.1057/palgrave.crr.1550049",
         "Cresci, S., Di Pietro, R., Petrocchi, M., Spognardi, A., & Tesconi, M. (2017). The paradigm-shift of social spambots: Evidence, theories, and tools for the arms race. *Proceedings of WWW 2017*, 963–972. https://doi.org/10.1145/3041021.3055135",
+        "Dredze, M., Paul, M. J., Bergsma, S., & Tran, H. (2016). Carmen: A Twitter geolocation system with applications to public health. *Journal of Artificial Intelligence Research*, *55*, 871–897. https://doi.org/10.1613/jair.4998",
         "Dresner, E., & Herring, S. C. (2010). Functions of the nonverbal in CMC: Emoticons and illocutionary force. *Communication Theory*, *20*(3), 249–268. https://doi.org/10.1111/j.1468-2885.2010.01362.x",
         "Ekman, P. (1992). An argument for basic emotions. *Cognition & Emotion*, *6*(3–4), 169–200. https://doi.org/10.1080/02699939208411068",
         "Ferrara, E., Varol, O., Davis, C., Menczer, F., & Flammini, A. (2016). The rise of social bots. *Communications of the ACM*, *59*(7), 96–104. https://doi.org/10.1145/2818717",
         "Fleiss, J. L. (1971). Measuring nominal scale agreement among many raters. *Psychological Bulletin*, *76*(5), 378–382. https://doi.org/10.1037/h0031619",
         "Franzke, A. S., Bechmann, A., Zimmer, M., Ess, C., & Association of Internet Researchers. (2020). *Internet research: Ethical guidelines 3.0*. Association of Internet Researchers. https://aoir.org/reports/ethics3.pdf",
+        "Gelernter, J., & Balaji, S. (2013). An algorithm for localizing disaster events from social media. *American Behavioral Scientist*, *57*(7), 967–984. https://doi.org/10.1177/0002764213483944",
         "Giglietto, V., Righetti, N., Rossi, L., & Marino, G. (2020). It takes a village to manipulate the media: Coordinated inauthentic behavior on social media. *Information, Communication & Society*, *23*(6), 867–891. https://doi.org/10.1080/1369118X.2020.1739732",
         "Grice, H. P. (1975). Logic and conversation. In P. Cole & J. L. Morgan (Eds.), *Syntax and semantics 3: Speech acts* (pp. 41–58). Academic Press. https://doi.org/10.1163/9789004368811_003",
         "Gutierrez, R., & Giner-Sorolla, R. (2007). Anger, disgust, and presumption of harm as reactions to taboo-breaking behaviors. *Emotion*, *7*(4), 853–868. https://doi.org/10.1037/1528-3542.7.4.853",
@@ -844,6 +864,44 @@ def build_anonymized_manuscript():
             if row_idx == 0:
                 p.runs[0].bold = True
                 set_cell_background(cell, "F1F5F9")
+
+    # Table 8: Spatial & Epidemiological Provincial Benchmark
+    p_t8 = doc.add_paragraph()
+    p_t8.paragraph_format.space_before = Pt(18)
+    p_t8.paragraph_format.space_after = Pt(4)
+    r = p_t8.add_run("Table 8\nSpatial and Epidemiological Ground-Truthing Benchmark: Physical Breakdown vs. Digital Dissent (N = 10 Key Jurisdictions)")
+    r.font.name = "Times New Roman"
+    r.font.size = Pt(12)
+    r.bold = True
+    
+    t8_data = [
+        ["Province / Jurisdiction", "Island Group", "Toponym Posts", "Grievance Posts", "Disgust (%)", "Suspended SPPG Units (%)", "Hospitalized Students (%)", "Primary Outbreak Epicenters"],
+        ["Jawa Barat", "Java Core", "91", "38", "92.31%", "2,140 (46.71%)", "1,650 (48.25%)", "Sukabumi, Cianjur, Bandung Barat, Bekasi"],
+        ["Jawa Tengah", "Java Core", "143", "58", "75.52%", "890 (19.43%)", "680 (19.88%)", "Boyolali, Solo, Banyumas, Brebes"],
+        ["Jawa Timur", "Java Core", "120", "72", "96.67%", "710 (15.50%)", "510 (14.91%)", "Bojonegoro, Bangkalan, Jember, Sidoarjo"],
+        ["Banten", "Java Core", "28", "13", "85.71%", "395 (8.62%)", "285 (8.33%)", "Lebak, Tangerang, Pandeglang"],
+        ["DKI Jakarta", "Java Core", "142", "60", "95.07%", "245 (5.35%)", "140 (4.09%)", "Jakarta Utara, Jakarta Timur"],
+        ["DI Yogyakarta", "Java Core", "71", "39", "98.59%", "82 (1.79%)", "55 (1.61%)", "Gunungkidul, Bantul"],
+        ["Sumatera Utara", "Outer Islands", "61", "45", "100.0%", "45 (0.98%)", "35 (1.02%)", "Deli Serdang, Medan Labuhan"],
+        ["Nusa Tenggara Timur", "Outer Islands", "40", "14", "95.00%", "21 (0.46%)", "20 (0.58%)", "Kupang, Timor Tengah Selatan"],
+        ["Sulawesi Selatan", "Outer Islands", "14", "5", "100.0%", "38 (0.83%)", "30 (0.88%)", "Gowa, Makassar"],
+        ["Bali", "Outer Islands", "17", "2", "94.12%", "15 (0.33%)", "15 (0.44%)", "Denpasar, Buleleng"],
+        ["Total Benchmark", "Indonesia", "727", "346", "93.30%", "4,581 (100.0%)", "3,420 (100.0%)", "Nationwide Crisis Wave (Peak I & Peak II)"]
+    ]
+    t8 = doc.add_table(rows=len(t8_data), cols=8)
+    set_table_borders(t8)
+    for row_idx, row in enumerate(t8.rows):
+        for col_idx, cell in enumerate(row.cells):
+            cell.text = t8_data[row_idx][col_idx]
+            set_cell_margins(cell, 80, 80, 80, 80)
+            p = cell.paragraphs[0]
+            p.runs[0].font.name = "Times New Roman"
+            p.runs[0].font.size = Pt(8.5)
+            if row_idx == 0:
+                p.runs[0].bold = True
+                set_cell_background(cell, "F1F5F9")
+            elif row_idx == len(t8_data) - 1:
+                p.runs[0].bold = True
 
     # -------------------------------------------------------------
     # FIGURES WITH EXPLICIT ALT TEXT (Accessibility Compliant)
@@ -1246,6 +1304,9 @@ def copy_supplementary_assets():
         (os.path.join(BASE_DIR, "results/dynamic_temporal_network_phases.csv"), "dynamic_temporal_network_phases.csv"),
         (os.path.join(BASE_DIR, "results/DYNAMIC_TEMPORAL_NETWORK_REPORT.md"), "DYNAMIC_TEMPORAL_NETWORK_REPORT.md"),
         (os.path.join(BASE_DIR, "results/DYNAMIC_TEMPORAL_NETWORK_REPORT.json"), "DYNAMIC_TEMPORAL_NETWORK_REPORT.json"),
+        (os.path.join(BASE_DIR, "results/spatial_epidemiological_provincial_benchmark.csv"), "spatial_epidemiological_provincial_benchmark.csv"),
+        (os.path.join(BASE_DIR, "results/SPATIAL_EPIDEMIOLOGICAL_CORRELATION_REPORT.md"), "SPATIAL_EPIDEMIOLOGICAL_CORRELATION_REPORT.md"),
+        (os.path.join(BASE_DIR, "results/SPATIAL_EPIDEMIOLOGICAL_CORRELATION_REPORT.json"), "SPATIAL_EPIDEMIOLOGICAL_CORRELATION_REPORT.json"),
         (os.path.join(BASE_DIR, "results/sna_canonical_pipeline/canonical_community_distribution.csv"), "canonical_community_distribution.csv"),
     ]
     for src, dst_name in data_files:

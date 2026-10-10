@@ -1,0 +1,181 @@
+{
+  "audit_name": "Spatial & Epidemiological Ground-Truthing Audit (Defect Resolution #7)",
+  "platform_privacy_affordance_context": {
+    "gps_metadata_status": "Disabled globally by Platform X since June 2019 for user privacy and security",
+    "methodological_resolution": "Administrative Gazetteer Named Entity Recognition (NER) & Toponym Resolution",
+    "ethical_framework": "AoIR 3.0 (Franzke et al., 2020) and Zimmer (2010) user non-reidentification standard"
+  },
+  "ground_truth_epidemiological_totals": {
+    "total_suspended_sppg_catering_units": 4581,
+    "total_hospitalized_students_poisoned": 3420,
+    "audited_corpus_posts": 9310
+  },
+  "spatial_macro_concentration": {
+    "java_suspended_sppg_units": 4462,
+    "java_suspended_sppg_share_pct": 97.4,
+    "java_hospitalized_students": 3320,
+    "java_hospitalized_students_share_pct": 97.08,
+    "java_toponym_post_volume": 620,
+    "java_toponym_post_volume_share_pct": 81.9,
+    "java_grievance_posts": 306,
+    "java_grievance_post_share_pct": 82.04
+  },
+  "statistical_correlation_metrics": {
+    "posts_volume_vs_hospitalized_students": {
+      "spearman_rho": 0.7212,
+      "spearman_p_value": 0.0186,
+      "pearson_r": 0.4489,
+      "pearson_p_value": 0.1932,
+      "verdict": "Statistically significant positive monotonic correlation (rho = 0.7212, p = 0.0186 < 0.05)"
+    },
+    "posts_volume_vs_suspended_sppg_kitchens": {
+      "spearman_rho": 0.7212,
+      "spearman_p_value": 0.0186,
+      "pearson_r": 0.47,
+      "pearson_p_value": 0.1705,
+      "verdict": "Statistically significant positive monotonic correlation (rho = 0.7212, p = 0.0186 < 0.05)"
+    }
+  },
+  "provincial_benchmark_data": [
+    {
+      "province_name": "Jawa Barat",
+      "island_classification": "Java Island Core",
+      "regional_posts_volume": 99,
+      "grievance_defect_posts": 44,
+      "disgust_emotion_posts": 91,
+      "disgust_intensity_pct": 91.92,
+      "suspended_sppg_kitchens": 2140,
+      "suspended_sppg_share_pct": 46.71,
+      "hospitalized_students_count": 1650,
+      "hospitalized_share_pct": 48.25,
+      "primary_epicenters": "Sukabumi, Cianjur, Bandung Barat, Bekasi",
+      "pathogens": "Bacillus cereus, Staphylococcus aureus, Salmonella spp."
+    },
+    {
+      "province_name": "Jawa Tengah",
+      "island_classification": "Java Island Core",
+      "regional_posts_volume": 153,
+      "grievance_defect_posts": 61,
+      "disgust_emotion_posts": 118,
+      "disgust_intensity_pct": 77.12,
+      "suspended_sppg_kitchens": 890,
+      "suspended_sppg_share_pct": 19.43,
+      "hospitalized_students_count": 680,
+      "hospitalized_share_pct": 19.88,
+      "primary_epicenters": "Boyolali, Solo, Banyumas, Brebes",
+      "pathogens": "Escherichia coli (unpasteurized spoiled milk)"
+    },
+    {
+      "province_name": "Jawa Timur",
+      "island_classification": "Java Island Core",
+      "regional_posts_volume": 124,
+      "grievance_defect_posts": 76,
+      "disgust_emotion_posts": 120,
+      "disgust_intensity_pct": 96.77,
+      "suspended_sppg_kitchens": 710,
+      "suspended_sppg_share_pct": 15.5,
+      "hospitalized_students_count": 510,
+      "hospitalized_share_pct": 14.91,
+      "primary_epicenters": "Bojonegoro, Bangkalan, Jember, Sidoarjo",
+      "pathogens": "Decomposed animal protein / rancid cooking oil"
+    },
+    {
+      "province_name": "Banten",
+      "island_classification": "Java Island Core",
+      "regional_posts_volume": 28,
+      "grievance_defect_posts": 13,
+      "disgust_emotion_posts": 24,
+      "disgust_intensity_pct": 85.71,
+      "suspended_sppg_kitchens": 395,
+      "suspended_sppg_share_pct": 8.62,
+      "hospitalized_students_count": 285,
+      "hospitalized_share_pct": 8.33,
+      "primary_epicenters": "Lebak, Tangerang, Pandeglang",
+      "pathogens": "Fermented side dishes; hygiene non-compliance"
+    },
+    {
+      "province_name": "DKI Jakarta",
+      "island_classification": "Java Island Core",
+      "regional_posts_volume": 144,
+      "grievance_defect_posts": 72,
+      "disgust_emotion_posts": 137,
+      "disgust_intensity_pct": 95.14,
+      "suspended_sppg_kitchens": 245,
+      "suspended_sppg_share_pct": 5.35,
+      "hospitalized_students_count": 140,
+      "hospitalized_share_pct": 4.09,
+      "primary_epicenters": "Jakarta Utara, Jakarta Timur",
+      "pathogens": "Cold-chain disruption in high-density urban wards"
+    },
+    {
+      "province_name": "DI Yogyakarta",
+      "island_classification": "Java Island Core",
+      "regional_posts_volume": 72,
+      "grievance_defect_posts": 40,
+      "disgust_emotion_posts": 71,
+      "disgust_intensity_pct": 98.61,
+      "suspended_sppg_kitchens": 82,
+      "suspended_sppg_share_pct": 1.79,
+      "hospitalized_students_count": 55,
+      "hospitalized_share_pct": 1.61,
+      "primary_epicenters": "Gunungkidul, Bantul",
+      "pathogens": "Localized bacterial spoilage during distribution delay"
+    },
+    {
+      "province_name": "Sumatera Utara",
+      "island_classification": "Outer Islands",
+      "regional_posts_volume": 61,
+      "grievance_defect_posts": 45,
+      "disgust_emotion_posts": 61,
+      "disgust_intensity_pct": 100.0,
+      "suspended_sppg_kitchens": 45,
+      "suspended_sppg_share_pct": 0.98,
+      "hospitalized_students_count": 35,
+      "hospitalized_share_pct": 1.02,
+      "primary_epicenters": "Deli Serdang, Medan Labuhan",
+      "pathogens": "Spoiled chicken broth; delivery vehicle breakdown"
+    },
+    {
+      "province_name": "Sulawesi Selatan",
+      "island_classification": "Outer Islands",
+      "regional_posts_volume": 15,
+      "grievance_defect_posts": 5,
+      "disgust_emotion_posts": 15,
+      "disgust_intensity_pct": 100.0,
+      "suspended_sppg_kitchens": 38,
+      "suspended_sppg_share_pct": 0.83,
+      "hospitalized_students_count": 30,
+      "hospitalized_share_pct": 0.88,
+      "primary_epicenters": "Gowa, Makassar",
+      "pathogens": "Staphylococcus enterotoxin in warm packaged rice"
+    },
+    {
+      "province_name": "Nusa Tenggara Timur",
+      "island_classification": "Outer Islands",
+      "regional_posts_volume": 43,
+      "grievance_defect_posts": 15,
+      "disgust_emotion_posts": 41,
+      "disgust_intensity_pct": 95.35,
+      "suspended_sppg_kitchens": 21,
+      "suspended_sppg_share_pct": 0.46,
+      "hospitalized_students_count": 20,
+      "hospitalized_share_pct": 0.58,
+      "primary_epicenters": "Kupang, Timor Tengah Selatan",
+      "pathogens": "Remote logistics breakdown; lack of clean water"
+    },
+    {
+      "province_name": "Bali",
+      "island_classification": "Outer Islands",
+      "regional_posts_volume": 18,
+      "grievance_defect_posts": 2,
+      "disgust_emotion_posts": 17,
+      "disgust_intensity_pct": 94.44,
+      "suspended_sppg_kitchens": 15,
+      "suspended_sppg_share_pct": 0.33,
+      "hospitalized_students_count": 15,
+      "hospitalized_share_pct": 0.44,
+      "primary_epicenters": "Denpasar, Buleleng",
+      "pathogens": "Packaging defect in tropical ambient temperature"
+    }
+  ]
+}

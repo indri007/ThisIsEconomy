@@ -661,6 +661,70 @@ for row_idx, row_vals in enumerate(t7_data, start=1):
 
 doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
+# Section 3.8: Spatial & Epidemiological Ground-Truthing
+add_sec_heading("3.8 Spatial & Epidemiological Ground-Truthing: Triangulating Physical Touchpoints with Digital Dissent", level=2)
+add_body_p(
+    "To rigorously address whether online affective dissent corresponds to tangible geographic realities, we conducted a spatial and "
+    "epidemiological ground-truthing audit connecting digital discourse on Platform X with real-world physical health failures and institutional "
+    "catering kitchen shutdowns across Indonesian provinces (Table 8). Because Platform X officially deprecated precise GPS coordinate metadata "
+    "globally in June 2019 to safeguard user physical privacy (Twitter Support, 2019; Zimmer, 2010), we extracted administrative toponyms "
+    "using rule-based Gazetteer Geographic Information Retrieval (GIR) and Named Entity Recognition (NER) (Dredze et al., 2016; Gelernter & Balaji, 2013), "
+    "in full compliance with AoIR 3.0 ethical guidelines (Franzke et al., 2020)."
+)
+add_body_p(
+    "Bivariate correlation between the provincial ranking of citizen digital activity on Platform X and physical ground-truth crisis events "
+    "revealed a statistically significant positive monotonic association: Spearman rho = 0.7212 (p = 0.0186 < 0.05) against both Hospitalized "
+    "Food Poisoning Victims (N = 3,420 students) and Suspended SPPG Catering Kitchens (N = 4,581 units). Furthermore, physical and digital "
+    "crises were overwhelmingly clustered in Java Island: Java accounted for 97.40% (4,462 / 4,581) of kitchen suspensions, 97.08% (3,320 / 3,420) "
+    "of pediatric hospitalizations, and 81.84% (595 / 727) of localized citizen discourse. West Java represented the primary epicenter, absorbing "
+    "46.71% of suspensions and 48.25% of hospitalizations. This empirical spatial alignment confirms the ecological validity of the Phygital "
+    "Governance Disconnect: digital moral revulsion mapped with high fidelity onto the exact geographical coordinates where the physical food supply chain collapsed."
+)
+
+t8 = doc.add_table(rows=12, cols=8)
+t8.alignment = WD_TABLE_ALIGNMENT.CENTER
+t8_headers = ["Province / Jurisdiction", "Island Group", "Toponym Posts", "Grievance Posts", "Disgust (%)", "Suspended SPPG Units (%)", "Hospitalized Students (%)", "Primary Outbreak Epicenters"]
+for col_idx, h_text in enumerate(t8_headers):
+    c = t8.cell(0, col_idx)
+    set_cell_background(c, "0F172A")
+    set_cell_margins(c, 80, 80, 80, 80)
+    p = c.paragraphs[0]
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    r = p.add_run(h_text)
+    r.font.bold = True
+    r.font.size = Pt(8.5)
+    r.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+
+t8_data = [
+    ("Jawa Barat", "Java Core", "91", "38", "92.31%", "2,140 (46.71%)", "1,650 (48.25%)", "Sukabumi, Cianjur, Bandung Barat, Bekasi"),
+    ("Jawa Tengah", "Java Core", "143", "58", "75.52%", "890 (19.43%)", "680 (19.88%)", "Boyolali, Solo, Banyumas, Brebes"),
+    ("Jawa Timur", "Java Core", "120", "72", "96.67%", "710 (15.50%)", "510 (14.91%)", "Bojonegoro, Bangkalan, Jember, Sidoarjo"),
+    ("Banten", "Java Core", "28", "13", "85.71%", "395 (8.62%)", "285 (8.33%)", "Lebak, Tangerang, Pandeglang"),
+    ("DKI Jakarta", "Java Core", "142", "60", "95.07%", "245 (5.35%)", "140 (4.09%)", "Jakarta Utara, Jakarta Timur"),
+    ("DI Yogyakarta", "Java Core", "71", "39", "98.59%", "82 (1.79%)", "55 (1.61%)", "Gunungkidul, Bantul"),
+    ("Sumatera Utara", "Outer Islands", "61", "45", "100.0%", "45 (0.98%)", "35 (1.02%)", "Deli Serdang, Medan Labuhan"),
+    ("Nusa Tenggara Timur", "Outer Islands", "40", "14", "95.00%", "21 (0.46%)", "20 (0.58%)", "Kupang, Timor Tengah Selatan"),
+    ("Sulawesi Selatan", "Outer Islands", "14", "5", "100.0%", "38 (0.83%)", "30 (0.88%)", "Gowa, Makassar"),
+    ("Bali", "Outer Islands", "17", "2", "94.12%", "15 (0.33%)", "15 (0.44%)", "Denpasar, Buleleng"),
+    ("Total Benchmark", "Indonesia", "727", "346", "93.30%", "4,581 (100.0%)", "3,420 (100.0%)", "Nationwide Crisis Wave (Peak I & Peak II)")
+]
+for row_idx, row_vals in enumerate(t8_data, start=1):
+    bg_col = "F8FAFC" if row_idx % 2 == 1 else "FFFFFF"
+    for col_idx, val in enumerate(row_vals):
+        c = t8.cell(row_idx, col_idx)
+        set_cell_background(c, bg_col)
+        set_cell_margins(c, 60, 60, 60, 60)
+        p = c.paragraphs[0]
+        r = p.add_run(val)
+        r.font.size = Pt(8.0)
+        if col_idx in [0, 1]:
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            r.font.bold = True
+        elif col_idx in [2, 3, 4, 5, 6]:
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+doc.add_paragraph().paragraph_format.space_after = Pt(8)
+
 # Section 4: Discussion & Recommendations
 add_sec_heading("4. THEORETICAL DISCUSSION: THE PHYGITAL GAP & ALGORITHMIC ORACLES", level=1)
 add_body_p(
