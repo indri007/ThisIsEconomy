@@ -376,15 +376,20 @@ def render_bab4_page():
             st.image(macro_img_p, width='stretch', caption="Gambar 4.2B: Struktur Makro Topologi Jaringan Komunikasi MBG (Buku Kerja NodeXL Pro & NetworkX, 300 DPI)")
 
         macro_json_p = os.path.join(PROJECT_ROOT, "results", "macro_topology_metrics.json")
+        if not os.path.exists(macro_json_p):
+            macro_json_p = os.path.join(PROJECT_ROOT, "results", "sna_canonical_pipeline", "canonical_macro_topology_metrics.json")
         if os.path.exists(macro_json_p):
-            with open(macro_json_p, "r", encoding="utf-8") as f_macro:
-                m_data = json.load(f_macro)
-            df_macro_table = pd.DataFrame([
-                {"Parameter Topologi Makro": k, "Nilai Empiris": v}
-                for k, v in m_data.items()
-            ])
-            with st.expander("📑 Lihat Tabel Lengkap Parameter Topologi Makro Graf (15+ Metrik Resmi)", expanded=False):
-                st.dataframe(df_macro_table, width='stretch', hide_index=True)
+            try:
+                with open(macro_json_p, "r", encoding="utf-8") as f_macro:
+                    m_data = json.load(f_macro)
+                df_macro_table = pd.DataFrame([
+                    {"Parameter Topologi Makro": k, "Nilai Empiris": v}
+                    for k, v in m_data.items()
+                ])
+                with st.expander("📑 Lihat Tabel Lengkap Parameter Topologi Makro Graf (15+ Metrik Resmi)", expanded=False):
+                    st.dataframe(df_macro_table, width='stretch', hide_index=True)
+            except Exception as e:
+                st.warning(f"Gagal memuat parameter topologi makro: {e}")
 
         # ── JALUR TERISOLASI REKALKULASI 1 EDGE LIST KANONIS ──
         canonical_macro_p = os.path.join(PROJECT_ROOT, "results", "sna_canonical_pipeline", "canonical_macro_topology_metrics.csv")
@@ -1325,20 +1330,34 @@ Ini adalah bukti struktural dari **low reciprocity dalam graf mention** — publ
         # Load & compute metrics
         @st.cache_data
         def compute_all_metrics():
-            df_e = pd.read_csv(get_data_path("network_edges.csv"))
-            G_d = nx.DiGraph()
-            for _, row in df_e.iterrows():
-                G_d.add_edge(row['Source'], row['Target'])
-            in_d  = dict(G_d.in_degree())
-            out_d = dict(G_d.out_degree())
-            betw  = nx.betweenness_centrality(G_d, normalized=True)
+            edge_p = get_data_path("network_edges.csv")
+            if not os.path.exists(edge_p):
+                edge_p = os.path.join(PROJECT_ROOT, "data", "sna", "network_edges.csv")
+            if not os.path.exists(edge_p):
+                edge_p = os.path.join(PROJECT_ROOT, "results", "mbg_network_edges_final.csv")
+            if not os.path.exists(edge_p):
+                return {}, {}, {}, {}, 0.0, 0.0, nx.DiGraph()
             try:
-                eig = nx.eigenvector_centrality(G_d, max_iter=1000)
+                df_e = pd.read_csv(edge_p)
+                G_d = nx.DiGraph()
+                for _, row in df_e.iterrows():
+                    if 'Source' in row and 'Target' in row:
+                        G_d.add_edge(row['Source'], row['Target'])
+                in_d = dict(G_d.in_degree())
+                out_d = dict(G_d.out_degree())
+                betw = nx.betweenness_centrality(G_d, normalized=True)
+                try:
+                    eig = nx.eigenvector_centrality(G_d, max_iter=1000)
+                except Exception:
+                    try:
+                        eig = nx.eigenvector_centrality_numpy(G_d)
+                    except Exception:
+                        eig = {n: 0.0 for n in G_d.nodes()}
+                density = nx.density(G_d)
+                reciprocity = nx.reciprocity(G_d)
+                return in_d, out_d, betw, eig, density, reciprocity, G_d
             except Exception:
-                eig = nx.eigenvector_centrality_numpy(G_d)
-            density   = nx.density(G_d)
-            reciprocity = nx.reciprocity(G_d)
-            return in_d, out_d, betw, eig, density, reciprocity, G_d
+                return {}, {}, {}, {}, 0.0, 0.0, nx.DiGraph()
 
         in_d, out_d, betw, eig, density, reciprocity, G_computed = compute_all_metrics()
 

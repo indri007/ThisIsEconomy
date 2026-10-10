@@ -169,6 +169,14 @@ def get_result_path(filename):
     return os.path.join(PROJECT_ROOT, "results", filename)
 
 
+def get_image_path(filename):
+    """Centralized resolver for image files across repository."""
+    resolved = resolve_image_path(filename)
+    if resolved:
+        return resolved
+    return get_result_path(filename)
+
+
 # Globally monkeypatch st.image to be crash-proof against missing files / Streamlit storage errors
 if not hasattr(st, "_raw_image_original"):
     st._raw_image_original = st.image

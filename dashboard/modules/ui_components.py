@@ -552,7 +552,7 @@ def render_downloads_footer():
                 data=file_bytes,
                 file_name=file_name,
                 mime=mime_type,
-                use_container_width=True,
+                width='stretch',
                 key=f"download_{file_name.replace('.', '_').replace('-', '_')}",
             )
         else:

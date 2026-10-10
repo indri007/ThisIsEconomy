@@ -1,0 +1,6 @@
+[server]
+address = "0.0.0.0"
+headless = true
+
+[browser]
+gatherUsageStats = false

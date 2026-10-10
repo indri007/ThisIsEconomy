@@ -43,6 +43,41 @@ if MATPLOTLIB_AVAILABLE:
     import matplotlib.pyplot as plt
 
 
+def get_image_path(filename):
+    """Resolve image path with fallback to get_result_path."""
+    resolved = resolve_image_path(filename)
+    if resolved:
+        return resolved
+    return get_result_path(filename)
+
+
+def render_story_image(filename, caption=None, width="stretch", fallback_name=None):
+    """Crash-proof defensive renderer for storytelling images."""
+    image_path = get_image_path(filename)
+    if image_path and os.path.isfile(image_path):
+        st.image(
+            image_path,
+            width=width,
+            caption=caption
+        )
+        return True
+    elif fallback_name:
+        fallback_path = get_image_path(fallback_name)
+        if fallback_path and os.path.isfile(fallback_path):
+            st.image(
+                fallback_path,
+                width=width,
+                caption=caption
+            )
+            return True
+    label = caption if caption else f"file {filename}"
+    st.warning(
+        f"Gambar {label} belum ditemukan. "
+        f"Periksa lokasi file {filename}."
+    )
+    return False
+
+
 def render_storytelling_page():
     st.title("🖼️ Galeri Visual Storytelling (10 Master Plot Tesis)")
     st.markdown("""
@@ -65,39 +100,6 @@ def render_storytelling_page():
     **Gambar 9-10: Bagaimana Emosi Membentuk Diskursus?**
     *(Menganalisis pola emosi dalam korpus memiliki distribusi teks terkait aspek logistik dan anggaran; hubungan dengan konsep Phygital Gap dibahas sebagai interpretasi konseptual, bukan bukti kausal).*
     """)
-
-
-    # Define paths & crash-proof image rendering
-    def get_image_path(filename):
-        resolved = resolve_image_path(filename)
-        if resolved:
-            return resolved
-        return get_result_path(filename)
-
-    def render_story_image(filename, caption=None, width="stretch", fallback_name=None):
-        image_path = get_image_path(filename)
-        if image_path and os.path.isfile(image_path):
-            st.image(
-                image_path,
-                width=width,
-                caption=caption
-            )
-            return True
-        elif fallback_name:
-            fallback_path = get_image_path(fallback_name)
-            if fallback_path and os.path.isfile(fallback_path):
-                st.image(
-                    fallback_path,
-                    width=width,
-                    caption=caption
-                )
-                return True
-        label = caption if caption else f"file {filename}"
-        st.warning(
-            f"Gambar {label} belum ditemukan. "
-            f"Periksa lokasi file {filename}."
-        )
-        return False
 
     with st.expander("🕊️ Read Narrative Essay: A Meal of Ash and Irony (The Human Soul Behind Indonesia’s Trillion-Rupiah Promise)", expanded=False):
         essay_path = os.path.join(PROJECT_ROOT, "docs", "A_MEAL_OF_ASH_AND_IRONY.md")
@@ -392,5 +394,5 @@ def render_storytelling_page():
             {"Bab Tesis": "Bab IV: Hasil & Pembahasan", "Sub-Bab": "4.6 Sintesis Marketing 6.0", "Fokus Kajian": "Pembuktian Phygital Gap kebijakan publik", "Metode / Instrumen": "ABSA & Triangulasi SNA-NLP", "Data Empiris": "Logistik & anggaran sebagai akar krisis", "Halaman": "105 – 109"},
             {"Bab Tesis": "Bab V: Penutup", "Sub-Bab": "5.1 s.d 5.4 Simpulan & Solusi", "Fokus Kajian": "Rekomendasi BGN & Implikasi Kebijakan", "Metode / Instrumen": "Matriks Intervensi Kebijakan", "Data Empiris": "5 Aksi Strategis Mitigasi Krisis", "Halaman": "110 – 113"}
         ]
-        st.dataframe(pd.DataFrame(thesis_master_map), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(thesis_master_map), width='stretch', hide_index=True)
 
