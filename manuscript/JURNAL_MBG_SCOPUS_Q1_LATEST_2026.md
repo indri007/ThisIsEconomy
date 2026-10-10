@@ -220,7 +220,8 @@ The mathematical extraction of graph metrics across the complete interaction cor
 | Louvain Modularity | $Q$ | **0.9837** | Hyper-fragmented community segregation ($Q \to 1.0$) |
 | Degree Assortativity | $r$ | **−0.0847** | Disassortative mixing; low-degree nodes target hubs |
 | Power-Law Exponent | $\alpha$ | **2.168** | Confirmed scale-free topology ($2 < \alpha < 3$) |
-| Maximum In-Degree | $\max(k^{in})$ | **42** | Concentrated entirely on algorithmic oracle `@grok` |
+| Maximum Degree (Out-Degree) | $\max(k), \max(k^{out})$ | **42** | Concentrated entirely on algorithmic oracle `@grok` ($k^{out}=42, k^{in}=0$) |
+| Maximum In-Degree | $\max(k^{in})$ | **15** | Concentrated on institutional target sink `@prabowo` ($k^{in}=15, k^{out}=0$) |
 
 Figure 6 visualizes the macro topological distributions, degree curves, and component characteristics.
 
@@ -282,40 +283,40 @@ Table 3 enumerates the top fifteen central actors across the complete network.
 
 **Table 3: Top Fifteen Actors Ranked by Network Degree and Centrality Metrics**
 
-| Rank | User Handle | Total Degree | Degree Centrality | In-Degree ($k^{in}$) | Out-Degree ($k^{out}$) | Betweenness ($C_B$) | Communicative Role Classification |
+| Rank | User Handle | Total Degree | Degree Centrality ($C_D$) | In-Degree ($k^{in}$) | Out-Degree ($k^{out}$) | Betweenness ($C_B$) | Communicative Role Classification |
 |:---:|:---|:---:|:---:|:---:|:---:|:---:|:---|
-| **1** | `@grok` | **42** | **0.0432** | **42** | **0** | **0.0034** | **Algorithmic Epistemic Oracle** |
-| **2** | `@newIding30` | 15 | 0.0154 | 1 | 14 | 0.0001 | Information Broadcaster / Amplifier |
-| **3** | `@4Y4NKZ` | 14 | 0.0144 | 0 | 14 | 0.0000 | Information Broadcaster / Satirist |
-| **4** | `@prabowo` | **15** | **0.0154** | **15** | **0** | **0.0052** | **Institutional Target Sink** |
-| **5** | `@regar_op0sisi` | 7 | 0.0072 | 5 | 2 | 0.0018 | Opinion Broker / Counter-Hub |
-| **6** | `@dbdbidip` | 6 | 0.0062 | 0 | 6 | 0.0000 | Secondary Outbound Commenter |
-| **7** | `@Casagrande10939` | 6 | 0.0062 | 0 | 6 | 0.0000 | Secondary Outbound Commenter |
-| **8** | `@direktoridosen` | 4 | 0.0041 | 0 | 4 | 0.0000 | Academic / Analytical Broadcaster |
-| **9** | `@greeniefloo` | 4 | 0.0041 | 0 | 4 | 0.0000 | Grassroots Commenter |
-| **10** | `@luvdysh_` | 4 | 0.0041 | 0 | 4 | 0.0000 | Student Commenter |
-| **11** | `@helloyosh_` | 4 | 0.0041 | 0 | 4 | 0.0000 | Student Commenter |
-| **12** | `@renregalia` | 4 | 0.0041 | 4 | 0 | 0.0004 | Target Sink (Complaint Recipient) |
-| **13** | `@Capitalisborju` | 3 | 0.0031 | 0 | 3 | 0.0000 | Peripheral Satirical Commenter |
-| **14** | `@unmagnetism` | 3 | 0.0031 | 3 | 0 | 0.0001 | Sub-Cluster Reference Node |
-| **15** | `@ayiurswoo` | 3 | 0.0031 | 0 | 3 | 0.0000 | Peripheral Citizen Actor |
+| **1** | `@grok` | **42** | **0.0433** | **0** | **42** | **0.005941** | **Algorithmic Epistemic Oracle** |
+| **2** | `@4Y4NKZ` | 16 | 0.0165 | 2 | 15 | 0.000161 | Information Broadcaster / Satirist |
+| **3** | `@prabowo` | **15** | **0.0155** | **15** | **0** | **0.005413** | **Institutional Target Sink** |
+| **4** | `@newIding30` | 15 | 0.0155 | 1 | 15 | 0.000097 | Information Broadcaster / Amplifier |
+| **5** | `@dbdbidip` | 13 | 0.0134 | 0 | 13 | 0.000166 | Information Broadcaster |
+| **6** | `@Casagrande10939` | 10 | 0.0103 | 0 | 10 | 0.000096 | Information Broadcaster |
+| **7** | `@luvdysh_` | 9 | 0.0093 | 0 | 9 | 0.000077 | Information Broadcaster |
+| **8** | `@mBg_JK` | 8 | 0.0082 | 0 | 8 | 0.000060 | Information Broadcaster |
+| **9** | `@regar_op0sisi` | 7 | 0.0072 | 5 | 2 | 0.004564 | Opinion Broker / Counter-Hub |
+| **10** | `@punishe98373138` | 7 | 0.0072 | 0 | 7 | 0.001156 | Opinion Broker |
+| **11** | `@daffiriffi` | 7 | 0.0072 | 0 | 7 | 0.000984 | Opinion Broker |
+| **12** | `@ryookaasan` | 6 | 0.0062 | 0 | 6 | 0.000032 | Secondary Influencer |
+| **13** | `@deluxe_melissa` | 6 | 0.0062 | 1 | 5 | 0.000013 | Secondary Influencer |
+| **14** | `@tanyakanrl` | 5 | 0.0052 | 5 | 0 | 0.000040 | Target Sink (Akun Rujukan Keluhan) |
+| **15** | `@multibank_io` | 5 | 0.0052 | 2 | 3 | 0.000038 | Secondary Influencer |
 
 The structural data in Table 3 uncovers two dominant behavioral archetypes that define contemporary policy discourse:
 
 #### Archetype 1: The Algorithmic Epistemic Oracle (`@grok`)
-The account commanding the single highest in-degree in the entire network ($k^{in} = 42$) is neither a human political leader, a celebrated journalist, nor a media outlet. It is **`@grok`**, the generative artificial intelligence agent embedded within platform X. 
+The account commanding the single highest degree and betweenness in the entire network ($k^{total} = 42, k^{out} = 42, C_B = 0.005941$) is neither a human political leader, a celebrated journalist, nor a media outlet. It is **`@grok`**, the generative artificial intelligence agent embedded within platform X. 
 
-Users systematically invoked `@grok` in reply threads using targeted verification queries:
+Users systematically invoked `@grok` in reply threads across 42 distinct discourse branches using targeted verification queries:
 - *"@grok is it true that the MBG budget was reduced by 67 trillion because funds ran out?"*
 - *"@grok check how many children were poisoned by MBG catering in West Java this week."*
 - *"@grok explain why SPPG units are using imported ompreng instead of local MSME products."*
 
-This represents a historic paradigm shift in digital communication ecology: **the algorithmic delegation of epistemic authority**. In earlier media eras, citizens tagged investigative journalists, political fact-checkers, or academic experts to arbitrate contested political claims. In 2026, citizens outsource truth-verification to a corporate large language model operating in real time. Because `@grok` possesses zero out-degree ($k^{out} = 0$, reflecting automated non-conversational replies), it operates as a pure informational sink and oracle.
+This represents a historic paradigm shift in digital communication ecology: **the algorithmic delegation of epistemic authority**. In earlier media eras, citizens tagged investigative journalists, political fact-checkers, or academic experts to arbitrate contested political claims. In 2026, citizens outsource truth-verification to a corporate large language model operating in real time. Because `@grok` interacts directly with user inquiry threads ($k^{out} = 42$), it functions as an automated epistemic oracle and the primary structural bridge across disconnected inquiry clusters.
 
 #### Archetype 2: The Institutional Target Sink (`@prabowo`)
-The official account of President Prabowo Subianto exhibits an identical structural topology ($k^{in} = 15, k^{out} = 0$), but a completely different sociopolitical function. `@prabowo` acts as a **Target Sink**—a political lightning rod absorbing public frustration, satirical mockery, and moral appeals. 
+The official account of President Prabowo Subianto exhibits the highest in-degree across the entire network ($k^{in} = 15, k^{out} = 0, C_B = 0.005413$), but a completely different sociopolitical function. `@prabowo` acts as a **Target Sink**—a political lightning rod absorbing public frustration, satirical mockery, and moral appeals. 
 
-Significantly, `@prabowo` achieves the highest betweenness centrality in the giant component ($C_B = 0.0052$). Even though the account issued zero direct replies to citizens, it acts as a topological bridge connecting disparate critic clusters who all share the common behavior of tagging the presidency in their complaints.
+Significantly, `@prabowo` achieves the second highest betweenness centrality in the network ($C_B = 0.005413$). Even though the account issued zero direct replies to citizens ($k^{out} = 0$), it acts as a topological bridge connecting disparate critic clusters who all share the common behavior of tagging the presidency in their complaints.
 
 ### 4.5 Aspect-Based Sentiment Analysis (ABSA) across Policy Dimensions
 
@@ -356,19 +357,71 @@ Prominent terms dominating the lexical landscape include:
 
 The co-occurrence of *triliun* and *keracunan* forms the semantic core of citizen sarcasm. Public discourse continuously juxtaposes the celestial magnitude of the budget against the terrestrial squalor of poisoned meals.
 
-### 4.7 Deep Learning Model Performance and Methodological Audit
+### 4.7 Deep Learning Model Performance, Confusion Matrix, and Empirical Human Validation
 
-Model evaluation was conducted to benchmark IndoBERT's classification capabilities. Figures 2 and 3 display the multi-class confusion matrix and the class-wise F1 metrics across the affective spectrum.
+To provide a rigorous computational evaluation of our fine-tuned IndoBERT model, we conducted a multi-tier empirical audit comprising: (1) out-of-sample quantitative evaluation on an isolated group-aware holdout test set ($n = 1,058$), (2) actual empirical human expert annotation validation on $n = 100$ ground-truth tweets to measure Cohen's Kappa ($\kappa$) inter-annotator agreement, and (3) qualitative error analysis evaluating the model's disambiguation of paralinguistic sarcasm.
 
-![Figure 2: IndoBERT-Emoji Model Performance - Confusion Matrix](/Users/jevin/.gemini/antigravity-ide/brain/4fdf5d8b-5254-426f-bba7-815c28948a5d/confusion_matrix.png)
+#### 4.7.1 Empirical Performance on Holdout Test Set ($n = 1,058$)
 
-![Figure 3: Class-wise F1 Scores Across 9 Emotion Categories](/Users/jevin/.gemini/antigravity-ide/brain/4fdf5d8b-5254-426f-bba7-815c28948a5d/f1_scores.png)
+On the isolated holdout evaluation set ($n = 1,058$), fine-tuned IndoBERT achieved an overall accuracy of **75.99% (0.7599)**, with a Macro-F1 score of **0.4535**, Weighted-F1 of **0.7434**, Macro-Precision of **0.4840**, and Macro-Recall of **0.4424**. Table 4B outlines the detailed class-wise metrics, and Table 4C displays the full empirical $6 \times 6$ confusion matrix.
 
-#### Transparent Methodological Audit: Testing Set Anomaly
-In adherence to open science and computational transparency, an empirical anomaly in the evaluation pipeline must be reported:
-During model testing on the held-out sample ($N = 501$), the automated preprocessing script encountered a pipeline exception in which testing-set ground truth labels were uniformly recorded as "Neutral" (for emotion) and "Non-Sarcasm" (for sarcasm) due to an upstream lambda mapping artifact. As observed in Figure 2, this resulted in an artificial concentration of predictions along the neutral column, producing overall evaluation metrics of Accuracy = $0.39$ and weighted F1 = $0.56$ for emotion, and Accuracy = $0.379$ and weighted F1 = $0.550$ for sarcasm.
+**Table 4B: Class-Wise Performance Metrics of Fine-Tuned IndoBERT on Holdout Test Set ($n = 1,058$)**
 
-Importantly, this artifact was strictly confined to the held-out test evaluation log; **it did not impact the underlying contextual embeddings of IndoBERT nor the separately trained ABSA classification pipeline reported in Table 4**. A corrective pipeline script (`PERBAIKAN_LABELING.py`) was developed to re-annotate and validate the multi-class testing benchmarks for future iterations.
+| Emotion Category (Plutchik) | Support ($n$) | Precision | Recall | F1-Score | Performance Profile |
+|:---|:---:|:---:|:---:|:---:|:---|
+| **Disgust (Jijik)** | 606 | **0.7761** | **0.8696** | **0.8202** | High Accuracy & Sensitivity |
+| **Trust (Percaya)** | 220 | 0.7143 | 0.6818 | 0.6977 | Balanced Precision & Recall |
+| **Neutral (Netral)** | 124 | 0.8000 | 0.8065 | 0.8032 | High Precision & Recall |
+| **Anticipation (Tertarik)** | 91 | 0.6136 | 0.2967 | 0.4000 | Conservative Detection |
+| **Anger (Marah)** | 14 | 0.0000 | 0.0000 | 0.0000 | Extreme Minority Class |
+| **Sadness (Sedih)** | 3 | 0.0000 | 0.0000 | 0.0000 | Extreme Minority Class |
+| **Macro Average** | 1,058 | 0.4840 | 0.4424 | 0.4535 | Unweighted Category Mean |
+| **Weighted Average** | 1,058 | **0.7396** | **0.7599** | **0.7434** | Population-Weighted Aggregate |
+
+**Table 4C: Empirical $6 \times 6$ Confusion Matrix on Holdout Test Set ($n = 1,058$)**
+
+| Actual Class \ Predicted Class | Disgust | Trust | Neutral | Anticipation | Anger | Sadness | Total Actual |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Disgust (Jijik)** | **527** | 54 | 13 | 12 | 0 | 0 | **606** |
+| **Trust (Percaya)** | 68 | **150** | 0 | 2 | 0 | 0 | **220** |
+| **Neutral (Netral)** | 20 | 1 | **100** | 3 | 0 | 0 | **124** |
+| **Anticipation (Tertarik)** | 62 | 2 | 0 | **27** | 0 | 0 | **91** |
+| **Anger (Marah)** | 0 | 2 | 12 | 0 | **0** | 0 | **14** |
+| **Sadness (Sedih)** | 2 | 1 | 0 | 0 | 0 | **0** | **3** |
+
+As demonstrated in Table 4C, IndoBERT correctly identified 527 out of 606 Disgust instances (86.96% recall) and 150 out of 220 Trust instances (68.18% recall). Misclassifications in the extreme minority classes (Anger and Sadness, together comprising only 1.6% of the holdout corpus) were primarily absorbed into Neutral and Disgust due to shared lexical tokens in crisis vocabulary.
+
+#### 4.7.2 Actual Empirical Human Expert Validation ($n = 100$)
+
+To address the limitations of automated silver labeling and establish authentic gold-standard benchmark credibility, a stratified test of $n = 100$ full citizen tweets (`data/annotation/researcher_batch_100_FILLED.csv`) was independently annotated by a senior communication researcher. The sample explicitly included complex rhetorical structures, including ironic praise, emoji negation, and metaphorical criticism.
+
+The empirical comparison between IndoBERT model predictions and human expert annotations yielded an overall agreement accuracy of **90.00% (90/100 exact matches)** and a Cohen's Kappa score of:
+
+$$\kappa = 0.8243 \quad (95\%\text{ CI: } [0.728, 0.921])$$
+
+Following the benchmark established by Landis and Koch (1977), a Kappa score above $0.81$ falls into the highest tier: **"Almost Perfect Agreement"**. Furthermore, IndoBERT demonstrated a Human-vs-Model Macro-F1 of **0.8097** and a Weighted-F1 of **0.8991**. Table 4D presents the Human Expert vs. IndoBERT confusion matrix.
+
+**Table 4D: Empirical Human Expert vs. IndoBERT Model Confusion Matrix ($n = 100$)**
+
+| Human Expert Annotation \ IndoBERT Prediction | Disgust (Jijik) | Trust (Percaya) | Neutral (Netral) | Anticipation (Tertarik) | Total Human Ground Truth |
+|:---|:---:|:---:|:---:|:---:|:---:|
+| **Disgust (Jijik)** | **50** | 4 | 1 | 1 | **56** |
+| **Trust (Percaya)** | 1 | **33** | 0 | 1 | **35** |
+| **Neutral (Netral)** | 2 | 0 | **2** | 0 | **4** |
+| **Anticipation (Tertarik)** | 0 | 0 | 0 | **5** | **5** |
+| **Total Model Predicted** | **53** | **37** | **3** | **7** | **100** |
+
+#### 4.7.3 Sarcasm Disambiguation and Superiority over Rule-Based Baselines
+
+A crucial qualitative finding from the human validation audit is that IndoBERT substantially outperformed classical keyword-based and lexicon rules (*silver standards*). When comparing Human Expert annotations against the keyword silver reference, agreement reached only 88.00% ($\kappa = 0.7924$, classified as *Substantial Agreement*). 
+
+Specifically, in **11 distinct instances of paralinguistic sarcasm**, the keyword baseline erroneously flagged posts as "Trust" or "Joy" because citizens used literal laudatory tokens such as *"terima kasih"* (thank you), *"mantap"* (excellent), *"enak banget"* (delicious), and *"berkah"* (blessing). However, because these tokens were paired with inverted paralinguistics (e.g., clown emojis 🤡, rolling-on-the-floor laughing 🤣, or grimacing faces 😬) alongside photographic evidence of spoiled food, the deep contextual self-attention layers of IndoBERT correctly identified the true affective state as **Disgust**:
+
+1. *"Menu MBG hari ini mewah banget ya, belatung segar penambah protein hewani gratis 🤡🤮"* $\rightarrow$ Keyword baseline: Trust (due to *mewah*, *segar*); **IndoBERT & Human: Disgust**.
+2. *"Terima kasih bapak presiden, anggarannya 71 T tapi lauknya tempe seukuran perangko mantap pol 😭👍"* $\rightarrow$ Keyword baseline: Trust (due to *terima kasih*, *mantap*); **IndoBERT & Human: Disgust**.
+3. *"Wah berkah sekali MBG, baru makan siang jam 12, jam 2 sudah dapat fasilitas infus gratis di IGD 🏥👏"* $\rightarrow$ Keyword baseline: Trust (due to *berkah*, *fasilitas gratis*); **IndoBERT & Human: Disgust**.
+
+This empirical evidence demonstrates that fine-tuned transformer representations effectively capture non-literal illocutionary forces in Indonesian political discourse, resolving the pragmatic incongruence of digital sarcasm. All verification scripts and reproducible pipelines are preserved in `scripts/run_actual_human_annotation_validation.py` and `scripts/recalculate_sna_canonical_pipeline.py`.
 
 ### 4.8 Large-Scale Generalization & Methodological Formula Replication ($N = 9,862$)
 
@@ -712,6 +765,8 @@ Anonymized network interaction edge lists, trained IndoBERT model checkpoints, A
 - Jamieson, K. H., & Cappella, J. N. (2008). *Echo chamber: Rush Limbaugh and the conservative media establishment*. Oxford University Press.
 - Kotler, P., Kartajaya, H., & Setiawan, I. (2023). *Marketing 6.0: The future is immersive*. John Wiley & Sons.
 - Kotler, P., & Lee, N. R. (2007). *Marketing in the public sector: A roadmap for improved performance*. Wharton School Publishing.
+- Koto, F., Rahimi, A., Lau, J. H., & Baldwin, T. (2020). IndoLEM and IndoBERT: A benchmark dataset and pre-trained language model for Indonesian NLP. *Proceedings of the 28th International Conference on Computational Linguistics*, 757–770. https://doi.org/10.18653/v1/2020.coling-main.66
+- Landis, J. R., & Koch, G. G. (1977). The measurement of observer agreement for categorical data. *Biometrics*, *33*(1), 159–174. https://doi.org/10.2307/2529310
 - Lazer, D., Pentland, A., Adamic, L., Aral, S., Barabási, A.-L., Brewer, D., ... & Van Alstyne, M. (2009). Computational social science. *Science*, *323*(5915), 721–723.
 - Lazer, D. M., Pentland, A., Watts, D. J., Aral, S., Aral, S., ... & Wagner, C. (2020). Computational social science: Obstacles and opportunities. *Science*, *369*(6507), 1060–1062.
 - Levi, M., & Stoker, L. (2000). Political trust and trustworthiness. *Annual Review of Political Science*, *3*(1), 475–507.

@@ -224,20 +224,26 @@ Topological analysis reveals that the MBG discourse network is characterized by 
 | Network Indicator | Mathematical Notation | Empirical Value | Baseline Benchmark / Theoretical Meaning |
 |:---|:---:|:---:|:---|
 | **Total Actors (Vertices)** | $|V|$ | **971** | Size of active citizen-state interaction sphere |
-| **Directed Edges (Ties)** | $|E|$ | **692** | Volume of replies, mentions, and quotes |
-| **Graph Density** | $\rho$ | **0.000707** | Extremely sparse; 0.07% of potential ties realized |
+| **Directed Edges (Raw Ties)** | $|E|$ | **692** | Volume of replies, mentions, and quotes |
+| **Unique Directed Edges** | $|E_{dir}|$ | **666** | Distinct non-duplicate directed ties (662 undirected) |
+| **Graph Density (Directed)** | $\rho_{dir}$ | **0.000707** | Extremely sparse; 0.07% of potential ties realized |
 | **Dyadic Reciprocity** | $R$ | **1.20%** | Near-zero bilateral dialogue; conversational monologues |
-| **Louvain Modularity** | $Q$ | **0.9837** | Extreme community isolation (Benchmark > 0.40) |
+| **Louvain Modularity** | $Q$ | **0.9837** | Extreme community isolation (342 clusters) |
 | **Weakly Connected Components** | $N_{comp}$ | **341** | Massive fragmentation into tiny disconnected clusters |
-| **Giant Component Fraction** | $S_{giant}$ | **9.17%** | Largest connected component contains only 89 nodes |
+| **Giant Component Fraction** | $S_{giant}$ | **89 (9.17%)** | Largest connected component contains only 89 nodes |
+| **Giant Component Diameter** | $D$ | **9** | Maximum shortest path across the giant component |
+| **Average Geodesic Distance** | $L$ | **3.6731** | Compact transmission length within the giant component |
+| **Average Clustering Coefficient** | $C$ | **0.0171** | Minimal triadic closure; transitivity = 0.0261 |
 | **Degree Assortativity** | $r$ | **-0.0847** | Disassortative mixing; periphery links to central hubs |
 | **Power-Law Scaling Exponent** | $\alpha$ | **2.168** | Resilient scale-free architecture ($P(k) \sim k^{-\alpha}$) |
+| **Maximum Degree (Out-Degree)** | $\max(k), \max(k^{out})$ | **42** | Concentrated on algorithmic oracle `@grok` ($k^{out}=42, k^{in}=0$) |
+| **Maximum In-Degree** | $\max(k^{in})$ | **15** | Concentrated on institutional target sink `@prabowo` ($k^{in}=15, k^{out}=0$) |
 
 Figure 1 renders the global NodeXL force-directed layout, visually demonstrating the vast archipelago of disconnected clusters surrounding sparse institutional sinks.
 
 ![Figure 1: Macro-Topological Network Graph Visualization with Louvain Community Grouping](results/16_nodexl_graph_visualization.png)
 
-### 4.2 The Hegemony of Moral Disgust: Deep Learning Classification
+### 4.2 The Hegemony of Moral Disgust: Deep Learning Classification & Empirical Validation
 The fine-tuned IndoBERT model achieved monotonic loss reduction from $1.8708$ to $0.4328$ with an optimal validation loss of $0.5250$ (Table 2).
 
 **Table 2: Deep Learning IndoBERT Hyperparameters and Training Convergence Telemetry**
@@ -247,37 +253,45 @@ The fine-tuned IndoBERT model achieved monotonic loss reduction from $1.8708$ to
 | **Base Architecture** | `indobert-base-p2` | 12-layer, 768-hidden, 12-heads, 110M parameters |
 | **Training Steps / Epochs** | **3.0 Epochs (792 Steps)** | Monotonic training loss reduction: 1.8708 $\rightarrow$ 0.4328 |
 | **Validation Loss** | **0.5250** | Stable cross-entropy convergence without overfitting |
-| **Evaluation Accuracy / F1** | **81.43% / 0.5160** | Statistically superior to SVM (68.05%) & LogReg (67.11%) |
+| **Holdout Test Set Accuracy ($n=1,058$)** | **75.99%** | Proporsi prediksi benar pada data uji terisolasi |
+| **Holdout Macro / Weighted F1** | **0.4535 / 0.7434** | Balanced multi-class F1 metric across 6 emotion classes |
+| **Human Expert Agreement ($\kappa$, $n=100$)** | **$\kappa = 0.8243$ (90.00%)** | Almost Perfect Agreement (Landis & Koch, 1977) |
 | **Out-of-Sample Throughput** | **223.3 posts/sec** | Apple Silicon GPU inference on $N = 9,862$ citizen posts |
 | **Mean Softmax Confidence** | **95.01%** (Median: 96.95%) | High certainty in negative affective attribution |
+
+To verify classification reliability, a multi-tier empirical evaluation was conducted:
+
+1. **Group-Aware Holdout Test Set ($n = 1,058$)**: IndoBERT achieved an overall accuracy of **75.99%**, Macro Precision of **0.4840**, Macro Recall of **0.4424**, Macro F1-Score of **0.4535**, and Weighted F1-Score of **0.7434**. Across classes, Disgust achieved **0.8202 F1** (Precision 0.7761, Recall 0.8696, Support 606), Trust achieved **0.6977 F1** (Precision 0.7143, Recall 0.6818, Support 220), and Neutral achieved **0.8032 F1** (Precision 0.8000, Recall 0.8065, Support 124).
+2. **Empirical Human Expert Ground-Truth Validation ($n = 100$)**: A stratified sample of $n = 100$ full tweets was independently evaluated by a senior human expert (`data/annotation/researcher_batch_100_FILLED.csv`). IndoBERT achieved an exact match accuracy of **90.00% (90/100)** and a Cohen's Kappa score of **$\kappa = 0.8243$**, falling into the highest category: **"Almost Perfect Agreement"** (Landis & Koch, 1977). Model vs Human Macro-F1 reached **0.8097** and Weighted-F1 reached **0.8991**.
+3. **Disambiguation of Sarcasm**: In 11 complex sarcastic instances, keyword-based silver standards misclassified sarcastic posts as positive due to literal laudatory words (*terima kasih*, *mantap*, *mewah*), while IndoBERT correctly captured **Disgust** by interpreting paralinguistic emoji inversions (e.g., 🤡, 🤮, 🤣).
 
 When deployed across the $N = 9,862$ streaming corpus, IndoBERT revealed an overwhelming hegemony of **Disgust ($98.14\%$, $N = 9,679$)**, with Love comprising merely $1.74\%$ ($N = 172$) and Neutral $0.11\%$ ($N = 11$). Figure 2 displays the master tri-layer forensic dashboard.
 
 ![Figure 2: Master Forensic Tri-Layer Dashboard — Training Loss, Affective Distribution, Confidence, and Formula Battery](results/grafik_master_indobert_dan_rumus_tesis.png)
 
 ### 4.3 Centrality Asymmetry: Institutional Sinks vs. The Algorithmic Oracle
-Network centrality analysis reveals a stark functional asymmetry (Table 3). Rather than human journalists or civil society leaders, the generative AI account `@grok` emerged as the single highest-centrality entity in the entire network ($C_D = 0.0433, C_B = 0.005941$).
+Network centrality analysis reveals a stark functional asymmetry (Table 3). Rather than human journalists or civil society leaders, the generative AI account `@grok` emerged as the single highest-centrality entity in the entire network ($C_D = 0.0433, C_B = 0.005941, k^{out} = 42, k^{in} = 0$).
 
 **Table 3: Actor Centrality Typology: Top 10 Degree Hubs vs. Top 10 Betweenness Brokers**
 
 | Rank | Top 10 Degree Hubs (Prominence) | Top 10 Betweenness Brokers (Bridges) | Sociological Network Function |
 |:---:|:---|:---|:---|
-| **1** | `@grok` ($C_D: 0.0433$) | `@grok` ($C_B: 0.005941$) | **Algorithmic Epistemic Oracle** mediating civic inquiries |
-| **2** | `@4Y4NKZ` ($C_D: 0.0165$) | `@prabowo` ($C_B: 0.005413$) | **Institutional Grievance Sink** (Presidential account) |
-| **3** | `@newIding30` ($C_D: 0.0155$) | `@regar_op0sisi` ($C_B: 0.004564$) | Opposition discourse catalyst |
-| **4** | `@prabowo` ($C_D: 0.0155$) | `@direktoridosen` ($C_B: 0.001236$) | Academic/educator commentary bridge |
-| **5** | `@dbdbidip` ($C_D: 0.0134$) | `@punishe98373138` ($C_B: 0.001156$) | Grassroots citizen thread relay |
-| **6** | `@Casagrande10939` ($C_D: 0.0103$) | `@daffiriffi` ($C_B: 0.000984$) | Viral food poisoning alert conduit |
-| **7** | `@luvdysh_` ($C_D: 0.0093$) | `@bbiiyaya` ($C_B: 0.000549$) | Student/parent experiential relay |
-| **8** | `@mBg_JK` ($C_D: 0.0082$) | `@gibran_tweet` ($C_B: 0.000543$) | Vice-presidential youth engagement bridge |
-| **9** | `@regar_op0sisi` ($C_D: 0.0072$) | `@Rhym03` ($C_B: 0.000366$) | Intra-cluster conversational bridge |
-| **10** | `@punishe98373138` ($C_D: 0.0072$) | `@xquitavee` ($C_B: 0.000366$) | Nutritional defect commentary conduit |
+| **1** | `@grok` ($C_D: 0.0433, k^{out}: 42$) | `@grok` ($C_B: 0.005941$) | **Algorithmic Epistemic Oracle** mediating civic inquiries |
+| **2** | `@4Y4NKZ` ($C_D: 0.0165, k: 16$) | `@prabowo` ($C_B: 0.005413$) | **Institutional Grievance Sink** (Presidential account) |
+| **3** | `@newIding30` ($C_D: 0.0155, k: 15$) | `@regar_op0sisi` ($C_B: 0.004564$) | Opposition discourse catalyst |
+| **4** | `@prabowo` ($C_D: 0.0155, k^{in}: 15$) | `@direktoridosen` ($C_B: 0.001236$) | Academic/educator commentary bridge |
+| **5** | `@dbdbidip` ($C_D: 0.0134, k: 13$) | `@punishe98373138` ($C_B: 0.001156$) | Grassroots citizen thread relay |
+| **6** | `@Casagrande10939` ($C_D: 0.0103, k: 10$) | `@daffiriffi` ($C_B: 0.000984$) | Viral food poisoning alert conduit |
+| **7** | `@luvdysh_` ($C_D: 0.0093, k: 9$) | `@bbiiyaya` ($C_B: 0.000549$) | Student/parent experiential relay |
+| **8** | `@mBg_JK` ($C_D: 0.0082, k: 8$) | `@gibran_tweet` ($C_B: 0.000543$) | Vice-presidential youth engagement bridge |
+| **9** | `@regar_op0sisi` ($C_D: 0.0072, k: 7$) | `@Rhym03` ($C_B: 0.000366$) | Intra-cluster conversational bridge |
+| **10** | `@punishe98373138` ($C_D: 0.0072, k: 7$) | `@xquitavee` ($C_B: 0.000366$) | Nutritional defect commentary conduit |
 
 Figure 3 maps this four-quadrant typology, contrasting In-Degree against Betweenness Centrality.
 
 ![Figure 3: Four-Quadrant Actor Centrality Typology](results/18_actor_centrality_typology.png)
 
-While the presidential handle `@prabowo` operates as an In-Degree grievance sink ($k^{in} = 15, k^{out} = 0$), `@grok` acts as an active informational bridge solicited by citizens across opposing clusters.
+While the presidential handle `@prabowo` operates as an In-Degree grievance sink ($k^{in} = 15, k^{out} = 0, C_B = 0.005413$), `@grok` acts as an active informational bridge solicited by citizens across opposing clusters ($k^{out} = 42, k^{in} = 0, C_B = 0.005941$).
 
 ### 4.4 Thematic Salience: Lunch Trays over Trillions
 Semantic frequency extraction across domain-specific posts ($N = 6,969$) demonstrates that citizens prioritize tangible physical quality over macroeconomic fiscal figures (Table 4).
@@ -393,6 +407,8 @@ This study examined the crisis surrounding Indonesia's Free Nutritious Meal prog
 - Guzman, A. L., & Lewis, S. C. (2020). Artificial intelligence and communication: A Human–Machine Communication research agenda. *New Media & Society*, *22*(1), 70–86. https://doi.org/10.1177/1461444819858691
 - Habermas, J. (1989). *The structural transformation of the public sphere*. MIT Press.
 - Kotler, P., Kartajaya, H., & Setiawan, I. (2023). *Marketing 6.0: The future is immersive*. John Wiley & Sons.
+- Koto, F., Rahimi, A., Lau, J. H., & Baldwin, T. (2020). IndoLEM and IndoBERT: A benchmark dataset and pre-trained language model for Indonesian NLP. *Proceedings of the 28th International Conference on Computational Linguistics*, 757–770. https://doi.org/10.18653/v1/2020.coling-main.66
+- Landis, J. R., & Koch, G. G. (1977). The measurement of observer agreement for categorical data. *Biometrics*, *33*(1), 159–174. https://doi.org/10.2307/2529310
 - Lazer, D. M., Pentland, A., Watts, D. J., Aral, S., Athey, S., Contractor, N., Freelon, D., Gonzalez-Bailon, S., King, G., Margetts, H., Moghadam, A., Nelson, B., Salganik, M. J., Strohmaier, M., Vespignani, A., & Wagner, C. (2020). Computational social science: Obstacles and opportunities. *Science*, *369*(6507), 1060–1062. https://doi.org/10.1126/science.aaz8170
 - Marwick, A. E., & boyd, d. (2011). I tweet honestly, I tweet passionately: Twitter users, context collapse, and the imagined audience. *New Media & Society*, *13*(1), 114–133. https://doi.org/10.1177/1461444810365313
 - Milan, S. (2013). *Social movements and their technologies: Wiring social change*. Palgrave Macmillan. https://doi.org/10.1057/9781137314444
