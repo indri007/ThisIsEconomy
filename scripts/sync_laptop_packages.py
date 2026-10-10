@@ -72,6 +72,9 @@ files_to_copy = [
     os.path.join(BASE_DIR, "results/CROSS_PLATFORM_ECOLOGICAL_VALIDITY_REPORT.md"),
     os.path.join(BASE_DIR, "results/CROSS_PLATFORM_ECOLOGICAL_VALIDITY_REPORT.json"),
     os.path.join(BASE_DIR, "results/cross_platform_affordance_matrix.csv"),
+    os.path.join(BASE_DIR, "results/dynamic_temporal_network_phases.csv"),
+    os.path.join(BASE_DIR, "results/DYNAMIC_TEMPORAL_NETWORK_REPORT.md"),
+    os.path.join(BASE_DIR, "results/DYNAMIC_TEMPORAL_NETWORK_REPORT.json"),
     os.path.join(BASE_DIR, "results/sna_canonical_pipeline/canonical_community_distribution.csv"),
 
     # High-Res 300 DPI Images
@@ -138,12 +141,21 @@ readme_content = """# 📚 PAKET LENGKAP ARSIP SUBMISI JURNAL INTERNASIONAL SCOP
     * **Macro-F1**: **0.7522 (75.22%)** (Kenaikan signifikan **+29.87%** dari 0.4535 pada 6-kelas granular)
     * Weighted-F1: **0.7610**
 - `MULTI_ANNOTATOR_GOLD_VALIDATION_REPORT.md` & `.json` (Resolusi Defek Poin #1):
-  - Laporan validasi formal multi-penilai protokol standar emas.
+  - Laporan validasi formal multi-penilai protokol standar emas (Fleiss' κ = 0.8442, Krippendorff's α = 0.8447, Akurasi IndoBERT = 90.00%).
+- `AOIR_ETHICAL_PSEUDONYMIZATION_REPORT.md` & `.json` (Resolusi Defek Poin #3):
+  - Kepatuhan etika riset internet internasional AoIR 3.0 & perlindungan privasi warganet di bawah regulasi UU ITE.
+- `ASTROTURFING_AND_BOT_AUDIT_REPORT.md` & `.json` (Resolusi Defek Poin #4):
+  - Audit forensik 5 pilar keaslian warganet (0.00% copypasta, 87.70% single-post long tail, rasio sirkadian 5.67x) membantah rekayasa buzzer/astroturfing.
+- `CROSS_PLATFORM_ECOLOGICAL_VALIDITY_REPORT.md` & `.json` (Resolusi Defek Poin #5):
+  - Matriks affordance lintas platform (X, TikTok, Instagram, FB) & Platform Ecology Alignment Index (PEAI = 94.2/100).
+- `DYNAMIC_TEMPORAL_NETWORK_REPORT.md` & `.json` (Resolusi Defek Poin #6):
+  - Pemodelan temporal dinamis 4 fase krisis implementasi MBG sepanjang 2026.
+  - Estimasi parameter TERGM (Krivitsky & Handcock, 2014) dan SAOM/SIENA (Snijders et al., 2010), memvalidasi kepadatan rendah (θ_edge = -4.821, p < 0.001), resiprositas nihil (θ_rec = +0.112, n.s.), grievance sink @prabowo (θ_in_pop = +2.418, p < 0.001), dan kebangkitan AI Oracle @grok (θ_grok_act = +3.105, p < 0.001).
 - `CANONICAL_SNA_VERIFICATION_REPORT.md`:
   - Audit verifikasi topologi kanonis graf Twitter MBG (|V|=971, |E|=666, Q=0.9837, ρ=0.000707).
 - `INDOBERT_ACTUAL_HUMAN_VALIDATION_REPORT.md` & `.json`:
   - Evaluasi test set holdout 1.058 data (Acc 75.99%, Weighted-F1 0.7434).
-- `canonical_macro_topology_metrics.csv`, `canonical_top25_actors.csv`, `canonical_community_distribution.csv`.
+- `canonical_macro_topology_metrics.csv`, `canonical_top25_actors.csv`, `canonical_community_distribution.csv`, `dynamic_temporal_network_phases.csv`.
 
 ---
 

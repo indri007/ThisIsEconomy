@@ -1,0 +1,5 @@
+phase_id,phase_name,time_window,posts_volume,nodes_v,edges_e,network_density,reciprocity_rate,louvain_modularity_q,community_clusters,prabowo_in_degree,grok_out_degree,grok_in_degree,policy_milestone
+1,Phase 1: Pre-Rollout Piloting,"Jan 1, 2026 - Mar 31, 2026",299,54,40,0.013976,0.0,0.7116,15,1,2,0,Initial trial rollouts; early fiscal skepticism on IDR 15k portion feasibility
+2,Phase 2: Operational Escalation & Peak I,"Apr 1, 2026 - May 31, 2026",3379,962,666,0.00072,0.015,0.9769,322,16,40,0,"BGN officially suspends 4,581 SPPG catering units; imported plastic tray backlash"
+3,Phase 3: Institutional Review & Recess,"Jun 1, 2026 - Aug 31, 2026",619,182,181,0.005495,0.0,0.0,1,1,0,0,School recess; parliamentary review hearings; FY2026 APBN IDR 268T budget announcement
+4,Phase 4: Acute Contamination & EWS Surveillance,"Sep 1, 2026 - Oct 10, 2026",4397,1038,1037,0.000963,0.0,0.0,1,1,0,1,Nationwide acute mass food poisoning outbreaks; Telegram EWS bot operational activation
