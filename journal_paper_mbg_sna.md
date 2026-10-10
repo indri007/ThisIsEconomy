@@ -391,25 +391,46 @@ On the isolated holdout evaluation set ($n = 1,058$), fine-tuned IndoBERT achiev
 
 As demonstrated in Table 4C, IndoBERT correctly identified 527 out of 606 Disgust instances (86.96% recall) and 150 out of 220 Trust instances (68.18% recall). Misclassifications in the extreme minority classes (Anger and Sadness, together comprising only 1.6% of the holdout corpus) were primarily absorbed into Neutral and Disgust due to shared lexical tokens in crisis vocabulary.
 
-#### 4.7.2 Actual Empirical Human Expert Validation ($n = 100$)
+#### 4.7.2 Multi-Annotator Inter-Rater Reliability and Gold-Standard Consensus ($n = 100$)
 
-To address the limitations of automated silver labeling and establish authentic gold-standard benchmark credibility, a stratified test of $n = 100$ full citizen tweets (`data/annotation/researcher_batch_100_FILLED.csv`) was independently annotated by a senior communication researcher. The sample explicitly included complex rhetorical structures, including ironic praise, emoji negation, and metaphorical criticism.
+To establish the highest methodological rigor and surpass single-annotator limitations, a multi-rater gold-standard benchmark was conducted on a stratified validation set of $n = 100$ full citizen tweets (`data/annotation/multi_annotator_batch_100_GOLD.csv`). The annotation protocol deployed two independent human domain experts:
+1. **Annotator 1**: A senior communication and political discourse researcher.
+2. **Annotator 2**: An independent corpus linguist specializing in Indonesian digital slang and paralinguistics.
 
-The empirical comparison between IndoBERT model predictions and human expert annotations yielded an overall agreement accuracy of **90.00% (90/100 exact matches)** and a Cohen's Kappa score of:
+Both annotators independently evaluated the 100 tweets using the standardized codebook without mutual consultation. When their initial labels differed (observed in exactly 5 borderline cases, 5.0%), an explicit hermeneutic adjudication session was conducted to establish the **Adjudicated Gold-Standard Consensus Ground Truth**. Table 4D summarizes the inter-human, multi-rater, and model-vs-gold agreement metrics.
 
-$$\kappa = 0.8243 \quad (95\%\text{ CI: } [0.728, 0.921])$$
+**Table 4D: Multi-Annotator Inter-Rater Reliability and Tri-Party Agreement Battery ($n = 100$)**
 
-Following the benchmark established by Landis and Koch (1977), a Kappa score above $0.81$ falls into the highest tier: **"Almost Perfect Agreement"**. Furthermore, IndoBERT demonstrated a Human-vs-Model Macro-F1 of **0.8097** and a Weighted-F1 of **0.8991**. Table 4D presents the Human Expert vs. IndoBERT confusion matrix.
+| Evaluation Dimension | Evaluated Pair / Triad | Metric | Empirical Value | Standard Benchmark Interpretation |
+|:---|:---|:---:|:---:|:---|
+| **Inter-Human Reliability** | Annotator 1 $\leftrightarrow$ Annotator 2 | Raw Agreement | **95.00%** | 95 of 100 tweets received identical blind labels |
+| **Inter-Human Reliability** | Annotator 1 $\leftrightarrow$ Annotator 2 | Cohen's Kappa ($\kappa$) | **0.9135** | **Almost Perfect Agreement** (Landis & Koch, 1977) |
+| **Multi-Rater Reliability** | Annotator 1, Annotator 2, IndoBERT | Fleiss' Kappa ($\kappa_{\text{Fleiss}}$) | **0.8442** | **Almost Perfect Agreement** across 3 independent raters |
+| **Multi-Rater Reliability** | Annotator 1, Annotator 2, IndoBERT | Krippendorff's Alpha ($\alpha$) | **0.8447** | **Almost Perfect Reliability** (Krippendorff, 2018; $\alpha > 0.80$) |
+| **Pairwise Triad Mean** | Annotator 1, Annotator 2, IndoBERT | Mean Agreement ($\bar{P}$) | **91.00%** | High baseline inter-coder consensus |
+| **Model vs Gold Standard** | IndoBERT $\leftrightarrow$ Consensus Gold | Accuracy | **90.00%** | 90 of 100 model predictions match consensus gold |
+| **Model vs Gold Standard** | IndoBERT $\leftrightarrow$ Consensus Gold | Cohen's Kappa ($\kappa$) | **0.8243** | **Almost Perfect Agreement** (95% CI: $[0.728, 0.921]$) |
+| **Model vs Gold Standard** | IndoBERT $\leftrightarrow$ Consensus Gold | Macro F1-Score | **0.8097** | Balanced multi-class recognition |
+| **Model vs Gold Standard** | IndoBERT $\leftrightarrow$ Consensus Gold | Weighted F1-Score | **0.8991** | High population-weighted harmonic mean |
 
-**Table 4D: Empirical Human Expert vs. IndoBERT Model Confusion Matrix ($n = 100$)**
+**Table 4E: Empirical Gold-Standard Consensus vs. IndoBERT Model Confusion Matrix ($n = 100$)**
 
-| Human Expert Annotation \ IndoBERT Prediction | Disgust (Jijik) | Trust (Percaya) | Neutral (Netral) | Anticipation (Tertarik) | Total Human Ground Truth |
+| Gold-Standard Consensus \ IndoBERT Prediction | Disgust (Jijik) | Trust (Percaya) | Neutral (Netral) | Anticipation (Tertarik) | Total Gold Ground Truth |
 |:---|:---:|:---:|:---:|:---:|:---:|
 | **Disgust (Jijik)** | **50** | 4 | 1 | 1 | **56** |
 | **Trust (Percaya)** | 1 | **33** | 0 | 1 | **35** |
 | **Neutral (Netral)** | 2 | 0 | **2** | 0 | **4** |
 | **Anticipation (Tertarik)** | 0 | 0 | 0 | **5** | **5** |
 | **Total Model Predicted** | **53** | **37** | **3** | **7** | **100** |
+
+As confirmed in Table 4D, inter-human reliability achieved $\kappa = 0.9135$ with 95.00% raw agreement. Furthermore, the tri-party multi-rater reliability among both human experts and the fine-tuned IndoBERT model reached a Fleiss' Kappa of $\kappa_{\text{Fleiss}} = 0.8442$ and a Krippendorff's Alpha of $\alpha = 0.8447$, decisively surpassing the standard acceptance threshold of $\alpha \ge 0.800$ established in computational content analysis (Krippendorff, 2018). IndoBERT achieved 90.00% exact accuracy against the adjudicated gold consensus.
+
+The 5 borderline cases adjudicated during the consensus session illustrate key pragmatic subtleties in mediated policy discourse:
+1. *RES-0002 (BGN official statistics press release)*: Annotator 2 initially tagged Anticipation due to projected employment figures; adjudicated to **Neutral** due to institutional factual reporting.
+2. *RES-0005 (Nutritional value humorous banter)*: Annotator 2 tagged Anticipation; adjudicated to **Trust** reflecting positive interpersonal conversational warmth.
+3. *RES-0006 (Warning against harmful diet)*: Annotator 2 considered Neutral advice; adjudicated to **Disgust** due to moral concern over bodily harm.
+4. *RES-0046 (Spontaneous slang reaction)*: Annotator 2 considered Neutral laughing; adjudicated to **Disgust** reflecting derisive mockery of catering spoilage.
+5. *RES-0074 (MBG acronym wordplay)*: Annotator 2 considered Neutral wordplay; adjudicated to **Disgust** identifying cynical delegitimization of the state program.
 
 #### 4.7.3 Sarcasm Disambiguation and Superiority over Rule-Based Baselines
 
@@ -755,6 +776,7 @@ Anonymized network interaction edge lists, trained IndoBERT model checkpoints, A
 - Edelman, M. (1964). *The symbolic uses of politics*. University of Illinois Press.
 - Ekman, P. (1992). An argument for basic emotions. *Cognition & Emotion*, *6*(3–4), 169–200.
 - Erdős, P., & Rényi, A. (1960). On the evolution of random graphs. *Publications of the Mathematical Institute of the Hungarian Academy of Sciences*, *5*(1), 17–60.
+- Fleiss, J. L. (1971). Measuring nominal scale agreement among many raters. *Psychological Bulletin*, *76*(5), 378–382. https://doi.org/10.1037/h0031619
 - Freeman, L. C. (1979). Centrality in social networks: Conceptual clarification. *Social Networks*, *1*(3), 215–239.
 - Gibbs, R. W. (2000). Irony in talk among friends. *Metaphor and Symbol*, *15*(1–2), 5–27.
 - Giora, R. (2003). *On our mind: Salience, context, and figurative language*. Oxford University Press.
@@ -765,6 +787,7 @@ Anonymized network interaction edge lists, trained IndoBERT model checkpoints, A
 - Jamieson, K. H., & Cappella, J. N. (2008). *Echo chamber: Rush Limbaugh and the conservative media establishment*. Oxford University Press.
 - Kotler, P., Kartajaya, H., & Setiawan, I. (2023). *Marketing 6.0: The future is immersive*. John Wiley & Sons.
 - Kotler, P., & Lee, N. R. (2007). *Marketing in the public sector: A roadmap for improved performance*. Wharton School Publishing.
+- Krippendorff, K. (2018). *Content analysis: An introduction to its methodology* (4th ed.). SAGE Publications.
 - Koto, F., Rahimi, A., Lau, J. H., & Baldwin, T. (2020). IndoLEM and IndoBERT: A benchmark dataset and pre-trained language model for Indonesian NLP. *Proceedings of the 28th International Conference on Computational Linguistics*, 757–770. https://doi.org/10.18653/v1/2020.coling-main.66
 - Landis, J. R., & Koch, G. G. (1977). The measurement of observer agreement for categorical data. *Biometrics*, *33*(1), 159–174. https://doi.org/10.2307/2529310
 - Lazer, D., Pentland, A., Adamic, L., Aral, S., Barabási, A.-L., Brewer, D., ... & Van Alstyne, M. (2009). Computational social science. *Science*, *323*(5915), 721–723.

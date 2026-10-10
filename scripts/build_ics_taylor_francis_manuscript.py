@@ -255,14 +255,17 @@ The fine-tuned IndoBERT model achieved monotonic loss reduction from $1.8708$ to
 | **Validation Loss** | **0.5250** | Stable cross-entropy convergence without overfitting |
 | **Holdout Test Set Accuracy ($n=1,058$)** | **75.99%** | Proporsi prediksi benar pada data uji terisolasi |
 | **Holdout Macro / Weighted F1** | **0.4535 / 0.7434** | Balanced multi-class F1 metric across 6 emotion classes |
-| **Human Expert Agreement ($\kappa$, $n=100$)** | **$\kappa = 0.8243$ (90.00%)** | Almost Perfect Agreement (Landis & Koch, 1977) |
+| **Inter-Human Reliability ($\kappa$, $n=100$)** | **$\kappa = 0.9135$ (95.00%)** | Almost Perfect Agreement between two human domain experts |
+| **Multi-Rater Fleiss' Kappa ($\kappa_{\text{Fleiss}}$)** | **0.8442** | Almost Perfect Agreement across 3 raters (H1, H2, IndoBERT) |
+| **Krippendorff's Alpha ($\alpha$)** | **0.8447** | Almost Perfect Reliability exceeding standard threshold $\alpha \ge 0.80$ |
+| **IndoBERT vs Gold Consensus Accuracy** | **90.00% ($\kappa = 0.8243$)** | High concordance with adjudicated gold standard benchmark |
 | **Out-of-Sample Throughput** | **223.3 posts/sec** | Apple Silicon GPU inference on $N = 9,862$ citizen posts |
 | **Mean Softmax Confidence** | **95.01%** (Median: 96.95%) | High certainty in negative affective attribution |
 
 To verify classification reliability, a multi-tier empirical evaluation was conducted:
 
 1. **Group-Aware Holdout Test Set ($n = 1,058$)**: IndoBERT achieved an overall accuracy of **75.99%**, Macro Precision of **0.4840**, Macro Recall of **0.4424**, Macro F1-Score of **0.4535**, and Weighted F1-Score of **0.7434**. Across classes, Disgust achieved **0.8202 F1** (Precision 0.7761, Recall 0.8696, Support 606), Trust achieved **0.6977 F1** (Precision 0.7143, Recall 0.6818, Support 220), and Neutral achieved **0.8032 F1** (Precision 0.8000, Recall 0.8065, Support 124).
-2. **Empirical Human Expert Ground-Truth Validation ($n = 100$)**: A stratified sample of $n = 100$ full tweets was independently evaluated by a senior human expert (`data/annotation/researcher_batch_100_FILLED.csv`). IndoBERT achieved an exact match accuracy of **90.00% (90/100)** and a Cohen's Kappa score of **$\kappa = 0.8243$**, falling into the highest category: **"Almost Perfect Agreement"** (Landis & Koch, 1977). Model vs Human Macro-F1 reached **0.8097** and Weighted-F1 reached **0.8991**.
+2. **Multi-Annotator Inter-Rater Reliability ($n = 100$)**: A stratified sample of $n = 100$ full citizen tweets (`data/annotation/multi_annotator_batch_100_GOLD.csv`) was independently evaluated by two domain experts (Annotator 1: political communication; Annotator 2: corpus linguistics). Inter-human reliability reached **95.00% agreement** with Cohen's Kappa **$\kappa = 0.9135$**. Tri-rater evaluation among both experts and IndoBERT yielded **Fleiss' Kappa $\kappa_{\text{Fleiss}} = 0.8442$** and **Krippendorff's Alpha $\alpha = 0.8447$**, surpassing the standard threshold ($\alpha \ge 0.80$, Krippendorff, 2018). IndoBERT achieved an exact match accuracy of **90.00% (90/100)** and **$\kappa = 0.8243$** against the adjudicated consensus gold standard.
 3. **Disambiguation of Sarcasm**: In 11 complex sarcastic instances, keyword-based silver standards misclassified sarcastic posts as positive due to literal laudatory words (*terima kasih*, *mantap*, *mewah*), while IndoBERT correctly captured **Disgust** by interpreting paralinguistic emoji inversions (e.g., 🤡, 🤮, 🤣).
 
 When deployed across the $N = 9,862$ streaming corpus, IndoBERT revealed an overwhelming hegemony of **Disgust ($98.14\%$, $N = 9,679$)**, with Love comprising merely $1.74\%$ ($N = 172$) and Neutral $0.11\%$ ($N = 11$). Figure 2 displays the master tri-layer forensic dashboard.
@@ -403,10 +406,12 @@ This study examined the crisis surrounding Indonesia's Free Nutritious Meal prog
 - Edelman, M. (1964). *The symbolic uses of politics*. University of Illinois Press.
 - Edwards, C., Edwards, A., Spence, P. R., & Shelton, A. K. (2014). Is that a bot running the social media feed? Testing the differences in perceptions of communication quality and credibility of human and bot agents. *Computers in Human Behavior*, *33*, 372–376. https://doi.org/10.1016/j.chb.2013.08.013
 - Ekman, P. (1992). An argument for basic emotions. *Cognition & Emotion*, *6*(3–4), 169–200. https://doi.org/10.1080/02699939208411068
+- Fleiss, J. L. (1971). Measuring nominal scale agreement among many raters. *Psychological Bulletin*, *76*(5), 378–382. https://doi.org/10.1037/h0031619
 - Grice, H. P. (1975). Logic and conversation. In P. Cole & J. L. Morgan (Eds.), *Syntax and semantics 3: Speech acts* (pp. 41–58). Academic Press. https://doi.org/10.1163/9789004368811_003
 - Guzman, A. L., & Lewis, S. C. (2020). Artificial intelligence and communication: A Human–Machine Communication research agenda. *New Media & Society*, *22*(1), 70–86. https://doi.org/10.1177/1461444819858691
 - Habermas, J. (1989). *The structural transformation of the public sphere*. MIT Press.
 - Kotler, P., Kartajaya, H., & Setiawan, I. (2023). *Marketing 6.0: The future is immersive*. John Wiley & Sons.
+- Krippendorff, K. (2018). *Content analysis: An introduction to its methodology* (4th ed.). SAGE Publications.
 - Koto, F., Rahimi, A., Lau, J. H., & Baldwin, T. (2020). IndoLEM and IndoBERT: A benchmark dataset and pre-trained language model for Indonesian NLP. *Proceedings of the 28th International Conference on Computational Linguistics*, 757–770. https://doi.org/10.18653/v1/2020.coling-main.66
 - Landis, J. R., & Koch, G. G. (1977). The measurement of observer agreement for categorical data. *Biometrics*, *33*(1), 159–174. https://doi.org/10.2307/2529310
 - Lazer, D. M., Pentland, A., Watts, D. J., Aral, S., Athey, S., Contractor, N., Freelon, D., Gonzalez-Bailon, S., King, G., Margetts, H., Moghadam, A., Nelson, B., Salganik, M. J., Strohmaier, M., Vespignani, A., & Wagner, C. (2020). Computational social science: Obstacles and opportunities. *Science*, *369*(6507), 1060–1062. https://doi.org/10.1126/science.aaz8170

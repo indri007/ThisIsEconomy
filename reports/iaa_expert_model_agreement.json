@@ -58,5 +58,55 @@
     "n_consensus_agreed": 90,
     "n_model_superior_on_sarcasm": 11,
     "conclusion": "Model IndoBERT berhasil memvalidasi inkongruensi teks-emoji pada sarkasme yang gagal dideteksi oleh aturan kata kunci semata."
+  },
+  "multi_annotator_gold_standard": {
+    "sample_size": 100,
+    "inter_human_reliability": {
+      "raters": [
+        "Penilai 1 (Pakar Komunikasi Politik)",
+        "Penilai 2 (Pakar Linguistik Korpus)"
+      ],
+      "accuracy": 0.95,
+      "cohen_kappa": 0.9135,
+      "interpretation": "Almost Perfect Agreement (Kesepakatan Hampir Sempurna)",
+      "disagreement_cases_count": 5,
+      "agreement_percentage": "95.00%"
+    },
+    "multi_rater_reliability": {
+      "raters": [
+        "Penilai 1",
+        "Penilai 2",
+        "Model IndoBERT"
+      ],
+      "fleiss_kappa": 0.8442,
+      "fleiss_interpretation": "Almost Perfect Agreement (Kesepakatan Hampir Sempurna)",
+      "krippendorff_alpha": 0.8447,
+      "krippendorff_interpretation": "Almost Perfect Agreement (Kesepakatan Hampir Sempurna)",
+      "mean_pairwise_agreement": 0.91
+    },
+    "model_vs_gold_standard": {
+      "gold_standard": "Konsensus Standar Emas Hasil Adjudikasi (n = 100)",
+      "accuracy": 0.9,
+      "cohen_kappa": 0.8243,
+      "interpretation": "Almost Perfect Agreement (Kesepakatan Hampir Sempurna)",
+      "macro_f1": 0.8097,
+      "weighted_f1": 0.8991,
+      "macro_precision": 0.8041,
+      "macro_recall": 0.8339
+    },
+    "pairwise_summary": {
+      "h1_vs_model": {
+        "accuracy": 0.9,
+        "cohen_kappa": 0.8243
+      },
+      "h2_vs_model": {
+        "accuracy": 0.88,
+        "cohen_kappa": 0.7954
+      },
+      "h1_vs_h2": {
+        "accuracy": 0.95,
+        "cohen_kappa": 0.9135
+      }
+    }
   }
 }
