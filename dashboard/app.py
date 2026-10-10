@@ -7,6 +7,16 @@ if str(_BIT_ROOT) not in sys.path:
     sys.path.insert(0, str(_BIT_ROOT))
 # END BIT_CANONICAL_EWS_PATH
 
+import asyncio
+try:
+    asyncio.get_running_loop()
+except RuntimeError:
+    try:
+        _current_loop = asyncio.get_event_loop()
+    except RuntimeError:
+        _current_loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(_current_loop)
+
 import streamlit as st
 
 # Import Modular Dashboard Modules

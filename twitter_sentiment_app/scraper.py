@@ -15,11 +15,7 @@ try:
 except ImportError:
     pass
 
-try:
-    import nest_asyncio
-    nest_asyncio.apply()
-except Exception:
-    pass
+# nest_asyncio dihindari pada module-level agar tidak merusak ASGI AnyIO event loop di Streamlit Cloud
 logger = logging.getLogger(__name__)
 
 COOKIES_FILE = "cookies.json"
