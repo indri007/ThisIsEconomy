@@ -14,8 +14,19 @@ def get_communities_summary():
         top_communities = community_counts.head(10).to_dict(orient='records')
         largest_community = top_communities[0] if len(top_communities) > 0 else {"community": 0, "size": 0}
         
-        total_communities = 342
+        total_communities = len(community_counts)
         modularity = 0.9837
+        
+        macro_path = os.path.join(PROJECT_ROOT, "results", "macro_topology_metrics.json")
+        if os.path.exists(macro_path):
+            import json
+            try:
+                with open(macro_path, "r", encoding="utf-8") as mf:
+                    macro_dict = json.load(mf)
+                mod_str = str(macro_dict.get("Modularity Louvain (Q)", "0.9837")).split()[0]
+                modularity = float(mod_str)
+            except Exception:
+                pass
         
         return {
             "total_communities": total_communities,

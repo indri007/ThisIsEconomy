@@ -1,0 +1,6 @@
+Condition,Nodes,Edges,Components,Density,Reciprocity,Notes
+Baseline Directed (Raw Edge List),971,666,341,0.000707,1.20%,Canonical directed mention/reply graph
+Undirected Representation,971,662,341,0.001406,100.0% (Symmetric),Symmetric collapsed dyadic ties
+Excluding Self-Loops,971,651,341,0.000691,1.23%,Removed 15 self-referential mentions
+Edge Weight >= 2 (Repeated Ties),27,18,10,0.025641,0.00%,Filtered for persistent interaction dyads
+Giant Connected Component,89,89,1,0.011364,0.00%,Largest connected core (9.17% of total nodes)

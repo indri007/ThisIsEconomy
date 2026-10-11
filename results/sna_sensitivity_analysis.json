@@ -1,0 +1,173 @@
+{
+  "edge_definition_sensitivity": [
+    {
+      "Condition": "Baseline Directed (Raw Edge List)",
+      "Nodes": 971,
+      "Edges": 666,
+      "Components": 341,
+      "Density": 0.000707,
+      "Reciprocity": "1.20%",
+      "Notes": "Canonical directed mention/reply graph"
+    },
+    {
+      "Condition": "Undirected Representation",
+      "Nodes": 971,
+      "Edges": 662,
+      "Components": 341,
+      "Density": 0.001406,
+      "Reciprocity": "100.0% (Symmetric)",
+      "Notes": "Symmetric collapsed dyadic ties"
+    },
+    {
+      "Condition": "Excluding Self-Loops",
+      "Nodes": 971,
+      "Edges": 651,
+      "Components": 341,
+      "Density": 0.000691,
+      "Reciprocity": "1.23%",
+      "Notes": "Removed 15 self-referential mentions"
+    },
+    {
+      "Condition": "Edge Weight >= 2 (Repeated Ties)",
+      "Nodes": 27,
+      "Edges": 18,
+      "Components": 10,
+      "Density": 0.025641,
+      "Reciprocity": "0.00%",
+      "Notes": "Filtered for persistent interaction dyads"
+    },
+    {
+      "Condition": "Giant Connected Component",
+      "Nodes": 89,
+      "Edges": 89,
+      "Components": 1,
+      "Density": 0.011364,
+      "Reciprocity": "0.00%",
+      "Notes": "Largest connected core (9.17% of total nodes)"
+    }
+  ],
+  "louvain_resolution_sweep": [
+    {
+      "Resolution_Gamma": 0.5,
+      "Modularity_Q": 0.9816,
+      "Total_Communities": 344,
+      "Largest_Community_Size": 43,
+      "Singleton_Communities": 11
+    },
+    {
+      "Resolution_Gamma": 0.7,
+      "Modularity_Q": 0.9834,
+      "Total_Communities": 342,
+      "Largest_Community_Size": 46,
+      "Singleton_Communities": 11
+    },
+    {
+      "Resolution_Gamma": 0.8,
+      "Modularity_Q": 0.9834,
+      "Total_Communities": 342,
+      "Largest_Community_Size": 46,
+      "Singleton_Communities": 11
+    },
+    {
+      "Resolution_Gamma": 0.9,
+      "Modularity_Q": 0.9834,
+      "Total_Communities": 342,
+      "Largest_Community_Size": 46,
+      "Singleton_Communities": 11
+    },
+    {
+      "Resolution_Gamma": 1.0,
+      "Modularity_Q": 0.9834,
+      "Total_Communities": 342,
+      "Largest_Community_Size": 46,
+      "Singleton_Communities": 11
+    },
+    {
+      "Resolution_Gamma": 1.1,
+      "Modularity_Q": 0.9834,
+      "Total_Communities": 342,
+      "Largest_Community_Size": 46,
+      "Singleton_Communities": 11
+    },
+    {
+      "Resolution_Gamma": 1.2,
+      "Modularity_Q": 0.9834,
+      "Total_Communities": 342,
+      "Largest_Community_Size": 46,
+      "Singleton_Communities": 11
+    },
+    {
+      "Resolution_Gamma": 1.5,
+      "Modularity_Q": 0.9826,
+      "Total_Communities": 343,
+      "Largest_Community_Size": 43,
+      "Singleton_Communities": 11
+    },
+    {
+      "Resolution_Gamma": 2.0,
+      "Modularity_Q": 0.9826,
+      "Total_Communities": 343,
+      "Largest_Community_Size": 43,
+      "Singleton_Communities": 11
+    }
+  ],
+  "stochastic_seed_stability": {
+    "seeds_tested": 10,
+    "mean_Q": 0.983392,
+    "std_Q": 0.0,
+    "min_Q": 0.983392,
+    "max_Q": 0.983392,
+    "records": [
+      {
+        "Seed": 1,
+        "Modularity_Q": 0.983392,
+        "Communities": 342
+      },
+      {
+        "Seed": 2,
+        "Modularity_Q": 0.983392,
+        "Communities": 342
+      },
+      {
+        "Seed": 3,
+        "Modularity_Q": 0.983392,
+        "Communities": 342
+      },
+      {
+        "Seed": 4,
+        "Modularity_Q": 0.983392,
+        "Communities": 342
+      },
+      {
+        "Seed": 5,
+        "Modularity_Q": 0.983392,
+        "Communities": 342
+      },
+      {
+        "Seed": 6,
+        "Modularity_Q": 0.983392,
+        "Communities": 342
+      },
+      {
+        "Seed": 7,
+        "Modularity_Q": 0.983392,
+        "Communities": 342
+      },
+      {
+        "Seed": 8,
+        "Modularity_Q": 0.983392,
+        "Communities": 342
+      },
+      {
+        "Seed": 9,
+        "Modularity_Q": 0.983392,
+        "Communities": 342
+      },
+      {
+        "Seed": 10,
+        "Modularity_Q": 0.983392,
+        "Communities": 342
+      }
+    ]
+  }
+}

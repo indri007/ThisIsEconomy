@@ -18,6 +18,16 @@ except ImportError:
 file_path = get_data_path("indobert_9_emosi_fixed.csv")
 df = pd.read_csv(file_path)
 
+# ==============================================================================
+# AUDIT & METODOLOGIS NOTE (Scopus Q1 & Komite Disertasi):
+# Pemetaan 'love' -> 'Percaya' dan 'shame' -> 'Tertarik' adalah translasi ad-hoc
+# heuristik awal dalam repositori. Secara taksonomi psikologi formal (Plutchik, Ekman):
+# - 'Love' (Cinta/Kasih) TIDAK identik dengan 'Trust' (Percaya/Kepercayaan).
+# - 'Shame' (Malu/Aib) adalah emosi negatif kesadaran-diri, sedangkan 'Tertarik'
+#   (Interest/Antisipasi) adalah emosi positif/eksploratif berorientasi pendekatan.
+# Dalam publikasi ilmiah, diskrepansi ini WAJIB dilaporkan secara transparan
+# sebagai batasan leksikal pra-anotasi silver standard.
+# ==============================================================================
 mapping = {
     'anger': 'Marah',
     'disgust': 'Jijik',
@@ -26,8 +36,8 @@ mapping = {
     'joy': 'Bahagia/Senang',
     'neutral': 'Netral',
     'surprise': 'Kaget',
-    'love': 'Percaya',
-    'shame': 'Tertarik'
+    'love': 'Percaya',      # Ad-hoc proxy: afeksi/afiliasi publik dipetakan ke persepsi kepercayaan
+    'shame': 'Tertarik'     # Ad-hoc proxy: keheranan/kejanggalan dipetakan ke keingintahuan wacana
 }
 
 if 'predicted_emotion' in df.columns:

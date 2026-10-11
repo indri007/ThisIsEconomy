@@ -25,8 +25,14 @@ try:
     def _safe_sniffio_current() -> str:
         try:
             return _orig_sniffio_current()
-        except Exception:
-            return "asyncio"
+        except sniffio.AsyncLibraryNotFoundError:
+            try:
+                import asyncio
+                if asyncio.get_running_loop() is not None:
+                    return "asyncio"
+            except (RuntimeError, Exception):
+                pass
+            raise
 
     sniffio.current_async_library = _safe_sniffio_current
 except Exception:
