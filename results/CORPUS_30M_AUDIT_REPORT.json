@@ -1,0 +1,22 @@
+{
+  "corpus_name": "Nationwide 30M MBG Twitter Telemetry Corpus",
+  "file_path": "/Users/jevin/Documents/tesis_mbg/data/processed/tweet_mbg_1juta.csv",
+  "total_file_size_bytes": 6422076063,
+  "total_file_size_gb": 5.98,
+  "total_verified_lines": 30000000,
+  "audit_sample_size": 100000,
+  "sample_unique_texts": 9416,
+  "sample_duplication_rate_pct": 90.58,
+  "date_range_start": "2010-04-13 03:01:26+00:00",
+  "date_range_end": "2026-10-04 02:33:46+00:00",
+  "topical_relevance_mbg_pct": 96.45,
+  "indonesian_language_purity_pct": 42.66,
+  "source_harvester_distribution": {
+    "CNA Harvester Logistik": 17464,
+    "CNA Harvester Anggaran": 17412,
+    "CNA Harvester Kualitas": 17364,
+    "CNA Harvester Netral": 17261,
+    "CNA Harvester Sarkasme": 17073,
+    "Local Archive Cache": 13426
+  }
+}

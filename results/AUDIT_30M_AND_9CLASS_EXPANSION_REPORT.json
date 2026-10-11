@@ -1,0 +1,38 @@
+{
+  "model_architecture": "indobenchmark/indobert-base-p2",
+  "standard_7_class_active_model": {
+    "active_classes": [
+      "Jijik",
+      "Percaya",
+      "Netral",
+      "Tertarik",
+      "Marah",
+      "Sedih",
+      "Takut"
+    ],
+    "macro_f1": 0.4535,
+    "accuracy": 0.7599,
+    "weighted_f1": 0.7434,
+    "joy_samples_in_test": 0,
+    "surprise_samples_in_test": 0,
+    "status": "Official_Protocol_v2_Validated"
+  },
+  "candidate_augmented_9_class_framework": {
+    "target_classes": [
+      "Marah",
+      "Jijik",
+      "Takut",
+      "Bahagia/Joy",
+      "Percaya",
+      "Netral",
+      "Sedih",
+      "Tertarik",
+      "Kaget/Surprise"
+    ],
+    "joy_candidates_mined": 50,
+    "surprise_candidates_mined": 29,
+    "gold_verification_path": "/Users/jevin/ThisIsEconomy/data/annotation/mined_joy_surprise_candidates.csv",
+    "stepwise_training_protocol": "Progressive Transfer / Few-Shot Calibration on Curated Candidates",
+    "status": "Candidate_Mined_Ready_for_Progressive_FineTuning"
+  }
+}
