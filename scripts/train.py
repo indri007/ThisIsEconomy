@@ -1,6 +1,6 @@
 import pandas as pd
 import torch
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GroupShuffleSplit
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, TrainingArguments
 
 import os
@@ -14,25 +14,38 @@ try:
 except ImportError:
     from data_utils import get_data_path, get_result_path
 
-print("1. Load Dataset berlabel...")
-data_path = get_data_path("indobert_9_emosi.csv")
+print("1. Load Dataset berlabel (Silver-standard reference annotations)...")
+data_path = get_data_path("indobert_9_emosi_fixed.csv")
+if not os.path.exists(data_path):
+    data_path = get_data_path("indobert_9_emosi.csv")
 df = pd.read_csv(data_path)
 df = df.dropna(subset=['processed_text', 'predicted_emotion'])
 
-print("2. Encode Labels...")
-labels = df['predicted_emotion'].unique().tolist()
+print("2. Encode Labels (Silver-standard reference labels)...")
+# Catatan Akademis: Model dirancang pada skema 9 kelas Plutchik,
+# namun korpus empiris aktif pada 6 kelas (Joy/Surprise N=0, Fear N=2).
+labels = sorted(df['predicted_emotion'].unique().tolist())
 label2id = {label: i for i, label in enumerate(labels)}
 id2label = {i: label for label, i in label2id.items()}
 df['label_id'] = df['predicted_emotion'].map(label2id)
-print(f"Ditemukan {len(labels)} label unik: {labels}")
+print(f"Ditemukan {len(labels)} label unik empiris: {labels}")
 
-print("3. Train-Test Split...")
-train_texts, val_texts, train_labels, val_labels = train_test_split(
-    df['processed_text'].tolist(), 
-    df['label_id'].tolist(), 
-    test_size=0.2, 
-    random_state=42
-)
+print("3. Group-Aware Split (Protocol v2: GroupShuffleSplit, random_state=42, test_size=0.2)...")
+# Strictly group by processed_text to eliminate duplicate/retweet text leakage
+gss = GroupShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
+train_idx, val_idx = next(gss.split(df, groups=df['processed_text']))
+train_df = df.iloc[train_idx]
+val_df = df.iloc[val_idx]
+
+train_texts = train_df['processed_text'].tolist()
+val_texts = val_df['processed_text'].tolist()
+train_labels = train_df['label_id'].tolist()
+val_labels = val_df['label_id'].tolist()
+
+# Verifikasi matematis zero leakage
+overlap = set(train_texts).intersection(set(val_texts))
+assert len(overlap) == 0, f"Critical Data Leakage: Terdeteksi {len(overlap)} teks duplikat antara train dan val!"
+print(f"✓ Zero Leakage Terverifikasi: overlap = {len(overlap)} teks (Train: {len(train_texts)}, Val: {len(val_texts)})")
 
 print("4. Tokenizer IndoBERT...")
 model_name = "indobenchmark/indobert-base-p2"

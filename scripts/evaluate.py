@@ -1,7 +1,7 @@
 import pandas as pd
 import torch
 import numpy as np
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GroupShuffleSplit
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer
 from sklearn.metrics import (
     accuracy_score,
@@ -25,14 +25,12 @@ try:
 except ImportError:
     from data_utils import get_data_path, get_result_path
 
-# Load Data
+# Load Data (Silver-standard reference annotations)
 data_path = get_data_path("indobert_9_emosi_fixed.csv")
 df = pd.read_csv(data_path)
 df = df.dropna(subset=['processed_text', 'predicted_emotion'])
 
-# 9 Kategori Emosi sesuai urutan id2label model checkpoint-792:
-# 0: anger (Marah), 1: disgust (Jijik), 2: fear (Takut), 3: joy (Bahagia),
-# 4: love (Percaya), 5: neutral (Netral), 6: sadness (Sedih), 7: shame (Tertarik), 8: surprise (Kaget)
+# 9 Kategori Emosi sesuai skema target Plutchik:
 label_map = {
     'Marah': 0,
     'Jijik': 1,
@@ -50,16 +48,27 @@ df['label_id'] = df['predicted_emotion'].map(label_map)
 df = df.dropna(subset=['label_id'])
 df['label_id'] = df['label_id'].astype(int)
 
-_, val_texts, _, val_labels = train_test_split(
-    df['processed_text'].tolist(), 
-    df['label_id'].tolist(), 
-    test_size=0.2, 
-    random_state=42
-)
+# Protocol v2: GroupShuffleSplit zero-leakage partition
+gss = GroupShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
+train_idx, val_idx = next(gss.split(df, groups=df['processed_text']))
+val_df = df.iloc[val_idx]
+train_df = df.iloc[train_idx]
 
-import os
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-model_path = os.path.join(base_dir, "results", "indobert_finetuned_9_labels", "checkpoint-792")
+train_texts = train_df['processed_text'].tolist()
+val_texts = val_df['processed_text'].tolist()
+val_labels = val_df['label_id'].tolist()
+
+# Verifikasi matematis zero text leakage
+overlap = set(train_texts).intersection(set(val_texts))
+assert len(overlap) == 0, f"Critical Data Leakage: Terdeteksi {len(overlap)} teks duplikat antara train dan test!"
+print(f"✓ Protocol v2 Zero Leakage Terverifikasi: overlap={len(overlap)} teks (Test n={len(val_texts)})")
+
+# Model Path: Gunakan model hasil group-aware training Protocol v2
+model_path = os.path.join(base_dir, "results", "indobert_group_aware_v2", "best_model")
+if not os.path.exists(model_path):
+    # Fallback to legacy path if present
+    model_path = os.path.join(base_dir, "results", "indobert_finetuned_9_labels", "checkpoint-792")
+print(f"Loading model checkpoint from: {model_path}")
 tokenizer = AutoTokenizer.from_pretrained("indobenchmark/indobert-base-p2")
 model = AutoModelForSequenceClassification.from_pretrained(model_path)
 

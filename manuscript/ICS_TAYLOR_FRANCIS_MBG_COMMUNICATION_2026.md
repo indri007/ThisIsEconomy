@@ -213,7 +213,7 @@ Decomposing the streaming corpus across 2026 ($N = 9,360$ posts) identifies two 
 | **Agu 2026** | 209 | 205 (98.09%) | 2 (0.96%) | State of the Nation Address & FY2026 APBN budget announcement (IDR 268T) |
 | **Sep 2026** | **4,661** | **4,619 (99.10%)** | 39 (0.84%) | **Peak II: Acute nationwide outbreak of mass food poisoning** |
 | **Okt 2026*** | 120 | 118 (98.33%) | 2 (1.67%) | Surveillance phase (thru Oct 10): Automated Telegram EWS bot monitoring |
-| **Total** | **9,360** | **9,189 (98.17%)** | **167 (1.78%)** | Persistent hegemony of moral disgust across all operational months |
+| **Total** | **9,360** | **9,189 (98.17%)** | **162 (1.73%)** | Persistent hegemony of moral disgust across all operational months (9,189 + 162 + 9 = 9,360) |
 
 Figure 4 illustrates this bimodal volume trajectory and stacked affective breakdown.
 

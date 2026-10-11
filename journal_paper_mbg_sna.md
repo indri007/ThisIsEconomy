@@ -591,7 +591,7 @@ To illuminate how public sentiment evolved across the program's real-world rollo
 | **Agu** | 209 | 205 (98.09%) | 2 (0.96%) | 2 (0.96%) | State of the Nation Address & FY2026 APBN budget announcement (IDR 268 trillion indicative allocation). |
 | **Sep** | **4,661** | **4,619 (99.10%)** | 39 (0.84%) | 3 (0.06%) | **Peak II (Acute Moral Panic)**: Outbreak of mass food poisoning across elementary schools; emergency SPPG audits. |
 | **Okt** *(thru Oct 10)* | 120 | 118 (98.33%) | 2 (1.67%) | 0 (0.00%) | **Surveillance Phase**: Operational activation of automated Telegram Early Warning System (EWS) bot push alerts. |
-| **Total / Avg** | **9,360** | **9,189 (98.17%)** | **167 (1.78%)** | **9 (0.10%)** | Continuous longitudinal dominance of moral revulsion across all ten operational months. |
+| **Total / Avg** | **9,360** | **9,189 (98.17%)** | **162 (1.73%)** | **9 (0.10%)** | Continuous longitudinal dominance of moral revulsion across all ten operational months (9,189 + 162 + 9 = 9,360). |
 
 ![Figure 13: Month-by-Month Temporal Evolution of IndoBERT Affective Classes and Real-Time Telegram EWS Surveillance across 2026](results/indobert_monthly_emotion_timeline_2026.png)
 

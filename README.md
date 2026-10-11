@@ -153,23 +153,29 @@
 | **Agustus 2026** | 209 | 205 | 2 | 2 | 98,09% | Pidato Kenegaraan & Nota Keuangan RAPBN 2026 (Rp 268T); perdebatan efisiensi anggaran belanja vs defisit. |
 | **September 2026 (Puncak II)** | **4.661** | **4.619** | **39** | **3** | **99,10%** | 🔥 **Puncak II (Krisis Akut Terbesar):** Gelombang keracunan massal siswa serentak; ribuan dirawat di IGD/RS. |
 | **Oktober 2026 (s.d. 10 Okt)** | 120 | 118 | 2 | 0 | 98,33% | 🤖 Pengawasan aktif bot Telegram EWS; penataan ulang tata kelola dapur & integrasi mitigasi krisis. |
-| **TOTAL AKUMULASI** | **9.360** | **9.189** | **167** | **9** | **98,17%** | **Akumulasi Longitudinal Out-of-Sample Surveillance (Januari – 10 Oktober 2026)** |
+| **TOTAL AKUMULASI** | **9.360** | **9.189** | **162** | **9** | **98,17%** | **Akumulasi Longitudinal Out-of-Sample Surveillance (Januari – 10 Oktober 2026; 9.189 + 162 + 9 = 9.360)** |
 
 <br/>
 
 ### 🎭 TABEL 2: TAKSONOMI LENGKAP 9 EMOJI & EMOSI INDOBERT (KORPUS TESIS $N = 5.263$)
 *Klasifikasi inferensi model Fine-tuned IndoBERT berbasis taksonomi psikologi Plutchik:*
 
+> [!IMPORTANT]
+> **Catatan Validitas Metodologis (Peer-Review Reconciliation):**
+> 1. **Taksonomi Konseptual vs Realitas Empiris:** Meskipun dirancang berdasarkan 9 kelas emosi Plutchik, korpus empiris $N = 5.263$ secara faktual hanya memuat **6 kelas aktif** (*Disgust* 56,24%, *Trust* 20,39%, *Neutral* 12,33%, *Anticipation* 9,60%, *Anger* 1,05%, *Sadness* 0,36%). Dua kelas (*Joy* & *Surprise*) bernilai 0 sampel ($N=0$), dan *Fear* hanya 2 sampel ($0,04\%$). Model secara ilmiah **belum divalidasi sebagai model 9-kelas penuh**, melainkan model 6-kelas aktif dengan ketimpangan kelas alami.
+> 2. **Silver-Standard Reference Labels:** Seluruh label emosi pada korpus $N = 5.263$ diekstraksi melalui pipeline otomatis (LLM/Gemini + filter aturan leksikal). Label ini merupakan *silver-standard reference labels*, bukan *human gold standard*. Istilah *ground truth* hanya digunakan secara ketat pada pengujian validasi independen manusia ($n = 100$ sampel teranotasi ganda).
+> 3. **Rekonsiliasi Angka Longitudinal ($N = 9.360$):** Penjumlahan kolom longitudinal menghasilkan tepat **9.360 unggahan** (9.189 Disgust [98,17%] + 162 Love [1,73%] + 9 Netral [0,10%] = 9.360). Nilai Love 167 pada rilis draf sebelumnya merupakan kekeliruan ketik (selisih 5 data) yang telah direkonsiliasi secara matematis.
+
 | No | Emoji Representatif | Kelas Emosi (Plutchik) | Frekuensi ($N$) | Proporsi (%) | Indikator Leksikal Dominan | Konteks Pragmatik & Realitas Lapangan MBG | Performa Model IndoBERT |
 | :---: | :---: | :--- | :---: | :---: | :--- | :--- | :--- |
 | **1** | 🤢 / 🤮 | **Jijik (*Disgust*)** | **2.960** | **56,24%** | *basi, bau, ulat, belatung, busuk, muntah, diare, gak layak, buang, jorok, vendor nakal* | Penolakan visceral atas kegagalan atribut fisik makanan (*Phygital Gap*) | F1 = 0,8202 (Precision 77,61%, Recall 86,96%) |
 | **2** | 🤝 / 😇 | **Percaya (*Trust*)** | **1.073** | **20,39%** | *mendukung, gizi, sehat, berkah, anak bangsa, prabowo, program bagus, optimis* | Afirmasi dan kepercayaan publik pada visi pemenuhan gizi Indonesia Emas 2045 | F1 = 0,6977 (Precision 71,43%, Recall 68,18%) |
 | **3** | 😐 / ℹ️ | **Netral (*Neutral*)** | **649** | **12,33%** | *anggaran, bgn, rapat, menkeu, sasar, apbn, triliun, uji coba, tanggal, rilis* | Pewartaan faktual berita anggaran, rapat kerja, dan siaran pers birokrasi | F1 = 0,8032 (Precision 81,25%, Recall 79,45%) |
-| **4** | 🧐 / ⏳ | **Tertarik (*Anticipation*)** | **505** | **9,60%** | *penasaran, kapan, cek, menu besok, jadwal, pengen tahu, nunggu, info* | Ekspektasi publik menantikan pembagian menu dan jadwal di sekolah daerah | F1 = 0,6207 (Precision 64,29%, Recall 60,00%) |
-| **5** | 😡 / 🤬 | **Marah (*Anger*)** | **55** | **1,05%** | *bancakan, korupsi, brengsek, bohong, copot, tanggung jawab, usut, penjarakan* | Protes keras dan atribusi kesalahan kepada pengelola dan pelaksana kebijakan | Minoritas alami (sering tumpang tindih pragmatik dengan Disgust) |
-| **6** | 😢 / 😭 | **Sedih (*Sadness*)** | **19** | **0,36%** | *kasihan, nangis, lemes, tega, miris, sedih, anak-anak, tersiksa* | Empati mendalam terhadap siswa keracunan dan nasib anak di pelosok 3T | Minoritas alami ($n=3$ pada test set) |
+| **4** | 🧐 / ⏳ | **Tertarik (*Anticipation*)** | **505** | **9,60%** | *penasaran, kapan, cek, menu besok, jadwal, pengen tahu, nunggu, info* | Ekspektasi publik menantikan pembagian menu dan jadwal di sekolah daerah | F1 = 0,4000 (Precision 61,36%, Recall 29,67%) |
+| **5** | 😡 / 🤬 | **Marah (*Anger*)** | **55** | **1,05%** | *bancakan, korupsi, brengsek, bohong, copot, tanggung jawab, usut, penjarakan* | Protes keras dan atribusi kesalahan kepada pengelola dan pelaksana kebijakan | Minoritas alami (F1 = 0,0000 pada holdout $n=14$) |
+| **6** | 😢 / 😭 | **Sedih (*Sadness*)** | **19** | **0,36%** | *kasihan, nangis, lemes, tega, miris, sedih, anak-anak, tersiksa* | Empati mendalam terhadap siswa keracunan dan nasib anak di pelosok 3T | Minoritas alami (F1 = 0,0000 pada holdout $n=3$) |
 | **7** | 😨 / 😱 | **Takut (*Fear*)** | **2** | **0,04%** | *takut, waspada, ngeri, jangan-jangan, bahaya, trauma, bakteri* | Ketakutan risiko bakteri berbahaya dan trauma siswa mengonsumsi makanan program | Ekstrem minoritas alami ($n=0$ pada test set) |
-| **8** | ❤️ / 🥰 | **Cinta (*Love*)** | 167* | 1,78%* | *terima kasih, cinta, relawan, ibu kantin, berkah, senang, lezat, alhamdulillah* | Apresiasi tulus kepada relawan dapur, ibu kantin, dan juru masak sekolah | *Subsumed under Trust pada $N=5.263$; terdeteksi pada longitudinal $N=9.360$ |
+| **8** | ❤️ / 🥰 | **Cinta (*Love*)** | 162* | 1,73%* | *terima kasih, cinta, relawan, ibu kantin, berkah, senang, lezat, alhamdulillah* | Apresiasi tulus kepada relawan dapur, ibu kantin, dan juru masak sekolah | *Subsumed under Trust pada $N=5.263$; terdeteksi pada longitudinal $N=9.360$ |
 | **9** | 😲 / 🤯 | **Terkejut (*Surprise*)** | Subsumed* | Spontan* | *kaget, astaga, waduh, gila, buset, syok, kok bisa, beneran* | Reaksi spontan atas lonjakan pos anggaran fiskal dan insiden keracunan | *Subsumed under Anticipation/Disgust dalam klasifikasi aktif |
 
 <br/>
@@ -615,7 +621,7 @@ Sesuai kaidah penulisan tesis magister dan standar penulisan manuskrip jurnal in
 |:---:|:---|:---|:---|:---|:---|
 | **1** | **🗣️ Anatomi Diksi & Gaya Bahasa** | Bagaimana anatomi bahasa bernada sindiran, variasi diksi leksikal kontradiktif, dan pola pemakaian emoji warganet dalam diskursus MBG? | Menganalisis karakteristik linguistik warganet melalui pemetaan leksikon kontradiktif, gaya bahasa ironi, dan asosiasi emoji pada percakapan MBG. | *Lexical Extraction & Corpus Matching* | **315 cuitan (9,28%)** sindiran valid; 181 leksikon oposisi biner tajam |
 | **2** | **🎭 Inkongruensi Semiotik Teks-Emoji** | Bagaimana wujud inkongruensi makna antara teks tertulis bernada pujian semu dengan penanda visual emoji (*pretense of sarcasm*)? | Mengidentifikasi dan mengukur bentuk inkongruensi semiotik teks-emoji guna membongkar kritik terselubung warganet. | *Semiotic Incongruity Scoring* | Disparitas kontras teks pujian (*"bergizi"*, *"mewah"*) vs emoji mengejek (🤡, 🤮, 🗿) |
-| **3** | **🤖 Respons Afektif 9 Emosi NLP** | Pola emosi apa yang mendominasi reaksi afektif publik terhadap Program MBG berdasarkan 9 kategori emosi model IndoBERT? | Mengklasifikasikan respons afektif warganet ke dalam 9 emosi Plutchik menggunakan *fine-tuned* IndoBERT guna mengukur penolakan/dukungan publik. | *Deep Learning Transformer IndoBERT* | Emosi **Jijik (Disgust) mendominasi 56,24%** (2.960 tweet), Trust 20,39% (1.073 tweet), **Macro F1 = 0.8122** |
+| **3** | **🤖 Respons Afektif Emosi NLP** | Pola emosi apa yang mendominasi reaksi afektif publik terhadap Program MBG berdasarkan kategori emosi model IndoBERT? | Mengklasifikasikan respons afektif warganet ke dalam taksonomi emosi Plutchik menggunakan *fine-tuned* IndoBERT (6 kelas aktif empiris) guna mengukur penolakan/dukungan publik. | *Deep Learning Transformer IndoBERT* | Emosi **Jijik (Disgust) mendominasi 56,24%** (2.960 tweet), Trust 20,39% (1.073 tweet); Evaluasi holdout zero-leakage ($n=1.058$): **Akurasi 75,99%, Macro-F1 = 0,4535, Weighted-F1 = 0,7434** (terhadap *silver-standard reference labels*) |
 | **4** | **🕸️ Topologi Jaringan Komunikasi (CNA) & Polarisasi** | Bagaimana struktur graf jaringan komunikasi terbentuk di platform X, serta sejauh mana tingkat polarisasi dan fragmentasi komunitasnya? | Memetakan topologi jaringan komunikasi, mengukur koefisien modularitas (Q), serta mendeteksi komunitas terfragmentasi via Algoritma Louvain. | *Communication Network Theory & Louvain Modularity* | 971 node, 666 edges (692 interaksi mentah), **Modularitas Q = 0.9837** (332 komunitas terfragmentasi ekstrem, Reciprocity 1,21%) |
 | **5** | **👑 Sentralitas Aktor Dominan & Otoritas** | Aktor-aktor kunci mana yang menduduki sentralitas dominan (degree, betweenness, PageRank) dalam mengarahkan diskursus publik? | Mengidentifikasi figur sentral, penyebar informasi utama, dan broker antarkomunitas guna memetakan asimetri pengaruh komunikasi. | *Structural Centrality Analysis* | **@grok** Out-degree=42 (*AI Oracle*), **@4Y4NKZ** (*Broker* betweenness 0.000016), **@prabowo** In=15 Out=0 (*Target pasif*) |
 | **6** | **🏛️ Sintesis Phygital Gap & Kebijakan** | Sejauh mana resistensi digital mencerminkan kegagalan *immersive experience* (*Phygital Gap* Marketing 6.0), dan bagaimana strategi mitigasinya? | Mengevaluasi besaran *Phygital Gap* serta merumuskan rekomendasi mitigasi komunikasi risiko berbasis *computational social science* bagi BGN. | *Triangulasi Komputasional & Crisis Matrix* | Terbuktinya *Phygital Gap* (konsep digital disukai, realitas fisik ditolak); menghasilkan **5 Rekomendasi Aksi BGN** |
@@ -713,9 +719,8 @@ Hasil komputasional empiris yang diverifikasi secara matematis:
     7. `@kompascom` (Portal Berita Nasional, In-Degree = 1, PageRank = 0.00132)
     8. `@kumparan` (Media Berita Kolaboratif, Out-Degree = 1, PageRank = 0.00071)
     9. `@yappingfess` (Menfess Curahan Emosi Warganet, In-Degree = 2, PageRank = 0.00193)
-    10. `@txtdrimedia` (Kurasi & Kliping Berita Pers, In-Degree = 1, PageRank = 0.00102)
 - **4.5 Evaluasi Model Klasifikasi Emosi dan Deteksi Sindiran (Hal. 101):**
-  - *4.5.1 Evaluasi IndoBERT:* Akurasi tes 57,45%, Macro F1 = 0.8122, Recall kelas Disgust mencapai **96,92%** (F1 = 0.7178), Presisi Trust 68,42%.
+  - *4.5.1 Evaluasi IndoBERT:* Protocol v2 (*GroupShuffleSplit holdout n=1.058*): Akurasi tes **75,99%**, Macro-F1 = **0,4535**, Weighted-F1 = **0,7434**, F1 kelas Disgust **0,8202** (Precision 77,61%, Recall 86,96%), F1 Trust **0,6977**, F1 Neutral **0,8032**. (Historical baseline checkpoint-792: 57,45% / Macro-F1 0,1444 akibat text leakage telah direvisi).
   - *4.5.2 Evaluasi Deteksi Sindiran:* **315 cuitan (9,28%)** memuat sindiran valid terverifikasi leksikal, sementara proksi afektif menangkap 56,60%.
   - *4.5.3 Interpretasi Triangulasi:* Sindiran merupakan sub-dimensi leksikal dari emosi Jijik (*Disgust*) — kedua instrumen konvergen membuktikan resistensi publik.
 - **4.6 Sintesis: Perspektif Marketing 6.0 dan Phygital Gap (Hal. 105):**
@@ -753,7 +758,7 @@ Hasil komputasional empiris yang diverifikasi secara matematis:
 1. **Single-Platform Boundary Bias (Platform X):** Korpus bertumpu pada X ($N=5.263$). *Mitigasi:* Bot filtering dan analisis 692 relasi aktif. *Agenda:* Agregasi multi-platform (TikTok, Facebook, Instagram).
 2. **Unimodalitas Teks (Text-Only NLP):** Belum mencakup Computer Vision (CV) atas foto piring makan riil. *Mitigasi:* Triangulasi ABSA tematik (Gizi, Anggaran, Logistik). *Agenda:* Arsitektur multimodal Vision-Language (CLIP/LLaVA).
 3. **Snapshot Horizon Temporal (Maret–Mei 2026):** Bersifat *cross-sectional* momentum krisis awal. *Mitigasi:* Pelacakan time-series harian mikro lonjakan viral. *Agenda:* Studi longitudinal berkala 12–24 bulan.
-4. **Satir Vernakular & Kompleksitas Budaya:** Gaya bahasa metafora daerah (*"sayur bening isi angin"*). *Mitigasi:* Korpus sindiran terverifikasi $N=3.395$, Macro F1 0.8122. *Agenda:* Reasoning pragmatik kultural berbasis LLM.
+4. **Satir Vernakular & Kompleksitas Budaya:** Gaya bahasa metafora daerah (*"sayur bening isi angin"*). *Mitigasi:* Korpus sindiran terverifikasi $N=3.395$ (9,28% sindiran valid), IndoBERT Macro F1 0.4535 pada holdout zero-leakage. *Agenda:* Reasoning pragmatik kultural berbasis LLM.
 5. **Sampling Representativeness (Rural 3T Bias):** Pengguna X cenderung kelas menengah perkotaan (*urban-skewed*). *Mitigasi:* Fokus proposisi pada tata kelola makro nasional & transparansi anggaran. *Agenda:* Riset hibrida survei tatap muka (*mixed-methods field survey*).
 
 
@@ -1210,7 +1215,7 @@ Repositori ini dirancang agar dapat direproduksi (*fully reproducible*) secara u
      - `@4Y4NKZ` (*Structural Broker*): Betweenness = **0.000016**, satu-satunya simpul jembatan langka yang menghubungkan klaster terfragmentasi.
      - `@prabowo` (*Target Pasif / Power Vacuum*): In-degree = **15**, Out-degree = **0**, menjadi muara keluhan publik tanpa dialog timbal-balik.
   5. **§4.5 Evaluasi Model IndoBERT & Deteksi Sindiran (Hal. 101):**
-     - Model IndoBERT mencapai **Akurasi 57,45%**, **Macro F1 = 0.8122**, dengan **Recall kelas Disgust mencapai 96,92%** (F1 = 0.7178).
+     - Model IndoBERT Protocol v2 (*GroupShuffleSplit holdout n=1.058*) mencapai **Akurasi 75,99%**, **Macro F1 = 0,4535**, **Weighted F1 = 0,7434**, dengan **F1 kelas Disgust mencapai 0,8202 (Recall 86,96%)**.
      - Deteksi leksikal memvalidasi **315 cuitan (9,28%)** sindiran valid dengan tingkat keyakinan tinggi.
   6. **§4.6 Sintesis Marketing 6.0 & Pembuktian Phygital Gap (Hal. 105):**
      - ABSA membuktikan penolakan terpusat pada aspek fisik di lapangan: *Logistik & Distribusi* (**78,91% Disgust**), *Anggaran & Vendor* (**77,01% Disgust**), dan *Kualitas Gizi Makanan* (**71,13% Disgust**).
