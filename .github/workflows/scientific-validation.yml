@@ -31,7 +31,7 @@ jobs:
       - name: Install Test Dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install pytest nltk
+          python -m pip install pytest nltk pandas numpy scikit-learn networkx torch transformers pyarrow
 
       - name: Download NLTK Stopwords
         run: python -m nltk.downloader stopwords
