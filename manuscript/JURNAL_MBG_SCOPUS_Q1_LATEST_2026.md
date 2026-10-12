@@ -117,7 +117,7 @@ This study adopts an explanatory-sequential mixed-method design grounded in Comp
 
 The overall methodological architecture is visualized in Figure 1.
 
-![Figure 1: Methodological and Analytical Architecture](/Users/jevin/.gemini/antigravity-ide/brain/4fdf5d8b-5254-426f-bba7-815c28948a5d/integrated_sna_nlp.png)
+![Figure 1: Methodological and Analytical Architecture](../results/integrated_sna_nlp.png)
 
 As demonstrated in Figure 1, the raw platform X data stream undergoes rigorous multi-stage preprocessing before branching simultaneously into the NLP emotion/sarcasm fine-tuning pipeline and the NetworkX graph engine. The convergence of these streams produces the empirical foundation for Aspect-Based Sentiment Analysis (ABSA) and the Marketing 6.0 phygital synthesis.
 
@@ -230,7 +230,7 @@ The mathematical extraction of graph metrics across the complete interaction cor
 
 Figure 6 visualizes the macro topological distributions, degree curves, and component characteristics.
 
-![Figure 6: Macro Network Topology and Power-Law Degree Distribution](/Users/jevin/.gemini/antigravity-ide/brain/4fdf5d8b-5254-426f-bba7-815c28948a5d/17_macro_topology_metrics.png)
+![Figure 6: Macro Network Topology and Power-Law Degree Distribution](../results/17_macro_topology_metrics.png)
 
 As evident in Figure 6, the empirical in-degree distribution conforms rigorously to a power-law regime with scaling exponent $\alpha = 2.168$. In the statistical physics of complex networks (Barabási & Albert, 1999; Clauset, Shalizi, & Newman, 2009), an exponent $2 < \alpha < 3$ indicates an ultra-resilient scale-free architecture wherein a microscopic fraction of nodes commands the overwhelming share of connectivity.
 
@@ -242,7 +242,7 @@ A defining discovery of this study is the extreme structural atomization of publ
 
 Figure 7 renders the global network layout utilizing the NodeXL force-directed algorithm.
 
-![Figure 7: Global Network Graph Visualization with Louvain Community Grouping](/Users/jevin/.gemini/antigravity-ide/brain/4fdf5d8b-5254-426f-bba7-815c28948a5d/16_nodexl_graph_visualization.png)
+![Figure 7: Global Network Graph Visualization with Louvain Community Grouping](../results/16_nodexl_graph_visualization.png)
 
 Figure 7 provides visual proof of this atomization:
 1. **The Isolated Periphery**: Of the 341 components, **232 components (68.03%) consist of isolated dyadic pairs** (two nodes connected by a single edge). A further 48 components consist of isolated triads (three nodes). These micro-conversations represent localized exchanges where citizens vent or comment without connecting to broader informational cascades.
@@ -255,9 +255,9 @@ Application of the Louvain community detection algorithm to the graph projection
 
 Figure 8 and Figure 10 illustrate the interaction dynamics, multi-community routing, and internal echo-chamber segregation.
 
-![Figure 8: Interaction Dynamics and Edge Routing Topology](/Users/jevin/.gemini/antigravity-ide/brain/4fdf5d8b-5254-426f-bba7-815c28948a5d/15_material3_network_interaction.png)
+![Figure 8: Interaction Dynamics and Edge Routing Topology](../results/15_material3_network_interaction.png)
 
-![Figure 10: Community Echo Chamber Polarization and Sarcasm Concentrations](/Users/jevin/.gemini/antigravity-ide/brain/4fdf5d8b-5254-426f-bba7-815c28948a5d/19_community_echo_chambers.png)
+![Figure 10: Community Echo Chamber Polarization and Sarcasm Concentrations](../results/19_community_echo_chambers.png)
 
 Quantitative calculation of intra- versus inter-community communication reveals a staggering disparity:
 - **Total Internal Edges**: 691 edges ($99.86\%$) connect nodes strictly within the same community.
@@ -284,7 +284,7 @@ A vital sociological pattern emerges in Table 2: **Community #15 is the only maj
 
 Centrality analysis provides rigorous mathematical insight into the actors steering the discourse. Figure 9 depicts the multi-panel actor centrality typology, contrasting in-degree against out-degree, mapping betweenness centrality, and distributing structural roles across the network.
 
-![Figure 9: Actor Centrality Typology - Betweenness vs In-Degree Distribution](/Users/jevin/.gemini/antigravity-ide/brain/4fdf5d8b-5254-426f-bba7-815c28948a5d/18_actor_centrality_typology.png)
+![Figure 9: Actor Centrality Typology - Betweenness vs In-Degree Distribution](../results/18_actor_centrality_typology.png)
 
 Table 3 enumerates the top fifteen central actors across the complete network.
 
@@ -331,7 +331,7 @@ Significantly, `@prabowo` achieves the second highest betweenness centrality in 
 
 To determine exactly which facets of the MBG program generated the most acute emotional toxicity, the corpus was classified across the three operational aspects. Figure 5 and Table 4 present the empirical distribution of sentiment and emotion.
 
-![Figure 5: Aspect-Based Sentiment Analysis Across Four Core Dimensions](/Users/jevin/.gemini/antigravity-ide/brain/4fdf5d8b-5254-426f-bba7-815c28948a5d/10_absa_thematic.png)
+![Figure 5: Aspect-Based Sentiment Analysis Across Four Core Dimensions](../results/10_absa_thematic.png)
 
 **Table 4: Aspect-Based Sentiment Decomposition across MBG Operational Dimensions**
 
@@ -348,7 +348,7 @@ Table 4 yields two critical findings:
 
 Figure 4 illustrates the global emotion distribution across the complete corpus, highlighting the marginality of positive affect.
 
-![Figure 4: Global Emotion Distribution across the Discourse Corpus](/Users/jevin/.gemini/antigravity-ide/brain/4fdf5d8b-5254-426f-bba7-815c28948a5d/emotion_distribution.png)
+![Figure 4: Global Emotion Distribution across the Discourse Corpus](../results/emotion_distribution.png)
 
 Trust ($7.14\%$ across aspects) is almost completely extinguished in the discourse. Even the highest recorded trust score—$8.85\%$ in Nutritional Quality—represents fewer than one in eleven citizens expressing confidence in the meals served.
 
@@ -367,7 +367,7 @@ As demonstrated in Table 4B, benchmark evaluation proves that while surface Toke
 
 To examine the lexical fabric of the discourse, word frequency matrices and semantic clouds were extracted following slang normalization and stopword removal. Figure 11 displays the word cloud of the corpus.
 
-![Figure 11: Lexical and Morphological Prominence in Public MBG Discourse](/Users/jevin/.gemini/antigravity-ide/brain/4fdf5d8b-5254-426f-bba7-815c28948a5d/wordcloud_mbg.png)
+![Figure 11: Lexical and Morphological Prominence in Public MBG Discourse](../results/wordcloud_mbg.png)
 
 Prominent terms dominating the lexical landscape include:
 - *anggaran* (budget), *triliun* (trillions), *pangkas* (slashed/cut), *fiskal* (fiscal)
