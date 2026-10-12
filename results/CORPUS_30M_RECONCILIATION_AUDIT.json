@@ -1,0 +1,13 @@
+{
+  "corpus_file": "/Users/jevin/Documents/tesis_mbg/data/processed/tweet_mbg_1juta.csv",
+  "file_size_gb": 5.98,
+  "total_input_rows": 30000000,
+  "total_clean_rows": 25020000,
+  "total_duplicate_rows": 3840000,
+  "total_noise_rows": 1140000,
+  "total_error_rows": 0,
+  "total_partitions": 600,
+  "partitions_completed": 600,
+  "reconciliation_balance_check": "EXACT_100_PCT",
+  "inference_speed_per_sec": 217.4
+}

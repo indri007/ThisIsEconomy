@@ -1,0 +1,93 @@
+[
+  {
+    "Error_Rate_Pct": 0.0,
+    "C0_Disgust_Pct_Mean": 68.48,
+    "C0_Disgust_Pct_Std": 2.22,
+    "C1_Trust_Pct_Mean": 51.69,
+    "C1_Trust_Pct_Std": 3.3,
+    "Polarization_Odds_Ratio_Mean": 245.75,
+    "Chi2_Statistic_Mean": 520.43,
+    "P_Value_Max": 1.1644512886797688e-95,
+    "Spearman_Rank_Stability": 0.9682,
+    "Hypothesis_Robustness_Pct": 100.0,
+    "Robustness_Verdict": "ROBUST (Sangat Kokoh)"
+  },
+  {
+    "Error_Rate_Pct": 5.0,
+    "C0_Disgust_Pct_Mean": 65.64,
+    "C0_Disgust_Pct_Std": 2.41,
+    "C1_Trust_Pct_Mean": 50.4,
+    "C1_Trust_Pct_Std": 2.88,
+    "Polarization_Odds_Ratio_Mean": 158.95,
+    "Chi2_Statistic_Mean": 478.21,
+    "P_Value_Max": 1.5011680974822773e-86,
+    "Spearman_Rank_Stability": 0.9576,
+    "Hypothesis_Robustness_Pct": 100.0,
+    "Robustness_Verdict": "ROBUST (Sangat Kokoh)"
+  },
+  {
+    "Error_Rate_Pct": 10.0,
+    "C0_Disgust_Pct_Mean": 63.11,
+    "C0_Disgust_Pct_Std": 2.7,
+    "C1_Trust_Pct_Mean": 48.11,
+    "C1_Trust_Pct_Std": 2.86,
+    "Polarization_Odds_Ratio_Mean": 87.94,
+    "Chi2_Statistic_Mean": 431.03,
+    "P_Value_Max": 1.2934969433786972e-75,
+    "Spearman_Rank_Stability": 0.9553,
+    "Hypothesis_Robustness_Pct": 100.0,
+    "Robustness_Verdict": "ROBUST (Sangat Kokoh)"
+  },
+  {
+    "Error_Rate_Pct": 15.0,
+    "C0_Disgust_Pct_Mean": 59.71,
+    "C0_Disgust_Pct_Std": 2.13,
+    "C1_Trust_Pct_Mean": 45.97,
+    "C1_Trust_Pct_Std": 2.83,
+    "Polarization_Odds_Ratio_Mean": 58.77,
+    "Chi2_Statistic_Mean": 393.99,
+    "P_Value_Max": 2.1309224249313455e-65,
+    "Spearman_Rank_Stability": 0.9435,
+    "Hypothesis_Robustness_Pct": 100.0,
+    "Robustness_Verdict": "ROBUST (Sangat Kokoh)"
+  },
+  {
+    "Error_Rate_Pct": 20.0,
+    "C0_Disgust_Pct_Mean": 57.39,
+    "C0_Disgust_Pct_Std": 2.58,
+    "C1_Trust_Pct_Mean": 43.43,
+    "C1_Trust_Pct_Std": 2.89,
+    "Polarization_Odds_Ratio_Mean": 44.22,
+    "Chi2_Statistic_Mean": 359.33,
+    "P_Value_Max": 8.65829789802678e-62,
+    "Spearman_Rank_Stability": 0.9131,
+    "Hypothesis_Robustness_Pct": 100.0,
+    "Robustness_Verdict": "ROBUST (Sangat Kokoh)"
+  },
+  {
+    "Error_Rate_Pct": 25.0,
+    "C0_Disgust_Pct_Mean": 53.53,
+    "C0_Disgust_Pct_Std": 2.62,
+    "C1_Trust_Pct_Mean": 42.07,
+    "C1_Trust_Pct_Std": 2.75,
+    "Polarization_Odds_Ratio_Mean": 36.06,
+    "Chi2_Statistic_Mean": 316.81,
+    "P_Value_Max": 1.2541451442858875e-51,
+    "Spearman_Rank_Stability": 0.9099,
+    "Hypothesis_Robustness_Pct": 100.0,
+    "Robustness_Verdict": "ROBUST (Sangat Kokoh)"
+  },
+  {
+    "Error_Rate_Pct": 30.0,
+    "C0_Disgust_Pct_Mean": 50.92,
+    "C0_Disgust_Pct_Std": 2.43,
+    "C1_Trust_Pct_Mean": 39.51,
+    "C1_Trust_Pct_Std": 3.24,
+    "Polarization_Odds_Ratio_Mean": 26.88,
+    "Chi2_Statistic_Mean": 287.89,
+    "P_Value_Max": 5.463299862439087e-44,
+    "Spearman_Rank_Stability": 0.8933,
+    "Hypothesis_Robustness_Pct": 100.0,
+    "Robustness_Verdict": "ROBUST (Sangat Kokoh)"
+  }
+]
