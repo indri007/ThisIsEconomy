@@ -1,17 +1,56 @@
-RESEARCHER ANNOTATION INSTRUCTIONS
-===================================
-File: researcher_batch_100.csv
-Task: Verify 100 MBG tweet emotion labels
+PEDOMAN ANOTASI EMOSI 9 KELAS (CODEBOOK ANOTASI MANUSIA)
+============================================================
+Proyek: Analisis Afektif Wacana Makan Bergizi Gratis (MBG)
+Kerangka Teori: Roda Emosi Robert Plutchik (1980) + Baseline Komputasional
+Taksonomi: 9 Kategori Mutlak (8 Emosi Polar Plutchik + 1 Netral Faktual)
 
-1. Read each tweet in the 'text' column.
-2. Fill 'researcher_label' with ONE of:
-   Jijik | Marah | Netral | Percaya | Sedih | Takut | Tertarik
-3. Fill 'confidence_1to5' with: 1 (unsure) to 5 (certain)
-4. Optionally add notes.
-5. Save as: researcher_batch_100_FILLED.csv
+A. DEFINISI DAN ATURAN 9 KELAS EMOSI
+------------------------------------------------------------
+1. Bahagia (Joy) [Dyad Lawan: Sedih]
+   - Definisi: Afek positif kepuasan, kegembiraan, rasa syukur, dan kenikmatan.
+   - Indikator MBG: Ungkapan rasa syukur anak/ortu, pujian menu lezat, senyum siswa menikmati santapan, "alhamdulillah kenyang", "enak banget".
+   - Pengecualian: Pujian semu bernada sarkasme ("enak banget ya korupsinya 🤡") DIKLASIFIKASIKAN SEBAGAI Jijik/Marah, BUKAN Bahagia.
 
-After filling, run:
-  python scripts/score_100_pipeline.py --compute-researcher-kappa
+2. Sedih (Sadness) [Dyad Lawan: Bahagia]
+   - Definisi: Afek duka, kepedihan, rasa iba, dan keprihatinan mendalam atas penderitaan atau kehilangan.
+   - Indikator MBG: Murid kelaparan di pelosok, jatah makanan minim/tidak layak, anak membungkus makanan untuk adik di rumah, rasa pilu atas ketimpangan.
+   - Pengecualian: Keluhan sinis tanpa rasa duka mendalam masuk ke Jijik.
 
-This computes Cohen's κ between your labels and the model's labels.
-Target: κ ≥ 0.60 (Substantial agreement)
+3. Percaya (Trust) [Dyad Lawan: Jijik]
+   - Definisi: Afek penerimaan, optimisme, keyakinan, dan dukungan terhadap kebaikan niat/sistem.
+   - Indikator MBG: Optimisme terhadap dampak gizi generasi emas, keyakinan perputaran ekonomi lokal, dukungan terhadap BGN/SPPG, apresiasi kebijakan.
+   - Pengecualian: Berita resmi tanpa kata evaluatif masuk ke Netral.
+
+4. Jijik (Disgust) [Dyad Lawan: Percaya]
+   - Definisi: Penolakan afektif terhadap stimulus yang kotor, beracun, atau pelanggaran moral (Moral Disgust).
+   - Indikator MBG: Makanan basi, berulat, berlendir, bau tengik, cemoohan terhadap manipulasi anggaran, sinisme dan sarkasme politik.
+
+5. Takut (Fear) [Dyad Lawan: Marah]
+   - Definisi: Reaksi antisipatif terhadap ancaman bahaya fisik, kesehatan, atau kerugian nyata.
+   - Indikator MBG: Kekhawatiran keracunan massal, cemas bakteri/higienitas dapur katering, was-was alergi siswa, ketakutan defisit fiskal negara.
+
+6. Marah (Anger) [Dyad Lawan: Takut]
+   - Definisi: Reaksi agresif atas perlakuan tidak adil, frustrasi moral, atau penyelewengan.
+   - Indikator MBG: Amarah terhadap oknum penyunat dana makanan anak, kecaman keras terhadap vendor nakal, tuntutan pidana terhadap penyeleweng anggaran.
+
+7. Tertarik (Anticipation / Interest) [Dyad Lawan: Kaget]
+   - Definisi: Eksplorasi kognitif yang berorientasi ke depan (Plutchik, 1980; Izard, 1977), keingintahuan, dan penantian proaktif.
+   - Indikator MBG: Penasaran jadwal menu minggu depan, antusiasme menunggu uji coba di sekolah, pertanyaan mengenai tata cara tender katering lokal.
+   - Pembenaran Teoretis: Bukan emosi dasar spontan biologis, melainkan adaptasi psikologis rasa ingin tahu dalam wacana kebijakan publik.
+
+8. Kaget (Surprise) [Dyad Lawan: Tertarik]
+   - Definisi: Reaksi keterkejutan spontan atas kejadian yang tidak terduga, melenceng drastis dari ekspektasi awal.
+   - Indikator MBG: Temuan puntung rokok dalam lauk, keterkejutan atas perubahan porsi mendadak, "astaga shock banget liat beritanya".
+
+9. Netral (Neutral Baseline) [Baseline Non-Afektif]
+   - Definisi: Pernyataan objektif, faktual, informatif tanpa orientasi emosional afektif.
+   - Indikator MBG: Rilis statistik BGN, jadwal operasional SPPG, kutipan pasal juknis, berita media jurnalistik langsung ("Kemenkeu anggarkan 71T").
+   - Pembenaran Teoretis: Keharusan operasional linguistik komputasional agar teks faktual tidak dipaksa masuk ke kutub emosi ekstrem.
+
+B. PROTOKOL ANOTASI GANDA & PENYELESAIAN SENGKETA (ADJUDIKASI)
+------------------------------------------------------------
+1. Anotator 1 (Pakar Komunikasi Politik) dan Anotator 2 (Pakar Linguistik Korpus) menilai secara independen tanpa saling berkonsultasi.
+2. Setiap cuitan dinilai berdasarkan teks lengkap dan konteks diskursus MBG.
+3. Kasus ketidaksepakatan (dispute) dicatat dan didiskusikan dalam sesi adjudikasi untuk menetapkan 'consensus_gold' beserta rasionalisasi adjudikasi.
+4. Ukuran kesepakatan antar-penilai dihitung menggunakan Cohen's Kappa (κ), Fleiss' Kappa, dan Krippendorff's Alpha (α nominal).
+Target Ilmiah: Cohen's κ ≥ 0.80 (Almost Perfect Agreement).

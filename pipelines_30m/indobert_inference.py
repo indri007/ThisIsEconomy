@@ -27,13 +27,21 @@ LOCAL_BEST_MODEL = REPO_ROOT / "results" / "indobert_group_aware_v2" / "best_mod
 EXTERNAL_BEST_MODEL = Path("/Users/jevin/Documents/tesis_mbg/results/indobert_group_aware_v2/best_model")
 
 def resolve_model_path():
+    """Menemukan lokasi checkpoint model fine-tuned. Menolak keras fallback ke base model."""
     if (LOCAL_BEST_MODEL / "model.safetensors").exists() or (LOCAL_BEST_MODEL / "pytorch_model.bin").exists():
         return str(LOCAL_BEST_MODEL)
     if (EXTERNAL_BEST_MODEL / "model.safetensors").exists() or (EXTERNAL_BEST_MODEL / "pytorch_model.bin").exists():
         return str(EXTERNAL_BEST_MODEL)
-    return "indobenchmark/indobert-base-p2"
+    raise FileNotFoundError(
+        "FATAL: Checkpoint IndoBERT fine-tuned tidak ditemukan di "
+        f"'{LOCAL_BEST_MODEL}' maupun '{EXTERNAL_BEST_MODEL}'. "
+        "Sistem menolak keras fallback ke model dasar (base untrained) untuk mencegah prediksi emosi palsu."
+    )
 
-DEFAULT_MODEL_PATH = resolve_model_path()
+try:
+    DEFAULT_MODEL_PATH = resolve_model_path()
+except FileNotFoundError:
+    DEFAULT_MODEL_PATH = str(LOCAL_BEST_MODEL)
 
 # Konfigurasi Berkas Input/Output Default Skala 30 Juta
 DATA_OUTPUT_DIR = Path("/Users/jevin/Documents/tesis_mbg/data/processed/clean_30m_output")
@@ -104,7 +112,13 @@ def run_indobert_pipeline(
     else:
         label_map = FALLBACK_LABEL_MAP
 
-    print("✅ Model IndoBERT fine-tuned berhasil dimuat!")
+    if model.num_labels != 9:
+        raise ValueError(
+            f"FATAL: Model memiliki {model.num_labels} output kelas, "
+            f"tetapi taksonomi Plutchik MBG mensyaratkan tepat 9 kelas (8 polar + Netral)!"
+        )
+
+    print("✅ Model IndoBERT fine-tuned 9-kelas berhasil diverifikasi dan dimuat!")
     print(f"   Taksonomi Emosi: {label_map}")
 
     # 2. Membaca Data

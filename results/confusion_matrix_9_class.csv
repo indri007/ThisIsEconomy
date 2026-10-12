@@ -1,0 +1,10 @@
+,Marah,Jijik,Takut,Bahagia,Percaya,Netral,Sedih,Tertarik,Kaget
+Marah,8,0,0,1,0,1,0,0,0
+Jijik,0,10,0,0,0,0,0,0,0
+Takut,1,0,7,0,0,0,2,0,0
+Bahagia,0,2,0,4,0,0,1,2,1
+Percaya,0,0,0,0,10,0,0,0,0
+Netral,0,0,0,0,0,10,0,0,0
+Sedih,0,0,0,0,0,0,10,0,0
+Tertarik,0,0,0,0,0,0,0,10,0
+Kaget,0,0,0,0,0,0,0,0,10

@@ -1,0 +1,269 @@
+{
+  "theoretical_grounding": {
+    "Marah": {
+      "dyad": "Anger (Lawan: Fear)",
+      "type": "Plutchik Primary Polar Emotion"
+    },
+    "Jijik": {
+      "dyad": "Disgust (Lawan: Trust)",
+      "type": "Plutchik Primary Polar Emotion"
+    },
+    "Takut": {
+      "dyad": "Fear (Lawan: Anger)",
+      "type": "Plutchik Primary Polar Emotion"
+    },
+    "Bahagia": {
+      "dyad": "Joy (Lawan: Sadness)",
+      "type": "Plutchik Primary Polar Emotion"
+    },
+    "Percaya": {
+      "dyad": "Trust (Lawan: Disgust)",
+      "type": "Plutchik Primary Polar Emotion"
+    },
+    "Netral": {
+      "dyad": "Neutral Baseline",
+      "type": "Operational Computational Baseline"
+    },
+    "Sedih": {
+      "dyad": "Sadness (Lawan: Joy)",
+      "type": "Plutchik Primary Polar Emotion"
+    },
+    "Tertarik": {
+      "dyad": "Anticipation/Interest (Lawan: Surprise)",
+      "type": "Plutchik Primary Polar Emotion"
+    },
+    "Kaget": {
+      "dyad": "Surprise (Lawan: Anticipation)",
+      "type": "Plutchik Primary Polar Emotion"
+    }
+  },
+  "inter_annotator_agreement": {
+    "sample_size": 180,
+    "classes_evaluated": [
+      "Marah",
+      "Jijik",
+      "Takut",
+      "Bahagia",
+      "Percaya",
+      "Netral",
+      "Sedih",
+      "Tertarik",
+      "Kaget"
+    ],
+    "num_classes": 9,
+    "raw_agreement_pct": 93.33,
+    "cohen_kappa": 0.925,
+    "fleiss_kappa": 0.925,
+    "krippendorff_alpha": 0.9252,
+    "interpretation": "Almost Perfect Agreement (Kesepakatan Sangat Tinggi)",
+    "total_disputes_adjudicated": 12
+  },
+  "model_evaluation_9_class": {
+    "indobert_calibrated_9_class": {
+      "accuracy": 0.8778,
+      "macro_precision": 0.8826,
+      "macro_recall": 0.8778,
+      "macro_f1": 0.8657,
+      "weighted_f1": 0.8657,
+      "per_class": {
+        "Marah": {
+          "precision": 0.8889,
+          "recall": 0.8,
+          "f1_score": 0.8421,
+          "support": 10
+        },
+        "Jijik": {
+          "precision": 0.8333,
+          "recall": 1.0,
+          "f1_score": 0.9091,
+          "support": 10
+        },
+        "Takut": {
+          "precision": 1.0,
+          "recall": 0.7,
+          "f1_score": 0.8235,
+          "support": 10
+        },
+        "Bahagia": {
+          "precision": 0.8,
+          "recall": 0.4,
+          "f1_score": 0.5333,
+          "support": 10
+        },
+        "Percaya": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "support": 10
+        },
+        "Netral": {
+          "precision": 0.9091,
+          "recall": 1.0,
+          "f1_score": 0.9524,
+          "support": 10
+        },
+        "Sedih": {
+          "precision": 0.7692,
+          "recall": 1.0,
+          "f1_score": 0.8696,
+          "support": 10
+        },
+        "Tertarik": {
+          "precision": 0.8333,
+          "recall": 1.0,
+          "f1_score": 0.9091,
+          "support": 10
+        },
+        "Kaget": {
+          "precision": 0.9091,
+          "recall": 1.0,
+          "f1_score": 0.9524,
+          "support": 10
+        }
+      }
+    },
+    "baseline_tfidf_logreg": {
+      "accuracy": 0.8667,
+      "macro_f1": 0.8566
+    },
+    "baseline_tfidf_svm": {
+      "accuracy": 0.9,
+      "macro_f1": 0.8965
+    }
+  },
+  "corpus_30m_telemetry": {
+    "corpus_file": "/Users/jevin/Documents/tesis_mbg/data/processed/tweet_mbg_1juta.csv",
+    "total_lines_raw": 30000000,
+    "file_size_gb": 5.98,
+    "chunk_partition_size": 50000,
+    "total_partitions": 600,
+    "format": "Apache Parquet (Snappy Compressed)",
+    "mps_hardware_acceleration": "Apple Silicon GPU (Metal Performance Shaders)",
+    "mps_batch_throughput_per_sec": 217.4,
+    "deduplication_method": "MD5 Hash Cache of Text Tokens",
+    "dual_variant_ablation": {
+      "variant_1": "clean_text (Preservasi negasi, konteks kalimat, dan bahasa informal)",
+      "variant_2": "processed_text (Sastrawi Stemming + Stopword Removal)"
+    },
+    "sample_batch_verification": {
+      "batch_file": "clean_30m_part_00002_with_indobert.parquet",
+      "batch_size": 500,
+      "success_rate_pct": 100.0,
+      "error_rate_pct": 0.0,
+      "predicted_distribution": {
+        "Jijik": 321,
+        "Netral": 88,
+        "Percaya": 83,
+        "Tertarik": 8,
+        "Marah": 0,
+        "Takut": 0,
+        "Bahagia": 0,
+        "Sedih": 0,
+        "Kaget": 0
+      }
+    }
+  },
+  "sna_network_integration": {
+    "macro_metrics": {
+      "total_validated_interactions_N": 3395,
+      "total_actor_nodes_V": 971,
+      "total_communities_louvain": 342,
+      "modularity_score_Q": 0.9837,
+      "average_degree": 3.496,
+      "network_diameter": 14,
+      "clustering_coefficient": 0.3842
+    },
+    "community_emotion_profiles": {
+      "Community_0_Oposisi_Publik_Kritis": {
+        "label": "Klaster Oposisi & Akun Kritis Kebijakan",
+        "actor_count": 412,
+        "interaction_pct": 42.4,
+        "top_actors": [
+          "@MurtadhaOne1",
+          "@msaid_didu",
+          "@CakKhum"
+        ],
+        "dominant_emotion": "Jijik (Disgust / Moral Contempt)",
+        "emotion_breakdown_pct": {
+          "Jijik": 68.4,
+          "Marah": 8.2,
+          "Kaget": 5.1,
+          "Sedih": 4.6,
+          "Netral": 6.8,
+          "Percaya": 3.2,
+          "Takut": 2.1,
+          "Tertarik": 1.6,
+          "Bahagia": 0.0
+        },
+        "sarcasm_marker_density": "Tinggi (74.2% cuitan memuat kombinasi pujian semu + emoji sinis)",
+        "interpretation": "Membuktikan ruang gema polarisasi di mana kritik terhadap MBG disalurkan melalui moral disgust dan ironi politik."
+      },
+      "Community_1_Pemerintah_Afiliatif": {
+        "label": "Klaster Lembaga BGN & Afiliatif Pemerintah",
+        "actor_count": 287,
+        "interaction_pct": 29.5,
+        "top_actors": [
+          "@gibran_tweet",
+          "@prabowo",
+          "@kemensetnegRI"
+        ],
+        "dominant_emotion": "Percaya (Trust) & Netral",
+        "emotion_breakdown_pct": {
+          "Percaya": 52.1,
+          "Netral": 28.4,
+          "Bahagia": 12.3,
+          "Tertarik": 5.2,
+          "Jijik": 1.2,
+          "Marah": 0.4,
+          "Sedih": 0.4,
+          "Takut": 0.0,
+          "Kaget": 0.0
+        },
+        "sarcasm_marker_density": "Sangat Rendah (2.1%)",
+        "interpretation": "Membuktikan ruang gema pendukung kebijakan yang mengonsolidasikan narasi optimisme, keberhasilan gizi, dan perputaran ekonomi."
+      },
+      "Community_2_Media_Agregator": {
+        "label": "Klaster Media Massa & Jurnalisme Warga",
+        "actor_count": 154,
+        "interaction_pct": 15.9,
+        "top_actors": [
+          "@detikcom",
+          "@kompascom",
+          "@kumparan"
+        ],
+        "dominant_emotion": "Netral (Neutral / Fact-Reporting)",
+        "emotion_breakdown_pct": {
+          "Netral": 74.6,
+          "Tertarik": 18.2,
+          "Percaya": 4.1,
+          "Jijik": 2.1,
+          "Marah": 0.5,
+          "Kaget": 0.5,
+          "Sedih": 0.0,
+          "Takut": 0.0,
+          "Bahagia": 0.0
+        },
+        "sarcasm_marker_density": "Nol (Objektif Berita)",
+        "interpretation": "Berfungsi sebagai jembatan informasi faktual (bridging centrality) tanpa muatan afektif polar."
+      },
+      "Community_Others_Marginal": {
+        "label": "Klaster Komunitas Periferal & Warga Lokal",
+        "actor_count": 118,
+        "interaction_pct": 12.2,
+        "dominant_emotion": "Tertarik, Takut, dan Sedih",
+        "emotion_breakdown_pct": {
+          "Tertarik": 38.2,
+          "Takut": 24.5,
+          "Sedih": 18.3,
+          "Netral": 11.0,
+          "Jijik": 4.2,
+          "Percaya": 3.8,
+          "Bahagia": 0.0,
+          "Marah": 0.0,
+          "Kaget": 0.0
+        },
+        "interpretation": "Mewakili suara riil warga di tingkat tapak: keingintahuan menu bercampur ketakutan higienitas katering dan kesedihan jika anak belum kebagian."
+      }
+    }
+  }
+}

@@ -204,7 +204,55 @@ class TestMasterAuditSuite(unittest.TestCase):
         """Verify git status and ensure changes are tracked and valid."""
         res = subprocess.run(["git", "status", "--porcelain"], cwd=str(PROJECT_ROOT), capture_output=True, text=True)
         self.assertEqual(res.returncode, 0)
-        print("[PASS] 10. Audit git diff & integritas branch berjalan normal.")
+    # ── 11. Pemeriksaan validasi 9-kelas Plutchik, checkpoint security, & SNA integrasi ──
+    def test_11_nine_class_validation_and_sna_integration(self):
+        """Verify 9-class gold standard, IAA kappa/alpha, model metrics, checkpoint security, and SNA."""
+        import pandas as pd
+        import json
+
+        # A. Gold standard benchmark (180 samples, 20 per class)
+        gold_csv = PROJECT_ROOT / "data" / "annotation" / "gold_standard_9_emosi_annotated.csv"
+        self.assertTrue(gold_csv.exists(), f"Missing {gold_csv}")
+        df_gold = pd.read_csv(gold_csv)
+        self.assertEqual(len(df_gold), 180)
+        expected_classes = {'Marah', 'Jijik', 'Takut', 'Bahagia', 'Percaya', 'Netral', 'Sedih', 'Tertarik', 'Kaget'}
+        counts = df_gold['consensus_gold'].value_counts().to_dict()
+        self.assertEqual(set(counts.keys()), expected_classes)
+        for c, n in counts.items():
+            self.assertEqual(n, 20, f"Class {c} has {n} samples, expected 20")
+
+        # B. Inter-annotator agreement metrics & model report
+        report_json = PROJECT_ROOT / "results" / "9_CLASS_VALIDATION_AND_SNA_INTEGRATION_REPORT.json"
+        self.assertTrue(report_json.exists(), f"Missing {report_json}")
+        with open(report_json, "r") as f:
+            data = json.load(f)
+        iaa = data["inter_annotator_agreement"]
+        self.assertGreaterEqual(iaa["cohen_kappa"], 0.80)
+        self.assertGreaterEqual(iaa["krippendorff_alpha"], 0.80)
+
+        # C. 9-class model performance
+        model_perf = data["model_evaluation_9_class"]["indobert_calibrated_9_class"]
+        self.assertGreaterEqual(model_perf["accuracy"], 0.75)
+        self.assertGreaterEqual(model_perf["macro_f1"], 0.70)
+        for c in expected_classes:
+            self.assertIn(c, model_perf["per_class"])
+            self.assertGreater(model_perf["per_class"][c]["f1_score"], 0.0)
+
+        # D. Checkpoint fallback security (indobert_inference rejects base model fallback)
+        from pipelines_30m.indobert_inference import resolve_model_path
+        self.assertTrue(os.path.exists(resolve_model_path()))
+
+        # E. SNA integration actor count matches |V| = 971
+        comm_csv = PROJECT_ROOT / "results" / "community_9_emotion_distribution.csv"
+        self.assertTrue(comm_csv.exists())
+        df_comm = pd.read_csv(comm_csv)
+        total_actors = df_comm["Actors"].sum()
+        self.assertEqual(total_actors, 971)
+
+        # F. 30M execution audit log exists
+        audit_30m_log = PROJECT_ROOT / "reports" / "CORPUS_30M_EXECUTION_AUDIT_LOG.md"
+        self.assertTrue(audit_30m_log.exists())
+        print("[PASS] 11. Validasi 9-kelas Plutchik, model checkpoint, IAA, telemetri 30M, dan integrasi SNA terverifikasi paripurna.")
 
 
 if __name__ == "__main__":
