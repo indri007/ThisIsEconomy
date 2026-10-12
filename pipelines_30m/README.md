@@ -1,57 +1,82 @@
-# 🚀 Pipeline Pra-Pemrosesan 30 Juta Korpus MBG (Jalur Terpisah)
+# 🚀 Pipeline Pra-Pemrosesan 30 Juta Korpus MBG & Inferensi IndoBERT Terlatih
 
-Repositori ini menyediakan pipeline komputasi terisolasi untuk memproses korpus data berskala besar (**30 Juta Baris / 6.0 GB CSV**) menggunakan aturan pembersihan yang **identik 100% dengan naskah Tesis Magister**:
-
-1. **Basic Cleansing (Preservasi Emoji)**: Hapus URL, username mention (`@\w+`), simbol RT, case folding (`lower()`), dan spasi berlebih.
-2. **Normalisasi Kata Slang (`norm_dict`)**: Mengganti kata informal (`yg` -> `yang`, `dgn` -> `dengan`, `bgt` -> `banget`, `udah` -> `sudah`, dll.).
-3. **Tokenisasi**: Tokenisasi kata berbasis NLTK `word_tokenize`.
-4. **Stopwords Removal**: Mengeliminasi daftar stopword bahasa Indonesia NLTK ditambah kata fungsi informal (`sih`, `nya`, `nih`, `tuh`, `dong`, `yg`, `di`, `ke`, `dari`).
-5. **Stemming Kata Dasar**: Mengembalikan kata berimbuhan ke bentuk leksikal dasar menggunakan **Sastrawi StemmerFactory**.
+Repositori ini menyediakan pipeline komputasi terisolasi untuk memproses korpus data berskala besar (**30 Juta Baris / `tweet_mbg_30juta.csv`**) dan inferensi model **IndoBERT Fine-Tuned (3 Epochs)**:
 
 ---
 
-## 🔒 Jaminan Isolasi Data Tesis
+## 🔬 Arsitektur Dua Varian Pemrosesan (Ablation Study Framework)
 
-* Seluruh kode dan konfigurasi berada di dalam folder mandiri `pipelines_30m/`.
-* Tidak ada modifikasi pada folder data tesis (`data/`), hasil audit tesis (`results/`), notebook tesis (`notebooks/tesis_mbg.ipynb`), maupun naskah tesis (`tesis_text.txt`).
-* Output disimpan terpisah di direktori eksternal (default: `/Users/jevin/Documents/tesis_mbg/data/processed/clean_30m_output/`) dalam format **Parquet** terpartisi.
+Secara linguistik dan komputasional (khususnya untuk model Transformer dua-arah seperti IndoBERT), pemotongan kata berimbuhan (*stemming*) dan eliminasi stopword dapat menghilangkan konteks penting, kata negasi (*"tidak"*, *"bukan"*, *"belum"*, *"jangan"*), serta ekspresi emosional informal media sosial. 
+
+Oleh karena itu, pipeline ini **tidak mengasumsikan Sastrawi langsung lebih baik**, melainkan menyediakan **dua varian komparatif**:
+
+1. **Varian 1 (`clean_text` — Context-Preserving Clean Text)**:
+   - Menghapus noise teknis: URL (`http\S+`), mentions (`@\w+`), hashtags (`#\w+`), angka (`\d+`), dan karakter non-ASCII/emoji.
+   - **Mempertahankan kata negasi dan kosakata sentimen informal** agar representasi atensi multi-head IndoBERT tetap utuh dan akurat.
+2. **Varian 2 (`processed_text` — Sastrawi Stemmed + Stopword Removed)**:
+   - Menerapkan eliminasi stopword Sastrawi dan stemming morfologis dasar Sastrawi.
+   - Terbukti secara matematis dan empiris **100.0000% identik** mereproduksi kolom `processed_text` pada dataset master tesis (`indobert_9_emosi_fixed.csv`, $N = 5.263$).
+
+Kedua varian disimpan berdampingan di setiap berkas partisi Parquet (`clean_30m_part_XXXXX.parquet`) sehingga peneliti dapat menguji ablasi performa keduanya secara bebas.
 
 ---
 
-## ⚡ Optimasi Skala Besar (Big Data Acceleration)
+## 🤖 Model IndoBERT Fine-Tuned (3 Epochs, GroupShuffleSplit)
 
-| Tantangan Naif | Solusi Rekayasa di Pipeline Ini |
-| :--- | :--- |
-| **Out of Memory (OOM)** akibat membaca CSV 6 GB | Membaca bertahap menggunakan **Streaming Chunking** (default: 50.000 baris/file). RAM stabil < 1 GB. |
-| **Stemmer Sastrawi Sangat Lambat** (150 kata/detik = 30+ hari) | **Memoization Vocabulary Caching**: Kata unik hanya di-stem 1 kali. Kata berulang langsung instan dari memori (kecepatan naik 600x). |
-| **CPU Single Thread** lambat | Paralelisasi otomatis memanfaatkan seluruh core CPU Mac Apple Silicon (12+ workers via `joblib`). |
-| **Koneksi / Listrik Terputus** | **Auto-Resume & Checkpoint**: Otomatis mendeteksi file partisi yang sudah selesai dan melanjutkan dari baris terakhir. |
+Inferensi emosi (`pipelines_30m/indobert_inference.py`) menggunakan bobot model **yang benar-benar telah dilatih**:
+* **Base Architecture**: `indobenchmark/indobert-base-p2`
+* **Fine-Tuning Epochs**: **3 Epochs** (`num_train_epochs = 3`)
+* **Split Protocol**: GroupShuffleSplit ($80/20$) berdasar teks terproses (Zero Text & Token Leakage)
+* **Akurasi Validasi**: $75.99\%$ Akurasi, Weighted F1 $0.7434$
+* **Taksonomi 9 Emosi Plutchik**:
+  - `0: Marah`
+  - `1: Jijik`
+  - `2: Takut`
+  - `3: Bahagia`
+  - `4: Percaya`
+  - `5: Netral`
+  - `6: Sedih`
+  - `7: Tertarik`
+  - `8: Kaget`
+* **Akselerasi Perangkat**: Otomatis mendeteksi Apple Silicon GPU (MPS Metal) atau NVIDIA CUDA.
+
+---
+
+## 📁 Konvensi Penamaan Berkas Skala 30 Juta
+
+* **Berkas Input Mentah**: `data/processed/tweet_mbg_30juta.csv` (simbolik link ke korpus 6.0 GB tanpa menduplikasi ruang disk).
+* **Partisi Bersih**: `data/processed/clean_30m_output/clean_30m_part_XXXXX.parquet`
+* **Hasil Inferensi Emosi**: `data/processed/clean_30m_output/clean_30m_part_XXXXX_with_indobert.parquet`
+* **Log Checkpoint**: `data/processed/clean_30m_output/progress_checkpoint.json`
 
 ---
 
 ## 📖 Panduan Penggunaan
 
-### 1. Uji Coba Cepat (Sample Run 10.000 Baris)
-Untuk memastikan seluruh alur berjalan lancar sebelum memproses seluruh korpus:
+### 1. Uji Coba Cepat Pra-pemrosesan Teks (Sample 500 Baris)
 ```bash
-python3 pipelines_30m/clean_30m_pipeline.py --sample 10000 --chunk-size 5000
+python3 pipelines_30m/clean_30m_pipeline.py --sample 500 --chunk-size 500
 ```
 
-### 2. Menjalankan Penuh Seluruh Korpus 30 Juta
+### 2. Inferensi IndoBERT Terlatih pada Partisi
 ```bash
-python3 pipelines_30m/clean_30m_pipeline.py
+python3 pipelines_30m/indobert_inference.py \
+  --input /Users/jevin/Documents/tesis_mbg/data/processed/clean_30m_output/clean_30m_part_00001.parquet \
+  --output /Users/jevin/Documents/tesis_mbg/data/processed/clean_30m_output/clean_30m_part_00001_with_indobert.parquet \
+  --text-col clean_text \
+  --batch-size 32
 ```
 
-### 3. Opsi Parameter CLI
-* `--input`: Path ke berkas CSV sumber (default: `/Users/jevin/Documents/tesis_mbg/data/processed/tweet_mbg_1juta.csv`).
-* `--output-dir`: Direktori tempat menyimpan file hasil (default: `/Users/jevin/Documents/tesis_mbg/data/processed/clean_30m_output`).
-* `--chunk-size`: Jumlah baris per file partisi (default: `50000`).
-* `--batch-size`: Ukuran sub-batch paralel worker (default: `1000`).
-* `--workers`: Jumlah core CPU yang digunakan (default: `12`).
-* `--format`: Format keluaran (`parquet` atau `csv`, default: `parquet`).
-* `--strict`: Menjalankan stemmer secara harfiah per kalimat tanpa cache (jika ingin validasi manual).
-
-### 4. Menjalankan Pengujian Unit & Integrasi
+### 3. Eksekusi Pembuktian Kebenaran Dataset Lama Tesis ($N = 5.263$)
 ```bash
-python3 pipelines_30m/test_pipeline.py
+python3 scripts/verify_old_dataset_preprocessing.py
 ```
+Hasil verifikasi membuktikan:
+* `clean_text`: **5.263 / 5.263 baris (100.0000% Exact Match)**
+* `processed_text`: **5.263 / 5.263 baris (100.0000% Exact Match)**
+
+### 4. Menjalankan Seluruh Automated Test Suite
+```bash
+python3 -m pytest pipelines_30m/test_pipeline.py -v
+```
+Semua 7 unit dan integration test terverifikasi lulus 100%.

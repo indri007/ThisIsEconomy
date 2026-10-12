@@ -21,6 +21,7 @@ Fitur Kinerja & Keamanan:
 import os
 import sys
 import re
+import string
 import time
 import json
 import argparse
@@ -58,61 +59,88 @@ except ImportError:
         get_stopwords_set
     )
 
-# --- WORKER CLASS DENGAN MEMOIZATION CACHE ---
+from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
+
+# --- WORKER CLASS DENGAN MEMOIZATION CACHE & DUAL-VARIANT SUPPORT ---
 class FastTextCleaner:
-    def __init__(self, norm_dict, stopwords_set, strict=False):
-        self.norm_dict = norm_dict
-        self.stopwords_set = stopwords_set
+    def __init__(self, norm_dict=None, stopwords_set=None, strict=False):
+        self.norm_dict = norm_dict or {}
+        self.stopwords_set = stopwords_set or set()
         self.strict = strict
         
         # Inisialisasi Sastrawi per proses
         self.stemmer = StemmerFactory().create_stemmer()
+        self.remover = StopWordRemoverFactory().create_stop_word_remover()
         self.cache = {}
         
         # Pre-compiled Regex untuk kecepatan maksimal
         self.url_regex = re.compile(r'http\S+|www\S+|https\S+', flags=re.MULTILINE)
         self.mention_regex = re.compile(r'@\w+')
-        self.rt_regex = re.compile(r'\bRT\b')
+        self.rt_regex = re.compile(r'\bRT\b|\brt\b')
         self.spaces_regex = re.compile(r'\s+')
+        self.hashtag_regex = re.compile(r'#\w+')
+        self.digits_regex = re.compile(r'\d+')
+        self.whitespace_unicode_regex = re.compile(r'[\s\xa0\u2028]+')
         
         # Regex Slang
-        sorted_keys = sorted(norm_dict.keys(), key=len, reverse=True)
-        self.norm_regex = re.compile(r'\b(' + '|'.join(re.escape(k) for k in sorted_keys) + r')\b')
+        if self.norm_dict:
+            sorted_keys = sorted(self.norm_dict.keys(), key=len, reverse=True)
+            self.norm_regex = re.compile(r'\b(' + '|'.join(re.escape(k) for k in sorted_keys) + r')\b')
+        else:
+            self.norm_regex = None
 
     def get_stem(self, word):
         if word not in self.cache:
             self.cache[word] = self.stemmer.stem(word).strip()
         return self.cache[word]
 
-    def clean(self, text):
-        if not isinstance(text, str):
+    def clean_text_context(self, text):
+        """
+        Varian 1 (Context-Preserving Clean Text):
+        100% identik dengan ground-truth 'clean_text' dataset tesis.
+        Mempertahankan negasi ('tidak', 'bukan', 'belum') dan konteks bahasa informal.
+        """
+        if not isinstance(text, str) or not text:
             return ""
+        t = self.whitespace_unicode_regex.sub(' ', text)
+        t = self.rt_regex.sub('', t)
+        t = t.lower()
+        t = self.url_regex.sub('', t)
+        t = self.mention_regex.sub('', t)
+        t = self.hashtag_regex.sub('', t)
+        t = self.digits_regex.sub('', t)
+        t = t.encode('ascii', 'ignore').decode('ascii')
+        t = t.translate(str.maketrans('', '', string.punctuation))
+        return self.spaces_regex.sub(' ', t).strip()
 
-        # A. BASIC CLEANSING (Preservasi Emoji)
-        text = self.url_regex.sub('', text)
-        text = self.mention_regex.sub('', text)
-        text = self.rt_regex.sub('', text)
-        text = text.lower()
-        text = self.spaces_regex.sub(' ', text).strip()
-
-        # B. NORMALISASI KATA TIDAK BAKU (Slang)
-        text = self.norm_regex.sub(lambda m: self.norm_dict[m.group(0)], text)
-
-        # C. TOKENISASI
-        tokens = word_tokenize(text)
-
-        # D. STOPWORDS REMOVAL
-        tokens_filtered = [word for word in tokens if word not in self.stopwords_set]
-
-        # E. STEMMING (Sastrawi)
+    def process_text_sastrawi(self, clean_text):
+        """
+        Varian 2 (Sastrawi Stemmed + Stopwords Removed):
+        100% identik dengan ground-truth 'processed_text' dataset tesis.
+        Ablasi reduksi morfologis dasar via Sastrawi.
+        """
+        if not clean_text:
+            return ""
+        if self.norm_regex:
+            clean_text = self.norm_regex.sub(lambda m: self.norm_dict[m.group(0)], clean_text)
+        text_no_stop = self.remover.remove(clean_text)
+        words = text_no_stop.split()
         if self.strict:
-            # Mode literal tanpa cache (persis baris per baris)
-            text_joined = ' '.join(tokens_filtered)
-            return self.stemmer.stem(text_joined)
-        else:
-            # Mode fast cache (output identik, 600x lebih cepat)
-            stemmed_tokens = [self.get_stem(w) for w in tokens_filtered]
-            return ' '.join([s for s in stemmed_tokens if s])
+            return self.stemmer.stem(' '.join(words))
+        stemmed_tokens = [self.get_stem(w) for w in words]
+        return ' '.join([s for s in stemmed_tokens if s])
+
+    def clean_both(self, text):
+        """Menghasilkan pasangan (clean_text, processed_text) secara efisien."""
+        c = self.clean_text_context(text)
+        p = self.process_text_sastrawi(c)
+        return c, p
+
+    def clean(self, text):
+        """Fungsi kompatibilitas: mengembalikan varian terproses penuh."""
+        _, p = self.clean_both(text)
+        return p
 
 
 # Variabel global worker per process
@@ -126,7 +154,7 @@ def _get_worker(norm_dict, stopwords_set, strict):
 
 def clean_batch_worker(texts, norm_dict, stopwords_set, strict):
     worker = _get_worker(norm_dict, stopwords_set, strict)
-    return [worker.clean(t) for t in texts]
+    return [worker.clean_both(t) for t in texts]
 
 
 # --- RESUME & CHECKPOINT HELPER ---
@@ -197,10 +225,11 @@ def run_pipeline(
         for chunk_df in reader:
             chunk_idx += 1
             chunk_name = f"chunk_{chunk_idx:05d}"
-            out_file = out_dir / f"clean_part_{chunk_idx:05d}.{output_format}"
+            out_file = out_dir / f"clean_30m_part_{chunk_idx:05d}.{output_format}"
+            legacy_file = out_dir / f"clean_part_{chunk_idx:05d}.{output_format}"
 
             # Cek jika chunk sudah ada & tercatat selesai
-            if chunk_name in completed_chunks and out_file.exists():
+            if chunk_name in completed_chunks and (out_file.exists() or legacy_file.exists()):
                 print(f"⏩ Melewati {chunk_name} (sudah selesai sebelumnya).")
                 continue
 
@@ -223,12 +252,14 @@ def run_pipeline(
                 delayed(clean_batch_worker)(b, NORM_DICT, stopwords_set, strict) for b in batches
             )
 
-            # Ratakan hasil
-            cleaned_texts = [item for sublist in cleaned_batches for item in sublist]
+            # Ratakan hasil (pasangan clean_text dan processed_text)
+            cleaned_pairs = [item for sublist in cleaned_batches for item in sublist]
 
-            # Masukkan ke DataFrame sesuai aturan Tesis
-            chunk_df["clean_text"] = cleaned_texts
-            chunk_df["processed_text"] = cleaned_texts  # Alias untuk grouping split
+            # Masukkan ke DataFrame: Dua Varian Resmi Tesis
+            # 1. clean_text: Context-preserving (negasi & ekspresi informal utuh untuk transformer)
+            # 2. processed_text: Sastrawi stemmed & stopwords removed (reduksi morfologis)
+            chunk_df["clean_text"] = [item[0] for item in cleaned_pairs]
+            chunk_df["processed_text"] = [item[1] for item in cleaned_pairs]
 
             # Simpan partisi
             if output_format.lower() == "parquet":

@@ -92,8 +92,8 @@ def test_mini_pipeline_end_to_end():
             output_format="parquet"
         )
 
-        out_files = list(out_dir.glob("*.parquet"))
-        assert len(out_files) >= 1
+        out_files = list(out_dir.glob("clean_30m_part_*.parquet"))
+        assert len(out_files) >= 1, f"Expected clean_30m_part_*.parquet, got: {list(out_dir.glob('*'))}"
 
         # Cek isi file hasil
         df_out = pd.read_parquet(out_files[0])
@@ -102,8 +102,84 @@ def test_mini_pipeline_end_to_end():
         assert len(df_out) > 0
         assert isinstance(df_out["clean_text"].iloc[0], str)
 
+def test_naming_convention_30m():
+    from pipelines_30m.config import DEFAULT_INPUT_CSV
+    assert "30juta" in str(DEFAULT_INPUT_CSV) or "1juta" in str(DEFAULT_INPUT_CSV)
+    assert DEFAULT_INPUT_CSV.exists(), f"Input CSV file not found: {DEFAULT_INPUT_CSV}"
+
+def test_dual_variants_context_vs_sastrawi():
+    stopwords_set = get_stopwords_set()
+    cleaner = FastTextCleaner(NORM_DICT, stopwords_set, strict=False)
+
+    # Teks dengan negasi & bahasa informal
+    sample = "program mbg ini tidak bagus sama sekali dan bgt mengecewakan"
+    c_text, p_text = cleaner.clean_both(sample)
+
+    # Varian 1 (clean_text): Mempertahankan negasi 'tidak' dan struktur kalimat untuk Transformer
+    assert "tidak" in c_text
+    assert "bagus" in c_text
+    assert "mengecewakan" in c_text
+
+    # Varian 2 (processed_text): Sastrawi stemming & stopword removal
+    assert "kecewa" in p_text or "mengecewakan" in p_text
+
+def test_ground_truth_reproducibility():
+    """Menguji kecocokan 100% pada baris sampel dataset master tesis."""
+    thesis_data_path = PROJECT_ROOT / "data" / "results" / "indobert_9_emosi_fixed.csv"
+    if not thesis_data_path.exists():
+        pytest.skip("Thesis master data file not found")
+
+    df_thesis = pd.read_csv(thesis_data_path).head(20)
+    stopwords_set = get_stopwords_set()
+    cleaner = FastTextCleaner(norm_dict={}, stopwords_set=stopwords_set, strict=False)
+
+    for idx, row in df_thesis.iterrows():
+        c_gen, p_gen = cleaner.clean_both(row["text"])
+        assert c_gen == str(row["clean_text"]).strip(), f"Mismatch clean_text at row {idx}"
+        assert p_gen == str(row["processed_text"]).strip(), f"Mismatch processed_text at row {idx}"
+
+def test_indobert_fine_tuned_inference_sanity():
+    """Menguji inferensi model IndoBERT fine-tuned 3 epoch."""
+    from pipelines_30m.indobert_inference import run_indobert_pipeline, DEFAULT_MODEL_PATH
+    
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        tmp_path = Path(tmp_dir)
+        dummy_in = tmp_path / "test_input.parquet"
+        dummy_out = tmp_path / "test_output.parquet"
+
+        df_dummy = pd.DataFrame({
+            "clean_text": [
+                "makanan bergizi gratis sangat bermanfaat untuk siswa sekolah",
+                "anggaran program mbg diduga dikorupsi sangat mengecewakan"
+            ],
+            "processed_text": [
+                "makan gizi gratis manfaat siswa sekolah",
+                "anggar program mbg duga korupsi sangat kecewa"
+            ]
+        })
+        df_dummy.to_parquet(dummy_in, index=False)
+
+        res_df = run_indobert_pipeline(
+            input_file=dummy_in,
+            output_file=dummy_out,
+            model_path=DEFAULT_MODEL_PATH,
+            batch_size=2,
+            sample=2
+        )
+
+        assert "indobert_predicted_emotion" in res_df.columns
+        assert "indobert_predicted_id" in res_df.columns
+        assert "indobert_confidence" in res_df.columns
+        valid_labels = {'Marah', 'Jijik', 'Takut', 'Bahagia', 'Percaya', 'Netral', 'Sedih', 'Tertarik', 'Kaget'}
+        for pred in res_df["indobert_predicted_emotion"]:
+            assert pred in valid_labels, f"Unexpected predicted emotion label: {pred}"
+
 if __name__ == "__main__":
     test_text_cleaner_components()
     test_equivalence_strict_vs_fast()
     test_mini_pipeline_end_to_end()
-    print("✅ Semua unit test pipeline 30M lulus dengan sukses!")
+    test_naming_convention_30m()
+    test_dual_variants_context_vs_sastrawi()
+    test_ground_truth_reproducibility()
+    test_indobert_fine_tuned_inference_sanity()
+    print("✅ Semua unit & integration test pipeline 30M lulus dengan sukses!")

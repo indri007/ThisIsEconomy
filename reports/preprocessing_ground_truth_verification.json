@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-10-12T06:44:51Z",
+  "dataset_path": "/Users/jevin/ThisIsEconomy/data/results/indobert_9_emosi_fixed.csv",
+  "total_rows": 5263,
+  "clean_text_matches": 5263,
+  "clean_text_accuracy_percent": 100.0,
+  "processed_text_matches": 5263,
+  "processed_text_accuracy_percent": 100.0,
+  "computation_time_seconds": 126.72,
+  "workers_used": 12,
+  "mismatches_clean_count": 0,
+  "mismatches_processed_count": 0,
+  "sample_mismatches_clean": [],
+  "sample_mismatches_proc": []
+}

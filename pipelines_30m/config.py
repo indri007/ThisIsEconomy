@@ -12,8 +12,10 @@ from nltk.corpus import stopwords
 # --- PATH & FILE DEFINITIONS ---
 BASE_DIR = Path(__file__).resolve().parent
 
-# File sumber data besar (6.0 GB)
-DEFAULT_INPUT_CSV = Path("/Users/jevin/Documents/tesis_mbg/data/processed/tweet_mbg_1juta.csv")
+# File sumber data besar (30 Juta data / 6.0 GB)
+_PATH_30JUTA = Path("/Users/jevin/Documents/tesis_mbg/data/processed/tweet_mbg_30juta.csv")
+_PATH_1JUTA = Path("/Users/jevin/Documents/tesis_mbg/data/processed/tweet_mbg_1juta.csv")
+DEFAULT_INPUT_CSV = _PATH_30JUTA if _PATH_30JUTA.exists() else _PATH_1JUTA
 
 # Direktori output terpisah (di luar artefak tesis utama)
 DEFAULT_OUTPUT_DIR = Path("/Users/jevin/Documents/tesis_mbg/data/processed/clean_30m_output")
