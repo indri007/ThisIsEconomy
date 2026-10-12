@@ -85,3 +85,8 @@ results/network_rebuild_*.csv
 data/raw/
 data/external/
 results/FINAL_NUMBERS.json
+
+# 30M Pipeline Outputs (Big Data Lake)
+*.parquet
+clean_30m_output/
+pipelines_30m/output/
