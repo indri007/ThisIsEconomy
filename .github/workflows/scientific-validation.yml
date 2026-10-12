@@ -26,12 +26,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: pip
 
       - name: Install Test Dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install pytest nltk pandas numpy scikit-learn networkx torch transformers pyarrow
+          pip install pytest nltk pandas numpy scikit-learn networkx torch transformers pyarrow
 
       - name: Download NLTK Stopwords
         run: python -m nltk.downloader stopwords
