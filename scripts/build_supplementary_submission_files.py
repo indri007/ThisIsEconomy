@@ -128,14 +128,14 @@ Our study investigates citizen reaction to Indonesia's multi-billion-dollar Free
 
 ### Methodological Rigor and Empirical Accountability
 - **State-of-the-Art Transformer Architecture:** Fine-tuned `indobenchmark/indobert-base-p2` with monotonic training loss reduction ($1.8708 \rightarrow 0.6974$) and $223.3$ posts/sec GPU inference throughput.
-- **Multi-Annotator Inter-Rater Reliability Gold Standard:** Stratified sample ($n = 100$) evaluated by independent communication and corpus linguistics scholars achieved inter-human agreement of **95.00%** ($κ = 0.9135$), Tri-Rater Fleiss' Kappa of **$κ_{\Fleiss} = 0.8442$**, Krippendorff's Alpha **$α = 0.8447$**, and IndoBERT vs. Consensus Gold accuracy of **90.00%** ($κ = 0.8243$).
+- **Empirical Held-Out Validation & Error Dissection:** Evaluated on an isolated group-aware held-out split ($n = 1,058$, silver-standard references) achieving **75.99% accuracy** and **Macro-F1 of 0.4535** across 6 active classes, with explicit documentation of minority class sparsity and methodological boundaries.
 - **Hierarchical Taxonomy for Minority Imbalance:** We addressed extreme corpus imbalance through linguistic error dissection and a 3-tier functional valence taxonomy, achieving **Macro-F1 of 0.7522 (75.22%)** and accuracy of **76.56%**.
 - **Canonical Network Topology:** Mathematical directed network analysis ($|V| = 971$, $|E| = 666$, reciprocity = $1.21\%$, modularity $Q = 0.9837$ across $332$ clusters).
 
 ### Formal Editorial Declarations
 - **Originality & Exclusivity:** This manuscript represents original research that has not been published elsewhere and is not currently under consideration by any other journal.
 - **Double-Blind Review Compliance:** The main manuscript is completely anonymized. All author names, institutional affiliations, and self-referential indicators have been removed. Author details are provided exclusively in the separate Title Page.
-- **Open Science & Reproducibility:** In full compliance with ICA open science standards, all replication scripts, canonical network edge lists, multi-annotator gold datasets, and model evaluation reports are permanently hosted at our public repository: `https://github.com/indri007/ThisIsEconomy`.
+- **Open Science & Reproducibility:** In full compliance with ICA open science standards, all replication scripts, canonical network edge lists, silver-standard benchmark datasets, and model evaluation reports are permanently hosted at our public repository: `https://github.com/indri007/ThisIsEconomy`.
 - **Ethical Compliance:** Data collection adhered strictly to Platform X Developer Terms of Service and academic data ethics guidelines for public digital footprints. No private messages or personally identifiable human subjects were compromised.
 - **Author Approval:** All co-authors have actively contributed to and approved this submission.
 
@@ -190,7 +190,7 @@ Our study provides key contributions tailored to ICS readership:
 
 ### Empirical Rigor & Validation
 - **IndoBERT Transformer Architecture:** Micro-affective Plutchik modeling achieving high throughput ($223.3$ posts/s) on Apple Silicon GPU.
-- **Inter-Rater Reliability Gold Standard:** Adjudicated multi-annotator benchmark ($n = 100$) yielding inter-human agreement of **95.00%** ($κ = 0.9135$), Tri-Rater Fleiss' Kappa **$κ = 0.8442$**, and Krippendorff's Alpha **$α = 0.8447$**.
+- **Empirical Held-Out Validation:** Evaluated on an isolated group-aware held-out test split ($n = 1,058$, silver-standard references) achieving **75.99% accuracy** and **Macro-F1 of 0.4535** across 6 active classes.
 - **Taxonomic & Imbalance Robustness:** Resolving class imbalance artifacts via linguistic audit and hierarchical valence modeling (**Macro-F1 = 0.7522 / 75.22%**, Accuracy **76.56%**).
 - **Canonical Topology:** Full reproducible network telemetry ($|V| = 971, |E| = 666$).
 
@@ -249,8 +249,8 @@ In strict adherence to COPE (Committee on Publication Ethics), Elsevier, Springe
 ### 6. Data Availability Statement (DAS) & Code Reproducibility
 All research artifacts supporting the findings of this study are openly accessible to facilitate rigorous verification:
 - **Open GitHub Repository:** `https://github.com/indri007/ThisIsEconomy`
-- **Replication Pipelines:** Fully automated end-to-end Python scripts for transformer inference, multi-annotator Fleiss/Krippendorff validation, minority class hierarchical testing, and canonical SNA edge list calculation.
-- **Annotated Benchmarks:** Full CSV datasets including the Adjudicated Consensus Gold Standard ($n = 100$) and holdout validation sets ($n = 1,058$).
+- **Replication Pipelines:** Fully automated end-to-end Python scripts for transformer inference, group-aware holdout evaluation, minority class hierarchical testing, and canonical SNA edge list calculation.
+- **Annotated Benchmarks:** Full CSV datasets including silver-standard reference annotations and held-out validation sets ($n = 1,058$).
 - **License:** Code is licensed under MIT, and data documentation under Creative Commons Attribution 4.0 International (CC-BY 4.0).
 """
 

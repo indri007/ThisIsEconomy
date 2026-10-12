@@ -379,15 +379,15 @@ def build_anonymized_manuscript():
         "Training loss demonstrated monotonic convergence, declining steadily from 1.8708 in Epoch 1 to 0.6974 in Epoch 3. The fine-tuned model "
         "achieved an out-of-sample inference throughput of 223.3 posts per second with a mean softmax confidence of 95.01% (median: 96.95%)."
     )
-    add_sec_heading("3.3 Multi-Annotator Inter-Rater Reliability Gold Standard Protocol", 2)
+    add_sec_heading("3.3 Empirical Model Validation and Active Classification Evaluation", 2)
     add_body_p(
-        "To rigorously validate model classification against human ground truth, we established a formal multi-annotator evaluation protocol. "
-        "A stratified sample of n = 100 posts spanning diverse valences and complex sarcastic expressions was independently annotated by two domain "
-        "experts (Annotator 1: political communication specialist; Annotator 2: computational corpus linguist). Inter-human reliability reached "
-        "an outstanding 95.00% raw agreement with Cohen's Kappa κ = 0.9135 ('Almost Perfect Agreement'; Landis & Koch, 1977). When evaluated across "
-        "all three raters (Annotator 1, Annotator 2, and IndoBERT), Tri-Rater Fleiss' Kappa reached κ_Fleiss = 0.8442 and Krippendorff's Alpha reached "
-        "α = 0.8447, substantially exceeding the rigorous academic reliability benchmark of α >= 0.80 (Krippendorff, 2018). IndoBERT achieved an "
-        "exact match accuracy of 90.00% (κ = 0.8243) against the adjudicated consensus gold standard."
+        "To evaluate classification performance, IndoBERT was evaluated on an isolated group-aware held-out test split (n = 1,058 posts with "
+        "silver-standard reference annotations). Across the 6 active classes present in the test distribution, IndoBERT achieved an overall accuracy of "
+        "75.99% and Macro F1-score of 0.4535 (Weighted F1: 0.7434). Dominant affective classes exhibited strong performance (Disgust: F1 = 0.8202, "
+        "Support = 606; Neutral: F1 = 0.8032, Support = 124; Trust: F1 = 0.6977, Support = 220; Anticipation: F1 = 0.4000, Support = 91). Due to severe "
+        "natural class imbalance in civic resistance discourse, minority classes Anger (n = 14) and Sadness (n = 3) obtained F1 = 0.000, while Joy, "
+        "Surprise, and Fear had insufficient instances in the held-out split to support scoring. To evaluate functional valence despite minority sparsity, "
+        "re-evaluation under a 3-tier taxonomy (Negative, Positive, Neutral) demonstrated Macro-F1 of 0.7522 and 76.56% accuracy."
     )
     add_sec_heading("3.4 Directed Network Formalism and Canonical SNA Pipeline", 2)
     add_body_p(
