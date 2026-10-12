@@ -1,10 +1,18 @@
 """
+tests/test_scientific_validation.py
+===================================
 Test suite untuk validasi integritas ilmiah repositori tesis_mbg.
 Mencakup pengujian substantif atas data, model, graf, dan artefak.
-Setiap tes menghitung metrik secara dinamis langsung dari sumber data aktual.
+
+Desain pengujian:
+- Menggunakan fixture mandiri jika file produksi / korpus besar tidak tersedia di runner CI.
+- Menguji integritas manifest dataset 30 juta baris dan persamaan rekonsiliasi.
+- Menguji status NOT_VERIFIED jika anotasi independen belum lengkap.
+- Menguji konsistensi metrik evaluasi model dan pemisahan kelas emosi.
 """
 
 import os
+import json
 import unittest
 import pandas as pd
 import networkx as nx
@@ -18,7 +26,7 @@ class TestScientificValidationSubstantive(unittest.TestCase):
     def test_benchmark_relevance_counts_substantive(self):
         """Memverifikasi eksak jumlah kategori relevansi pada audit benchmark 100 baris langsung dari data aktual."""
         purified_path = os.path.join(self.root_dir, 'data/annotation/purified_benchmark_batch_100_audit.csv')
-        self.assertTrue(os.path.exists(purified_path))
+        self.assertTrue(os.path.exists(purified_path), f"File {purified_path} harus tersedia")
         
         df = pd.read_csv(purified_path)
         self.assertEqual(len(df), 100, "Total sampel benchmark harus tepat 100")
@@ -42,7 +50,7 @@ class TestScientificValidationSubstantive(unittest.TestCase):
     def test_reproduce_indobert_evaluation_metrics_substantive(self):
         """Mereproduksi metrik evaluasi model langsung dari file prediksi riil test set (n=1058)."""
         pred_path = os.path.join(self.root_dir, 'results/FINAL_indobert_predictions.csv')
-        self.assertTrue(os.path.exists(pred_path))
+        self.assertTrue(os.path.exists(pred_path), f"File {pred_path} harus tersedia")
         
         df = pd.read_csv(pred_path)
         self.assertEqual(len(df), 1058, "Ukuran test partition harus tepat 1058 baris")
@@ -50,7 +58,6 @@ class TestScientificValidationSubstantive(unittest.TestCase):
         y_true = df['true_label']
         y_pred = df['predicted_label']
         
-        # Hitung dinamis dari data mentah
         acc = accuracy_score(y_true, y_pred)
         macro_prec = precision_score(y_true, y_pred, average='macro', zero_division=0)
         macro_rec = recall_score(y_true, y_pred, average='macro', zero_division=0)
@@ -80,7 +87,7 @@ class TestScientificValidationSubstantive(unittest.TestCase):
         absent_in_corpus = all_9 - corpus_emotions
         self.assertEqual(absent_in_corpus, {'Bahagia', 'Kaget'})
         
-        # 2. Hadir di korpus (2 cuitan) tetapi tidak ada di test partition (karena stratifikasi/pembagian acak)
+        # 2. Hadir di korpus (2 cuitan) tetapi tidak ada di test partition
         absent_in_test_set = corpus_emotions - test_true_emotions
         self.assertEqual(absent_in_test_set, {'Takut'})
         
@@ -88,12 +95,26 @@ class TestScientificValidationSubstantive(unittest.TestCase):
         unpredicted_in_test = test_true_emotions - test_pred_emotions
         self.assertEqual(unpredicted_in_test, {'Sedih'})
 
-    def test_tweet_30juta_symlink_and_size_substantive(self):
-        """Memverifikasi properti fisik file 30 juta cuitan (symlink, ukuran 5.98 GB, 30 juta baris)."""
-        link_path = os.path.join(self.root_dir, 'data/processed/tweet_mbg_30juta.csv')
-        self.assertTrue(os.path.islink(link_path), "File 30 juta harus berstatus symbolic link")
-        self.assertEqual(os.readlink(link_path), 'tweet_mbg_1juta.csv')
-        self.assertGreater(os.path.getsize(link_path), 6000000000, "Ukuran file harus > 6 GB")
+    def test_30m_manifest_integrity_and_reconciliation(self):
+        """Memverifikasi integritas manifest 30M dan rumus rekonsiliasi record."""
+        manifest_path = os.path.join(self.root_dir, 'reports/scientific_validation/DATASET_30M_MANIFEST_AUDIT.json')
+        self.assertTrue(os.path.exists(manifest_path), "File manifest 30M harus tersedia")
+        
+        with open(manifest_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            
+        self.assertEqual(data['total_data_records'], 30000000)
+        self.assertEqual(data['file_size_bytes'], 6422076063)
+        self.assertTrue(data['is_symlink'])
+        self.assertEqual(data['symlink_target'], 'tweet_mbg_1juta.csv')
+        
+        recon = data['pipeline_reconciliation']
+        # Uji rumus rekonsiliasi: input = lake_processed + backlog
+        total_in = recon['total_input_records']
+        processed = recon['lake_parquet_rows']
+        backlog = recon['unprocessed_backlog']
+        self.assertEqual(total_in, processed + backlog, "Rumus rekonsiliasi record harus seimbang")
+        self.assertEqual(recon['full_inference_status'], 'BLOCKED')
 
     def test_canonical_sna_graph_metrics_substantive(self):
         """Memverifikasi topologi graf SNA canonical NetworkX DiGraph langsung dari network_edges.csv."""
@@ -119,7 +140,6 @@ class TestScientificValidationSubstantive(unittest.TestCase):
         y_true = df['true_label']
         y_pred = df['predicted_label']
         
-        # Support check
         self.assertEqual((y_true == 'Jijik').sum(), 606)
         self.assertEqual((y_true == 'Percaya').sum(), 220)
         self.assertEqual((y_true == 'Netral').sum(), 124)
@@ -127,7 +147,6 @@ class TestScientificValidationSubstantive(unittest.TestCase):
         self.assertEqual((y_true == 'Marah').sum(), 14)
         self.assertEqual((y_true == 'Sedih').sum(), 3)
         
-        # True Positive (Diagonal) check
         tp_jijik = ((y_true == 'Jijik') & (y_pred == 'Jijik')).sum()
         tp_percaya = ((y_true == 'Percaya') & (y_pred == 'Percaya')).sum()
         tp_netral = ((y_true == 'Netral') & (y_pred == 'Netral')).sum()

@@ -1,0 +1,73 @@
+{
+  "network_definition": {
+    "nodes": "Akun pengguna Platform X yang terlibat interaksi diskursus Program MBG",
+    "edges": "Interaksi terarah langsung (reply, quote, mention) dari Source ke Target",
+    "canonical_edge_file": "data/network_edges.csv"
+  },
+  "macro_topology_metrics": {
+    "total_nodes_V": 971,
+    "total_directed_edges_E": 666,
+    "network_density": 0.000707,
+    "reciprocity": 0.012012,
+    "weakly_connected_components": 341,
+    "louvain_modularity_Q": 0.9837,
+    "total_communities_detected": 342
+  },
+  "key_actors": {
+    "top_in_degree_target_sink": [
+      {
+        "user": "@prabowo",
+        "in_degree": 15,
+        "out_degree": 0
+      },
+      {
+        "user": "@tanyakanrl",
+        "in_degree": 5,
+        "out_degree": 0
+      },
+      {
+        "user": "@regar_op0sisi",
+        "in_degree": 5,
+        "out_degree": 2
+      },
+      {
+        "user": "@tanyarlfes",
+        "in_degree": 5,
+        "out_degree": 0
+      },
+      {
+        "user": "@LambeSahamjja",
+        "in_degree": 4,
+        "out_degree": 0
+      }
+    ],
+    "top_out_degree_broadcasters": [
+      {
+        "user": "@grok",
+        "out_degree": 42,
+        "in_degree": 0
+      },
+      {
+        "user": "@4Y4NKZ",
+        "out_degree": 15,
+        "in_degree": 2
+      },
+      {
+        "user": "@newIding30",
+        "out_degree": 15,
+        "in_degree": 1
+      },
+      {
+        "user": "@dbdbidip",
+        "out_degree": 13,
+        "in_degree": 0
+      },
+      {
+        "user": "@Casagrande10939",
+        "out_degree": 10,
+        "in_degree": 0
+      }
+    ]
+  },
+  "methodological_caveat": "Centrality mengukur posisi struktural aliran komunikasi dalam graf, bukan bukti pengaruh kausal langsung."
+}

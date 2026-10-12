@@ -1,0 +1,11 @@
+{
+  "evaluation_protocol": "Zero-Leakage Group-Aware Holdout Test Set",
+  "total_test_samples": 1058,
+  "accuracy": 0.794,
+  "accuracy_percentage": "79.40%",
+  "macro_f1_active_classes": 0.516,
+  "macro_f1_all_9_classes": 0.344,
+  "weighted_f1": 0.7851,
+  "model_checkpoint": "indobenchmark/indobert-base-p2 (checkpoint-264)",
+  "status": "PROVISIONAL_EVALUATED"
+}
