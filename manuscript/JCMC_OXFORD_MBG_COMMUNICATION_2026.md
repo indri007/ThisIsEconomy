@@ -56,11 +56,11 @@ Purposive Platform Scope and Ecological Affordance: Grounded in platform archite
 
 3.2 Deep Learning: IndoBERT Multi-Task Fine-Tuning
 
-To perform granular micro-affective classification, we utilized the pre-trained IndoBERT Base Phase 2 model (`indobenchmark/indobert-base-p2`; Koto et al., 2020; Wilie et al., 2020). The transformer model was fine-tuned across 3 full epochs with cross-entropy loss, AdamW optimizer (learning rate = 2e-5, weight decay = 0.01), batch size of 16, and sequence length of 128 tokens on Apple Silicon GPU hardware. Training loss demonstrated monotonic convergence, declining steadily from 1.8708 in Epoch 1 to 0.6974 in Epoch 3. The fine-tuned model achieved an out-of-sample inference throughput of 223.3 posts per second with a mean softmax confidence of 95.01% (median: 96.95%).
+To perform granular micro-affective classification, we utilized the pre-trained IndoBERT Base Phase 2 model (`indobenchmark/indobert-base-p2`; Koto et al., 2020; Wilie et al., 2020). The transformer model was fine-tuned across 3 full epochs with cross-entropy loss, AdamW optimizer (learning rate = 2e-5, weight decay = 0.01), batch size of 16, and sequence length of 128 tokens on Apple Silicon GPU hardware. Training loss demonstrated monotonic convergence, declining steadily from 1.8708 in Epoch 1 to 0.6974 in Epoch 3. The fine-tuned model achieved an out-of-sample inference throughput of 223.3 posts per second with a mean softmax confidence of 95.01% (median: 96.95%). The classification head was configured with nine output labels derived from Ekman (1992) and Plutchik (1980); however, only six of these classes occur in the labelled corpus (Joy and Surprise have no samples, and Fear has two samples and none in the test set), so all performance claims are restricted to the six active classes. Reference labels for training and evaluation are silver-standard: they were produced through a keyword- and rule-assisted procedure rather than by independent human annotators.
 
-3.3 Multi-Annotator Inter-Rater Reliability Gold Standard Protocol
+3.3 Reference-Label Status and Validation Scope
 
-To rigorously validate model classification against human ground truth, we established a formal multi-annotator evaluation protocol. A stratified sample of n = 100 posts spanning diverse valences and complex sarcastic expressions was independently annotated by two domain experts (Annotator 1: political communication specialist; Annotator 2: computational corpus linguist). Inter-human reliability reached an outstanding 95.00% raw agreement with Cohen's Kappa κ = 0.9135 ('Almost Perfect Agreement'; Landis & Koch, 1977). When evaluated across all three raters (Annotator 1, Annotator 2, and IndoBERT), Tri-Rater Fleiss' Kappa reached κ_Fleiss = 0.8442 and Krippendorff's Alpha reached α = 0.8447, substantially exceeding the rigorous academic reliability benchmark of α >= 0.80 (Krippendorff, 2018). IndoBERT achieved an exact match accuracy of 90.00% (κ = 0.8243) against the adjudicated consensus gold standard.
+All reported metrics are computed against silver-standard labels produced by a keyword- and rule-assisted procedure. No independent, double-annotated human gold standard has yet been constructed for this corpus; we therefore do not report inter-rater reliability coefficients, and accuracy should be read as agreement with silver labels rather than with human judgement. Building such a benchmark is a priority for future work (see Limitations).
 
 3.4 Directed Network Formalism and Canonical SNA Pipeline
 
@@ -88,7 +88,7 @@ Across the corpus, 315 posts (9.28%) exhibited complex pragmatic sarcasm where l
 
 4.5 Addressing Minority Class Imbalance: Taxonomic Validation and Error Dissection
 
-In computational sentiment analysis, natural crisis corpora inevitably exhibit severe class imbalance. In the holdout evaluation set (n = 1,058), Disgust represented 57.28% (n = 606), whereas Anger comprised merely 1.32% (n = 14) and Sadness 0.28% (n = 3). On granular 6-class evaluation, this extreme 202:1 imbalance yielded zero F1-scores for Anger and Sadness, suppressing the unweighted Macro-F1 to 0.4535 despite a high Weighted-F1 of 0.7434 and an accuracy of 75.99%. Qualitative error audit (scripts/run_minority_class_imbalance_audit.py) revealed that 12 of the 14 Anger posts (85.7%) consisted of multi-lingual noise (Catalan, Turkish, Spanish spam) correctly filtered as Neutral by IndoBERT, while Sadness posts reflected moral grievances that contextually collapsed into Disgust (Gutierrez & Giner-Sorolla, 2007; Rozin et al., 2000). When re-evaluated on a 3-tier functional valence taxonomy (Negative Affective Dissent: n = 623; Positive Support: n = 311; Objective Neutrality: n = 124), IndoBERT achieved a Macro-F1 of 0.7522 (75.22%, a net gain of +29.87% over granular evaluation), Macro Precision of 0.7639, Macro Recall of 0.7459, and an overall accuracy of 76.56%, demonstrating the profound robustness of its contextual representations.
+In computational sentiment analysis, natural crisis corpora inevitably exhibit severe class imbalance. In the holdout evaluation set (n = 1,058), Disgust represented 57.28% (n = 606), whereas Anger comprised merely 1.32% (n = 14) and Sadness 0.28% (n = 3). On granular 6-class evaluation, this extreme 202:1 imbalance yielded zero F1-scores for Anger and Sadness, suppressing the unweighted Macro-F1 to 0.4535 despite a high Weighted-F1 of 0.7434 and an accuracy of 75.99%. Qualitative error audit (scripts/run_minority_class_imbalance_audit.py) revealed that 12 of the 14 Anger posts (85.7%) consisted of multi-lingual noise (Catalan, Turkish, Spanish spam) that IndoBERT predicted as Neutral (indicating silver-label noise; these predictions are still counted as errors), while Sadness posts reflected moral grievances that contextually collapsed into Disgust (Gutierrez & Giner-Sorolla, 2007; Rozin et al., 2000). When re-evaluated on a 3-tier functional valence taxonomy (Negative Affective Dissent: n = 623; Positive Support: n = 311; Objective Neutrality: n = 124), IndoBERT achieved a Macro-F1 of 0.7522 (75.22%, a net gain of +29.87% over granular evaluation), Macro Precision of 0.7639, Macro Recall of 0.7459, and an overall accuracy of 76.56%, suggesting that the model captures coarse affective valence more reliably than granular emotion categories; because this three-tier grouping was defined after the granular evaluation, it is reported as a supplementary, post-hoc analysis.
 
 4.6 Astroturfing Audit & Coordinated Inauthentic Behavior (CIB) Forensic Analysis
 
@@ -126,13 +126,13 @@ From the perspective of public relations and crisis management, our findings del
 
 6. Conclusion, Limitations, and Future Trajectories
 
-This study has established a comprehensive Tri-Layer Computational Communication forensic of citizen resistance to Indonesia's Free Nutritious Meal program on Platform X. By integrating transformer deep learning (IndoBERT), multi-annotator gold standard validation (Fleiss' κ = 0.8442, Krippendorff's α = 0.8447), semiotic pretense theory, and canonical directed social network analysis, we demonstrated that public opposition was driven by visceral moral Disgust (98.14%) anchored in physical operational breakdowns. Furthermore, we documented how communicative unresponsiveness by state leaders catalyzed the rise of the Algorithmic Oracle (@grok), while paralinguistic sarcasm enabled citizens to subvert digital surveillance.
+This study has established a comprehensive Tri-Layer Computational Communication forensic of citizen resistance to Indonesia's Free Nutritious Meal program on Platform X. By integrating transformer deep learning (IndoBERT), holdout evaluation against silver-standard labels (accuracy 75.99%, macro-F1 0.4535), semiotic pretense theory, and canonical directed social network analysis, we demonstrated that public opposition was driven by visceral moral Disgust (98.14%) anchored in physical operational breakdowns. Furthermore, we documented how communicative unresponsiveness by state leaders catalyzed the rise of the Algorithmic Oracle (@grok), while paralinguistic sarcasm enabled citizens to subvert digital surveillance.
 
-Several methodological limitations and ecological boundary conditions warrant explicit acknowledgment. First, our empirical corpus derives exclusively from Platform X. In the Indonesian digital media ecosystem, Platform X users skew disproportionately urban, educated, and politically active (APJII, 2024), capturing the communicative stance of the 'vanguard public' (journalists, academics, middle-class parents) rather than the total passive electorate. Second, Platform X cultivates an idiosyncratic platform vernacular characterized by dry irony and cynical satire (Bossetta, 2018), structurally amplifying the salience of Disgust and Sarcasm relative to lifestyle-oriented networks like Instagram. Third, while our multi-annotator protocol demonstrated high reliability (Fleiss' κ = 0.8442), future investigations should expand multi-annotator benchmarking across multi-thousand-sample corpora and deploy multimodal architectures (e.g., Vision-Language Models) to evaluate visual food tray imagery on TikTok. Finally, as conversational AI oracles (@grok) become increasingly embedded into governance debates, research must audit whether machine agents maintain epistemic neutrality or reproduce emergent public cynicism.
+Several methodological limitations and ecological boundary conditions warrant explicit acknowledgment. First, our empirical corpus derives exclusively from Platform X. In the Indonesian digital media ecosystem, Platform X users skew disproportionately urban, educated, and politically active (APJII, 2024), capturing the communicative stance of the 'vanguard public' (journalists, academics, middle-class parents) rather than the total passive electorate. Second, Platform X cultivates an idiosyncratic platform vernacular characterized by dry irony and cynical satire (Bossetta, 2018), structurally amplifying the salience of Disgust and Sarcasm relative to lifestyle-oriented networks like Instagram. Third, emotion labels are silver-standard and have not yet been validated against an independent, double-annotated human benchmark; macro-F1 on the six active classes remains modest (0.4535), Anger and Sadness are not recognised (F1 = 0.000), and Joy, Surprise, and Fear are absent or near-absent from the evaluation data. Future investigations should construct a human-annotated benchmark with reported inter-rater reliability and deploy multimodal architectures (e.g., Vision-Language Models) to evaluate visual food tray imagery on TikTok. Finally, as conversational AI oracles (@grok) become increasingly embedded into governance debates, research must audit whether machine agents maintain epistemic neutrality or reproduce emergent public cynicism.
 
 Statements and Declarations
 
-Data Availability: In strict compliance with International Communication Association (ICA) and Oxford University Press Open Science policies and FAIR data principles, all research replication materials—including AoIR 3.0-pseudonymized directed network interaction edge lists (|V| = 971, |E| = 666), multi-annotator gold-standard adjudicated corpora, spatial epidemiological benchmarks, ABSA matrices, and PyTorch inference pipelines—are permanently archived in the Zenodo open-access repository under Digital Object Identifier (DOI): 10.5281/zenodo.11029482 (https://doi.org/10.5281/zenodo.11029482). The active development mirror is maintained at GitHub: https://github.com/indri007/ThisIsEconomy.
+Data Availability: In strict compliance with International Communication Association (ICA) and Oxford University Press Open Science policies and FAIR data principles, all research replication materials—including AoIR 3.0-pseudonymized directed network interaction edge lists (|V| = 971, |E| = 666), silver-standard labelled corpora, spatial epidemiological benchmarks, ABSA matrices, and PyTorch inference pipelines—are permanently archived in the Zenodo open-access repository under Digital Object Identifier (DOI): 10.5281/zenodo.11029482 (https://doi.org/10.5281/zenodo.11029482). The active development mirror is maintained at GitHub: https://github.com/indri007/ThisIsEconomy.
 
 Funding: The authors declare that no external funding, grants, or financial sponsorships were received for the conduct, authorship, or publication of this study.
 
@@ -251,7 +251,7 @@ Table 2
 Actor Centrality Typology and Epistemic Asymmetry
 
 Table 3
-Multi-Annotator Inter-Rater Reliability and IndoBERT Gold Validation Benchmark (n = 100)
+Emotion Classification Validation Scope (Group-Aware Holdout, n = 1,058)
 
 Table 4
 Hierarchical 3-Super-Class Valence Performance vs. Granular 6-Class Taxonomy (n = 1,058)
@@ -441,53 +441,53 @@ Benchmark Threshold
 
 Academic Interpretation
 
-Inter-Human Agreement (H1 vs H2)
+Reference labels
 
-95.00%
+Silver-standard
 
->= 80.00%
+—
 
-High concordance between independent domain experts
+Keyword/rule-assisted; not human-adjudicated
 
-Inter-Human Cohen's Kappa (κ)
+Independent human gold standard
 
-0.9135
+Not yet constructed
 
->= 0.8100
+—
 
-Almost Perfect Agreement (Landis & Koch, 1977)
+Inter-rater reliability not reported
 
-Tri-Rater Fleiss' Kappa (κ_Fleiss)
+Active emotion classes (test set)
 
-0.8442
+6 of 9 output labels
 
->= 0.7000
+—
 
-Almost Perfect Agreement across H1, H2, and IndoBERT
+Joy and Surprise absent; Fear absent from test set
 
-Tri-Rater Krippendorff's Alpha (α)
+Accuracy vs silver labels
 
-0.8447
+75.99%
 
->= 0.8000
+—
 
-Surpasses rigorous standard content analysis reliability
+Agreement with silver labels, not human judgement
 
-IndoBERT vs Gold Standard Accuracy
+Macro-F1 / Weighted-F1
 
-90.00% (90/100)
+0.4535 / 0.7434
 
->= 80.00%
+—
 
-High empirical alignment with adjudicated ground truth
+Unweighted mean across the 6 active classes
 
-IndoBERT vs Gold Standard Cohen's Kappa
+Minority-class F1 (Anger, Sadness)
 
-0.8243
+0.000 / 0.000
 
->= 0.8000
+—
 
-Strong classification reliability on authentic citizen discourse
+Model does not recognise these classes
 
 Evaluation Metric
 

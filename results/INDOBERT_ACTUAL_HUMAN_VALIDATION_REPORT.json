@@ -1,219 +1,119 @@
 {
-  "holdout_test_set_n1058": {
-    "protocol": "Group-aware train/val/test split (v2)",
+  "generated_at": "2026-10-12T13:11:54.541711+00:00",
+  "holdout_v2_vs_silver": {
+    "n": 1058,
     "accuracy": 0.7599,
     "macro_precision": 0.484,
     "macro_recall": 0.4424,
     "macro_f1": 0.4535,
-    "weighted_precision": 0.7396,
-    "weighted_recall": 0.7599,
     "weighted_f1": 0.7434,
-    "per_class": [
-      {
-        "Kelas": "Jijik",
-        "Support": 606,
-        "Precision": 0.7761,
-        "Recall": 0.8696,
-        "F1-Score": 0.8202
-      },
-      {
-        "Kelas": "Percaya",
-        "Support": 220,
-        "Precision": 0.7143,
-        "Recall": 0.6818,
-        "F1-Score": 0.6977
-      },
-      {
-        "Kelas": "Netral",
-        "Support": 124,
-        "Precision": 0.8,
-        "Recall": 0.8065,
-        "F1-Score": 0.8032
-      },
-      {
-        "Kelas": "Tertarik",
-        "Support": 91,
-        "Precision": 0.6136,
-        "Recall": 0.2967,
-        "F1-Score": 0.4
-      },
-      {
-        "Kelas": "Marah",
-        "Support": 14,
-        "Precision": 0.0,
-        "Recall": 0.0,
-        "F1-Score": 0.0
-      },
-      {
-        "Kelas": "Sedih",
-        "Support": 3,
-        "Precision": 0.0,
-        "Recall": 0.0,
-        "F1-Score": 0.0
-      }
-    ],
-    "confusion_matrix_raw": [
-      [
-        527,
-        54,
-        13,
-        12,
-        0,
-        0
-      ],
-      [
-        68,
-        150,
-        0,
-        2,
-        0,
-        0
-      ],
-      [
-        20,
-        1,
-        100,
-        3,
-        0,
-        0
-      ],
-      [
-        62,
-        2,
-        0,
-        27,
-        0,
-        0
-      ],
-      [
-        0,
-        2,
-        12,
-        0,
-        0,
-        0
-      ],
-      [
-        2,
-        1,
-        0,
-        0,
-        0,
-        0
-      ]
-    ],
-    "confusion_matrix_normalized_pct": {
+    "reference_labels": "silver-standard (keyword/rule-assisted; not human-adjudicated)",
+    "per_class": {
       "Jijik": {
-        "Jijik": 86.96,
-        "Percaya": 30.91,
-        "Netral": 16.13,
-        "Tertarik": 68.13,
-        "Marah": 0.0,
-        "Sedih": 66.67
+        "precision": 0.7761,
+        "recall": 0.8696,
+        "f1-score": 0.8202,
+        "support": 606
       },
       "Percaya": {
-        "Jijik": 8.91,
-        "Percaya": 68.18,
-        "Netral": 0.81,
-        "Tertarik": 2.2,
-        "Marah": 14.29,
-        "Sedih": 33.33
+        "precision": 0.7143,
+        "recall": 0.6818,
+        "f1-score": 0.6977,
+        "support": 220
       },
       "Netral": {
-        "Jijik": 2.15,
-        "Percaya": 0.0,
-        "Netral": 80.65,
-        "Tertarik": 0.0,
-        "Marah": 85.71,
-        "Sedih": 0.0
+        "precision": 0.8,
+        "recall": 0.8065,
+        "f1-score": 0.8032,
+        "support": 124
       },
       "Tertarik": {
-        "Jijik": 1.98,
-        "Percaya": 0.91,
-        "Netral": 2.42,
-        "Tertarik": 29.67,
-        "Marah": 0.0,
-        "Sedih": 0.0
+        "precision": 0.6136,
+        "recall": 0.2967,
+        "f1-score": 0.4,
+        "support": 91
       },
       "Marah": {
-        "Jijik": 0.0,
-        "Percaya": 0.0,
-        "Netral": 0.0,
-        "Tertarik": 0.0,
-        "Marah": 0.0,
-        "Sedih": 0.0
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 14
       },
       "Sedih": {
-        "Jijik": 0.0,
-        "Percaya": 0.0,
-        "Netral": 0.0,
-        "Tertarik": 0.0,
-        "Marah": 0.0,
-        "Sedih": 0.0
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3
       }
     },
-    "labels": [
-      "Jijik",
-      "Percaya",
-      "Netral",
-      "Tertarik",
-      "Marah",
-      "Sedih"
-    ]
-  },
-  "human_annotation_validation_n100": {
-    "batch_file": "/Users/jevin/ThisIsEconomy/data/annotation/researcher_batch_100_FILLED.csv",
-    "accuracy": 0.9,
-    "cohen_kappa": 0.8243,
-    "interpretation": "Almost Perfect Agreement (Kesepakatan Hampir Sempurna)",
-    "macro_precision": 0.8041,
-    "macro_recall": 0.8339,
-    "macro_f1": 0.8097,
-    "weighted_f1": 0.8991,
-    "silver_accuracy": 0.88,
-    "silver_cohen_kappa": 0.7924,
-    "confusion_matrix": [
-      [
-        50,
-        4,
-        1,
-        1
+    "confusion_matrix": {
+      "labels": [
+        "Jijik",
+        "Percaya",
+        "Netral",
+        "Tertarik",
+        "Marah",
+        "Sedih"
       ],
-      [
-        1,
-        33,
-        0,
-        1
-      ],
-      [
-        2,
-        0,
-        2,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        5
+      "matrix": [
+        [
+          527,
+          54,
+          13,
+          12,
+          0,
+          0
+        ],
+        [
+          68,
+          150,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          20,
+          1,
+          100,
+          3,
+          0,
+          0
+        ],
+        [
+          62,
+          2,
+          0,
+          27,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          12,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
       ]
-    ],
-    "labels": [
-      "Jijik",
-      "Percaya",
-      "Netral",
-      "Tertarik"
+    },
+    "classes_absent_from_test_set": [
+      "Bahagia",
+      "Kaget",
+      "Takut"
     ]
   },
-  "independent_human_benchmark_emot": {
-    "source": "IndoNLU EmoT (Koto et al., 2020)",
-    "sample_size": 440,
-    "label_distribution": {
-      "anger": 110,
-      "happy": 101,
-      "sadness": 100,
-      "fear": 65,
-      "love": 64
-    }
+  "human_annotation": {
+    "status": "not_available",
+    "note": "No independent human annotation file found. Earlier values (accuracy 0.90, kappa 0.8243, inter-human kappa 0.9135, Fleiss 0.8442, Krippendorff 0.8447) were generated by scripted labels and are withdrawn."
   }
 }

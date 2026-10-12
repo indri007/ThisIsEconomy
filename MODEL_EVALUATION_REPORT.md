@@ -91,16 +91,13 @@ Uji signifikansi statistik McNemar mengonfirmasi bahwa keunggulan IndoBERT atas 
 
 ---
 
-## 6. VALIDASI STANDAR EMAS MULTI-PENILAI MANUSIA ($n = 100$)
+## 6. STATUS VALIDASI ANOTASI MANUSIA (DIPERBARUI 12 OKT 2026)
 
-Evaluasi terhadap konsensus standar emas manusia independen:
-- **Cohen's Kappa Antar-Manusia (Pakar 1 $\leftrightarrow$ Pakar 2):** $\kappa = 0.9135$ (Raw agreement = $95.00\%$)
-- **Krippendorff's Alpha Multi-Penilai (Pakar 1, Pakar 2, IndoBERT):** $\alpha = 0.8447$ (*Almost Perfect Reliability*)
-- **Performa IndoBERT vs Konsensus Emas:**
-  - Akurasi Mutlak: **90.00%** (90 dari 100 cuitan tepat)
-  - Cohen's Kappa: $\kappa = 0.8243$
-  - **Macro-F1:** **0.8097**
-  - Weighted-F1: **0.8991**
+> [!WARNING]
+> Nilai yang sebelumnya tercantum di sini (kappa antarpenilai 0,9135; Krippendorff 0,8447; IndoBERT vs "gold" 90%, kappa 0,8243, macro-F1 0,8097) **ditarik**. Label "Pakar 1" sebagian besar menyalin label silver (79 dari 100) dan label "Pakar 2" ditulis langsung di dalam skrip, sehingga angka tersebut bukan hasil anotasi manusia.
+
+- Status saat ini: **belum ada gold standard manusia yang independen.** Semua metrik di laporan ini diukur terhadap label silver-standard.
+- Langkah untuk membuat validasi yang sah: lihat `data/annotation/README_STATUS.md`.
 
 ---
 

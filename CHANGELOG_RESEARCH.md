@@ -8,6 +8,17 @@
 
 ---
 
+## REVISI 12 OKTOBER 2026 — PENARIKAN KLAIM RELIABILITAS ANTARPENILAI
+
+- **Ditarik:** kappa antarpenilai 0,9135, Fleiss 0,8442, Krippendorff 0,8447, dan IndoBERT vs "gold" 90% (kappa 0,8243). Angka ini berasal dari label yang dibuat skrip, bukan dari dua penilai manusia.
+- **Manuskrip ICS & JCMC (.md/.docx/.pdf):** klaim gold standard dan "two domain experts" dihapus; label acuan dinyatakan silver-standard; klaim dibatasi ke 6 kelas emosi aktif; analisis 3 valensi ditandai post-hoc; keterbatasan label ditambahkan.
+- **Cover letter ICS & JCMC (.md/.docx):** poin reliabilitas diganti "Transparent Validation Scope" dengan metrik utama 75,99% / macro-F1 0,4535; .docx dibangun ulang tanpa sisa tanda Markdown.
+- **Skrip:** `run_multi_annotator_agreement_validation.py` dan `run_actual_human_annotation_validation.py` ditulis ulang — hanya menghitung dari berkas anotasi manusia nyata dan berhenti bila berkas belum ada.
+- **Baru:** `data/annotation/annotator_template.csv`, `data/annotation/README_STATUS.md`, `scripts/revise_validation_claims_2026_10.py`, `scripts/revise_cover_letters_2026_10.py`.
+- **Belum direvisi:** `JURNAL_MBG_SCOPUS_Q1_LATEST_2026`, README, dan builder lama (`build_ics_taylor_francis_manuscript.py`, `build_jcmc_package.py`, `build_supplementary_submission_files.py`) masih memuat klaim lama — jangan dijalankan ulang sebelum diperbarui.
+
+---
+
 ## 1. IKHTISAR PERUBAHAN (*EXECUTIVE SUMMARY*)
 
 Perubahan dilakukan dengan mematuhi secara ketat 8 Aturan Wajib:

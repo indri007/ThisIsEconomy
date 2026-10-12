@@ -31,8 +31,8 @@ Our study provides key contributions tailored to ICS readership:
 
 ### Empirical Rigor & Validation
 - **IndoBERT Transformer Architecture:** Micro-affective Plutchik modeling achieving high throughput ($223.3$ posts/s) on Apple Silicon GPU.
-- **Inter-Rater Reliability Gold Standard:** Adjudicated multi-annotator benchmark ($n = 100$) yielding inter-human agreement of **95.00%** ($κ = 0.9135$), Tri-Rater Fleiss' Kappa **$κ = 0.8442$**, and Krippendorff's Alpha **$α = 0.8447$**.
-- **Taxonomic & Imbalance Robustness:** Resolving class imbalance artifacts via linguistic audit and hierarchical valence modeling (**Macro-F1 = 0.7522 / 75.22%**, Accuracy **76.56%**).
+- **Transparent Validation Scope:** Emotion metrics are reported against silver-standard labels on a group-aware holdout set ($n = 1,058$): accuracy **75.99%**, macro-F1 **0.4535**, weighted-F1 **0.7434** across the six emotion classes present in the data. The manuscript states explicitly that no independent human gold standard has yet been constructed and that Anger and Sadness are not recognised by the model.
+- **Supplementary Valence Analysis:** As a post-hoc complement to the granular results, a three-tier valence grouping (negative, positive, neutral) yields macro-F1 **0.7522** and accuracy **76.56%**.
 - **Canonical Topology:** Full reproducible network telemetry ($|V| = 971, |E| = 666$).
 
 ### Compliance and Declarations
