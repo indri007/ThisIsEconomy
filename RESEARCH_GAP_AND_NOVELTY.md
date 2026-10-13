@@ -138,7 +138,7 @@ Setiap karya ilmiah Scopus Q1 wajib mendeklarasikan batas validitasnya secara ju
 1. **Bias Platform & Representasi Ekologis (*Platform Bias*):**  
    Pengguna media sosial X di Indonesia didominasi oleh kelas menengah perkotaan, jurnalis, dan aktivis politik. Lived experiences siswa SD pedesaan dan pengusaha katering lokal beredar lebih luas di **TikTok** (video unboxing makanan) dan **WhatsApp** (grup wali murid), yang tidak terjangkau oleh scraper API X.
 2. **Keterbatasan Pelabelan Perak (*Silver-Standard Pretraining*):**  
-   Korpus latih utama $N = 5.263$ dilabeli secara semi-otomatis menggunakan Gemini API + filter heuristik. Meskipun tervalidasi pada subsampel emas $n = 100$ ($\alpha = 0.8447$), potensi noise pelabelan pada kelas minoritas tetap ada.
+   Korpus latih utama $N = 5.263$ dilabeli secara semi-otomatis menggunakan Gemini API + filter heuristik (*silver-standard*). Meskipun model dievaluasi secara ketat pada data uji holdout ($n = 1.058$, akurasi 75,99%, Macro-F1 0,4535), potensi noise pelabelan pada kelas minoritas (seperti *anger* dan *sadness* dengan F1 = 0,000) memerlukan validasi anotasi manual multi-penilai independen pada studi lanjutan.
 3. **Ketiadaan Sampel Kelas Minoritas Tertentu:**  
    Tidak adanya sampel untuk *joy* dan *surprise*, serta minimnya sampel *fear* ($n=2$), membatasi daya generalisasi model pada 6 kelas emosi aktif.
 4. **Sifat Observasional (Non-Kausalitas):**  

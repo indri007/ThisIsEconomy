@@ -58,12 +58,12 @@ Dalam kepustakaan computational linguistics dan NLP (misal: Ratner et al., *Snor
 
 1. **Tier 1 — Raw Scraped Data:** Teks mentah media sosial hasil crawling/streaming ($N = 9.310$).
 2. **Tier 2 — Silver-Standard Reference Labels:** Anotasi yang dihasilkan melalui pipeline terotomatisasi (Gemini LLM prompt-engineering yang dipadukan dengan aturan ekspresi reguler dan leksikon sentimen). Dataset $N = 5.263$ (`indobert_9_emosi_fixed.csv`) dan holdout $n = 1.058$ berada pada **Tier 2 ini**.
-3. **Tier 3 — Human-Adjudicated Gold Standard:** Anotasi manual independen oleh pakar manusia (*domain experts*) dengan protokol double-blind dan konsensus adjudikasi. Di dalam repositori ini, Tier 3 diwujudkan dalam berkas `data/annotation/researcher_batch_100_FILLED.csv` ($n = 100$ cuitan).
+3. **Tier 3 — Human-Adjudicated Gold Standard:** Anotasi manual independen oleh penilai manusia (*domain experts*) dengan protokol double-blind dan konsensus adjudikasi. Status saat ini: repositori menyediakan protokol dan templat independen (`data/annotation/annotator_template.csv` dan `README_STATUS.md`), sedangkan klaim metrik scripted sebelumnya ditarik resmi.
 
 #### 2. Tindakan Penyelarasan Dokumen
 * Seluruh rujukan dalam `README.md`, `dashboard/modules/views_bab1.py`, dan `dashboard/modules/views_bab4.py` yang sebelumnya berpotensi menafsirkan label $N = 5.263$ sebagai *ground truth* telah diperjelas menjadi:  
   **`silver-standard reference labels`** (*label acuan perak berbasis penyulingan semantik terotomatisasi*).
-* Istilah **`ground truth` / `human gold standard`** secara ketat dicadangkan hanya untuk sub-sampel validasi manusia ($n = 100$) yang mencatatkan Cohen's Kappa $\kappa = 0{,}9135$ dan Tri-Rater Fleiss' Kappa $\kappa = 0{,}8442$.
+* Istilah **`ground truth` / `human gold standard`** dicadangkan untuk anotasi manusia independen masa depan. Seluruh angka metrik evaluasi model di manuskrip secara jujur diukur pada set uji holdout terhadap label acuan *silver-standard* ($n = 1.058$, Akurasi $75,99\%$, Macro-F1 $0,4535$).
 
 ---
 

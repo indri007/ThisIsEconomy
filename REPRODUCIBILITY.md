@@ -68,16 +68,16 @@ python scripts/train_indobert_v2_val_protocol.py
 
 ---
 
-### Langkah 3: Evaluasi Konsensus Standar Emas Manusia (n = 100)
-Untuk mereproduksi metrik reliabilitas antar-penilai (Cohen's $\kappa$, Fleiss' $\kappa$, Krippendorff's $\alpha$):
+### Langkah 3: Evaluasi Holdout Test Set Group-Aware (n = 1.058)
+Untuk mereproduksi metrik evaluasi resmi model IndoBERT pada set uji holdout independen:
 ```bash
-python scripts/run_multi_annotator_agreement_validation.py
+python scripts/run_actual_human_annotation_validation.py
 ```
 *Hasil yang Dihasilkan:*
-- Kesepakatan antar-pakar: $\kappa = 0.9135$, raw agreement = $95.00\%$.
-- Tri-rater reliability: Fleiss' $\kappa = 0.8442$, Krippendorff's $\alpha = 0.8447$.
-- IndoBERT vs Gold Standard: Akurasi = $90.00\%$, Macro-F1 = $0.8097$.
-- Berkas output: `results/MULTI_ANNOTATOR_GOLD_VALIDATION_REPORT.json` dan `.md`.
+- Evaluasi holdout resmi protokol v2: Akurasi = **75.99%**, Macro-F1 = **0.4535**, Weighted-F1 = **0.7434**.
+- 6 kelas aktif: Disgust ($F_1 = 0.8202$), Neutral ($F_1 = 0.8032$), Trust ($F_1 = 0.6977$), Anticipation ($F_1 = 0.4000$), Anger ($F_1 = 0.0000$), Sadness ($F_1 = 0.0000$).
+- Evaluasi 3-super-class hierarkis: Macro-F1 = **0.7522**, Akurasi = **76.56%**.
+- Catatan Metodologis: Klaim multi-annotator terdahulu telah ditarik kembali secara resmi demi integritas akademik (lihat `CHANGELOG_RESEARCH.md`). Reference label acuan berstatus *silver-standard*.
 
 ---
 

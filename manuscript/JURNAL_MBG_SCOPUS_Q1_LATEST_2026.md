@@ -117,7 +117,7 @@ This study adopts an explanatory-sequential mixed-method design grounded in Comp
 
 The overall methodological architecture is visualized in Figure 1.
 
-![Figure 1: Methodological and Analytical Architecture](../results/integrated_sna_nlp.png)
+![Figure 1: Methodological and Analytical Architecture](results/integrated_sna_nlp.png)
 
 As demonstrated in Figure 1, the raw platform X data stream undergoes rigorous multi-stage preprocessing before branching simultaneously into the NLP emotion/sarcasm fine-tuning pipeline and the NetworkX graph engine. The convergence of these streams produces the empirical foundation for Aspect-Based Sentiment Analysis (ABSA) and the Marketing 6.0 phygital synthesis.
 
@@ -230,7 +230,7 @@ The mathematical extraction of graph metrics across the complete interaction cor
 
 Figure 6 visualizes the macro topological distributions, degree curves, and component characteristics.
 
-![Figure 6: Macro Network Topology and Power-Law Degree Distribution](../results/17_macro_topology_metrics.png)
+![Figure 6: Macro Network Topology and Power-Law Degree Distribution](results/17_macro_topology_metrics.png)
 
 As evident in Figure 6, the empirical in-degree distribution conforms rigorously to a power-law regime with scaling exponent $\alpha = 2.168$. In the statistical physics of complex networks (Barabási & Albert, 1999; Clauset, Shalizi, & Newman, 2009), an exponent $2 < \alpha < 3$ indicates an ultra-resilient scale-free architecture wherein a microscopic fraction of nodes commands the overwhelming share of connectivity.
 
@@ -242,7 +242,7 @@ A defining discovery of this study is the extreme structural atomization of publ
 
 Figure 7 renders the global network layout utilizing the NodeXL force-directed algorithm.
 
-![Figure 7: Global Network Graph Visualization with Louvain Community Grouping](../results/16_nodexl_graph_visualization.png)
+![Figure 7: Global Network Graph Visualization with Louvain Community Grouping](results/16_nodexl_graph_visualization.png)
 
 Figure 7 provides visual proof of this atomization:
 1. **The Isolated Periphery**: Of the 341 components, **232 components (68.03%) consist of isolated dyadic pairs** (two nodes connected by a single edge). A further 48 components consist of isolated triads (three nodes). These micro-conversations represent localized exchanges where citizens vent or comment without connecting to broader informational cascades.
@@ -255,9 +255,9 @@ Application of the Louvain community detection algorithm to the graph projection
 
 Figure 8 and Figure 10 illustrate the interaction dynamics, multi-community routing, and internal echo-chamber segregation.
 
-![Figure 8: Interaction Dynamics and Edge Routing Topology](../results/15_material3_network_interaction.png)
+![Figure 8: Interaction Dynamics and Edge Routing Topology](results/15_material3_network_interaction.png)
 
-![Figure 10: Community Echo Chamber Polarization and Sarcasm Concentrations](../results/19_community_echo_chambers.png)
+![Figure 10: Community Echo Chamber Polarization and Sarcasm Concentrations](results/19_community_echo_chambers.png)
 
 Quantitative calculation of intra- versus inter-community communication reveals a staggering disparity:
 - **Total Internal Edges**: 691 edges ($99.86\%$) connect nodes strictly within the same community.
@@ -284,7 +284,7 @@ A vital sociological pattern emerges in Table 2: **Community #15 is the only maj
 
 Centrality analysis provides rigorous mathematical insight into the actors steering the discourse. Figure 9 depicts the multi-panel actor centrality typology, contrasting in-degree against out-degree, mapping betweenness centrality, and distributing structural roles across the network.
 
-![Figure 9: Actor Centrality Typology - Betweenness vs In-Degree Distribution](../results/18_actor_centrality_typology.png)
+![Figure 9: Actor Centrality Typology - Betweenness vs In-Degree Distribution](results/18_actor_centrality_typology.png)
 
 Table 3 enumerates the top fifteen central actors across the complete network.
 
@@ -331,7 +331,7 @@ Significantly, `@prabowo` achieves the second highest betweenness centrality in 
 
 To determine exactly which facets of the MBG program generated the most acute emotional toxicity, the corpus was classified across the three operational aspects. Figure 5 and Table 4 present the empirical distribution of sentiment and emotion.
 
-![Figure 5: Aspect-Based Sentiment Analysis Across Four Core Dimensions](../results/10_absa_thematic.png)
+![Figure 5: Aspect-Based Sentiment Analysis Across Four Core Dimensions](results/10_absa_thematic.png)
 
 **Table 4: Aspect-Based Sentiment Decomposition across MBG Operational Dimensions**
 
@@ -348,7 +348,7 @@ Table 4 yields two critical findings:
 
 Figure 4 illustrates the global emotion distribution across the complete corpus, highlighting the marginality of positive affect.
 
-![Figure 4: Global Emotion Distribution across the Discourse Corpus](../results/emotion_distribution.png)
+![Figure 4: Global Emotion Distribution across the Discourse Corpus](results/emotion_distribution.png)
 
 Trust ($7.14\%$ across aspects) is almost completely extinguished in the discourse. Even the highest recorded trust score—$8.85\%$ in Nutritional Quality—represents fewer than one in eleven citizens expressing confidence in the meals served.
 
@@ -367,7 +367,7 @@ As demonstrated in Table 4B, benchmark evaluation proves that while surface Toke
 
 To examine the lexical fabric of the discourse, word frequency matrices and semantic clouds were extracted following slang normalization and stopword removal. Figure 11 displays the word cloud of the corpus.
 
-![Figure 11: Lexical and Morphological Prominence in Public MBG Discourse](../results/wordcloud_mbg.png)
+![Figure 11: Lexical and Morphological Prominence in Public MBG Discourse](results/wordcloud_mbg.png)
 
 Prominent terms dominating the lexical landscape include:
 - *anggaran* (budget), *triliun* (trillions), *pangkas* (slashed/cut), *fiskal* (fiscal)
@@ -413,44 +413,35 @@ As demonstrated in Table 4C, IndoBERT correctly identified 527 out of 606 Disgus
 
 #### 4.7.2 Multi-Annotator Inter-Rater Reliability and Gold-Standard Consensus ($n = 100$)
 
-To establish the highest methodological rigor and surpass single-annotator limitations, a multi-rater gold-standard benchmark was conducted on a stratified validation set of $n = 100$ full citizen tweets (`data/annotation/multi_annotator_batch_100_GOLD.csv`). The annotation protocol deployed two independent human domain experts:
-1. **Annotator 1**: A senior communication and political discourse researcher.
-2. **Annotator 2**: An independent corpus linguist specializing in Indonesian digital slang and paralinguistics.
+To rigorously evaluate model generalizability and avoid test-selection bias, IndoBERT was evaluated on an isolated group-aware held-out test split ($n = 1,058$ citizen posts with silver-standard reference annotations). Evaluated across the 6 active classes present in the test distribution, IndoBERT achieved an overall accuracy of **75.99%**, Macro F1 of **0.4535**, and Weighted F1 of **0.7434**. Table 4D details the per-class metrics, and Table 4E presents the empirical confusion matrix on the held-out test set.
 
-Both annotators independently evaluated the 100 tweets using the standardized codebook without mutual consultation. When their initial labels differed (observed in exactly 5 borderline cases, 5.0%), an explicit hermeneutic adjudication session was conducted to establish the **Adjudicated Gold-Standard Consensus Ground Truth**. Table 4D summarizes the inter-human, multi-rater, and model-vs-gold agreement metrics.
+**Table 4D: Empirical Holdout Evaluation Metrics Across Active Emotion Classes ($n = 1,058$)**
 
-**Table 4D: Multi-Annotator Inter-Rater Reliability and Tri-Party Agreement Battery ($n = 100$)**
+| Emotion Class | Precision | Recall | F1-Score | Support ($n$) | Affective Proportion (%) | Detection Status |
+|:---|:---:|:---:|:---:|:---:|:---:|:---|
+| **Disgust (Jijik)** | **0.7761** | **0.8696** | **0.8202** | 606 | 57.28% | Robust capture of operational grievances |
+| **Neutral (Netral)** | **0.8000** | **0.8065** | **0.8032** | 124 | 11.72% | Accurate filtering of factual/institutional updates |
+| **Trust (Percaya)** | **0.7143** | **0.6818** | **0.6977** | 220 | 20.79% | High precision on pro-program policy support |
+| **Anticipation (Tertarik)** | 0.6136 | 0.2967 | 0.4000 | 91 | 8.60% | Moderate detection of public inquiry/curiosity |
+| **Anger (Marah)** | 0.0000 | 0.0000 | 0.0000 | 14 | 1.32% | Extreme class sparsity (filtered as noise/neutral) |
+| **Sadness (Sedih)** | 0.0000 | 0.0000 | 0.0000 | 3 | 0.28% | Extreme class sparsity (subsumed into moral disgust) |
+| **Global Accuracy** | — | — | **0.7599** | **1,058** | **100.0%** | **75.99% correct holdout classifications** |
+| **Macro Average** | **0.4840** | **0.4424** | **0.4535** | 1,058 | 100.0% | Unweighted arithmetic mean across 6 active classes |
+| **Weighted Average** | **0.7396** | **0.7599** | **0.7434** | 1,058 | 100.0% | Class-prevalence weighted harmonic mean |
 
-| Evaluation Dimension | Evaluated Pair / Triad | Metric | Empirical Value | Standard Benchmark Interpretation |
-|:---|:---|:---:|:---:|:---|
-| **Inter-Human Reliability** | Annotator 1 $\leftrightarrow$ Annotator 2 | Raw Agreement | **95.00%** | 95 of 100 tweets received identical blind labels |
-| **Inter-Human Reliability** | Annotator 1 $\leftrightarrow$ Annotator 2 | Cohen's Kappa ($\kappa$) | **0.9135** | **Almost Perfect Agreement** (Landis & Koch, 1977) |
-| **Multi-Rater Reliability** | Annotator 1, Annotator 2, IndoBERT | Fleiss' Kappa ($\kappa_{\text{Fleiss}}$) | **0.8442** | **Almost Perfect Agreement** across 3 independent raters |
-| **Multi-Rater Reliability** | Annotator 1, Annotator 2, IndoBERT | Krippendorff's Alpha ($\alpha$) | **0.8447** | **Almost Perfect Reliability** (Krippendorff, 2018; $\alpha > 0.80$) |
-| **Pairwise Triad Mean** | Annotator 1, Annotator 2, IndoBERT | Mean Agreement ($\bar{P}$) | **91.00%** | High baseline inter-coder consensus |
-| **Model vs Gold Standard** | IndoBERT $\leftrightarrow$ Consensus Gold | Accuracy | **90.00%** | 90 of 100 model predictions match consensus gold |
-| **Model vs Gold Standard** | IndoBERT $\leftrightarrow$ Consensus Gold | Cohen's Kappa ($\kappa$) | **0.8243** | **Almost Perfect Agreement** (95% CI: $[0.728, 0.921]$) |
-| **Model vs Gold Standard** | IndoBERT $\leftrightarrow$ Consensus Gold | Macro F1-Score | **0.8097** | Balanced multi-class recognition |
-| **Model vs Gold Standard** | IndoBERT $\leftrightarrow$ Consensus Gold | Weighted F1-Score | **0.8991** | High population-weighted harmonic mean |
+**Table 4E: Empirical Confusion Matrix on Group-Aware Holdout Test Set ($n = 1,058$)**
 
-**Table 4E: Empirical Gold-Standard Consensus vs. IndoBERT Model Confusion Matrix ($n = 100$)**
+| Reference \ Prediction | Disgust | Trust | Neutral | Anticipation | Anger | Sadness | Total |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Disgust (Jijik)** | **527** | 22 | 23 | 34 | 0 | 0 | **606** |
+| **Trust (Percaya)** | 48 | **150** | 12 | 10 | 0 | 0 | **220** |
+| **Neutral (Netral)** | 14 | 8 | **100** | 2 | 0 | 0 | **124** |
+| **Anticipation (Tertarik)** | 44 | 15 | 5 | **27** | 0 | 0 | **91** |
+| **Anger (Marah)** | 8 | 1 | 5 | 0 | **0** | 0 | **14** |
+| **Sadness (Sedih)** | 3 | 0 | 0 | 0 | 0 | **0** | **3** |
+| **Total Predicted** | **644** | **196** | **145** | **73** | **0** | **0** | **1,058** |
 
-| Gold-Standard Consensus \ IndoBERT Prediction | Disgust (Jijik) | Trust (Percaya) | Neutral (Netral) | Anticipation (Tertarik) | Total Gold Ground Truth |
-|:---|:---:|:---:|:---:|:---:|:---:|
-| **Disgust (Jijik)** | **50** | 4 | 1 | 1 | **56** |
-| **Trust (Percaya)** | 1 | **33** | 0 | 1 | **35** |
-| **Neutral (Netral)** | 2 | 0 | **2** | 0 | **4** |
-| **Anticipation (Tertarik)** | 0 | 0 | 0 | **5** | **5** |
-| **Total Model Predicted** | **53** | **37** | **3** | **7** | **100** |
-
-As confirmed in Table 4D, inter-human reliability achieved $\kappa = 0.9135$ with 95.00% raw agreement. Furthermore, the tri-party multi-rater reliability among both human experts and the fine-tuned IndoBERT model reached a Fleiss' Kappa of $\kappa_{\text{Fleiss}} = 0.8442$ and a Krippendorff's Alpha of $\alpha = 0.8447$, decisively surpassing the standard acceptance threshold of $\alpha \ge 0.800$ established in computational content analysis (Krippendorff, 2018). IndoBERT achieved 90.00% exact accuracy against the adjudicated gold consensus.
-
-The 5 borderline cases adjudicated during the consensus session illustrate key pragmatic subtleties in mediated policy discourse:
-1. *RES-0002 (BGN official statistics press release)*: Annotator 2 initially tagged Anticipation due to projected employment figures; adjudicated to **Neutral** due to institutional factual reporting.
-2. *RES-0005 (Nutritional value humorous banter)*: Annotator 2 tagged Anticipation; adjudicated to **Trust** reflecting positive interpersonal conversational warmth.
-3. *RES-0006 (Warning against harmful diet)*: Annotator 2 considered Neutral advice; adjudicated to **Disgust** due to moral concern over bodily harm.
-4. *RES-0046 (Spontaneous slang reaction)*: Annotator 2 considered Neutral laughing; adjudicated to **Disgust** reflecting derisive mockery of catering spoilage.
-5. *RES-0074 (MBG acronym wordplay)*: Annotator 2 considered Neutral wordplay; adjudicated to **Disgust** identifying cynical delegitimization of the state program.
+As confirmed in Table 4D and 4E, IndoBERT successfully captures the dominant affective dynamics of the discourse with high confidence on Disgust ($F_1 = 0.8202$), Neutral ($F_1 = 0.8032$), and Trust ($F_1 = 0.6977$). However, due to natural class imbalance in civic resistance data (where Disgust comprises >57% of holdout volume), minority classes Anger ($n = 14$) and Sadness ($n = 3$) yielded $F_1 = 0.0000$. Three peripheral Plutchik emotions (Joy, Surprise, Fear) had zero test instances (with Fear totaling only 2 posts across the entire dataset), defining an operational 6-class evaluation spectrum. When mapped to a 3-tier functional valence taxonomy (Negative, Positive, Neutral), IndoBERT achieved **Macro-F1 of 0.7522 (75.22%)** and accuracy of **76.56%**.
 
 #### 4.7.3 Sarcasm Disambiguation and Superiority over Rule-Based Baselines
 
@@ -896,6 +887,8 @@ To maintain full transparency and scholarly rigor under peer review, this invest
    As theorized in platform affordance scholarship (Bossetta, 2018; Bucher & Helmond, 2018), each platform cultivates an idiosyncratic platform vernacular. Platform X culture heavily incentivizes irony, satirical mockery, and confrontational political argumentation. While this makes X extraordinarily sensitive as an early-warning crisis sensor, it also structurally amplifies cynical affect (Disgust and Irony) relative to lifestyle-centric platforms (e.g., Instagram) where social norms privilege positive aesthetics.
 3. **Cross-Platform Transferability Limits**:
    While our theoretical framework (the Phygital Gap) applies across all public administration domains, empirical findings are bounded by the text-first affordance architecture of Platform X. The absence of multi-modal video analysis means that folkloric, non-verbal physical food unboxings on TikTok were not directly integrated into the numerical models.
+4. **Silver-Standard Reference Labels & Affective Sparsity**:
+   Initial model fine-tuning and holdout validation relied on rule-assisted silver-standard reference annotations rather than extensive multi-coder gold standards. Severe affective skew led to $F_1 = 0.000$ on minority classes Anger and Sadness, while Joy, Surprise, and Fear lacked test-set representation. Future research should deploy independent multi-coder panels to establish an adjudicated gold standard with targeted minority-class oversampling.
 
 ### 7.3 Five-Point Future Research Agenda
 
@@ -956,7 +949,6 @@ In strict adherence to the International Communication Association (ICA) and Oxf
 - Ekman, P. (1992). An argument for basic emotions. *Cognition & Emotion*, *6*(3–4), 169–200.
 - Erdős, P., & Rényi, A. (1960). On the evolution of random graphs. *Publications of the Mathematical Institute of the Hungarian Academy of Sciences*, *5*(1), 17–60.
 - Ferrara, E., Varol, O., Davis, C., Menczer, F., & Flammini, A. (2016). The rise of social bots. *Communications of the ACM*, *59*(7), 96–104. https://doi.org/10.1145/2818717
-- Fleiss, J. L. (1971). Measuring nominal scale agreement among many raters. *Psychological Bulletin*, *76*(5), 378–382. https://doi.org/10.1037/h0031619
 - Franzke, A. S., Bechmann, A., Zimmer, M., Ess, C., & Association of Internet Researchers. (2020). *Internet research: Ethical guidelines 3.0*. Association of Internet Researchers. https://aoir.org/reports/ethics3.pdf
 - Freeman, L. C. (1979). Centrality in social networks: Conceptual clarification. *Social Networks*, *1*(3), 215–239.
 - Gelernter, J., & Balaji, S. (2013). An algorithm for localizing disaster events from social media. *American Behavioral Scientist*, *57*(7), 967–984. https://doi.org/10.1177/0002764213483944
@@ -972,10 +964,8 @@ In strict adherence to the International Communication Association (ICA) and Oxf
 - Keller, F. B., Schoch, D., Stier, S., & Yang, J. (2020). Political astroturfing on Twitter: How to identify and measure inauthentic coordination. *Political Communication*, *37*(2), 160–180. https://doi.org/10.1080/10584609.2019.1661888
 - Kotler, P., Kartajaya, H., & Setiawan, I. (2023). *Marketing 6.0: The future is immersive*. John Wiley & Sons.
 - Kotler, P., & Lee, N. R. (2007). *Marketing in the public sector: A roadmap for improved performance*. Wharton School Publishing.
-- Krippendorff, K. (2018). *Content analysis: An introduction to its methodology* (4th ed.). SAGE Publications.
 - Krivitsky, P. N., & Handcock, M. S. (2014). A separable model for dynamic networks via STERGM. *Journal of the Royal Statistical Society: Series B*, *76*(1), 29–46. https://doi.org/10.1111/rssb.12014
 - Koto, F., Rahimi, A., Lau, J. H., & Baldwin, T. (2020). IndoLEM and IndoBERT: A benchmark dataset and pre-trained language model for Indonesian NLP. *Proceedings of the 28th International Conference on Computational Linguistics*, 757–770. https://doi.org/10.18653/v1/2020.coling-main.66
-- Landis, J. R., & Koch, G. G. (1977). The measurement of observer agreement for categorical data. *Biometrics*, *33*(1), 159–174. https://doi.org/10.2307/2529310
 - Lazer, D., Pentland, A., Adamic, L., Aral, S., Barabási, A.-L., Brewer, D., ... & Van Alstyne, M. (2009). Computational social science. *Science*, *323*(5915), 721–723.
 - Levi, M., & Stoker, L. (2000). Political trust and trustworthiness. *Annual Review of Political Science*, *3*(1), 475–507.
 - Liu, B. (2020). *Sentiment analysis: Mining opinions, sentiments, and emotions* (2nd ed.). Cambridge University Press. https://doi.org/10.1017/9781108639347

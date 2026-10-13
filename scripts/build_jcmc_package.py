@@ -557,8 +557,8 @@ def build_anonymized_manuscript():
     add_sec_heading("6. Conclusion, Limitations, and Future Trajectories", 1)
     add_body_p(
         "This study has established a comprehensive Tri-Layer Computational Communication forensic of citizen resistance to Indonesia's Free Nutritious Meal "
-        "program on Platform X. By integrating transformer deep learning (IndoBERT), multi-annotator gold standard validation (Fleiss' κ = 0.8442, "
-        "Krippendorff's α = 0.8447), semiotic pretense theory, and canonical directed social network analysis, we demonstrated that public opposition "
+        "program on Platform X. By integrating transformer deep learning (IndoBERT), empirical holdout validation across active affective dimensions "
+        "(75.99% accuracy, 0.4535 Macro-F1), semiotic pretense theory, and canonical directed social network analysis, we demonstrated that public opposition "
         "was driven by visceral moral Disgust (98.14%) anchored in physical operational breakdowns. Furthermore, we documented how communicative "
         "unresponsiveness by state leaders catalyzed the rise of the Algorithmic Oracle (@grok), while paralinguistic sarcasm enabled citizens to "
         "subvert digital surveillance."
@@ -569,9 +569,11 @@ def build_anonymized_manuscript():
         "and politically active (APJII, 2024), capturing the communicative stance of the 'vanguard public' (journalists, academics, middle-class parents) "
         "rather than the total passive electorate. Second, Platform X cultivates an idiosyncratic platform vernacular characterized by dry irony and cynical "
         "satire (Bossetta, 2018), structurally amplifying the salience of Disgust and Sarcasm relative to lifestyle-oriented networks like Instagram. "
-        "Third, while our multi-annotator protocol demonstrated high reliability (Fleiss' κ = 0.8442), future investigations should expand multi-annotator "
-        "benchmarking across multi-thousand-sample corpora and deploy multimodal architectures (e.g., Vision-Language Models) to evaluate visual food tray "
-        "imagery on TikTok. Finally, as conversational AI oracles (@grok) become increasingly embedded into governance debates, research must audit whether "
+        "Third, our classification relies on rule-assisted silver-standard reference labels and an active 6-class operational space, where severe "
+        "class imbalance resulted in F1 = 0.000 for minority classes Anger and Sadness, while Joy, Surprise, and Fear lacked test-set representation. "
+        "Future investigations should recruit independent multi-coder panels to establish an adjudicated gold standard with targeted minority-class "
+        "oversampling, and deploy multimodal architectures (e.g., Vision-Language Models) to evaluate visual food tray imagery on TikTok. "
+        "Finally, as conversational AI oracles (@grok) become increasingly embedded into governance debates, research must audit whether "
         "machine agents maintain epistemic neutrality or reproduce emergent public cynicism."
     )
 
@@ -580,7 +582,7 @@ def build_anonymized_manuscript():
     add_body_p(
         "Data Availability: In strict compliance with International Communication Association (ICA) and Oxford University Press Open Science "
         "policies and FAIR data principles, all research replication materials—including AoIR 3.0-pseudonymized directed network interaction edge lists "
-        "(|V| = 971, |E| = 666), multi-annotator gold-standard adjudicated corpora, spatial epidemiological benchmarks, ABSA matrices, and PyTorch "
+        "(|V| = 971, |E| = 666), silver-standard reference annotations and held-out evaluation splits, spatial epidemiological benchmarks, ABSA matrices, and PyTorch "
         "inference pipelines—are permanently archived in the Zenodo open-access repository under Digital Object Identifier (DOI): "
         "10.5281/zenodo.11029482 (https://doi.org/10.5281/zenodo.11029482). The active development mirror is maintained at GitHub: "
         "https://github.com/indri007/ThisIsEconomy."
@@ -618,7 +620,6 @@ def build_anonymized_manuscript():
         "Dresner, E., & Herring, S. C. (2010). Functions of the nonverbal in CMC: Emoticons and illocutionary force. *Communication Theory*, *20*(3), 249–268. https://doi.org/10.1111/j.1468-2885.2010.01362.x",
         "Ekman, P. (1992). An argument for basic emotions. *Cognition & Emotion*, *6*(3–4), 169–200. https://doi.org/10.1080/02699939208411068",
         "Ferrara, E., Varol, O., Davis, C., Menczer, F., & Flammini, A. (2016). The rise of social bots. *Communications of the ACM*, *59*(7), 96–104. https://doi.org/10.1145/2818717",
-        "Fleiss, J. L. (1971). Measuring nominal scale agreement among many raters. *Psychological Bulletin*, *76*(5), 378–382. https://doi.org/10.1037/h0031619",
         "Franzke, A. S., Bechmann, A., Zimmer, M., Ess, C., & Association of Internet Researchers. (2020). *Internet research: Ethical guidelines 3.0*. Association of Internet Researchers. https://aoir.org/reports/ethics3.pdf",
         "Gelernter, J., & Balaji, S. (2013). An algorithm for localizing disaster events from social media. *American Behavioral Scientist*, *57*(7), 967–984. https://doi.org/10.1177/0002764213483944",
         "Giglietto, V., Righetti, N., Rossi, L., & Marino, G. (2020). It takes a village to manipulate the media: Coordinated inauthentic behavior on social media. *Information, Communication & Society*, *23*(6), 867–891. https://doi.org/10.1080/1369118X.2020.1739732",
@@ -629,9 +630,7 @@ def build_anonymized_manuscript():
         "Keller, F. B., Schoch, D., Stier, S., & Yang, J. (2020). Political astroturfing on Twitter: How to identify and measure inauthentic coordination. *Political Communication*, *37*(2), 160–180. https://doi.org/10.1080/10584609.2019.1661888",
         "Kotler, P., Kartajaya, H., & Setiawan, I. (2023). *Marketing 6.0: The future is immersive*. John Wiley & Sons.",
         "Koto, F., Rahimi, A., Lau, J. H., & Baldwin, T. (2020). IndoLEM and IndoBERT: A benchmark dataset and pre-trained language model for Indonesian NLP. *Proceedings of COLING 2020*, 757–770. https://doi.org/10.18653/v1/2020.coling-main.66",
-        "Krippendorff, K. (2018). *Content analysis: An introduction to its methodology* (4th ed.). SAGE Publications.",
         "Krivitsky, P. N., & Handcock, M. S. (2014). A separable model for dynamic networks via STERGM. *Journal of the Royal Statistical Society: Series B*, *76*(1), 29–46. https://doi.org/10.1111/rssb.12014",
-        "Landis, J. R., & Koch, G. G. (1977). The measurement of observer agreement for categorical data. *Biometrics*, *33*(1), 159–174. https://doi.org/10.2307/2529310",
         "Lazer, D. M., Pentland, A., Watts, D. J., Aral, S., Athey, S., Contractor, N., Freelon, D., Gonzalez-Bailon, S., King, G., Margetts, H., Moghadam, A., Nelson, B., Salganik, M. J., Strohmaier, M., Vespignani, A., & Wagner, C. (2020). Computational social science: Obstacles and opportunities. *Science*, *369*(6507), 1060–1062. https://doi.org/10.1126/science.aaz8170",
         "Liu, B. (2020). *Sentiment analysis: Mining opinions, sentiments, and emotions* (2nd ed.). Cambridge University Press. https://doi.org/10.1017/9781108639347",
         "Papacharissi, Z. (2015). *Affective publics: Sentiment, technology, and politics*. Oxford University Press. https://doi.org/10.1093/acprof:oso/9780199999736.001.0001",
@@ -738,19 +737,21 @@ def build_anonymized_manuscript():
     p_t3 = doc.add_paragraph()
     p_t3.paragraph_format.space_before = Pt(18)
     p_t3.paragraph_format.space_after = Pt(4)
-    r = p_t3.add_run("Table 3\nMulti-Annotator Inter-Rater Reliability and IndoBERT Gold Validation Benchmark (n = 100)")
+    r = p_t3.add_run("Table 3\nEmpirical Holdout Evaluation Metrics and Class Performance Benchmark (n = 1,058)")
     r.font.name = "Times New Roman"
     r.font.size = Pt(12)
     r.bold = True
     
     t3_data = [
         ["Evaluation Dimension", "Observed Metric", "Benchmark Threshold", "Academic Interpretation"],
-        ["Inter-Human Agreement (H1 vs H2)", "95.00%", ">= 80.00%", "High concordance between independent domain experts"],
-        ["Inter-Human Cohen's Kappa (κ)", "0.9135", ">= 0.8100", "Almost Perfect Agreement (Landis & Koch, 1977)"],
-        ["Tri-Rater Fleiss' Kappa (κ_Fleiss)", "0.8442", ">= 0.7000", "Almost Perfect Agreement across H1, H2, and IndoBERT"],
-        ["Tri-Rater Krippendorff's Alpha (α)", "0.8447", ">= 0.8000", "Surpasses rigorous standard content analysis reliability"],
-        ["IndoBERT vs Gold Standard Accuracy", "90.00% (90/100)", ">= 80.00%", "High empirical alignment with adjudicated ground truth"],
-        ["IndoBERT vs Gold Standard Cohen's Kappa", "0.8243", ">= 0.8000", "Strong classification reliability on authentic citizen discourse"]
+        ["Holdout Test Set Accuracy (n = 1,058)", "75.99%", ">= 70.00%", "Strong overall predictive accuracy on held-out data"],
+        ["Holdout Test Macro F1", "0.4535", "Baseline", "Macro F1 across 6 active classes under severe imbalance"],
+        ["Holdout Test Weighted F1", "0.7434", ">= 0.7000", "Volume-weighted harmonic mean across all test instances"],
+        ["Dominant Class Disgust F1", "0.8202 (n=606)", ">= 0.8000", "High precision (0.7761) and recall (0.8696) on core grievance"],
+        ["Dominant Class Neutral F1", "0.8032 (n=124)", ">= 0.7500", "Effective separation of factual and non-evaluative discourse"],
+        ["Dominant Class Trust F1", "0.6977 (n=220)", ">= 0.6500", "Robust capture of supportive policy narratives"],
+        ["Minority Class Sparsity (Anger/Sadness)", "F1 = 0.0000", "N/A", "Extreme imbalance artifact; Joy/Surprise/Fear unrepresented in test"],
+        ["Hierarchical Valence Macro F1", "0.7522 (75.22%)", ">= 0.7000", "3-tier functional valence resolving minority class sparsity"]
     ]
     t3 = doc.add_table(rows=len(t3_data), cols=4)
     set_table_borders(t3)
@@ -1222,8 +1223,7 @@ def build_data_availability():
         "   - 5-Pillar Astroturfing Circadian Sleep-Wake Distribution: data/astroturfing_hourly_circadian_distribution.csv\n"
         "   - Cross-Platform Affordance Ecological Matrix: data/cross_platform_affordance_matrix.csv\n\n"
         "3. Automated End-to-End Replication Pipelines:\n"
-        "   - Multi-Annotator Fleiss & Krippendorff Validation: scripts/run_multi_annotator_agreement_validation.py\n"
-        "   - Minority Class Imbalance Audit & Hierarchical Taxonomy: scripts/run_minority_class_imbalance_audit.py\n"
+        "   - Holdout Validation & Minority Class Imbalance Audit: scripts/run_minority_class_imbalance_audit.py\n"
         "   - Astroturfing & Bot Forensic Audit: scripts/run_astroturfing_and_bot_audit.py\n"
         "   - Cross-Platform Ecological Validity Audit: scripts/run_cross_platform_validity_audit.py\n"
         "   - Dynamic Temporal Network Modeling: scripts/run_dynamic_temporal_network_audit.py\n"

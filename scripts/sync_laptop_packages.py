@@ -34,6 +34,9 @@ files_to_copy = [
     os.path.join(BASE_DIR, "manuscript/JURNAL_MBG_SCOPUS_Q1_LATEST_2026.docx"),
     os.path.join(BASE_DIR, "manuscript/JURNAL_MBG_SCOPUS_Q1_LATEST_2026.pdf"),
     os.path.join(BASE_DIR, "manuscript/JURNAL_MBG_SCOPUS_Q1_LATEST_2026.md"),
+    os.path.join(BASE_DIR, "manuscript/JURNAL_MBG_SCOPUS_Q1_30_PAGES_2026.docx"),
+    os.path.join(BASE_DIR, "manuscript/JURNAL_MBG_SCOPUS_Q1_30_PAGES_2026.pdf"),
+    os.path.join(BASE_DIR, "manuscript/JURNAL_MBG_SCOPUS_Q1_30_PAGES_2026.md"),
     # Supplementary Submission Documents (Required by Scopus Q1 Portals)
     os.path.join(BASE_DIR, "manuscript/Title_Page_Indri_Anjar_Kartika_Sari.docx"),
     os.path.join(BASE_DIR, "manuscript/Title_Page_Indri_Anjar_Kartika_Sari.md"),
@@ -133,14 +136,12 @@ readme_content = """# 📚 PAKET LENGKAP ARSIP SUBMISI JURNAL INTERNASIONAL SCOP
 
 ---
 
-### 2. Dataset Anotasi Standar Emas (Gold Standard Ground Truth):
-- `multi_annotator_batch_100_GOLD.csv`:
-  - 100 sampel tweet aktual dengan anotasi independen Penilai 1 (Pakar Komunikasi Politik), Penilai 2 (Pakar Linguistik Korpus), Konsensus Standar Emas Adjudikasi, dan Rasional Kualitatif.
-  - **Kesepakatan Antar-Manusia (Inter-Human)**: **95.00%**, Cohen's Kappa **κ = 0.9135** (*Almost Perfect Agreement*).
-  - **Tri-Rater Reliability (H1, H2, IndoBERT)**: Fleiss' Kappa **κ = 0.8442**, Krippendorff's Alpha **α = 0.8447** (melampaui ambang batas standar Krippendorff α ≥ 0.80).
-  - **Akurasi IndoBERT vs Konsensus Emas**: **90.00% (90/100)**, Cohen's Kappa **κ = 0.8243**.
+### 2. Dataset dan Protokol Validasi Anotasi:
+- `multi_annotator_batch_100_GOLD.csv` & `annotator_template.csv`:
+  - 100 sampel tweet kurasi untuk protokol anotasi multi-penilai independen masa depan (`README_STATUS.md`).
+  - Catatan integritas: Metrik scripted terdahulu (κ = 0.9135, α = 0.8447) telah ditarik secara resmi. Evaluasi ilmiah saat ini bertumpu pada data uji holdout independen 6-kelas aktif (Akurasi 75.99%, Macro-F1 0.4535).
 - `researcher_batch_100_FILLED.csv`:
-  - Lembar kerja evaluasi empiris penilai peneliti.
+  - Lembar kerja evaluasi terkurasi.
 
 ---
 
@@ -155,7 +156,7 @@ readme_content = """# 📚 PAKET LENGKAP ARSIP SUBMISI JURNAL INTERNASIONAL SCOP
     * **Macro-F1**: **0.7522 (75.22%)** (Kenaikan signifikan **+29.87%** dari 0.4535 pada 6-kelas granular)
     * Weighted-F1: **0.7610**
 - `MULTI_ANNOTATOR_GOLD_VALIDATION_REPORT.md` & `.json` (Resolusi Defek Poin #1):
-  - Laporan validasi formal multi-penilai protokol standar emas (Fleiss' κ = 0.8442, Krippendorff's α = 0.8447, Akurasi IndoBERT = 90.00%).
+  - Laporan penarikan metrik scripted dan status protokol anotasi independen (rujuk `data/annotation/README_STATUS.md`).
 - `AOIR_ETHICAL_PSEUDONYMIZATION_REPORT.md` & `.json` (Resolusi Defek Poin #3):
   - Kepatuhan etika riset internet internasional AoIR 3.0 & perlindungan privasi warganet di bawah regulasi UU ITE.
 - `ASTROTURFING_AND_BOT_AUDIT_REPORT.md` & `.json` (Resolusi Defek Poin #4):

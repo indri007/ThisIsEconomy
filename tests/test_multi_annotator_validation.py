@@ -30,18 +30,6 @@ def test_multi_annotator_metrics_report():
     with open(report_json, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # 1. Cek Kesepakatan Antar-Manusia (H1 vs H2)
-    h_rel = data["inter_human_reliability"]
-    assert h_rel["accuracy"] >= 0.90, "Akurasi antar-manusia harus >= 90%"
-    assert h_rel["cohen_kappa"] >= 0.81, "Cohen's Kappa antar-manusia harus >= 0.81 (Almost Perfect)"
-
-    # 2. Cek Reliabilitas Multi-Penilai (Fleiss & Krippendorff)
-    m_rel = data["multi_rater_reliability"]
-    assert m_rel["fleiss_kappa"] >= 0.80, "Fleiss' Kappa 3 penilai harus >= 0.80"
-    assert m_rel["krippendorff_alpha"] >= 0.80, "Krippendorff's Alpha harus >= 0.80"
-
-    # 3. Cek Kinerja Model vs Konsensus Emas
-    mod_gold = data["model_vs_gold_standard"]
-    assert mod_gold["accuracy"] == 0.90, "Akurasi model vs konsensus emas harus 90%"
-    assert mod_gold["cohen_kappa"] == 0.8243, "Cohen's Kappa model vs konsensus emas harus 0.8243"
-    assert mod_gold["weighted_f1"] >= 0.85, "Weighted F1 model vs konsensus emas harus >= 0.85"
+    # Verifikasi status penarikan metrik scripted (Option A)
+    assert data["status"] == "withdrawn"
+    assert "withdrawn" in data["note"]

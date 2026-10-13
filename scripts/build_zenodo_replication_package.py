@@ -152,7 +152,7 @@ seaborn>=0.12.0
 This package satisfies the rigorous replication and archiving requirements of the **International Communication Association (ICA)** and the **Journal of Computer-Mediated Communication (Oxford University Press)**:
 1. **FAIR Data Principles**: Findable (via persistent DOI), Accessible (open access without embargo), Interoperable (standard CSV, JSON, and CFF formats), and Reusable.
 2. **AoIR 3.0 Ethical Anonymization**: All public microblogging usernames of private citizens are rigorously pseudonymized using SHA-256 keyed HMAC hashes to safeguard subject physical privacy under Indonesia's Electronic Information and Transactions Law (UU ITE), while institutional state accounts (`@prabowo`, `@gibran_tweet`, `@bgn_ri`, `@grok`) remain transparently disclosed.
-3. **Multi-Annotator Gold Standard**: Full 100-sample adjudicated corpus evaluated under tri-rater protocol (Fleiss' κ = 0.8442, Krippendorff's α = 0.8447).
+3. **Empirical Evaluation Benchmark**: Isolated group-aware holdout test split ($n = 1,058$, silver-standard references) with complete per-class error dissection across active classes.
 
 ---
 

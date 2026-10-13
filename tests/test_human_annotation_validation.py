@@ -27,16 +27,16 @@ class TestHumanAnnotationValidation(unittest.TestCase):
             data = json.load(f)
 
         # Cek evaluasi holdout test set (n=1.058)
-        test_eval = data["holdout_test_set_n1058"]
+        test_eval = data["holdout_v2_vs_silver"]
+        self.assertEqual(test_eval["n"], 1058)
         self.assertAlmostEqual(test_eval["accuracy"], 0.7599, places=3)
         self.assertAlmostEqual(test_eval["macro_f1"], 0.4535, places=3)
         self.assertAlmostEqual(test_eval["weighted_f1"], 0.7434, places=3)
 
-        # Cek evaluasi anotasi manusia aktual (n=100)
-        human_eval = data["human_annotation_validation_n100"]
-        self.assertEqual(human_eval["accuracy"], 0.90)
-        self.assertGreaterEqual(human_eval["cohen_kappa"], 0.80, "Cohen's Kappa harus >= 0.80 (Almost Perfect)")
-        self.assertAlmostEqual(human_eval["macro_f1"], 0.8097, places=3)
+        # Cek status penarikan klaim anotasi manusia (Option A)
+        human_status = data["human_annotation"]
+        self.assertEqual(human_status["status"], "not_available")
+        self.assertIn("withdrawn", human_status["note"])
 
 
 if __name__ == "__main__":

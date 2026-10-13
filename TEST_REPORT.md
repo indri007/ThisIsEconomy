@@ -43,9 +43,9 @@ Status Regresi      : ZERO REGRESSIONS DETECTED
 | 11 | `tests/test_dynamic_temporal_network.py` | 5 | ✅ PASS | Analisis fase temporal multi-periode (Pra-Eskalasi vs Puncak Krisis Kebijakan) |
 | 12 | `tests/test_ews_engine.py` | 3 | ✅ PASS | Mesin inferensi Early Warning System, perhitungan skor risiko krisis, dan deteksi anomali |
 | 13 | `tests/test_frontend_integrity.py` | 3 | ✅ PASS | Integritas visual frontend React/HTML dan stylesheet |
-| 14 | `tests/test_human_annotation_validation.py` | 2 | ✅ PASS | Verifikasi kesepakatan anotasi pakar pada subsampel terkurasi |
+| 14 | `tests/test_human_annotation_validation.py` | 2 | ✅ PASS | Verifikasi metrik holdout uji v2 (Akurasi 75,99%, Macro-F1 0,4535) dan integritas dataset anotasi |
 | 15 | `tests/test_minority_class_audit.py` | 1 | ✅ PASS | Validasi matematis diseksi sampel Marah ($n=14$), Sedih ($n=3$), dan Taksonomi 3-Super-Kelas |
-| 16 | `tests/test_multi_annotator_validation.py` | 2 | ✅ PASS | Verifikasi Fleiss' Kappa ($\kappa = 0.8442$) dan Krippendorff's Alpha ($\alpha = 0.8447$) pada $n=100$ |
+| 16 | `tests/test_multi_annotator_validation.py` | 2 | ✅ PASS | Verifikasi status penarikan metrik scripted dan integritas skema batch anotasi 100 sampel |
 | 17 | `tests/test_scopus_verifier.py` | 3 | ✅ PASS | Pemeriksaan kelengkapan dokumen pendukung submission jurnal Q1 |
 | 18 | `tests/test_spatial_epidemiological_correlation.py` | 5 | ✅ PASS | Korelasi spasial sentimen digital vs insiden keracunan daerah ($\rho = 0.7212$) |
 | 19 | `tests/test_telegram_ews.py` | 4 | ✅ PASS | Verifikasi format payload dan pemicu peringatan otomatis Telegram Bot |

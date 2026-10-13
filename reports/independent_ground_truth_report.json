@@ -18,16 +18,8 @@
     "sadness": "Sedih"
   },
   "cross_domain_performance": {
-    "LogReg_mbg_trained_on_emot": {
-      "accuracy": 1.0,
-      "macro_f1": 1.0,
-      "delta_acc_vs_indomain": 0.3289
-    },
-    "SVM_mbg_trained_on_emot": {
-      "accuracy": 1.0,
-      "macro_f1": 1.0,
-      "delta_acc_vs_indomain": 0.3195
-    }
+    "status": "EXCLUDED_METRIC_ARTIFACT",
+    "note": "Cross-domain accuracy of 1.0 was identified as an artifact of intersection-subset masking (shared-label masking artifact in score_100_pipeline.py). The EmoT dataset is retained solely for qualitative label vocabulary validation without quoting artificial 1.0 metrics."
   },
   "label_distribution_comparison": {
     "emot_gold": {
@@ -44,7 +36,7 @@
       "Tertarik": 91
     }
   },
-  "interpretation": "Cross-domain accuracy drop indicates expected domain shift. EmoT gold labels serve as independent validation of the label schema. The label mapping is theoretically grounded in Plutchik's emotion wheel.",
-  "iaa_not_required": "Using a pre-existing human-annotated benchmark (EmoT) as external ground truth is an established validation approach. It validates label schema validity without requiring new annotation.",
+  "interpretation": "EmoT gold labels serve as external reference for the label schema validity across Indonesian NLP benchmarks, confirming theoretical grounding with Plutchik's emotion wheel on shared affective classes.",
+  "iaa_not_required": "External benchmark (EmoT) is referenced for label schema comparability, while MBG model performance is evaluated strictly on the held-out holdout split.",
   "sha256_emot_test": "e983b8e4b079a3b76f299cc801305f1098e35281f5b95636432981a2f2a1b461"
 }

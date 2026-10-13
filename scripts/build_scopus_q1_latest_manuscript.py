@@ -237,10 +237,9 @@ t1_data = [
     ("Batch Size & Learning Rate", "16 per device | 2e-5 (AdamW)", "Optimal gradient stability with linear learning rate warmup"),
     ("Validation Loss", "0.5250 (Optimal Convergence)", "Stable generalization without overparameterized overfitting"),
     ("Holdout Test Accuracy ($n=1,058$)", "75.99% (Weighted-F1: 0.7434)", "IndoBERT evaluated on group-aware holdout test split"),
-    ("Inter-Human Reliability ($n=100$)", "95.00% (Cohen's kappa = 0.9135)", "Almost Perfect Agreement between two independent domain experts"),
-    ("Tri-Rater Fleiss' Kappa (H1, H2, IndoBERT)", "Fleiss' kappa = 0.8442", "Almost Perfect Agreement across human and AI annotators"),
-    ("Krippendorff's Alpha", "alpha = 0.8447", "Surpasses standard Krippendorff alpha >= 0.80 benchmark"),
-    ("IndoBERT vs. Gold Standard Consensus", "90.00% Accuracy (kappa = 0.8243)", "High concordance with adjudicated gold standard benchmark"),
+    ("Holdout Macro-F1 across 6 Active Classes", "Macro-F1: 0.4535", "Unweighted harmonic mean across 6 active emotion classes"),
+    ("Active Emotion Classes Evaluated", "6 Active Classes", "Disgust, Trust, Neutral, Anticipation, Anger, Sadness"),
+    ("Minority Class Sparsity Artifact", "Anger & Sadness F1 = 0.000", "Extreme class imbalance (Disgust comprises ~57.3% of holdout split)"),
     ("3-Super-Class Hierarchical Taxonomy", "Macro-F1: 0.7522 (75.22%)", "Resolves minority class sparsity artifacts with +29.87% Macro-F1 gain (Acc: 76.56%, Weighted-F1: 0.7610)")
 ]
 
@@ -273,15 +272,15 @@ for row_idx, row_vals in enumerate(t1_data, start=1):
 
 doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
-# Section 2.2: Multi-Annotator Protocol & Minority Class Semantic Dissection
-add_sec_heading("2.2 Multi-Annotator Protocol, Sarcasm Disambiguation & Minority Class Semantic Error Dissection", level=2)
+# Section 2.2: Empirical Holdout Validation & Minority Class Semantic Dissection
+add_sec_heading("2.2 Empirical Holdout Validation, Sarcasm Disambiguation & Minority Class Semantic Error Dissection", level=2)
 add_body_p(
-    "To establish unimpeachable inter-rater reliability, an out-of-sample stratified benchmark of n = 100 full citizen tweets "
-    "(data/annotation/multi_annotator_batch_100_GOLD.csv) was independently evaluated by two senior communication researchers: "
-    "Annotator 1 (Political Communication specialist) and Annotator 2 (Corpus Pragmatics and Digital Semiotics specialist). "
-    "Inter-human agreement reached 95.00% (Cohen's kappa = 0.9135). Across all three raters (Human 1, Human 2, and fine-tuned IndoBERT), "
-    "Fleiss' Kappa reached 0.8442 and Krippendorff's Alpha reached 0.8447, substantially surpassing the standard academic threshold (alpha >= 0.80; Krippendorff, 2018). "
-    "IndoBERT demonstrated an exact concordance accuracy of 90.00% (90/100, kappa = 0.8243) against the adjudicated consensus gold standard."
+    "To evaluate classification performance without test-selection bias, an out-of-sample group-aware holdout split of n = 1,058 citizen posts "
+    "was evaluated against silver-standard reference annotations. Across the 6 active classes present in the test distribution, IndoBERT achieved "
+    "an overall accuracy of 75.99%, Macro F1-score of 0.4535, and Weighted F1-score of 0.7434. Dominant affective classes exhibited strong performance "
+    "(Disgust: F1 = 0.8202, Support = 606; Neutral: F1 = 0.8032, Support = 124; Trust: F1 = 0.6977, Support = 220; Anticipation: F1 = 0.4000, Support = 91). "
+    "Due to severe natural class imbalance in civic resistance discourse, minority classes Anger (n = 14) and Sadness (n = 3) obtained F1 = 0.000, "
+    "while Joy, Surprise, and Fear had insufficient instances in the held-out split to support scoring."
 )
 add_body_p(
     "Dissection of minority class imbalance in the 6-class holdout test set (Disgust n=606 vs. Anger n=14 vs. Sadness n=3) revealed that "
@@ -888,7 +887,8 @@ add_sec_heading("6. METHODOLOGICAL LIMITATIONS & ECOLOGICAL BOUNDARY CONDITIONS"
 limits = [
     ("1. Demographic Vanguard Skew: ", "Our empirical corpus derives exclusively from Platform X. In Indonesia, Platform X users skew urban, educated, and politically mobilized (APJII, 2024), capturing the vanguard public (opinion leaders, journalists, academics) rather than the total passive electorate."),
     ("2. Platform Vernacular & Cynicism Bias: ", "Platform X affordances structurally incentivize irony, satirical parody, and political confrontation (Bossetta, 2018), amplifying Disgust and Sarcasm relative to lifestyle-centric networks like Instagram where social norms favor aspirational compliance."),
-    ("3. Cross-Platform Multi-Modal Trajectory: ", "While text-based transformer architectures (IndoBERT) effectively decoded policy discourse, future research should integrate multi-modal Vision-Language Models (VLMs) to examine physical lunch tray unboxing videos on TikTok and YouTube.")
+    ("3. Cross-Platform Multi-Modal Trajectory: ", "While text-based transformer architectures (IndoBERT) effectively decoded policy discourse, future research should integrate multi-modal Vision-Language Models (VLMs) to examine physical lunch tray unboxing videos on TikTok and YouTube."),
+    ("4. Silver-Standard Reference Labels & Affective Sparsity: ", "Initial model fine-tuning and holdout validation relied on rule-assisted silver-standard reference annotations rather than extensive multi-coder gold standards. Severe affective skew led to F1 = 0.000 on minority classes Anger and Sadness, while Joy, Surprise, and Fear lacked test-set representation. Future research should deploy independent multi-coder panels to establish an adjudicated gold standard with targeted minority-class oversampling.")
 ]
 for prefix, body in limits:
     p = doc.add_paragraph()
@@ -896,10 +896,13 @@ for prefix, body in limits:
     r1 = p.add_run(prefix)
     r1.font.bold = True
     r1.font.size = Pt(10.5)
+    r2 = p.add_run(body)
+    r2.font.size = Pt(10.5)
+
 # Section 7: Statements & Data Availability
 add_sec_heading("7. STATEMENTS, ETHICAL DISCLOSURES & DATA AVAILABILITY", level=1)
 stmts = [
-    ("Data Availability (Zenodo Permanent DOI): ", "In strict adherence to International Communication Association (ICA) and Oxford University Press Open Science mandates and FAIR data principles, all research replication materials—including AoIR 3.0-pseudonymized directed network interaction edge lists (|V|=971, |E|=666), multi-annotator gold-standard adjudicated corpora, spatial epidemiological benchmarks, ABSA matrices, and PyTorch inference pipelines—are permanently archived in the Zenodo open-access repository under Digital Object Identifier (DOI): 10.5281/zenodo.11029482 (https://doi.org/10.5281/zenodo.11029482). The active development repository remains mirrored at GitHub: https://github.com/indri007/ThisIsEconomy."),
+    ("Data Availability (Zenodo Permanent DOI): ", "In strict adherence to International Communication Association (ICA) and Oxford University Press Open Science mandates and FAIR data principles, all research replication materials—including AoIR 3.0-pseudonymized directed network interaction edge lists (|V|=971, |E|=666), silver-standard reference annotations and held-out evaluation splits, spatial epidemiological benchmarks, ABSA matrices, and PyTorch inference pipelines—are permanently archived in the Zenodo open-access repository under Digital Object Identifier (DOI): 10.5281/zenodo.11029482 (https://doi.org/10.5281/zenodo.11029482). The active development repository remains mirrored at GitHub: https://github.com/indri007/ThisIsEconomy."),
     ("Ethical Compliance & AoIR 3.0: ", "The research protocol complied strictly with the Association of Internet Researchers (AoIR 3.0) ethics guidelines. All citizen microblogging handles have been pseudonymized via SHA-256 HMAC cryptographic hashing to safeguard subject physical privacy under Indonesian jurisprudence (UU ITE)."),
     ("Funding & Conflicts of Interest: ", "The authors declare no external funding grants and zero competing financial or personal conflicts of interest.")
 ]

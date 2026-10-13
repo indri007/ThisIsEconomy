@@ -14,7 +14,7 @@
 |:--:|:---|:---:|:---:|:---|
 | **1** | **Audit & Validasi Data** | Sebagian tersedia | **TUNTAS & TERVERIFIKASI (100%)** ✅ | [`reports/preprocessing_ground_truth_verification.json`](file:///Users/jevin/ThisIsEconomy/reports/preprocessing_ground_truth_verification.json) (100% exact match $N=5.263$) |
 | **2** | **Validasi Teori & Definisi 9 Kelas** | Belum tuntas | **TUNTAS & TERJUSTIFIKASI TEORITIS** ✅ | Klarifikasi formal Roda Emosi Plutchik (8 emosi polar) + Netral (baseline komputasional) + Tertarik (*Anticipation/Interest*) |
-| **3** | **Validasi Label oleh Manusia** | Belum terbukti | **TERBUKTI DENGAN STATISTIK RESMI** ✅ | [`data/annotation/multi_annotator_batch_100_GOLD.csv`](file:///Users/jevin/ThisIsEconomy/data/annotation/multi_annotator_batch_100_GOLD.csv) ($\kappa = 0.9135$, Krippendorff $\alpha = 0.8447$) |
+| **3** | **Validasi Label oleh Manusia** | Disimulasikan dalam kode | **DIKLARIFIKASI JUJUR (Silver-Standard Holdout)** ✅ | Metrik scripted $\kappa=0.9135$ ditarik resmi; model dievaluasi apa adanya pada test split holdout ($n=1.058$, Akurasi $75.99\%$, Macro-F1 $0.4535$) |
 | **4** | **Perbaikan Pipeline & Model** | Kode perlu diperbaiki | **SELESAI & IDENTIK 100%** ✅ | [`pipelines_30m/indobert_inference.py`](file:///Users/jevin/ThisIsEconomy/pipelines_30m/indobert_inference.py) memuat model terlatih; skrip training [`scripts/train_indobert.py`](file:///Users/jevin/ThisIsEconomy/scripts/train_indobert.py) diperbaiki |
 | **5** | **Fine-Tuning & Evaluasi Kelas** | Belum terbukti selesai | **TERBUKTI & TRANSPARAN** ✅ | Holdout test set $n=1.058$ zero-leakage: Macro-F1 = $0.4535$, Weighted-F1 = $0.7434$, Akurasi = $75.99\%$ (Deklarasi 6 kelas aktif) |
 | **6** | **Pemrosesan Korpus Besar (30M)** | Eksekusi belum terverifikasi | **TEREKSEKUSI & TERCATAT TELEMETRI** ✅ | Streaming chunking Parquet (`clean_30m_part_XXXXX.parquet`), inferensi MPS Metal 217 tweets/detik, dual-variant ablation |
@@ -41,32 +41,18 @@ Plutchik tidak memasukkan *Netral* sebagai emosi afektif biologis. Namun, dalam 
 Istilah **"Tertarik"** dioperasionalisasikan sebagai padanan psikologis Indonesia untuk dimensi **Anticipation / Interest** (Izard, 1977; Plutchik, 1980):
 - *Anticipation* didefinisikan oleh Plutchik sebagai "eksplorasi kognitif yang berorientasi ke depan terhadap suatu stimulus".
 - Pada media sosial MBG, masyarakat mengekspresikan penantian menu, keingintahuan implementasi anggaran, dan pemantauan uji coba gizi.
-- **Transparansi Ilmiah:** Pada tahap awal repositori, label bahasa Inggris `shame` heuristik sempat dipetakan ke `Tertarik` sebagai proxy perbincangan wacana. Dalam laporan ini dan naskah tesis, batasan leksikal awal tersebut diakui secara terbuka sebagai batasan *silver-standard* yang telah dimurnikan pada tahap adjudikasi manusia.
+- **Transparansi Ilmiah:** Pada tahap awal repositori, label bahasa Inggris `shame` heuristik sempat dipetakan ke `Tertarik` sebagai proxy perbincangan wacana. Dalam laporan ini dan naskah tesis, batasan leksikal awal tersebut diakui secara terbuka sebagai batasan *silver-standard* yang telah dimurnikan pada tahap evaluasi.
 
 ---
 
-## 2. 🧑‍🔬 TAHAP 3: BUKTI EMPIRIS VALIDASI ANOTASI MANUSIA (MULTI-ANNOTATOR GOLD STANDARD)
+## 2. 🧑‍🔬 TAHAP 3: KLARIFIKASI JUJUR STATUS LABEL (SILVER-STANDARD HOLDOUT BENCHMARK)
 
-Untuk membuktikan kualitas data acuan, telah dilaksanakan uji anotasi multi-rater independen pada sampel cuitan MBG ($n = 100$ cuitan representatif dan kontradiktif):
+Demi menjamin integritas ilmiah mutlak, klaim terdahulu mengenai metrik kesepakatan multi-penilai independen ($\kappa = 0.9135$, Krippendorff $\alpha = 0.8447$) telah ditarik secara resmi (tercatat di `CHANGELOG_RESEARCH.md` dan `reports/iaa_expert_model_agreement.json`).
 
-### 2.1 Metodologi Anotasi Independen Ganda
-- **Penilai 1 (Anotator Independen A):** Pakar Komunikasi Politik.
-- **Penilai 2 (Anotator Independen B):** Pakar Linguistik Korpus.
-- **Pedoman Anotasi:** Menggunakan *codebook* taksonomi resmi Plutchik yang terdokumentasi di [`data/annotation/RESEARCHER_ANNOTATION_INSTRUCTIONS.txt`](file:///Users/jevin/ThisIsEconomy/data/annotation/RESEARCHER_ANNOTATION_INSTRUCTIONS.txt).
-- **Protokol Penyelesaian Sengketa (*Adjudication*):** 5 kasus perbedaan label diselesaikan melalui diskusi mufakat dengan pencatatan rasionalisasi eksplisit (`adjudication_rationale`) menghasilkan kolom `consensus_gold`.
-
-### 2.2 Hasil Statistik Kesepakatan Antar-Penilai (*Inter-Annotator Agreement*)
-
-| Pasangan Evaluasi | Metrik Kesepakatan | Nilai Empiris | Kategori Landis & Koch (1977) | Interpretasi Metodologis |
-| :--- | :--- | :---: | :--- | :--- |
-| **Penilai 1 $\longleftrightarrow$ Penilai 2** | **Persentase Kesepakatan** | **95.00%** (95/100) | Sangat Tinggi | 95 cuitan disepakati secara spontan |
-| **Penilai 1 $\longleftrightarrow$ Penilai 2** | **Cohen's Kappa ($\kappa$)** | **0.9135** | **Almost Perfect Agreement** | Kesepakatan antar-penilai manusia sangat kokoh |
-| **Tiga Penilai (Pakar 1, Pakar 2, IndoBERT)** | **Fleiss' Kappa** | **0.8442** | **Almost Perfect Agreement** | Konsistensi lintas manusia dan model |
-| **Tiga Penilai (Pakar 1, Pakar 2, IndoBERT)** | **Krippendorff's Alpha ($\alpha$)** | **0.8447** | **Almost Perfect Agreement** | Melebihi ambang batas reliabilitas ilmiah $\alpha > 0.80$ |
-| **Model IndoBERT $\longleftrightarrow$ Consensus Gold** | **Akurasi Klasifikasi** | **90.00%** (90/100) | Sangat Tinggi | Model mereproduksi penilaian pakar pada 90 kasus |
-| **Model IndoBERT $\longleftrightarrow$ Consensus Gold** | **Cohen's Kappa ($\kappa$)** | **0.8243** | **Almost Perfect Agreement** | Generalisasi model terbukti andal terhadap manusia |
-
-*Berkas bukti data mentah:* [`data/annotation/multi_annotator_batch_100_GOLD.csv`](file:///Users/jevin/ThisIsEconomy/data/annotation/multi_annotator_batch_100_GOLD.csv) dan laporan JSON: [`reports/iaa_expert_model_agreement.json`](file:///Users/jevin/ThisIsEconomy/reports/iaa_expert_model_agreement.json).
+### 2.1 Status Faktual Dataset
+- **Label Acuan:** Berstatus *silver-standard* yang dihasilkan melalui aturan leksikal berbantuan kata kunci dan dievaluasi pada holdout split.
+- **Keterbatasan Terbuka:** Tidak mengklaim validasi dua pakar manusia independen murni. Validasi multi-penilai ganda buta (*blind double-annotation*) direkomendasikan sebagai agenda penelitian lanjutan.
+- **Evaluasi Faktual:** Menggunakan hasil evaluasi resmi holdout group-aware $n=1.058$ (Akurasi 75.99%, Macro-F1 0.4535) yang diuraikan pada Tahap 5.
 
 ---
 
@@ -169,7 +155,7 @@ Pipeline pemrosesan skala besar telah dirancang, diuji, dan dieksekusi secara ny
 
 ```mermaid
 flowchart TD
-    A["BUKTI EMPIRIS DATA (Faktual & Terukur)"] --> B["N = 3.395, |V| = 971, Q = 0.9837, Akurasi 75.99%, Cohen's Kappa = 0.9135"]
+    A["BUKTI EMPIRIS DATA (Faktual & Terukur)"] --> B["N = 3.395, |V| = 971, Q = 0.9837, Akurasi 75.99%, Macro-F1 = 0.4535"]
     C["INTERPRETASI PENELITI (Kerangka Teori Komunikasi)"] --> D["Polarisasi wacana MBG membentuk echo chambers afektif dengan dominasi sentimen skeptis (Disgust)"]
     E["DUGAAN & BATASAN RISET (Perlu Riset Lanjutan)"] --> F["Generalisasi sikap seluruh populasi pemilih non-Twitter di luar rentang waktu scraping belum teruji"]
 ```
