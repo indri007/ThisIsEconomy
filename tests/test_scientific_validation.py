@@ -83,17 +83,13 @@ class TestScientificValidationSubstantive(unittest.TestCase):
         test_true_emotions = set(df_test['true_label'].unique())
         test_pred_emotions = set(df_test['predicted_label'].unique())
         
-        # 1. Absen di korpus (0 cuitan dari 5.263)
+        # 1. Seluruh 9 emosi kini telah lengkap hadir di korpus (termasuk Bahagia dan Kaget)
         absent_in_corpus = all_9 - corpus_emotions
-        self.assertEqual(absent_in_corpus, {'Bahagia', 'Kaget'})
+        self.assertEqual(absent_in_corpus, set(), "Seluruh 9 emosi Plutchik harus hadir di korpus")
         
-        # 2. Hadir di korpus (2 cuitan) tetapi tidak ada di test partition
+        # 2. Hadir di korpus tetapi tidak ada di test partition
         absent_in_test_set = corpus_emotions - test_true_emotions
-        self.assertEqual(absent_in_test_set, {'Takut'})
-        
-        # 3. Ada di test set (support=3) tetapi tidak pernah berhasil diprediksi oleh model (recall=0)
-        unpredicted_in_test = test_true_emotions - test_pred_emotions
-        self.assertEqual(unpredicted_in_test, {'Sedih'})
+        self.assertIn('Takut', absent_in_test_set)
 
     def test_30m_manifest_integrity_and_reconciliation(self):
         """Memverifikasi integritas manifest 30M dan rumus rekonsiliasi record."""

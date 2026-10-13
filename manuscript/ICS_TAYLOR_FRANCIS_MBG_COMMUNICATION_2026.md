@@ -128,12 +128,10 @@ The fine-tuned IndoBERT model achieved monotonic loss reduction from $1.8708$ to
 | **Base Architecture** | `indobert-base-p2` | 12-layer, 768-hidden, 12-heads, 110M parameters |
 | **Training Steps / Epochs** | **3.0 Epochs (792 Steps)** | Monotonic training loss reduction: 1.8708 $\rightarrow$ 0.4328 |
 | **Validation Loss** | **0.5250** | Stable cross-entropy convergence without overfitting |
-| **Holdout Test Set Accuracy ($n=1,058$)** | **75.99%** | Proporsi prediksi benar pada data uji terisolasi |
-| **Holdout Macro / Weighted F1** | **0.4535 / 0.7434** | Balanced multi-class F1 metric across 6 emotion classes |
-| **Inter-Human Reliability ($\kappa$, $n=100$)** | **$\kappa = 0.9135$ (95.00%)** | Almost Perfect Agreement between two human domain experts |
-| **Multi-Rater Fleiss' Kappa ($\kappa_{\text{Fleiss}}$)** | **0.8442** | Almost Perfect Agreement across 3 raters (H1, H2, IndoBERT) |
-| **Krippendorff's Alpha ($\alpha$)** | **0.8447** | Almost Perfect Reliability exceeding standard threshold $\alpha \ge 0.80$ |
-| **IndoBERT vs Gold Consensus Accuracy** | **90.00% ($\kappa = 0.8243$)** | High concordance with adjudicated gold standard benchmark |
+| **Holdout Test Set Accuracy ($n=1,058$)** | **75.99%** | Evaluated on isolated group-aware holdout (silver-standard references) |
+| **Holdout Macro / Weighted F1** | **0.4535 / 0.7434** | Evaluated across 6 active emotion classes |
+| **Active Evaluated Emotion Classes** | **6 Active Classes** | Disgust, Trust, Neutral, Anticipation, Anger, Sadness |
+| **Minority Class Sparsity Artifact** | **Anger & Sadness F1 = 0.000** | Extreme class imbalance artifact (Disgust comprises ~57.3% of holdout split) |
 | **Hierarchical Super-Class Macro F1** | **0.7522 (75.22%)** | Re-evaluation across 3 functional valences (Negative, Positive, Neutral) |
 | **Hierarchical Super-Class Accuracy** | **76.56%** (P: 0.7639, R: 0.7459) | Resolves minority class sparsity artifacts with +29.87% Macro-F1 gain |
 | **Out-of-Sample Throughput** | **223.3 posts/sec** | Apple Silicon GPU inference on $N = 9,862$ citizen posts |
@@ -142,7 +140,7 @@ The fine-tuned IndoBERT model achieved monotonic loss reduction from $1.8708$ to
 To verify classification reliability, a multi-tier empirical evaluation was conducted:
 
 1. **Group-Aware Holdout Test Set ($n = 1,058$)**: IndoBERT achieved an overall accuracy of **75.99%**, Macro Precision of **0.4840**, Macro Recall of **0.4424**, Macro F1-Score of **0.4535**, and Weighted F1-Score of **0.7434**. Across classes, Disgust achieved **0.8202 F1** (Precision 0.7761, Recall 0.8696, Support 606), Trust achieved **0.6977 F1** (Precision 0.7143, Recall 0.6818, Support 220), and Neutral achieved **0.8032 F1** (Precision 0.8000, Recall 0.8065, Support 124).
-2. **Multi-Annotator Inter-Rater Reliability ($n = 100$)**: A stratified sample of $n = 100$ full citizen tweets (`data/annotation/multi_annotator_batch_100_GOLD.csv`) was independently evaluated by two domain experts (Annotator 1: political communication; Annotator 2: corpus linguistics). Inter-human reliability reached **95.00% agreement** with Cohen's Kappa **$\kappa = 0.9135$**. Tri-rater evaluation among both experts and IndoBERT yielded **Fleiss' Kappa $\kappa_{\text{Fleiss}} = 0.8442$** and **Krippendorff's Alpha $\alpha = 0.8447$**, surpassing the standard threshold ($\alpha \ge 0.80$, Krippendorff, 2018). IndoBERT achieved an exact match accuracy of **90.00% (90/100)** and **$\kappa = 0.8243$** against the adjudicated consensus gold standard.
+2. **Active Classification Spectrum & Minority Sparsity**: The model operates across 6 active emotion classes present in the test distribution. Reflecting natural discourse distributions during operational crises, dominant affective classes demonstrated robust classification (Disgust F1 0.8202, Neutral F1 0.8032, Trust F1 0.6977, Anticipation F1 0.4000). Conversely, severe class imbalance resulted in F1 = 0.000 for minority classes Anger ($n = 14$) and Sadness ($n = 3$), while Joy, Surprise, and Fear had insufficient instances in the held-out set to support reliable evaluation.
 3. **Disambiguation of Sarcasm**: In 11 complex sarcastic instances, keyword-based silver standards misclassified sarcastic posts as positive due to literal laudatory words (*terima kasih*, *mantap*, *mewah*), while IndoBERT correctly captured **Disgust** by interpreting paralinguistic emoji inversions (e.g., 🤡, 🤮, 🤣).
 4. **Hierarchical Taxonomy & Minority Error Dissection**: An audit of extreme class imbalance (Disgust 606 vs. Anger 14 vs. Sadness 3) revealed that 12 of the 14 Anger posts were non-Indonesian noise/spam correctly filtered by IndoBERT as Neutral, while Sadness posts reflected moral grievances that sociolinguistically collapsed into Disgust (Gutierrez & Giner-Sorolla, 2007; Rozin et al., 2000). When re-evaluated on a 3-tier valence taxonomy (Negative Dissent, Positive Support, Neutrality), IndoBERT achieved **Macro-F1 of 0.7522 (75.22%)**, accuracy of **76.56%**, and Weighted-F1 of **0.7610**, proving the structural robustness of its contextual representations.
 
@@ -213,7 +211,7 @@ Decomposing the streaming corpus across 2026 ($N = 9,360$ posts) identifies two 
 | **Agu 2026** | 209 | 205 (98.09%) | 2 (0.96%) | State of the Nation Address & FY2026 APBN budget announcement (IDR 268T) |
 | **Sep 2026** | **4,661** | **4,619 (99.10%)** | 39 (0.84%) | **Peak II: Acute nationwide outbreak of mass food poisoning** |
 | **Okt 2026*** | 120 | 118 (98.33%) | 2 (1.67%) | Surveillance phase (thru Oct 10): Automated Telegram EWS bot monitoring |
-| **Total** | **9,360** | **9,189 (98.17%)** | **162 (1.73%)** | Persistent hegemony of moral disgust across all operational months (9,189 + 162 + 9 = 9,360) |
+| **Total** | **9,360** | **9,189 (98.17%)** | **167 (1.78%)** | Persistent hegemony of moral disgust across all operational months |
 
 Figure 4 illustrates this bimodal volume trajectory and stacked affective breakdown.
 
@@ -332,10 +330,11 @@ To bridge the Phygital Gap and restore civic trust, public administration must u
 4. **Transition to Decentralized Participatory Co-Monitoring**: Empower parents, teachers, and school committees with smartphone verification applications to certify meal deliveries directly, converting passive recipients into active co-monitors of public welfare.
 
 ### 6.1 Methodological Limitations & Ecological Boundary Conditions
-To maintain rigorous reflexivity under international peer review, three foundational ecological boundary conditions must be specified:
+To maintain rigorous reflexivity under international peer review, four foundational ecological boundary conditions must be specified:
 1. **Demographic Vanguard Skew**: Our empirical corpus derives exclusively from Platform X. In Indonesia, Platform X users are disproportionately urban, educated, and politically mobilized compared to the broader population (APJII, 2024). The data thus reflects the perspective of the *vanguard public* (journalists, civil society actors, and vigilant middle-class parents) rather than the entire passive electorate.
 2. **Platform Vernacular & Affective Cynicism Bias**: As demonstrated in affordance research (Bossetta, 2018; Bucher & Helmond, 2018), Platform X culture fosters a platform vernacular that structurally rewards irony, satirical mockery, and confrontational political debate. This makes the platform exceptionally potent as an early-warning crisis sensor, but inherently amplifies the salience of Disgust and Sarcasm relative to lifestyle-centric networks like Instagram.
 3. **Cross-Platform Multi-Modal Trajectory**: While the Phygital Gap framework possesses universal public administration applicability, our findings are bounded by the text-first architecture of Platform X. Future investigations must deploy multimodal Vision-Language Models (e.g., CLIP, Qwen2-VL) to directly examine physical food tray unboxing videos on TikTok and YouTube Shorts.
+4. **Silver-Standard Reference Labels & Affective Sparsity**: Initial model fine-tuning and holdout validation relied on rule-assisted silver-standard reference annotations rather than extensive multi-coder gold standards. Severe affective skew led to $F_1 = 0.000$ on minority classes Anger and Sadness, while Joy, Surprise, and Fear lacked test-set representation. Future research should deploy independent multi-coder panels to establish an adjudicated gold standard with targeted minority-class oversampling.
 
 ---
 
@@ -347,7 +346,7 @@ This study examined the crisis surrounding Indonesia's Free Nutritious Meal prog
 
 ## Declarations and Data Availability
 
-**Data Availability Statement**: In strict compliance with the Open Science mandates of *Information, Communication & Society* (Taylor & Francis) and FAIR data principles, all research replication materials—including AoIR 3.0-pseudonymized directed network interaction edge lists (|V|=971, |E|=666), multi-annotator gold-standard adjudicated corpora, spatial epidemiological benchmarks, ABSA matrices, and PyTorch inference pipelines—are permanently archived in the Zenodo open-access repository under Digital Object Identifier (DOI): [10.5281/zenodo.11029482](https://doi.org/10.5281/zenodo.11029482). The active development repository remains mirrored at GitHub: [https://github.com/indri007/ThisIsEconomy](https://github.com/indri007/ThisIsEconomy). Raw tweet text containing personally identifying citizen information has been pseudonymized using SHA-256 HMAC cryptographic hashing in full compliance with AoIR 3.0 ethical guidelines.
+**Data Availability Statement**: In strict compliance with the Open Science mandates of *Information, Communication & Society* (Taylor & Francis) and FAIR data principles, all research replication materials—including AoIR 3.0-pseudonymized directed network interaction edge lists (|V|=971, |E|=666), silver-standard reference annotations and held-out evaluation splits, spatial epidemiological benchmarks, ABSA matrices, and PyTorch inference pipelines—are permanently archived in the Zenodo open-access repository under Digital Object Identifier (DOI): [10.5281/zenodo.11029482](https://doi.org/10.5281/zenodo.11029482). The active development repository remains mirrored at GitHub: [https://github.com/indri007/ThisIsEconomy](https://github.com/indri007/ThisIsEconomy). Raw tweet text containing personally identifying citizen information has been pseudonymized using SHA-256 HMAC cryptographic hashing in full compliance with AoIR 3.0 ethical guidelines.
 
 **Funding**: The authors declare that no external funding, grants, or financial sponsorships were received for this study.
 
@@ -374,7 +373,6 @@ This study examined the crisis surrounding Indonesia's Free Nutritious Meal prog
 - Edwards, C., Edwards, A., Spence, P. R., & Shelton, A. K. (2014). Is that a bot running the social media feed? Testing the differences in perceptions of communication quality and credibility of human and bot agents. *Computers in Human Behavior*, *33*, 372–376. https://doi.org/10.1016/j.chb.2013.08.013
 - Ekman, P. (1992). An argument for basic emotions. *Cognition & Emotion*, *6*(3–4), 169–200. https://doi.org/10.1080/02699939208411068
 - Ferrara, E., Varol, O., Davis, C., Menczer, F., & Flammini, A. (2016). The rise of social bots. *Communications of the ACM*, *59*(7), 96–104. https://doi.org/10.1145/2818717
-- Fleiss, J. L. (1971). Measuring nominal scale agreement among many raters. *Psychological Bulletin*, *76*(5), 378–382. https://doi.org/10.1037/h0031619
 - Franzke, A. S., Bechmann, A., Zimmer, M., Ess, C., & Association of Internet Researchers. (2020). *Internet research: Ethical guidelines 3.0*. Association of Internet Researchers. https://aoir.org/reports/ethics3.pdf
 - Gelernter, J., & Balaji, S. (2013). An algorithm for localizing disaster events from social media. *American Behavioral Scientist*, *57*(7), 967–984. https://doi.org/10.1177/0002764213483944
 - Giglietto, V., Righetti, N., Rossi, L., & Marino, G. (2020). It takes a village to manipulate the media: Coordinated inauthentic behavior on social media. *Information, Communication & Society*, *23*(6), 867–891. https://doi.org/10.1080/1369118X.2020.1739732
@@ -384,10 +382,8 @@ This study examined the crisis surrounding Indonesia's Free Nutritious Meal prog
 - Habermas, J. (1989). *The structural transformation of the public sphere*. MIT Press.
 - Keller, F. B., Schoch, D., Stier, S., & Yang, J. (2020). Political astroturfing on Twitter: How to identify and measure inauthentic coordination. *Political Communication*, *37*(2), 160–180. https://doi.org/10.1080/10584609.2019.1661888
 - Kotler, P., Kartajaya, H., & Setiawan, I. (2023). *Marketing 6.0: The future is immersive*. John Wiley & Sons.
-- Krippendorff, K. (2018). *Content analysis: An introduction to its methodology* (4th ed.). SAGE Publications.
 - Krivitsky, P. N., & Handcock, M. S. (2014). A separable model for dynamic networks via STERGM. *Journal of the Royal Statistical Society: Series B*, *76*(1), 29–46. https://doi.org/10.1111/rssb.12014
 - Koto, F., Rahimi, A., Lau, J. H., & Baldwin, T. (2020). IndoLEM and IndoBERT: A benchmark dataset and pre-trained language model for Indonesian NLP. *Proceedings of the 28th International Conference on Computational Linguistics*, 757–770. https://doi.org/10.18653/v1/2020.coling-main.66
-- Landis, J. R., & Koch, G. G. (1977). The measurement of observer agreement for categorical data. *Biometrics*, *33*(1), 159–174. https://doi.org/10.2307/2529310
 - Lazer, D. M., Pentland, A., Watts, D. J., Aral, S., Athey, S., Contractor, N., Freelon, D., Gonzalez-Bailon, S., King, G., Margetts, H., Moghadam, A., Nelson, B., Salganik, M. J., Strohmaier, M., Vespignani, A., & Wagner, C. (2020). Computational social science: Obstacles and opportunities. *Science*, *369*(6507), 1060–1062. https://doi.org/10.1126/science.aaz8170
 - Marwick, A. E., & boyd, d. (2011). I tweet honestly, I tweet passionately: Twitter users, context collapse, and the imagined audience. *New Media & Society*, *13*(1), 114–133. https://doi.org/10.1177/1461444810365313
 - Milan, S. (2013). *Social movements and their technologies: Wiring social change*. Palgrave Macmillan. https://doi.org/10.1057/9781137314444

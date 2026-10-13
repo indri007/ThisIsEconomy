@@ -1,0 +1,37 @@
+HASIL EVALUASI INDOBERT 9-KELAS EMOSI (ZERO-LEAKAGE TEST SET)
+======================================================================
+
+Total Test Samples: 1064
+Akurasi Total     : 0.7914 (79.14%)
+Macro F1-Score    : 0.4810 (48.10%)
+Weighted F1-Score : 0.7889 (78.89%)
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       Marah       0.70      0.58      0.64        12
+       Jijik       0.87      0.81      0.83       590
+       Takut       0.00      0.00      0.00         0
+     Bahagia       0.33      0.07      0.12        14
+     Percaya       0.72      0.84      0.78       218
+      Netral       0.89      0.80      0.84       129
+       Sedih       0.00      0.00      0.00         2
+    Tertarik       0.55      0.77      0.64        93
+       Kaget       0.00      0.00      0.00         6
+
+    accuracy                           0.79      1064
+   macro avg       0.45      0.43      0.43      1064
+weighted avg       0.80      0.79      0.79      1064
+
+
+Confusion Matrix:
+          Marah  Jijik  Takut  Bahagia  Percaya  Netral  Sedih  Tertarik  Kaget
+Marah         7      0      0        0        0       5      0         0      0
+Jijik         0    475      0        1       64       6      0        44      0
+Takut         0      0      0        0        0       0      0         0      0
+Bahagia       0      6      0        1        1       0      0         6      0
+Percaya       1     26      0        0      184       1      0         6      0
+Netral        2     19      0        1        0     103      0         4      0
+Sedih         0      2      0        0        0       0      0         0      0
+Tertarik      0     14      0        0        6       1      0        72      0
+Kaget         0      6      0        0        0       0      0         0      0
