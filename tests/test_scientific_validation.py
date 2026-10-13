@@ -151,5 +151,42 @@ class TestScientificValidationSubstantive(unittest.TestCase):
         self.assertEqual(tp_percaya, 166)
         self.assertEqual(tp_netral, 101)
 
+    def test_nine_class_split_and_predictions_integrity(self):
+        """Memverifikasi konsistensi dataset 9-kelas master, split group-aware bebas bocor, dan prediksi test set."""
+        corpus_path = os.path.join(self.root_dir, 'data/results/indobert_9_emosi_fixed.csv')
+        train_path = os.path.join(self.root_dir, 'results/emotion_train_group_split.csv')
+        test_path = os.path.join(self.root_dir, 'results/emotion_test_group_split.csv')
+        pred_path = os.path.join(self.root_dir, 'results/indobert_test_predictions_9_labels.csv')
+
+        df_corpus = pd.read_csv(corpus_path)
+        df_train = pd.read_csv(train_path)
+        df_test = pd.read_csv(test_path)
+        df_pred = pd.read_csv(pred_path)
+
+        # 1. Rekonsiliasi ukuran partisi
+        self.assertEqual(len(df_corpus), 5272, "Total korpus master harus 5.272 baris")
+        self.assertEqual(len(df_train), 4208, "Train set harus 4.208 baris")
+        self.assertEqual(len(df_test), 1064, "Test set harus 1.064 baris")
+        self.assertEqual(len(df_pred), 1064, "File prediksi uji harus 1.064 baris")
+        self.assertEqual(len(df_train) + len(df_test), 5272, "Penjumlahan train + test harus tepat 5.272")
+
+        # 2. Garansi Zero Text Leakage
+        train_texts = set(df_train['processed_text'].dropna())
+        test_texts = set(df_test['processed_text'].dropna())
+        overlap = train_texts.intersection(test_texts)
+        self.assertEqual(len(overlap), 0, "Harus zero text leakage antara train dan test set")
+
+        # 3. Metrik Akurasi Test Set
+        acc = (df_pred['predicted_emotion'] == df_pred['predicted_model_emotion']).mean()
+        self.assertAlmostEqual(acc, 0.791353, places=4, msg="Akurasi model 9-kelas harus ~79.14%")
+
+        # 4. Kehadiran kelas minoritas di test set
+        test_counts = df_pred['predicted_emotion'].value_counts()
+        self.assertEqual(test_counts.get('Bahagia', 0), 14, "Support kelas Bahagia di test set harus 14")
+        self.assertEqual(test_counts.get('Kaget', 0), 6, "Support kelas Kaget di test set harus 6")
+        self.assertEqual(test_counts.get('Marah', 0), 12, "Support kelas Marah di test set harus 12")
+        self.assertEqual(test_counts.get('Jijik', 0), 590, "Support kelas Jijik di test set harus 590")
+
 if __name__ == '__main__':
     unittest.main()
+

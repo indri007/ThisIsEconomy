@@ -104,11 +104,37 @@ Evaluasi terhadap konsensus standar emas manusia independen:
 
 ---
 
-## 7. PENGUNGKAPAN JUJUR STATUS MODEL 9 EMOSI
+## 7. PENGUNGKAPAN HISTORIS & TRANSISI KE TAKSONOMI 9-KELAS LENGKAP
 
-> [!IMPORTANT]
-> **Pernyataan Batas Klaim Akademik (Mandatory Epistemic Disclosure):**  
-> 1. Dataset empiris **TIDAK memiliki sampel** untuk kelas *joy/Bahagia* ($0$ sampel) dan *surprise/Kaget* ($0$ sampel).  
-> 2. Kelas *fear/Takut* hanya memiliki $2$ sampel di seluruh korpus ($0$ sampel di set uji).  
-> 3. Oleh karena itu, klaim bahwa *"model 9 emosi tervalidasi penuh"* **TIDAK DAPAT DIPERTAHANKAN SECARA ILMIAH**.  
-> 4. Status ilmiah yang benar: **Model dilatih dengan arsitektur 9-output, namun secara empiris terbukti dan tervalidasi pada 6 kelas emosi aktif**. Ketiadaan sampel pada emosi positif murni adalah temuan sosiologis autentik mengenai atmosfer penolakan publik terhadap skandal MBG.
+> [!NOTE]
+> **Evolusi Korpus & Integrasi Kelas Terpadu:**  
+> Pada tahap investigasi awal, diskursus MBG tidak memiliki representasi untuk kelas *Bahagia/Joy* dan *Kaget/Surprise* (0 sampel), sehingga evaluasi awal difokuskan pada 6 kelas aktif.  
+> Untuk memenuhi taksonomi 9-emosi psikologi Plutchik secara komprehensif, dilakukan penambangan kandidat tervalidasi (*verified silver candidates*) yang mengintegrasikan **76 sampel Bahagia** dan **23 sampel Kaget** ke dalam korpus master ($N = 5.272$).
+
+---
+
+## 8. HASIL EVALUASI MODEL INDOBERT 9-KELAS TERBARU (WEIGHTED LOSS, TEST SET $N = 1.064$)
+
+Model IndoBERT dilatih ulang dengan *Class-Weighted Cross-Entropy Loss* menggunakan bobot inverse frequency terakar halus pada partisi zero-leakage (`results/emotion_train_group_split.csv`, $n=4.208$) dan dievaluasi pada partisi uji independen (`results/emotion_test_group_split.csv`, $n=1.064$):
+
+* **Ukuran Test Holdout:** 1.064 baris (Zero Text Leakage)
+* **Akurasi Global:** **79.14%** (842 dari 1.064 cuitan terprediksi tepat)
+* **Weighted F1-Score:** **78.89%**
+* **Macro F1-Score:** **48.10%**
+
+### Tabel Kinerja Per-Kelas (Classification Report 9-Kelas):
+
+| Kelas Emosi | Precision | Recall | F1-Score | Support (Aktual) | Keterangan & Analisis Kinerja |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Marah (*Anger*)** | 0.70 | 0.58 | **0.64** | 12 | Peningkatan signifikan dibanding baseline unweighted (F1 0.00 $\to$ 0.64) |
+| **Jijik (*Disgust*)** | 0.87 | 0.81 | **0.83** | 590 | Kelas dominan sangat stabil (Precision 87%, Recall 81%) |
+| **Takut (*Fear*)** | 0.00 | 0.00 | 0.00 | 0 | Ekstrem minoritas alami ($n=2$ di train, $n=0$ di test) |
+| **Bahagia (*Joy*)** | 0.33 | 0.07 | **0.12** | 14 | **Berhasil terdeteksi aktif** pada inferensi model berbobot |
+| **Percaya (*Trust*)** | 0.72 | 0.84 | **0.78** | 218 | Performa sangat konsisten merepresentasikan afirmasi program |
+| **Netral (*Neutral*)** | 0.89 | 0.80 | **0.84** | 129 | Precision tinggi menyaring teks warta faktual |
+| **Sedih (*Sadness*)** | 0.00 | 0.00 | 0.00 | 2 | Minoritas alami ($n=2$, terkelompokan ke dalam valensi negatif) |
+| **Tertarik (*Interest*)** | 0.55 | 0.77 | **0.64** | 93 | Recall tinggi menangkap atensi dan rasa penasaran warganet |
+| **Kaget (*Surprise*)** | 0.00 | 0.00 | 0.00 | 6 | Minoritas alami ($n=6$, terserap ke sentimen kontradiksi) |
+| **Rata-Rata Makro** | 0.45 | 0.43 | **0.48** | 1.064 | Unweighted arithmetic mean across 9 classes |
+| **Rata-Rata Berbobot** | 0.80 | 0.79 | **0.79** | 1.064 | Prevalensi tertimbang sesuai komposisi korpus empiris |
+

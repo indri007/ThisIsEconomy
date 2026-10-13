@@ -131,7 +131,7 @@ By embedding the Bahasa Bit architecture directly within the research methodolog
 ---
 """
 
-    bahasa_bit_results = """
+    bahasa_bit_results = r"""
 ### 4.12 Nationwide Corpus Telemetry via Bahasa Bit Architecture (30 Million Records)
 
 While deep network and lexico-syntactic modeling was performed on the curated empirical corpus ($N = 3{,}395$ validated tweets and $\|V\| = 971$ interaction nodes), the scale of nationwide public interest necessitated an exhaustive, big-data scraping and telemetry audit across the entire Indonesian twittersphere (`lang:id`). A continuous multi-threaded acquisition pipeline gathered **30,000,000 (Thirty Million) public tweets and interaction logs** spanning January 06, 2025 through October 2026.
