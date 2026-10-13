@@ -157,6 +157,29 @@
 
 <br/>
 
+### 🔄 DIAGRAM SILSILAH & REKONSILIASI MULTIKORPUS (DATA LINEAGE ARCHITECTURE)
+> *Untuk menjamin transparansi metodologis, hubungan antara data lake 30M, korpus linimasa krisis ($N=9.360$), korpus inferensi 9 emosi ($N=5.272$), dan korpus interaksi SNA ($N=3.395$) dipetakan secara terstruktur:*
+
+```mermaid
+flowchart TD
+    A["DATA LAKE AKUISISI NASIONAL (30 Juta Baris)<br>Jan 2025 – Okt 2026 | 6,0 GB (30.035.227 baris)"] -->|Filter Temporal Dua Puncak Krisis| B["KORPUS LINIMASA KRISIS LONGITUDINAL (N = 9.360)<br>Puncak I (Mei: 3.157) + Puncak II (Sep: 4.661) + Monitor (1.542)"]
+    A -->|Ekstraksi Interaksi & Kekayaan Leksikal| C["KORPUS INTERAKSI SNA & SARIDAS (N = 3.395)<br>SNA: |V|=971 node, |E|=666 edge, Q=0.9837 | 315 Sindiran (9,28%)"]
+    A -->|Penyaringan Kualitas Bahasa & Integrasi Gold| D["KORPUS MASTER KLASIFIKASI 9 EMOSI (N = 5.272)<br>5.263 korpus dasar + 9 kandidat emas (Joy 76, Surprise 23)"]
+    D -->|GroupShuffleSplit 80% (Zero Leakage)| E["Train Set IndoBERT (N = 4.208)"]
+    D -->|GroupShuffleSplit 20% (Zero Leakage)| F["Holdout Test Set (N = 1.064) | Akurasi 79,14% | W-F1 78,89%"]
+    D -->|Stratified Ambiguous Cases| G["Multi-Annotator Gold Standard (n = 100) | Kappa = 0.9135"]
+```
+
+| Tingkat Korpus | Ukuran ($N$) | Periode Pengambilan | Kriteria Seleksi & Deduplikasi | Fungsi & Peran Analitis di Riset |
+| :--- | :---: | :--- | :--- | :--- |
+| **Data Lake Nasional** | **30.035.227** | Jan 2025 – Okt 2026 | Kueri makro `lang:id` kebijakan fiskal & sosial | Skala populasi nasional & komputasi telemetri |
+| **Linimasa Krisis** | **9.360** | Jan – 10 Okt 2026 | Pelacakan longitudinal Puncak I & II | Analisis temporal dua gelombang krisis |
+| **Master 9 Emosi** | **5.272** | Maret – Mei 2026 | Deduplikasi teks ketat + ekspansi Joy & Surprise | Pelatihan & evaluasi model IndoBERT 9-kelas |
+| **Interaksi Empiris & SNA**| **3.395** | Maret – Mei 2026 | Cuitan berinteraksi `@mention`/RT & bersindiran | Topologi graf SNA ($|V|=971$) & deteksi sindiran |
+| **Gold Standard Pakar** | **100** | Maret – Mei 2026 | Sampel stratifikasi kasus kontradiktif | Evaluasi keabsahan antar-penilai manusia ($\kappa=0.9135$) |
+
+<br/>
+
 ### 🎭 TABEL 2: TAKSONOMI LENGKAP 9 EMOJI & EMOSI INDOBERT (KORPUS TESIS $N = 5.272$)
 *Klasifikasi inferensi model Fine-tuned IndoBERT berbasis taksonomi psikologi Plutchik:*
 
@@ -1263,7 +1286,27 @@ Repositori ini mengadopsi pola **Polyglot Research Monorepo** yang terbagi ke da
 | **Tier 3** | **Interactive Graph Web Client** | [`frontend/`](frontend/) | Next.js 16, React 19, Cytoscape.js | `3000` | `cd frontend && npm run dev` |
 | **Tier 4** | **Scraping Engine & Telegram EWS** | [`twitter_sentiment_app/`](twitter_sentiment_app/) | Twikit, Gemini 2.5 Flash, Cron | CLI | `python scripts/auto_scrape_job.py` |
 
+<br/>
+
+### 🛡️ PEMBUKTIAN OPERASIONAL, KETAHANAN & KEAMANAN SISTEM (EWS & LIVE DASHBOARD)
+
+> *Menjawab pengujian ketahanan layanan nyata (*live production verification*), subsistem Telegram EWS dan Dasbor Streamlit telah diaudit dan diuji melalui serangkaian protokol verifikasi operasional:*
+
+1. **Pencegahan Alarm Palsu Melalui Penyaringan Relevansi (*Relevance-Gating Filter*):**
+   - Mengacu pada bukti empiris publikasi SSRN (Abstract ID: 7526942), kueri penarikan media sosial mentah menyaring 3.389 cuitan menjadi 1.134 cuitan yang tervalidasi relevan secara domain dan bahasa (`lang:id`).
+   - Mekanisme ini memangkas lebih dari 65% alarm palsu akibat noise di luar topik (seperti spam token kripto `$MBG` dan promosi ritel).
+2. **Penanganan Kegagalan Jaringan & HTTP 429 Rate Limiting:**
+   - Modul [`scripts/auto_scrape_job.py`](scripts/auto_scrape_job.py) menerapkan penanganan *exponential backoff* dengan parameter dinamis `Retry-After` saat menerima status HTTP 429 dari Telegram Bot API (maksimal 3 kali percobaan ulang dengan jeda $2^{\text{attempt}}$ detik).
+   - Sanitasi teks pesan menggunakan `html.escape()` untuk mencegah kegagalan pengiriman akibat sintaks HTML yang rusak pada pesan notifikasi.
+3. **Pengelolaan Kredensial & Jaminan Keamanan Zero-Leakage:**
+   - Fungsi `get_secret()` menggunakan hirarki prioritas isolasi: `st.secrets` $\to$ Environment Variables $\to$ `.streamlit/secrets.toml`.
+   - File konfigurasi rahasia (`.env`, `secrets.toml`, `*.token`, `*.pat`) dilindungi penuh oleh `.gitignore` sehingga 100% bebas dari kebocoran token di commit publik GitHub.
+4. **Ketahanan Dasbor & Simulasi Startup Headless:**
+   - Pengujian otomatis via `AppTest.from_file("dashboard/app.py")` mengonfirmasi pemuatan seluruh visualisasi graf dan data loader berjalan mulus (**0 exception**).
+   - Fungsi interceptor `_crash_proof_st_image()` memastikan hilangnya aset opsional tidak menyebabkan kerusakan fatal pada perenderan antarmuka pengguna (*fault-tolerant UI*).
+
 ---
+
 
 ### 🚀 TUTORIAL OPERASIONAL: CARA CEPAT MENJALANKAN DASHBOARD STREAMLIT
 
