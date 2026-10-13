@@ -1,0 +1,10 @@
+{
+  "test_timestamp_iso": "2026-10-13T18:13:33.373464",
+  "python_executable": "/opt/miniconda3/bin/python3",
+  "python_version": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+  "platform": "macOS-15.3.1-arm64-arm-64bit-Mach-O",
+  "exit_code": 0,
+  "duration_seconds": 12.693599,
+  "total_tests_collected": 101,
+  "status": "PASS"
+}

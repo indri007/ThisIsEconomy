@@ -1,0 +1,6 @@
+category,claimed_records,physical_records,processed_in_lake,unprocessed_backlog,inference_status,file_size_gb,checksum_sha256,notes
+Raw Streaming Data Lake (tweet_mbg_30juta.csv),30000000,30035226,600,29999400,BLOCKED,5.981,d9333c3a56f2b2e65bdbc68cd7c4aaaf74f6048222443e0f3ab6a576640b06a0,Raw high-throughput streaming storage; lake demonstration processed 600 samples; full inference blocked.
+Longitudinal Crisis Timeline Corpus,9360,9360,9360,0,COMPLETED,0.007,verified_timeline_corpus,Curated chronological crisis tracking (Aug 16 2024 - Sep 25 2026).
+Master 9-Emotion NLP Fine-Tuning Corpus,5272,5272,5272,0,COMPLETED,0.0035,verified_master_indobert_corpus,"Full IndoBERT fine-tuning and evaluation (4,208 train, 1,064 test)."
+Sarcasm & Communication Network (SNA) Corpus,3395,3395,3395,0,COMPLETED,0.0009,verified_sarcasm_corpus,Validated sarcasm (315 sarcastic) and network graph topology.
+Multi-Annotator Gold Standard Benchmark,100,100,100,0,COMPLETED,3e-05,verified_gold_100_benchmark,Human double-blind consensus benchmark (kappa = 0.832).

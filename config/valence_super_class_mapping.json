@@ -1,0 +1,15 @@
+{
+  "mapping_name": "Plutchik_to_Valence_Super_Class",
+  "theoretical_framework": "Coombs SCCT (2007) & Russell Circumplex Model of Affect (1980)",
+  "mapping": {
+    "Marah": "Negatif",
+    "Jijik": "Negatif",
+    "Takut": "Negatif",
+    "Sedih": "Negatif",
+    "Kaget": "Negatif",
+    "Percaya": "Positif",
+    "Tertarik": "Positif",
+    "Bahagia": "Positif",
+    "Netral": "Netral"
+  }
+}

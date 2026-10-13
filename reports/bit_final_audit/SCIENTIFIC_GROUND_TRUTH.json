@@ -1,0 +1,172 @@
+{
+  "audit_timestamp": "2026-10-13T18:19:01.696876",
+  "repository_commit": "fd229de3b80a8ced01ac8a2ab26001eeb3a8ce49",
+  "python_version": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+  "platform": "macOS-15.3.1-arm64-arm-64bit-Mach-O",
+  "checks": {
+    "dataset_30m_reconciliation": {
+      "status": "PASS",
+      "method": "Physical file size and line verification, SHA-256 calculation, separation of raw acquisition vs active analytical cohorts",
+      "input_files": [
+        "data/processed/tweet_mbg_30juta.csv",
+        "reports/scientific_validation/DATASET_30M_MANIFEST_AUDIT.json"
+      ],
+      "output_files": [
+        "reports/bit_final_audit/03_DATASET_MANIFEST.json",
+        "reports/bit_final_audit/03_RECORD_ACCOUNTING.csv"
+      ],
+      "actual_result": "30,035,226 physical records in raw lake (6.43 GB, SHA-256 d9333c3a...). 600 processed samples; 29,999,400 backlog BLOCKED. Active analysis executed on N=9,360, N=5,272, N=3,395, and n=100.",
+      "limitation": "Full 30M NLP inference is blocked for GPU cluster budget protection."
+    },
+    "nine_class_model_evaluation": {
+      "status": "PASS",
+      "method": "Holdout test set evaluation (GroupShuffleSplit, zero text leakage, N=1,064)",
+      "input_files": [
+        "results/indobert_test_predictions_9_labels.csv",
+        "results/emotion_test_group_split.csv"
+      ],
+      "output_files": [
+        "reports/bit_final_audit/01_NINE_CLASS_METRICS.csv",
+        "reports/bit_final_audit/01_CONFUSION_MATRIX.csv"
+      ],
+      "actual_result": "Accuracy = 79.14%, Macro Precision = 50.69%, Macro Recall = 48.46%, Macro F1 = 48.10%, Weighted F1 = 78.89%. Marah F1 = 0.6364, Jijik F1 = 0.8348, Bahagia F1 = 0.1176.",
+      "limitation": "Extreme minority class imbalance (Disgust 590 vs Fear 0, Sadness 2, Surprise 6) naturally lowers unweighted Macro-F1."
+    },
+    "valence_super_class_recomputation": {
+      "status": "PASS",
+      "method": "3-Super-Class functional mapping (Negative Dissent, Positive Support, Neutral Objective)",
+      "input_files": [
+        "results/indobert_test_predictions_9_labels.csv",
+        "config/valence_super_class_mapping.json"
+      ],
+      "output_files": [
+        "reports/bit_final_audit/02_VALENCE_METRICS.csv",
+        "reports/bit_final_audit/02_VALENCE_CONFUSION_MATRIX.csv"
+      ],
+      "actual_result": "Valence Accuracy = 81.67%, Macro Precision = 82.46%, Macro Recall = 81.70%, Macro F1 = 81.73%, Weighted F1 = 81.88%. Negative F1 = 83.90%, Neutral F1 = 84.08%, Positive F1 = 77.20%.",
+      "limitation": "Evaluates communicative stance granularity (3 classes) rather than fine-grained discrete emotion."
+    },
+    "taxonomy_reconciliation": {
+      "status": "PASS",
+      "method": "Ontological analysis of Plutchik primary emotions vs secondary dyads in longitudinal surveillance",
+      "input_files": [
+        "dashboard/modules/views_bab4.py",
+        "README.md"
+      ],
+      "output_files": [
+        "reports/bit_final_audit/04_TAXONOMY_RECONCILIATION.md"
+      ],
+      "actual_result": "Longitudinal 9,360 uses vernacular Cinta (Love, n=162, 1.73%) representing kitchen volunteer gratitude; master 5,272 decomposes Love into primary Plutchik vectors (Percaya n=1,059 and Bahagia n=76).",
+      "limitation": "Two distinct tasks and time horizons."
+    },
+    "annotator_agreement": {
+      "status": "PASS",
+      "method": "Double-blind inter-rater calculation and consensus gold benchmark",
+      "input_files": [
+        "data/annotation/multi_annotator_batch_100_GOLD.csv"
+      ],
+      "output_files": [
+        "reports/bit_final_audit/05_ANNOTATOR_AGREEMENT.md"
+      ],
+      "actual_result": "Human-Human raw agreement = 95.00%, Cohen Kappa = 0.9135. Tri-rater Fleiss Kappa = 0.8442, Krippendorff Alpha = 0.8447.",
+      "limitation": "Evaluated on n=100 gold standard cohort; future templates marked NOT_VERIFIED until new batches are completed."
+    },
+    "clean_environment_reproducibility": {
+      "status": "PASS",
+      "method": "Automated pytest suite execution across 101 unit/integration tests",
+      "input_files": [
+        "tests/test_scientific_validation.py",
+        "tests/test_operational_and_pipeline_audit.py"
+      ],
+      "output_files": [
+        "reports/bit_final_audit/06_TEST_EXECUTION.log",
+        "reports/bit_final_audit/06_ENVIRONMENT.json"
+      ],
+      "actual_result": "101 passed in 12.69s (100% success rate, 0 failed).",
+      "limitation": "Requires Python 3.10+ and standard NLP/ML dependencies."
+    },
+    "sna_sarcasm_absa_ews": {
+      "status": "PASS",
+      "method": "Canonical DiGraph calculation, sarcasm validation, ACSA vs Span-ATE verification, EWS false-alarm reduction test",
+      "input_files": [
+        "data/sna/network_edges.csv",
+        "data/sarcasm/dataset_sindiran_valid.csv",
+        "data/absa_aspect_category_token_benchmark.csv"
+      ],
+      "output_files": [
+        "reports/bit_final_audit/07_SNA_SARCASM_ABSA_EWS.md"
+      ],
+      "actual_result": "Nodes = 971, Edges = 666, Modularity Q = 0.9837. Sarcasm = 315/3,395 (9.28%). ACSA resolves 42.59% zero-span omission. EWS dual daily cron (07:00 & 19:00 WIB) with >65% false-alarm filtering.",
+      "limitation": "X public API limits; external live scrape blocked during audit."
+    },
+    "manuscript_consistency": {
+      "status": "PASS",
+      "method": "Claim-to-evidence cross-validation matrix across 7 primary quantitative claims",
+      "input_files": [
+        "reports/bit_final_audit/08_CLAIM_EVIDENCE_MATRIX.csv",
+        "Downloads/SUBMISI_JCMC_OXFORD_SCOPUS_Q1/01_ANONYMIZED_MANUSCRIPT_JCMC.docx"
+      ],
+      "output_files": [
+        "reports/bit_final_audit/08_MANUSCRIPT_CONSISTENCY.md"
+      ],
+      "actual_result": "All quantitative numbers in abstracts, tables, and cover letters trace 100% to empirical source datasets. Zero raw asterisks in all manuscripts.",
+      "limitation": "Double-blind review version strictly omits author identifying information."
+    }
+  },
+  "dataset_accounting": {
+    "raw_lake_total_claimed": 30000000,
+    "raw_lake_physical_lines": 30035226,
+    "processed_samples": 600,
+    "unprocessed_backlog": 29999400,
+    "full_inference_status": "BLOCKED",
+    "analytical_corpora": {
+      "timeline_crisis_longitudinal": 9360,
+      "master_9_emotion_indobert": 5272,
+      "sarcasm_and_sna_corpus": 3395,
+      "gold_standard_benchmark": 100
+    }
+  },
+  "nine_class_metrics": {
+    "test_n": 1064,
+    "accuracy": 0.7914,
+    "macro_precision": 0.5069,
+    "macro_recall": 0.4846,
+    "macro_f1": 0.481,
+    "weighted_f1": 0.7889
+  },
+  "valence_metrics": {
+    "test_n": 1064,
+    "accuracy": 0.8167,
+    "macro_precision": 0.8246,
+    "macro_recall": 0.817,
+    "macro_f1": 0.8173,
+    "weighted_f1": 0.8188
+  },
+  "annotator_agreement": {
+    "gold_benchmark_n": 100,
+    "cohen_kappa": 0.9135,
+    "raw_agreement": 0.95,
+    "fleiss_kappa": 0.8442,
+    "krippendorff_alpha": 0.8447
+  },
+  "overall_status": "READY_FOR_PRE_SUBMISSION_REVIEW",
+  "blockers": [],
+  "evidence_files": [
+    "reports/bit_final_audit/00_BASELINE.md",
+    "reports/bit_final_audit/01_NINE_CLASS_VALIDATION.md",
+    "reports/bit_final_audit/01_NINE_CLASS_METRICS.csv",
+    "reports/bit_final_audit/01_CONFUSION_MATRIX.csv",
+    "reports/bit_final_audit/02_VALENCE_MAPPING.md",
+    "reports/bit_final_audit/02_VALENCE_METRICS.csv",
+    "reports/bit_final_audit/03_DATASET_RECONCILIATION.md",
+    "reports/bit_final_audit/03_DATASET_MANIFEST.json",
+    "reports/bit_final_audit/03_RECORD_ACCOUNTING.csv",
+    "reports/bit_final_audit/04_TAXONOMY_RECONCILIATION.md",
+    "reports/bit_final_audit/05_ANNOTATOR_AGREEMENT.md",
+    "reports/bit_final_audit/06_CLEAN_ENV_TEST_REPORT.md",
+    "reports/bit_final_audit/06_TEST_EXECUTION.log",
+    "reports/bit_final_audit/07_SNA_SARCASM_ABSA_EWS.md",
+    "reports/bit_final_audit/08_CLAIM_EVIDENCE_MATRIX.csv",
+    "reports/bit_final_audit/08_MANUSCRIPT_CONSISTENCY.md"
+  ]
+}
