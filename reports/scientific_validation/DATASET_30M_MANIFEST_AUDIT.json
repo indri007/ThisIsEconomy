@@ -1,0 +1,53 @@
+{
+  "manifest_version": "1.0.0",
+  "audit_timestamp_iso": "2026-10-12T09:25:49Z",
+  "target_file_declared": "data/processed/tweet_mbg_30juta.csv",
+  "is_symlink": true,
+  "symlink_target": "tweet_mbg_1juta.csv",
+  "resolved_file_path": "/Users/jevin/Documents/tesis_mbg/data/processed/tweet_mbg_1juta.csv",
+  "file_size_bytes": 6422076063,
+  "file_size_gb": 5.981,
+  "sha256_checksum": "d9333c3a56f2b2e65bdbc68cd7c4aaaf74f6048222443e0f3ab6a576640b06a0",
+  "total_physical_lines": 30000001,
+  "total_data_records": 30000000,
+  "schema_columns": [
+    "id",
+    "created_at",
+    "author_username",
+    "author_id",
+    "text",
+    "like_count",
+    "retweet_count",
+    "reply_count",
+    "quote_count",
+    "source"
+  ],
+  "required_columns_present": true,
+  "missing_required_columns": [],
+  "sample_audit": {
+    "sample_size": 50000,
+    "sample_missing_text": 0,
+    "sample_duplicate_ids": 3645,
+    "sample_date_range": [
+      "2025-01-06 00:22:01",
+      "Wed Sep 21 07:08:04 +0000 2016"
+    ],
+    "sample_source_distribution": {
+      "Local Archive Cache": 13426,
+      "CNA Harvester Logistik": 7409,
+      "CNA Harvester Kualitas": 7353,
+      "CNA Harvester Netral": 7328,
+      "CNA Harvester Anggaran": 7278,
+      "CNA Harvester Sarkasme": 7206
+    }
+  },
+  "pipeline_reconciliation": {
+    "formula": "total_input = processed_in_lake + unverified_backlog",
+    "total_input_records": 30000000,
+    "processed_samples_with_indobert": 600,
+    "lake_parquet_rows": 600,
+    "unprocessed_backlog": 29999400,
+    "full_inference_status": "BLOCKED",
+    "full_inference_reason": "Komputasi GPU klaster produksi (estimasi ~38 jam single-core) belum dijalankan pada 29.999.400 sisa baris."
+  }
+}

@@ -29,3 +29,7 @@ twifork>=2.4.0
 anyio>=4.4.0
 tweepy>=4.14,<5
 python-telegram-bot>=20,<23
+
+# === Testing / Scientific Validation ===
+pytest>=8.0.0
+nltk>=3.8.0

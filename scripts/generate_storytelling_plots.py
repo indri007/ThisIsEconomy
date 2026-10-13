@@ -82,14 +82,14 @@ for bar, count, pct in zip(bars, counts, pcts):
         ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 50, f"{count:,}\n({pct:.1f}%)", 
                 ha='center', va='bottom', fontsize=9, fontweight='bold', color='white')
 
-ax.set_ylabel("Jumlah Cuitan (N = 5.263)", color='white', fontsize=11, fontweight='bold')
+ax.set_ylabel(f"Jumlah Cuitan (N = {len(df_emo):,})", color='white', fontsize=11, fontweight='bold')
 ax.set_xlabel("9 Kategori Emosi Plutchik", color='white', fontsize=11, fontweight='bold')
 ax.tick_params(colors='white', labelsize=10)
 ax.set_ylim(0, 3400)
 for spine in ax.spines.values():
     spine.set_color('#334155')
 
-plt.title("Gambar 2: Distribusi 9 Kelas Emosi Plutchik pada Korpus MBG (N=5.263)", 
+plt.title(f"Gambar 2: Distribusi 9 Kelas Emosi Plutchik pada Korpus MBG (N={len(df_emo):,})", 
           fontsize=13, fontweight='bold', color='white', pad=15)
 plt.tight_layout()
 plt.savefig("results/emotion_distribution.png", dpi=300, bbox_inches='tight', facecolor='#0f172a')

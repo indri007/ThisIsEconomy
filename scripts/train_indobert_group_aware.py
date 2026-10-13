@@ -18,8 +18,8 @@ train_df['label_id'] = train_df['predicted_emotion'].map(label_to_id)
 test_df['label_id'] = test_df['predicted_emotion'].map(label_to_id)
 
 tokenizer = AutoTokenizer.from_pretrained("indobenchmark/indobert-base-p2")
-train_encodings = tokenizer(train_df['processed_text'].tolist(), truncation=True, padding=True, max_length=128)
-test_encodings = tokenizer(test_df['processed_text'].tolist(), truncation=True, padding=True, max_length=128)
+train_encodings = tokenizer([str(x) for x in train_df['processed_text'].tolist()], truncation=True, padding=True, max_length=128)
+test_encodings = tokenizer([str(x) for x in test_df['processed_text'].tolist()], truncation=True, padding=True, max_length=128)
 
 class Dataset(torch.utils.data.Dataset):
     def __init__(self, encodings, labels):
@@ -27,7 +27,7 @@ class Dataset(torch.utils.data.Dataset):
         self.labels = labels
     def __getitem__(self, idx):
         item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}
-        item['labels'] = torch.tensor(self.labels[idx])
+        item['labels'] = torch.tensor(self.labels[idx], dtype=torch.long)
         return item
     def __len__(self):
         return len(self.labels)

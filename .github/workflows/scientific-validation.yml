@@ -1,0 +1,43 @@
+name: Scientific Validation Tests
+
+on:
+  push:
+    branches:
+      - main
+      - fix/scientific-validation
+  pull_request:
+    branches:
+      - main
+      - fix/scientific-validation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Test Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest nltk pandas numpy scikit-learn networkx torch transformers pyarrow
+
+      - name: Download NLTK Stopwords
+        run: python -m nltk.downloader stopwords
+
+      - name: Run Tests
+        run: |
+          python -m pytest \
+            tests/test_scientific_validation.py \
+            pipelines_30m/test_pipeline.py \
+            -v

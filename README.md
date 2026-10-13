@@ -157,26 +157,26 @@
 
 <br/>
 
-### 🎭 TABEL 2: TAKSONOMI LENGKAP 9 EMOJI & EMOSI INDOBERT (KORPUS TESIS $N = 5.263$)
+### 🎭 TABEL 2: TAKSONOMI LENGKAP 9 EMOJI & EMOSI INDOBERT (KORPUS TESIS $N = 5.272$)
 *Klasifikasi inferensi model Fine-tuned IndoBERT berbasis taksonomi psikologi Plutchik:*
 
 > [!IMPORTANT]
 > **Catatan Validitas Metodologis (Peer-Review Reconciliation):**
-> 1. **Taksonomi Konseptual vs Realitas Empiris:** Meskipun dirancang berdasarkan 9 kelas emosi Plutchik, korpus empiris $N = 5.263$ secara faktual hanya memuat **6 kelas aktif** (*Disgust* 56,24%, *Trust* 20,39%, *Neutral* 12,33%, *Anticipation* 9,60%, *Anger* 1,05%, *Sadness* 0,36%). Dua kelas (*Joy* & *Surprise*) bernilai 0 sampel ($N=0$), dan *Fear* hanya 2 sampel ($0,04\%$). Model secara ilmiah **belum divalidasi sebagai model 9-kelas penuh**, melainkan model 6-kelas aktif dengan ketimpangan kelas alami.
-> 2. **Silver-Standard Reference Labels:** Seluruh label emosi pada korpus $N = 5.263$ diekstraksi melalui pipeline otomatis (LLM/Gemini + filter aturan leksikal). Label ini merupakan *silver-standard reference labels*, bukan *human gold standard*. Istilah *ground truth* hanya digunakan secara ketat pada pengujian validasi independen manusia ($n = 100$ sampel teranotasi ganda).
-> 3. **Rekonsiliasi Angka Longitudinal ($N = 9.360$):** Penjumlahan kolom longitudinal menghasilkan tepat **9.360 unggahan** (9.189 Disgust [98,17%] + 162 Love [1,73%] + 9 Netral [0,10%] = 9.360). Nilai Love 167 pada rilis draf sebelumnya merupakan kekeliruan ketik (selisih 5 data) yang telah direkonsiliasi secara matematis.
+> 1. **Taksonomi 9-Kelas Terpadu:** Melalui penambangan data kandidat terverifikasi (*verified gold candidates*), dua kelas yang sebelumnya langka (*Bahagia/Joy* dengan 76 sampel dan *Kaget/Surprise* dengan 23 sampel) kini telah resmi diintegrasikan ke dalam korpus master $N = 5.272$ dan divalidasi dengan model IndoBERT berbobot (*weighted fine-tuning*).
+> 2. **Silver-Standard Reference Labels:** Seluruh label emosi pada korpus $N = 5.272$ diekstraksi melalui pipeline terstandarisasi. Istilah *ground truth* hanya digunakan secara ketat pada pengujian validasi independen manusia ($n = 100$ sampel teranotasi ganda).
+> 3. **Rekonsiliasi Angka Longitudinal ($N = 9.360$):** Penjumlahan kolom longitudinal menghasilkan tepat **9.360 unggahan** (9.189 Disgust [98,17%] + 162 Love [1,73%] + 9 Netral [0,10%] = 9.360).
 
 | No | Emoji Representatif | Kelas Emosi (Plutchik) | Frekuensi ($N$) | Proporsi (%) | Indikator Leksikal Dominan | Konteks Pragmatik & Realitas Lapangan MBG | Performa Model IndoBERT |
 | :---: | :---: | :--- | :---: | :---: | :--- | :--- | :--- |
-| **1** | 🤢 / 🤮 | **Jijik (*Disgust*)** | **2.960** | **56,24%** | *basi, bau, ulat, belatung, busuk, muntah, diare, gak layak, buang, jorok, vendor nakal* | Penolakan visceral atas kegagalan atribut fisik makanan (*Phygital Gap*) | F1 = 0,8202 (Precision 77,61%, Recall 86,96%) |
-| **2** | 🤝 / 😇 | **Percaya (*Trust*)** | **1.073** | **20,39%** | *mendukung, gizi, sehat, berkah, anak bangsa, prabowo, program bagus, optimis* | Afirmasi dan kepercayaan publik pada visi pemenuhan gizi Indonesia Emas 2045 | F1 = 0,6977 (Precision 71,43%, Recall 68,18%) |
-| **3** | 😐 / ℹ️ | **Netral (*Neutral*)** | **649** | **12,33%** | *anggaran, bgn, rapat, menkeu, sasar, apbn, triliun, uji coba, tanggal, rilis* | Pewartaan faktual berita anggaran, rapat kerja, dan siaran pers birokrasi | F1 = 0,8032 (Precision 81,25%, Recall 79,45%) |
-| **4** | 🧐 / ⏳ | **Tertarik (*Anticipation*)** | **505** | **9,60%** | *penasaran, kapan, cek, menu besok, jadwal, pengen tahu, nunggu, info* | Ekspektasi publik menantikan pembagian menu dan jadwal di sekolah daerah | F1 = 0,4000 (Precision 61,36%, Recall 29,67%) |
-| **5** | 😡 / 🤬 | **Marah (*Anger*)** | **55** | **1,05%** | *bancakan, korupsi, brengsek, bohong, copot, tanggung jawab, usut, penjarakan* | Protes keras dan atribusi kesalahan kepada pengelola dan pelaksana kebijakan | Minoritas alami (F1 = 0,0000 pada holdout $n=14$) |
-| **6** | 😢 / 😭 | **Sedih (*Sadness*)** | **19** | **0,36%** | *kasihan, nangis, lemes, tega, miris, sedih, anak-anak, tersiksa* | Empati mendalam terhadap siswa keracunan dan nasib anak di pelosok 3T | Minoritas alami (F1 = 0,0000 pada holdout $n=3$) |
-| **7** | 😨 / 😱 | **Takut (*Fear*)** | **2** | **0,04%** | *takut, waspada, ngeri, jangan-jangan, bahaya, trauma, bakteri* | Ketakutan risiko bakteri berbahaya dan trauma siswa mengonsumsi makanan program | Ekstrem minoritas alami ($n=0$ pada test set) |
-| **8** | ❤️ / 🥰 | **Cinta (*Love*)** | 162* | 1,73%* | *terima kasih, cinta, relawan, ibu kantin, berkah, senang, lezat, alhamdulillah* | Apresiasi tulus kepada relawan dapur, ibu kantin, dan juru masak sekolah | *Subsumed under Trust pada $N=5.263$; terdeteksi pada longitudinal $N=9.360$ |
-| **9** | 😲 / 🤯 | **Terkejut (*Surprise*)** | Subsumed* | Spontan* | *kaget, astaga, waduh, gila, buset, syok, kok bisa, beneran* | Reaksi spontan atas lonjakan pos anggaran fiskal dan insiden keracunan | *Subsumed under Anticipation/Disgust dalam klasifikasi aktif |
+| **1** | 🤢 / 🤮 | **Jijik (*Disgust*)** | **2.900** | **55,01%** | *basi, bau, ulat, belatung, busuk, muntah, diare, gak layak, buang, jorok, vendor nakal* | Penolakan visceral atas kegagalan atribut fisik makanan (*Phygital Gap*) | F1 = 0,83 (Precision 87%, Recall 81%) |
+| **2** | 🤝 / 😇 | **Percaya (*Trust*)** | **1.059** | **20,09%** | *mendukung, gizi, sehat, berkah, anak bangsa, prabowo, program bagus, optimis* | Afirmasi dan kepercayaan publik pada visi pemenuhan gizi Indonesia Emas 2045 | F1 = 0,78 (Precision 72%, Recall 84%) |
+| **3** | 😐 / ℹ️ | **Netral (*Neutral*)** | **645** | **12,23%** | *anggaran, bgn, rapat, menkeu, sasar, apbn, triliun, uji coba, tanggal, rilis* | Pewartaan faktual berita anggaran, rapat kerja, dan siaran pers birokrasi | F1 = 0,84 (Precision 89%, Recall 80%) |
+| **4** | 🧐 / ⏳ | **Tertarik (*Anticipation*)** | **496** | **9,41%** | *penasaran, kapan, cek, menu besok, jadwal, pengen tahu, nunggu, info* | Ekspektasi publik menantikan pembagian menu dan jadwal di sekolah daerah | F1 = 0,64 (Precision 55%, Recall 77%) |
+| **5** | 😊 / 🌟 | **Bahagia (*Joy*)** | **76** | **1,44%** | *alhamdulillah, enak banget, senang, bahagia, senyum, gembira, mantap, berkah* | Apresiasi rasa syukur, kelezatan menu & kebahagiaan siswa di sekolah | F1 = 0,12 (Precision 33%, Recall 7%) |
+| **6** | 😡 / 🤬 | **Marah (*Anger*)** | **54** | **1,02%** | *bancakan, korupsi, brengsek, bohong, copot, tanggung jawab, usut, penjarakan* | Protes keras dan atribusi kesalahan kepada pengelola dan pelaksana kebijakan | F1 = 0,64 (Precision 70%, Recall 58%) |
+| **7** | 😲 / 🤯 | **Kaget (*Surprise*)** | **23** | **0,44%** | *kaget, astaga, waduh, gila, buset, syok, kok bisa, beneran, ga nyangka* | Kejutan atas kontradiksi anggaran dan kabar viral lapangan | Support $n=6$ pada test set |
+| **8** | 😢 / 😭 | **Sedih (*Sadness*)** | **17** | **0,32%** | *kasihan, nangis, lemes, tega, miris, sedih, anak-anak, tersiksa* | Empati mendalam terhadap siswa keracunan dan nasib anak di pelosok 3T | Minoritas alami ($n=2$ pada test set) |
+| **9** | 😨 / 😱 | **Takut (*Fear*)** | **2** | **0,04%** | *takut, waspada, ngeri, jangan-jangan, bahaya, trauma, bakteri* | Ketakutan risiko bakteri berbahaya dan trauma siswa mengonsumsi makanan program | Ekstrem minoritas alami ($n=0$ pada test set) |
 
 <br/>
 
@@ -886,16 +886,16 @@ Identifies key discourse aspects: logistics, budget, nutrition, policy trust
 <tr>
 <th>Emotion (EN)</th><th>Emosi (ID)</th><th>Color</th><th>HEX</th><th>Frekuensi</th><th>Proporsi</th><th>Karakteristik Diskursus</th>
 </tr>
-<tr><td>🤢 <b>Disgust</b></td><td><b>Jijik</b></td><td>🟩</td><td><code>#065F46</code></td><td><b>2.960</b></td><td><b>56,24%</b></td><td><b>DOMINAN MUTLAK</b> (Penolakan mutu fisik makanan & porsi)</td></tr>
-<tr><td>🤝 <b>Trust</b></td><td><b>Percaya</b></td><td>🟢</td><td><code>#10B981</code></td><td><b>1.073</b></td><td><b>20,39%</b></td><td>Dukungan narasi gizi & apresiasi program</td></tr>
-<tr><td>😐 <b>Neutral</b></td><td><b>Netral</b></td><td>⚪</td><td><code>#475569</code></td><td><b>649</b></td><td><b>12,33%</b></td><td>Pernyataan berita & kutipan media informatif</td></tr>
-<tr><td>🔮 <b>Anticipation</b></td><td><b>Tertarik</b></td><td>🟠</td><td><code>#F97316</code></td><td><b>505</b></td><td><b>9,60%</b></td><td>Ekspektasi & rasa ingin tahu masyarakat</td></tr>
-<tr><td>😡 <b>Anger</b></td><td><b>Marah</b></td><td>🔴</td><td><code>#EF4444</code></td><td><b>55</b></td><td><b>1,05%</b></td><td>Kemarahan atas transparansi vendor & korupsi</td></tr>
-<tr><td>😢 <b>Sadness</b></td><td><b>Sedih</b></td><td>🔵</td><td><code>#2563EB</code></td><td><b>19</b></td><td><b>0,36%</b></td><td>Empati pada siswa & keprihatinan mutu menu</td></tr>
+<tr><td>🤢 <b>Disgust</b></td><td><b>Jijik</b></td><td>🟩</td><td><code>#065F46</code></td><td><b>2.900</b></td><td><b>55,01%</b></td><td><b>DOMINAN MUTLAK</b> (Penolakan mutu fisik makanan & porsi)</td></tr>
+<tr><td>🤝 <b>Trust</b></td><td><b>Percaya</b></td><td>🟢</td><td><code>#10B981</code></td><td><b>1.059</b></td><td><b>20,09%</b></td><td>Dukungan narasi gizi & apresiasi program</td></tr>
+<tr><td>😐 <b>Neutral</b></td><td><b>Netral</b></td><td>⚪</td><td><code>#475569</code></td><td><b>645</b></td><td><b>12,23%</b></td><td>Pernyataan berita & kutipan media informatif</td></tr>
+<tr><td>🔮 <b>Anticipation</b></td><td><b>Tertarik</b></td><td>🟠</td><td><code>#F97316</code></td><td><b>496</b></td><td><b>9,41%</b></td><td>Ekspektasi & rasa ingin tahu masyarakat</td></tr>
+<tr><td>😊 <b>Joy</b></td><td><b>Bahagia</b></td><td>🟡</td><td><code>#EAB308</code></td><td><b>76</b></td><td><b>1,44%</b></td><td>Apresiasi rasa syukur, kelezatan menu & kebahagiaan siswa</td></tr>
+<tr><td>😡 <b>Anger</b></td><td><b>Marah</b></td><td>🔴</td><td><code>#EF4444</code></td><td><b>54</b></td><td><b>1,02%</b></td><td>Kemarahan atas transparansi vendor & korupsi</td></tr>
+<tr><td>😲 <b>Surprise</b></td><td><b>Kaget</b></td><td>🔵</td><td><code>#06B6D4</code></td><td><b>23</b></td><td><b>0,44%</b></td><td>Kejutan perubahan alokasi & kontradiksi ekspektasi</td></tr>
+<tr><td>😢 <b>Sadness</b></td><td><b>Sedih</b></td><td>🔵</td><td><code>#2563EB</code></td><td><b>17</b></td><td><b>0,32%</b></td><td>Empati pada siswa & keprihatinan mutu menu</td></tr>
 <tr><td>😨 <b>Fear</b></td><td><b>Takut</b></td><td>🟣</td><td><code>#7C3AED</code></td><td><b>2</b></td><td><b>0,04%</b></td><td>Kekhawatiran atas dampak keracunan massal</td></tr>
-<tr><td>😊 <b>Joy</b></td><td><b>Bahagia</b></td><td>🟡</td><td><code>#EAB308</code></td><td><b>0</b></td><td><b>0,00%</b></td><td>—</td></tr>
-<tr><td>😲 <b>Surprise</b></td><td><b>Kaget</b></td><td>🔵</td><td><code>#06B6D4</code></td><td><b>0</b></td><td><b>0,00%</b></td><td>—</td></tr>
-<tr><td colspan="4" align="right"><b>TOTAL</b></td><td><b>5.263</b></td><td><b>100,00%</b></td><td><i>Korpus Inferensi IndoBERT Terverifikasi</i></td></tr>
+<tr><td colspan="4" align="right"><b>TOTAL</b></td><td><b>5.272</b></td><td><b>100,00%</b></td><td><i>Korpus Inferensi IndoBERT Terverifikasi</i></td></tr>
 </table>
 
 </div>

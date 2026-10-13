@@ -1,0 +1,56 @@
+[
+  {
+    "file": "data/network_edges.csv",
+    "size_bytes": 15623,
+    "line_count": 693,
+    "sha256": "a8a5cf475ade0734fbc07f80887b204039938789fc27d05e10bfdaffc6a86622"
+  },
+  {
+    "file": "data/results/indobert_9_emosi_fixed.csv",
+    "size_bytes": 3512678,
+    "line_count": 24039,
+    "sha256": "cc9432ccb3c26b13abd9d14380152521f16dbd7e72fd28241cb9291ba55fcec6"
+  },
+  {
+    "file": "data/results/mbg_network_edges_final.csv",
+    "size_bytes": 15623,
+    "line_count": 693,
+    "sha256": "a8a5cf475ade0734fbc07f80887b204039938789fc27d05e10bfdaffc6a86622"
+  },
+  {
+    "file": "data/results/mbg_network_nodes_final.csv",
+    "size_bytes": 61174,
+    "line_count": 972,
+    "sha256": "35c5c848dbb9c5416314f6ef004014e511936be17948bb803e3fd2e505e87bc0"
+  },
+  {
+    "file": "data/processed/clean_30m_output/preview_sample_500.csv",
+    "size_bytes": 397099,
+    "line_count": 501,
+    "sha256": "69ea7093f35030c897302f135b32513d20ef6df8e3229b52d5d055daa23e5712"
+  },
+  {
+    "file": "results/FINAL_indobert_metrics.csv",
+    "size_bytes": 191,
+    "line_count": 2,
+    "sha256": "a6bd4f086aa66cc935c49f8f0411bef28b483a6426cbae456ba4755cacccd5a7"
+  },
+  {
+    "file": "results/FINAL_indobert_classification_report.csv",
+    "size_bytes": 635,
+    "line_count": 10,
+    "sha256": "2b70a109b19b2433f2ec48de3187384255c0417a4a31c76c0c550be877689790"
+  },
+  {
+    "file": "results/emotion_test_group_split.csv",
+    "size_bytes": 693284,
+    "line_count": 4800,
+    "sha256": "e8bf8199cea6c98cc8b173fb454be804ef64c02ba520586bda63f52c8f7e6c06"
+  },
+  {
+    "file": "results/emotion_train_group_split.csv",
+    "size_bytes": 2819545,
+    "line_count": 19240,
+    "sha256": "4a85efb75ffa46fb69ac2cbccbdacba4d7dc9aede383a582d7488bafac50df41"
+  }
+]

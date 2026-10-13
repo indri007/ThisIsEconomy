@@ -13,9 +13,12 @@ sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 from auto_scrape_job import analyze_new_batch, send_telegram_ews_report
 
+from unittest.mock import patch
+
 class TestTelegramEWSSystem(unittest.TestCase):
 
-    def test_send_telegram_missing_token_graceful(self):
+    @patch("auto_scrape_job.get_secret", return_value=None)
+    def test_send_telegram_missing_token_graceful(self, mock_secret):
         # Without setting environment variables, send should return False gracefully
         dummy_summary = {
             "timestamp": "2026-10-07 19:00",
