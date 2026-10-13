@@ -241,6 +241,13 @@ def run_job(limit: int = 100):
     }
     
     send_telegram_ews_report(summary)
+
+    # Write persistent operational execution log
+    log_dir = PROJECT_ROOT / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    with open(log_dir / "ews_production_audit.log", "a", encoding="utf-8") as f:
+        f.write(f"[{now_str}] CRON_JOB_SUCCESS: added={added_count}, total={len(combined_df)}, risk={analysis['risk_level']}\n")
+
     return True
 
 

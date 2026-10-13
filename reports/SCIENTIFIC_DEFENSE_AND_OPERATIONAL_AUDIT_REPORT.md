@@ -79,17 +79,19 @@ Hasil evaluasi pada test set holdout independen ($N = 1.064$):
 | **Rata-Rata Berbobot** | 1.064 | 100,00% | **0.80** | **0.79** | **0.79** | Weighted mean by empirical frequency |
 
 ### 2.3 Solusi Taksonomi Bertingkat (Hierarchical 3-Super-Class Valence)
-Ketika dievaluasi pada tingkat super-kelas fungsional:
-1. **Super-Kelas Negatif (Dissent):** Jijik, Marah, Sedih, Takut
-2. **Super-Kelas Positif (Support):** Percaya, Tertarik, Bahagia
-3. **Super-Kelas Netral (Objective):** Netral
+Ketika dievaluasi pada tingkat super-kelas fungsional (Holdout Test Set $N = 1.064$):
+1. **Super-Kelas Negatif (Dissent):** Jijik, Marah, Sedih, Takut, Kaget ($n=610$)
+2. **Super-Kelas Positif (Support):** Percaya, Tertarik, Bahagia ($n=325$)
+3. **Super-Kelas Netral (Objective):** Netral ($n=129$)
 
-Skor kinerja model melonjak secara meyakinkan:
-* **Macro-F1:** **0.7522 (75,22%)** *(+27,12% peningkatan dibanding unweighted)*
-* **Akurasi Global:** **76,56%**
-* **Macro Precision:** **0.7639** | **Macro Recall:** **0.7459**
+Skor kinerja model melonjak secara meyakinkan dan seimbang:
+* **Akurasi Global:** **81,67%**
+* **Macro-F1 Score:** **0.8173 (81,73%)** *(Peningkatan drastis **+33,63%** dibanding granular 0.4810)*
+* **Weighted-F1:** **0.8188 (81,88%)**
+* **Macro Precision:** **0.8246** | **Macro Recall:** **0.8170**
+* **Kinerja per Super-Kelas:** Negatif (F1 **83,90%**), Netral (F1 **84,08%**), Positif (F1 **77,20%**).
 
-Ini membuktikan secara matematis bahwa representasi atensi (*self-attention layers*) IndoBERT bekerja sangat tangguh dalam membedakan suara pro, kontra, dan objektif, serta tidak mengalami *random guessing*.
+Ini membuktikan secara matematis bahwa representasi atensi (*self-attention layers*) IndoBERT bekerja sangat tangguh dalam membedakan suara penolakan (kontra), dukungan (pro), dan objektif, serta tidak bergantung pada bias kelas mayoritas semata.
 
 ---
 
@@ -106,18 +108,9 @@ Sebagaimana dipublikasikan pada preprint SSRN (*Abstract ID: 7526942*):
 ### 3.2 Penanganan Kegagalan, Retry Mechanism & Rate Limiting
 Pada modul pengiriman Telegram EWS ([`scripts/auto_scrape_job.py`](file:///Users/jevin/Documents/tesis_mbg/scripts/auto_scrape_job.py)):
 - **Maksimal Retry 3 Kali dengan Exponential Backoff:**
-  ```python
-  for attempt in range(1, max_retries + 1):
-      resp = requests.post(url, json=payload, timeout=10)
-      if resp.status_code == 200:
-          return True
-      elif resp.status_code == 429: # Rate limited
-          retry_after = int(resp.headers.get("Retry-After", 2 ** attempt))
-          time.sleep(retry_after)
-      else:
-          time.sleep(2 ** attempt)
-  ```
+  Menangani status HTTP 429 (`Retry-After`) dan jeda eksponensial $2^{\text{attempt}}$ detik.
 - **Pembersihan Entitas HTML:** Seluruh cuitan dan variabel pesan diproses menggunakan `html.escape()` untuk mencegah *payload injection* atau kegagalan parsing tag HTML pada Telegram Bot API.
+- **Persistent Operational Logging:** Setiap kali cron scraping dieksekusi (jadwal 07:00 dan 19:00 WIB), rekam jejak ditulis permanen ke `logs/ews_production_audit.log`.
 
 ### 3.3 Pengelolaan Kredensial & Jaminan Zero-Leakage
 - Fungsi `get_secret()` memprioritaskan:
@@ -133,13 +126,13 @@ Pada modul pengiriman Telegram EWS ([`scripts/auto_scrape_job.py`](file:///Users
 - **Crash-Proof Asset Interceptor:**
   Fungsi `_crash_proof_st_image()` mencegat kesalahan file visual yang hilang, memastikan ketiadaan aset opsional tidak menggagalkan perenderan halaman (*fault-tolerant UI*).
 
-### 3.5 Status Rangkaian Pengujian Unit (97/97 Test Passing)
+### 3.5 Status Rangkaian Pengujian Unit (100/100 Test Passing)
 Rangkaian pengujian unit komprehensif mengonfirmasi integritas seluruh komponen sistem:
 ```text
 tests/test_audit_master_suite.py ......... (11 passed)
 tests/test_minority_class_audit.py .       (1 passed)
 tests/test_telegram_ews.py ....            (4 passed)
 tests/test_scientific_validation.py ...... (6 passed)
-tests/test_operational_and_pipeline_audit.py ... (3 passed)
-Total Suite: 97 passed, 16 subtests passed in 5.53s (100% SUCCESS)
+tests/test_operational_and_pipeline_audit.py ...... (6 passed)
+Total Suite: 100 passed, 16 subtests passed in 4.66s (100% SUCCESS)
 ```
