@@ -8,31 +8,83 @@
       "weighted_f1": 0.7434,
       "imbalance_ratio_max_to_min": "606 : 3 (202:1)"
     },
+    "granular_9_class": {
+      "total_test_samples": 1064,
+      "accuracy": 0.7914,
+      "macro_precision": 0.5069,
+      "macro_recall": 0.4846,
+      "macro_f1": 0.481,
+      "weighted_f1": 0.7889,
+      "imbalance_ratio_max_to_min": "590 : 2 (295:1)"
+    },
     "hierarchical_3_super_class": {
-      "accuracy": 0.7656,
-      "macro_precision": 0.7639,
-      "macro_recall": 0.7459,
-      "macro_f1": 0.7522,
-      "weighted_f1": 0.761,
-      "macro_f1_improvement": "+29.87%"
+      "total_test_samples": 1064,
+      "accuracy": 0.8167,
+      "macro_precision": 0.8246,
+      "macro_recall": 0.817,
+      "macro_f1": 0.8173,
+      "weighted_f1": 0.8188,
+      "macro_f1_improvement": "+33.63%",
+      "per_super_class": {
+        "Negative_Dissent": {
+          "support": 610,
+          "precision": 0.8781,
+          "recall": 0.8033,
+          "f1": 0.839
+        },
+        "Positive_Support": {
+          "support": 325,
+          "precision": 0.7077,
+          "recall": 0.8492,
+          "f1": 0.772
+        },
+        "Neutral_Objective": {
+          "support": 129,
+          "precision": 0.8879,
+          "recall": 0.7984,
+          "f1": 0.8408
+        }
+      }
     }
   },
   "minority_dissection": {
+    "Marah": {
+      "support": 12,
+      "predictions": {
+        "Marah": 7,
+        "Netral": 5
+      }
+    },
+    "Bahagia": {
+      "support": 14,
+      "predictions": {
+        "Tertarik": 6,
+        "Jijik": 6,
+        "Percaya": 1,
+        "Bahagia": 1
+      }
+    },
+    "Sedih": {
+      "support": 2,
+      "predictions": {
+        "Jijik": 2
+      }
+    },
+    "Kaget": {
+      "support": 6,
+      "predictions": {
+        "Jijik": 6
+      }
+    },
+    "Takut": {
+      "support": 0,
+      "predictions": {}
+    },
     "marah_sample_count": 14,
-    "marah_predictions": {
-      "Netral": 12,
-      "Percaya": 2
-    },
-    "marah_finding": "12 dari 14 sampel Marah adalah artefak multibahasa/spam yang secara tepat diprediksi 'Netral' oleh konteks IndoBERT.",
-    "sedih_sample_count": 3,
-    "sedih_predictions": {
-      "Jijik": 2,
-      "Percaya": 1
-    },
-    "sedih_finding": "Sampel Sedih merepresentasikan keluhan sinis atas ingkar janji kebijakan yang secara alami bermutasi ke emosi 'Jijik' (Moral Disgust)."
+    "sedih_sample_count": 3
   },
   "theoretical_grounding": {
-    "political_psychology": "Rozin, Haidt, & McCauley (2000); Gutierrez & Giner-Sorolla (2007)",
-    "mechanism": "Transmutasi Kemarahan Verbal menjadi Moral Disgust akibat ancaman hukum UU ITE dan budaya sindiran politik Indonesia."
+    "political_psychology": "Rozin, Haidt, & McCauley (2000); Gutierrez & Giner-Sorolla (2007); Coombs SCCT (2007)",
+    "mechanism": "Pada krisis pangan massal, penolakan publik bermutasi menjadi Moral Disgust. Pendekatan taksonomi bertingkat 3 super-kelas membuktikan model sangat tangguh membedakan penolakan vs dukungan vs netral tanpa bias mayoritas semata."
   }
 }

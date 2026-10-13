@@ -19,7 +19,7 @@
 ### 2. Spesifikasi Paket Replikasi Zenodo yang Dihasilkan:
 * **Digital Object Identifier (DOI)**: `10.5281/zenodo.11029482`
 * **URL Resmi**: `https://doi.org/10.5281/zenodo.11029482`
-* **Berkas Arsip ZIP**: `ZENODO_REPLICATION_PACKAGE_DOI_MBG_2026.zip` (4.93 MB)
+* **Berkas Arsip ZIP**: `ZENODO_REPLICATION_PACKAGE_DOI_MBG_2026.zip` (4.99 MB)
 * **Metadata Konfigurasi**: `.zenodo.json` (DataCite Schema 4.4) dan `CITATION.cff` (Citation File Format 1.2.0)
 * **Cakupan Berkas**:
   - 10 Dataset benchmark (*gold standard*, topologi SNA kanonis, temporal TERGM, spasial epidemiologis, ABSA ACSA, sirkadian botnet, affordance lintas platform).

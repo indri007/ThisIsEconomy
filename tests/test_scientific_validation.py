@@ -48,7 +48,7 @@ class TestScientificValidationSubstantive(unittest.TestCase):
         self.assertIsNone(res['krippendorff_alpha'])
 
     def test_reproduce_indobert_evaluation_metrics_substantive(self):
-        """Mereproduksi metrik evaluasi model langsung dari file prediksi riil test set (n=1058)."""
+        """[Baseline Historis v1 - 6 Kelas] Mereproduksi metrik evaluasi model dari partisi uji awal (n=1058)."""
         pred_path = os.path.join(self.root_dir, 'results/FINAL_indobert_predictions.csv')
         self.assertTrue(os.path.exists(pred_path), f"File {pred_path} harus tersedia")
         

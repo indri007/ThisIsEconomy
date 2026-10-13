@@ -1,0 +1,12 @@
+{
+  "execution_timestamp_iso": "2026-10-13T17:56:40.000000",
+  "command": "/opt/miniconda3/bin/python3 -m pytest tests/ -v --tb=short",
+  "exit_code": 0,
+  "success": true,
+  "duration_seconds": 5.77,
+  "log_file": "logs/TEST_EXECUTION_AUDIT_RUN.log",
+  "environment": {
+    "python_version": "3.13.11",
+    "platform": "darwin"
+  }
+}
