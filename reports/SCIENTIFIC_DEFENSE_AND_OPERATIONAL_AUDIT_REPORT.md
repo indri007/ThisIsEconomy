@@ -133,12 +133,13 @@ Pada modul pengiriman Telegram EWS ([`scripts/auto_scrape_job.py`](file:///Users
 - **Crash-Proof Asset Interceptor:**
   Fungsi `_crash_proof_st_image()` mencegat kesalahan file visual yang hilang, memastikan ketiadaan aset opsional tidak menggagalkan perenderan halaman (*fault-tolerant UI*).
 
-### 3.5 Status Rangkaian Pengujian Unit (94/94 Test Passing)
+### 3.5 Status Rangkaian Pengujian Unit (97/97 Test Passing)
 Rangkaian pengujian unit komprehensif mengonfirmasi integritas seluruh komponen sistem:
 ```text
 tests/test_audit_master_suite.py ......... (11 passed)
 tests/test_minority_class_audit.py .       (1 passed)
 tests/test_telegram_ews.py ....            (4 passed)
 tests/test_scientific_validation.py ...... (6 passed)
-Total Suite: 94 passed, 16 subtests passed in 5.34s (100% SUCCESS)
+tests/test_operational_and_pipeline_audit.py ... (3 passed)
+Total Suite: 97 passed, 16 subtests passed in 5.53s (100% SUCCESS)
 ```
