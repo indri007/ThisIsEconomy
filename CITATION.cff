@@ -24,9 +24,12 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.11029482"
     description: "The permanent concept Digital Object Identifier (DOI) preserved on Zenodo (CERN)"
+  - type: doi
+    value: "10.2139/ssrn.7526942"
+    description: "SSRN Preprint: Relevance-Gated Early Warning with Telegram Alerts for Free Nutritious Meal Discourse on X"
   - type: url
     value: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7526942"
-    description: "SSRN Electronic Library Preprint / Working Paper Abstract ID 7526942"
+    description: "SSRN Electronic Library Preprint Abstract ID 7526942"
 repository-code: "https://github.com/indri007/ThisIsEconomy"
 url: "https://doi.org/10.5281/zenodo.11029482"
 keywords:

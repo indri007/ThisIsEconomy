@@ -1617,8 +1617,8 @@ Riset tesis MBG ini telah diseminasi secara resmi oleh peneliti ke jejaring akad
   *Liputan investigasi Radar Malang mengenai inovasi sistem Early Warning System (EWS) MBG berbasis IndoBERT 9-emosi, Streamlit, dan Bot Telegram oleh Indri Anjar Kartika Sari di tengah krisis 43.838 korban keracunan MBG, mengonfirmasi fenomena Phygital Gap dan urgensi respons krisis.*
 
 - 📄 **Preprint & Working Paper SSRN (Elsevier):**  
-  👉 **[SSRN Electronic Library (Abstract ID: 7526942)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7526942)**  
-  *Repositori preprint riset komputasional tesis MBG terindeks di basis data ilmiah Social Science Research Network (SSRN).*
+  👉 **[Relevance-Gated Early Warning with Telegram Alerts for Free Nutritious Meal Discourse on X](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7526942)** \| **[DOI: 10.2139/ssrn.7526942](https://doi.org/10.2139/ssrn.7526942)**  
+  *Penulis: Indri Anjar Kartika Sari (UPN Veteran Jawa Timur). Unggah: 29 September 2026 (14 hal., CC BY 4.0). Mengevaluasi pipeline early warning pada 3.389 cuitan dan penyaringan relevansi 1.134 cuitan lolos filter untuk menekan alarm palsu.*
 
 - 🔬 **Profil Peneliti & Repositori Terbuka Figshare:**  
   👉 **[Indri Anjar Kartika Sari — Figshare Author Profile (ID: 25113948)](https://figshare.com/authors/Indri_Anjar_Kartika_Sari/25113948)**  
