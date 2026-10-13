@@ -1560,6 +1560,7 @@ Profesional yang *hasil-oriented*, bertransisi ke bidang **AI Engineering** sete
 - **Purwadhika Digital Technology School — AI Engineering:** Lulusan program *Job Connector Bootcamp* (No. Sertifikat: `202602009256`, 02.02.2026 – 30.07.2026). Fokus: *Data science foundation, machine learning, deep learning, neural networks, Transformer NLP, fine-tuning LLM & RAG, Computer Vision, MLOps cloud deployment*.
 - **Purwadhika Digital Technology School — Full Stack Software Development:** JavaScript, OOP, algoritma & struktur data, React.js, Node.js, REST API, Docker, CI/CD cloud deployment.
 - **Purwadhika Digital Technology School — Digital Marketing (2024 · 12 minggu):** Business model canvas, branding & content, SEO/SEM (GEO), paid media, digital marketing analytics.
+- **Magister Ilmu Komunikasi UPN "Veteran" Jawa Timur — Communication Xperience 2026:** Partisipan konferensi ilmiah *"SEANERGY: Communication, Culture and Collaboration in Digital South East Asia"*, Surabaya, 17 Juni 2026. Disahkan oleh Koordinator Prodi Magister Ilmu Komunikasi FISIP UPN Veteran Jatim (Aulia Rahmawati, S.Sos., M.Si., Ph.D) dan Ketua Konferensi (Sigit Andrianto, S.I.Kom., M.I.Kom.). [📜 Unduh / Lihat Sertifikat Resmi](docs/assets/sertifikat_communication_xperience_2026.jpg).
 
 ---
 
@@ -1610,6 +1611,14 @@ Riset tesis MBG ini telah diseminasi secara resmi oleh peneliti ke jejaring akad
 - 📰 **Liputan Media Massa Nasional — Jawa Pos (21 September 2026):**  
   👉 **[Verifikasi Informasi MBG di Media Sosial Kini Didominasi Akun AI](https://www.jawapos.com/teknologi/2609210065/verifikasi-informasi-mbg-di-media-sosial-kini-didominasi-akun-ai)**  
   *Liputan komprehensif Jawa Pos atas hasil riset tesis UPN Veteran Jatim oleh Indri Anjar Kartika Sari dkk., menyoroti fenomena **Algorithmic Trust** di mana agen AI @grok menjadi simpul verifikator sentral informasi MBG di platform X di tengah fragmentasi tinggi (modularity 0,9837).*
+
+- 📰 **Liputan Media Massa Nasional — Radar Malang / Jawa Pos Grup (25 September 2026):**  
+  👉 **[Keracunan MBG Tembus 43.838 Korban, Mahasiswi UPN Veteran Jatim Kembangkan Sistem Peringatan Dini Berbasis AI](https://radarmalang.jawapos.com/nasional/2609250051/keracunan-mbg-tembus-43838-korban-mahasiswi-upn-veteran-jatim-kembangkan-sistem-peringatan-dini-berbasis-ai)**  
+  *Liputan investigasi Radar Malang mengenai inovasi sistem Early Warning System (EWS) MBG berbasis IndoBERT 9-emosi, Streamlit, dan Bot Telegram oleh Indri Anjar Kartika Sari di tengah krisis 43.838 korban keracunan MBG, mengonfirmasi fenomena Phygital Gap dan urgensi respons krisis.*
+
+- 📄 **Preprint & Working Paper SSRN (Elsevier):**  
+  👉 **[SSRN Electronic Library (Abstract ID: 7526942)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7526942)**  
+  *Repositori preprint riset komputasional tesis MBG terindeks di basis data ilmiah Social Science Research Network (SSRN).*
 
 - 🔬 **Profil Peneliti & Repositori Terbuka Figshare:**  
   👉 **[Indri Anjar Kartika Sari — Figshare Author Profile (ID: 25113948)](https://figshare.com/authors/Indri_Anjar_Kartika_Sari/25113948)**  
