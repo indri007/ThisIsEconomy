@@ -17,16 +17,16 @@ Repositori tesis ini mengelola data penelitian multi-skala yang masing-masing me
 
 ```mermaid
 flowchart TD
-    A["DATA LAKE AKUISISI NASIONAL (30 Juta Baris)<br>• Periode: Jan 2025 – Okt 2026<br>• Sumber: Twitter/X lang:id via Multi-threaded Scraper<br>• Ukuran: 6,0 GB (30.035.227 baris mentah)"] -->|Filter Temporal & Keyword MBG| B["KORPUS LINIMASA KRISIS LONGITUDINAL (N = 9.360)<br>• Puncak I (Mei 2026): 3.157 cuitan<br>• Puncak II (Sep 2026): 4.661 cuitan<br>• Inter-crisis Monitoring: 1.542 cuitan<br>• Distribusi: 9.189 Jijik (98,17%) + 162 Trust + 9 Netral"]
+    A["DATA LAKE AKUISISI NASIONAL (30 Juta Baris)<br>• Periode: Jan 2025 – Okt 2026<br>• Sumber: Twitter/X lang:id via Multi-threaded Scraper<br>• Ukuran: 6,0 GB (30.035.227 baris mentah)"] -->|"Filter Temporal & Keyword MBG"| B["KORPUS LINIMASA KRISIS LONGITUDINAL (N = 9.360)<br>• Puncak I (Mei 2026): 3.157 cuitan<br>• Puncak II (Sep 2026): 4.661 cuitan<br>• Inter-crisis Monitoring: 1.542 cuitan<br>• Distribusi: 9.189 Jijik (98,17%) + 162 Trust + 9 Netral"]
     
-    A -->|Deduplikasi Teks & Ekstraksi Interaksi @mentions| C["KORPUS INTERAKSI & SARIDAS RELEVAN (N = 3.395)<br>• Periode: Maret – Mei 2026<br>• SNA Network: |V| = 971 node, |E| = 666 edge<br>• Modularity Louvain: Q = 0.9837 (332 klaster)<br>• Sindiran Valid: 315 cuitan (9,28%)"]
+    A -->|"Deduplikasi Teks & Ekstraksi Interaksi @mentions"| C["KORPUS INTERAKSI & SARIDAS RELEVAN (N = 3.395)<br>• Periode: Maret – Mei 2026<br>• SNA Network: |V| = 971 node, |E| = 666 edge<br>• Modularity Louvain: Q = 0.9837 (332 klaster)<br>• Sindiran Valid: 315 cuitan (9,28%)"]
     
-    A -->|Penyaringan Kualitas Bahasa & Deduplikasi Ketat| D["KORPUS MASTER KLASIFIKASI 9 EMOSI (N = 5.272)<br>• Korpus silver-standard dasar: 5.263 cuitan<br>• Integrasi kandidat tervalidasi: +9 cuitan (Joy & Surprise)<br>• 9 Kelas Plutchik: Disgust 2.900, Trust 1.059, Neutral 645,<br>Interest 496, Joy 76, Anger 54, Surprise 23, Sadness 17, Fear 2"]
+    A -->|"Penyaringan Kualitas Bahasa & Deduplikasi Ketat"| D["KORPUS MASTER KLASIFIKASI 9 EMOSI (N = 5.272)<br>• Korpus silver-standard dasar: 5.263 cuitan<br>• Integrasi kandidat tervalidasi: +9 cuitan (Joy & Surprise)<br>• 9 Kelas Plutchik: Disgust 2.900, Trust 1.059, Neutral 645,<br>Interest 496, Joy 76, Anger 54, Surprise 23, Sadness 17, Fear 2"]
     
-    D -->|GroupShuffleSplit 80:20 (overlap text = 0)| E["PARTISI LATIH ZERO-LEAKAGE<br>N = 4.208 baris (80%)<br>Digunakan untuk Weighted Fine-Tuning IndoBERT"]
-    D -->|GroupShuffleSplit 80:20 (overlap text = 0)| F["PARTISI UJI INDEPENDEN HOLDOUT<br>N = 1.064 baris (20%)<br>Akurasi: 79,14% | Weighted-F1: 78,89%"]
+    D -->|"GroupShuffleSplit 80:20 (overlap text = 0)"| E["PARTISI LATIH ZERO-LEAKAGE<br>N = 4.208 baris (80%)<br>Digunakan untuk Weighted Fine-Tuning IndoBERT"]
+    D -->|"GroupShuffleSplit 80:20 (overlap text = 0)"| F["PARTISI UJI INDEPENDEN HOLDOUT<br>N = 1.064 baris (20%)<br>Akurasi: 79,14% | Weighted-F1: 78,89%"]
     
-    D -->|Stratified Random Sampling (Kasus Ambigu & Kontradiktif)| G["MULTI-ANNOTATOR GOLD BENCHMARK (n = 100)<br>• Anotasi ganda pakar independen (Pakar Komunikasi & Linguis)<br>• Kesepakatan: Cohen's Kappa = 0.9135, Krippendorff's Alpha = 0.8447<br>• Akurasi Reproduksi IndoBERT vs Gold Consensus = 90.00%"]
+    D -->|"Stratified Random Sampling (Kasus Ambigu & Kontradiktif)"| G["SAMPEL VALIDASI ACUAN KURASI (n = 100)<br>• Sampel kasus kontradiktif teks-emoji<br>• Metrik scripted terdahulu ditarik resmi (Option A)<br>• Acuan evaluasi kualitatif dan protokol terbuka"]
 ```
 
 ### 1.2 Matriks Rekonsiliasi & Karakteristik Korpus
@@ -37,7 +37,7 @@ flowchart TD
 | **Longitudinal Crisis Timeline** | **9.360** | Jan – 10 Okt 2026 | Pelacakan out-of-sample bulanan fokus pada Puncak I (Mei) dan Puncak II (September). | Analisis temporal evolusi emosi warganet dan pembuktian dua gelombang krisis (*Double-Peak Crisis*). |
 | **Master 9-Emotion Corpus** | **5.272** | Maret – Mei 2026 | Deduplikasi teks ketat, pembersihan noise, ditambah 9 sampel terverifikasi *Joy* & *Surprise*. | Korpus referensi latih dan uji model IndoBERT 9-kelas (`results/emotion_train_group_split.csv` $4.208$ + `results/emotion_test_group_split.csv` $1.064$). |
 | **Curated Empirical Interaction** | **3.395** | Maret – Mei 2026 | Cuitan dengan pasangan interaksi `@mention`/RT dan kekayaan leksikal untuk analisis semiotik. | Pembangunan topologi jaringan SNA ($|V|=971$, $|E|=666$), deteksi sarkasme ($n=315$), dan validasi *Algorithmic Oracle* `@grok`. |
-| **Human Gold Standard** | **100** | Maret – Mei 2026 | Stratified sampling mewakili kasus konsensus dan kontradiksi teks-emoji. | Validasi keabsahan ilmiah acuan manusia (*Inter-Annotator Reliability*: $\kappa = 0.9135$, $\alpha = 0.8447$). |
+| **Sampel Validasi Acuan** | **100** | Maret – Mei 2026 | Stratified sampling mewakili kasus konsensus dan kontradiksi teks-emoji. | Validasi acuan kualitatif (klaim scripted $\kappa = 0.9135$ resmi ditarik demi kepatuhan integritas ilmiah). |
 
 ---
 

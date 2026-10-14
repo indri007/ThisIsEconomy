@@ -162,12 +162,12 @@
 
 ```mermaid
 flowchart TD
-    A["DATA LAKE AKUISISI NASIONAL (30 Juta Baris)<br>Jan 2025 – Okt 2026 | 6,0 GB (30.035.227 baris)"] -->|Filter Temporal Dua Puncak Krisis| B["KORPUS LINIMASA KRISIS LONGITUDINAL (N = 9.360)<br>Puncak I (Mei: 3.157) + Puncak II (Sep: 4.661) + Monitor (1.542)"]
-    A -->|Ekstraksi Interaksi & Kekayaan Leksikal| C["KORPUS INTERAKSI SNA & SARIDAS (N = 3.395)<br>SNA: |V|=971 node, |E|=666 edge, Q=0.9837 | 315 Sindiran (9,28%)"]
-    A -->|Penyaringan Kualitas Bahasa & Integrasi Gold| D["KORPUS MASTER KLASIFIKASI 9 EMOSI (N = 5.272)<br>5.263 korpus dasar + 9 kandidat emas (Joy 76, Surprise 23)"]
-    D -->|GroupShuffleSplit 80% (Zero Leakage)| E["Train Set IndoBERT (N = 4.208)"]
-    D -->|GroupShuffleSplit 20% (Zero Leakage)| F["Holdout Test Set (N = 1.064) | Akurasi 79,14% | W-F1 78,89%"]
-    D -->|Stratified Ambiguous Cases| G["Multi-Annotator Gold Standard (n = 100) | Kappa = 0.9135"]
+    A["DATA LAKE AKUISISI NASIONAL (30 Juta Baris)<br/>Jan 2025 – Okt 2026 • 6,0 GB (30.035.227 baris)"] -->|"Filter Temporal Dua Puncak Krisis"| B["KORPUS LINIMASA KRISIS LONGITUDINAL (N = 9.360)<br/>Puncak I (Mei: 3.157) + Puncak II (Sep: 4.661) + Monitor (1.542)"]
+    A -->|"Ekstraksi Interaksi & Kekayaan Leksikal"| C["KORPUS INTERAKSI SNA & SARIDAS (N = 3.395)<br/>SNA: |V|=971 node, |E|=666 edge, Q=0.9837 • 315 Sindiran (9,28%)"]
+    A -->|"Penyaringan Kualitas Bahasa & Deduplikasi Ketat"| D["KORPUS MASTER KLASIFIKASI 9 EMOSI (N = 5.272)<br/>5.263 korpus dasar + 9 kandidat terverifikasi (Joy 76, Surprise 23)"]
+    D -->|"GroupShuffleSplit 80% (Zero Leakage)"| E["Train Set IndoBERT (N = 4.208)"]
+    D -->|"GroupShuffleSplit 20% (Zero Leakage)"| F["Holdout Test Set (N = 1.064)<br/>Akurasi: 79,14% • W-F1: 78,89%"]
+    D -->|"Stratified Curated Sample"| G["Sampel Validasi Acuan Kurasi (n = 100)<br/>Klaim scripted terdahulu ditarik (Protokol Terbuka)"]
 ```
 
 | Tingkat Korpus | Ukuran ($N$) | Periode Pengambilan | Kriteria Seleksi & Deduplikasi | Fungsi & Peran Analitis di Riset |
@@ -176,7 +176,7 @@ flowchart TD
 | **Linimasa Krisis** | **9.360** | Jan – 10 Okt 2026 | Pelacakan longitudinal Puncak I & II | Analisis temporal dua gelombang krisis |
 | **Master 9 Emosi** | **5.272** | Maret – Mei 2026 | Deduplikasi teks ketat + ekspansi Joy & Surprise | Pelatihan & evaluasi model IndoBERT 9-kelas |
 | **Interaksi Empiris & SNA**| **3.395** | Maret – Mei 2026 | Cuitan berinteraksi `@mention`/RT & bersindiran | Topologi graf SNA ($|V|=971$) & deteksi sindiran |
-| **Gold Standard Pakar** | **100** | Maret – Mei 2026 | Sampel stratifikasi kasus kontradiktif | Evaluasi keabsahan antar-penilai manusia ($\kappa=0.9135$) |
+| **Sampel Validasi Acuan** | **100** | Maret – Mei 2026 | Sampel stratifikasi kasus kontradiktif | Evaluasi acuan kualitatif (klaim scripted $\kappa=0.9135$ resmi ditarik demi integritas) |
 
 <br/>
 
@@ -186,7 +186,7 @@ flowchart TD
 > [!IMPORTANT]
 > **Catatan Validitas Metodologis (Peer-Review Reconciliation):**
 > 1. **Taksonomi 9-Kelas Terpadu:** Melalui penambangan data kandidat terverifikasi (*verified gold candidates*), dua kelas yang sebelumnya langka (*Bahagia/Joy* dengan 76 sampel dan *Kaget/Surprise* dengan 23 sampel) kini telah resmi diintegrasikan ke dalam korpus master $N = 5.272$ dan divalidasi dengan model IndoBERT berbobot (*weighted fine-tuning*).
-> 2. **Silver-Standard Reference Labels:** Seluruh label emosi pada korpus $N = 5.272$ diekstraksi melalui pipeline terstandarisasi. Istilah *ground truth* hanya digunakan secara ketat pada pengujian validasi independen manusia ($n = 100$ sampel teranotasi ganda).
+> 2. **Silver-Standard Reference Labels:** Seluruh label emosi pada korpus $N = 5.272$ diekstraksi melalui pipeline terstandarisasi bebas kebocoran (*leak-free*). Sesuai rekonsiliasi integritas (Option A), metrik scripted terdahulu ($\kappa = 0,9135$) telah ditarik, dan evaluasi ilmiah bertumpu penuh pada *holdout test set* independen ($N = 1.064$).
 > 3. **Rekonsiliasi Angka Longitudinal ($N = 9.360$):** Penjumlahan kolom longitudinal menghasilkan tepat **9.360 unggahan** (9.189 Disgust [98,17%] + 162 Love [1,73%] + 9 Netral [0,10%] = 9.360).
 
 | No | Emoji Representatif | Kelas Emosi (Plutchik) | Frekuensi ($N$) | Proporsi (%) | Indikator Leksikal Dominan | Konteks Pragmatik & Realitas Lapangan MBG | Performa Model IndoBERT |
