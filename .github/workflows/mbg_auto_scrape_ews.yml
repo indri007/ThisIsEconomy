@@ -2,9 +2,8 @@ name: MBG Auto Scraper & Telegram EWS
 
 on:
   schedule:
-    # 00:00 UTC = 07:00 WIB (Pagi)
-    # 12:00 UTC = 19:00 WIB (Malam)
-    - cron: '0 0,12 * * *'
+    # 00:00 UTC = 07:00 WIB (Pagi) - 1x sehari
+    - cron: '0 0 * * *'
   workflow_dispatch: # Tombol "Run workflow" manual di tab Actions GitHub
 
 permissions:
