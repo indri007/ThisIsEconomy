@@ -26,36 +26,8 @@ OUTPUT_DIR = PROJECT_ROOT / "data" / "raw"
 OUTPUT_FILE = OUTPUT_DIR / "live_tweets_mbg_accumulated.csv"
 
 
-def get_secret(key_name: str, default: str = None) -> str:
-    """Membaca rahasia dari Streamlit Secrets, os.environ, atau file secrets.toml."""
-    # 1. Streamlit Secrets
-    try:
-        import streamlit as st
-        if hasattr(st, "secrets") and key_name in st.secrets:
-            return str(st.secrets[key_name]).strip()
-    except Exception:
-        pass
+from twitter_sentiment_app import get_secret
 
-    # 2. Environment Variable
-    val = os.getenv(key_name)
-    if val:
-        return val.strip()
-
-    # 3. File .streamlit/secrets.toml manual parser
-    secrets_path = PROJECT_ROOT / ".streamlit" / "secrets.toml"
-    if secrets_path.exists():
-        try:
-            with open(secrets_path, "r", encoding="utf-8") as f:
-                for line in f:
-                    line = line.strip()
-                    if line.startswith(f"{key_name} =") or line.startswith(f'{key_name}='):
-                        raw_val = line.split("=", 1)[1].strip().strip('"\'')
-                        if raw_val:
-                            return raw_val
-        except Exception:
-            pass
-
-    return default
 
 
 import html

@@ -21,16 +21,20 @@ logger = logging.getLogger(__name__)
 COOKIES_FILE = "cookies.json"
 
 
-def get_secret(key_name: str, default: str = None) -> str:
-    """Ambil key dari Streamlit Secrets (Cloud) atau fallback ke .env (Lokal)."""
-    try:
-        import streamlit as st
-        if hasattr(st, "secrets") and key_name in st.secrets:
-            return str(st.secrets[key_name]).strip()
-    except Exception:
-        pass
-    val = os.getenv(key_name, default)
-    return val.strip() if val else None
+try:
+    from twitter_sentiment_app import get_secret
+except ImportError:
+    def get_secret(key_name: str, default: str = None) -> str:
+        """Ambil key dari Streamlit Secrets (Cloud) atau fallback ke .env (Lokal)."""
+        try:
+            import streamlit as st
+            if hasattr(st, "secrets") and key_name in st.secrets:
+                return str(st.secrets[key_name]).strip()
+        except Exception:
+            pass
+        val = os.getenv(key_name, default)
+        return val.strip() if val else None
+
 
 
 def init_twikit_client():

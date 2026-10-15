@@ -7,16 +7,14 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import parse_xml
 from docx.oxml.ns import nsdecls
 
-def set_cell_border(cell, **kwargs):
-    tcPr = cell._tc.get_or_add_tcPr()
-    tcBorders = parse_xml(f'<w:tcBorders {nsdecls("w")}/>')
-    for edge in ('top', 'left', 'bottom', 'right', 'insideH', 'insideV'):
-        edge_data = kwargs.get(edge)
-        if edge_data:
-            tag = f'w:{edge}'
-            element = parse_xml(f'<{tag} {nsdecls("w")} w:val="{edge_data.get("val", "single")}" w:sz="{edge_data.get("sz", 4)}" w:space="0" w:color="{edge_data.get("color", "auto")}"/>')
-            tcBorders.append(element)
-    tcPr.append(tcBorders)
+import sys
+from pathlib import Path
+_ROOT = Path(__file__).resolve().parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
+from scripts.utils.docx_utils import set_cell_border
+
 
 def main():
     md_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "manuscript", "manuscript_jurnal.md")

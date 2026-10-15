@@ -60,15 +60,14 @@ def get_image_path(img_name):
         return img_name
     return None
 
-def set_cell_margins(cell, top=80, bottom=80, left=120, right=120):
-    tcPr = cell._tc.get_or_add_tcPr()
-    tcMar = parse_xml(f'<w:tcMar {nsdecls("w")}><w:top w:w="{top}" w:type="dxa"/><w:bottom w:w="{bottom}" w:type="dxa"/><w:left w:w="{left}" w:type="dxa"/><w:right w:w="{right}" w:type="dxa"/></w:tcMar>')
-    tcPr.append(tcMar)
+import sys
+from pathlib import Path
+_ROOT = Path(__file__).resolve().parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
-def set_cell_background(cell, hex_color):
-    tcPr = cell._tc.get_or_add_tcPr()
-    shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="{hex_color}"/>')
-    tcPr.append(shd)
+from scripts.utils.docx_utils import set_cell_margins, set_cell_background
+
 
 def set_apa_table_borders(table):
     tblPr = table._tbl.tblPr

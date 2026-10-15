@@ -62,20 +62,14 @@ def convert_docx_to_pdf(docx_path, out_dir):
         print(f"[WARN] PDF conversion failed for {docx_path}: {e}")
     return None
 
-def set_cell_margins(cell, top=100, bottom=100, left=150, right=150):
-    tcPr = cell._tc.get_or_add_tcPr()
-    tcMar = OxmlElement('w:tcMar')
-    for m, val in [('w:top', top), ('w:bottom', bottom), ('w:left', left), ('w:right', right)]:
-        node = OxmlElement(m)
-        node.set(qn('w:w'), str(val))
-        node.set(qn('w:type'), 'dxa')
-        tcMar.append(node)
-    tcPr.append(tcMar)
+import sys
+from pathlib import Path
+_ROOT = Path(__file__).resolve().parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
-def set_cell_background(cell, color_hex):
-    tcPr = cell._tc.get_or_add_tcPr()
-    shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="{color_hex}"/>')
-    tcPr.append(shd)
+from scripts.utils.docx_utils import set_cell_margins, set_cell_background
+
 
 def set_table_borders(table):
     tblPr = table._tbl.tblPr
