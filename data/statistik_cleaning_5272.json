@@ -1,0 +1,15 @@
+{
+  "total_records": 5272,
+  "rata_rata_panjang_karakter_sebelum": 223.91,
+  "rata_rata_panjang_karakter_sesudah": 180.17,
+  "rata_rata_reduksi_karakter": 43.74,
+  "persentase_reduksi_total": "19.54%",
+  "jumlah_tweet_memuat_url": 2711,
+  "persen_tweet_memuat_url": "51.42%",
+  "jumlah_tweet_memuat_mention": 749,
+  "persen_tweet_memuat_mention": "14.21%",
+  "jumlah_tweet_memuat_emoji": 5223,
+  "persen_tweet_memuat_emoji": "99.07%",
+  "jumlah_tweet_memuat_hashtag": 872,
+  "persen_tweet_memuat_hashtag": "16.54%"
+}
