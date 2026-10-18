@@ -61,8 +61,9 @@ mbg-sna-github/
 *.BACKUP_*
 *.backup.txt
 *.log
-# Local backup files
 *.bak
+*.db-shm
+*.db-wal
 
 # Model fine-tuned (disimpan di HuggingFace)
 results/indobert_finetuned/
