@@ -23,13 +23,14 @@ def apply_table_styles(tbl, caption):
         cap_el = parse_xml(f'<w:tblCaption {nsdecls("w")} w:val="{caption}"/>')
         tblPr.append(cap_el)
 
-def set_cell_properties(cell, fill_hex=None, top=100, bottom=100, left=120, right=120):
-    tcPr = cell._tc.get_or_add_tcPr()
-    if fill_hex:
-        shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="{fill_hex}"/>')
-        tcPr.append(shd)
-    tcMar = parse_xml(f'<w:tcMar {nsdecls("w")}><w:top w:w="{top}" w:type="dxa"/><w:bottom w:w="{bottom}" w:type="dxa"/><w:left w:w="{left}" w:type="dxa"/><w:right w:w="{right}" w:type="dxa"/></w:tcMar>')
-    tcPr.append(tcMar)
+import sys
+from pathlib import Path
+_ROOT = Path(__file__).resolve().parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
+from scripts.utils.docx_utils import set_cell_properties
+
 
 def create_table(doc, headers, data, caption_title):
     tbl = doc.add_table(rows=len(data) + 1, cols=len(headers))

@@ -1,0 +1,4 @@
+super_class,support,precision,recall,f1_score
+Negatif,610,0.8781,0.8033,0.839
+Positif,325,0.7077,0.8492,0.772
+Netral,129,0.8879,0.7984,0.8408

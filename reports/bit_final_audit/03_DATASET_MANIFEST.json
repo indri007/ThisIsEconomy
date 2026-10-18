@@ -1,0 +1,29 @@
+{
+  "manifest_version": "2.0.0-bit-audit",
+  "audit_timestamp_iso": "2026-10-13T18:09:45Z",
+  "data_lake": {
+    "declared_path": "data/processed/tweet_mbg_30juta.csv",
+    "resolved_physical_path": "/Users/jevin/Documents/tesis_mbg/data/processed/tweet_mbg_30juta.csv",
+    "file_size_bytes": 6430132789,
+    "file_size_gb": 5.989,
+    "sha256_checksum": "d9333c3a56f2b2e65bdbc68cd7c4aaaf74f6048222443e0f3ab6a576640b06a0",
+    "total_declared_records": 30000000,
+    "total_physical_lines": 30035226,
+    "symlink_target": "tweet_mbg_30juta.csv (resolves to physical storage)",
+    "status": "RAW_UNPROCESSED_ACQUISITION_STORAGE"
+  },
+  "reconciliation": {
+    "formula": "total_input = processed_samples + unprocessed_backlog",
+    "total_input_records": 30000000,
+    "processed_in_lake_sample": 600,
+    "unprocessed_backlog": 29999400,
+    "full_inference_status": "BLOCKED",
+    "full_inference_blocker_reason": "Computational and storage budget protection; inferencing 30 million records requires ~38 hours GPU cluster runtime and is unnecessary for hypothesis-driven NLP research."
+  },
+  "analytical_corpora_inventory": {
+    "timeline_corpus_n": 9360,
+    "master_indobert_n": 5272,
+    "sarcasm_sna_n": 3395,
+    "human_gold_standard_n": 100
+  }
+}

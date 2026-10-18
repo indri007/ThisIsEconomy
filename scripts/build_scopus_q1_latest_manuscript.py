@@ -29,24 +29,14 @@ MD_OUT_PATH = os.path.join(MANUSCRIPT_DIR, "JURNAL_MBG_SCOPUS_Q1_LATEST_2026.md"
 DOCX_OUT_PATH = os.path.join(MANUSCRIPT_DIR, "JURNAL_MBG_SCOPUS_Q1_LATEST_2026.docx")
 DOCX_DOCUMENTS_PATH = os.path.expanduser("~/Documents/tesis_mbg/manuscript/JURNAL_MBG_SCOPUS_Q1_LATEST_2026.docx")
 
-def set_cell_margins(cell, top=100, bottom=100, left=150, right=150):
-    tc = cell._tc
-    tcPr = tc.get_or_add_tcPr()
-    tcMar = OxmlElement('w:tcMar')
-    for m, val in [('w:top', top), ('w:bottom', bottom), ('w:left', left), ('w:right', right)]:
-        node = OxmlElement(m)
-        node.set(qn('w:w'), str(val))
-        node.set(qn('w:type'), 'dxa')
-        tcMar.append(node)
-    tcPr.append(tcMar)
+import sys
+from pathlib import Path
+_ROOT = Path(__file__).resolve().parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
-def set_cell_background(cell, color_hex):
-    tcPr = cell._tc.get_or_add_tcPr()
-    shd = OxmlElement('w:shd')
-    shd.set(qn('w:val'), 'clear')
-    shd.set(qn('w:color'), 'auto')
-    shd.set(qn('w:fill'), color_hex)
-    tcPr.append(shd)
+from scripts.utils.docx_utils import set_cell_margins, set_cell_background
+
 
 print("[*] Menulis naskah format Markdown...")
 
